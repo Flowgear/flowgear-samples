@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+xmlns="http://flowgear.net/Schemas/NodeSamples.xsd"
+xmlns:mstns="http://flowgear.net/Schemas/NodeSamples.xsd"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+id="NodeSamples"
+targetNamespace="http://flowgear.net/Schemas/NodeSamples.xsd"
+elementFormDefault="qualified">
+
+  <xs:element name="NodeSamples">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="NodeSupport" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Node" >
+                <xs:annotation>
+                  <xs:documentation>Internal name of the node the samples apply to</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+
+              <xs:element name="MinimumVersion" >
+                <xs:annotation>
+                  <xs:documentation>The minimum version of the node that these samples apply to</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+
+              <xs:element name="MaximumVersion" nillable="true" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The maximum version of the node that these samples apply to</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+
+        </xs:element>
+
+        <xs:element name="NodeSample" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+
+              <xs:element name="IsDefault" type="xs:boolean" nillable="true" >
+                <xs:annotation>
+                  <xs:documentation>Indicates whether this is the default sample for the node</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+
+              <xs:element name="Name" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>A short name for the sample</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+
+              <xs:element name="Description" type="xs:string" nillable="true" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>A full description for the sample</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+
+              <xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>Container for a single property</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attribute name="Name" type="xs:string" >
+                    <xs:annotation>
+                      <xs:documentation>The name of the property for this value</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="Value" type="xs:string" >
+                    <xs:annotation>
+                      <xs:documentation>Embedded value for the property</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="ValueFile" type="xs:string">
+                    <xs:annotation>
+                      <xs:documentation>Relative path to a file that contains the value for the property (used when value is large)</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+
+                  <xs:attribute name="Schema" type="xs:string">
+                    <xs:annotation>
+                      <xs:documentation>Embedded schema document for the property (applies to XML properties)</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+
+                  <xs:attribute name="SchemaFile" type="xs:string">
+                    <xs:annotation>
+                      <xs:documentation>Relative path to a file that contains the XML schema for the property</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
