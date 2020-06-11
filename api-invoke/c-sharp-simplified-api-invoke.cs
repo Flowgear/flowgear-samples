@@ -1,13 +1,12 @@
-        /// <summary>
+/// <summary>
         /// Provides a simple implementation enabling a workflow to be invoked with a single string
         /// </summary>
         /// <param name="url">The URL to the endpoint you've defined eg. https://yourcompanyname.flowgear.io/yourtransactiontype/</param>
-        /// <param name="username">The username of an API or user account</param>
-        /// <param name="password">The password of an API or user account</param>
+        /// <param name="apiKey">The API key that will be used to authenticate the request</param>
         /// <param name="payload">The raw string payload to be sent</param>
         /// <param name="contentType">The content type of the payload</param>
         /// <returns>The raw string response returned</returns>
-        static string InvokeFlowgearUsingPostedString(string url, string username, string password, string payload, string contentType)
+        static string InvokeFlowgearUsingPostedString(string url, string apiKey, string payload, string contentType)
         {
             try
             {
@@ -16,8 +15,7 @@
                 request.Method = "POST";
 
                 // provide authorisation data
-                var authValue = "Basic " + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(string.Format("{0}:{1}", username, password)));
-                request.Headers.Add("Authorization", authValue);
+                request.Headers.Add("Authorization", "Key="+apiKey);
 
                 request.ContentType = contentType;
 

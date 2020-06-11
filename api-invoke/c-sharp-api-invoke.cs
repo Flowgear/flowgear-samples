@@ -33,14 +33,14 @@ namespace ConsoleApplication1
     class Program
     {
 
-        static T invokeFlowgear<T>(string url, string username, string password, int timeout, object requestPayload = null)
+        static T invokeFlowgear<T>(string url, string apiKey, int timeout, object requestPayload = null)
         {
 
             var request = System.Net.HttpWebRequest.Create(url) as System.Net.HttpWebRequest;
-            string authValue = "Basic " + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(string.Format("{0}:{1}", username, password)));
+            
             request.ContentType = "application/json";
 
-            request.Headers.Add("Authorization", authValue);
+            request.Headers.Add("Authorization", "Key="+apiKey);
 
             if (requestPayload != null)
             {
@@ -96,9 +96,8 @@ namespace ConsoleApplication1
         static void Main(string args)
         {
             var ret = invokeFlowgear<ExampleResponseObject>(
-            "https://yourvanitydomain.flowgear.io/yourrestfulpath/",
-            "flowgearuser@domain.com",
-            "password",
+            "https://yourvanitydomain.flowgear.net/yourrestfulpath/",
+            "yourapikey",
             30,
             new ExampleRequestObject()
             {

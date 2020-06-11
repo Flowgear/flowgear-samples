@@ -2,12 +2,11 @@
 
 /**
  * @param string $url - the full URL of the Flowgear endpoint you wish to invoke
- * @param string $uid - the Flowgear user account (email address) to authenticate with
- * @param string $pass - the Flowgear user account password
+ * @param string $apiKey - the API Key that will be used to authorize the request
  * @param int $timeout - timeout of the HTTP invoke in seconds
  * @param array $postdata - if you are POSTing, provide an array of key/value pairs. Must be left null for GET requests
  */
-function invokeFlowgear($url, $uid, $pass, $timeout, $postdata)
+function invokeFlowgear($url, $apiKey, $timeout, $postdata)
 {
     
     $curl = curl_init();
@@ -15,9 +14,13 @@ function invokeFlowgear($url, $uid, $pass, $timeout, $postdata)
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
     
-    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-        'Content-Type:application/json'
-    )); //this is the default content-type and will need to be adjusted if you are making raw requests (non-JSON) to the API
+	$headers = array();
+	// this is the default content-type and will need to be adjusted if you are making raw requests (non-JSON) to the API
+	$headers[] = 'Content-type: application/json';
+	// pass the API key in the Authorization header
+	$headers[] = 'Authorization: Key='.$apiKey;
+	
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     
     if ($postdata) //this example assumes HTTP POST if $postdata is supplied, otherwise GET. Remember that the method must match the method you set on the Workflow
         {
@@ -27,7 +30,6 @@ function invokeFlowgear($url, $uid, $pass, $timeout, $postdata)
     
     curl_setopt($curl, CURLOPT_FAILONERROR, false);
     curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-    curl_setopt($curl, CURLOPT_USERPWD, $uid . ":" . $pass);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     
     $response = json_decode(curl_exec($curl));
