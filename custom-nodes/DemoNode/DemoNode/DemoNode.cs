@@ -5,12 +5,19 @@ using System.Linq;
 
 namespace DemoNode
 {
-   
+
     // Enums are presented as Dropdowns in the UI
     public enum Actions
     {
         ThisAction,
         ThatAction
+    }
+
+    /// <summary>
+    /// See Invoke() method for details
+    /// </summary>
+    public class AuthorizationExpiredException : Exception
+    {
     }
 
     // The Node property is what defines a Node. Your class should be public
@@ -43,6 +50,12 @@ namespace DemoNode
         public Dictionary<string, object> Properties { get; set; }
         // You can opt into receiving configuration data with the Configuration attribute
 
+        /// <summary>
+        /// This is used to execute special actions like locking a connection during an OAuth2 token refresh
+        /// </summary>
+        [PrivilegedCallback]
+        public event PrivilegedCallbackEventHandler Callback;
+
         [Configuration]
         public Dictionary<string, object> Configuration { get; set; }
 
@@ -55,8 +68,8 @@ namespace DemoNode
         [Interact(InteractFlags.GetOAuthUri | InteractFlags.GetOAuthConnectionProperties)]
         public Dictionary<string, object> Interact(string action, Dictionary<string, object> properties)
         {
-            
-            const string OAUTH2_REQUEST_URL= "";
+
+            const string OAUTH2_REQUEST_URL = "";
 
             const string OAUTH2_CLIENT_ID = ""; // this would normally be stored as part of a configuration
 
@@ -119,6 +132,29 @@ namespace DemoNode
         [InvokeResult("Finished", true, false)]
         public InvokeResult Invoke()
         {
+            // this is a good pattern to use for OAuth2 so that you can seamlessly detect an expired token and refresh it.
+            // begin by attempting the invoke. If it fails, detect whether the invoke failed due to an expired token.
+            // If that was the cause, throw a custom exception.
+            // That will cause an attempt to be made to obtain a new token and then the invoke will be attempted once more
+            try
+            {
+                handleInvoke();
+            }
+            catch (AuthorizationExpiredException)
+            {
+                refreshToken();
+
+                try
+                {
+                    handleInvoke();
+                }
+                catch (AuthorizationExpiredException)
+                {
+                    throw new Exception("Access has expired and couldn't be refreshed. Please open the Connection and click 'Connect your account'.");
+                }
+
+            }
+
             // In the Invoke method, you can read all of your properties and configuration
             // You should return an InvokeResult (with no params) or an InvokeResult with the 
             // name of the label you want to fire
@@ -130,6 +166,88 @@ namespace DemoNode
             // enables Flowgear to present them to the user.
             // Flowgear will also record all inner exceptions internally for you
             return new InvokeResult("Finished");
+        }
+
+        void handleInvoke()
+        {
+            if (this.Request == "simulateexpiredtoken")
+            {
+                throw new AuthorizationExpiredException();
+            }
+
+        }
+
+        void refreshToken()
+        {
+            Dictionary<string, object> connection = null;
+
+            try
+            {
+                // get the current connection properties
+                var props = Callback(
+                    this,
+                    new Dictionary<string, object>() {
+                    { "action", "lockAndGetConnection" }
+                    });
+
+                // properties corresponding to those defined in this.Connection will now be available in this dictionary
+                connection = (Dictionary<string, object>)props["connection"];
+
+                //if the properties have already changed, assume another instance of this Node has already refreshed
+                // tokens and they're good to go
+                if (
+                     ((string)connection["AccessToken"] != this.Connection.AccessToken) ||
+                     ((string)connection["RefreshToken"] != this.Connection.RefreshToken)
+                    )
+                {
+                    // write the connection props to the local connection so they can be used on the next invoke
+                    this.Connection.AccessToken = (string)connection["AccessToken"];
+                    this.Connection.RefreshToken = (string)connection["RefreshToken"];
+
+                    // ensure we don't try to update the connection in the finally block
+                    connection = null;
+
+                    return;
+                }
+
+                // use the refresh token to obtain a new access token here
+
+                // todo
+                var newAccessToken = "new access token as at " + DateTime.Now.ToString();
+                var newRefreshToken = "new refresh token as at " + DateTime.Now.ToString();
+
+                // write the new props back to the connection that will be sent back to the platform
+                connection.Clear();
+                connection.Add("AccessToken", newAccessToken);
+                connection.Add("RefreshToken", newRefreshToken);
+
+                // write these props back to the local connection 
+                this.Connection.AccessToken = newAccessToken;
+                this.Connection.RefreshToken = newRefreshToken;
+
+            }
+            catch (Exception ex)
+            {
+                // ensure we don't try to update the connection
+                connection = null;
+                throw;
+            }
+            finally
+            {
+                // unlock the connection and return the new connection if we've refreshed tokens
+                var props = new Dictionary<string, object>()
+                {
+                    { "action","unlockAndSetConnection"}
+                };
+
+                if (connection != null)
+                {
+                    props.Add("connection", connection);
+                }
+
+                Callback(this, props);
+            }
+
         }
 
         /// <summary>
@@ -148,9 +266,9 @@ namespace DemoNode
                 NodeSampleId = new Guid("a444ce5d-ca8a-4116-9626-3e7f07aa28e8"),
                 Name = "the first sample",
                 Properties = new NodePropertySample[] {
-                    new NodePropertySample() { 
-                        Name = "Action", 
-                        Value = "First Sample Action" 
+                    new NodePropertySample() {
+                        Name = "Request",
+                        Value = "First Request Example"
                     }
                 }
             };
@@ -161,8 +279,8 @@ namespace DemoNode
                 Name = "the first sample",
                 Properties = new NodePropertySample[] {
                     new NodePropertySample() {
-                        Name = "Action", 
-                        Value = "Second Sample Action" 
+                        Name = "Request",
+                        Value = "Second Request Example"
                     }
                 }
             };
