@@ -276,7 +276,7 @@ namespace DemoNode
             var sample2 = new NodeSample()
             {
                 NodeSampleId = new Guid("ddd87c4e-738d-4dc7-94c7-58469d9eefc0"),
-                Name = "the first sample",
+                Name = "the second sample",
                 Properties = new NodePropertySample[] {
                     new NodePropertySample() {
                         Name = "Request",

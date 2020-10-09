@@ -11,9 +11,12 @@ namespace TestHarness
     {
         static void Main(string[] args)
         {
+
             Flowgear.Nodes.TestHarness.NodesTestHarness.AttachNode(typeof(DemoNode.DemoNode), null, null);
 
             Console.ReadKey();
         }
+
+     
     }
 }
