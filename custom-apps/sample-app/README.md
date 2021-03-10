@@ -30,36 +30,36 @@ utf8 = yes\
 distinguished_name = req_distinguished_name\
 x509_extensions = v3_req\
 prompt = no\
-\
+
 [req_distinguished_name]\
 C = ZA\
 ST = Gauteng\
 L = Johannesburg\
 O  = Company\
-CN = localhost\
-\
+CN = localhost
+
 [v3_req]\
 keyUsage = critical, digitalSignature, keyAgreement\
 extendedKeyUsage = serverAuth\
-subjectAltName = @alt_names\
-\
+subjectAltName = @alt_names
+
 [alt_names]\
-DNS.1 = localhost\
+DNS.1 = localhost
 
 2. Install openssl:\
 Windows	- If you have chocolatey installed you can install openssl via a command: choco install openssl\
 	- In case you have Git installed, you can open the Git Bash (shift pressed + right click in the folder -> Git Bash Here) and use openssl command right in the Bash\
-macOS - If you have brew installed you can install openssl via a command: brew install openssl\
+macOS - If you have brew installed you can install openssl via a command: brew install openssl
 
 3. Run this comand via openssl:\
-openssl req -x509 -sha256 -nodes -days 3650 -newkey rsa:2048 -keyout app.key -out app.crt -config openssl.conf\
+openssl req -x509 -sha256 -nodes -days 3650 -newkey rsa:2048 -keyout app.key -out app.crt -config openssl.conf
 
 4. Create .env in project directory with following structure:\
 HTTPS=true\
 SSL_CRT_FILE=/path/to/app.crt\
-SSL_KEY_FILE=/path/to/app.key\
+SSL_KEY_FILE=/path/to/app.key
 
-5. Trust the self signed certificate on localhost:\
+5. Trust the self signed certificate on localhost:
 
 Windows - Press the Windows key + R\
 		- Type "MMC" and click "OK"\
@@ -71,7 +71,7 @@ Windows - Press the Windows key + R\
 		- Double-click "Certificates (local computer)" to expand the view\
 		- Select "Trusted Root Certification Authorities", right-click "Certificates" and select "All Tasks" then "Import"\
 		- Click "Next" then Browse and locate the "app.crt" file we created\
-		- Select "Place all certificates in the following store" and select the "Trusted Root Certification Authorities store". Click "Next" then click "Finish" to complete the wizard.\
+		- Select "Place all certificates in the following store" and select the "Trusted Root Certification Authorities store". Click "Next" then click "Finish" to complete the wizard.
 		
 macOS	- Click the "Not Secure" box near the address bar, and a little panel should show up\
 		- Click the Certificate item in the box, and you should see another panel show up, with the certificate details\
@@ -81,4 +81,4 @@ macOS	- Click the "Not Secure" box near the address bar, and a little panel shou
 		- Where you see the Keychain: option, instead of login, choose System\
 		- Press Add, now you should see the certificate in the System keychain, listed as localhost\
 		- Now double-click that, and a window should show up\
-		- Click the arrow near Trust, make sure you change "When using this certificate" to "Always Trust"\
+		- Click the arrow near Trust, make sure you change "When using this certificate" to "Always Trust"
