@@ -1,7 +1,8 @@
+
 export module Flowgear {
 
     export module Sdk {
-        
+
         class FgSdkMessage {
             messageId: number;
 
@@ -138,6 +139,15 @@ export module Flowgear {
                 "getAuth",
                 {
                 })).auth;
+
+        }
+
+        export async function getUser(): Promise<any> {
+
+            return (await sendMessage(
+                "getUser",
+                {
+                })).user;
 
         }
 
