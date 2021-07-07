@@ -1,0 +1,4147 @@
+openapi: 3.0.3
+info:
+  title: Flowgear Public
+  description: Flowgear Open API definitions for customers and partners
+  version: 1.0.0
+servers:
+  - url: https://api1.flowgear.net
+    description: ZA Server
+  - url: https://api3.flowgear.net
+    description: EU Server
+  - url: https://api6.flowgear.net
+    description: US Server
+paths:
+  /users/{username}/home/:
+    get:
+      summary: Returns the home pod for a user
+      tags:
+        - Discovery
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: https://api1.flowgear.net
+        '404':
+          description: User home pod is not known
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Object home pod is not known!"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username of the user
+  /sites/{siteId}/home/:
+    get:
+      summary: Returns the home pod for a site
+      tags:
+        - Discovery
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: https://api1.flowgear.net
+        '404':
+          description: Site home pod is not known
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Object home pod is not known!"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site id of site
+  /sessions/{sessionId}/home/:
+    get:
+      summary: Returns the home pod for a session
+      tags:
+        - Discovery
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: https://api1.flowgear.net
+        '404':
+          description: Session home pod is not known
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Object home pod is not known!"
+              }
+      parameters:
+        - in: path
+          name: sessionId
+          schema:
+            type: string
+          required: true
+          description: Session id
+  /droppoints/{dropPointId}/home/:
+    get:
+      summary: Returns the home pod for a droppoint
+      tags:
+        - Discovery
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: https://api1.flowgear.net
+        '404':
+          description: Droppoint home pod is not known
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Object home pod is not known!"
+              }
+      parameters:
+        - in: path
+          name: dropPointId
+          schema:
+            type: string
+          required: true
+          description: Droppoint id
+  /users/{username}/auth2/receiveusername/:
+    post:
+      summary: Determines whether the user auth needs to be handled by third party provider
+      tags:
+        - Auth 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                TestAuthProvider:
+                  type: integer
+                  enum: [0, 1]
+                  description: 0 for Flowgear, 1 for Microsoft Id
+                ReturnUrl:
+                  type: string
+              required:
+                  - ReturnUrl
+            examples:
+              NoTestAuthProvider:
+                summary: Default
+                value: {
+                  "ReturnUrl": ""
+                }
+              FlowgearTestAuthProvider:
+                summary: Flowgear TestAuthProvider
+                value: {
+                  "TestAuthProvider": 0,
+                  "ReturnUrl": ""
+                }
+              MicrosoftTestAuthProvider:
+                summary: Microsoft Id TestAuthProvider
+                value: {
+                  "TestAuthProvider": 1,
+                  "ReturnUrl": ""
+                }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Action:
+                    type: integer
+                    enum: [0, 1]
+                    description: 0 for Accept Password, 1 for Redirect
+                  RedirectUrl:
+                    type: string
+              example: {
+                "Action" : 1,
+                "RedirectUrl" : "" 
+              }
+        '500':
+          description: This auth provider can't be tested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This auth provider can't be tested."
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+  /users/{username}/auth2/receivetoken/:
+    post:
+      summary: Exchanges a token for a session ID. if auth provider is Flowgear, token is password
+      tags:
+        - Auth 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                TestAuthProvider:
+                  type: integer
+                  enum: [0, 1]
+                  description: 0 for Flowgear, 1 for Microsoft Id
+                Token:
+                  type: string
+              required:
+                  - Token
+            examples:
+              NoTestAuthProvider:
+                summary: Default
+                value: {
+                  "Token": ""
+                }
+              FlowgearTestAuthProvider:
+                summary: Flowgear TestAuthProvider
+                value: {
+                  "TestAuthProvider": 0,
+                  "Token": ""
+                }
+              MicrosoftTestAuthProvider:
+                summary: Microsoft Id TestAuthProvider
+                value: {
+                  "TestAuthProvider": 1,
+                  "Token": ""
+                }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  SessionId:
+                    type: string
+                    description: in test mode, we don't return a session ID
+                  AuthMetadata:
+                    type: object
+                    properties:
+                      UserAuthProvider:
+                        type: integer
+                        enum: [0, 1]
+                        description: 0 for Flowgear, 1 for Microsoft Id
+                      TenantId:
+                        type: string
+                        description: specifies the tenant ID that the users account must match
+              example: {
+                "SessionId" : "",
+                "AuthMetadata" : {
+                  "UserAuthProvider": 1,
+                  "TenantId": ""
+                }
+              }
+        '500':
+          description: This auth provider can't be tested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This auth provider can't be tested."
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: query
+          name: prebuilt
+          schema:
+            type: string
+          required: false
+          description: Prebuilt Code
+  /users/{username}/auth2/{sessionId}/:
+    delete:
+      summary: Sign out user
+      tags:
+        - Auth
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Call requires authorization.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: path
+          name: sessionId
+          schema:
+            type: string
+          required: true
+          description: Session Id
+  /users/{username}/:
+    get:
+      summary: Returns a user's details
+      tags:
+        - Users
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example: {
+                "AuthProvider": 1,
+                "DateCreated": "/Date(1598168818477+0000)/",
+                "DateUpdated": "/Date(1624265884627+0000)/",
+                "FirstName": "FirstName",
+                "IsEnabled": true,
+                "Landline": "",
+                "LastName": "LastName",
+                "Mobile": "Mobile",
+                "Organisation": "",
+                "Pod": 1,
+                "PodName": "Africa",
+                "UserId": "",
+                "Username": ""
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username of the user
+  /users/:
+    put:
+      summary: Add a user
+      tags:
+        - Users
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+            example: {
+                "FirstName": "FirstName",
+                "LastName": "LastName",
+                "Email": "Email",
+                "Password": "Password",
+                "CompanyOrSite": null,
+                "AccountOption": 0,
+                "Pod": 1,
+                "AcceptTC": "on",
+                "SiteId" : ""
+              }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: 'User id'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The specified email address is already in use!"
+              }
+      parameters:
+        - in: query
+          name: forcePod
+          schema:
+            type: integer
+          required: false
+          description: Target pod for user
+  /users/{username}/sites/:
+    get:
+      summary: Returns a list of all sites available to the given user
+      tags:
+        - Sites
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteList'
+              example: [{
+                "MruRank": 1,
+                "Name": "Site Name",
+                "SiteId": "Site Id"
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username of the user
+  /sites/{siteId}/:
+    get:
+      summary: Returns the details of a given site
+      tags:
+        - Sites
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+              example: {
+                "AccountId": "",
+                "ConnectionCount": 0,
+                "DateUpdated": "/Date(1624880380714)/",
+                "DropPointCount": 0,
+                "Name": "Site Name",
+                "Pod": 1,
+                "PodName": "Africa",
+                "SiteId": "Site Id",
+                "WorkflowCount": 0
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /users/{username}/sites/mru/{siteId}/:
+    post:
+      summary: Adds the given site to the users MRU
+      tags:
+        - Sites
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/octet-stream: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username of the user
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /sites/{siteId}/users/:
+    get:
+      summary: Returns a list of a sites users
+      tags:
+        - Sites
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+              example: [{
+                "Username": "",
+                "FirstName": "",
+                "LastName": "",
+                "Pod": 1,
+                "PodName": "Africa",
+                "AuthProvider": 0,
+                "Permissions": [
+                  {
+                    "ObjectId": "",
+                    "ObjectType": 1,
+                    "GroupSlug": ""
+                  }
+                ]
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /sites/:
+    put:
+      summary: Add a site
+      tags:
+        - Sites
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Site'
+            example: {
+                "Name": "Site Name"
+              }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: 'Site id'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+      parameters:
+        - in: query
+          name: accountId
+          schema:
+            type: string
+          required: false
+          description: Account Id
+        - in: query
+          name: subscriptionId
+          schema:
+            type: string
+          required: false
+          description: Subscription Id
+        - in: query
+          name: forcePod
+          schema:
+            type: integer
+          required: false
+          description: Target pod for site
+  /users/{username}/sites/{siteId}/:
+    post:
+      summary: Grant user access to specified site
+      tags:
+        - Sites
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+    delete:
+      summary: Revoke user access of specified site
+      tags:
+        - Sites
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /users/{username}/sites/groups/:
+    post:
+      summary: Grants the specified security group to the specified user on the specified site.
+      tags:
+        - Sites
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: query
+          name: objectId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: query
+          name: groupSlug
+          schema:
+            type: string
+          required: true
+          description: Group Slug
+    delete:
+      summary: Revoke the specified security group to the specified user on the specified site.
+      tags:
+        - Sites
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: query
+          name: objectId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: query
+          name: groupSlug
+          schema:
+            type: string
+          required: true
+          description: Group Slug
+  /sites/{siteId}/workflows/{siteWorkflowId}/environments/:
+    get:
+      summary:  Returns a list of the environments set up for the site along with the workflow revision currently deployed into it
+      tags:
+        - Workflow Promotion
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentSiteWorkflowRevision'
+              example: [{
+                "EnvironmentName": "Dev",
+                "EnvironmentId": "",
+                "SiteWorkflowId": "",
+                "Revision": 1,
+                "DateUpdated": "2020-11-04T09:31:42.397",
+                "UsernameUpdated": ""
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+  /sites/{siteId}/workflows/{siteWorkflowId}/environments/{environmentId}:
+    put:
+      summary:  Promote site workflow revision to environment
+      tags:
+        - Workflow Promotion
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentSiteWorkflowRevision'
+            example: {
+                "Revision": 1
+              }
+      responses:
+        '204':
+          description: Success
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+        - in: path
+          name: environmentId
+          schema:
+            type: string
+          required: true
+          description: Environment Id
+  /sites/{siteId}/folders/:
+    get:
+      summary:  Returns a list of folders for a site
+      tags:
+        - Site Folders
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteFolder'
+              example: [{
+                "SiteFolderId": "",
+                "ParentSiteFolderId": null,
+                "FolderType": 1,
+                "Name": ""
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+    put:
+      summary:  Add a folder to a site
+      tags:
+        - Site Folders
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteFolder'
+            example: {
+              "SiteFolderId": null,
+              "ParentSiteFolderId": null,
+              "FolderType": 1,
+              "Name": "Folder Name"
+            }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteFolder'
+              example: [{
+                "SiteFolderId": "Site Folder Id",
+                "ParentSiteFolderId": null,
+                "FolderType": 1,
+                "Name": "Folder Name"
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /sites/{siteId}/folders/{folderId}/items/:
+    post:
+      summary:  Move folder items
+      tags:
+        - Site Folders
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                FolderIds:
+                  type: array
+                  items:
+                    type:
+                      string
+                ItemIds:
+                  type: array
+                  items:
+                    type:
+                      string
+            example: {
+              "FolderIds": [],
+              "ItemIds": []
+            }
+      responses:
+        '204':
+          description: Success
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: folderId
+          schema:
+            type: string
+          required: true
+          description: Folder Id, use root instead of id to move target to root
+        - in: query
+          name: folderType
+          schema:
+            type: integer
+            enum: [1, 2, 3, 4]
+            description: Workflow = 1, DropPoint = 2, Connection = 3, Key = 4
+          required: true
+          description: Folder Type
+  /sites/{siteId}/workflows/:
+    get:
+      summary:  Returns a list of workflows for a site
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteWorkflowList'
+              example: [{
+                "ActivationContext": 1,
+                "ConnectionProfileId": "Connection Profile Id",
+                "ConnectionProfileName": "Production",
+                "DateLastRun": "/Date(1625213808663+0000)/",
+                "LaunchMethod": 1,
+                "LiveRevision": 1,
+                "NumWorkflowInstances": 1,
+                "Pod": 1,
+                "SiteFolderId": "Site Folder Id",
+                "SiteId": "Site Id",
+                "SiteWorkflowId": "Site Workflow Id",
+                "State": 4,
+                "TestRevision": 1,
+                "Workflow": {
+                  "CanRunAlways": true,
+                  "CanRunOnDemand": true,
+                  "DateCreated": "/Date(1398775803160+0000)/",
+                  "DateUpdated": "/Date(1591797581820+0000)/",
+                  "Description": "Description",
+                  "GroupDescription": "Group Description",
+                  "Name": "Name",
+                  "ProductCode": "",
+                  "UrlPattern": "",
+                  "WorkflowId": "Workflow Id"
+                }
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /sites/{siteId}/workflows/{siteWorkflowId}/interface/:
+    get:
+      summary:  Get a site workflow's interface
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteWorkflow'
+              example: {
+                "SiteWorkflowId": "Site Workflow Id",
+                "SiteId": "Site Id",
+                "ConnectionProfileId": "Connection Profile Id",
+                "ConnectionProfileName": "Name",
+                "State": 1,
+                "Workflow": {
+                  "WorkflowId": "Workflow Id",
+                  "CanRunOnDemand": true,
+                  "Name": "Name",
+                  "Nodes": [
+                    {
+                      "NodeId": "Node Id",
+                      "Name": "Name",
+                      "DisplayName": "DisplayName",
+                      "Version": "1.0.0.0",
+                      "NodeType": 1,
+                      "Properties": [
+                        {
+                          "FlowDirection": 1,
+                          "Sources": [],
+                          "Schema": "",
+                          "Name": "Name",
+                          "TypeName": "System.String",
+                          "ExtendedType": 7,
+                          "Value": ""
+                        }
+                      ],
+                      "HasInput": false,
+                      "Outputs": [],
+                      "NodeVisual": {
+                        "X": 0,
+                        "Y": 0
+                      },
+                      "IsTestable": true,
+                      "SupportsCustomInputProperties": false,
+                      "SupportsCustomOutputProperties": false,
+                      "SupportsTest": true,
+                      "SupportsAcquireMetadata": false,
+                      "SupportsListSamples": false,
+                      "RunFrom": 0,
+                      "InteractFlags": 0
+                    }
+                  ]
+                },
+                "SiteFolderId": "Site Folder Id"
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+  /sites/{siteId}/workflows/{siteWorkflowId}/flat/:
+    get:
+      summary:  Get a site workflow's details
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteWorkflow'
+              example: {
+                "SiteWorkflowId": "Site Workflow Id",
+                "SiteId": "Site Id",
+                "ConnectionProfileId": "Connection Profile Id",
+                "ConnectionProfileName": "Name",
+                "State": 1,
+                "Workflow": {
+                  "WorkflowId": "Workflow Id",
+                  "CanRunOnDemand": true,
+                  "Name": "Name",
+                  "Nodes": [
+                    {
+                      "NodeId": "Node Id",
+                      "Name": "Name",
+                      "DisplayName": "DisplayName",
+                      "Version": "1.0.0.0",
+                      "NodeType": 1,
+                      "Properties": [
+                        {
+                          "FlowDirection": 1,
+                          "Sources": [],
+                          "Schema": "",
+                          "Name": "Name",
+                          "TypeName": "System.String",
+                          "ExtendedType": 7,
+                          "Value": ""
+                        }
+                      ],
+                      "HasInput": false,
+                      "Outputs": [],
+                      "NodeVisual": {
+                        "X": 0,
+                        "Y": 0
+                      },
+                      "IsTestable": true,
+                      "SupportsCustomInputProperties": false,
+                      "SupportsCustomOutputProperties": false,
+                      "SupportsTest": true,
+                      "SupportsAcquireMetadata": false,
+                      "SupportsListSamples": false,
+                      "RunFrom": 0,
+                      "InteractFlags": 0
+                    }
+                  ]
+                },
+                "SiteFolderId": "Site Folder Id"
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+    put:
+      summary:  Save a site workflow
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteWorkflow'
+            example: {
+              "SiteId": "Site Id",
+              "ConnectionProfileId": "Connection Profile Id",
+              "ConnectionProfileName": "Name",
+              "State": 1,
+              "Workflow": {
+                "WorkflowId": "Workflow Id",
+                "CanRunOnDemand": true,
+                "Name": "Name",
+                "Nodes": [
+                  {
+                    "NodeId": "Node Id",
+                    "Name": "Name",
+                    "DisplayName": "DisplayName",
+                    "Version": "1.0.0.0",
+                    "NodeType": 1,
+                    "Properties": [
+                      {
+                        "FlowDirection": 1,
+                        "Sources": [],
+                        "Schema": "",
+                        "Name": "Name",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": ""
+                      }
+                    ],
+                    "HasInput": false,
+                    "Outputs": [],
+                    "NodeVisual": {
+                      "X": 0,
+                      "Y": 0
+                    },
+                    "IsTestable": true,
+                    "SupportsCustomInputProperties": false,
+                    "SupportsCustomOutputProperties": false,
+                    "SupportsTest": true,
+                    "SupportsAcquireMetadata": false,
+                    "SupportsListSamples": false,
+                    "RunFrom": 0,
+                    "InteractFlags": 0
+                  }
+                ]
+              },
+              "SiteFolderId": "Site Folder Id"
+            }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: "Site Worfklow Id"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+        - in: query
+          name: revision
+          schema:
+            type: integer
+          required: false
+          description: Revision
+    post:
+      summary:  Save a site workflow
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteWorkflow'
+            example: {
+              "SiteId": "Site Id",
+              "ConnectionProfileId": "Connection Profile Id",
+              "ConnectionProfileName": "Name",
+              "State": 1,
+              "Workflow": {
+                "WorkflowId": "Workflow Id",
+                "CanRunOnDemand": true,
+                "Name": "Name",
+                "Nodes": [
+                  {
+                    "NodeId": "Node Id",
+                    "Name": "Name",
+                    "DisplayName": "DisplayName",
+                    "Version": "1.0.0.0",
+                    "NodeType": 1,
+                    "Properties": [
+                      {
+                        "FlowDirection": 1,
+                        "Sources": [],
+                        "Schema": "",
+                        "Name": "Name",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": ""
+                      }
+                    ],
+                    "HasInput": false,
+                    "Outputs": [],
+                    "NodeVisual": {
+                      "X": 0,
+                      "Y": 0
+                    },
+                    "IsTestable": true,
+                    "SupportsCustomInputProperties": false,
+                    "SupportsCustomOutputProperties": false,
+                    "SupportsTest": true,
+                    "SupportsAcquireMetadata": false,
+                    "SupportsListSamples": false,
+                    "RunFrom": 0,
+                    "InteractFlags": 0
+                  }
+                ]
+              },
+              "SiteFolderId": "Site Folder Id"
+            }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: "Site Worfklow Id"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+        - in: query
+          name: revision
+          schema:
+            type: integer
+          required: false
+          description: Revision
+  /sites/{siteId}/workflows/{siteWorkflowId}/revision/{revision}/:
+    get:
+      summary:  Get a site workflow by revision
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteWorkflow'
+              example: {
+                "SiteWorkflowId": "Site Workflow Id",
+                "SiteId": "Site Id",
+                "ConnectionProfileId": "Connection Profile Id",
+                "ConnectionProfileName": "Name",
+                "State": 1,
+                "Workflow": {
+                  "WorkflowId": "Workflow Id",
+                  "CanRunOnDemand": true,
+                  "Name": "Name",
+                  "Nodes": [
+                    {
+                      "NodeId": "Node Id",
+                      "Name": "Name",
+                      "DisplayName": "DisplayName",
+                      "Version": "1.0.0.0",
+                      "NodeType": 1,
+                      "Properties": [
+                        {
+                          "FlowDirection": 1,
+                          "Sources": [],
+                          "Schema": "",
+                          "Name": "Name",
+                          "TypeName": "System.String",
+                          "ExtendedType": 7,
+                          "Value": ""
+                        }
+                      ],
+                      "HasInput": false,
+                      "Outputs": [],
+                      "NodeVisual": {
+                        "X": 0,
+                        "Y": 0
+                      },
+                      "IsTestable": true,
+                      "SupportsCustomInputProperties": false,
+                      "SupportsCustomOutputProperties": false,
+                      "SupportsTest": true,
+                      "SupportsAcquireMetadata": false,
+                      "SupportsListSamples": false,
+                      "RunFrom": 0,
+                      "InteractFlags": 0
+                    }
+                  ]
+                },
+                "SiteFolderId": "Site Folder Id"
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+        - in: path
+          name: revision
+          schema:
+            type: integer
+          required: true
+          description: Revision
+  /sites/{siteId}/configuration/:
+    post:
+      summary:  Saves the configuration for a site
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: object
+            example: {
+              "key" : "value"
+            }
+      responses:
+        '204':
+          description: Success
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: query
+          name: filePersistenceKeyNames
+          schema:
+            type: string
+          required: false
+          description: File Persistence Key Names
+        - in: query
+          name: siteWorkflowId
+          schema:
+            type: integer
+          required: false
+          description: Site Workflow Id
+  /sites/{siteId}/workflows/{siteWorkflowId}/task/:
+    get:
+      summary: Invoke Workflow with GET
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example: {
+                "FgResponseBody": "",
+                "status": true,
+                "statusMessage": "",
+                "StepCount": 2,
+                "progress": "[]",
+                "enginePerf": "{\"setup\":218.781,\"execute\":80.0869,\"strike\":0.0}",
+                "taskStartId": "",
+                "apiPerf": "{\"execute\":391.0208}"
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This action requires authentication"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+  /sites/{siteId}/workflows/{siteWorkflowId}/alwayson/:
+    post:
+      summary: Enable always on
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: 'Root Log Id'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This action requires authentication"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+    delete:
+      summary: Disable always on
+      tags:
+        - Workflows
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Unauthorized"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+  /sites/{siteId}/workflows/{siteWorkflowId}/logs/recentstart/:
+    get:
+      summary: List workflow recent root logs
+      tags:
+        - Activity Logs
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogEntryList'
+              example: [{
+                "WorkflowActivityLogId": "Workflow Activity Log Id",
+                "ParentWorkflowActivityLogId": "Parent Workflow Activity Log Id",
+                "WorkflowId": "Workflow Id",
+                "ParentNodeOutputLabel": "",
+                "NodeDescription": null,
+                "NodeName": "\\",
+                "NodeVersion": null,
+                "StartDateTime": "2021-07-05T08:53:25.047Z",
+                "EndDateTime": "2021-07-05T08:53:27.37Z",
+                "OutputLabel": "",
+                "StatusMessage": null,
+                "Sequence": 0,
+                "Depth": 0,
+                "PropertiesInPreviewToken": "Properties In Preview Token",
+                "PropertiesOutPreviewToken": "Properties Out Preview Token",
+                "NodeId": "Node Id",
+                "RootWorkflowActivityLogId": "Root Workflow Activity Log Id",
+                "PropertyBucket": "2021-07-05",
+                "Properties": null
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteWorkflowId
+          schema:
+            type: string
+          required: true
+          description: Site Workflow Id
+  /sites/{siteId}/logs/{date}/propertyPreviews/:
+    get:
+      summary: Retrieves a summary list of activity logs that match the given criteria (excludes properties)
+      tags:
+        - Activity Logs
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowActivityLogList'
+              example: [{
+                "Properties": [
+                  {
+                    "ExtendedType": 4,
+                    "FlowDirection": 2,
+                    "Name": "Result",
+                    "OriginalSize": 26,
+                    "Size": 26,
+                    "TypeName": "System.String",
+                    "Value": ""
+                  }
+                ],
+                "PropertiesOutPreviewToken": "Properties Out Preview Token"
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Date must be passed in the form yyyy-MM-dd"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: date
+          schema:
+            type: string
+            format: date 
+          required: true
+          description: Date
+        - in: query
+          name: tokens
+          schema:
+            type: string
+          required: true
+          description: Property Tokens List
+  /sites/{siteId}/logs/:
+    get:
+      summary: Activity logs search
+      tags:
+        - Activity Logs
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogEntryList'
+              example:  [{
+                "WorkflowActivityLogId": "Workflow Activity Log Id",
+                "ParentWorkflowActivityLogId": "Parent Workflow Activity Log Id",
+                "WorkflowId": "Workflow Id",
+                "ParentNodeOutputLabel": "",
+                "NodeDescription": null,
+                "NodeName": "\\",
+                "NodeVersion": null,
+                "StartDateTime": "2021-07-05T08:53:25.047Z",
+                "EndDateTime": "2021-07-05T08:53:27.37Z",
+                "OutputLabel": "",
+                "StatusMessage": null,
+                "Sequence": 0,
+                "Depth": 0,
+                "PropertiesInPreviewToken": "Properties In Preview Token",
+                "PropertiesOutPreviewToken": "Properties Out Preview Token",
+                "NodeId": "Node Id",
+                "RootWorkflowActivityLogId": "Root Workflow Activity Log Id",
+                "PropertyBucket": "2021-07-05",
+                "Properties": null
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: query
+          name: workflowId
+          schema:
+            type: string
+          required: false
+          description: Workflow Id
+        - in: query
+          name: parentLogId
+          schema:
+            type: string
+          required: false
+          description: Parent Log Id
+        - in: query
+          name: nodeName
+          schema:
+            type: string
+          required: false
+          description: Node Name
+        - in: query
+          name: nodeDescription
+          schema:
+            type: string
+          required: false
+          description: Node Description
+        - in: query
+          name: startDateTime
+          schema:
+            type: string
+          required: false
+          description: Start Date Time
+        - in: query
+          name: endDateTime
+          schema:
+            type: string
+          required: false
+          description: End Date Time
+        - in: query
+          name: errorsOnly
+          schema:
+            type: string
+            description: 1 for true, 0 for false
+          required: false
+          description: Date
+        - in: query
+          name: executingOnly
+          schema:
+            type: string
+            description: 1 for true, 0 for false
+          required: false
+          description: Executing Only
+        - in: query
+          name: maxResults
+          schema:
+            type: integer
+            description: must be an integer between 1 and 200
+          required: false
+          description: Max Results
+        - in: query
+          name: rootLogId
+          schema:
+            type: string
+          required: false
+          description: Root Log Id
+        - in: query
+          name: sortAsc
+          schema:
+            type: string
+            description: 1 for true, 0 for false
+          required: false
+          description: Sort Ascending
+  /sites/{siteId}/logs/{date}/property/{token}/:
+    get:
+      summary: Get activity log property
+      tags:
+        - Activity Logs
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: date
+          schema:
+            type: string
+            format: date
+          required: true
+          description: Date
+        - in: path
+          name: token
+          schema:
+            type: string
+          required: true
+          description: Property Token
+        - in: query
+          name: maxWaitTimeMs
+          schema:
+            type: integer
+          required: false
+          description: Max Wait Time (in Milliseconds)
+  /sites/{siteId}/droppoints/:
+    get:
+      summary:  Returns a list of droppoints for the specified site
+      tags:
+        - Droppoints
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DroppointList'
+              example: [{
+                "AverageRoundTripLatency": 15,
+                "CertificateThumbprint": "CertificateThumbprint",
+                "DateCreated": "/Date(1613039339863+0000)/",
+                "DateUpdated": "/Date(1613039340113+0000)/",
+                "Description": "",
+                "DownTime": "",
+                "DropPointId": "Drop Point Id",
+                "Ip": "Ip",
+                "LastCertificateThumbprint": "LastCertificateThumbprint",
+                "LastOffline": "/Date(946684800000+0000)/",
+                "LastOnline": "/Date(1622130218200+0000)/",
+                "MacAddress": "MacAddress",
+                "Name": "",
+                "Pod": 1,
+                "PodName": "Africa",
+                "SiteId": "Site Id",
+                "UpTime": "",
+                "Version": "5.0.0.900"
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /sites/{siteId}/siteenvironments/:
+    get:
+      summary:  Returns a list of site environments for the specified site
+      tags:
+        - Site Environments
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionProfileList'
+              example: [{
+                "ProfileId": "Profile Id",
+                "SiteId": "Site Id",
+                "ProfileName": "Production",
+                "Rank": 1,
+                "IsProductionEnvironment": true
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+    put:
+      summary: Save site environments
+      tags:
+        - Site Environments
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionProfileList'
+            example: [{
+              "ProfileId": "Profile Id",
+              "SiteId": "Site Id",
+              "ProfileName": "Production",
+              "Rank": 1,
+              "IsProductionEnvironment": true
+            }]
+      responses:
+        '204':
+          description: Success
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /sites/{siteId}/connections/:
+    get:
+      summary:  Returns a list of connection sets for the specified site
+      tags:
+        - Connections
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionSetList'
+              example: [{
+                "ConnectionId": "Connection Id",
+                "Name": "Connection Name",
+                "NodeDisplayName": "Node Display Name",
+                "NodeName": "NodeName",
+                "NodeVersion": "1.0.0.0",
+                "SiteId": "Site Id"
+              }]
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /sites/{siteId}/connections/{connectionId}/:
+    get:
+      summary:  Returns the specified connection set
+      tags:
+        - Connections
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ConnectionSet'
+              example: {
+                "ConnectionId": "Connection Set Id",
+                "SiteId": "Site Id",
+                "Name": "Name",
+                "NodeName": "NodeName",
+                "NodeDisplayName": "Node Display Name",
+                "NodeVersion": "1.0.0.0",
+                "Connection": [
+                  {
+                    "ConnectionProfileId": "Connection Profile Id",
+                    "Properties": {
+                      "key": "value"
+                    }
+                  }
+                ]
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: connectionId
+          schema:
+            type: string
+          required: true
+          description: Connection Set Id
+  /sites/{siteId}/connections/{connectionSetId}/:
+    post:
+      summary:  Saves a connection set
+      tags:
+        - Connections
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionSet'
+            example: {
+              "ConnectionId": "Connection Id",
+              "SiteId": "Site Id",
+              "Name": "Connection Name",
+              "NodeName": "SqlQuery",
+              "NodeDisplayName": "Microsoft SQL Query",
+              "NodeVersion": "3.0.0.13",
+              "SiteFolderId": "",
+              "Connection": [
+                {
+                  "ConnectionProfileId": "Connection Profile Id",
+                  "Properties": {
+                    "Server": null,
+                    "Database": null,
+                    "UserId": null,
+                    "Password": null,
+                    "UseWinAuth": null
+                  }
+                }
+              ]
+            }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: "Connection Set Id"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: connectionSetId
+          schema:
+            type: string
+          required: true
+          description: Connection Set Id
+  /sites/{siteId}/connections/{connectionSetId}/test/:
+    post:
+      summary:  Test a connection set
+      tags:
+        - Connections
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionSet'
+            example: {
+              "ConnectionId": "Connection Id",
+              "SiteId": "Site Id",
+              "Name": "Connection Name",
+              "NodeName": "SqlQuery",
+              "NodeDisplayName": "Microsoft SQL Query",
+              "NodeVersion": "3.0.0.13",
+              "SiteFolderId": "",
+              "Connection": [
+                {
+                  "ConnectionProfileId": "Connection Profile Id",
+                  "Properties": {
+                    "Server": null,
+                    "Database": null,
+                    "UserId": null,
+                    "Password": null,
+                    "UseWinAuth": null
+                  }
+                }
+              ]
+            }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: boolean
+              example: true
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Auth was not provided!"
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: connectionSetId
+          schema:
+            type: string
+          required: true
+          description: Connection Set Id
+        - in: query
+          name: profileid
+          schema:
+            type: string
+          required: true
+          description: Connection Profile Id
+  /accounts/{id}/:
+    get:
+      summary: Returns the specified account
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+              example: {
+                "AccountId": "Account Id",
+                "AccountCode": "Account Code",
+                "Name": "Name",
+                "DateCreated": "2020-08-23T07:47:26.8601932Z",
+                "DateUpdated": "2020-08-23T07:47:26.8601932Z",
+                "IsEnabled": true,
+                "HasFullEdit": true,
+                "ActiveSubscriptionCount": 1
+              }
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Account Id
+    post:
+      summary: Update account
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+            example: {
+              "AccountId": "Account Id",
+              "AccountCode": "Account Code",
+              "Name": "Name",
+              "IsEnabled": true,
+              "HasFullEdit": true
+            }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: "Account Id"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Account Id
+  /accounts/:
+    put:
+      summary: Add account
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+            example: {
+              "Name": "Account Name"
+            }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              example: "Account Id"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+  /users/{username}/accounts/:
+    get:
+      summary: Returns summary information for all accounts associated with the user
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+              example: [{
+                "AccountId": "Account Id",
+                "Name": "Account Name",
+                "Pod": 1,
+                "PodName": "Africa"
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+  /accounts/{accountId}/users/:
+    get:
+      summary: Returns summary information for all users associated with the account
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+              example: [{
+                "Username": "Username",
+                "FirstName": "First Name",
+                "LastName": "Last Name",
+                "Pod": 6,
+                "PodName": "United States",
+                "AuthProvider": 0,
+                "Permissions": [
+                  {
+                    "ObjectId": "Object Id",
+                    "ObjectType": 5,
+                    "GroupSlug": "slug"
+                  }
+                ]
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: accountId
+          schema:
+            type: string
+          required: true
+          description: Account Id
+  /accounts/{accountId}/subscriptions/:
+    get:
+      summary: Returns summary information for subscriptions associated with the account
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionList'
+              example: [{
+                "SubscriptionId": "Subscription Id",
+                "AccountId": "Account Id",
+                "ProductCode": "Product Code",
+                "Product": {
+                  "ProductCode": "Product Code",
+                  "Description": "Descriptionn",
+                  "Features": {
+                    "SiteLimit": 0,
+                    "WorkflowLimit": 0,
+                    "UserLimit": 0,
+                    "ConcurrentWorkflowLimit": 0,
+                    "HasDependencyInsights": 0,
+                    "HasRevisionManagement": 0,
+                    "HasReleaseManagement": 0,
+                    "HasEnterpriseApi": 0,
+                    "WorkflowLogAgeLimit": 0
+                  }
+                },
+                "StartDate": "2017-05-11T00:00:00",
+                "EndDate": "2027-05-11T00:00:00",
+                "DateCreated": "2017-05-11T07:08:31.283",
+                "DateUpdated": "2017-05-11T07:08:31.283",
+                "IsEnabled": true,
+                "ProductFeatures": {
+                  "SiteLimit": 0,
+                  "WorkflowLimit": 0,
+                  "UserLimit": 0,
+                  "ConcurrentWorkflowLimit": 0,
+                  "HasDependencyInsights": 0,
+                  "HasRevisionManagement": 0,
+                  "HasReleaseManagement": 0,
+                  "HasEnterpriseApi": 0
+                },
+                "AllocatedSites": [
+                  "Site Id 1",
+                  "Site Id 2"
+                ]
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: accountId
+          schema:
+            type: string
+          required: true
+          description: Account Id
+  /accounts/{accountId}/subscriptions/{subscriptionId}/pods/:
+    get:
+      summary: Returns a list of Pods the given account & subscription is permitted to provision into
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PodList'
+              example: [{
+                "ID": 1,
+                "RegionName": "Africa"
+              },
+              {
+                "ID": 3,
+                "RegionName": "Europe"
+              },
+              {
+                "ID": 6,
+                "RegionName": "United States"
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: accountId
+          schema:
+            type: string
+          required: true
+          description: Account Id
+        - in: path
+          name: subscriptionId
+          schema:
+            type: string
+          required: true
+          description: Subscription Id
+  /users/{username}/accounts/{accountId}/:
+    post:
+      summary: Grant user access to specified account
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '204':
+          description: Success
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: path
+          name: accountId
+          schema:
+            type: string
+          required: true
+          description: Account Id
+    delete:
+      summary: Revoke user access of specified account
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '204':
+          description: Success
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: path
+          name: accountId
+          schema:
+            type: string
+          required: true
+          description: Account Id
+  /users/{username}/accounts/groups/:
+    post:
+      summary: Grants the specified security group to the specified user on the specified account.
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: query
+          name: objectId
+          schema:
+            type: string
+          required: true
+          description: Account Id
+        - in: query
+          name: groupSlug
+          schema:
+            type: string
+          required: true
+          description: Group Slug
+    delete:
+      summary: Revoke the specified security group to the specified user on the specified account.
+      tags:
+        - Accounts and Subscriptions
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "The requested object does not exist or does not exist at this location and its current location isn't known"
+              }
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: Username
+        - in: query
+          name: objectId
+          schema:
+            type: string
+          required: true
+          description: Account Id
+        - in: query
+          name: groupSlug
+          schema:
+            type: string
+          required: true
+          description: Group Slug
+  /sites/{siteId}/keys/:
+    get:
+      summary: Returns a list of site keys
+      tags:
+        - Site API Keys
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteKeyList'
+              example: [{
+                "SiteKeyId": "Site Key Id",
+                "Name": "Key Name",
+                "KeyType": 0,
+                "MappedWorkflowCount": 2,
+                "IsEnabled": true,
+                "DateCreated": "2021-02-16T10:58:31.063",
+                "DateUpdated": "2021-02-16T10:58:31.063"
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+    post:
+      summary: Creates a new site key of the specified type according to SiteKey.KeyType
+      tags:
+        - Site API Keys
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteKey'
+            example: {
+                "Name": "Key Name",
+                "KeyType": 0,
+                "IsEnabled": true
+              }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteKey'
+              example: [{
+                "SiteKeyId": "Site Key Id",
+                "SiteId": "Site Id",
+                "Name": "Key Name",
+                "KeyType": 0,
+                "Key" : "",
+                "KeySecondary" : "",
+                "IsEnabled": true,
+                "DateCreated": "2021-02-16T10:58:31.063",
+                "DateUpdated": "2021-02-16T10:58:31.063"
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+  /sites/{siteId}/keys/{siteKeyId}:
+    post:
+      summary: Edit site key
+      tags:
+        - Site API Keys
+      security:
+        - ApiKeyAuth: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteKey'
+            example: {
+                "SiteKeyId": "Site Key Id",
+                "SiteId": "Site Id",
+                "Name": "Key Name",
+                "KeyType": 0,
+                "IsEnabled": true
+              }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteKey'
+              example: [{
+                "SiteKeyId": "Site Key Id",
+                "SiteId": "Site Id",
+                "Name": "Key Name",
+                "KeyType": 0,
+                "Key" : "",
+                "KeySecondary" : "",
+                "IsEnabled": true,
+                "DateCreated": "2021-02-16T10:58:31.063",
+                "DateUpdated": "2021-02-16T10:58:31.063"
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: path
+          name: siteKeyId
+          schema:
+            type: string
+          required: true
+          description: Site Key Id
+  /sites/{siteId}/keyvalues/groups/:
+    get:
+      summary: Returns a list of key value groups
+      tags:
+        - Key Value Groups
+      security:
+        - ApiKeyAuth: [ ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyValueGroupList'
+              example: [{
+                "Id": "Id",
+                "SiteId": "Site Id",
+                "Group": "Group",
+                "DisplayName": "Display Name",
+                "Count": 0,
+                "IncludeInDashboard": false,
+                "DashboardPanel": null,
+                "DashboardIndex": 0,
+                "ValueMappings": null
+              }]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "This call requires authorization."
+              }
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+              example: {
+                "Message" : "Not Found"
+              }
+      parameters:
+        - in: path
+          name: siteId
+          schema:
+            type: string
+          required: true
+          description: Site Id
+        - in: query
+          name: discoverNewGroups
+          schema:
+            type: string
+            description: 1 for true, 0 for false
+          required: false
+          description: Discover New Groups
+components:
+  schemas:
+    GenericError:
+      type: object
+      properties:
+        Message:
+          type: string
+    User:
+      type: object
+      properties:
+        AuthProvider:
+          type: integer
+          enum: [0, 1]
+          description: 0 for Flowgear, 1 for Microsoft Id
+        DateCreated:
+          type: string
+        DateUpdated:
+          type: string
+        FirstName:
+          type: string
+        IsEnabled:
+          type: boolean
+        Landline:
+          type: string
+        LastName:
+          type: string
+        Mobile:
+          type: string
+        Password:
+          type: string
+          description: only populated on return so a new password can be saved
+        Organisation:
+          type: string
+        Pod:
+          type: integer
+        PodName:
+          type: string
+        UserId:
+          type: string
+        Username:
+          type: string
+        Permissions:
+          type: object
+          properties:
+            ObjectId:
+              type: string
+            ObjectType:
+              type: integer
+              enum: [-1, 1, 2, 3, 4, 5]
+              description: None = -1, User = 1,DropPoint = 2, Site = 3, Session = 4, Account = 5
+            GroupSlug:
+              type: string
+    UserRegistration:
+      type: object
+      properties:
+        FirstName:
+          type: string
+        LastName:
+          type: string
+        Email:
+          type: string
+        Password:
+          type: string
+        Phone:
+          type: string
+        CompanyOrSite:
+          type: string
+        AccountOption:
+          type: integer
+          enum: [0, 1, 2]
+          description: '0: No account will be created for the user. They are joining an existing account (organisation), 1: A new account, subscription and site will be created for the user, 2: A new user account is created and mapped to a specific site'
+        SubscriptionProductCode:
+          type: string
+        PrebuiltProductCode:
+          type: string
+        Pod:
+          type: integer
+        AcceptTC:
+          type: string
+        SiteId:
+          type: string
+    SiteList:
+      type: array
+      items:
+        type: object
+        properties: 
+          MruRank:
+            type: integer
+          Name:
+            type: string
+          SiteId:
+            type: string
+    Site:
+      type: object
+      properties:
+        AccountId:
+          type: string
+        ConnectionCount:
+          type: integer
+        DateCreated:
+          type: string
+        DateUpdated:
+          type: string
+        DropPointCount:
+          type: integer
+        Name:
+          type: string
+        Pod:
+          type: integer
+        PodName:
+          type: string
+        SiteId:
+          type: string
+        WorkflowCount:
+          type: integer
+        Description:
+          type: string
+        IsEnabled:
+          type: boolean
+        Subdomain:
+          type: string
+        AllowedOrigins:
+          type: string
+        TimeZone:
+          type: string
+    UserList:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+    EnvironmentSiteWorkflowRevision:
+      type: object
+      properties:
+        EnvironmentName:
+          type: string
+        EnvironmentId:
+          type: string
+        SiteWorkflowId:
+          type: string
+        Revision:
+          type: integer
+        DateUpdated:
+          type: string
+        UsernameUpdated:
+          type: string
+    SiteFolder:
+      type: object
+      properties:
+        SiteFolderId:
+          type: string
+        ParentSiteFolderId:
+          type: string
+        FolderType:
+          type: integer
+          enum: [1, 2, 3, 4]
+          description: Workflow = 1, DropPoint = 2, Connection = 3, Key = 4
+        Name:
+          type: string
+    NodeExecOutput:
+      type: object
+      properties:
+        Label:
+          type: string
+        IsException:
+          type: boolean
+        IsDefault:
+          type: boolean
+    NodeVisual:
+      type: object
+      properties:
+        X:
+          type: number
+          format: double
+        Y:
+          type: number
+          format: double
+        Width:
+          type: number
+          format: double
+        Height:
+          type: number
+          format: double
+    NodeProperty:
+      type: object
+      properties:
+        FlowDirection:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description: Static = 0, Input = 1, Output = 2, InputOutput = 3
+        Name:
+          type: string
+        TypeName:
+          type: string
+        ExtendedType:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5, 6, 7]
+          description: None = 0, Xml = 1, ConnectionProfile = 2, Secret = 3, MultilineText = 4, File = 5, Hidden = 6, Json = 7
+        EnumValues:
+          type: array
+          items:
+            type: string
+        Value:
+          type: object
+        SubProperties:
+          type: array
+          items:
+            $ref: '#/components/schemas/NodeProperty'
+        Sources:
+          type: array
+          items:
+            type: object
+        FileExtension:
+          type: string
+        PersistenceKey:
+          type: string
+        Behaviour:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description: Default = 0, Configuration = 1, Custom = 2, Hidden = 3
+        CustomPropertyEscaping:
+          type: integer
+          enum: [0, 10, 20, 30, 31]
+          description: None = 0, JsonValue = 10, XmlElementValue = 20, Uri = 30, UriSegment = 31
+        Schema:
+          type: string
+        Description:
+          type: string
+        InitialValue:
+          type: object
+        IsSecret:
+          type: boolean
+    Node:
+      type: object
+      properties:
+        NodeId:
+          type: string
+        Name:
+          type: string
+        DisplayName:
+          type: string
+        ShortDescription:
+          type: string
+        LongDescription:
+          type: string
+        Version:
+          type: string
+        NodeType:
+          type: integer
+          enum: [-1, 0, 1, 2, 3]
+          description:  '-1: None, 0: Connector, 1: Processor, 2: Evaluator, 3: Trigger'
+        Properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/NodeProperty'
+        HasInput:
+          type: boolean
+        Outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/NodeExecOutput'
+        NodeVisual:
+          $ref: '#/components/schemas/NodeVisual'
+        IsTestable:
+          type: boolean
+        SupportsCustomInputProperties:
+          type: boolean
+        SupportsCustomOutputProperties:
+          type: boolean
+        SupportsTest:
+          type: boolean
+        SupportsAcquireMetadata:
+          type: boolean
+        SupportsListSamples:
+          type: boolean
+        RunFrom:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description:  '0: Anywhere, 1: DropPointOnly, 2: DropPointUnrestrictedOnly, 3: InCloudOnly'
+        InteractFlags:
+          type: integer
+          enum: [0, 1, 2]
+          description:  '0: None, 1: GetOAuthUri, 2: GetOAuthConnectionProperties'
+    FlowConnector:
+      type: object
+      properties:
+        FlowConnectorType:
+          type: integer
+          enum: [0, 1, 2]
+          description:  '0: None, 1: ExecutionFlow, 2: DataFlow'
+        SourceNodeId:
+          type: string
+        TargetNodeId:
+          type: string
+        SourceName:
+          type: string
+        TargetName:
+          type: string
+        Expression:
+          type: string
+    Workflow:
+      type: object
+      properties:
+        CanRunAlways:
+          type: boolean
+        CanRunOnDemand:
+          type: boolean
+        DateCreated:
+          type: string
+        DateUpdated:
+          type: string
+        Description:
+          type: string
+        GroupDescription:
+          type: string
+        Name:
+          type: string
+        ProductCode:
+          type: string
+        Revision:
+          type: integer
+        UrlPattern:
+          type: string
+        WorkflowId:
+          type: string
+        Nodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+        FlowConnectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowConnector'
+        StartNodeId:
+          type: string
+        UsernameUpdated:
+          type: string
+        HttpMethod:
+          type: string
+        SharedUrl:
+          type: string
+    SiteWorkflow:
+      type: object
+      properties:
+        ActivationContext:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5]
+          description: '0: Disabled, 1: AutoStart, 2: ManualStart, 3: RunNow, 4: ApiInvoke, 5: Debug'
+        ConnectionProfileId:
+          type: string
+        ConnectionProfileName:
+          type: string
+        DateLastRun:
+          type: string
+        LaunchMethod:
+          type: integer
+          enum: [0, 1]
+          description: '0: Internal, 1: External'
+        LiveRevision:
+          type: integer
+        NumWorkflowInstances:
+          type: integer
+        Pod:
+          type: integer
+        SiteFolderId:
+          type: string
+        SiteId:
+          type: string
+        SiteWorkflowId:
+          type: string
+        State:
+          type: integer
+          enum: [0, 1, 2, 3, 4]
+          description: '0: Unknown, 1: Stopped, 2: Stopping, 3: Starting, 4: Started'
+        TestRevision:
+          type: integer
+        Workflow:
+          $ref: '#/components/schemas/Workflow'
+    SiteWorkflowList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SiteWorkflow'
+    LogEntry:
+      type: object
+      properties:
+        WorkflowActivityLogId:
+          type: string
+        ParentWorkflowActivityLogId:
+          type: string
+        WorkflowId:
+          type: string
+        ParentNodeOutputLabel:
+          type: string
+        NodeDescription:
+          type: string
+        NodeName: 
+          type: string
+        NodeVersion:
+          type: string
+        StartDateTime:
+          type: string
+        EndDateTime:
+          type: string
+        OutputLabel:
+          type: string
+        StatusMessage:
+          type: string
+        Sequence:
+          type: integer
+        Depth:
+          type: integer
+        PropertiesInPreviewToken:
+          type: string
+        PropertiesOutPreviewToken:
+          type: string
+        NodeId:
+          type: string
+        RootWorkflowActivityLogId:
+          type: string
+        PropertyBucket:
+          type: string
+        Properties: 
+          type: array
+          items:
+            $ref: '#/components/schemas/NodeProperty'
+    LogEntryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/LogEntry'
+    WorkflowActivityLogProperty:
+      type: object
+      properties:
+        FlowDirection:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description: Static = 0, Input = 1, Output = 2, InputOutput = 3
+        Name:
+          type: string
+        TypeName:
+          type: string
+        ExtendedType:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5, 6, 7]
+          description: None = 0, Xml = 1, ConnectionProfile = 2, Secret = 3, MultilineText = 4, File = 5, Hidden = 6, Json = 7
+        Value:
+          type: object
+        FileExtension:
+          type: string
+        Size:
+          type: integer
+        OriginalSize:
+          type: integer
+        ValueTruncated:
+          type: boolean
+        FullValueToken:
+          type: string
+    WorkflowActivityLog:
+      type: object
+      properties:
+        WorkflowActivityLogId:
+          type: string
+        ParentWorkflowActivityLogId:
+          type: string
+        WorkflowId:
+          type: string
+        WorkflowName:
+          type: string
+        ParentNodeOutputLabel:
+          type: string
+        NodeDescription:
+          type: string
+        NodeDisplayName: 
+          type: string
+        NodeName: 
+          type: string
+        NodeVersion:
+          type: string
+        StartDateTime:
+          type: string
+        EndDateTime:
+          type: string
+        OutputLabel:
+          type: string
+        StatusMessage:
+          type: string
+        Sequence:
+          type: integer
+        Depth:
+          type: integer
+        PropertiesInPreviewToken:
+          type: string
+        PropertiesOutPreviewToken:
+          type: string
+        Properties: 
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowActivityLogProperty'
+    WorkflowActivityLogList:
+      type: array
+      items:
+        $ref: '#/components/schemas/WorkflowActivityLog'
+    Droppoint:
+      type: object
+      properties:
+        DropPointId:
+          type: string
+        SiteId:
+          type: string
+        Name:
+          type: string
+        Description:
+          type: string
+        IsOnline:
+          type: boolean
+        DateCreated:
+          type: string
+        DateUpdated:
+          type: string
+        LastOnline:
+          type: string
+        LastOffline:
+          type: string
+        Ip:
+          type: string
+        Version:
+          type: string
+        MacAddress:
+          type: string
+        AverageRoundTripLatency:
+          type: integer
+        IsEnabled:
+          type: boolean
+        UpTime:
+          type: string
+        DownTime:
+          type: string
+        Pod:
+          type: integer
+        PodName:
+          type: string
+        CertificateThumbprint:
+          type: string
+        LastCertificateThumbprint:
+          type: string
+        SiteFolderId:
+          type: string
+    DroppointList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Droppoint'
+    ConnectionProfile:
+      type: object
+      properties:
+        ProfileId:
+          type: string
+        SiteId:
+          type: string
+        ProfileName:
+          type: string
+        Rank:
+          type: integer
+        IsProductionEnvironment:
+          type: boolean
+    ConnectionProfileList:
+      type: array
+      items:  
+        $ref: '#/components/schemas/ConnectionProfile'
+    Connection:
+      type: object
+      properties:
+        ConnectionProfileId:
+          type: string
+        DropPointId:
+          type: string
+        Properties:
+          type: object
+          additionalProperties:
+            type: object
+    ConnectionSet:
+      type: object
+      properties:
+        ConnectionId:
+          type: string
+        SiteId:
+          type: string
+        Name:
+          type: string
+        NodeName:
+          type: string
+        NodeDisplayName:
+          type: string
+        NodeVersion:
+          type: string
+        ProfileName:
+          type: string
+        DropPointName:
+          type: string
+        Connection:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+        DropPointOfflineTimeoutSecs:
+          type: integer
+        TimeoutSecs:
+          type: integer
+        PayloadLimitBytes:
+          type: integer
+        ModelNode:
+          $ref: '#/components/schemas/Node'
+        SiteFolderId:
+          type: string
+    ConnectionSetList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ConnectionSet'
+    Address:
+      type: object
+      properties:
+        Line1:
+          type: string
+        Line2:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+        Country:
+          type: string
+    Account:
+      type: object
+      properties:
+        AccountId:
+          type: string
+        AccountCode:
+          type: string
+        Name:
+          type: string
+        BillingName:
+          type: string
+        RegistrationNumber:
+          type: string
+        TaxNumber:
+          type: string
+        PhysicalAddress:
+          $ref: '#/components/schemas/Address'
+        MailingAddress:
+          $ref: '#/components/schemas/Address'
+        DateCreated:
+          type: string
+        DateUpdated:
+          type: string
+        IsEnabled:
+          type: boolean
+        HasFullEdit:
+          type: boolean
+        ActiveSubscriptionCount:
+          type: integer
+        Pod:
+          type: integer
+        PodName:
+          type: string
+    AccountList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Account'
+    Product:
+      type: object
+      properties:
+        ProductCode:
+          type: string
+        Description:
+          type: string
+        Features:
+          type: object
+          additionalProperties:
+            type: integer
+    Subscription:
+      type: object
+      properties:
+        SubscriptionId:
+          type: string
+        AccountId:
+          type: string
+        SubscriptionName:
+          type: string
+        ProductCode:
+          type: string
+        Product:
+          $ref: '#/components/schemas/Product'
+        StartDate:
+          type: string
+        EndDate:
+          type: string
+        DateCreated:
+          type: string
+        DateUpdated:
+          type: string
+        IsEnabled:
+          type: boolean
+        ActiveForMonths:
+          type: integer
+        ActiveForDays:
+          type: integer
+        ProductFeatures:
+          type: object
+          additionalProperties:
+            type: integer
+        AllocatedSites:
+          type: array
+          items:
+            type: string
+    SubscriptionList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Subscription'
+    Pod:
+      type: object
+      properties:
+        ID:
+          type: integer
+        RegionName:
+          type: string
+        Version:
+          type: string
+        ApiVersion:
+          type: string
+        IsEnabled:
+          type: boolean
+        IsProvisionable:
+          type: boolean
+        IsDiscovery:
+          type: boolean
+        Url:
+          type: string
+        RecycleTime:
+          type: integer
+    PodList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Pod'
+    SiteKey:
+      type: object
+      properties:
+        SiteKeyId:
+          type: string
+        SiteId:
+          type: string
+        Name:
+          type: string
+        KeyType:
+          type: integer
+          enum: [0, 1]
+          description: 'Token = 0, Certificate = 1'
+        TargetSiteEnvironment:
+          type: string
+        Key:
+          type: string
+        KeySecondary:
+          type: string
+        MappedWorkflowCount:
+          type: integer
+        IsEnabled:
+          type: boolean
+        DateCreated:
+          type: string
+        DateUpdated:
+          type: string
+        PermittedWorkflows:
+          type: array
+          items:
+            type: string
+        SiteFolderId:
+          type: string
+    SiteKeyList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SiteKey' 
+    KeyValueGroupReport:
+      type: object
+      properties:
+        Group:
+          type: string
+        DisplayName:
+          type: string
+        DashboardPanel:
+          type: string
+        DashboardIndex:
+          type: integer
+        Values:
+          type: object
+          additionalProperties:
+            type: integer
+    KeyValueGroup:
+      type: object
+      properties:
+        Id:
+          type: string
+        SiteId:
+          type: string
+        Group:
+          type: string
+        DisplayName:
+          type: string
+        Count:
+          type: integer
+        IncludeInDashboard:
+          type: boolean
+        DashboardPanel:
+          type: string
+        DashboardIndex:
+          type: integer
+        ValueMappings:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValueGroupReport'
+    KeyValueGroupList:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValueGroup'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: session id
+      name: auth
+      in: query
