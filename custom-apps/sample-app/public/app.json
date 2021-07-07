@@ -1,0 +1,10 @@
+{
+    "ManifestVersion": 1,
+    "Name": "SampleApp",
+    "Version": "1.0.0.2",
+    "DisplayName": "Sample App",
+    "EmbedMode": "menu",
+    "EmbedParameters": {
+      "After": "workflows"
+    }
+  }
