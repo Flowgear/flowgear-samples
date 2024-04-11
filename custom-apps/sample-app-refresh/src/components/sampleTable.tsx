@@ -1,57 +1,59 @@
-import React from 'react';
-import { SampleRow } from './sampleRow';
-import { SampleResponse } from '../types/sampleTypes';
+import { useEffect, useState } from "react";
+import { SampleServices } from "../services/SampleServices";
+import SampleRow from "./SampleRow";
+import { SampleType } from "../types/SampleType";
 
-export class SampleTable extends React.Component<
-    {
-        headings: string[]
-        tableData: SampleResponse[],
-    },
-    {
-        
-    }
->
-{
+const SampleTable = ({refresh}: {refresh: boolean}) => {
 
-    render() {
-        if (!this.props.tableData) {
-            return null;
-        }
+    const [headings, setHeadings] = useState<string[]>([]);
+    const [items, setItems] = useState<SampleType[]>([]);
 
-        if (this.props.tableData.length == 0) {
-            return (
-                <div className="header-text" style={{ paddingTop: "80px" }}>{"No data returned."}</div>
-            );
-        }
-        return (
-            <div className="table-wrapper">
-                <div className="header-text">{"Sample Orders"}</div>
-                <div className="table-scroll">
-                    <table className={"table"}>
-                        <thead>
-                            {this.renderHeadings()}
-                        </thead>
-                        <tbody>
-                            {this.props.tableData.map((row, rowIndex) => {
-                                return <SampleRow key={rowIndex} data={row} headings={this.props.headings} />
-                            })}
-                        </tbody>
-                    </table>
-                </div>
+    useEffect(() => {
+
+        const refreshItems = async () => {
+            let items = await SampleServices.getItems();
+            items.sort((a, b) => new Date(b.OrderDate).getTime() - new Date(a.OrderDate).getTime());
+            
+            if (items[0]) {
+                let itemHeadings = Object.keys(items[0]);
+                setHeadings(itemHeadings);
+            }
+            setItems(items);
+        };
+
+        refreshItems();
+
+    }, [refresh]);
+
+    return (
+        <div className="table-wrapper">
+            <div className="table-scroll">
+                <table className={"table"}>
+                    <thead>
+                    <tr>
+                        {headings.map((val: string, index: number) => {
+                            if (val === "OrderTotal") {
+                                return <th key={index} className={"text-align-right"}>{val}</th>;
+                            }
+                            return <th key={index}>{val}</th>;
+                        })}
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {items.map((item, index) => (
+                            <SampleRow
+                                key={index}
+                                item={item}
+                                headings={headings}
+                            />
+                        ))}
+                    </tbody>
+                </table>
             </div>
-        );
-    }
+        </div>
+    );
 
-    renderHeadings() {
-        return (<tr>
-            {this.props.headings.map((val: string, index: number) => {
-                if (val == "OrderTotal") {
-                    return <th key={index} className={"text-align-right"}>{val}</th>;
-                }
-                return <th key={index}>{val}</th>;
-            })}
-        </tr>);
-    }
 
-    
 }
+
+export default SampleTable;

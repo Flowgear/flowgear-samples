@@ -1,4 +1,4 @@
-export class SampleResponse
+export type SampleType =
 {
     Id: number;
     Description: string;
@@ -6,4 +6,5 @@ export class SampleResponse
     OrderNumber: string;
     OrderDate: string;
     OrderTotal: number;
-}
+    [key: string]: string | number; // Index signature
+};
