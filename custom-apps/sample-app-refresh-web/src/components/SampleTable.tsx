@@ -37,7 +37,7 @@ const SampleTable = (props: SampleTableProps) => {
                     <thead>
                     <tr>
                         {headings.map((val: string, index: number) => {
-                            if (val === "OrderTotals") {
+                            if (val === "OrderTotal") {
                                 return <th key={index} className={"text-align-right"}>{val}</th>;
                             }
                             return <th key={index}>{val}</th>;
