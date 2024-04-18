@@ -1,9 +1,14 @@
+import React from 'react';
 import { useEffect, useState } from "react";
 import { SampleServices } from "../services/SampleServices";
 import SampleRow from "./SampleRow";
 import { SampleType } from "../types/SampleType";
 
-const SampleTable = ({refresh}: {refresh: boolean}) => {
+interface SampleTableProps {
+    refresh: boolean;
+}
+
+const SampleTable = (props: SampleTableProps) => {
 
     const [headings, setHeadings] = useState<string[]>([]);
     const [items, setItems] = useState<SampleType[]>([]);
@@ -23,7 +28,7 @@ const SampleTable = ({refresh}: {refresh: boolean}) => {
 
         refreshItems();
 
-    }, [refresh]);
+    }, [props.refresh]);
 
     return (
         <div className="table-wrapper">

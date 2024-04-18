@@ -1,8 +1,8 @@
 {
 	"ManifestVersion": 1,
-	"Name": "SampleApp",
-	"Version": "1.0.0.3",
-	"DisplayName": "Sample App",
+	"Name": "SampleAppWebpack",
+	"Version": "1.0.0.0",
+	"DisplayName": "Sample App Webpack",
 	"EmbedMode": "menu",
 	"EmbedParameters": {
 		"After": "workflows"

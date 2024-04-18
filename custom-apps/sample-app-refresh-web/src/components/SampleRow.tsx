@@ -1,3 +1,4 @@
+import React from 'react';
 import { SampleType } from "../types/SampleType";
 
 interface SampleTableRowProps {
