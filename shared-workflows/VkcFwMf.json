@@ -1,0 +1,203 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 0,
+    "Name": "Raw response example",
+    "Nodes": [
+      {
+        "NodeId": "dc2a62b8-e11b-20dd-b7c2-d2e29b8b9d19",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b47d2791-4af2-0915-23db-d005a50300df",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "SomeField",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 5795.0
+        },
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d5d8489b-2edc-efdd-f8b0-63b01b13d539",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "FgResponseBody",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "FgResponseContentType",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "text/plain"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 5795.0
+        },
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b4ba4c29-96ae-dcf7-9964-fe162c2dda0a",
+        "Name": "Formatter",
+        "Version": "1.1.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Hello, you said {SomeField}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "SomeField",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "dc2a62b8-e11b-20dd-b7c2-d2e29b8b9d19",
+        "TargetNodeId": "b4ba4c29-96ae-dcf7-9964-fe162c2dda0a",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b4ba4c29-96ae-dcf7-9964-fe162c2dda0a",
+        "TargetNodeId": "d5d8489b-2edc-efdd-f8b0-63b01b13d539",
+        "SourceName": "Result",
+        "TargetName": "FgResponseBody"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b47d2791-4af2-0915-23db-d005a50300df",
+        "TargetNodeId": "b4ba4c29-96ae-dcf7-9964-fe162c2dda0a",
+        "SourceName": "SomeField",
+        "TargetName": "SomeField"
+      }
+    ],
+    "StartNodeId": "dc2a62b8-e11b-20dd-b7c2-d2e29b8b9d19",
+    "DateCreated": "2016-04-12T07:25:44.3843118Z",
+    "DateUpdated": "2016-04-12T07:25:44.3843118Z",
+    "ActivityLogLevelMask": 0
+  }
+}
