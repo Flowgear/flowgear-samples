@@ -1,0 +1,663 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Sage One Demo",
+    "Nodes": [
+      {
+        "NodeId": "0077bcd7-ea4b-82db-f1aa-e317c55d012a",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b1197a59-7ecf-4fc6-7857-73195abb7935",
+        "Name": "SqlQuery",
+        "Version": "2.1.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": false
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Sql.SqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "select top 2 * from contacts"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "XmlQuery",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Result>\r\n  <Table>\r\n    <id>200</id>\r\n    <Contact>Gay Shannon</Contact>\r\n    <Company>Arcu Eu Odio Associates</Company>\r\n    <Phone>1-613-482-6649</Phone>\r\n    <Country>Aruba</Country>\r\n    <Email>Donec.tempor.est@lacus.co.uk</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>201</id>\r\n    <Contact>Priscilla Wooten</Contact>\r\n    <Company>Interdum PC</Company>\r\n    <Phone>1-906-569-1084</Phone>\r\n    <Country>Antarctica</Country>\r\n    <Email>nunc@enimnec.edu</Email>\r\n  </Table>\r\n</Result>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "SQL Query",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f66574a7-f280-0d6a-c3a0-ceab8f0402f0",
+        "Name": "SageOne",
+        "Version": "1.0.0.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "CompanyID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.SageOne.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "flowgear.Nodes.SageOne.Enums+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "AllowDelete",
+              "AssignPaymentsRefundsToTaxPeriod",
+              "Calculate",
+              "CloseTaxPeriod",
+              "Delete",
+              "DeleteAll",
+              "DeleteBatch",
+              "Email",
+              "Get",
+              "GetAccountsByCategory",
+              "GetAll",
+              "GetAllSummary",
+              "GetBankAccountTransactionListingReportingDetail",
+              "GetCompanyNotes",
+              "GetCompanyStorageInformation",
+              "GetCurrent",
+              "GetCustomerAllocationsAndOutstandingDocuments",
+              "GetDefault",
+              "GetDetail",
+              "GetDueInDateRange",
+              "GetDueSpecificDate",
+              "GetForSpecificDate",
+              "GetIncludingDetail",
+              "GetSettings",
+              "GetSignature",
+              "GetSummary",
+              "GetSupplierAllocationsAndOutstandingDocuments",
+              "GetSupplierTransactionListingReportingDetail",
+              "GetTemplateInUse",
+              "GetWithoutZeroValues",
+              "GetWithSystemAccounts",
+              "HasActivity",
+              "HasPreviousTransactions",
+              "HasUnreportedTransactions",
+              "OpenTaxPeriod",
+              "Post",
+              "RefreshHasAttachments",
+              "Save",
+              "SaveBatch",
+              "SaveSettings",
+              "SaveWithBaseType",
+              "Validate"
+            ],
+            "Value": "Save"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Module",
+            "TypeName": "flowgear.Nodes.SageOne.Enums+Modules",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Account",
+              "AccountantEvent",
+              "AccountantNote",
+              "AccountantTask",
+              "AccountantTaskRecurrence",
+              "AccountBalance",
+              "AccountCategory",
+              "AccountNote",
+              "AccountNoteAttachment",
+              "AccountOpeningBalance",
+              "AccountPayment",
+              "AccountReceipt",
+              "AdditionalItemPrice",
+              "AdditionalPriceList",
+              "Allocation",
+              "AnalysisCategory",
+              "AnalysisType",
+              "Asset",
+              "AssetCategory",
+              "AssetLocation",
+              "AssetNote",
+              "Attachment",
+              "BankAccount",
+              "BankAccountCategory",
+              "BankAccountNote",
+              "BankAccountNoteAttachment",
+              "BankAccountOpeningBalance",
+              "BankAccountTransactionListing",
+              "BankImportMapping",
+              "BankStatementTransaction",
+              "BankTransaction",
+              "BankTransactionAttachment",
+              "BASReport",
+              "Budget",
+              "CashMovement",
+              "Company",
+              "CompanyEntityType",
+              "CompanyNote",
+              "Core",
+              "Customer",
+              "CustomerAdditionalContactDetail",
+              "CustomerAdjustment",
+              "CustomerAgeing",
+              "CustomerBadDebtRecovery",
+              "CustomerBadDebtRelief",
+              "CustomerCategory",
+              "CustomerNote",
+              "CustomerNoteAttachment",
+              "CustomerOpeningBalance",
+              "CustomerReceipt",
+              "CustomerReturn",
+              "CustomerReturnAttachment",
+              "CustomerSalesHistory",
+              "CustomerStatement",
+              "CustomerTransactionListing",
+              "CustomerWriteOff",
+              "CustomerZone",
+              "DateFormat",
+              "DetailedLedgerTransaction",
+              "DocumentHeaderNote",
+              "DocumentHistory",
+              "DocumentMessage",
+              "DocumentUserDefinedFields",
+              "EmailSignatureTemplate",
+              "EmailTemplatePlaceHolder",
+              "FinancialYear",
+              "IncomeVsExpense",
+              "Item",
+              "ItemAdjustment",
+              "ItemAttachment",
+              "ItemCategory",
+              "ItemMovement",
+              "ItemNote",
+              "ItemNoteAttachment",
+              "ItemOpeningBalance",
+              "ItemReportGroup",
+              "JournalEntry",
+              "Login",
+              "OutstandingCustomerDocument",
+              "OutstandingSupplierDocument",
+              "PriceListingReport",
+              "ProcessBankAndCreditCardMapping",
+              "PurchaseOrder",
+              "PurchaseOrderAttachment",
+              "Quote",
+              "QuoteAttachment",
+              "RecurringInvoice",
+              "ReportingGroup",
+              "SalesByItem",
+              "SalesBySalesRepresentative",
+              "SalesRepresentative",
+              "SalesRepresentativeNote",
+              "ScheduleFrequency",
+              "SecretarialCompanyRole",
+              "SecretarialShareClass",
+              "SecretarialShareholder",
+              "SecretarialStakeHolder",
+              "Supplier",
+              "SupplierAdjustment",
+              "SupplierAgeing",
+              "SupplierBadDebtRecovery",
+              "SupplierBadDebtRelief",
+              "SupplierBankDetail",
+              "SupplierCategory",
+              "SupplierInvoice",
+              "SupplierInvoiceAttachment",
+              "SupplierNote",
+              "SupplierNoteAttachment",
+              "SupplierOpeningBalance",
+              "SupplierPayment",
+              "SupplierPurchaseHistory",
+              "SupplierReturn",
+              "SupplierReturnAttachment",
+              "SupplierStatement",
+              "SupplierTransactionListing",
+              "TakeOnBalance",
+              "TaxInvoice",
+              "TaxInvoiceAttachment",
+              "TaxPeriod",
+              "TaxType",
+              "ToDoList",
+              "TopCustomersByOutstandingBalance",
+              "TopCustomersBySales",
+              "TopPurchasedItems",
+              "TopSellingItems",
+              "TopSellingItemsByValueOnHand",
+              "TopSuppliersByOutstandingBalance",
+              "TopSuppliersByPurchases",
+              "TrialBalance",
+              "TrialBalanceExportMapping",
+              "UserDefinedField",
+              "VAT201Report"
+            ],
+            "Value": "Customer"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ParameterXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"root\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"Name\" type=\"xs:string\" />\r\n        <xs:element name=\"Category\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"Description\" type=\"xs:string\" />\r\n              <xs:element name=\"ID\" type=\"xs:unsignedByte\" />\r\n              <xs:element name=\"Modified\" type=\"xs:date\" />\r\n              <xs:element name=\"Created\" type=\"xs:date\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"SalesRepresentativeId\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"SalesRepresentative\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"ID\" type=\"xs:unsignedByte\" />\r\n              <xs:element name=\"FirstName\" type=\"xs:string\" />\r\n              <xs:element name=\"LastName\" type=\"xs:string\" />\r\n              <xs:element name=\"Name\" type=\"xs:string\" />\r\n              <xs:element name=\"Active\" type=\"xs:boolean\" />\r\n              <xs:element name=\"Email\" type=\"xs:string\" />\r\n              <xs:element name=\"Mobile\" type=\"xs:string\" />\r\n              <xs:element name=\"Telephone\" type=\"xs:string\" />\r\n              <xs:element name=\"Created\" type=\"xs:date\" />\r\n              <xs:element name=\"Modified\" type=\"xs:date\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"TaxReference\" type=\"xs:string\" />\r\n        <xs:element name=\"ContactName\" type=\"xs:string\" />\r\n        <xs:element name=\"Telephone\" type=\"xs:string\" />\r\n        <xs:element name=\"Fax\" type=\"xs:string\" />\r\n        <xs:element name=\"Mobile\" type=\"xs:string\" />\r\n        <xs:element name=\"Email\" type=\"xs:string\" />\r\n        <xs:element name=\"WebAddress\" type=\"xs:string\" />\r\n        <xs:element name=\"Active\" type=\"xs:boolean\" />\r\n        <xs:element name=\"Balance\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"CreditLimit\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"CommunicationMethod\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"PostalAddress01\" type=\"xs:string\" />\r\n        <xs:element name=\"PostalAddress02\" type=\"xs:string\" />\r\n        <xs:element name=\"PostalAddress03\" type=\"xs:string\" />\r\n        <xs:element name=\"PostalAddress04\" type=\"xs:string\" />\r\n        <xs:element name=\"PostalAddress05\" type=\"xs:string\" />\r\n        <xs:element name=\"DeliveryAddress01\" type=\"xs:string\" />\r\n        <xs:element name=\"DeliveryAddress02\" type=\"xs:string\" />\r\n        <xs:element name=\"DeliveryAddress03\" type=\"xs:string\" />\r\n        <xs:element name=\"DeliveryAddress04\" type=\"xs:string\" />\r\n        <xs:element name=\"DeliveryAddress05\" type=\"xs:string\" />\r\n        <xs:element name=\"AutoAllocateToOldestInvoice\" type=\"xs:boolean\" />\r\n        <xs:element name=\"EnableCustomerZone\" type=\"xs:boolean\" />\r\n        <xs:element name=\"CustomerZoneGuid\" type=\"xs:string\" />\r\n        <xs:element name=\"CashSale\" type=\"xs:boolean\" />\r\n        <xs:element name=\"TextField1\" type=\"xs:string\" />\r\n        <xs:element name=\"TextField2\" type=\"xs:string\" />\r\n        <xs:element name=\"TextField3\" type=\"xs:string\" />\r\n        <xs:element name=\"NumericField1\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"NumericField2\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"NumericField3\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"YesNoField1\" type=\"xs:boolean\" />\r\n        <xs:element name=\"YesNoField2\" type=\"xs:boolean\" />\r\n        <xs:element name=\"YesNoField3\" type=\"xs:boolean\" />\r\n        <xs:element name=\"DateField1\" type=\"xs:date\" />\r\n        <xs:element name=\"DateField2\" type=\"xs:date\" />\r\n        <xs:element name=\"DateField3\" type=\"xs:date\" />\r\n        <xs:element name=\"DefaultPriceListId\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"DefaultPriceList\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"ID\" type=\"xs:unsignedByte\" />\r\n              <xs:element name=\"Description\" type=\"xs:string\" />\r\n              <xs:element name=\"IsDefault\" type=\"xs:boolean\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"DefaultPriceListName\" type=\"xs:string\" />\r\n        <xs:element name=\"AcceptsElectronicInvoices\" type=\"xs:boolean\" />\r\n        <xs:element name=\"Modified\" type=\"xs:date\" />\r\n        <xs:element name=\"Created\" type=\"xs:date\" />\r\n        <xs:element name=\"BusinessRegistrationNumber\" type=\"xs:string\" />\r\n        <xs:element name=\"TaxStatusVerified\" type=\"xs:date\" />\r\n        <xs:element name=\"CurrencyId\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"HasActivity\" type=\"xs:boolean\" />\r\n        <xs:element name=\"DefaultDiscountPercentage\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"DefaultTaxTypeId\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"DefaultTaxType\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"ID\" type=\"xs:unsignedByte\" />\r\n              <xs:element name=\"Name\" type=\"xs:string\" />\r\n              <xs:element name=\"Percentage\" type=\"xs:decimal\" />\r\n              <xs:element name=\"IsDefault\" type=\"xs:boolean\" />\r\n              <xs:element name=\"HasActivity\" type=\"xs:boolean\" />\r\n              <xs:element name=\"IsManualTax\" type=\"xs:boolean\" />\r\n              <xs:element name=\"Created\" type=\"xs:date\" />\r\n              <xs:element name=\"Modified\" type=\"xs:date\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"DueDateMethodId\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"DueDateMethodValue\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"CurrencySymbol\" type=\"xs:string\" />\r\n        <xs:element name=\"ID\" type=\"xs:unsignedByte\" />\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+            "Name": "RequestXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<root>\r\n  <Name>sample string 1</Name>\r\n  <Category>\r\n    <Description>sample string 1</Description>\r\n    <ID>2</ID>\r\n    <Modified>2016-03-16</Modified>\r\n    <Created>2016-03-16</Created>\r\n  </Category>\r\n  <SalesRepresentativeId>1</SalesRepresentativeId>\r\n  <SalesRepresentative>\r\n    <ID>1</ID>\r\n    <FirstName>sample string 2</FirstName>\r\n    <LastName>sample string 3</LastName>\r\n    <Name>sample string 2 sample string 3</Name>\r\n    <Active>true</Active>\r\n    <Email>sample string 6</Email>\r\n    <Mobile>sample string 7</Mobile>\r\n    <Telephone>sample string 8</Telephone>\r\n    <Created>2016-03-16</Created>\r\n    <Modified>2016-03-16</Modified>\r\n  </SalesRepresentative>\r\n  <TaxReference>sample string 2</TaxReference>\r\n  <ContactName>sample string 3</ContactName>\r\n  <Telephone>sample string 4</Telephone>\r\n  <Fax>sample string 5</Fax>\r\n  <Mobile>sample string 6</Mobile>\r\n  <Email>sample string 7</Email>\r\n  <WebAddress>sample string 8</WebAddress>\r\n  <Active>true</Active>\r\n  <Balance>10</Balance>\r\n  <CreditLimit>11</CreditLimit>\r\n  <CommunicationMethod>1</CommunicationMethod>\r\n  <PostalAddress01>sample string 12</PostalAddress01>\r\n  <PostalAddress02>sample string 13</PostalAddress02>\r\n  <PostalAddress03>sample string 14</PostalAddress03>\r\n  <PostalAddress04>sample string 15</PostalAddress04>\r\n  <PostalAddress05>sample string 16</PostalAddress05>\r\n  <DeliveryAddress01>sample string 17</DeliveryAddress01>\r\n  <DeliveryAddress02>sample string 18</DeliveryAddress02>\r\n  <DeliveryAddress03>sample string 19</DeliveryAddress03>\r\n  <DeliveryAddress04>sample string 20</DeliveryAddress04>\r\n  <DeliveryAddress05>sample string 21</DeliveryAddress05>\r\n  <AutoAllocateToOldestInvoice>true</AutoAllocateToOldestInvoice>\r\n  <EnableCustomerZone>true</EnableCustomerZone>\r\n  <CustomerZoneGuid>7ec6172e-2a51-44ad-826b-f333c75340b6</CustomerZoneGuid>\r\n  <CashSale>true</CashSale>\r\n  <TextField1>sample string 24</TextField1>\r\n  <TextField2>sample string 25</TextField2>\r\n  <TextField3>sample string 26</TextField3>\r\n  <NumericField1>1</NumericField1>\r\n  <NumericField2>1</NumericField2>\r\n  <NumericField3>1</NumericField3>\r\n  <YesNoField1>true</YesNoField1>\r\n  <YesNoField2>true</YesNoField2>\r\n  <YesNoField3>true</YesNoField3>\r\n  <DateField1>2016-03-16</DateField1>\r\n  <DateField2>2016-03-16</DateField2>\r\n  <DateField3>2016-03-16</DateField3>\r\n  <DefaultPriceListId>1</DefaultPriceListId>\r\n  <DefaultPriceList>\r\n    <ID>1</ID>\r\n    <Description>sample string 2</Description>\r\n    <IsDefault>true</IsDefault>\r\n  </DefaultPriceList>\r\n  <DefaultPriceListName>sample string 2</DefaultPriceListName>\r\n  <AcceptsElectronicInvoices>true</AcceptsElectronicInvoices>\r\n  <Modified>2016-03-16</Modified>\r\n  <Created>2016-03-16</Created>\r\n  <BusinessRegistrationNumber>sample string 33</BusinessRegistrationNumber>\r\n  <TaxStatusVerified>2016-03-16</TaxStatusVerified>\r\n  <CurrencyId>1</CurrencyId>\r\n  <HasActivity>true</HasActivity>\r\n  <DefaultDiscountPercentage>1</DefaultDiscountPercentage>\r\n  <DefaultTaxTypeId>1</DefaultTaxTypeId>\r\n  <DefaultTaxType>\r\n    <ID>1</ID>\r\n    <Name>sample string 2</Name>\r\n    <Percentage>3.1</Percentage>\r\n    <IsDefault>true</IsDefault>\r\n    <HasActivity>true</HasActivity>\r\n    <IsManualTax>true</IsManualTax>\r\n    <Created>2016-03-16</Created>\r\n    <Modified>2016-03-16</Modified>\r\n  </DefaultTaxType>\r\n  <DueDateMethodId>1</DueDateMethodId>\r\n  <DueDateMethodValue>1</DueDateMethodValue>\r\n  <CurrencySymbol>sample string 35</CurrencySymbol>\r\n  <ID>36</ID>\r\n</root>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ResponseXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Sage One",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b929bb7d-6aea-1d22-e98c-19cf0b8cbff4",
+        "Name": "QuickMap",
+        "Version": "2.0.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "MappingXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<DataMappings><DataMapping><SourceXPath>Result/Table/Company</SourceXPath><TargetXPath>root/Name</TargetXPath><MappingExpression/></DataMapping><DataMapping><SourceXPath>Result/Table/Phone</SourceXPath><TargetXPath>root/Mobile</TargetXPath><MappingExpression/></DataMapping><DataMapping><SourceXPath>Result/Table/Email</SourceXPath><TargetXPath>root/Email</TargetXPath><MappingExpression/></DataMapping><DataMapping><SourceXPath>Result/Table/Contact</SourceXPath><TargetXPath>root/ContactName</TargetXPath><MappingExpression/></DataMapping><DataMapping><SourceXPath>Result/Table</SourceXPath><TargetXPath>root</TargetXPath><MappingExpression/></DataMapping><SourceDocumentXml>&lt;Result&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;200&lt;/id&gt;\r\n    &lt;Contact&gt;Gay Shannon&lt;/Contact&gt;\r\n    &lt;Company&gt;Arcu Eu Odio Associates&lt;/Company&gt;\r\n    &lt;Phone&gt;1-613-482-6649&lt;/Phone&gt;\r\n    &lt;Country&gt;Aruba&lt;/Country&gt;\r\n    &lt;Email&gt;Donec.tempor.est@lacus.co.uk&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;201&lt;/id&gt;\r\n    &lt;Contact&gt;Priscilla Wooten&lt;/Contact&gt;\r\n    &lt;Company&gt;Interdum PC&lt;/Company&gt;\r\n    &lt;Phone&gt;1-906-569-1084&lt;/Phone&gt;\r\n    &lt;Country&gt;Antarctica&lt;/Country&gt;\r\n    &lt;Email&gt;nunc@enimnec.edu&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n&lt;/Result&gt;</SourceDocumentXml><TargetDocumentXsd>&lt;?xml version=\"1.0\" encoding=\"utf-16\"?&gt;\r\n&lt;xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\"&gt;\r\n  &lt;xs:element name=\"root\"&gt;\r\n    &lt;xs:complexType&gt;\r\n      &lt;xs:sequence&gt;\r\n        &lt;xs:element name=\"Name\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"Category\"&gt;\r\n          &lt;xs:complexType&gt;\r\n            &lt;xs:sequence&gt;\r\n              &lt;xs:element name=\"Description\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ID\" type=\"xs:unsignedByte\" /&gt;\r\n              &lt;xs:element name=\"Modified\" type=\"xs:date\" /&gt;\r\n              &lt;xs:element name=\"Created\" type=\"xs:date\" /&gt;\r\n            &lt;/xs:sequence&gt;\r\n          &lt;/xs:complexType&gt;\r\n        &lt;/xs:element&gt;\r\n        &lt;xs:element name=\"SalesRepresentativeId\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"SalesRepresentative\"&gt;\r\n          &lt;xs:complexType&gt;\r\n            &lt;xs:sequence&gt;\r\n              &lt;xs:element name=\"ID\" type=\"xs:unsignedByte\" /&gt;\r\n              &lt;xs:element name=\"FirstName\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"LastName\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Name\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Active\" type=\"xs:boolean\" /&gt;\r\n              &lt;xs:element name=\"Email\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Mobile\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Telephone\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Created\" type=\"xs:date\" /&gt;\r\n              &lt;xs:element name=\"Modified\" type=\"xs:date\" /&gt;\r\n            &lt;/xs:sequence&gt;\r\n          &lt;/xs:complexType&gt;\r\n        &lt;/xs:element&gt;\r\n        &lt;xs:element name=\"TaxReference\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"ContactName\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"Telephone\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"Fax\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"Mobile\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"Email\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"WebAddress\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"Active\" type=\"xs:boolean\" /&gt;\r\n        &lt;xs:element name=\"Balance\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"CreditLimit\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"CommunicationMethod\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"PostalAddress01\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"PostalAddress02\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"PostalAddress03\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"PostalAddress04\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"PostalAddress05\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"DeliveryAddress01\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"DeliveryAddress02\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"DeliveryAddress03\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"DeliveryAddress04\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"DeliveryAddress05\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"AutoAllocateToOldestInvoice\" type=\"xs:boolean\" /&gt;\r\n        &lt;xs:element name=\"EnableCustomerZone\" type=\"xs:boolean\" /&gt;\r\n        &lt;xs:element name=\"CustomerZoneGuid\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"CashSale\" type=\"xs:boolean\" /&gt;\r\n        &lt;xs:element name=\"TextField1\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"TextField2\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"TextField3\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"NumericField1\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"NumericField2\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"NumericField3\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"YesNoField1\" type=\"xs:boolean\" /&gt;\r\n        &lt;xs:element name=\"YesNoField2\" type=\"xs:boolean\" /&gt;\r\n        &lt;xs:element name=\"YesNoField3\" type=\"xs:boolean\" /&gt;\r\n        &lt;xs:element name=\"DateField1\" type=\"xs:date\" /&gt;\r\n        &lt;xs:element name=\"DateField2\" type=\"xs:date\" /&gt;\r\n        &lt;xs:element name=\"DateField3\" type=\"xs:date\" /&gt;\r\n        &lt;xs:element name=\"DefaultPriceListId\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"DefaultPriceList\"&gt;\r\n          &lt;xs:complexType&gt;\r\n            &lt;xs:sequence&gt;\r\n              &lt;xs:element name=\"ID\" type=\"xs:unsignedByte\" /&gt;\r\n              &lt;xs:element name=\"Description\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"IsDefault\" type=\"xs:boolean\" /&gt;\r\n            &lt;/xs:sequence&gt;\r\n          &lt;/xs:complexType&gt;\r\n        &lt;/xs:element&gt;\r\n        &lt;xs:element name=\"DefaultPriceListName\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"AcceptsElectronicInvoices\" type=\"xs:boolean\" /&gt;\r\n        &lt;xs:element name=\"Modified\" type=\"xs:date\" /&gt;\r\n        &lt;xs:element name=\"Created\" type=\"xs:date\" /&gt;\r\n        &lt;xs:element name=\"BusinessRegistrationNumber\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"TaxStatusVerified\" type=\"xs:date\" /&gt;\r\n        &lt;xs:element name=\"CurrencyId\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"HasActivity\" type=\"xs:boolean\" /&gt;\r\n        &lt;xs:element name=\"DefaultDiscountPercentage\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"DefaultTaxTypeId\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"DefaultTaxType\"&gt;\r\n          &lt;xs:complexType&gt;\r\n            &lt;xs:sequence&gt;\r\n              &lt;xs:element name=\"ID\" type=\"xs:unsignedByte\" /&gt;\r\n              &lt;xs:element name=\"Name\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Percentage\" type=\"xs:decimal\" /&gt;\r\n              &lt;xs:element name=\"IsDefault\" type=\"xs:boolean\" /&gt;\r\n              &lt;xs:element name=\"HasActivity\" type=\"xs:boolean\" /&gt;\r\n              &lt;xs:element name=\"IsManualTax\" type=\"xs:boolean\" /&gt;\r\n              &lt;xs:element name=\"Created\" type=\"xs:date\" /&gt;\r\n              &lt;xs:element name=\"Modified\" type=\"xs:date\" /&gt;\r\n            &lt;/xs:sequence&gt;\r\n          &lt;/xs:complexType&gt;\r\n        &lt;/xs:element&gt;\r\n        &lt;xs:element name=\"DueDateMethodId\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"DueDateMethodValue\" type=\"xs:unsignedByte\" /&gt;\r\n        &lt;xs:element name=\"CurrencySymbol\" type=\"xs:string\" /&gt;\r\n        &lt;xs:element name=\"ID\" type=\"xs:unsignedByte\" /&gt;\r\n      &lt;/xs:sequence&gt;\r\n    &lt;/xs:complexType&gt;\r\n  &lt;/xs:element&gt;\r\n&lt;/xs:schema&gt;</TargetDocumentXsd></DataMappings>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "XslTransform",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "TransformedXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3fc99cf0-2248-5608-f36a-fe4747c0c2e0",
+        "Name": "Splitter",
+        "Version": "1.0.1.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SourceDocumentXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SplitXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Result/Table"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Splitter.Splitter+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "ParentNode",
+              "ParentAndRootNodes"
+            ],
+            "Value": "ParentAndRootNodes"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "SplitDocumentXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "TotalRows",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "CurrentRow",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Split",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Splitter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "0077bcd7-ea4b-82db-f1aa-e317c55d012a",
+        "TargetNodeId": "b1197a59-7ecf-4fc6-7857-73195abb7935",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b1197a59-7ecf-4fc6-7857-73195abb7935",
+        "TargetNodeId": "3fc99cf0-2248-5608-f36a-fe4747c0c2e0",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b929bb7d-6aea-1d22-e98c-19cf0b8cbff4",
+        "TargetNodeId": "f66574a7-f280-0d6a-c3a0-ceab8f0402f0",
+        "SourceName": "TransformedXml",
+        "TargetName": "RequestXml"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b929bb7d-6aea-1d22-e98c-19cf0b8cbff4",
+        "TargetNodeId": "f66574a7-f280-0d6a-c3a0-ceab8f0402f0",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3fc99cf0-2248-5608-f36a-fe4747c0c2e0",
+        "TargetNodeId": "b929bb7d-6aea-1d22-e98c-19cf0b8cbff4",
+        "SourceName": "SplitDocumentXml",
+        "TargetName": "SourceXml"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "3fc99cf0-2248-5608-f36a-fe4747c0c2e0",
+        "TargetNodeId": "b929bb7d-6aea-1d22-e98c-19cf0b8cbff4",
+        "SourceName": "Split",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b1197a59-7ecf-4fc6-7857-73195abb7935",
+        "TargetNodeId": "3fc99cf0-2248-5608-f36a-fe4747c0c2e0",
+        "SourceName": "ResultXml",
+        "TargetName": "SourceDocumentXml"
+      }
+    ],
+    "StartNodeId": "0077bcd7-ea4b-82db-f1aa-e317c55d012a",
+    "DateCreated": "2017-01-12T13:46:40.797",
+    "DateUpdated": "2017-01-12T13:46:40.797",
+    "ActivityLogLevelMask": 0
+  }
+}

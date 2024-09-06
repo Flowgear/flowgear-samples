@@ -1,0 +1,236 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Multi Record Flat File Example",
+    "Nodes": [
+      {
+        "NodeId": "66989d27-eb66-ce8b-c221-73e552f5d858",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b596787e-59f5-34ab-14d0-e0d5d3744dd3",
+        "Name": "MultiRecordFlatFile",
+        "ShortDescription": "convert to xml",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.MultiRecordFlatFile.MultiRecordFlatFile+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Parse",
+              "Create"
+            ],
+            "Value": "Parse"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "FlatFileDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "1,101,2009/09/01,Computer Parts\r\n2,234,101,Motherboard, Asus P6T,239.99\r\n2,235,101,CPU,Intel Celeron 430,40\r\n1,102,2009/09/02,Computer Parts\r\n2,301,102,CPU,AMD Phenom II X4,170\r\n1,103,2009/09/05,Printers\r\n2,401,103,Inkjet Printer,Canon iP4600,69.99\r\n2,402,103,Inkjet Printer,Epson WF30,39.99\r\n2,403,103,Inkjet Printer,HP Deskjet D2660,49.99"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Configuration",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"IsFixedWidth\":false,\"RowDelimiter\":\"\\\\r\\\\n\",\"ColumnDelimiter\":\",\",\"RowTypes\":[{\"ParentHeader\":null,\"ColumnNames\":[\"Type\",\"Date\",\"Description\"],\"Name\":\"Category\",\"Header\":\"1,\",\"ColumnWidths\":[\"3\",\"2\",\"1\"]},{\"ParentHeader\":\"1,\",\"ColumnNames\":[\"Type\",\"SubType\",\"Description\",\"ProductCode\",\"Price\"],\"ColumnWidths\":[\"4\",\"6\",\"7\",\"8\",\"7\"],\"Name\":\"Part\",\"Header\":\"2,\"}]}"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "XmlDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Multi Record Flat File",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e30f9220-cec5-fb76-c1d1-4bfd89c710dd",
+        "Name": "MultiRecordFlatFile",
+        "ShortDescription": "convert to file",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.MultiRecordFlatFile.MultiRecordFlatFile+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Parse",
+              "Create"
+            ],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "FlatFileDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "1,101,2009/09/01,Computer Parts\r\n2,234,101,Motherboard, Asus P6T,239.99\r\n2,235,101,CPU,Intel Celeron 430,40\r\n1,102,2009/09/02,Computer Parts\r\n2,301,102,CPU,AMD Phenom II X4,170\r\n1,103,2009/09/05,Printers\r\n2,401,103,Inkjet Printer,Canon iP4600,69.99\r\n2,402,103,Inkjet Printer,Epson WF30,39.99\r\n2,403,103,Inkjet Printer,HP Deskjet D2660,49.99\r\n"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Configuration",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"IsFixedWidth\":false,\"RowDelimiter\":\"\\\\r\\\\n\",\"ColumnDelimiter\":\",\",\"RowTypes\":[{\"ParentHeader\":null,\"ColumnNames\":[\"Type\",\"Date\",\"Description\"],\"ColumnWidths\":[],\"Name\":\"Category\",\"Header\":\"1,\"},{\"ParentHeader\":\"1,\",\"ColumnNames\":[\"Type\",\"SubType\",\"Description\",\"ProductCode\",\"Price\"],\"ColumnWidths\":[],\"Name\":\"Part\",\"Header\":\"2,\"}]}"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "XmlDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Document>\r\n  <Category>\r\n    <Type>101</Type>\r\n    <Date>2009/09/01</Date>\r\n    <Description>Computer Parts</Description>\r\n    <Part>\r\n      <Type>234</Type>\r\n      <SubType>101</SubType>\r\n      <Description>Motherboard</Description>\r\n      <ProductCode> Asus P6T</ProductCode>\r\n      <Price>239.99</Price>\r\n    </Part>\r\n    <Part>\r\n      <Type>235</Type>\r\n      <SubType>101</SubType>\r\n      <Description>CPU</Description>\r\n      <ProductCode>Intel Celeron 430</ProductCode>\r\n      <Price>40</Price>\r\n    </Part>\r\n  </Category>\r\n  <Category>\r\n    <Type>102</Type>\r\n    <Date>2009/09/02</Date>\r\n    <Description>Computer Parts</Description>\r\n    <Part>\r\n      <Type>301</Type>\r\n      <SubType>102</SubType>\r\n      <Description>CPU</Description>\r\n      <ProductCode>AMD Phenom II X4</ProductCode>\r\n      <Price>170</Price>\r\n    </Part>\r\n  </Category>\r\n  <Category>\r\n    <Type>103</Type>\r\n    <Date>2009/09/05</Date>\r\n    <Description>Printers</Description>\r\n    <Part>\r\n      <Type>401</Type>\r\n      <SubType>103</SubType>\r\n      <Description>Inkjet Printer</Description>\r\n      <ProductCode>Canon iP4600</ProductCode>\r\n      <Price>69.99</Price>\r\n    </Part>\r\n    <Part>\r\n      <Type>402</Type>\r\n      <SubType>103</SubType>\r\n      <Description>Inkjet Printer</Description>\r\n      <ProductCode>Epson WF30</ProductCode>\r\n      <Price>39.99</Price>\r\n    </Part>\r\n    <Part>\r\n      <Type>403</Type>\r\n      <SubType>103</SubType>\r\n      <Description>Inkjet Printer</Description>\r\n      <ProductCode>HP Deskjet D2660</ProductCode>\r\n      <Price>49.99</Price>\r\n    </Part>\r\n  </Category>\r\n</Document>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Multi Record Flat File",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "66989d27-eb66-ce8b-c221-73e552f5d858",
+        "TargetNodeId": "b596787e-59f5-34ab-14d0-e0d5d3744dd3",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b596787e-59f5-34ab-14d0-e0d5d3744dd3",
+        "TargetNodeId": "e30f9220-cec5-fb76-c1d1-4bfd89c710dd",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b596787e-59f5-34ab-14d0-e0d5d3744dd3",
+        "TargetNodeId": "e30f9220-cec5-fb76-c1d1-4bfd89c710dd",
+        "SourceName": "XmlDocument",
+        "TargetName": "XmlDocument"
+      }
+    ],
+    "StartNodeId": "66989d27-eb66-ce8b-c221-73e552f5d858",
+    "DateCreated": "2017-11-22T13:38:44.3407215Z",
+    "DateUpdated": "2017-11-22T13:38:44.3407215Z",
+    "ActivityLogLevelMask": 0
+  }
+}

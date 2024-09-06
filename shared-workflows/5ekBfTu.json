@@ -1,0 +1,165 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "MySQL Query Example",
+    "Nodes": [
+      {
+        "NodeId": "510bf563-7b1c-9ee8-fe1b-557326c298b4",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f09cbc86-8967-dabf-461f-3badd996d657",
+        "Name": "MySqlQuery",
+        "Version": "3.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "MySQL Query",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Sql.MySql.MySqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "select * from contacts limit 10"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Result>\r\n  <Table>\r\n    <id>201</id>\r\n    <Contact>Priscilla Wooten</Contact>\r\n    <Company>Interdum PC</Company>\r\n    <Phone>1-906-569-1084</Phone>\r\n    <Country>Antarctica</Country>\r\n    <Email>nunc@enimnec.edu</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>202</id>\r\n    <Contact>Maryam Pate</Contact>\r\n    <Company>Imperdiet Non Industries</Company>\r\n    <Phone>1-683-328-9343</Phone>\r\n    <Country>Sweden</Country>\r\n    <Email>neque@eutempor.org</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>203</id>\r\n    <Contact>Audrey Davidson</Contact>\r\n    <Company>Gravida Praesent Consulting</Company>\r\n    <Phone>1-772-762-8735</Phone>\r\n    <Country>Finland</Country>\r\n    <Email>magna.Duis@Donecnibh.com</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>204</id>\r\n    <Contact>Zorita Blevins</Contact>\r\n    <Company>Mauris Vel Turpis Incorporated</Company>\r\n    <Phone>1-869-713-3148</Phone>\r\n    <Country>Montserrat</Country>\r\n    <Email>semper.cursus@eratEtiamvestibulum.co.uk</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>205</id>\r\n    <Contact>Noel Cortez</Contact>\r\n    <Company>Penatibus Et Magnis Ltd</Company>\r\n    <Phone>1-925-815-9513</Phone>\r\n    <Country>New Caledonia</Country>\r\n    <Email>ligula.Aenean@rutrumurna.co.uk</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>206</id>\r\n    <Contact>Gavin Webster</Contact>\r\n    <Company>Adipiscing Elit Aliquam Inc.</Company>\r\n    <Phone>1-682-115-2198</Phone>\r\n    <Country>Cape Verde</Country>\r\n    <Email>ut.nisi@aliquamarcuAliquam.net</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>207</id>\r\n    <Contact>Veronica Scott</Contact>\r\n    <Company>Porttitor Eros Nec Inc.</Company>\r\n    <Phone>1-988-422-0533</Phone>\r\n    <Country>Nauru</Country>\r\n    <Email>sit.amet@Cum.co.uk</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>208</id>\r\n    <Contact>Ainsley Romero</Contact>\r\n    <Company>Purus Corporation</Company>\r\n    <Phone>1-847-150-1946</Phone>\r\n    <Country>Azerbaijan</Country>\r\n    <Email>tincidunt.nibh.Phasellus@nonummy.ca</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>209</id>\r\n    <Contact>Kaitlin Hogan</Contact>\r\n    <Company>Tellus Suspendisse Sed Corporation</Company>\r\n    <Phone>1-289-782-1630</Phone>\r\n    <Country>American Samoa</Country>\r\n    <Email>odio@non.ca</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>210</id>\r\n    <Contact>Lois Oconnor</Contact>\r\n    <Company>Lacus Cras LLC</Company>\r\n    <Phone>1-774-825-5248</Phone>\r\n    <Country>Turkmenistan</Country>\r\n    <Email>ipsum@Fusce.co.uk</Email>\r\n  </Table>\r\n</Result>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "10"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "MySQL Query",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "510bf563-7b1c-9ee8-fe1b-557326c298b4",
+        "TargetNodeId": "f09cbc86-8967-dabf-461f-3badd996d657",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "510bf563-7b1c-9ee8-fe1b-557326c298b4",
+    "DateCreated": "2019-01-14T12:49:55.6720861Z",
+    "DateUpdated": "2019-01-14T12:49:55.6720861Z",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Parse HTTP Headers Example",
+    "Nodes": [
+      {
+        "NodeId": "e08d7958-9f83-6929-a807-8d6068173b64",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f737a693-fb3a-7bd3-5f0f-b4d71675e3b2",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "FgRequestHeaders",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Host: www.google.com\r\nConnection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\nSec-Fetch-Site: none\r\nSec-Fetch-Mode: navigate\r\nSec-Fetch-User: ?1\r\nSec-Fetch-Dest: document\r\nAccept-Encoding: gzip, deflate, br\r\nAccept-Language: en-US,en;q=0.9\r\n\r\n"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3458.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3e5cbfd7-f3ae-0d2d-34f8-2046648e9c5d",
+        "Name": "ParseHttpHeaders",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Headers",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "JsonDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"Host\": \"www.google.com\",\r\n  \"Connection\": \"keep-alive\",\r\n  \"Upgrade-Insecure-Requests\": \"1\",\r\n  \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36\",\r\n  \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\",\r\n  \"Sec-Fetch-Site\": \"none\",\r\n  \"Sec-Fetch-Mode\": \"navigate\",\r\n  \"Sec-Fetch-User\": \"?1\",\r\n  \"Sec-Fetch-Dest\": \"document\",\r\n  \"Accept-Encoding\": \"gzip, deflate, br\",\r\n  \"Accept-Language\": \"en-US,en;q=0.9\"\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 2,
+        "InteractFlags": 0,
+        "DisplayName": "Parse HTTP Headers",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "e08d7958-9f83-6929-a807-8d6068173b64",
+        "TargetNodeId": "3e5cbfd7-f3ae-0d2d-34f8-2046648e9c5d",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "f737a693-fb3a-7bd3-5f0f-b4d71675e3b2",
+        "TargetNodeId": "3e5cbfd7-f3ae-0d2d-34f8-2046648e9c5d",
+        "SourceName": "FgRequestHeaders",
+        "TargetName": "Headers"
+      }
+    ],
+    "StartNodeId": "e08d7958-9f83-6929-a807-8d6068173b64",
+    "DateCreated": "2020-07-20T12:58:18.4359811Z",
+    "DateUpdated": "2020-07-20T12:58:18.4359811Z",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,1096 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Query Statistic Example",
+    "Nodes": [
+      {
+        "NodeId": "06f3993d-bc2a-3855-0ed8-7759bb14ce22",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a00b403e-874a-bec6-d98f-ecf6da49c186",
+        "Name": "SaveStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Sample Group"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Key1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Success"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ac0bcc50-4797-3a50-1a16-eeb87e812d2f",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Run this Statistic Node a bunch of times with random keys and values to generate some data."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "23471f6f-1793-96e0-01a3-e498075a7332",
+        "Name": "Note",
+        "ShortDescription": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Match by hardcoded date range"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "da744851-8fcb-fd9a-50ea-b4535437c389",
+        "Name": "QueryStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "StartDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2010/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "EndDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2020/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchGroup",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Sample Group"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchStatus",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatusFilter",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success",
+              "Any"
+            ],
+            "Value": "Any"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.Statistic.QueryStatistic+Methods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "List",
+              "CountByValue",
+              "CountByStatus"
+            ],
+            "Value": "List"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Query Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "fdb0ba60-5fd2-b2ac-57e1-8eb0e5cfcaec",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Match by dynamic date (one day back)"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b7c62803-766d-76c2-7117-07b605208383",
+        "Name": "QueryStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "StartDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "0/0/-1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "EndDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "0/0/0"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchGroup",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Sample Group"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchStatus",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatusFilter",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success",
+              "Any"
+            ],
+            "Value": "Any"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.Statistic.QueryStatistic+Methods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "List",
+              "CountByValue",
+              "CountByStatus"
+            ],
+            "Value": "List"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Query Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "6770f10c-214f-0761-6130-6159e51a8d62",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Get only successful stats"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "525484e5-b918-ed7f-8fb8-26b43171bfc3",
+        "Name": "QueryStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "StartDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2010/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "EndDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2020/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchGroup",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Sample Group"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchStatus",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatusFilter",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success",
+              "Any"
+            ],
+            "Value": "Success"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.Statistic.QueryStatistic+Methods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "List",
+              "CountByValue",
+              "CountByStatus"
+            ],
+            "Value": "List"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Query Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "1c04deed-c3d2-550c-fa0e-0cdc90ae9c7f",
+        "Name": "QueryStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "StartDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2010/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "EndDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2020/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchGroup",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Sample Group"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchStatus",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatusFilter",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success",
+              "Any"
+            ],
+            "Value": "Any"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.Statistic.QueryStatistic+Methods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "List",
+              "CountByValue",
+              "CountByStatus"
+            ],
+            "Value": "CountByStatus"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Query Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "fc00c216-c914-169c-c30a-be44806b4ece",
+        "Name": "QueryStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "StartDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2010/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "EndDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2020/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchGroup",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Sample Group"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchStatus",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatusFilter",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success",
+              "Any"
+            ],
+            "Value": "Any"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.Statistic.QueryStatistic+Methods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "List",
+              "CountByValue",
+              "CountByStatus"
+            ],
+            "Value": "CountByValue"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Query Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f79f55e7-54e0-3038-b22a-4ea3b07188ed",
+        "Name": "QueryStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "StartDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2010/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "EndDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2020/01/01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchGroup",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Sample Group"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Key1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "MatchStatus",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatusFilter",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success",
+              "Any"
+            ],
+            "Value": "Any"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.Statistic.QueryStatistic+Methods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "List",
+              "CountByValue",
+              "CountByStatus"
+            ],
+            "Value": "List"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8235.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Query Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "607a32fd-0619-e288-3b7d-092a35fb98b9",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Get counts of stats by status"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e6949ee9-579e-2f8d-128d-4c4544f52d49",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Get count of stats by value"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "25039747-0827-763a-9f1b-54d1e63c1634",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Get stat with specific key"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8235.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "06f3993d-bc2a-3855-0ed8-7759bb14ce22",
+    "DateCreated": "2017-09-01T12:52:46.27",
+    "DateUpdated": "2017-09-01T12:52:46.27",
+    "ActivityLogLevelMask": 0
+  }
+}

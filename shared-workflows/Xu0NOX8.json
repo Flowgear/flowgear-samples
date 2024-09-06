@@ -1,0 +1,1176 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Cloud Blue Connect Orders --> Salesforce Orders",
+    "Nodes": [
+      {
+        "NodeId": "557da623-78c3-9085-70c4-6915d588c851",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3900.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d41533f1-fc74-d8ef-e1d1-300c859a9bbb",
+        "Name": "QuickMap",
+        "ShortDescription": "Prep Sales Order Line",
+        "Version": "4.0.0.25",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": \"PR-5845-4019-9270-001\",\r\n  \"type\": \"purchase\",\r\n  \"note\": \"\",\r\n  \"asset\": {\r\n    \"id\": \"AS-5845-4019-9270\",\r\n    \"status\": \"processing\",\r\n    \"external_id\": \"6765757577\",\r\n    \"external_uid\": \"445499bf-16fd-4489-9f6a-7946dbabd313\",\r\n    \"product\": {\r\n      \"id\": \"PRD-140-766-671\",\r\n      \"icon\": \"/media/VA-396-846/PRD-140-766-671/media/PRD-140-766-671-logo.png\",\r\n      \"name\": \"Salesforce CRM\",\r\n      \"status\": \"published\"\r\n    },\r\n    \"connection\": {\r\n      \"id\": \"CT-4342-5345\",\r\n      \"type\": \"test\",\r\n      \"status\": \"approved\",\r\n      \"provider\": {\r\n        \"id\": \"PA-608-164\",\r\n        \"name\": \"Connect Demos\"\r\n      },\r\n      \"vendor\": {\r\n        \"id\": \"VA-396-846\",\r\n        \"name\": \"Connect Demos Zapier Extension\"\r\n      },\r\n      \"hub\": {\r\n        \"id\": \"HB-7526-3908\",\r\n        \"name\": \"Connect Demos Hub\"\r\n      },\r\n      \"created_at\": \"2020-03-25T17:46:28+00:00\"\r\n    },\r\n    \"events\": {\r\n      \"created\": {\r\n        \"at\": \"2020-04-15T12:49:18+00:00\"\r\n      },\r\n      \"updated\": {\r\n        \"at\": \"2020-05-25T09:58:13+00:00\"\r\n      }\r\n    },\r\n    \"items\": [\r\n      {\r\n        \"id\": \"SKU_A\",\r\n        \"global_id\": \"PRD-140-766-671-0001\",\r\n        \"mpn\": \"Essentials\",\r\n        \"old_quantity\": \"0\",\r\n        \"quantity\": \"22\",\r\n        \"type\": \"Items\",\r\n        \"display_name\": \"Essentials\",\r\n        \"period\": \"Monthly\",\r\n        \"item_type\": \"Reservation\"\r\n      }\r\n    ],\r\n    \"params\": [\r\n      {\r\n        \"id\": \"param_a\",\r\n        \"name\": \"param_a\",\r\n        \"type\": \"text\",\r\n        \"description\": \"Description of the Parameter A\",\r\n        \"value\": \"\",\r\n        \"value_error\": \"\",\r\n        \"title\": \"Title of the Parameter A\",\r\n        \"constraints\": {\r\n          \"meta\": {},\r\n          \"reconciliation\": false,\r\n          \"required\": false\r\n        }\r\n      },\r\n      {\r\n        \"id\": \"param_b\",\r\n        \"name\": \"param_b\",\r\n        \"type\": \"text\",\r\n        \"description\": \"Description of the Parameter B\",\r\n        \"value\": \"\",\r\n        \"value_error\": \"\",\r\n        \"title\": \"Title of the Parameter B\",\r\n        \"constraints\": {\r\n          \"meta\": {},\r\n          \"reconciliation\": false,\r\n          \"required\": false\r\n        }\r\n      }\r\n    ],\r\n    \"tiers\": {\r\n      \"customer\": {\r\n        \"id\": \"TA-7816-5465-8922\",\r\n        \"external_id\": \"565656\",\r\n        \"external_uid\": \"d18d7e69-6b9b-4b1a-9947-cab2fde82f50\",\r\n        \"name\": \"cust_company\",\r\n        \"contact_info\": {\r\n          \"address_line1\": \"cust_address\",\r\n          \"address_line2\": null,\r\n          \"city\": \"cust_city\",\r\n          \"state\": \"cust_state\",\r\n          \"postal_code\": \"22222\",\r\n          \"country\": \"IT\",\r\n          \"contact\": {\r\n            \"first_name\": \"cust_name\",\r\n            \"last_name\": \"cust_last\",\r\n            \"email\": \"martin.constante@ingrammicro.com\",\r\n            \"phone_number\": {\r\n              \"country_code\": \"+39\",\r\n              \"area_code\": \"081\",\r\n              \"phone_number\": \"7434329\",\r\n              \"extension\": \"\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"tier1\": {\r\n        \"id\": \"TA-1904-1738-3278\",\r\n        \"external_id\": \"1234\",\r\n        \"external_uid\": \"861b5a27-d98c-4f10-b122-52e5b0ce438d\",\r\n        \"name\": \"Perutto Inc\",\r\n        \"contact_info\": {\r\n          \"address_line1\": \"cust_address\",\r\n          \"address_line2\": null,\r\n          \"city\": \"cust_city\",\r\n          \"state\": \"cust_state\",\r\n          \"postal_code\": \"22222\",\r\n          \"country\": \"ES\",\r\n          \"contact\": {\r\n            \"first_name\": \"cust_name\",\r\n            \"last_name\": \"cust_last\",\r\n            \"email\": \"martin.constante@gmail.com\",\r\n            \"phone_number\": {\r\n              \"country_code\": \"+39\",\r\n              \"area_code\": \"081\",\r\n              \"phone_number\": \"7434329\",\r\n              \"extension\": \"\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"tier2\": {}\r\n    },\r\n    \"configuration\": {\r\n      \"params\": []\r\n    },\r\n    \"marketplace\": {\r\n      \"id\": \"MP-00000\",\r\n      \"name\": \"None\"\r\n    },\r\n    \"contract\": {\r\n      \"id\": \"CRD-00000-00000-00000\",\r\n      \"name\": \"None\"\r\n    }\r\n  },\r\n  \"reason\": \"\",\r\n  \"status\": \"pending\",\r\n  \"created\": \"2020-04-15T12:49:18+00:00\",\r\n  \"updated\": \"2020-05-25T09:58:13+00:00\",\r\n  \"answered\": false,\r\n  \"assignee\": {\r\n    \"id\": \"UR-038-922-171\",\r\n    \"name\": \"Jan-Hendrik Benter\",\r\n    \"email\": \"janhendrik.benter@ingrammicro.com\"\r\n  },\r\n  \"activation_key\": \"\",\r\n  \"external_attributes\": {},\r\n  \"marketplace\": {\r\n    \"id\": \"MP-00000\",\r\n    \"name\": \"None\"\r\n  },\r\n  \"contract\": {\r\n    \"id\": \"CRD-00000-00000-00000\",\r\n    \"name\": \"None\"\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"asset/product/id\"],\"targetPath\":\"Request/OrderItem/Product2Id\",\"mapExpression\":\"LOOKUP(FIRST({id}),\\\"Products\\\",\\\"CBItem\\\", \\\"SfItem\\\", \\\"\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Request/OrderItem/OrderId\",\"mapExpression\":\"GETVALUE(\\\"OrderID\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Request/OrderItem/PricebookEntryId\",\"mapExpression\":\"\\\"01u0Y000001TtP4QAK\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Request/OrderItem/Quantity\",\"mapExpression\":\"1\"},{\"sourcePaths\":[],\"targetPath\":\"Request/OrderItem/UnitPrice\",\"mapExpression\":\"1000\"}],\"sourceSchema\":\"{\\r\\n  \\\"id\\\": \\\"PR-5845-4019-9270-001\\\",\\r\\n  \\\"type\\\": \\\"purchase\\\",\\r\\n  \\\"note\\\": \\\"\\\",\\r\\n  \\\"asset\\\": {\\r\\n    \\\"id\\\": \\\"AS-5845-4019-9270\\\",\\r\\n    \\\"status\\\": \\\"processing\\\",\\r\\n    \\\"external_id\\\": \\\"6765757577\\\",\\r\\n    \\\"external_uid\\\": \\\"445499bf-16fd-4489-9f6a-7946dbabd313\\\",\\r\\n    \\\"product\\\": {\\r\\n      \\\"id\\\": \\\"PRD-140-766-671\\\",\\r\\n      \\\"icon\\\": \\\"/media/VA-396-846/PRD-140-766-671/media/PRD-140-766-671-logo.png\\\",\\r\\n      \\\"name\\\": \\\"Salesforce CRM\\\",\\r\\n      \\\"status\\\": \\\"published\\\"\\r\\n    },\\r\\n    \\\"connection\\\": {\\r\\n      \\\"id\\\": \\\"CT-4342-5345\\\",\\r\\n      \\\"type\\\": \\\"test\\\",\\r\\n      \\\"status\\\": \\\"approved\\\",\\r\\n      \\\"provider\\\": {\\r\\n        \\\"id\\\": \\\"PA-608-164\\\",\\r\\n        \\\"name\\\": \\\"Connect Demos\\\"\\r\\n      },\\r\\n      \\\"vendor\\\": {\\r\\n        \\\"id\\\": \\\"VA-396-846\\\",\\r\\n        \\\"name\\\": \\\"Connect Demos Zapier Extension\\\"\\r\\n      },\\r\\n      \\\"hub\\\": {\\r\\n        \\\"id\\\": \\\"HB-7526-3908\\\",\\r\\n        \\\"name\\\": \\\"Connect Demos Hub\\\"\\r\\n      },\\r\\n      \\\"created_at\\\": \\\"2020-03-25T17:46:28+00:00\\\"\\r\\n    },\\r\\n    \\\"events\\\": {\\r\\n      \\\"created\\\": {\\r\\n        \\\"at\\\": \\\"2020-04-15T12:49:18+00:00\\\"\\r\\n      },\\r\\n      \\\"updated\\\": {\\r\\n        \\\"at\\\": \\\"2020-05-25T09:58:13+00:00\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"items\\\": [\\r\\n      {\\r\\n        \\\"id\\\": \\\"SKU_A\\\",\\r\\n        \\\"global_id\\\": \\\"PRD-140-766-671-0001\\\",\\r\\n        \\\"mpn\\\": \\\"Essentials\\\",\\r\\n        \\\"old_quantity\\\": \\\"0\\\",\\r\\n        \\\"quantity\\\": \\\"22\\\",\\r\\n        \\\"type\\\": \\\"Items\\\",\\r\\n        \\\"display_name\\\": \\\"Essentials\\\",\\r\\n        \\\"period\\\": \\\"Monthly\\\",\\r\\n        \\\"item_type\\\": \\\"Reservation\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"params\\\": [\\r\\n      {\\r\\n        \\\"id\\\": \\\"param_a\\\",\\r\\n        \\\"name\\\": \\\"param_a\\\",\\r\\n        \\\"type\\\": \\\"text\\\",\\r\\n        \\\"description\\\": \\\"Description of the Parameter A\\\",\\r\\n        \\\"value\\\": \\\"\\\",\\r\\n        \\\"value_error\\\": \\\"\\\",\\r\\n        \\\"title\\\": \\\"Title of the Parameter A\\\",\\r\\n        \\\"constraints\\\": {\\r\\n          \\\"meta\\\": {},\\r\\n          \\\"reconciliation\\\": false,\\r\\n          \\\"required\\\": false\\r\\n        }\\r\\n      },\\r\\n      {\\r\\n        \\\"id\\\": \\\"param_b\\\",\\r\\n        \\\"name\\\": \\\"param_b\\\",\\r\\n        \\\"type\\\": \\\"text\\\",\\r\\n        \\\"description\\\": \\\"Description of the Parameter B\\\",\\r\\n        \\\"value\\\": \\\"\\\",\\r\\n        \\\"value_error\\\": \\\"\\\",\\r\\n        \\\"title\\\": \\\"Title of the Parameter B\\\",\\r\\n        \\\"constraints\\\": {\\r\\n          \\\"meta\\\": {},\\r\\n          \\\"reconciliation\\\": false,\\r\\n          \\\"required\\\": false\\r\\n        }\\r\\n      }\\r\\n    ],\\r\\n    \\\"tiers\\\": {\\r\\n      \\\"customer\\\": {\\r\\n        \\\"id\\\": \\\"TA-7816-5465-8922\\\",\\r\\n        \\\"external_id\\\": \\\"565656\\\",\\r\\n        \\\"external_uid\\\": \\\"d18d7e69-6b9b-4b1a-9947-cab2fde82f50\\\",\\r\\n        \\\"name\\\": \\\"cust_company\\\",\\r\\n        \\\"contact_info\\\": {\\r\\n          \\\"address_line1\\\": \\\"cust_address\\\",\\r\\n          \\\"address_line2\\\": null,\\r\\n          \\\"city\\\": \\\"cust_city\\\",\\r\\n          \\\"state\\\": \\\"cust_state\\\",\\r\\n          \\\"postal_code\\\": \\\"22222\\\",\\r\\n          \\\"country\\\": \\\"IT\\\",\\r\\n          \\\"contact\\\": {\\r\\n            \\\"first_name\\\": \\\"cust_name\\\",\\r\\n            \\\"last_name\\\": \\\"cust_last\\\",\\r\\n            \\\"email\\\": \\\"martin.constante@ingrammicro.com\\\",\\r\\n            \\\"phone_number\\\": {\\r\\n              \\\"country_code\\\": \\\"+39\\\",\\r\\n              \\\"area_code\\\": \\\"081\\\",\\r\\n              \\\"phone_number\\\": \\\"7434329\\\",\\r\\n              \\\"extension\\\": \\\"\\\"\\r\\n            }\\r\\n          }\\r\\n        }\\r\\n      },\\r\\n      \\\"tier1\\\": {\\r\\n        \\\"id\\\": \\\"TA-1904-1738-3278\\\",\\r\\n        \\\"external_id\\\": \\\"1234\\\",\\r\\n        \\\"external_uid\\\": \\\"861b5a27-d98c-4f10-b122-52e5b0ce438d\\\",\\r\\n        \\\"name\\\": \\\"Perutto Inc\\\",\\r\\n        \\\"contact_info\\\": {\\r\\n          \\\"address_line1\\\": \\\"cust_address\\\",\\r\\n          \\\"address_line2\\\": null,\\r\\n          \\\"city\\\": \\\"cust_city\\\",\\r\\n          \\\"state\\\": \\\"cust_state\\\",\\r\\n          \\\"postal_code\\\": \\\"22222\\\",\\r\\n          \\\"country\\\": \\\"ES\\\",\\r\\n          \\\"contact\\\": {\\r\\n            \\\"first_name\\\": \\\"cust_name\\\",\\r\\n            \\\"last_name\\\": \\\"cust_last\\\",\\r\\n            \\\"email\\\": \\\"martin.constante@gmail.com\\\",\\r\\n            \\\"phone_number\\\": {\\r\\n              \\\"country_code\\\": \\\"+39\\\",\\r\\n              \\\"area_code\\\": \\\"081\\\",\\r\\n              \\\"phone_number\\\": \\\"7434329\\\",\\r\\n              \\\"extension\\\": \\\"\\\"\\r\\n            }\\r\\n          }\\r\\n        }\\r\\n      },\\r\\n      \\\"tier2\\\": {}\\r\\n    },\\r\\n    \\\"configuration\\\": {\\r\\n      \\\"params\\\": []\\r\\n    },\\r\\n    \\\"marketplace\\\": {\\r\\n      \\\"id\\\": \\\"MP-00000\\\",\\r\\n      \\\"name\\\": \\\"None\\\"\\r\\n    },\\r\\n    \\\"contract\\\": {\\r\\n      \\\"id\\\": \\\"CRD-00000-00000-00000\\\",\\r\\n      \\\"name\\\": \\\"None\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"reason\\\": \\\"\\\",\\r\\n  \\\"status\\\": \\\"pending\\\",\\r\\n  \\\"created\\\": \\\"2020-04-15T12:49:18+00:00\\\",\\r\\n  \\\"updated\\\": \\\"2020-05-25T09:58:13+00:00\\\",\\r\\n  \\\"answered\\\": false,\\r\\n  \\\"assignee\\\": {\\r\\n    \\\"id\\\": \\\"UR-038-922-171\\\",\\r\\n    \\\"name\\\": \\\"Jan-Hendrik Benter\\\",\\r\\n    \\\"email\\\": \\\"janhendrik.benter@ingrammicro.com\\\"\\r\\n  },\\r\\n  \\\"activation_key\\\": \\\"\\\",\\r\\n  \\\"external_attributes\\\": {},\\r\\n  \\\"marketplace\\\": {\\r\\n    \\\"id\\\": \\\"MP-00000\\\",\\r\\n    \\\"name\\\": \\\"None\\\"\\r\\n  },\\r\\n  \\\"contract\\\": {\\r\\n    \\\"id\\\": \\\"CRD-00000-00000-00000\\\",\\r\\n    \\\"name\\\": \\\"None\\\"\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema attributeFormDefault=\\\"unqualified\\\" elementFormDefault=\\\"qualified\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:element name=\\\"Request\\\">\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:element name=\\\"OrderItem\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"Product2Id\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"IsDeleted\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OrderId\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"PricebookEntryId\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OriginalOrderItemId\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"AvailableQuantity\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"UnitPrice\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ListPrice\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"TotalPrice\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ServiceDate\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"EndDate\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CreatedDate\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CreatedById\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"LastModifiedDate\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"LastModifiedById\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"SystemModstamp\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OrderItemNumber\\\" type=\\\"xs:string\\\" />\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\"targetSchemaType\":1}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Auto",
+              "Json",
+              "Xml"
+            ],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Products",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Products>\r\n  <Product>\r\n    <SfItem>01t0Y000001HEVeQAO</SfItem>\r\n    <CBItem>PRD-140-766-671</CBItem>\r\n  </Product>\r\n  <Product>\r\n    <SfItem>01t0Y000001HEVeQAO</SfItem>\r\n    <CBItem>PRD-411-306-010</CBItem>\r\n  </Product>\r\n</Products>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OrderID",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "8011v00000GfuFqAAJ"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 3900.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d3ea40ee-68ef-b772-0ba0-ba862ea7a158",
+        "Name": "SetKeyValue",
+        "ShortDescription": "Sucess",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "SFOrder"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.KeyValue.SetKeyValue+KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Success"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8540.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Set Key-Value",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "5159d283-bc35-7459-ef96-85d8ff22c278",
+        "Name": "SetKeyValue",
+        "ShortDescription": "Failure",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "SFOrder"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.KeyValue.SetKeyValue+KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Error"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8540.0,
+          "Y": 4316.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Set Key-Value",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "2351396c-7a37-aef6-487a-c7f934666fa1",
+        "Name": "IfEqual",
+        "ShortDescription": "Order Created?",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression1",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "false"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchNotEqual",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsEqual",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930.0,
+          "Y": 3900.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "If Equal",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "55e21bd5-4cb9-9fd4-a266-0fe9ff3118e0",
+        "Name": "CloudBlueConnect",
+        "ShortDescription": "Get Pending Orders (Requests)",
+        "Version": "1.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Url",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "FlowgearToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ReturnRestFailureResponses",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "CloudBlue Connect July 2020",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.CloudBlueConnect.CloudBlueConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "8349ce74-51b1-24ff-af63-ec6d633fd5ec"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "request_list_listRequests"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseCode",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseHeaders",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "status",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "pending"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3900.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "CloudBlue Connect",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ca6ff45c-165b-f368-11de-6abf248422bc",
+        "Name": "ForEach",
+        "ShortDescription": "Split Requests",
+        "Version": "1.0.0.9",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "ParentNode",
+              "ParentAndRootNodes"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Item",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"id\":\"PR-6559-2572-5099-001\",\"type\":\"purchase\",\"note\":\"\",\"asset\":{\"id\":\"AS-6559-2572-5099\",\"status\":\"processing\",\"external_id\":\"FLF178BF0N\",\"external_uid\":\"3f1ec41e-6dd9-46e1-be46-979a2e4a45eb\",\"product\":{\"id\":\"PRD-411-306-010\",\"icon\":\"/media/VA-605-303/PRD-411-306-010/media/PRD-411-306-010-logo.png\",\"name\":\"fgtestproduct\",\"status\":\"draft\"},\"connection\":{\"id\":\"CT-0000-0000-0000\",\"provider\":{\"id\":\"PA-239-689\",\"name\":\"Ingram Micro Cloud\"},\"vendor\":{\"id\":\"VA-605-303\",\"name\":\"Flowgear\"},\"type\":\"preview\",\"hub\":{\"id\":\"HB-0000-0000\",\"name\":\"None\"}},\"events\":{\"created\":{\"at\":\"2020-07-15T11:08:03+00:00\"},\"updated\":{\"at\":\"2020-07-15T11:08:03+00:00\"}},\"items\":[{\"id\":\"PRD_411_306_010_0001\",\"global_id\":\"PRD-411-306-010-0001\",\"mpn\":\"MPN-A\",\"old_quantity\":\"0\",\"quantity\":\"15\",\"type\":\"Gb\",\"display_name\":\"Prd 411 306 010 0001\",\"period\":\"Monthly\",\"item_type\":\"Reservation\"},{\"id\":\"PRD_411_306_010_0002\",\"global_id\":\"PRD-411-306-010-0002\",\"mpn\":\"MPN-B\",\"old_quantity\":\"0\",\"quantity\":\"14\",\"type\":\"Devices\",\"display_name\":\"Prd 411 306 010 0002\",\"period\":\"Monthly\",\"item_type\":\"Reservation\"}],\"params\":[],\"tiers\":{\"customer\":{\"id\":\"TA-3389-0969-5765\",\"external_id\":\"42174\",\"external_uid\":\"6f565e4d-d3dc-4782-adc2-39405432d056\",\"name\":\"Miller, Kessler and Keebler\",\"tax_id\":\"NTWUVIHOXJ\",\"contact_info\":{\"address_line1\":\"Schulist Landing\",\"address_line2\":\"Myrtice Plains\",\"city\":\"Ceuta\",\"state\":\"Ceuta\",\"postal_code\":\"51004\",\"country\":\"ES\",\"contact\":{\"first_name\":\"Clovis\",\"last_name\":\"Farrell\",\"email\":\"daniel+Clovis_Farrell@flowgear.net\",\"phone_number\":{\"country_code\":\"+34\",\"area_code\":\"810\",\"phone_number\":\"123456\",\"extension\":\"\"}}}},\"tier1\":{\"id\":\"TA-6947-8914-8564\",\"external_id\":\"41092\",\"external_uid\":\"2180c9ba-69cf-478c-8bf5-6b083638e65c\",\"name\":\"Donnelly, Effertz and Gerhold\",\"tax_id\":\"EIOHNNK0X5\",\"contact_info\":{\"address_line1\":\"Dietrich Heights\",\"address_line2\":\"Halvorson Divide\",\"city\":\"Ceuta\",\"state\":\"Ceuta\",\"postal_code\":\"51004\",\"country\":\"ES\",\"contact\":{\"first_name\":\"Myriam\",\"last_name\":\"Konopelski\",\"email\":\"daniel+Myriam_Konopelski@flowgear.net\",\"phone_number\":{\"country_code\":\"+34\",\"area_code\":\"810\",\"phone_number\":\"123456\",\"extension\":\"\"}}}},\"tier2\":{}},\"configuration\":{\"params\":[]},\"marketplace\":{\"id\":\"MP-20348\",\"name\":\"Spain\",\"icon\":\"/media/PA-239-689/marketplaces/MP-20348/icon.png\"},\"contract\":{\"id\":\"CRD-00000-00000-00000\",\"name\":\"None\"}},\"reason\":\"\",\"status\":\"pending\",\"created\":\"2020-07-15T11:08:03+00:00\",\"updated\":\"2020-07-15T11:08:03+00:00\",\"answered\":false,\"assignee\":\"\",\"activation_key\":\"\",\"external_attributes\":{},\"marketplace\":{\"id\":\"MP-20348\",\"name\":\"Spain\",\"icon\":\"/media/PA-239-689/marketplaces/MP-20348/icon.png\"},\"contract\":{\"id\":\"CRD-00000-00000-00000\",\"name\":\"None\"}}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemIndex",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemCount",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Item",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3900.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "For Each",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d8f32aeb-458f-62c7-b40c-27cc6a115d13",
+        "Name": "QuickMap",
+        "ShortDescription": "Prep Order",
+        "Version": "4.0.0.25",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": \"PR-6579-3460-8347-001\",\r\n  \"type\": \"purchase\",\r\n  \"note\": \"\",\r\n  \"asset\": {\r\n    \"id\": \"AS-6579-3460-8347\",\r\n    \"status\": \"processing\",\r\n    \"external_id\": \"74S1T7MLK3\",\r\n    \"external_uid\": \"d22b5306-7ecd-4952-ada5-a4d097ff5298\",\r\n    \"product\": {\r\n      \"id\": \"PRD-411-306-010\",\r\n      \"icon\": \"/media/VA-605-303/PRD-411-306-010/media/PRD-411-306-010-logo.png\",\r\n      \"name\": \"fgtestproduct\",\r\n      \"status\": \"draft\"\r\n    },\r\n    \"connection\": {\r\n      \"id\": \"CT-0000-0000-0000\",\r\n      \"provider\": {\r\n        \"id\": \"PA-239-689\",\r\n        \"name\": \"Ingram Micro Cloud\"\r\n      },\r\n      \"vendor\": {\r\n        \"id\": \"VA-605-303\",\r\n        \"name\": \"Flowgear\"\r\n      },\r\n      \"type\": \"preview\",\r\n      \"hub\": {\r\n        \"id\": \"HB-0000-0000\",\r\n        \"name\": \"None\"\r\n      }\r\n    },\r\n    \"events\": {\r\n      \"created\": {\r\n        \"at\": \"2020-07-15T11:05:22+00:00\"\r\n      },\r\n      \"updated\": {\r\n        \"at\": \"2020-07-15T11:05:22+00:00\"\r\n      }\r\n    },\r\n    \"items\": [\r\n      {\r\n        \"id\": \"PRD_411_306_010_0001\",\r\n        \"global_id\": \"PRD-411-306-010-0001\",\r\n        \"mpn\": \"MPN-A\",\r\n        \"old_quantity\": \"0\",\r\n        \"quantity\": \"31\",\r\n        \"type\": \"Gb\",\r\n        \"display_name\": \"Prd 411 306 010 0001\",\r\n        \"period\": \"Monthly\",\r\n        \"item_type\": \"Reservation\"\r\n      },\r\n      {\r\n        \"id\": \"PRD_411_306_010_0002\",\r\n        \"global_id\": \"PRD-411-306-010-0002\",\r\n        \"mpn\": \"MPN-B\",\r\n        \"old_quantity\": \"0\",\r\n        \"quantity\": \"51\",\r\n        \"type\": \"Devices\",\r\n        \"display_name\": \"Prd 411 306 010 0002\",\r\n        \"period\": \"Monthly\",\r\n        \"item_type\": \"Reservation\"\r\n      }\r\n    ],\r\n    \"params\": [],\r\n    \"tiers\": {\r\n      \"customer\": {\r\n        \"id\": \"TA-3389-0969-5765\",\r\n        \"external_id\": \"42174\",\r\n        \"external_uid\": \"6f565e4d-d3dc-4782-adc2-39405432d056\",\r\n        \"name\": \"Miller, Kessler and Keebler\",\r\n        \"tax_id\": \"NTWUVIHOXJ\",\r\n        \"contact_info\": {\r\n          \"address_line1\": \"Schulist Landing\",\r\n          \"address_line2\": \"Myrtice Plains\",\r\n          \"city\": \"Ceuta\",\r\n          \"state\": \"Ceuta\",\r\n          \"postal_code\": \"51004\",\r\n          \"country\": \"ES\",\r\n          \"contact\": {\r\n            \"first_name\": \"Clovis\",\r\n            \"last_name\": \"Farrell\",\r\n            \"email\": \"daniel+Clovis_Farrell@flowgear.net\",\r\n            \"phone_number\": {\r\n              \"country_code\": \"+34\",\r\n              \"area_code\": \"810\",\r\n              \"phone_number\": \"123456\",\r\n              \"extension\": \"\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"tier1\": {\r\n        \"id\": \"TA-6947-8914-8564\",\r\n        \"external_id\": \"41092\",\r\n        \"external_uid\": \"2180c9ba-69cf-478c-8bf5-6b083638e65c\",\r\n        \"name\": \"Donnelly, Effertz and Gerhold\",\r\n        \"tax_id\": \"EIOHNNK0X5\",\r\n        \"contact_info\": {\r\n          \"address_line1\": \"Dietrich Heights\",\r\n          \"address_line2\": \"Halvorson Divide\",\r\n          \"city\": \"Ceuta\",\r\n          \"state\": \"Ceuta\",\r\n          \"postal_code\": \"51004\",\r\n          \"country\": \"ES\",\r\n          \"contact\": {\r\n            \"first_name\": \"Myriam\",\r\n            \"last_name\": \"Konopelski\",\r\n            \"email\": \"daniel+Myriam_Konopelski@flowgear.net\",\r\n            \"phone_number\": {\r\n              \"country_code\": \"+34\",\r\n              \"area_code\": \"810\",\r\n              \"phone_number\": \"123456\",\r\n              \"extension\": \"\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"tier2\": {}\r\n    },\r\n    \"configuration\": {\r\n      \"params\": []\r\n    },\r\n    \"marketplace\": {\r\n      \"id\": \"MP-20348\",\r\n      \"name\": \"Spain\",\r\n      \"icon\": \"/media/PA-239-689/marketplaces/MP-20348/icon.png\"\r\n    },\r\n    \"contract\": {\r\n      \"id\": \"CRD-00000-00000-00000\",\r\n      \"name\": \"None\"\r\n    }\r\n  },\r\n  \"reason\": \"\",\r\n  \"status\": \"pending\",\r\n  \"created\": \"2020-07-15T11:05:22+00:00\",\r\n  \"updated\": \"2020-07-15T11:05:22+00:00\",\r\n  \"answered\": false,\r\n  \"assignee\": \"\",\r\n  \"activation_key\": \"\",\r\n  \"external_attributes\": {},\r\n  \"marketplace\": {\r\n    \"id\": \"MP-20348\",\r\n    \"name\": \"Spain\",\r\n    \"icon\": \"/media/PA-239-689/marketplaces/MP-20348/icon.png\"\r\n  },\r\n  \"contract\": {\r\n    \"id\": \"CRD-00000-00000-00000\",\r\n    \"name\": \"None\"\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[],\"targetPath\":\"Request/Order/ContractId\",\"mapExpression\":\"\\\"8001v000003wXt9AAE\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Request/Order/AccountId\",\"mapExpression\":\"\\\"0011v00002GRr1iAAD\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Request/Order/Pricebook2Id\",\"mapExpression\":\"\\\"01s0Y000003jtc8QAA\\\"\"},{\"sourcePaths\":[\"created\"],\"targetPath\":\"Request/Order/EffectiveDate\"},{\"sourcePaths\":[\"status\"],\"targetPath\":\"Request/Order/Status\",\"mapExpression\":\"IIF({status} = \\\"pending\\\", \\\"Draft\\\", \\\"\\\")\"},{\"sourcePaths\":[\"type\",\"asset/product/id\"],\"targetPath\":\"Request/Order/Description\",\"mapExpression\":\"{type} + \\\" of \\\" + FIRST({id})\"},{\"sourcePaths\":[\"id\"],\"targetPath\":\"Request/Order/Name\"},{\"sourcePaths\":[\"created\"],\"targetPath\":\"Request/Order/PoDate\"},{\"sourcePaths\":[],\"targetPath\":\"Request/Order/PoNumber\",\"mapExpression\":\"\\\"PO \\\" + TEXTVALUE(ROUND(RAND() * 100, 0))\"}],\"sourceSchema\":\"{\\r\\n  \\\"id\\\": \\\"PR-6579-3460-8347-001\\\",\\r\\n  \\\"type\\\": \\\"purchase\\\",\\r\\n  \\\"note\\\": \\\"\\\",\\r\\n  \\\"asset\\\": {\\r\\n    \\\"id\\\": \\\"AS-6579-3460-8347\\\",\\r\\n    \\\"status\\\": \\\"processing\\\",\\r\\n    \\\"external_id\\\": \\\"74S1T7MLK3\\\",\\r\\n    \\\"external_uid\\\": \\\"d22b5306-7ecd-4952-ada5-a4d097ff5298\\\",\\r\\n    \\\"product\\\": {\\r\\n      \\\"id\\\": \\\"PRD-411-306-010\\\",\\r\\n      \\\"icon\\\": \\\"/media/VA-605-303/PRD-411-306-010/media/PRD-411-306-010-logo.png\\\",\\r\\n      \\\"name\\\": \\\"fgtestproduct\\\",\\r\\n      \\\"status\\\": \\\"draft\\\"\\r\\n    },\\r\\n    \\\"connection\\\": {\\r\\n      \\\"id\\\": \\\"CT-0000-0000-0000\\\",\\r\\n      \\\"provider\\\": {\\r\\n        \\\"id\\\": \\\"PA-239-689\\\",\\r\\n        \\\"name\\\": \\\"Ingram Micro Cloud\\\"\\r\\n      },\\r\\n      \\\"vendor\\\": {\\r\\n        \\\"id\\\": \\\"VA-605-303\\\",\\r\\n        \\\"name\\\": \\\"Flowgear\\\"\\r\\n      },\\r\\n      \\\"type\\\": \\\"preview\\\",\\r\\n      \\\"hub\\\": {\\r\\n        \\\"id\\\": \\\"HB-0000-0000\\\",\\r\\n        \\\"name\\\": \\\"None\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"events\\\": {\\r\\n      \\\"created\\\": {\\r\\n        \\\"at\\\": \\\"2020-07-15T11:05:22+00:00\\\"\\r\\n      },\\r\\n      \\\"updated\\\": {\\r\\n        \\\"at\\\": \\\"2020-07-15T11:05:22+00:00\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"items\\\": [\\r\\n      {\\r\\n        \\\"id\\\": \\\"PRD_411_306_010_0001\\\",\\r\\n        \\\"global_id\\\": \\\"PRD-411-306-010-0001\\\",\\r\\n        \\\"mpn\\\": \\\"MPN-A\\\",\\r\\n        \\\"old_quantity\\\": \\\"0\\\",\\r\\n        \\\"quantity\\\": \\\"31\\\",\\r\\n        \\\"type\\\": \\\"Gb\\\",\\r\\n        \\\"display_name\\\": \\\"Prd 411 306 010 0001\\\",\\r\\n        \\\"period\\\": \\\"Monthly\\\",\\r\\n        \\\"item_type\\\": \\\"Reservation\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"id\\\": \\\"PRD_411_306_010_0002\\\",\\r\\n        \\\"global_id\\\": \\\"PRD-411-306-010-0002\\\",\\r\\n        \\\"mpn\\\": \\\"MPN-B\\\",\\r\\n        \\\"old_quantity\\\": \\\"0\\\",\\r\\n        \\\"quantity\\\": \\\"51\\\",\\r\\n        \\\"type\\\": \\\"Devices\\\",\\r\\n        \\\"display_name\\\": \\\"Prd 411 306 010 0002\\\",\\r\\n        \\\"period\\\": \\\"Monthly\\\",\\r\\n        \\\"item_type\\\": \\\"Reservation\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"params\\\": [],\\r\\n    \\\"tiers\\\": {\\r\\n      \\\"customer\\\": {\\r\\n        \\\"id\\\": \\\"TA-3389-0969-5765\\\",\\r\\n        \\\"external_id\\\": \\\"42174\\\",\\r\\n        \\\"external_uid\\\": \\\"6f565e4d-d3dc-4782-adc2-39405432d056\\\",\\r\\n        \\\"name\\\": \\\"Miller, Kessler and Keebler\\\",\\r\\n        \\\"tax_id\\\": \\\"NTWUVIHOXJ\\\",\\r\\n        \\\"contact_info\\\": {\\r\\n          \\\"address_line1\\\": \\\"Schulist Landing\\\",\\r\\n          \\\"address_line2\\\": \\\"Myrtice Plains\\\",\\r\\n          \\\"city\\\": \\\"Ceuta\\\",\\r\\n          \\\"state\\\": \\\"Ceuta\\\",\\r\\n          \\\"postal_code\\\": \\\"51004\\\",\\r\\n          \\\"country\\\": \\\"ES\\\",\\r\\n          \\\"contact\\\": {\\r\\n            \\\"first_name\\\": \\\"Clovis\\\",\\r\\n            \\\"last_name\\\": \\\"Farrell\\\",\\r\\n            \\\"email\\\": \\\"daniel+Clovis_Farrell@flowgear.net\\\",\\r\\n            \\\"phone_number\\\": {\\r\\n              \\\"country_code\\\": \\\"+34\\\",\\r\\n              \\\"area_code\\\": \\\"810\\\",\\r\\n              \\\"phone_number\\\": \\\"123456\\\",\\r\\n              \\\"extension\\\": \\\"\\\"\\r\\n            }\\r\\n          }\\r\\n        }\\r\\n      },\\r\\n      \\\"tier1\\\": {\\r\\n        \\\"id\\\": \\\"TA-6947-8914-8564\\\",\\r\\n        \\\"external_id\\\": \\\"41092\\\",\\r\\n        \\\"external_uid\\\": \\\"2180c9ba-69cf-478c-8bf5-6b083638e65c\\\",\\r\\n        \\\"name\\\": \\\"Donnelly, Effertz and Gerhold\\\",\\r\\n        \\\"tax_id\\\": \\\"EIOHNNK0X5\\\",\\r\\n        \\\"contact_info\\\": {\\r\\n          \\\"address_line1\\\": \\\"Dietrich Heights\\\",\\r\\n          \\\"address_line2\\\": \\\"Halvorson Divide\\\",\\r\\n          \\\"city\\\": \\\"Ceuta\\\",\\r\\n          \\\"state\\\": \\\"Ceuta\\\",\\r\\n          \\\"postal_code\\\": \\\"51004\\\",\\r\\n          \\\"country\\\": \\\"ES\\\",\\r\\n          \\\"contact\\\": {\\r\\n            \\\"first_name\\\": \\\"Myriam\\\",\\r\\n            \\\"last_name\\\": \\\"Konopelski\\\",\\r\\n            \\\"email\\\": \\\"daniel+Myriam_Konopelski@flowgear.net\\\",\\r\\n            \\\"phone_number\\\": {\\r\\n              \\\"country_code\\\": \\\"+34\\\",\\r\\n              \\\"area_code\\\": \\\"810\\\",\\r\\n              \\\"phone_number\\\": \\\"123456\\\",\\r\\n              \\\"extension\\\": \\\"\\\"\\r\\n            }\\r\\n          }\\r\\n        }\\r\\n      },\\r\\n      \\\"tier2\\\": {}\\r\\n    },\\r\\n    \\\"configuration\\\": {\\r\\n      \\\"params\\\": []\\r\\n    },\\r\\n    \\\"marketplace\\\": {\\r\\n      \\\"id\\\": \\\"MP-20348\\\",\\r\\n      \\\"name\\\": \\\"Spain\\\",\\r\\n      \\\"icon\\\": \\\"/media/PA-239-689/marketplaces/MP-20348/icon.png\\\"\\r\\n    },\\r\\n    \\\"contract\\\": {\\r\\n      \\\"id\\\": \\\"CRD-00000-00000-00000\\\",\\r\\n      \\\"name\\\": \\\"None\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"reason\\\": \\\"\\\",\\r\\n  \\\"status\\\": \\\"pending\\\",\\r\\n  \\\"created\\\": \\\"2020-07-15T11:05:22+00:00\\\",\\r\\n  \\\"updated\\\": \\\"2020-07-15T11:05:22+00:00\\\",\\r\\n  \\\"answered\\\": false,\\r\\n  \\\"assignee\\\": \\\"\\\",\\r\\n  \\\"activation_key\\\": \\\"\\\",\\r\\n  \\\"external_attributes\\\": {},\\r\\n  \\\"marketplace\\\": {\\r\\n    \\\"id\\\": \\\"MP-20348\\\",\\r\\n    \\\"name\\\": \\\"Spain\\\",\\r\\n    \\\"icon\\\": \\\"/media/PA-239-689/marketplaces/MP-20348/icon.png\\\"\\r\\n  },\\r\\n  \\\"contract\\\": {\\r\\n    \\\"id\\\": \\\"CRD-00000-00000-00000\\\",\\r\\n    \\\"name\\\": \\\"None\\\"\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<Request>\\r\\n  <Order>\\r\\n    <OwnerId>reference</OwnerId>\\r\\n    <ContractId>reference</ContractId>\\r\\n    <AccountId>reference</AccountId>\\r\\n    <Pricebook2Id>reference</Pricebook2Id>\\r\\n    <OriginalOrderId>reference</OriginalOrderId>\\r\\n    <EffectiveDate>date</EffectiveDate>\\r\\n    <EndDate>date</EndDate>\\r\\n    <IsReductionOrder>boolean</IsReductionOrder>\\r\\n    <Status>picklist</Status>\\r\\n    <Description>textarea</Description>\\r\\n    <CustomerAuthorizedById>reference</CustomerAuthorizedById>\\r\\n    <CustomerAuthorizedDate>date</CustomerAuthorizedDate>\\r\\n    <CompanyAuthorizedById>reference</CompanyAuthorizedById>\\r\\n    <CompanyAuthorizedDate>date</CompanyAuthorizedDate>\\r\\n    <Type>picklist</Type>\\r\\n    <BillingStreet>textarea</BillingStreet>\\r\\n    <BillingCity>string</BillingCity>\\r\\n    <BillingState>string</BillingState>\\r\\n    <BillingPostalCode>string</BillingPostalCode>\\r\\n    <BillingCountry>string</BillingCountry>\\r\\n    <BillingLatitude>double</BillingLatitude>\\r\\n    <BillingLongitude>double</BillingLongitude>\\r\\n    <BillingGeocodeAccuracy>picklist</BillingGeocodeAccuracy>\\r\\n    <BillingAddress>\\r\\n      <Accuracy></Accuracy>\\r\\n      <City></City>\\r\\n      <Country></Country>\\r\\n      <CountryCode></CountryCode>\\r\\n      <Latitude></Latitude>\\r\\n      <Longitude></Longitude>\\r\\n      <PostalCode></PostalCode>\\r\\n      <State></State>\\r\\n      <StateCode></StateCode>\\r\\n      <Street></Street>\\r\\n    </BillingAddress>\\r\\n    <ShippingStreet>textarea</ShippingStreet>\\r\\n    <ShippingCity>string</ShippingCity>\\r\\n    <ShippingState>string</ShippingState>\\r\\n    <ShippingPostalCode>string</ShippingPostalCode>\\r\\n    <ShippingCountry>string</ShippingCountry>\\r\\n    <ShippingLatitude>double</ShippingLatitude>\\r\\n    <ShippingLongitude>double</ShippingLongitude>\\r\\n    <ShippingGeocodeAccuracy>picklist</ShippingGeocodeAccuracy>\\r\\n    <ShippingAddress>\\r\\n      <Accuracy></Accuracy>\\r\\n      <City></City>\\r\\n      <Country></Country>\\r\\n      <CountryCode></CountryCode>\\r\\n      <Latitude></Latitude>\\r\\n      <Longitude></Longitude>\\r\\n      <PostalCode></PostalCode>\\r\\n      <State></State>\\r\\n      <StateCode></StateCode>\\r\\n      <Street></Street>\\r\\n    </ShippingAddress>\\r\\n    <Name>string</Name>\\r\\n    <PoDate>date</PoDate>\\r\\n    <PoNumber>string</PoNumber>\\r\\n    <OrderReferenceNumber>string</OrderReferenceNumber>\\r\\n    <BillToContactId>reference</BillToContactId>\\r\\n    <ShipToContactId>reference</ShipToContactId>\\r\\n    <ActivatedDate>datetime</ActivatedDate>\\r\\n    <ActivatedById>reference</ActivatedById>\\r\\n    <StatusCode>picklist</StatusCode>\\r\\n    <OrderNumber>string</OrderNumber>\\r\\n    <TotalAmount>currency</TotalAmount>\\r\\n    <CreatedDate>datetime</CreatedDate>\\r\\n    <CreatedById>reference</CreatedById>\\r\\n    <LastModifiedDate>datetime</LastModifiedDate>\\r\\n    <LastModifiedById>reference</LastModifiedById>\\r\\n    <IsDeleted>boolean</IsDeleted>\\r\\n    <SystemModstamp>datetime</SystemModstamp>\\r\\n    <LastViewedDate>datetime</LastViewedDate>\\r\\n    <LastReferencedDate>datetime</LastReferencedDate>\\r\\n  </Order>\\r\\n</Request>\",\"targetSchemaType\":0}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Auto",
+              "Json",
+              "Xml"
+            ],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Request>\r\n  <Order>\r\n    <OwnerId>reference</OwnerId>\r\n    <ContractId>reference</ContractId>\r\n    <AccountId>reference</AccountId>\r\n    <Pricebook2Id>reference</Pricebook2Id>\r\n    <OriginalOrderId>reference</OriginalOrderId>\r\n    <EffectiveDate>date</EffectiveDate>\r\n    <EndDate>date</EndDate>\r\n    <IsReductionOrder>boolean</IsReductionOrder>\r\n    <Status>picklist</Status>\r\n    <Description>textarea</Description>\r\n    <CustomerAuthorizedById>reference</CustomerAuthorizedById>\r\n    <CustomerAuthorizedDate>date</CustomerAuthorizedDate>\r\n    <CompanyAuthorizedById>reference</CompanyAuthorizedById>\r\n    <CompanyAuthorizedDate>date</CompanyAuthorizedDate>\r\n    <Type>picklist</Type>\r\n    <BillingStreet>textarea</BillingStreet>\r\n    <BillingCity>string</BillingCity>\r\n    <BillingState>string</BillingState>\r\n    <BillingPostalCode>string</BillingPostalCode>\r\n    <BillingCountry>string</BillingCountry>\r\n    <BillingLatitude>double</BillingLatitude>\r\n    <BillingLongitude>double</BillingLongitude>\r\n    <BillingGeocodeAccuracy>picklist</BillingGeocodeAccuracy>\r\n    <BillingAddress>\r\n      <Accuracy></Accuracy>\r\n      <City></City>\r\n      <Country></Country>\r\n      <CountryCode></CountryCode>\r\n      <Latitude></Latitude>\r\n      <Longitude></Longitude>\r\n      <PostalCode></PostalCode>\r\n      <State></State>\r\n      <StateCode></StateCode>\r\n      <Street></Street>\r\n    </BillingAddress>\r\n    <ShippingStreet>textarea</ShippingStreet>\r\n    <ShippingCity>string</ShippingCity>\r\n    <ShippingState>string</ShippingState>\r\n    <ShippingPostalCode>string</ShippingPostalCode>\r\n    <ShippingCountry>string</ShippingCountry>\r\n    <ShippingLatitude>double</ShippingLatitude>\r\n    <ShippingLongitude>double</ShippingLongitude>\r\n    <ShippingGeocodeAccuracy>picklist</ShippingGeocodeAccuracy>\r\n    <ShippingAddress>\r\n      <Accuracy></Accuracy>\r\n      <City></City>\r\n      <Country></Country>\r\n      <CountryCode></CountryCode>\r\n      <Latitude></Latitude>\r\n      <Longitude></Longitude>\r\n      <PostalCode></PostalCode>\r\n      <State></State>\r\n      <StateCode></StateCode>\r\n      <Street></Street>\r\n    </ShippingAddress>\r\n    <Name>string</Name>\r\n    <PoDate>date</PoDate>\r\n    <PoNumber>string</PoNumber>\r\n    <OrderReferenceNumber>string</OrderReferenceNumber>\r\n    <BillToContactId>reference</BillToContactId>\r\n    <ShipToContactId>reference</ShipToContactId>\r\n    <ActivatedDate>datetime</ActivatedDate>\r\n    <ActivatedById>reference</ActivatedById>\r\n    <StatusCode>picklist</StatusCode>\r\n    <OrderNumber>string</OrderNumber>\r\n    <TotalAmount>currency</TotalAmount>\r\n    <CreatedDate>datetime</CreatedDate>\r\n    <CreatedById>reference</CreatedById>\r\n    <LastModifiedDate>datetime</LastModifiedDate>\r\n    <LastModifiedById>reference</LastModifiedById>\r\n    <IsDeleted>boolean</IsDeleted>\r\n    <SystemModstamp>datetime</SystemModstamp>\r\n    <LastViewedDate>datetime</LastViewedDate>\r\n    <LastReferencedDate>datetime</LastReferencedDate>\r\n  </Order>\r\n</Request>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 3900.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "5408b354-6018-9eeb-9a76-df81474df3b1",
+        "Name": "Salesforce",
+        "ShortDescription": "Create Order",
+        "Version": "3.0.0.46",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Url",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerKey",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "SecurityToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "DontInterleaveRequestInResponse",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Salesforce Dev v3.0.0.45 (Mar 2020)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Create",
+              "Update",
+              "Get",
+              "Query",
+              "Upsert"
+            ],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Order"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ExternalIdField",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"Order\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"OwnerId\" type=\"xs:string\" />\r\n              <xs:element name=\"ContractId\" type=\"xs:string\" />\r\n              <xs:element name=\"AccountId\" type=\"xs:string\" />\r\n              <xs:element name=\"Pricebook2Id\" type=\"xs:string\" />\r\n              <xs:element name=\"OriginalOrderId\" type=\"xs:string\" />\r\n              <xs:element name=\"EffectiveDate\" type=\"xs:string\" />\r\n              <xs:element name=\"EndDate\" type=\"xs:string\" />\r\n              <xs:element name=\"IsReductionOrder\" type=\"xs:string\" />\r\n              <xs:element name=\"Status\" type=\"xs:string\" />\r\n              <xs:element name=\"Description\" type=\"xs:string\" />\r\n              <xs:element name=\"CustomerAuthorizedById\" type=\"xs:string\" />\r\n              <xs:element name=\"CustomerAuthorizedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"CompanyAuthorizedById\" type=\"xs:string\" />\r\n              <xs:element name=\"CompanyAuthorizedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"Type\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingStreet\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingCity\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingState\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingPostalCode\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingCountry\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingLatitude\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingLongitude\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingGeocodeAccuracy\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingAddress\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"Accuracy\" />\r\n                    <xs:element name=\"City\" />\r\n                    <xs:element name=\"Country\" />\r\n                    <xs:element name=\"CountryCode\" />\r\n                    <xs:element name=\"Latitude\" />\r\n                    <xs:element name=\"Longitude\" />\r\n                    <xs:element name=\"PostalCode\" />\r\n                    <xs:element name=\"State\" />\r\n                    <xs:element name=\"StateCode\" />\r\n                    <xs:element name=\"Street\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"ShippingStreet\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingCity\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingState\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingPostalCode\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingCountry\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingLatitude\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingLongitude\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingGeocodeAccuracy\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingAddress\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"Accuracy\" />\r\n                    <xs:element name=\"City\" />\r\n                    <xs:element name=\"Country\" />\r\n                    <xs:element name=\"CountryCode\" />\r\n                    <xs:element name=\"Latitude\" />\r\n                    <xs:element name=\"Longitude\" />\r\n                    <xs:element name=\"PostalCode\" />\r\n                    <xs:element name=\"State\" />\r\n                    <xs:element name=\"StateCode\" />\r\n                    <xs:element name=\"Street\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"Name\" type=\"xs:string\" />\r\n              <xs:element name=\"PoDate\" type=\"xs:string\" />\r\n              <xs:element name=\"PoNumber\" type=\"xs:string\" />\r\n              <xs:element name=\"OrderReferenceNumber\" type=\"xs:string\" />\r\n              <xs:element name=\"BillToContactId\" type=\"xs:string\" />\r\n              <xs:element name=\"ShipToContactId\" type=\"xs:string\" />\r\n              <xs:element name=\"ActivatedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"ActivatedById\" type=\"xs:string\" />\r\n              <xs:element name=\"StatusCode\" type=\"xs:string\" />\r\n              <xs:element name=\"OrderNumber\" type=\"xs:string\" />\r\n              <xs:element name=\"TotalAmount\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedById\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedById\" type=\"xs:string\" />\r\n              <xs:element name=\"IsDeleted\" type=\"xs:string\" />\r\n              <xs:element name=\"SystemModstamp\" type=\"xs:string\" />\r\n              <xs:element name=\"LastViewedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastReferencedDate\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Request>\r\n  <Order>\r\n    <OwnerId>reference</OwnerId>\r\n    <ContractId>reference</ContractId>\r\n    <AccountId>reference</AccountId>\r\n    <Pricebook2Id>reference</Pricebook2Id>\r\n    <OriginalOrderId>reference</OriginalOrderId>\r\n    <EffectiveDate>date</EffectiveDate>\r\n    <EndDate>date</EndDate>\r\n    <IsReductionOrder>boolean</IsReductionOrder>\r\n    <Status>picklist</Status>\r\n    <Description>textarea</Description>\r\n    <CustomerAuthorizedById>reference</CustomerAuthorizedById>\r\n    <CustomerAuthorizedDate>date</CustomerAuthorizedDate>\r\n    <CompanyAuthorizedById>reference</CompanyAuthorizedById>\r\n    <CompanyAuthorizedDate>date</CompanyAuthorizedDate>\r\n    <Type>picklist</Type>\r\n    <BillingStreet>textarea</BillingStreet>\r\n    <BillingCity>string</BillingCity>\r\n    <BillingState>string</BillingState>\r\n    <BillingPostalCode>string</BillingPostalCode>\r\n    <BillingCountry>string</BillingCountry>\r\n    <BillingLatitude>double</BillingLatitude>\r\n    <BillingLongitude>double</BillingLongitude>\r\n    <BillingGeocodeAccuracy>picklist</BillingGeocodeAccuracy>\r\n    <BillingAddress>\r\n      <Accuracy></Accuracy>\r\n      <City></City>\r\n      <Country></Country>\r\n      <CountryCode></CountryCode>\r\n      <Latitude></Latitude>\r\n      <Longitude></Longitude>\r\n      <PostalCode></PostalCode>\r\n      <State></State>\r\n      <StateCode></StateCode>\r\n      <Street></Street>\r\n    </BillingAddress>\r\n    <ShippingStreet>textarea</ShippingStreet>\r\n    <ShippingCity>string</ShippingCity>\r\n    <ShippingState>string</ShippingState>\r\n    <ShippingPostalCode>string</ShippingPostalCode>\r\n    <ShippingCountry>string</ShippingCountry>\r\n    <ShippingLatitude>double</ShippingLatitude>\r\n    <ShippingLongitude>double</ShippingLongitude>\r\n    <ShippingGeocodeAccuracy>picklist</ShippingGeocodeAccuracy>\r\n    <ShippingAddress>\r\n      <Accuracy></Accuracy>\r\n      <City></City>\r\n      <Country></Country>\r\n      <CountryCode></CountryCode>\r\n      <Latitude></Latitude>\r\n      <Longitude></Longitude>\r\n      <PostalCode></PostalCode>\r\n      <State></State>\r\n      <StateCode></StateCode>\r\n      <Street></Street>\r\n    </ShippingAddress>\r\n    <Name>string</Name>\r\n    <PoDate>date</PoDate>\r\n    <PoNumber>string</PoNumber>\r\n    <OrderReferenceNumber>string</OrderReferenceNumber>\r\n    <BillToContactId>reference</BillToContactId>\r\n    <ShipToContactId>reference</ShipToContactId>\r\n    <ActivatedDate>datetime</ActivatedDate>\r\n    <ActivatedById>reference</ActivatedById>\r\n    <StatusCode>picklist</StatusCode>\r\n    <OrderNumber>string</OrderNumber>\r\n    <TotalAmount>currency</TotalAmount>\r\n    <CreatedDate>datetime</CreatedDate>\r\n    <CreatedById>reference</CreatedById>\r\n    <LastModifiedDate>datetime</LastModifiedDate>\r\n    <LastModifiedById>reference</LastModifiedById>\r\n    <IsDeleted>boolean</IsDeleted>\r\n    <SystemModstamp>datetime</SystemModstamp>\r\n    <LastViewedDate>datetime</LastViewedDate>\r\n    <LastReferencedDate>datetime</LastReferencedDate>\r\n  </Order>\r\n</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Response>\r\n  <hasErrors>true</hasErrors>\r\n  <results>\r\n    <result>\r\n      <errorCode>MALFORMED_ID</errorCode>\r\n      <message>Order ID: id value of incorrect type: PR-4098-7163-7121-001</message>\r\n    </result>\r\n    <statusCode>BadRequest</statusCode>\r\n    <request>\r\n      <method>POST</method>\r\n      <url>v45.0/sobjects/Order</url>\r\n      <richInput>\r\n        <OriginalOrderId>PR-4098-7163-7121-001</OriginalOrderId>\r\n        <EffectiveDate>2020-07-09T10:29:35+00:00</EffectiveDate>\r\n        <Description>purchase of PRD-411-306-010</Description>\r\n        <Name>PR-4098-7163-7121-001</Name>\r\n        <PoDate>2020-07-09T10:29:35+00:00</PoDate>\r\n        <PoNumber>PO 31</PoNumber>\r\n      </richInput>\r\n    </request>\r\n  </results>\r\n</Response>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 3900.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Salesforce",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d3e644c8-ce0a-1671-ce55-a49d29fe9ac2",
+        "Name": "Salesforce",
+        "ShortDescription": "Create Order Line",
+        "Version": "3.0.0.46",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Url",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerKey",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "SecurityToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "DontInterleaveRequestInResponse",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Salesforce Dev v3.0.0.45 (Mar 2020)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Create",
+              "Update",
+              "Get",
+              "Query",
+              "Upsert"
+            ],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "OrderItem"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ExternalIdField",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"OrderItem\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"Product2Id\" type=\"xs:string\" />\r\n              <xs:element name=\"IsDeleted\" type=\"xs:string\" />\r\n              <xs:element name=\"OrderId\" type=\"xs:string\" />\r\n              <xs:element name=\"PricebookEntryId\" type=\"xs:string\" />\r\n              <xs:element name=\"OriginalOrderItemId\" type=\"xs:string\" />\r\n              <xs:element name=\"AvailableQuantity\" type=\"xs:string\" />\r\n              <xs:element name=\"Quantity\" type=\"xs:string\" />\r\n              <xs:element name=\"UnitPrice\" type=\"xs:string\" />\r\n              <xs:element name=\"ListPrice\" type=\"xs:string\" />\r\n              <xs:element name=\"TotalPrice\" type=\"xs:string\" />\r\n              <xs:element name=\"ServiceDate\" type=\"xs:string\" />\r\n              <xs:element name=\"EndDate\" type=\"xs:string\" />\r\n              <xs:element name=\"Description\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedById\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedById\" type=\"xs:string\" />\r\n              <xs:element name=\"SystemModstamp\" type=\"xs:string\" />\r\n              <xs:element name=\"OrderItemNumber\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Request>\r\n  <OrderItem>\r\n    <Product2Id>reference</Product2Id>\r\n    <IsDeleted>boolean</IsDeleted>\r\n    <OrderId>reference</OrderId>\r\n    <PricebookEntryId>reference</PricebookEntryId>\r\n    <OriginalOrderItemId>reference</OriginalOrderItemId>\r\n    <AvailableQuantity>double</AvailableQuantity>\r\n    <Quantity>double</Quantity>\r\n    <UnitPrice>currency</UnitPrice>\r\n    <ListPrice>currency</ListPrice>\r\n    <TotalPrice>currency</TotalPrice>\r\n    <ServiceDate>date</ServiceDate>\r\n    <EndDate>date</EndDate>\r\n    <Description>string</Description>\r\n    <CreatedDate>datetime</CreatedDate>\r\n    <CreatedById>reference</CreatedById>\r\n    <LastModifiedDate>datetime</LastModifiedDate>\r\n    <LastModifiedById>reference</LastModifiedById>\r\n    <SystemModstamp>datetime</SystemModstamp>\r\n    <OrderItemNumber>string</OrderItemNumber>\r\n  </OrderItem>\r\n</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": ""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8235.0,
+          "Y": 3900.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Salesforce",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "557da623-78c3-9085-70c4-6915d588c851",
+        "TargetNodeId": "55e21bd5-4cb9-9fd4-a266-0fe9ff3118e0",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d41533f1-fc74-d8ef-e1d1-300c859a9bbb",
+        "TargetNodeId": "2351396c-7a37-aef6-487a-c7f934666fa1",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ca6ff45c-165b-f368-11de-6abf248422bc",
+        "TargetNodeId": "d41533f1-fc74-d8ef-e1d1-300c859a9bbb",
+        "SourceName": "Item",
+        "TargetName": "Source"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "5408b354-6018-9eeb-9a76-df81474df3b1",
+        "TargetNodeId": "d41533f1-fc74-d8ef-e1d1-300c859a9bbb",
+        "SourceName": "Response",
+        "TargetName": "OrderID",
+        "Expression": "Response.results.result.id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ca6ff45c-165b-f368-11de-6abf248422bc",
+        "TargetNodeId": "d3ea40ee-68ef-b772-0ba0-ba862ea7a158",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "5408b354-6018-9eeb-9a76-df81474df3b1",
+        "TargetNodeId": "d3ea40ee-68ef-b772-0ba0-ba862ea7a158",
+        "SourceName": "Response",
+        "TargetName": "Value",
+        "Expression": "Response.results.result.id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ca6ff45c-165b-f368-11de-6abf248422bc",
+        "TargetNodeId": "5159d283-bc35-7459-ef96-85d8ff22c278",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "5408b354-6018-9eeb-9a76-df81474df3b1",
+        "TargetNodeId": "5159d283-bc35-7459-ef96-85d8ff22c278",
+        "SourceName": "Response",
+        "TargetName": "Value",
+        "Expression": "Response.results.result.message"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "2351396c-7a37-aef6-487a-c7f934666fa1",
+        "TargetNodeId": "d3e644c8-ce0a-1671-ce55-a49d29fe9ac2",
+        "SourceName": "True",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "2351396c-7a37-aef6-487a-c7f934666fa1",
+        "TargetNodeId": "5159d283-bc35-7459-ef96-85d8ff22c278",
+        "SourceName": "False",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "5408b354-6018-9eeb-9a76-df81474df3b1",
+        "TargetNodeId": "2351396c-7a37-aef6-487a-c7f934666fa1",
+        "SourceName": "Response",
+        "TargetName": "Expression1",
+        "Expression": "Response.hasErrors"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "55e21bd5-4cb9-9fd4-a266-0fe9ff3118e0",
+        "TargetNodeId": "ca6ff45c-165b-f368-11de-6abf248422bc",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ca6ff45c-165b-f368-11de-6abf248422bc",
+        "TargetNodeId": "d8f32aeb-458f-62c7-b40c-27cc6a115d13",
+        "SourceName": "Item",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "55e21bd5-4cb9-9fd4-a266-0fe9ff3118e0",
+        "TargetNodeId": "ca6ff45c-165b-f368-11de-6abf248422bc",
+        "SourceName": "Response",
+        "TargetName": "SourceDocument"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d8f32aeb-458f-62c7-b40c-27cc6a115d13",
+        "TargetNodeId": "5408b354-6018-9eeb-9a76-df81474df3b1",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ca6ff45c-165b-f368-11de-6abf248422bc",
+        "TargetNodeId": "d8f32aeb-458f-62c7-b40c-27cc6a115d13",
+        "SourceName": "Item",
+        "TargetName": "Source"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "5408b354-6018-9eeb-9a76-df81474df3b1",
+        "TargetNodeId": "d41533f1-fc74-d8ef-e1d1-300c859a9bbb",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "d8f32aeb-458f-62c7-b40c-27cc6a115d13",
+        "TargetNodeId": "5408b354-6018-9eeb-9a76-df81474df3b1",
+        "SourceName": "Result",
+        "TargetName": "Request"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d3e644c8-ce0a-1671-ce55-a49d29fe9ac2",
+        "TargetNodeId": "d3ea40ee-68ef-b772-0ba0-ba862ea7a158",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "d41533f1-fc74-d8ef-e1d1-300c859a9bbb",
+        "TargetNodeId": "d3e644c8-ce0a-1671-ce55-a49d29fe9ac2",
+        "SourceName": "Result",
+        "TargetName": "Request"
+      }
+    ],
+    "StartNodeId": "557da623-78c3-9085-70c4-6915d588c851",
+    "DateCreated": "2020-07-23T14:22:05.6672726Z",
+    "DateUpdated": "2020-07-23T14:22:05.6672726Z",
+    "ActivityLogLevelMask": 0
+  }
+}

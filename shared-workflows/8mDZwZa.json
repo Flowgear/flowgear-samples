@@ -1,0 +1,134 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Convert XML Attributes to Elements",
+    "Description": "This XSL transform converts attributes to XML elements. This is useful when you would like to use QuickMap on an XML Document.",
+    "Nodes": [
+      {
+        "NodeId": "0656a891-cbef-1835-6810-c5d13ffc4822",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "de0c305c-5a24-32f8-63fa-b400affc23c2",
+        "Name": "XsltTransform",
+        "Version": "2.1.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<root>\r\n  <customers>\r\n    <customer id=\"123\">\r\n      <description>ABC Co</description>\r\n    </customer>\r\n  </customers>\r\n</root>"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "TransformXslt",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"\r\n    xmlns:msxsl=\"urn:schemas-microsoft-com:xslt\" exclude-result-prefixes=\"msxsl\"\r\n>\r\n    <xsl:output method=\"xml\" indent=\"yes\"/>\r\n\r\n    <xsl:template match=\"@* | node()\">\r\n        <xsl:copy>\r\n            <xsl:apply-templates select=\"@* | node()\"/>\r\n        </xsl:copy>\r\n    </xsl:template>\r\n\r\n  <xsl:template match=\"@*\">\r\n    <xsl:element name=\"{name()}\"><xsl:value-of select=\".\"/></xsl:element>\r\n  </xsl:template>\r\n</xsl:stylesheet>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "TransformedXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<root>\r\n  <customers>\r\n    <customer>\r\n      <id>123</id>\r\n      <description>ABC Co</description>\r\n    </customer>\r\n  </customers>\r\n</root>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "XSLT Transform",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "0656a891-cbef-1835-6810-c5d13ffc4822",
+        "TargetNodeId": "de0c305c-5a24-32f8-63fa-b400affc23c2",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "0656a891-cbef-1835-6810-c5d13ffc4822",
+    "DateCreated": "2018-06-22T10:00:44.458645Z",
+    "DateUpdated": "2018-06-22T10:00:44.458645Z",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Text Parser Example",
+    "Nodes": [
+      {
+        "NodeId": "27006c40-9929-011d-9536-168cf7f6cab2",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ab1ad98e-50ee-c677-7a51-8461ac924f83",
+        "Name": "TextParser",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Document",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Name:\r\nMark\r\n \r\nContact Number:\r\n213 555 0000\r\n \r\nEmail:\r\nmark@company.com"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Template",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Name:\r\n{name}\r\n \r\nContact Number:\r\n{contact}\r\n \r\nEmail:\r\n{email}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Document>\r\n  <name>Mark</name>\r\n  <contact>213 555 0000</contact>\r\n  <email></email>\r\n</Document>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "TextParser",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "27006c40-9929-011d-9536-168cf7f6cab2",
+        "TargetNodeId": "ab1ad98e-50ee-c677-7a51-8461ac924f83",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "27006c40-9929-011d-9536-168cf7f6cab2",
+    "DateCreated": "2017-08-31T15:08:51.263",
+    "DateUpdated": "2017-08-31T15:08:51.263",
+    "ActivityLogLevelMask": 0
+  }
+}

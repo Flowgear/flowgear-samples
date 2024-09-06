@@ -1,0 +1,170 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "XFormat Example",
+    "Nodes": [
+      {
+        "NodeId": "ade0a1ae-14b9-aa90-54d3-a5946996e4d3",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "bed5aef7-2706-93f2-9e6e-bd55d9a91a16",
+        "Name": "XFormat",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Hello {name} {lastName}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "XmlDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Root>\r\n  <Name>John</Name>\r\n  <LastName>Doe</LastName>\r\n</Root>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.XFormat.XFormat+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "name",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root/Name"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "lastName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root/LastName"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "XFormat",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ade0a1ae-14b9-aa90-54d3-a5946996e4d3",
+        "TargetNodeId": "bed5aef7-2706-93f2-9e6e-bd55d9a91a16",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "ade0a1ae-14b9-aa90-54d3-a5946996e4d3",
+    "DateCreated": "2017-08-31T14:49:47.657",
+    "DateUpdated": "2017-08-31T14:49:47.657",
+    "ActivityLogLevelMask": 0
+  }
+}

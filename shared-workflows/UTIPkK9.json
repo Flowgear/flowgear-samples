@@ -1,0 +1,552 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "TradeGecko --> Salesforce | Customer sync example",
+    "Nodes": [
+      {
+        "NodeId": "0975a1f4-750f-56c3-9e89-874ad96a5d00",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ae6b1e2c-8a7b-3559-ae6a-f8ecf143bf14",
+        "Name": "TradeGecko",
+        "Version": "0.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ClientID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ClientSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "AccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 4
+              },
+              {
+                "Name": "RefreshToken",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Trade Gecko Skillie Debug 2",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.TradeGecko.TradeGeckoConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Method",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "GET"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Resource",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "companies"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\"companies\":[{\"id\":61643202,\"created_at\":\"2020-07-27T13:20:51.051Z\",\"updated_at\":\"2020-07-27T13:20:51.051Z\",\"assignee_id\":null,\"default_ledger_account_id\":null,\"default_payment_term_id\":null,\"default_payment_method_id\":null,\"default_stock_location_id\":null,\"default_tax_type_id\":null,\"company_group_id\":null,\"company_code\":null,\"company_type\":\"supplier\",\"default_discount_rate\":null,\"default_price_list_id\":null,\"default_tax_rate\":null,\"default_document_theme_id\":null,\"description\":\"Fashion and Apparel reseller\",\"email\":\"william@example.com\",\"fax\":null,\"geckopay_toggle\":\"default\",\"tax_shipping\":\"default\",\"name\":\"Acme Supplies (DEMO)\",\"phone_number\":\"123-456-789\",\"status\":\"active\",\"tax_number\":null,\"website\":\"https://www.acmesupplies.com\",\"tags\":null,\"minimum_order_value\":null,\"address_ids\":[79643332,79643333,79870557],\"contact_ids\":[41351382,41351383,41351384],\"note_ids\":[],\"default_price_type_id\":null},{\"id\":61643201,\"created_at\":\"2020-07-27T13:20:51.031Z\",\"updated_at\":\"2020-07-31T11:55:20.009Z\",\"assignee_id\":null,\"default_ledger_account_id\":null,\"default_payment_term_id\":null,\"default_payment_method_id\":null,\"default_stock_location_id\":null,\"default_tax_type_id\":null,\"company_group_id\":null,\"company_code\":null,\"company_type\":\"consumer\",\"default_discount_rate\":null,\"default_price_list_id\":null,\"default_tax_rate\":null,\"default_document_theme_id\":null,\"description\":\"Lorem Ipsum\",\"email\":\"hello2@tradegecko.com\",\"fax\":null,\"geckopay_toggle\":\"default\",\"tax_shipping\":\"default\",\"name\":\"Elephant\",\"phone_number\":\"204-057-1136\",\"status\":\"active\",\"tax_number\":null,\"website\":\"http://tradegecko.com\",\"tags\":null,\"minimum_order_value\":null,\"address_ids\":[79643330,79643331],\"contact_ids\":[],\"note_ids\":[],\"default_price_type_id\":null},{\"id\":61643200,\"created_at\":\"2020-07-27T13:20:50.973Z\",\"updated_at\":\"2020-07-27T13:20:50.973Z\",\"assignee_id\":null,\"default_ledger_account_id\":null,\"default_payment_term_id\":null,\"default_payment_method_id\":null,\"default_stock_location_id\":null,\"default_tax_type_id\":null,\"company_group_id\":null,\"company_code\":null,\"company_type\":\"business\",\"default_discount_rate\":null,\"default_price_list_id\":null,\"default_tax_rate\":null,\"default_document_theme_id\":null,\"description\":\"Inventory \\u0026 Order Management For Smart Brands\",\"email\":\"hello@tradegecko.com\",\"fax\":null,\"geckopay_toggle\":\"default\",\"tax_shipping\":\"default\",\"name\":\"TradeGecko (DEMO)\",\"phone_number\":\"+1 650-468-2904\",\"status\":\"active\",\"tax_number\":null,\"website\":\"https://www.tradegecko.com\",\"tags\":null,\"minimum_order_value\":null,\"address_ids\":[79643329],\"contact_ids\":[41351380,41351381],\"note_ids\":[],\"default_price_type_id\":null}]}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "limit",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "50"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "page",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 3,
+        "DisplayName": "Trade Gecko",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "7c036e9f-3991-e892-fc8f-10a5acbf43dc",
+        "Name": "Loop",
+        "Version": "1.2.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Start",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Stop",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "100"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Increment",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Current",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Loop",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Loop",
+        "NodeType": 3,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e1289617-978e-69ba-9fe0-d19401e102c7",
+        "Name": "Salesforce",
+        "Version": "3.0.0.46",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Url",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerKey",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "SecurityToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "DontInterleaveRequestInResponse",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Salesforce Skillie Trial 2020/06/30 2",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Create",
+              "Update",
+              "Get",
+              "Query",
+              "Upsert"
+            ],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Account"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ExternalIdField",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"Account\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"IsDeleted\" type=\"xs:string\" />\r\n              <xs:element name=\"MasterRecordId\" type=\"xs:string\" />\r\n              <xs:element name=\"Name\" type=\"xs:string\" />\r\n              <xs:element name=\"Type\" type=\"xs:string\" />\r\n              <xs:element name=\"ParentId\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingStreet\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingCity\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingState\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingPostalCode\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingCountry\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingLatitude\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingLongitude\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingGeocodeAccuracy\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingAddress\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"Accuracy\" />\r\n                    <xs:element name=\"City\" />\r\n                    <xs:element name=\"Country\" />\r\n                    <xs:element name=\"CountryCode\" />\r\n                    <xs:element name=\"Latitude\" />\r\n                    <xs:element name=\"Longitude\" />\r\n                    <xs:element name=\"PostalCode\" />\r\n                    <xs:element name=\"State\" />\r\n                    <xs:element name=\"StateCode\" />\r\n                    <xs:element name=\"Street\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"ShippingStreet\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingCity\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingState\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingPostalCode\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingCountry\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingLatitude\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingLongitude\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingGeocodeAccuracy\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingAddress\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"Accuracy\" />\r\n                    <xs:element name=\"City\" />\r\n                    <xs:element name=\"Country\" />\r\n                    <xs:element name=\"CountryCode\" />\r\n                    <xs:element name=\"Latitude\" />\r\n                    <xs:element name=\"Longitude\" />\r\n                    <xs:element name=\"PostalCode\" />\r\n                    <xs:element name=\"State\" />\r\n                    <xs:element name=\"StateCode\" />\r\n                    <xs:element name=\"Street\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"Phone\" type=\"xs:string\" />\r\n              <xs:element name=\"Fax\" type=\"xs:string\" />\r\n              <xs:element name=\"AccountNumber\" type=\"xs:string\" />\r\n              <xs:element name=\"Website\" type=\"xs:string\" />\r\n              <xs:element name=\"PhotoUrl\" type=\"xs:string\" />\r\n              <xs:element name=\"Sic\" type=\"xs:string\" />\r\n              <xs:element name=\"Industry\" type=\"xs:string\" />\r\n              <xs:element name=\"AnnualRevenue\" type=\"xs:string\" />\r\n              <xs:element name=\"NumberOfEmployees\" type=\"xs:string\" />\r\n              <xs:element name=\"Ownership\" type=\"xs:string\" />\r\n              <xs:element name=\"TickerSymbol\" type=\"xs:string\" />\r\n              <xs:element name=\"Description\" type=\"xs:string\" />\r\n              <xs:element name=\"Rating\" type=\"xs:string\" />\r\n              <xs:element name=\"Site\" type=\"xs:string\" />\r\n              <xs:element name=\"OwnerId\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedById\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedById\" type=\"xs:string\" />\r\n              <xs:element name=\"SystemModstamp\" type=\"xs:string\" />\r\n              <xs:element name=\"LastActivityDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastViewedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastReferencedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"Jigsaw\" type=\"xs:string\" />\r\n              <xs:element name=\"JigsawCompanyId\" type=\"xs:string\" />\r\n              <xs:element name=\"CleanStatus\" type=\"xs:string\" />\r\n              <xs:element name=\"AccountSource\" type=\"xs:string\" />\r\n              <xs:element name=\"DunsNumber\" type=\"xs:string\" />\r\n              <xs:element name=\"Tradestyle\" type=\"xs:string\" />\r\n              <xs:element name=\"NaicsCode\" type=\"xs:string\" />\r\n              <xs:element name=\"NaicsDesc\" type=\"xs:string\" />\r\n              <xs:element name=\"YearStarted\" type=\"xs:string\" />\r\n              <xs:element name=\"SicDesc\" type=\"xs:string\" />\r\n              <xs:element name=\"DandbCompanyId\" type=\"xs:string\" />\r\n              <xs:element name=\"OperatingHoursId\" type=\"xs:string\" />\r\n              <xs:element name=\"CustomerPriority__c\" type=\"xs:string\" />\r\n              <xs:element name=\"SLA__c\" type=\"xs:string\" />\r\n              <xs:element name=\"Active__c\" type=\"xs:string\" />\r\n              <xs:element name=\"NumberofLocations__c\" type=\"xs:string\" />\r\n              <xs:element name=\"UpsellOpportunity__c\" type=\"xs:string\" />\r\n              <xs:element name=\"SLASerialNumber__c\" type=\"xs:string\" />\r\n              <xs:element name=\"SLAExpirationDate__c\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Request>\r\n  <Account>\r\n    <IsDeleted>boolean</IsDeleted>\r\n    <MasterRecordId>reference</MasterRecordId>\r\n    <Name>string</Name>\r\n    <Type>picklist</Type>\r\n    <ParentId>reference</ParentId>\r\n    <BillingStreet>textarea</BillingStreet>\r\n    <BillingCity>string</BillingCity>\r\n    <BillingState>string</BillingState>\r\n    <BillingPostalCode>string</BillingPostalCode>\r\n    <BillingCountry>string</BillingCountry>\r\n    <BillingLatitude>double</BillingLatitude>\r\n    <BillingLongitude>double</BillingLongitude>\r\n    <BillingGeocodeAccuracy>picklist</BillingGeocodeAccuracy>\r\n    <BillingAddress>\r\n      <Accuracy></Accuracy>\r\n      <City></City>\r\n      <Country></Country>\r\n      <CountryCode></CountryCode>\r\n      <Latitude></Latitude>\r\n      <Longitude></Longitude>\r\n      <PostalCode></PostalCode>\r\n      <State></State>\r\n      <StateCode></StateCode>\r\n      <Street></Street>\r\n    </BillingAddress>\r\n    <ShippingStreet>textarea</ShippingStreet>\r\n    <ShippingCity>string</ShippingCity>\r\n    <ShippingState>string</ShippingState>\r\n    <ShippingPostalCode>string</ShippingPostalCode>\r\n    <ShippingCountry>string</ShippingCountry>\r\n    <ShippingLatitude>double</ShippingLatitude>\r\n    <ShippingLongitude>double</ShippingLongitude>\r\n    <ShippingGeocodeAccuracy>picklist</ShippingGeocodeAccuracy>\r\n    <ShippingAddress>\r\n      <Accuracy></Accuracy>\r\n      <City></City>\r\n      <Country></Country>\r\n      <CountryCode></CountryCode>\r\n      <Latitude></Latitude>\r\n      <Longitude></Longitude>\r\n      <PostalCode></PostalCode>\r\n      <State></State>\r\n      <StateCode></StateCode>\r\n      <Street></Street>\r\n    </ShippingAddress>\r\n    <Phone>phone</Phone>\r\n    <Fax>phone</Fax>\r\n    <AccountNumber>string</AccountNumber>\r\n    <Website>url</Website>\r\n    <PhotoUrl>url</PhotoUrl>\r\n    <Sic>string</Sic>\r\n    <Industry>picklist</Industry>\r\n    <AnnualRevenue>currency</AnnualRevenue>\r\n    <NumberOfEmployees>int</NumberOfEmployees>\r\n    <Ownership>picklist</Ownership>\r\n    <TickerSymbol>string</TickerSymbol>\r\n    <Description>textarea</Description>\r\n    <Rating>picklist</Rating>\r\n    <Site>string</Site>\r\n    <OwnerId>reference</OwnerId>\r\n    <CreatedDate>datetime</CreatedDate>\r\n    <CreatedById>reference</CreatedById>\r\n    <LastModifiedDate>datetime</LastModifiedDate>\r\n    <LastModifiedById>reference</LastModifiedById>\r\n    <SystemModstamp>datetime</SystemModstamp>\r\n    <LastActivityDate>date</LastActivityDate>\r\n    <LastViewedDate>datetime</LastViewedDate>\r\n    <LastReferencedDate>datetime</LastReferencedDate>\r\n    <Jigsaw>string</Jigsaw>\r\n    <JigsawCompanyId>string</JigsawCompanyId>\r\n    <CleanStatus>picklist</CleanStatus>\r\n    <AccountSource>picklist</AccountSource>\r\n    <DunsNumber>string</DunsNumber>\r\n    <Tradestyle>string</Tradestyle>\r\n    <NaicsCode>string</NaicsCode>\r\n    <NaicsDesc>string</NaicsDesc>\r\n    <YearStarted>string</YearStarted>\r\n    <SicDesc>string</SicDesc>\r\n    <DandbCompanyId>reference</DandbCompanyId>\r\n    <OperatingHoursId>reference</OperatingHoursId>\r\n    <CustomerPriority__c>picklist</CustomerPriority__c>\r\n    <SLA__c>picklist</SLA__c>\r\n    <Active__c>picklist</Active__c>\r\n    <NumberofLocations__c>double</NumberofLocations__c>\r\n    <UpsellOpportunity__c>picklist</UpsellOpportunity__c>\r\n    <SLASerialNumber__c>string</SLASerialNumber__c>\r\n    <SLAExpirationDate__c>date</SLAExpirationDate__c>\r\n  </Account>\r\n</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": ""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Salesforce",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f8370158-67ee-7645-3a54-1e2298b0096d",
+        "Name": "QuickMap",
+        "Version": "4.0.0.25",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"companies\"],\"targetPath\":\"Request\"},{\"sourcePaths\":[\"companies/status\"],\"targetPath\":\"Request/Account/IsDeleted\",\"mapExpression\":\"iif({status}=\\\"active\\\", false, true)\"},{\"sourcePaths\":[\"companies/name\"],\"targetPath\":\"Request/Account/Name\"},{\"sourcePaths\":[\"companies/company_type\"],\"targetPath\":\"Request/Account/Type\"},{\"sourcePaths\":[\"companies/fax\"],\"targetPath\":\"Request/Account/Fax\"},{\"sourcePaths\":[\"companies/company_code\"],\"targetPath\":\"Request/Account/AccountNumber\"},{\"sourcePaths\":[\"companies/website\"],\"targetPath\":\"Request/Account/Website\"},{\"sourcePaths\":[\"companies/status\"],\"targetPath\":\"Request/Account/Active__c\"},{\"sourcePaths\":[\"companies/address_ids\"],\"targetPath\":\"Request/Account/NumberofLocations__c\",\"mapExpression\":\"COUNT({address_ids})\"}],\"sourceSchema\":\"{\\\"companies\\\":[{\\\"id\\\":61643202,\\\"created_at\\\":\\\"2020-07-27T13:20:51.051Z\\\",\\\"updated_at\\\":\\\"2020-07-27T13:20:51.051Z\\\",\\\"assignee_id\\\":null,\\\"default_ledger_account_id\\\":null,\\\"default_payment_term_id\\\":null,\\\"default_payment_method_id\\\":null,\\\"default_stock_location_id\\\":null,\\\"default_tax_type_id\\\":null,\\\"company_group_id\\\":null,\\\"company_code\\\":null,\\\"company_type\\\":\\\"supplier\\\",\\\"default_discount_rate\\\":null,\\\"default_price_list_id\\\":null,\\\"default_tax_rate\\\":null,\\\"default_document_theme_id\\\":null,\\\"description\\\":\\\"Fashion and Apparel reseller\\\",\\\"email\\\":\\\"william@example.com\\\",\\\"fax\\\":null,\\\"geckopay_toggle\\\":\\\"default\\\",\\\"tax_shipping\\\":\\\"default\\\",\\\"name\\\":\\\"Acme Supplies (DEMO)\\\",\\\"phone_number\\\":\\\"123-456-789\\\",\\\"status\\\":\\\"active\\\",\\\"tax_number\\\":null,\\\"website\\\":\\\"https://www.acmesupplies.com\\\",\\\"tags\\\":null,\\\"minimum_order_value\\\":null,\\\"address_ids\\\":[79643332,79643333,79870557],\\\"contact_ids\\\":[41351382,41351383,41351384],\\\"note_ids\\\":[],\\\"default_price_type_id\\\":null},{\\\"id\\\":61643201,\\\"created_at\\\":\\\"2020-07-27T13:20:51.031Z\\\",\\\"updated_at\\\":\\\"2020-07-31T11:55:20.009Z\\\",\\\"assignee_id\\\":null,\\\"default_ledger_account_id\\\":null,\\\"default_payment_term_id\\\":null,\\\"default_payment_method_id\\\":null,\\\"default_stock_location_id\\\":null,\\\"default_tax_type_id\\\":null,\\\"company_group_id\\\":null,\\\"company_code\\\":null,\\\"company_type\\\":\\\"consumer\\\",\\\"default_discount_rate\\\":null,\\\"default_price_list_id\\\":null,\\\"default_tax_rate\\\":null,\\\"default_document_theme_id\\\":null,\\\"description\\\":\\\"Lorem Ipsum\\\",\\\"email\\\":\\\"hello2@tradegecko.com\\\",\\\"fax\\\":null,\\\"geckopay_toggle\\\":\\\"default\\\",\\\"tax_shipping\\\":\\\"default\\\",\\\"name\\\":\\\"Elephant\\\",\\\"phone_number\\\":\\\"204-057-1136\\\",\\\"status\\\":\\\"active\\\",\\\"tax_number\\\":null,\\\"website\\\":\\\"http://tradegecko.com\\\",\\\"tags\\\":null,\\\"minimum_order_value\\\":null,\\\"address_ids\\\":[79643330,79643331],\\\"contact_ids\\\":[],\\\"note_ids\\\":[],\\\"default_price_type_id\\\":null},{\\\"id\\\":61643200,\\\"created_at\\\":\\\"2020-07-27T13:20:50.973Z\\\",\\\"updated_at\\\":\\\"2020-07-27T13:20:50.973Z\\\",\\\"assignee_id\\\":null,\\\"default_ledger_account_id\\\":null,\\\"default_payment_term_id\\\":null,\\\"default_payment_method_id\\\":null,\\\"default_stock_location_id\\\":null,\\\"default_tax_type_id\\\":null,\\\"company_group_id\\\":null,\\\"company_code\\\":null,\\\"company_type\\\":\\\"business\\\",\\\"default_discount_rate\\\":null,\\\"default_price_list_id\\\":null,\\\"default_tax_rate\\\":null,\\\"default_document_theme_id\\\":null,\\\"description\\\":\\\"Inventory \\\\u0026 Order Management For Smart Brands\\\",\\\"email\\\":\\\"hello@tradegecko.com\\\",\\\"fax\\\":null,\\\"geckopay_toggle\\\":\\\"default\\\",\\\"tax_shipping\\\":\\\"default\\\",\\\"name\\\":\\\"TradeGecko (DEMO)\\\",\\\"phone_number\\\":\\\"+1 650-468-2904\\\",\\\"status\\\":\\\"active\\\",\\\"tax_number\\\":null,\\\"website\\\":\\\"https://www.tradegecko.com\\\",\\\"tags\\\":null,\\\"minimum_order_value\\\":null,\\\"address_ids\\\":[79643329],\\\"contact_ids\\\":[41351380,41351381],\\\"note_ids\\\":[],\\\"default_price_type_id\\\":null}]}\",\"sourceSchemaType\":2,\"targetSchema\":\"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema attributeFormDefault=\\\"unqualified\\\" elementFormDefault=\\\"qualified\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:element name=\\\"Request\\\">\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:element name=\\\"Account\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"IsDeleted\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"MasterRecordId\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Name\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Type\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ParentId\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"BillingStreet\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"BillingCity\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"BillingState\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"BillingPostalCode\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"BillingCountry\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"BillingLatitude\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"BillingLongitude\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"BillingGeocodeAccuracy\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"BillingAddress\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"Accuracy\\\" />\\r\\n                    <xs:element name=\\\"City\\\" />\\r\\n                    <xs:element name=\\\"Country\\\" />\\r\\n                    <xs:element name=\\\"CountryCode\\\" />\\r\\n                    <xs:element name=\\\"Latitude\\\" />\\r\\n                    <xs:element name=\\\"Longitude\\\" />\\r\\n                    <xs:element name=\\\"PostalCode\\\" />\\r\\n                    <xs:element name=\\\"State\\\" />\\r\\n                    <xs:element name=\\\"StateCode\\\" />\\r\\n                    <xs:element name=\\\"Street\\\" />\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"ShippingStreet\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ShippingCity\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ShippingState\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ShippingPostalCode\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ShippingCountry\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ShippingLatitude\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ShippingLongitude\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ShippingGeocodeAccuracy\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ShippingAddress\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"Accuracy\\\" />\\r\\n                    <xs:element name=\\\"City\\\" />\\r\\n                    <xs:element name=\\\"Country\\\" />\\r\\n                    <xs:element name=\\\"CountryCode\\\" />\\r\\n                    <xs:element name=\\\"Latitude\\\" />\\r\\n                    <xs:element name=\\\"Longitude\\\" />\\r\\n                    <xs:element name=\\\"PostalCode\\\" />\\r\\n                    <xs:element name=\\\"State\\\" />\\r\\n                    <xs:element name=\\\"StateCode\\\" />\\r\\n                    <xs:element name=\\\"Street\\\" />\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"Phone\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Fax\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"AccountNumber\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Website\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"PhotoUrl\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Sic\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Industry\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"AnnualRevenue\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"NumberOfEmployees\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Ownership\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"TickerSymbol\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Rating\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Site\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OwnerId\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CreatedDate\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CreatedById\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"LastModifiedDate\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"LastModifiedById\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"SystemModstamp\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"LastActivityDate\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"LastViewedDate\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"LastReferencedDate\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Jigsaw\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"JigsawCompanyId\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CleanStatus\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"AccountSource\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"DunsNumber\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Tradestyle\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"NaicsCode\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"NaicsDesc\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"YearStarted\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"SicDesc\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"DandbCompanyId\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OperatingHoursId\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CustomerPriority__c\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"SLA__c\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"Active__c\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"NumberofLocations__c\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"UpsellOpportunity__c\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"SLASerialNumber__c\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"SLAExpirationDate__c\\\" type=\\\"xs:string\\\" />\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\"targetSchemaType\":1}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Auto",
+              "Json",
+              "Xml"
+            ],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "0975a1f4-750f-56c3-9e89-874ad96a5d00",
+        "TargetNodeId": "7c036e9f-3991-e892-fc8f-10a5acbf43dc",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ae6b1e2c-8a7b-3559-ae6a-f8ecf143bf14",
+        "TargetNodeId": "f8370158-67ee-7645-3a54-1e2298b0096d",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7c036e9f-3991-e892-fc8f-10a5acbf43dc",
+        "TargetNodeId": "ae6b1e2c-8a7b-3559-ae6a-f8ecf143bf14",
+        "SourceName": "Current",
+        "TargetName": "page"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "7c036e9f-3991-e892-fc8f-10a5acbf43dc",
+        "TargetNodeId": "ae6b1e2c-8a7b-3559-ae6a-f8ecf143bf14",
+        "SourceName": "Loop",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "f8370158-67ee-7645-3a54-1e2298b0096d",
+        "TargetNodeId": "e1289617-978e-69ba-9fe0-d19401e102c7",
+        "SourceName": "Result",
+        "TargetName": "Request"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "f8370158-67ee-7645-3a54-1e2298b0096d",
+        "TargetNodeId": "e1289617-978e-69ba-9fe0-d19401e102c7",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ae6b1e2c-8a7b-3559-ae6a-f8ecf143bf14",
+        "TargetNodeId": "f8370158-67ee-7645-3a54-1e2298b0096d",
+        "SourceName": "Response",
+        "TargetName": "Source"
+      }
+    ],
+    "StartNodeId": "0975a1f4-750f-56c3-9e89-874ad96a5d00",
+    "DateCreated": "2020-07-31T15:27:50.1552668Z",
+    "DateUpdated": "2020-07-31T15:27:50.1552668Z",
+    "ActivityLogLevelMask": 0
+  }
+}

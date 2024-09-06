@@ -1,0 +1,351 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "SYSPRO Example",
+    "Nodes": [
+      {
+        "NodeId": "44934e57-a2fb-778e-f4b8-82c4a91803bc",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a65693da-1afe-e31a-8e4d-fa2a6655fb2a",
+        "Name": "Syspro",
+        "Version": "7.0.0.7",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "WebServiceUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Operator",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Company",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "CompanyPassword",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "CorrectXmlCase",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Syspro.SysproConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "flowgear.Nodes.Syspro.InvokeMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Query",
+              "Post",
+              "SetupAdd",
+              "SetupAddUpdate",
+              "SetupUpdate",
+              "SetupDelete",
+              "Build",
+              "Browse",
+              "Fetch",
+              "NextKey",
+              "PreviousKey"
+            ],
+            "Value": "Query"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "BusinessObject",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "COMFND"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ParameterXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "DataXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Query xmlns:xsd=\"http://www.w3.org/2001/XMLSchema-instance\" xsd:noNamespaceSchemaLocation=\"COMFND.XSD\">\r\n  <TableName>InvWarehouse</TableName>\r\n  <ReturnRows>1</ReturnRows>\r\n  <Columns>\r\n    <Column>StockCode</Column>\r\n    <Column>Warehouse</Column>\r\n  </Columns>\r\n  <Where>\r\n    <Expression>\r\n      <OpenBracket>(</OpenBracket>\r\n      <Column>Warehouse</Column>\r\n      <Condition>EQ</Condition>\r\n      <Value>DB</Value>\r\n      <CloseBracket>)</CloseBracket>\r\n    </Expression>\r\n  </Where>\r\n  <OrderBy>\r\n    <Column>Warehouse</Column>\r\n  </OrderBy>\r\n</Query>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ResponseXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<InvWarehouse Language=\"05\" Language2=\"EN\" CssStyle=\"\" DecFormat=\"1\" DateFormat=\"01\" Role=\"01\" Version=\"6.1.027\" OperatorPrimaryRole=\"   \">\r\n  <HeaderDetails>\r\n    <TableName>InvWarehouse</TableName>\r\n    <Columns>\r\n      <Column>StockCode</Column>\r\n      <Column>Warehouse</Column>\r\n    </Columns>\r\n    <OrderBy>\r\n      <Column>Warehouse</Column>\r\n    </OrderBy>\r\n  </HeaderDetails>\r\n  <Row>\r\n    <StockCode>0801030-330-020</StockCode>\r\n    <Warehouse>DB</Warehouse>\r\n  </Row>\r\n  <RowsReturned>       1</RowsReturned>\r\n</InvWarehouse>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Syspro",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "2d9e1e4e-17bf-06bd-1055-f3ed39225871",
+        "Name": "XsltTransform",
+        "Version": "2.1.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TransformXslt",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\r\n  <xsl:output method=\"xml\" omit-xml-declaration=\"yes\" />\r\n  <xsl:template match=\"/\">\r\n    <xsl:for-each select=\"//ErrorDescription\">\r\n      <xsl:if test=\"position() &gt; 1\">\r\n        <xsl:text>\r\n</xsl:text>\r\n      </xsl:if>\r\n      <xsl:if test=\"string-length(../../CustomerPoNumber) &gt; 0\">\r\n        <xsl:value-of select=\"concat('Po Number ', ../../CustomerPoNumber, ': ')\" />\r\n      </xsl:if>\r\n      <xsl:if test=\"string-length(../../StockCode) &gt; 0\">\r\n        <xsl:value-of select=\"concat('[', ../../CustomerPoLine, '] Stock Code ', ../../StockCode, ': ')\" />\r\n      </xsl:if>\r\n      <xsl:value-of select=\".\" />\r\n    </xsl:for-each>\r\n  </xsl:template>\r\n</xsl:stylesheet>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "TransformedXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "XSL Transform",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "270f90e9-c59a-22f6-3077-a2e634252907",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Simple Query example"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "5312a806-28b8-6ecc-aa7a-0fe7d7d21d3d",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Example XSL Transform to parse a SYSPRO Sales Order Post (SORTOI) response in order to determine if there were errors"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "44934e57-a2fb-778e-f4b8-82c4a91803bc",
+    "DateCreated": "2017-08-31T15:15:56.44",
+    "DateUpdated": "2017-08-31T15:15:56.44",
+    "ActivityLogLevelMask": 0
+  }
+}

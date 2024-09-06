@@ -1,0 +1,543 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Infrequently run Scheduler",
+    "Nodes": [
+      {
+        "NodeId": "21544e38-3a40-6ca8-6b87-b7b92f1eb489",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "13e913b9-e789-a6c9-f6c0-3d39edd3e8ed",
+        "Name": "DayScheduler",
+        "Version": "3.0.0.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "StartTime",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "08:00"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "EndTime",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "09:00"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IntervalMinutes",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Day Scheduler",
+        "NodeType": 3,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "cb8f4c52-678f-b55b-6870-17e9694c70c1",
+        "Name": "GetKeyValues",
+        "Version": "1.0.0.8",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "StartDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "0/0/-1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "EndDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "0/0/0"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchGroup",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "infrequenttaskgroup"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "lastrun"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchStatus",
+            "TypeName": "flowgear.Nodes.KeyValue.GetKeyValues+KeyValueStatusFilter",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success",
+              "Any"
+            ],
+            "Value": "Any"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.KeyValue.GetKeyValues+Methods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "List",
+              "CountByValue",
+              "CountByStatus",
+              "ListUnpacked"
+            ],
+            "Value": "List"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "flowgear.Nodes.KeyValue.GetKeyValues+Emits",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Json",
+              "Xml"
+            ],
+            "Value": "Json"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"KeyValue\":[{\"Key\":\"lastrun\",\"Value\":\"\",\"DateTime\":\"2023-04-04T09:55:39.333\",\"Status\":\"Unknown\"}]}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Get Key-Values",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3790e7ca-9339-adfa-136a-5c6aa7103ecd",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "has task run?",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value <> \"\""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "c397aff1-b72c-e496-9bbc-46a7030132d7",
+        "Name": "SetKeyValue",
+        "ShortDescription": "mark task as run",
+        "Version": "1.0.0.8",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "infrequenttaskgroup"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "lastrun"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.KeyValue.SetKeyValue+KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Unknown"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Set Key-Value",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "1ad550b2-1669-f577-f73b-18b458019cd6",
+        "Name": "Formatter",
+        "ShortDescription": "begin workflow steps here...",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "example first workflow step"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "21544e38-3a40-6ca8-6b87-b7b92f1eb489",
+        "TargetNodeId": "13e913b9-e789-a6c9-f6c0-3d39edd3e8ed",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "21544e38-3a40-6ca8-6b87-b7b92f1eb489",
+        "TargetNodeId": "cb8f4c52-678f-b55b-6870-17e9694c70c1",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "13e913b9-e789-a6c9-f6c0-3d39edd3e8ed",
+        "TargetNodeId": "cb8f4c52-678f-b55b-6870-17e9694c70c1",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "cb8f4c52-678f-b55b-6870-17e9694c70c1",
+        "TargetNodeId": "3790e7ca-9339-adfa-136a-5c6aa7103ecd",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "3790e7ca-9339-adfa-136a-5c6aa7103ecd",
+        "TargetNodeId": "c397aff1-b72c-e496-9bbc-46a7030132d7",
+        "SourceName": "False",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "cb8f4c52-678f-b55b-6870-17e9694c70c1",
+        "TargetNodeId": "3790e7ca-9339-adfa-136a-5c6aa7103ecd",
+        "SourceName": "Result",
+        "TargetName": "Value",
+        "Expression": "KeyValue[0].Key"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "c397aff1-b72c-e496-9bbc-46a7030132d7",
+        "TargetNodeId": "1ad550b2-1669-f577-f73b-18b458019cd6",
+        "SourceName": "",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "21544e38-3a40-6ca8-6b87-b7b92f1eb489",
+    "DateCreated": "2023-04-04T09:57:34.8814091Z",
+    "DateUpdated": "2023-04-04T09:57:34.8814091Z",
+    "ActivityLogLevelMask": 0
+  }
+}

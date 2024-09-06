@@ -1,0 +1,562 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "ConnectWise Manage Example",
+    "Description": "A few example ConnectWise Rest API calls.",
+    "Nodes": [
+      {
+        "NodeId": "49966033-6986-4b16-6ede-9d485763d799",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6133.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "595332f7-575a-f2b0-da8a-04c8927b4eeb",
+        "Name": "ConnectWiseRest",
+        "ShortDescription": "Get Top 1 Companies",
+        "Version": "1.0.1.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "SiteUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "ConnectWise Manage Test",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Magento.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "88328663-7508-f18b-1007-06da2d5048e2"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": \" (integer)\",\r\n  \"identifier\": \" (string)\",\r\n  \"name\": \" (string)\",\r\n  \"status\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"addressLine1\": \"At least one address field is required -- addressLine1, addressLine2, city, state, zip and/or country (string)\",\r\n  \"addressLine2\": \"At least one address field is required -- addressLine1, addressLine2, city, state, zip and/or country (string)\",\r\n  \"city\": \"At least one address field is required -- addressLine1, addressLine2, city, state, zip and/or country (string)\",\r\n  \"state\": \"At least one address field is required -- addressLine1, addressLine2, city, state, zip and/or country (string)\",\r\n  \"zip\": \"At least one address field is required -- addressLine1, addressLine2, city, state, zip and/or country (string)\",\r\n  \"country\": {\r\n    \"id\": \" (integer)\",\r\n    \"identifier\": \" (string)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"phoneNumber\": \" (string)\",\r\n  \"faxNumber\": \" (string)\",\r\n  \"website\": \" (string)\",\r\n  \"territory\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"market\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"accountNumber\": \" (string)\",\r\n  \"defaultContact\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"dateAcquired\": \" (string)\",\r\n  \"sicCode\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"parentCompany\": {\r\n    \"id\": \" (integer)\",\r\n    \"identifier\": \" (string)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"annualRevenue\": \" (number)\",\r\n  \"numberOfEmployees\": \" (integer)\",\r\n  \"ownershipType\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"timeZoneSetup\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"leadSource\": \" (string)\",\r\n  \"leadFlag\": \" (boolean)\",\r\n  \"unsubscribeFlag\": \" (boolean)\",\r\n  \"calendar\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"userDefinedField1\": \" (string)\",\r\n  \"userDefinedField2\": \" (string)\",\r\n  \"userDefinedField3\": \" (string)\",\r\n  \"userDefinedField4\": \" (string)\",\r\n  \"userDefinedField5\": \" (string)\",\r\n  \"userDefinedField6\": \" (string)\",\r\n  \"userDefinedField7\": \" (string)\",\r\n  \"userDefinedField8\": \" (string)\",\r\n  \"userDefinedField9\": \" (string)\",\r\n  \"userDefinedField10\": \" (string)\",\r\n  \"vendorIdentifier\": \" (string)\",\r\n  \"taxIdentifier\": \" (string)\",\r\n  \"taxCode\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"billingTerms\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"invoiceTemplate\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"pricingSchedule\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"companyEntityType\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"billToCompany\": {\r\n    \"id\": \" (integer)\",\r\n    \"identifier\": \" (string)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"billingSite\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"billingContact\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"invoiceDeliveryMethod\": {\r\n    \"id\": \" (integer)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"invoiceToEmailAddress\": \" (string)\",\r\n  \"invoiceCCEmailAddress\": \" (string)\",\r\n  \"deletedFlag\": \" (boolean)\",\r\n  \"dateDeleted\": \" (string)\",\r\n  \"deletedBy\": \" (string)\",\r\n  \"mobileGuid\": \" (object)\",\r\n  \"facebookUrl\": \" (string)\",\r\n  \"twitterUrl\": \" (string)\",\r\n  \"linkedInUrl\": \" (string)\",\r\n  \"currency\": {\r\n    \"id\": \" (integer)\",\r\n    \"symbol\": \" (string)\",\r\n    \"isoCode\": \" (string)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"territoryManager\": {\r\n    \"id\": \" (integer)\",\r\n    \"identifier\": \" (string)\",\r\n    \"name\": \" (string)\",\r\n    \"_info\": \" (object)\"\r\n  },\r\n  \"_info\": \" (object)\"\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "orderBy",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "identifier asc"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "pageSize",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "conditions",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "identifier like \"Test001\""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 5795.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "ConnectWise Manage",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "4fc5abbc-cd02-7946-27b1-4a1872711477",
+        "Name": "Note",
+        "ShortDescription": "Get Top 1 Companies",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Gets a list of the first company where the identifier is like \"Test001\" ordered by company identifier (alphabetical)"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 5795.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f121ca94-8571-eeb5-68e2-415476008b7e",
+        "Name": "ConnectWiseRest",
+        "ShortDescription": "Create Company",
+        "Version": "1.0.1.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "SiteUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "ConnectWise Manage Test",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Magento.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "3d833df0-68b0-ddab-1741-12a882ef6d4b"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"identifier\": \"TEST001\",\r\n  \"name\": \"Test Company\"\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": 15013,\r\n  \"identifier\": \"TEST001\",\r\n  \"name\": \"Test Company\",\r\n  \"status\": {\r\n    \"id\": 1,\r\n    \"name\": \"Active - Silver SLA\",\r\n    \"_info\": {\r\n      \"status_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/statuses/1\"\r\n    }\r\n  },\r\n  \"country\": {\r\n    \"id\": 4,\r\n    \"name\": \"South Africa\",\r\n    \"_info\": {\r\n      \"country_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/countries/4\"\r\n    }\r\n  },\r\n  \"phoneNumber\": \"\",\r\n  \"faxNumber\": \"\",\r\n  \"dateAcquired\": \"2019-03-05T12:06:02Z\",\r\n  \"annualRevenue\": 0,\r\n  \"leadFlag\": false,\r\n  \"unsubscribeFlag\": false,\r\n  \"taxCode\": {\r\n    \"id\": 11,\r\n    \"name\": \"South Africa\",\r\n    \"_info\": {\r\n      \"taxCode_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/finance/taxCodes/11\"\r\n    }\r\n  },\r\n  \"billToCompany\": {\r\n    \"id\": 15013,\r\n    \"identifier\": \"TEST001\",\r\n    \"name\": \"Test Company\",\r\n    \"_info\": {\r\n      \"company_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/15013\"\r\n    }\r\n  },\r\n  \"billingSite\": {\r\n    \"id\": 15891,\r\n    \"name\": \"Main\",\r\n    \"_info\": {\r\n      \"site_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/15013/sites/15891\"\r\n    }\r\n  },\r\n  \"deletedFlag\": false,\r\n  \"mobileGuid\": \"64097d23-6b3e-4ac6-ae89-a13b7804fdec\",\r\n  \"typeIds\": [\r\n    34\r\n  ],\r\n  \"_info\": {\r\n    \"lastUpdated\": \"2019-03-05T12:06:02Z\",\r\n    \"updatedBy\": \"flowgear\",\r\n    \"dateEntered\": \"2019-03-05T12:06:02Z\",\r\n    \"enteredBy\": \"flowgear\",\r\n    \"contacts_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/contacts?conditions=company/id=15013\",\r\n    \"agreements_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/finance/agreements?conditions=company/id=15013\",\r\n    \"tickets_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/service/tickets?conditions=company/id=15013\",\r\n    \"opportunities_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/sales/opportunities?conditions=company/id=15013\",\r\n    \"activities_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/sales/activities?conditions=company/id=15013\",\r\n    \"projects_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/project/projects?conditions=company/id=15013\",\r\n    \"configurations_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/configurations?conditions=company/id=15013\",\r\n    \"orders_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/sales/orders?conditions=company/id=15013\",\r\n    \"documents_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/system/documents?recordType=Company&recordId=15013\",\r\n    \"sites_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/15013/sites\",\r\n    \"teams_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/15013/teams\",\r\n    \"reports_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/15013/managementSummaryReports\",\r\n    \"notes_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/15013/notes\"\r\n  },\r\n  \"customFields\": [\r\n    {\r\n      \"id\": 11,\r\n      \"caption\": \"Advisor ID\",\r\n      \"type\": \"Text\",\r\n      \"entryMethod\": \"List\",\r\n      \"numberOfDecimals\": 0\r\n    }\r\n  ]\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6133.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "ConnectWise Manage",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e887ac04-f91a-9e46-a486-50f35e464cc2",
+        "Name": "Note",
+        "ShortDescription": "Create Agreement",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "This string of nodes creates an agreement starting all the way from the company."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6133.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "bddfca67-54c2-8bb3-9e2a-6913c621d845",
+        "Name": "ConnectWiseRest",
+        "ShortDescription": "Create Contact",
+        "Version": "1.0.1.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "SiteUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "ConnectWise Manage Test",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Magento.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "86464da3-e18b-d087-045e-d9417ba4e837"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"firstName\": \"Flowgear\",\r\n  \"lastName\": \"Test\",\r\n  \"company\": {\r\n    \"id\": \"15013\"\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": 34436,\r\n  \"firstName\": \"Flowgear\",\r\n  \"lastName\": \"Test\",\r\n  \"company\": {\r\n    \"id\": 15013,\r\n    \"identifier\": \"TEST001\",\r\n    \"name\": \"Test Company\",\r\n    \"_info\": {\r\n      \"company_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/15013\",\r\n      \"mobileGuid\": \"64097d23-6b3e-4ac6-ae89-a13b7804fdec\"\r\n    }\r\n  },\r\n  \"site\": {\r\n    \"id\": 15891,\r\n    \"name\": \"Main\",\r\n    \"_info\": {\r\n      \"site_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/15013/sites/15891\",\r\n      \"mobileGuid\": \"c83c8a53-9f25-4e1d-8139-1ca40207082c\"\r\n    }\r\n  },\r\n  \"inactiveFlag\": false,\r\n  \"marriedFlag\": false,\r\n  \"childrenFlag\": false,\r\n  \"portalSecurityLevel\": 1,\r\n  \"disablePortalLoginFlag\": true,\r\n  \"unsubscribeFlag\": false,\r\n  \"mobileGuid\": \"9e8f8f00-692e-45e5-bf8e-644f94270362\",\r\n  \"defaultBillingFlag\": false,\r\n  \"defaultFlag\": false,\r\n  \"typeIds\": [],\r\n  \"_info\": {\r\n    \"lastUpdated\": \"2019-03-05T12:12:36Z\",\r\n    \"updatedBy\": \"flowgear\",\r\n    \"communications_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/contacts/34436/communications\",\r\n    \"notes_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/contacts/34436/notes\",\r\n    \"tracks_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/contacts/34436/tracks\",\r\n    \"portalSecurity_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/contacts/34436/portalSecurity\",\r\n    \"activities_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/sales/activities?conditions=contact/id=34436\",\r\n    \"documents_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/system/documents?recordType=Contact&recordId=34436\",\r\n    \"configurations_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/configurations?conditions=contact/id=34436\",\r\n    \"tickets_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/service/tickets?conditions=contact/id=34436\",\r\n    \"opportunities_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/sales/opportunities?conditions=contact/id=34436\",\r\n    \"projects_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/project/projects?conditions=contact/id=34436\",\r\n    \"image_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/contacts/34436/image?lastModified=2019-03-05T12:12:36Z\"\r\n  }\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6133.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "ConnectWise Manage",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b653323e-06c5-5b00-f824-86435d9e0795",
+        "Name": "ConnectWiseRest",
+        "ShortDescription": "Create Agreement",
+        "Version": "1.0.1.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "SiteUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "ConnectWise Manage Test",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Magento.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "0065ca32-f39c-344a-bc5b-01b946ec91a2"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"name\": \"Test Agreement\",\r\n  \"type\": {\r\n    \"id\": 179\r\n  },\r\n  \"company\": {\r\n    \"id\": 15013\r\n  },\r\n  \"contact\": {\r\n    \"id\": 34436\r\n  },\r\n  \"startDate\": \"2014-03-01\",\r\n  \"billStartDate\": \"2014-03-01\",\r\n  \"noEndingDateFlag\": \"true\",\r\n  \"sla\": {\r\n    \"id\": 2\r\n  },\r\n  \"prorateFlag\": \"true\",\r\n  \"billingTerms\": {\r\n    \"id\": 28\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": 4636,\r\n  \"name\": \"Test Agreement\",\r\n  \"type\": {\r\n    \"id\": 179,\r\n    \"name\": \"Hosted Exchange\",\r\n    \"_info\": {\r\n      \"type_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/finance/agreements/types/179\"\r\n    }\r\n  },\r\n  \"company\": {\r\n    \"id\": 15013,\r\n    \"identifier\": \"TEST001\",\r\n    \"name\": \"Test Company\",\r\n    \"_info\": {\r\n      \"company_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/companies/15013\"\r\n    }\r\n  },\r\n  \"contact\": {\r\n    \"id\": 34436,\r\n    \"name\": \"Flowgear Test\",\r\n    \"_info\": {\r\n      \"contact_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/company/contacts/34436\"\r\n    }\r\n  },\r\n  \"location\": {\r\n    \"id\": 2,\r\n    \"name\": \"Global Micro\",\r\n    \"_info\": {\r\n      \"location_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/system/locations/2\"\r\n    }\r\n  },\r\n  \"department\": {\r\n    \"id\": 10,\r\n    \"identifier\": \"GMS Support\",\r\n    \"name\": \"Global Micro - Support\",\r\n    \"_info\": {\r\n      \"department_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/system/departments/10\"\r\n    }\r\n  },\r\n  \"restrictLocationFlag\": true,\r\n  \"restrictDepartmentFlag\": false,\r\n  \"startDate\": \"2014-03-01T00:00:00Z\",\r\n  \"noEndingDateFlag\": true,\r\n  \"cancelledFlag\": false,\r\n  \"sla\": {\r\n    \"id\": 2,\r\n    \"name\": \"Hosted Exchange\",\r\n    \"_info\": {\r\n      \"sla_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/service/SLAs/2\"\r\n    }\r\n  },\r\n  \"applicationLimit\": 0,\r\n  \"applicationUnlimitedFlag\": false,\r\n  \"oneTimeFlag\": false,\r\n  \"coverAgreementTime\": false,\r\n  \"coverAgreementProduct\": false,\r\n  \"coverAgreementExpense\": false,\r\n  \"coverSalesTax\": false,\r\n  \"carryOverUnused\": false,\r\n  \"allowOverruns\": false,\r\n  \"expireWhenZero\": false,\r\n  \"chargeToFirm\": false,\r\n  \"employeeCompRate\": \"Actual\",\r\n  \"employeeCompNotExceed\": \"Billing\",\r\n  \"compHourlyRate\": 0,\r\n  \"compLimitAmount\": 0,\r\n  \"billingCycle\": {\r\n    \"id\": 2,\r\n    \"name\": \"Monthly\"\r\n  },\r\n  \"billOneTimeFlag\": false,\r\n  \"billingTerms\": {\r\n    \"id\": 28,\r\n    \"name\": \"Net 30 - Debit Order\"\r\n  },\r\n  \"invoicingCycle\": \"ContractYear\",\r\n  \"billAmount\": 0,\r\n  \"taxable\": true,\r\n  \"billStartDate\": \"2014-03-01T00:00:00Z\",\r\n  \"taxCode\": {\r\n    \"id\": 11,\r\n    \"name\": \"South Africa\",\r\n    \"_info\": {\r\n      \"taxCode_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/finance/taxCodes/11\"\r\n    }\r\n  },\r\n  \"restrictDownPayment\": false,\r\n  \"prorateFlag\": true,\r\n  \"invoiceDescription\": \"Hosted Exchange Service\\r\\n\\r\\n- Outlook Web Access \\\"OWA\\\" and Web browser access via any client\\r\\n- Internet Mail protocols: Simple Mail Transfer Protocol \\\"SMTP\\\", Post Office Protocol \\\"POP\\\" and \\\"MAPI\\\" Protocol\\r\\n- Mobile Notification, Browse, Synchronise\\r\\n- Tasks and Rules\\r\\n- Personal Folders\\r\\n- Personal and shared Calendars\\r\\n- Personal and shared contacts\\r\\n- Group Scheduling\\r\\n- Support for Organisation Wide Global Address List\\r\\n- Support for a single, second level domain for a single user\\r\\n- Includes Hosted E-mail Filtering provided that Customer completes the Hosted E-mail Filtering order form and service schedule.\\r\\n- Management of the Service including the Help Desk and Fault Reporting.\",\r\n  \"topComment\": false,\r\n  \"bottomComment\": false,\r\n  \"workRole\": {\r\n    \"id\": 11,\r\n    \"name\": \"System Engineer\",\r\n    \"_info\": {\r\n      \"workRole_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/time/workRoles/11\"\r\n    }\r\n  },\r\n  \"invoiceTemplate\": {\r\n    \"id\": 1,\r\n    \"name\": \"Default Invoice Template\",\r\n    \"_info\": {\r\n      \"billingTerms_Href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/finance/invoiceTemplateSetups/1\"\r\n    }\r\n  },\r\n  \"billTime\": \"DoNotBill\",\r\n  \"billExpenses\": \"DoNotBill\",\r\n  \"billProducts\": \"Billable\",\r\n  \"billableTimeInvoice\": false,\r\n  \"billableExpenseInvoice\": false,\r\n  \"billableProductInvoice\": true,\r\n  \"currency\": {\r\n    \"id\": 9,\r\n    \"symbol\": \"R\",\r\n    \"isoCode\": \"ZAR\",\r\n    \"name\": \"South African Rand\",\r\n    \"_info\": {\r\n      \"currency_href\": \"https://crm.globalmicro.co.za/v4_6_release/apis/3.0/finance/currencies/9\"\r\n    }\r\n  },\r\n  \"autoInvoiceFlag\": false,\r\n  \"nextInvoiceDate\": \"2014-03-01T00:00:00Z\",\r\n  \"_info\": {\r\n    \"lastUpdated\": \"2019-03-05T12:28:37Z\",\r\n    \"updatedBy\": \"flowgear       \"\r\n  },\r\n  \"customFields\": [\r\n    {\r\n      \"id\": 9,\r\n      \"caption\": \"Odin Sub ID\",\r\n      \"type\": \"Text\",\r\n      \"entryMethod\": \"EntryField\",\r\n      \"numberOfDecimals\": 0\r\n    },\r\n    {\r\n      \"id\": 10,\r\n      \"caption\": \"TrueProrata\",\r\n      \"type\": \"Checkbox\",\r\n      \"entryMethod\": \"EntryField\",\r\n      \"numberOfDecimals\": 0\r\n    }\r\n  ]\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6133.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "ConnectWise Manage",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "49966033-6986-4b16-6ede-9d485763d799",
+        "TargetNodeId": "f121ca94-8571-eeb5-68e2-415476008b7e",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "f121ca94-8571-eeb5-68e2-415476008b7e",
+        "TargetNodeId": "bddfca67-54c2-8bb3-9e2a-6913c621d845",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "bddfca67-54c2-8bb3-9e2a-6913c621d845",
+        "TargetNodeId": "b653323e-06c5-5b00-f824-86435d9e0795",
+        "SourceName": "",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "49966033-6986-4b16-6ede-9d485763d799",
+    "DateCreated": "2019-03-05T12:29:59.3029117Z",
+    "DateUpdated": "2019-03-05T12:29:59.3029117Z",
+    "ActivityLogLevelMask": 0
+  }
+}

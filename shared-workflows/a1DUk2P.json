@@ -1,0 +1,211 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "SQL query paged",
+    "Nodes": [
+      {
+        "NodeId": "6f4a60ef-adc6-30e1-6ba2-71b64eef270f",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "76fc7518-4d95-0364-6e50-0a68d88800c3",
+        "Name": "SqlQueryPaged",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Microsoft SQL Query Paged Skillie",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Sql.Microsoft.MicrosoftSqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "select * from Contacts WHERE name = @test\r\nORDER BY 1\r\n"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "XmlQuery",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PageSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "400"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "test",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "test"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Page",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Microsoft SQL Query Paged",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "6f4a60ef-adc6-30e1-6ba2-71b64eef270f",
+        "TargetNodeId": "76fc7518-4d95-0364-6e50-0a68d88800c3",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "6f4a60ef-adc6-30e1-6ba2-71b64eef270f",
+    "DateCreated": "2020-06-19T14:29:22.6213653Z",
+    "DateUpdated": "2020-06-19T14:29:22.6213653Z",
+    "ActivityLogLevelMask": 0
+  }
+}

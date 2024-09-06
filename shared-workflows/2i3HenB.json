@@ -1,0 +1,228 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "File Splitter example",
+    "Nodes": [
+      {
+        "NodeId": "ee884377-c102-f3cd-ab96-fa6b2f07b9f1",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "02ff8206-47af-0fdc-e866-70e5207e332b",
+        "Name": "FileSplitter",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "File Splitter",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.FileSplitter.FileSplitterConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "FilePath",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "C:\\temp\\example.csv"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DestinationFolder",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "C:\\temp\\outputFolder"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RepeatHeaderRows",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSizeMb",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 5
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "LineEnding",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "\\n"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "File Splitter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "44226a24-0bfe-2720-7864-3505ceab44d4",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "This Node will spit the C:\\temp\\example.csv file into 5 MB files.\nThe files will be saved in the C:\\temp\\outputFolder folder\nThe file names will be \nexample_1.csv\nexample_2.csv\n"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3458.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ee884377-c102-f3cd-ab96-fa6b2f07b9f1",
+        "TargetNodeId": "02ff8206-47af-0fdc-e866-70e5207e332b",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "ee884377-c102-f3cd-ab96-fa6b2f07b9f1",
+    "DateCreated": "2022-11-23T09:36:36.2174837Z",
+    "DateUpdated": "2022-11-23T09:36:36.2174837Z",
+    "ActivityLogLevelMask": 0
+  }
+}

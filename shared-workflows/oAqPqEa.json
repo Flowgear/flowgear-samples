@@ -1,0 +1,599 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Sage Intacct Object Navigation",
+    "Nodes": [
+      {
+        "NodeId": "08186880-24bc-eee1-73ff-a728205b2b37",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3f5bd639-4e82-2aca-70b8-c5d3b62b06b2",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "When querying information from Sage Intacct objects, we often need to specify which fields we want to retrieve. In order to determine the names of the fields you have to call the inspect operation."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3458.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "c9800c3f-4e1b-686a-0899-7c755a8588c1",
+        "Name": "SageIntacct",
+        "ShortDescription": "List Sales Orders",
+        "Version": "1.1.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiBaseUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "CompanyID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "query"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Object",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "SODOCUMENT"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"object\" type=\"xs:string\" />\r\n        <xs:element name=\"select\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element maxOccurs=\"unbounded\" name=\"field\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<query>\r\n  <object>SODOCUMENT</object>\r\n  <select>\r\n    <field>RECORDNO</field>\r\n    <field>DOCID</field>\r\n    <field>ARINVOICE.RECORDNO</field>\r\n  </select>\r\n</query>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HadError",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Sage Intacct",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3e1c366e-a659-34d8-d9dc-b34b4484fce5",
+        "Name": "SageIntacct",
+        "ShortDescription": "Query Specific Sales Order",
+        "Version": "1.1.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiBaseUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "CompanyID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "query"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Object",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "SODOCUMENT"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"object\" type=\"xs:string\" />\r\n        <xs:element name=\"select\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element maxOccurs=\"unbounded\" name=\"field\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<query>\r\n  <object>SODOCUMENT</object>\r\n  <filter>\r\n    <equalto>\r\n      <field>DOCID</field>\r\n      <value>{DocId}</value>\r\n    </equalto>\r\n  </filter>\r\n  <select>\r\n    <field>RECORDNO</field>\r\n    <field>DOCID</field>\r\n    <field>ARINVOICE.RECORDNO</field>\r\n  </select>\r\n</query>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HadError",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Response>\r\n  <result>\r\n    <status>success</status>\r\n    <function>query</function>\r\n    <controlid>abc123</controlid>\r\n    <data listtype=\"SODOCUMENT\" totalcount=\"1\" offset=\"0\" count=\"1\" numremaining=\"0\">\r\n      <SODOCUMENT>\r\n        <RECORDNO>1793</RECORDNO>\r\n        <DOCID>Sales Order-SO0492</DOCID>\r\n        <CONTACT.COMPANYNAME>Example Client</CONTACT.COMPANYNAME>\r\n      </SODOCUMENT>\r\n    </data>\r\n  </result>\r\n</Response>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DocId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Sales Order-SO0492"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Sage Intacct",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "7799ebe9-df40-5d90-fc50-6b7a9fd19845",
+        "Name": "SageIntacct",
+        "ShortDescription": "Inspect SODocument",
+        "Version": "1.1.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiBaseUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "CompanyID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "inspect"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Object",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "SODOCUMENT"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"object\" type=\"xs:string\" />\r\n        <xs:element name=\"select\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element maxOccurs=\"unbounded\" name=\"field\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"filter\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"greaterthan\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"field\" type=\"xs:string\" />\r\n                    <xs:element name=\"value\" type=\"xs:unsignedByte\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Request>\r\n  <object>SODOCUMENT</object>\r\n</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HadError",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Response>\r\n  <result>\r\n    <status>success</status>\r\n    <function>inspect</function>\r\n    <controlid>abc123</controlid>\r\n    <data listtype=\"All\" count=\"2\">\r\n      <Type Name=\"SODOCUMENT\">\r\n        <Fields>\r\n          <Field>RECORDNO</Field>\r\n          <Field>DOCNO</Field>\r\n          <Field>DOCID</Field>\r\n          <Field>CREATEDFROM</Field>\r\n          <Field>STATE</Field>\r\n          <Field>CLOSED</Field>\r\n          <Field>WHENCREATED</Field>\r\n          <Field>AUWHENCREATED</Field>\r\n          <Field>CREATEDBY</Field>\r\n          <Field>MODIFIEDBY</Field>\r\n          <Field>WHENMODIFIED</Field>\r\n          <Field>WHENDUE</Field>\r\n          <Field>STATUS</Field>\r\n          <Field>PONUMBER</Field>\r\n          <Field>VENDORDOCNO</Field>\r\n          <Field>DOCPARID</Field>\r\n          <Field>DOCPARKEY</Field>\r\n          <Field>DOCPARCLASS</Field>\r\n          <Field>UPDATES_INV</Field>\r\n          <Field>TERM.NAME</Field>\r\n          <Field>NOTE</Field>\r\n          <Field>WAREHOUSE.LOCATIONID</Field>\r\n          <Field>SHIPVIA</Field>\r\n          <Field>USER</Field>\r\n          <Field>CREATEDUSER</Field>\r\n          <Field>USERID</Field>\r\n          <Field>CREATEDUSERID</Field>\r\n          <Field>CONTACT.CONTACTNAME</Field>\r\n          <Field>CONTACT.PREFIX</Field>\r\n          <Field>CONTACT.FIRSTNAME</Field>\r\n          <Field>CONTACT.INITIAL</Field>\r\n          <Field>CONTACT.LASTNAME</Field>\r\n          <Field>CONTACT.COMPANYNAME</Field>\r\n          <Field>CONTACT.PRINTAS</Field>\r\n          <Field>CONTACT.PHONE1</Field>\r\n          <Field>CONTACT.PHONE2</Field>\r\n          <Field>CONTACT.CELLPHONE</Field>\r\n          <Field>CONTACT.PAGER</Field>\r\n          <Field>CONTACT.FAX</Field>\r\n          <Field>CONTACT.EMAIL1</Field>\r\n          <Field>CONTACT.EMAIL2</Field>\r\n          <Field>CONTACT.URL1</Field>\r\n          <Field>CONTACT.URL2</Field>\r\n          <Field>CONTACT.VISIBLE</Field>\r\n          <Field>CONTACT.MAILADDRESS.ADDRESS1</Field>\r\n          <Field>CONTACT.MAILADDRESS.ADDRESS2</Field>\r\n          <Field>CONTACT.MAILADDRESS.CITY</Field>\r\n          <Field>CONTACT.MAILADDRESS.STATE</Field>\r\n          <Field>CONTACT.MAILADDRESS.ZIP</Field>\r\n          <Field>CONTACT.MAILADDRESS.COUNTRY</Field>\r\n          <Field>CONTACT.MAILADDRESS.COUNTRYCODE</Field>\r\n          <Field>SHIPTOKEY</Field>\r\n          <Field>SHIPTO.CONTACTNAME</Field>\r\n          <Field>SHIPTO.PREFIX</Field>\r\n          <Field>SHIPTO.FIRSTNAME</Field>\r\n          <Field>SHIPTO.INITIAL</Field>\r\n          <Field>SHIPTO.LASTNAME</Field>\r\n          <Field>SHIPTO.COMPANYNAME</Field>\r\n          <Field>SHIPTO.PRINTAS</Field>\r\n          <Field>SHIPTO.PHONE1</Field>\r\n          <Field>SHIPTO.PHONE2</Field>\r\n          <Field>SHIPTO.CELLPHONE</Field>\r\n          <Field>SHIPTO.PAGER</Field>\r\n          <Field>SHIPTO.FAX</Field>\r\n          <Field>SHIPTO.EMAIL1</Field>\r\n          <Field>SHIPTO.EMAIL2</Field>\r\n          <Field>SHIPTO.URL1</Field>\r\n          <Field>SHIPTO.URL2</Field>\r\n          <Field>SHIPTO.VISIBLE</Field>\r\n          <Field>SHIPTO.MAILADDRESS.ADDRESS1</Field>\r\n          <Field>SHIPTO.MAILADDRESS.ADDRESS2</Field>\r\n          <Field>SHIPTO.MAILADDRESS.CITY</Field>\r\n          <Field>SHIPTO.MAILADDRESS.STATE</Field>\r\n          <Field>SHIPTO.MAILADDRESS.ZIP</Field>\r\n          <Field>SHIPTO.MAILADDRESS.COUNTRY</Field>\r\n          <Field>SHIPTO.MAILADDRESS.COUNTRYCODE</Field>\r\n          <Field>BILLTOKEY</Field>\r\n          <Field>BILLTO.CONTACTNAME</Field>\r\n          <Field>BILLTO.PREFIX</Field>\r\n          <Field>BILLTO.FIRSTNAME</Field>\r\n          <Field>BILLTO.INITIAL</Field>\r\n          <Field>BILLTO.LASTNAME</Field>\r\n          <Field>BILLTO.COMPANYNAME</Field>\r\n          <Field>BILLTO.PRINTAS</Field>\r\n          <Field>BILLTO.PHONE1</Field>\r\n          <Field>BILLTO.PHONE2</Field>\r\n          <Field>BILLTO.CELLPHONE</Field>\r\n          <Field>BILLTO.PAGER</Field>\r\n          <Field>BILLTO.FAX</Field>\r\n          <Field>BILLTO.EMAIL1</Field>\r\n          <Field>BILLTO.EMAIL2</Field>\r\n          <Field>BILLTO.URL1</Field>\r\n          <Field>BILLTO.URL2</Field>\r\n          <Field>BILLTO.VISIBLE</Field>\r\n          <Field>BILLTO.MAILADDRESS.ADDRESS1</Field>\r\n          <Field>BILLTO.MAILADDRESS.ADDRESS2</Field>\r\n          <Field>BILLTO.MAILADDRESS.CITY</Field>\r\n          <Field>BILLTO.MAILADDRESS.STATE</Field>\r\n          <Field>BILLTO.MAILADDRESS.ZIP</Field>\r\n          <Field>BILLTO.MAILADDRESS.COUNTRY</Field>\r\n          <Field>BILLTO.MAILADDRESS.COUNTRYCODE</Field>\r\n          <Field>MESSAGE</Field>\r\n          <Field>PRRECORDKEY</Field>\r\n          <Field>INVBATCHKEY</Field>\r\n          <Field>PRINVBATCHKEY</Field>\r\n          <Field>ADDGLBATCHKEY</Field>\r\n          <Field>PRINTED</Field>\r\n          <Field>BACKORDER</Field>\r\n          <Field>SUBTOTAL</Field>\r\n          <Field>TOTAL</Field>\r\n          <Field>ENTGLGROUP</Field>\r\n          <Field>CURRENCY</Field>\r\n          <Field>EXCHRATEDATE</Field>\r\n          <Field>EXCHRATETYPES.NAME</Field>\r\n          <Field>EXCHRATE</Field>\r\n          <Field>SCHOPKEY</Field>\r\n          <Field>SALESCONTRACT</Field>\r\n          <Field>USEDASCONTRACT</Field>\r\n          <Field>TRX_SUBTOTAL</Field>\r\n          <Field>TRX_TOTAL</Field>\r\n          <Field>EXCH_RATE_TYPE_ID</Field>\r\n          <Field>RENEWEDDOC</Field>\r\n          <Field>BASECURR</Field>\r\n          <Field>SYSTEMGENERATED</Field>\r\n          <Field>INVOICERUNKEY</Field>\r\n          <Field>DOCPAR_IN_OUT</Field>\r\n          <Field>WHENPOSTED</Field>\r\n          <Field>PRINTEDUSERID</Field>\r\n          <Field>DATEPRINTED</Field>\r\n          <Field>PRINTEDBY</Field>\r\n          <Field>ADJ</Field>\r\n          <Field>TAXSOLUTIONID</Field>\r\n          <Field>CUSTVENDID</Field>\r\n          <Field>CUSTVENDNAME</Field>\r\n          <Field>CUSTVENDEMAILOPTIN</Field>\r\n          <Field>HASPOSTEDREVREC</Field>\r\n          <Field>CONTRACTID</Field>\r\n          <Field>CONTRACTDESC</Field>\r\n          <Field>TRX_TOTALPAID</Field>\r\n          <Field>TOTALPAID</Field>\r\n          <Field>TRX_TOTALENTERED</Field>\r\n          <Field>TOTALENTERED</Field>\r\n          <Field>TRX_TOTALDUE</Field>\r\n          <Field>TOTALDUE</Field>\r\n          <Field>PAYMENTSTATUS</Field>\r\n          <Field>SIGN_FLAG</Field>\r\n          <Field>VSOEPRICELIST</Field>\r\n          <Field>VSOEPRCLSTKEY</Field>\r\n          <Field>ORIGDOCDATE</Field>\r\n          <Field>HASADVBILLING</Field>\r\n          <Field>INVOICERUN_EXPENSEPRICEMARKUP</Field>\r\n          <Field>INVOICERUN_DESCRIPTION</Field>\r\n          <Field>PROJECTKEY</Field>\r\n          <Field>PROJECT</Field>\r\n          <Field>PROJECTNAME</Field>\r\n          <Field>PREVIEWHEADERKEY</Field>\r\n          <Field>CNCONTRACTID</Field>\r\n          <Field>CNCONTRACTNAME</Field>\r\n          <Field>NEEDBYDATE</Field>\r\n          <Field>SHIPBYDATE</Field>\r\n          <Field>CANCELAFTERDATE</Field>\r\n          <Field>DONOTSHIPBEFOREDATE</Field>\r\n          <Field>DONOTSHIPAFTERDATE</Field>\r\n          <Field>SERVICEDELIVERYDATE</Field>\r\n          <Field>TRACKINGNUMBER</Field>\r\n          <Field>SHIPPEDDATE</Field>\r\n          <Field>CUSTOMERPONUMBER</Field>\r\n          <Field>RETAINAGEPERCENTAGE</Field>\r\n          <Field>SCOPE</Field>\r\n          <Field>INCLUSIONS</Field>\r\n          <Field>EXCLUSIONS</Field>\r\n          <Field>TERMS</Field>\r\n          <Field>SCHEDULESTARTDATE</Field>\r\n          <Field>ACTUALSTARTDATE</Field>\r\n          <Field>SCHEDULEDCOMPLETIONDATE</Field>\r\n          <Field>REVISEDCOMPLETIONDATE</Field>\r\n          <Field>SUBSTANTIALCOMPLETIONDATE</Field>\r\n          <Field>ACTUALCOMPLETIONDATE</Field>\r\n          <Field>NOTICETOPROCEED</Field>\r\n          <Field>RESPONSEDUE</Field>\r\n          <Field>EXECUTEDON</Field>\r\n          <Field>SCHEDULEIMPACT</Field>\r\n          <Field>INTERNALREFNO</Field>\r\n          <Field>INTERNALINITIATEDBYKEY</Field>\r\n          <Field>INTERNALINITIATEDBY</Field>\r\n          <Field>INTERNALINITIATEDBYNAME</Field>\r\n          <Field>INTERNALVERBALBYKEY</Field>\r\n          <Field>INTERNALVERBALBY</Field>\r\n          <Field>INTERNALVERBALBYNAME</Field>\r\n          <Field>INTERNALISSUEDBYKEY</Field>\r\n          <Field>INTERNALISSUEDBY</Field>\r\n          <Field>INTERNALISSUEDBYNAME</Field>\r\n          <Field>INTERNALISSUEDON</Field>\r\n          <Field>INTERNALAPPROVEDBYKEY</Field>\r\n          <Field>INTERNALAPPROVEDBY</Field>\r\n          <Field>INTERNALAPPROVEDBYNAME</Field>\r\n          <Field>INTERNALAPPROVEDON</Field>\r\n          <Field>INTERNALSIGNEDBYKEY</Field>\r\n          <Field>INTERNALSIGNEDBY</Field>\r\n          <Field>INTERNALSIGNEDBYNAME</Field>\r\n          <Field>INTERNALSIGNEDON</Field>\r\n          <Field>INTERNALSOURCE</Field>\r\n          <Field>INTERNALSOURCEREFNO</Field>\r\n          <Field>EXTERNALREFNO</Field>\r\n          <Field>EXTERNALVERBALBYKEY</Field>\r\n          <Field>EXTERNALVERBALBY</Field>\r\n          <Field>EXTERNALAPPROVEDBYKEY</Field>\r\n          <Field>EXTERNALAPPROVEDBY</Field>\r\n          <Field>EXTERNALAPPROVEDON</Field>\r\n          <Field>EXTERNALSIGNEDBYKEY</Field>\r\n          <Field>EXTERNALSIGNEDBY</Field>\r\n          <Field>EXTERNALSIGNEDON</Field>\r\n          <Field>PERFORMANCEBONDREQUIRED</Field>\r\n          <Field>PERFORMANCEBONDRECEIVED</Field>\r\n          <Field>PERFORMANCEBONDAMOUNT</Field>\r\n          <Field>PERFORMANCESURETYCOMPANYKEY</Field>\r\n          <Field>PERFORMANCESURETYCOMPANY</Field>\r\n          <Field>PERFORMANCESURETYCOMPANYNAME</Field>\r\n          <Field>PAYMENTBONDREQUIRED</Field>\r\n          <Field>PAYMENTBONDRECEIVED</Field>\r\n          <Field>PAYMENTBONDAMOUNT</Field>\r\n          <Field>PAYMENTSURETYCOMPANYKEY</Field>\r\n          <Field>PAYMENTSURETYCOMPANY</Field>\r\n          <Field>PAYMENTSURETYCOMPANYNAME</Field>\r\n          <Field>HASCHANGE</Field>\r\n          <Field>REVISEDTOTAL</Field>\r\n          <Field>REVISEDSUBTOTAL</Field>\r\n          <Field>TRX_REVISEDTOTAL</Field>\r\n          <Field>TRX_REVISEDSUBTOTAL</Field>\r\n          <Field>POSTEDCHANGESTOTAL</Field>\r\n          <Field>RELATEDDOCNO</Field>\r\n          <Field>ENABLEDOCCHANGE</Field>\r\n          <Field>CHANGELOGNUMBER</Field>\r\n          <Field>PROJECTCONTRACTID</Field>\r\n          <Field>PROJECTCONTRACTNAME</Field>\r\n          <Field>PROJECTCONTRACTKEY</Field>\r\n          <Field>PCBEXTERNALREFNO</Field>\r\n          <Field>PCBDESCRIPTION</Field>\r\n          <Field>PCBDATE</Field>\r\n          <Field>ARCHITECTKEY</Field>\r\n          <Field>BILLTHROUGHDATE</Field>\r\n          <Field>BILLAPPLICATIONNO</Field>\r\n          <Field>ORGCONTRACTAMT</Field>\r\n          <Field>NETCHANGES</Field>\r\n          <Field>REVISEDCONTRACTAMT</Field>\r\n          <Field>TOTALCOMPLETEDTODATE</Field>\r\n          <Field>RETCOMPLETEDAMT</Field>\r\n          <Field>RETSTOREDMATERIALS</Field>\r\n          <Field>TOTALRETAINAGE</Field>\r\n          <Field>TOTALEARNEDLESSRET</Field>\r\n          <Field>LESSPRIORAPPLICATION</Field>\r\n          <Field>CURRENTAMTDUE</Field>\r\n          <Field>BALANCETOFINISH</Field>\r\n          <Field>TCAPMADDITION</Field>\r\n          <Field>TCAPMDEDUCTION</Field>\r\n          <Field>TCATMADDITION</Field>\r\n          <Field>TCATMDEDUCTION</Field>\r\n          <Field>TOTALNETCHANGESADDITION</Field>\r\n          <Field>TOTALNETCHANGESDEDUCTION</Field>\r\n          <Field>TOTALNETCHANGES</Field>\r\n          <Field>ARCHITECT</Field>\r\n          <Field>PROJECTCONTRACTTOTALRETAINAGEHELD</Field>\r\n          <Field>PREVIOUSRETAINAGEBALANCE</Field>\r\n          <Field>TOTALRETAINAGEONTHISINVOICE</Field>\r\n          <Field>MEGAENTITYKEY</Field>\r\n          <Field>MEGAENTITYID</Field>\r\n          <Field>MEGAENTITYNAME</Field>\r\n          <Field>RECORD_URL</Field>\r\n        </Fields>\r\n      </Type>\r\n      <Operations>\r\n        <Operation name=\"retrievepdf\">\r\n          <Args>\r\n            <Arg name=\"DOCID\" type=\"string\" required=\"false\" />\r\n          </Args>\r\n        </Operation>\r\n      </Operations>\r\n    </data>\r\n  </result>\r\n</Response>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Sage Intacct",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3eae393f-c79a-9aee-f6b3-235418823b0a",
+        "Name": "Note",
+        "ShortDescription": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Below is an example of how to inspect the object:\n\nAdditional context at\nhttps://developer.intacct.com/web-services/your-first-api-calls/#get-all-fields-for-an-object-type\n"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 3458.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "c6152367-8d9d-e844-3d58-ac51f5d5e3da",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Now we can use this information to filter for say a specific sales order where we also want to reveal the company name.\n"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 3458.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "08186880-24bc-eee1-73ff-a728205b2b37",
+    "DateCreated": "2022-09-07T14:36:38.8906324Z",
+    "DateUpdated": "2022-09-07T14:36:38.8906324Z",
+    "ActivityLogLevelMask": 0
+  }
+}

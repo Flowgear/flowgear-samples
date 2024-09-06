@@ -1,0 +1,159 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "QuickMap lookup function",
+    "Nodes": [
+      {
+        "NodeId": "e9b78203-7586-09f3-ddd3-91171c1f55ef",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "07d09a53-b6e0-8607-61e3-6d4d1d1c0f72",
+        "Name": "QuickMap",
+        "Version": "4.0.0.38",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<sample>\r\n  <fieldset>\r\n    <field id=\"firstName\">First name</field>\r\n    <field id=\"lastName\">Last name</field>\r\n    <field id=\"cellphone\">Cell Phone</field>\r\n  </fieldset>\r\n  <employees>\r\n    <employee id=\"1\">\r\n      <field id=\"firstName\">Sample</field>\r\n      <field id=\"lastName\">Employee</field>\r\n      <field id=\"cellphone\">0810000000</field>\r\n    </employee>\r\n    <employee id=\"2\">\r\n      <field id=\"firstName\">Test</field>\r\n      <field id=\"lastName\">Member</field>\r\n      <field id=\"cellphone\">0820000000</field>\r\n    </employee>\r\n  </employees>\r\n</sample>"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"sample/employees/employee/field\",\"sample/employees/employee/field/@id\"],\"targetPath\":\"directory/fieldset/firstName\",\"mapExpression\":\"LOOKUP(\\\"firstName\\\", {field}, \\\"@id\\\", \\\"#text\\\", \\\"\\\")\"},{\"sourcePaths\":[\"sample/employees/employee/field\",\"sample/employees/employee/field/@id\"],\"targetPath\":\"directory/fieldset/lastName\",\"mapExpression\":\"LOOKUP(\\\"lastName\\\", {field}, \\\"@id\\\", \\\"#text\\\", \\\"\\\")\"},{\"sourcePaths\":[\"sample/employees/employee/field\",\"sample/employees/employee/field/@id\"],\"targetPath\":\"directory/fieldset/cellphone\",\"mapExpression\":\"LOOKUP(\\\"cellphone\\\", {field}, \\\"@id\\\", \\\"#text\\\", \\\"\\\")\"}],\"sourceSchema\":\"<sample>\\r\\n  <fieldset>\\r\\n    <field id=\\\"firstName\\\">First name</field>\\r\\n    <field id=\\\"lastName\\\">Last name</field>\\r\\n    <field id=\\\"cellphone\\\">Cell Phone</field>\\r\\n  </fieldset>\\r\\n  <employees>\\r\\n    <employee id=\\\"1\\\">\\r\\n      <field id=\\\"firstName\\\">Sample</field>\\r\\n      <field id=\\\"lastName\\\">Employee</field>\\r\\n      <field id=\\\"cellphone\\\">0810000000</field>\\r\\n    </employee>\\r\\n    <employee id=\\\"2\\\">\\r\\n      <field id=\\\"firstName\\\">Test</field>\\r\\n      <field id=\\\"lastName\\\">Member</field>\\r\\n      <field id=\\\"cellphone\\\">0820000000</field>\\r\\n    </employee>\\r\\n  </employees>\\r\\n</sample>\",\"sourceSchemaType\":0,\"targetSchema\":\"<directory>\\r\\n  <fieldset>\\r\\n    <firstName>First name</firstName>\\r\\n    <lastName>Last name</lastName>\\r\\n    <cellphone>Cell Phone</cellphone>\\r\\n  </fieldset>\\r\\n  <employees>\\r\\n    <employee id=\\\"1\\\">\\r\\n      <field id=\\\"firstName\\\"></field>\\r\\n      <field id=\\\"lastName\\\"></field>\\r\\n      <field id=\\\"cellphone\\\"></field>\\r\\n    </employee>\\r\\n  </employees>\\r\\n</directory>\",\"targetSchemaType\":0}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Auto",
+              "Json",
+              "Xml"
+            ],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<directory>\r\n  <fieldset>\r\n    <firstName>First name</firstName>\r\n    <lastName>Last name</lastName>\r\n    <cellphone>Cell Phone</cellphone>\r\n  </fieldset>\r\n  <employees>\r\n    <employee id=\"1\">\r\n      <field id=\"firstName\"></field>\r\n      <field id=\"lastName\"></field>\r\n      <field id=\"cellphone\"></field>\r\n    </employee>\r\n  </employees>\r\n</directory>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "e9b78203-7586-09f3-ddd3-91171c1f55ef",
+        "TargetNodeId": "07d09a53-b6e0-8607-61e3-6d4d1d1c0f72",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "e9b78203-7586-09f3-ddd3-91171c1f55ef",
+    "DateCreated": "2022-11-30T14:03:38.8411344Z",
+    "DateUpdated": "2022-11-30T14:03:38.8411344Z",
+    "ActivityLogLevelMask": 0
+  }
+}

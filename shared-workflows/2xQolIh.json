@@ -1,0 +1,706 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Statistic Example",
+    "Nodes": [
+      {
+        "NodeId": "d56ad468-565e-41be-6c2e-5bdda6686b0e",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "18f717a2-025d-c513-3742-df449ac88a47",
+        "Name": "SaveStatistic",
+        "ShortDescription": "signal that we're starting",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "InProgress"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "0a359120-5451-cfa7-2d88-9dd79e40701a",
+        "Name": "XmlMatch",
+        "ShortDescription": "get item id",
+        "Version": "1.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "XmlDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Return",
+            "TypeName": "XmlMatch.XmlMatch+ReturnTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "InnerText",
+              "OuterXml",
+              "InnerXml",
+              "Evaluate",
+              "AllOuterXml"
+            ],
+            "Value": "InnerText"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "record/id",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Xml Match",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "80244c06-cda9-3a3d-79f9-8bcd89e25818",
+        "Name": "Splitter",
+        "ShortDescription": "iterate individual records",
+        "Version": "1.0.1.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "SourceDocumentXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<records>\r\n  <record>\r\n    <id>1</id>\r\n    <name>Mars</name>\r\n  </record>\r\n  <record>\r\n    <id>2</id>\r\n    <name>Venus</name>\r\n  </record>\r\n</records>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SplitXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "records/record"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Splitter.Splitter+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "ParentNode",
+              "ParentAndRootNodes"
+            ],
+            "Value": "ParentNode"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "SplitDocumentXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "TotalRows",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "CurrentRow",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Split",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Splitter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "8b85759a-f090-b983-37c9-bde174e79b46",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Query a data source here and feed the results into a Splitter"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "735f307b-ac8f-b0b2-acab-0c050a449704",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "integrate the transaction to the target system here"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "73926aa0-202d-a668-44dd-5aef859dd984",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "determine whether successsful",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1=1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "631bf1b7-3874-b6fd-7c49-bdf014f7740c",
+        "Name": "SaveStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "integrated!"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Success"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8235.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "c0e56d36-23be-6c1e-92ef-f48450db05c4",
+        "Name": "SaveStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "some error message"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Error"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8235.0,
+          "Y": 6516.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d56ad468-565e-41be-6c2e-5bdda6686b0e",
+        "TargetNodeId": "80244c06-cda9-3a3d-79f9-8bcd89e25818",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "18f717a2-025d-c513-3742-df449ac88a47",
+        "TargetNodeId": "73926aa0-202d-a668-44dd-5aef859dd984",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "0a359120-5451-cfa7-2d88-9dd79e40701a",
+        "TargetNodeId": "18f717a2-025d-c513-3742-df449ac88a47",
+        "SourceName": "record/id",
+        "TargetName": "Key"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "0a359120-5451-cfa7-2d88-9dd79e40701a",
+        "TargetNodeId": "18f717a2-025d-c513-3742-df449ac88a47",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "80244c06-cda9-3a3d-79f9-8bcd89e25818",
+        "TargetNodeId": "0a359120-5451-cfa7-2d88-9dd79e40701a",
+        "SourceName": "SplitDocumentXml",
+        "TargetName": "XmlDocument"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "80244c06-cda9-3a3d-79f9-8bcd89e25818",
+        "TargetNodeId": "0a359120-5451-cfa7-2d88-9dd79e40701a",
+        "SourceName": "Split",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "73926aa0-202d-a668-44dd-5aef859dd984",
+        "TargetNodeId": "631bf1b7-3874-b6fd-7c49-bdf014f7740c",
+        "SourceName": "True",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "73926aa0-202d-a668-44dd-5aef859dd984",
+        "TargetNodeId": "c0e56d36-23be-6c1e-92ef-f48450db05c4",
+        "SourceName": "False",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "0a359120-5451-cfa7-2d88-9dd79e40701a",
+        "TargetNodeId": "631bf1b7-3874-b6fd-7c49-bdf014f7740c",
+        "SourceName": "record/id",
+        "TargetName": "Key"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "0a359120-5451-cfa7-2d88-9dd79e40701a",
+        "TargetNodeId": "c0e56d36-23be-6c1e-92ef-f48450db05c4",
+        "SourceName": "record/id",
+        "TargetName": "Key"
+      }
+    ],
+    "StartNodeId": "d56ad468-565e-41be-6c2e-5bdda6686b0e",
+    "DateCreated": "2018-04-26T09:34:08.8799789Z",
+    "DateUpdated": "2018-04-26T09:34:08.8799789Z",
+    "ActivityLogLevelMask": 0
+  }
+}

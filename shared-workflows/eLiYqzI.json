@@ -1,0 +1,141 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "OpenAI Text Completion Example",
+    "Nodes": [
+      {
+        "NodeId": "c75b4d2c-25ef-f3c1-340a-f2dfa32523c9",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a28bea36-068a-446e-67f7-6154f35c43e1",
+        "Name": "OpenAiTextCompletion",
+        "Version": "1.0.0.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Prompt",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "summarise this order"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Data",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<SalesOrders>\r\n  <Orders>\r\n    <OrderHeader>\r\n      <Customer>GREAL</Customer>\r\n      <OrderDate>2019-05-06T00:00:00</OrderDate>\r\n      <SpecialInstrs>Deliver to Howard Snyder</SpecialInstrs>\r\n    </OrderHeader>\r\n    <OrderDetails>\r\n      <StockLine>\r\n        <StockCode>INV001</StockCode>\r\n        <OrderQty>14</OrderQty>\r\n        <Price>120</Price>\r\n      </StockLine>\r\n      <StockLine>\r\n        <StockCode>INV002</StockCode>\r\n        <OrderQty>6</OrderQty>\r\n        <Price>40</Price>\r\n      </StockLine>\r\n    </OrderDetails>\r\n  </Orders>\r\n  <Orders>\r\n    <OrderHeader>\r\n      <Customer>LAZYK</Customer>\r\n      <OrderDate>2019-05-06T00:00:00</OrderDate>\r\n      <SpecialInstrs>Deliver to John Steel</SpecialInstrs>\r\n    </OrderHeader>\r\n    <OrderDetails>\r\n      <StockLine>\r\n        <StockCode>INV002</StockCode>\r\n        <OrderQty>18</OrderQty>\r\n        <Price>30</Price>\r\n      </StockLine>\r\n      <StockLine>\r\n        <StockCode>INV006</StockCode>\r\n        <OrderQty>2</OrderQty>\r\n        <Price>15</Price>\r\n      </StockLine>\r\n    </OrderDetails>\r\n  </Orders>\r\n</SalesOrders>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "This order contains two orders from customers GREAL and LAZYK with delivery instructions for Howard Snyder and John Steel, respectively. The order from GREAL includes 14 items of INV001 at $120 each and 6 items of INV002 at $40 each. The order from LAZYK includes 18 items of INV002 at $30 each and 2 items of INV006 at $15 each."
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 2,
+        "InteractFlags": 0,
+        "DisplayName": "OpenAI Text Completion",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "c75b4d2c-25ef-f3c1-340a-f2dfa32523c9",
+        "TargetNodeId": "a28bea36-068a-446e-67f7-6154f35c43e1",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "c75b4d2c-25ef-f3c1-340a-f2dfa32523c9",
+    "DateCreated": "2023-02-23T10:02:23.7879146Z",
+    "DateUpdated": "2023-02-23T10:02:23.7879146Z",
+    "ActivityLogLevelMask": 0
+  }
+}

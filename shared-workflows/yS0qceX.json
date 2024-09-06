@@ -1,0 +1,309 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Excel Examples",
+    "Nodes": [
+      {
+        "NodeId": "b7d24a7f-9d15-98fb-0db0-0ea2b1b9a4a9",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "1ec8dddb-f551-49cf-c6bc-e4bed48e21f1",
+        "Name": "Excel",
+        "ShortDescription": "basic sheet",
+        "Version": "1.0.5.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "flowgear.Nodes.Excel.Excel+ExcelVerb",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Open",
+              "Create",
+              "Insert"
+            ],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Formatting",
+            "TypeName": "flowgear.Nodes.Excel.Excel+Formats",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "AllText",
+              "None",
+              "Smart"
+            ],
+            "Value": "AllText"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TableXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Document>\r\n  <Row>\r\n    <ColumnA>column A</ColumnA>\r\n    <ColumnB>column B</ColumnB>\r\n  </Row>\r\n  <Row>\r\n    <ColumnA>value 1</ColumnA>\r\n    <ColumnB>value 2</ColumnB>\r\n  </Row>\r\n</Document>"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "ExcelDocument",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "DocumentTemplate",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "InsertHeaders",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "Excel",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "67b29404-8149-c6b4-7d9a-17990896098e",
+        "Name": "Excel",
+        "ShortDescription": "add another sheet",
+        "Version": "1.0.5.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "flowgear.Nodes.Excel.Excel+ExcelVerb",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Open",
+              "Create",
+              "Insert"
+            ],
+            "Value": "Insert"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Formatting",
+            "TypeName": "flowgear.Nodes.Excel.Excel+Formats",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "AllText",
+              "None",
+              "Smart"
+            ],
+            "Value": "AllText"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TableXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Document>\r\n  <NewSheetName>\r\n    <Cell1>Hello</Cell1>\r\n    <Cell2>World</Cell2>\r\n  </NewSheetName>\r\n</Document>"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "ExcelDocument",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "DocumentTemplate",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "InsertHeaders",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "Excel",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d3b41367-0378-8e6f-c1db-443a36ffb18d",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "FileExtension": "xlsx",
+            "Behaviour": 0,
+            "Name": "Generated",
+            "TypeName": "Object",
+            "ExtendedType": 5
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b7d24a7f-9d15-98fb-0db0-0ea2b1b9a4a9",
+        "TargetNodeId": "1ec8dddb-f551-49cf-c6bc-e4bed48e21f1",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "1ec8dddb-f551-49cf-c6bc-e4bed48e21f1",
+        "TargetNodeId": "67b29404-8149-c6b4-7d9a-17990896098e",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1ec8dddb-f551-49cf-c6bc-e4bed48e21f1",
+        "TargetNodeId": "67b29404-8149-c6b4-7d9a-17990896098e",
+        "SourceName": "ExcelDocument",
+        "TargetName": "DocumentTemplate"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "67b29404-8149-c6b4-7d9a-17990896098e",
+        "TargetNodeId": "d3b41367-0378-8e6f-c1db-443a36ffb18d",
+        "SourceName": "ExcelDocument",
+        "TargetName": "Generated"
+      }
+    ],
+    "StartNodeId": "b7d24a7f-9d15-98fb-0db0-0ea2b1b9a4a9",
+    "DateCreated": "2017-09-14T14:43:25.927",
+    "DateUpdated": "2017-09-14T14:43:25.927",
+    "ActivityLogLevelMask": 0
+  }
+}

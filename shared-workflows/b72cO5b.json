@@ -1,0 +1,1055 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "StringBuilder example",
+    "Nodes": [
+      {
+        "NodeId": "b0f77a91-7308-baac-f3da-c934a238fe3e",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "8cb9df6b-11cc-8ecc-9b30-2578d7cf687a",
+        "Name": "Splitter",
+        "Version": "1.0.1.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SourceDocumentXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SplitXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "orders/order"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Splitter.Splitter+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "ParentNode",
+              "ParentAndRootNodes"
+            ],
+            "Value": "ParentNode"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "SplitDocumentXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "TotalRows",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "CurrentRow",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Split",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Splitter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "1dcc4fc2-04df-9c0a-c587-cca6f356d246",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "SomeInputDoc",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<orders>\r\n  <order>\r\n    <number>1</number>\r\n    <customer>ABC</customer>\r\n  </order>\r\n  <order>\r\n    <number>2</number>\r\n    <customer>DEF</customer>\r\n  </order>\r\n  <order>\r\n    <number>3</number>\r\n    <customer>GHI</customer>\r\n  </order>\r\n  <order>\r\n    <number>4</number>\r\n    <customer>JKL</customer>\r\n  </order>\r\n</orders>"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 5795.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "37183b8d-19f9-2310-5820-efc528a4a134",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "This example illustrates how to use StringBuilder to progressively build out a report of activity that has taken place downstream from an iterator (such as a Splitter or Loop Node)."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 5795.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ed51c207-d7d7-a008-d178-e7c9930f3d7a",
+        "Name": "StringBuilder",
+        "Version": "1.1.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "report"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Clear"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "bd444e36-079d-3f08-4611-3b3d429ad7a2",
+        "Name": "XmlMatch",
+        "Version": "1.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "XmlDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Return",
+            "TypeName": "XmlMatch.XmlMatch+ReturnTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "InnerText",
+              "OuterXml",
+              "InnerXml",
+              "Evaluate",
+              "AllOuterXml"
+            ],
+            "Value": "InnerText"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "order/number",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Xml Match",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "daa2afb6-d07f-a11f-f44e-170ad4bcbd3d",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "artificial fail/success",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value <> 3"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f0f03c17-13ec-965e-1066-f3838be0432a",
+        "Name": "Formatter",
+        "ShortDescription": "prep success message",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<status>\r\n  <number>{number}</number>\r\n  <message>{message}</message>\r\n</status>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "number",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "message",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Success"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 5795.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "cad39815-3dee-f08b-8ec8-78f2d2fd007e",
+        "Name": "Formatter",
+        "ShortDescription": "prep fail message",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<status>\r\n  <number>{number}</number>\r\n  <message>{message}</message>\r\n</status>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "number",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "message",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "An error occured"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "59cdf1f6-34cb-7fe5-0fce-068699480b36",
+        "Name": "StringBuilder",
+        "ShortDescription": "String Builder",
+        "Version": "1.1.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "report"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Append"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930.0,
+          "Y": 5795.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "069bd571-b8e0-6922-9765-4bc789d6500e",
+        "Name": "StringBuilder",
+        "Version": "1.1.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "report"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Append"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "378129a0-1a67-4775-d3ca-09410c718ac3",
+        "Name": "StringBuilder",
+        "ShortDescription": "read the report",
+        "Version": "1.1.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "report"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Read"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6516.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ecbe467b-a61b-c0a5-425e-90f7e96e23c6",
+        "Name": "Formatter",
+        "ShortDescription": "make a valid doc",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<report>\r\n  {content}\r\n</report>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "content",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6516.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "589b89cc-a111-fc3a-0188-98ec242321bc",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Report",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 6516.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b0f77a91-7308-baac-f3da-c934a238fe3e",
+        "TargetNodeId": "ed51c207-d7d7-a008-d178-e7c9930f3d7a",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "8cb9df6b-11cc-8ecc-9b30-2578d7cf687a",
+        "TargetNodeId": "bd444e36-079d-3f08-4611-3b3d429ad7a2",
+        "SourceName": "Split",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "8cb9df6b-11cc-8ecc-9b30-2578d7cf687a",
+        "TargetNodeId": "378129a0-1a67-4775-d3ca-09410c718ac3",
+        "SourceName": "Finished",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1dcc4fc2-04df-9c0a-c587-cca6f356d246",
+        "TargetNodeId": "8cb9df6b-11cc-8ecc-9b30-2578d7cf687a",
+        "SourceName": "SomeInputDoc",
+        "TargetName": "SourceDocumentXml"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ed51c207-d7d7-a008-d178-e7c9930f3d7a",
+        "TargetNodeId": "8cb9df6b-11cc-8ecc-9b30-2578d7cf687a",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "bd444e36-079d-3f08-4611-3b3d429ad7a2",
+        "TargetNodeId": "daa2afb6-d07f-a11f-f44e-170ad4bcbd3d",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "8cb9df6b-11cc-8ecc-9b30-2578d7cf687a",
+        "TargetNodeId": "bd444e36-079d-3f08-4611-3b3d429ad7a2",
+        "SourceName": "SplitDocumentXml",
+        "TargetName": "XmlDocument"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "daa2afb6-d07f-a11f-f44e-170ad4bcbd3d",
+        "TargetNodeId": "f0f03c17-13ec-965e-1066-f3838be0432a",
+        "SourceName": "True",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "daa2afb6-d07f-a11f-f44e-170ad4bcbd3d",
+        "TargetNodeId": "cad39815-3dee-f08b-8ec8-78f2d2fd007e",
+        "SourceName": "False",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "bd444e36-079d-3f08-4611-3b3d429ad7a2",
+        "TargetNodeId": "daa2afb6-d07f-a11f-f44e-170ad4bcbd3d",
+        "SourceName": "order/number",
+        "TargetName": "Value"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "f0f03c17-13ec-965e-1066-f3838be0432a",
+        "TargetNodeId": "59cdf1f6-34cb-7fe5-0fce-068699480b36",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "bd444e36-079d-3f08-4611-3b3d429ad7a2",
+        "TargetNodeId": "f0f03c17-13ec-965e-1066-f3838be0432a",
+        "SourceName": "order/number",
+        "TargetName": "number"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "cad39815-3dee-f08b-8ec8-78f2d2fd007e",
+        "TargetNodeId": "069bd571-b8e0-6922-9765-4bc789d6500e",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "bd444e36-079d-3f08-4611-3b3d429ad7a2",
+        "TargetNodeId": "cad39815-3dee-f08b-8ec8-78f2d2fd007e",
+        "SourceName": "order/number",
+        "TargetName": "number"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "f0f03c17-13ec-965e-1066-f3838be0432a",
+        "TargetNodeId": "59cdf1f6-34cb-7fe5-0fce-068699480b36",
+        "SourceName": "Result",
+        "TargetName": "Value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "cad39815-3dee-f08b-8ec8-78f2d2fd007e",
+        "TargetNodeId": "069bd571-b8e0-6922-9765-4bc789d6500e",
+        "SourceName": "Result",
+        "TargetName": "Value"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "378129a0-1a67-4775-d3ca-09410c718ac3",
+        "TargetNodeId": "ecbe467b-a61b-c0a5-425e-90f7e96e23c6",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "378129a0-1a67-4775-d3ca-09410c718ac3",
+        "TargetNodeId": "ecbe467b-a61b-c0a5-425e-90f7e96e23c6",
+        "SourceName": "Value",
+        "TargetName": "content"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ecbe467b-a61b-c0a5-425e-90f7e96e23c6",
+        "TargetNodeId": "589b89cc-a111-fc3a-0188-98ec242321bc",
+        "SourceName": "Result",
+        "TargetName": "Report"
+      }
+    ],
+    "StartNodeId": "b0f77a91-7308-baac-f3da-c934a238fe3e",
+    "DateCreated": "2018-10-22T12:55:26.7829775Z",
+    "DateUpdated": "2018-10-22T12:55:26.7829775Z",
+    "ActivityLogLevelMask": 0
+  }
+}

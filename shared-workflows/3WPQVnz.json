@@ -1,0 +1,266 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Convert Form Data to JSON",
+    "Description": "Use the Script in this Workflow to convert formdata to a JSON document.",
+    "Nodes": [
+      {
+        "NodeId": "9dc1934f-fc63-766c-089d-6a5cf490f3f0",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "61edfd64-50d6-d864-e368-0b57ad5124ab",
+        "Name": "Script",
+        "Version": "2.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Script.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Script",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "using System;\r\nusing System.IO;\r\nusing System.Collections.Generic;\r\nusing System.Xml;\r\nusing System.Linq;\r\nusing System.Xml.Linq;\r\nusing Newtonsoft.Json;\r\n\r\nnamespace CSharpScript\r\n{\r\n    public partial class Processor\r\n    {  \r\n         static string formDataToJson(string formdata)\r\n        {\r\n            if (string.IsNullOrEmpty(formdata)) return null;\r\n\r\n            var dc = new Dictionary<string, object>();\r\n\r\n            foreach (var item in formdata.ToString().Split(new string[] { \"&\" }, StringSplitOptions.RemoveEmptyEntries))\r\n            {\r\n                var i = item.IndexOf(\"=\");\r\n                if (i == -1) continue;\r\n\r\n                var key = Uri.UnescapeDataString(item.Substring(0, i).Trim());\r\n                var value = Uri.UnescapeDataString(item.Substring(i + 1));\r\n\r\n                if (dc.ContainsKey(key))\r\n                {\r\n                    dc[key] = value;\r\n                }\r\n                else\r\n                {\r\n                    dc.Add(key, value);\r\n                }\r\n            }\r\n\r\n            var ret= Newtonsoft.Json.JsonConvert.SerializeObject(dc);\r\n\r\n            return ret;\r\n\r\n        }\r\n      \r\n        public object Process()\r\n        {\r\n            return formDataToJson((string)formdata);\r\n        }\r\n    }\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "formdata",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Script",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d159af64-4809-a958-5167-a1baf3672b87",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "FgRequestBody",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "fname=John&lname=Doe&email=john.doe@flowgear.net&phone=2345551235"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 5795.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "214ed779-d127-6f23-9467-a8eb96caaf6d",
+        "Name": "JsonMatch",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "JsonDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "fname",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "lname",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "email",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "phone",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Json Match",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "9dc1934f-fc63-766c-089d-6a5cf490f3f0",
+        "TargetNodeId": "61edfd64-50d6-d864-e368-0b57ad5124ab",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "61edfd64-50d6-d864-e368-0b57ad5124ab",
+        "TargetNodeId": "214ed779-d127-6f23-9467-a8eb96caaf6d",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "d159af64-4809-a958-5167-a1baf3672b87",
+        "TargetNodeId": "61edfd64-50d6-d864-e368-0b57ad5124ab",
+        "SourceName": "FgRequestBody",
+        "TargetName": "formdata"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "61edfd64-50d6-d864-e368-0b57ad5124ab",
+        "TargetNodeId": "214ed779-d127-6f23-9467-a8eb96caaf6d",
+        "SourceName": "Value",
+        "TargetName": "JsonDocument"
+      }
+    ],
+    "StartNodeId": "9dc1934f-fc63-766c-089d-6a5cf490f3f0",
+    "DateCreated": "2019-04-08T12:43:08.1669641Z",
+    "DateUpdated": "2019-04-08T12:43:08.1669641Z",
+    "ActivityLogLevelMask": 0
+  }
+}

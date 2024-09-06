@@ -1,0 +1,132 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "XML Namespace Strip Example",
+    "Nodes": [
+      {
+        "NodeId": "f38074f9-3409-341c-e923-ea04f5a169da",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "faa05dc8-ce7c-9b08-add4-acf38b4f0548",
+        "Name": "XmlNamespaceStrip",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<root xmlns:h=\"http://www.w3.org/TR/html4/\" xmlns:f=\"https://www.w3schools.com/furniture\">\r\n  <h:table>\r\n    <h:tr>\r\n      <h:td>Apples</h:td>\r\n      <h:td>Bananas</h:td>\r\n    </h:tr>\r\n  </h:table>\r\n  <f:table>\r\n    <f:name>African Coffee Table</f:name>\r\n    <f:width>80</f:width>\r\n    <f:length>120</f:length>\r\n  </f:table>\r\n</root>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<root>\r\n  <table>\r\n    <tr>\r\n      <td>Apples</td>\r\n      <td>Bananas</td>\r\n    </tr>\r\n  </table>\r\n  <table>\r\n    <name>African Coffee Table</name>\r\n    <width>80</width>\r\n    <length>120</length>\r\n  </table>\r\n</root>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "XML Namespace Strip",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "f38074f9-3409-341c-e923-ea04f5a169da",
+        "TargetNodeId": "faa05dc8-ce7c-9b08-add4-acf38b4f0548",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "f38074f9-3409-341c-e923-ea04f5a169da",
+    "DateCreated": "2021-04-16T08:27:16.988396Z",
+    "DateUpdated": "2021-04-16T08:27:16.988396Z",
+    "ActivityLogLevelMask": 0
+  }
+}

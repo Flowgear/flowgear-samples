@@ -1,0 +1,1186 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Key-Value examples",
+    "Nodes": [
+      {
+        "NodeId": "b9cd8964-4e15-881c-60b2-0331d5324621",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f9c90178-1d72-99f7-dd21-ff94383b4c7f",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Query a data source here and feed the results into a For Each"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "18a8bbd0-4c23-44d8-7721-433fb42629bc",
+        "Name": "ForEach",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<records>\r\n  <record>\r\n    <id>1</id>\r\n    <name>Mars</name>\r\n  </record>\r\n  <record>\r\n    <id>2</id>\r\n    <name>Venus</name>\r\n  </record>\r\n</records>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "records/record"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "ParentNode",
+              "ParentAndRootNodes"
+            ],
+            "Value": "ParentNode"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Item",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<record><id>1</id><name>Mars</name></record>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemIndex",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemCount",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Item",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "For Each",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ab53ce8f-6b8a-f6af-645f-46a7609ab6f6",
+        "Name": "SetKeyValue",
+        "ShortDescription": "signal that we're starting",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "planets"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.KeyValue.Enums+KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "InProgress"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Set Key-Value",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "9f343ca9-7889-263c-afd5-b3de38f16360",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "integrate the data into the target system here"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "0fc715b8-db80-42b1-a121-349f848ad8af",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "determine success/failure",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1=1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "675d7bac-59e6-0edf-ae97-b755f9c2ea8d",
+        "Name": "SetKeyValue",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "planets"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "ID of item in target system here"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.KeyValue.Enums+KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Success"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Set Key-Value",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "43de5864-0064-6a7c-1368-a1f6de315997",
+        "Name": "SetKeyValue",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "planets"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "error message here"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.KeyValue.Enums+KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Error"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930.0,
+          "Y": 6516.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Set Key-Value",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "6059d10a-a1f1-2009-f875-84ba45182f2f",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "In a separate workflow, you can report on the key-value pairs like this"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6516.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e0720e88-006e-a2d8-7b8e-01d62a799116",
+        "Name": "GetKeyValues",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "StartDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "0/0/-1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "EndDate",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "0/0/0"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchGroup",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "planets"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchStatus",
+            "TypeName": "flowgear.Nodes.KeyValue.Enums+KeyValueStatusFilter",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success",
+              "Any"
+            ],
+            "Value": "Any"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.KeyValue.GetKeyValues+Methods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "List",
+              "CountByValue",
+              "CountByStatus"
+            ],
+            "Value": "List"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "flowgear.Nodes.KeyValue.GetKeyValues+Emits",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Json",
+              "Xml"
+            ],
+            "Value": "Xml"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<KeyValues>\r\n  <KeyValue>\r\n    <Key>1</Key>\r\n    <Value>Mars</Value>\r\n    <DateTime>2019-11-13T10:52:39.68+00:00</DateTime>\r\n    <Status>Success</Status>\r\n  </KeyValue>\r\n  <KeyValue>\r\n    <Key>2</Key>\r\n    <Value>Venus</Value>\r\n    <DateTime>2019-11-13T10:52:39.68+00:00</DateTime>\r\n    <Status>Success</Status>\r\n  </KeyValue>\r\n</KeyValues>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6516.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Get Key-Values",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a3957c76-edc0-47ea-30fc-8c4524def818",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "If you're integrating data in batches, you can also use Set Key-Values to write multiple key-value pairs at once"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8235.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f6365c10-d09f-b1ba-0614-ce839ada311c",
+        "Name": "SetKeyValues",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "planets"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<records>\r\n  <record>\r\n    <id>1</id>\r\n    <name>Mars</name>\r\n  </record>\r\n  <record>\r\n    <id>2</id>\r\n    <name>Venus</name>\r\n  </record>\r\n</records>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "KeysPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "records/record/id"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ValuesPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "records/record/name"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.KeyValue.Enums+KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Success"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8540.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Set Key-Values",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b77c9660-5455-f45c-ead7-ca37899e7453",
+        "Name": "Excel",
+        "Version": "1.0.5.7",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Excel.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "flowgear.Nodes.Excel.Excel+ExcelVerb",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Open",
+              "Create",
+              "Insert"
+            ],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Formatting",
+            "TypeName": "flowgear.Nodes.Excel.Excel+Formats",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "AllText",
+              "None",
+              "Smart"
+            ],
+            "Value": "AllText"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "TableXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ExcelDocument",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DocumentTemplate",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "InsertHeaders",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6516.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Excel",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "cdb24f2e-6553-dc80-10d9-b9134371eae0",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "FileExtension": "xlsx",
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Report",
+            "TypeName": "Object",
+            "ExtendedType": 5
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6516.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b9cd8964-4e15-881c-60b2-0331d5324621",
+        "TargetNodeId": "18a8bbd0-4c23-44d8-7721-433fb42629bc",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "18a8bbd0-4c23-44d8-7721-433fb42629bc",
+        "TargetNodeId": "ab53ce8f-6b8a-f6af-645f-46a7609ab6f6",
+        "SourceName": "Item",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ab53ce8f-6b8a-f6af-645f-46a7609ab6f6",
+        "TargetNodeId": "0fc715b8-db80-42b1-a121-349f848ad8af",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "18a8bbd0-4c23-44d8-7721-433fb42629bc",
+        "TargetNodeId": "ab53ce8f-6b8a-f6af-645f-46a7609ab6f6",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "record.id"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "0fc715b8-db80-42b1-a121-349f848ad8af",
+        "TargetNodeId": "675d7bac-59e6-0edf-ae97-b755f9c2ea8d",
+        "SourceName": "True",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "0fc715b8-db80-42b1-a121-349f848ad8af",
+        "TargetNodeId": "43de5864-0064-6a7c-1368-a1f6de315997",
+        "SourceName": "False",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "18a8bbd0-4c23-44d8-7721-433fb42629bc",
+        "TargetNodeId": "675d7bac-59e6-0edf-ae97-b755f9c2ea8d",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "record.id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "18a8bbd0-4c23-44d8-7721-433fb42629bc",
+        "TargetNodeId": "43de5864-0064-6a7c-1368-a1f6de315997",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "record.id"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "e0720e88-006e-a2d8-7b8e-01d62a799116",
+        "TargetNodeId": "b77c9660-5455-f45c-ead7-ca37899e7453",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "e0720e88-006e-a2d8-7b8e-01d62a799116",
+        "TargetNodeId": "b77c9660-5455-f45c-ead7-ca37899e7453",
+        "SourceName": "Result",
+        "TargetName": "TableXml"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b77c9660-5455-f45c-ead7-ca37899e7453",
+        "TargetNodeId": "cdb24f2e-6553-dc80-10d9-b9134371eae0",
+        "SourceName": "ExcelDocument",
+        "TargetName": "Report"
+      }
+    ],
+    "StartNodeId": "b9cd8964-4e15-881c-60b2-0331d5324621",
+    "DateCreated": "2019-11-13T10:54:05.6219312Z",
+    "DateUpdated": "2019-11-13T10:54:05.6219312Z",
+    "ActivityLogLevelMask": 0
+  }
+}

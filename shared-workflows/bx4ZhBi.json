@@ -1,0 +1,198 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "LINQ Example",
+    "Nodes": [
+      {
+        "NodeId": "24450155-4878-3da7-2445-4e319d360765",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "763b4372-3c9b-6a62-a163-3224cf4abe8d",
+        "Name": "Linq",
+        "Version": "1.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "InputDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Orders>\r\n  <Order>\r\n    <OrderID>123</OrderID>\r\n    <Customer>DEF001</Customer>\r\n    <Date>2018-04-01</Date>\r\n    <Total>5000</Total>\r\n  </Order>\r\n  <Order>\r\n    <OrderID>456</OrderID>\r\n    <Customer>ABC001</Customer>\r\n    <Date>2018-04-03</Date>\r\n    <Total>3424</Total>\r\n  </Order>\r\n  <Order>\r\n    <OrderID>123</OrderID>\r\n    <Customer>ABC001</Customer>\r\n    <Date>2018-04-03</Date>\r\n    <Total>5000</Total>\r\n  </Order>\r\n  <Order>\r\n    <OrderID>456</OrderID>\r\n    <Customer>GHI001</Customer>\r\n    <Date>2018-04-04</Date>\r\n    <Total>3424</Total>\r\n  </Order>\r\n</Orders>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "LinqExpression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "from order in ((IEnumerable<dynamic>)InputDocument.Orders.Order) // start with a 'from' clause to specify the data source. Cast the object to IEnumerable<dynamic>\r\ngroup order by new { order.Date, order.Customer } into orderGroup // perform aggregration if needed. use the new { } syntax if you need aggregation on multiple fields\r\nselect new // specify the shape of the dynamically generated object you want to return\r\n  {\r\n    orderGroup.Key.Date,\r\n    orderGroup.Key.Customer,\r\n  \r\n    // because the InputDocument in this example contains XML, all data types are string which means we need to cast before\r\n    // we can perform arithmetic examples. If you use a JSON document as InputDocument, numeric types will be correctly defined\r\n    TotalPerCustomerPerDay = orderGroup.Sum(t => (double)double.Parse(string.IsNullOrEmpty(t.Total) ? \"0\" : t.Total))\r\n  }"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.Linq.Linq+EmitOption",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Json",
+              "Xml"
+            ],
+            "Value": "Xml"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "OutputDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Results>\r\n  <Result>\r\n    <Date>2018-04-01</Date>\r\n    <Customer>DEF001</Customer>\r\n    <TotalPerCustomerPerDay>5000</TotalPerCustomerPerDay>\r\n  </Result>\r\n  <Result>\r\n    <Date>2018-04-03</Date>\r\n    <Customer>ABC001</Customer>\r\n    <TotalPerCustomerPerDay>8424</TotalPerCustomerPerDay>\r\n  </Result>\r\n  <Result>\r\n    <Date>2018-04-04</Date>\r\n    <Customer>GHI001</Customer>\r\n    <TotalPerCustomerPerDay>3424</TotalPerCustomerPerDay>\r\n  </Result>\r\n</Results>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "LINQ",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "acd6d07d-429e-2f95-ded1-3f4f21560b6e",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "This query demonstrates how to select data out and perform aggregation"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "24450155-4878-3da7-2445-4e319d360765",
+        "TargetNodeId": "763b4372-3c9b-6a62-a163-3224cf4abe8d",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "24450155-4878-3da7-2445-4e319d360765",
+    "DateCreated": "2018-05-10T12:13:36.3720945Z",
+    "DateUpdated": "2018-05-10T12:13:36.3720945Z",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "PostGreSQL Request a Page",
+    "Description": "This sample demonstrates how to request a page of data from a table using PostgreSQL syntax. See https://flowgear.me/s/zDCFM3N and https://flowgear.me/s/PuUSi5c for an example to request and emit a single page of data respectively. One can replace the Microsoft SQL Query with the PostgreSQL Query node. The other principles stay the same.",
+    "Nodes": [
+      {
+        "NodeId": "80ac9731-fff2-0623-f13a-5a516efb8f95",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "10a16154-43e9-6b12-cc42-cfdff7ad24cd",
+        "Name": "PostgreSqlQuery",
+        "ShortDescription": "PostgreSQL Query",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "SslMode",
+                "TypeName": "Npgsql.SslMode",
+                "ExtendedType": 0,
+                "EnumValues": [
+                  "Disable",
+                  "Prefer",
+                  "Require"
+                ],
+                "Value": "Prefer"
+              },
+              {
+                "Name": "TrustServerCertificate",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConnectionTimeout",
+                "TypeName": "System.Int32",
+                "ExtendedType": 0,
+                "Value": 15
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "PostgreSQL Query",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Sql.PostgreSql.PostgreSqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "-- 1: Build Query\r\nSELECT *\r\nFROM person\r\n\r\n-- 2: Choose Field to Order By\r\nORDER BY id\r\n\r\n-- 3: Supply Page Size\r\nLIMIT @PageSize::INTEGER\r\n\r\n-- 4 - Return only the requested page.\r\n-- \t   This configuration is for Non-Zero indexing.\r\n--\t   i.e. Page 1 = first PageSize of results.\r\nOFFSET ( @PageNumber::INTEGER - 1 ) * (@PageSize::INTEGER);"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PageSize",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "5"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PageNumber",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "PostgreSQL Query",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "80ac9731-fff2-0623-f13a-5a516efb8f95",
+        "TargetNodeId": "10a16154-43e9-6b12-cc42-cfdff7ad24cd",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "80ac9731-fff2-0623-f13a-5a516efb8f95",
+    "DateCreated": "2021-09-23T07:50:45.4903274Z",
+    "DateUpdated": "2021-09-23T07:50:45.4903274Z",
+    "ActivityLogLevelMask": 0
+  }
+}

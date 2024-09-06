@@ -1,0 +1,224 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "EPP Example",
+    "Nodes": [
+      {
+        "NodeId": "bfe3a7b5-7105-2bac-e481-179425bfccf7",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "82f46ae7-03a2-8ef5-cc4a-3dc7ba115e8b",
+        "Name": "Epp",
+        "Version": "1.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Port",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "LocalCertStoreLocation",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "LocalCertStoreName",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Thumbprint",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Epp.EPPConnectionProperty",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "CommandType",
+            "TypeName": "flowgear.Nodes.Epp.EppCommandType",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "Check",
+              "Create",
+              "Delete",
+              "Info",
+              "Poll_Req",
+              "Poll_Ack",
+              "Renew",
+              "Transfer_Approve",
+              "Transfer_Cancel",
+              "Transfer_Query",
+              "Transfer_Reject",
+              "Transfer_Request",
+              "Update"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "RequestXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<domain:info xmlns:domain=\"urn:ietf:params:xml:ns:domain-1.0\" >\r\n  <domain:name hosts=\"all\">google.co.za</domain:name>\r\n</domain:info>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ExtentionXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "ClientTransactionID",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "ServerTransactionID",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "DNS-EPP-XXXXXXXXXXX-XXXXX"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "StatusCode",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1000"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "StatusMessage",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Domain Info Command completed successfully"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ResponseXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<epp:epp xmlns:epp=\"urn:ietf:params:xml:ns:epp-1.0\">\r\n  <epp:response>\r\n    <epp:result code=\"1000\">\r\n      <epp:msg>Domain Info Command completed successfully</epp:msg>\r\n    </epp:result>\r\n    <epp:resData>\r\n      <domain:infData xmlns:domain=\"urn:ietf:params:xml:ns:domain-1.0\">\r\n        <domain:name>google.co.za</domain:name>\r\n        <domain:roid>DOM_1SZMF-COZA</domain:roid>\r\n        <domain:ns>\r\n          <domain:hostAttr>\r\n            <domain:hostName>ns1.google.com</domain:hostName>\r\n          </domain:hostAttr>\r\n          <domain:hostAttr>\r\n            <domain:hostName>ns2.google.com</domain:hostName>\r\n          </domain:hostAttr>\r\n          <domain:hostAttr>\r\n            <domain:hostName>ns3.google.com</domain:hostName>\r\n          </domain:hostAttr>\r\n          <domain:hostAttr>\r\n            <domain:hostName>ns4.google.com</domain:hostName>\r\n          </domain:hostAttr>\r\n        </domain:ns>\r\n        <domain:clID>markmonitor</domain:clID>\r\n        <domain:exDate>2015-06-25T20:37:59Z</domain:exDate>\r\n      </domain:infData>\r\n    </epp:resData>\r\n    <epp:trID>\r\n      <epp:svTRID>DNS-EPP-XXXXXXXXXXX-XXXXX</epp:svTRID>\r\n    </epp:trID>\r\n  </epp:response>\r\n</epp:epp>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "EPP",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "bfe3a7b5-7105-2bac-e481-179425bfccf7",
+    "DateCreated": "2017-09-15T12:22:39.55",
+    "DateUpdated": "2017-09-15T12:22:39.55",
+    "ActivityLogLevelMask": 0
+  }
+}

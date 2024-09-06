@@ -1,0 +1,186 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 6,
+    "Name": "Formatter Example",
+    "Nodes": [
+      {
+        "NodeId": "d6b28b91-761b-f974-6860-34a45b7a50a5",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3200b2ac-6f2a-6368-5eb4-6b6ec849575c",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "thing",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "world"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "8a874253-e493-97b9-c0a0-66c42a2e121f",
+        "Name": "Formatter",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Hello, {thing}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Hello, world"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "thing",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d6b28b91-761b-f974-6860-34a45b7a50a5",
+        "TargetNodeId": "8a874253-e493-97b9-c0a0-66c42a2e121f",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3200b2ac-6f2a-6368-5eb4-6b6ec849575c",
+        "TargetNodeId": "8a874253-e493-97b9-c0a0-66c42a2e121f",
+        "SourceName": "thing",
+        "TargetName": "thing"
+      }
+    ],
+    "StartNodeId": "d6b28b91-761b-f974-6860-34a45b7a50a5",
+    "DateCreated": "2017-09-14T13:55:36.14",
+    "DateUpdated": "2017-09-15T10:45:20.367",
+    "ActivityLogLevelMask": 0
+  }
+}

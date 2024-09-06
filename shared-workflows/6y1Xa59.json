@@ -1,0 +1,477 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 2,
+    "Name": "Base64 Encode PFX File",
+    "Description": "Encodes a .PFX file into a base64 string to use in the MS Graph Email Node Base64Cert connection property.",
+    "Nodes": [
+      {
+        "NodeId": "2817e30b-3769-ab21-df51-3cd2c0193717",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "304b9f10-807e-8b9f-f583-447f82200261",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Read the .PFX file into Flowgear using the File node. Type must be set to binary.\n\nAlternatively pass file in via variable bar using Run-Now Screen."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "46783e8c-3c8c-9d1c-e5d5-0a391d3ff25a",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PFXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "C:\\PathToCert\\CertName.pfx"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "BASE64CERT",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "973ecb71-141a-e934-a561-b9194c5e8da1",
+        "Name": "File",
+        "ShortDescription": "Read In File",
+        "Version": "1.2.0.9",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ClientPrivateKeyFileContents",
+                "TypeName": "System.String",
+                "ExtendedType": 4
+              },
+              {
+                "Name": "TrustedServerCertificateThumbprint",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "CreateTargetDirectory",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UsePassiveFTP",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "FtpEncryptionMode",
+                "TypeName": "Flowgear.Nodes.File.FileConnection+FtpEncryptionModeEnum",
+                "ExtendedType": 0,
+                "EnumValues": [
+                  "Automatic",
+                  "Explicit",
+                  "Implicit",
+                  "None"
+                ]
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.File.FileConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.File.File+FileActions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Read",
+              "Write",
+              "Delete"
+            ],
+            "Value": "Read"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Type",
+            "TypeName": "Flowgear.Nodes.File.File+FileTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Text",
+              "Binary"
+            ],
+            "Value": "Binary"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Content",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 2,
+        "InteractFlags": 0,
+        "DisplayName": "File",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "56035656-2b9c-32a6-3d47-e6ea1a11bb4e",
+        "Name": "Base64",
+        "ShortDescription": "Base64Encode",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Base64Parser.Base64+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Encode",
+              "Decode"
+            ],
+            "Value": "Encode"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DecodedDataType",
+            "TypeName": "Base64Parser.Base64+ContentTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "UTF8String",
+              "ByteArray"
+            ],
+            "Value": "ByteArray"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DecodedData",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "EncodedData",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Base64",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "369526d0-f6b9-1c33-936a-de4e899c80df",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Convert to Base64 using the Base64Encode node.\nNote DecodedDataType must be ByteArray"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "2817e30b-3769-ab21-df51-3cd2c0193717",
+        "TargetNodeId": "973ecb71-141a-e934-a561-b9194c5e8da1",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "56035656-2b9c-32a6-3d47-e6ea1a11bb4e",
+        "TargetNodeId": "46783e8c-3c8c-9d1c-e5d5-0a391d3ff25a",
+        "SourceName": "EncodedData",
+        "TargetName": "BASE64CERT"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "973ecb71-141a-e934-a561-b9194c5e8da1",
+        "TargetNodeId": "56035656-2b9c-32a6-3d47-e6ea1a11bb4e",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "46783e8c-3c8c-9d1c-e5d5-0a391d3ff25a",
+        "TargetNodeId": "973ecb71-141a-e934-a561-b9194c5e8da1",
+        "SourceName": "PFXPath",
+        "TargetName": "Path"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "973ecb71-141a-e934-a561-b9194c5e8da1",
+        "TargetNodeId": "56035656-2b9c-32a6-3d47-e6ea1a11bb4e",
+        "SourceName": "Content",
+        "TargetName": "DecodedData"
+      }
+    ],
+    "StartNodeId": "2817e30b-3769-ab21-df51-3cd2c0193717",
+    "DateCreated": "2022-09-27T11:38:57.217",
+    "DateUpdated": "2022-09-27T11:38:57.217",
+    "ActivityLogLevelMask": 0
+  }
+}

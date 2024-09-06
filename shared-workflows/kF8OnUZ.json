@@ -1,0 +1,152 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "JSON Match Example",
+    "Nodes": [
+      {
+        "NodeId": "2d55ffa4-d6fa-695f-c9f7-4a76747d509d",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "0c8cceb2-ae9b-66c9-e508-9bed14f5b611",
+        "Name": "JsonMatch",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "JsonDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"car\": [\r\n    {\r\n      \"id\": 10,\r\n      \"color\": \"silver\",\r\n      \"name\": \"Volvo\"\r\n    },\r\n    {\r\n      \"id\": 11,\r\n      \"color\": \"red\",\r\n      \"name\": \"Saab\"\r\n    },\r\n    {\r\n      \"id\": 12,\r\n      \"color\": \"red\",\r\n      \"name\": \"Peugeot\"\r\n    },\r\n    {\r\n      \"id\": 13,\r\n      \"color\": \"yellow\",\r\n      \"name\": \"Porsche\"\r\n    }\r\n  ],\r\n  \"bike\": [\r\n    {\r\n      \"id\": 20,\r\n      \"color\": \"black\",\r\n      \"name\": \"Cannondale\"\r\n    },\r\n    {\r\n      \"id\": 21,\r\n      \"color\": \"red\",\r\n      \"name\": \"Shimano\"\r\n    }\r\n  ]\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "car[1].id",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "11"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "car[1].name",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Saab"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "car[?(@.name=='Saab')].color",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "red"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Json Match",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "2d55ffa4-d6fa-695f-c9f7-4a76747d509d",
+        "TargetNodeId": "0c8cceb2-ae9b-66c9-e508-9bed14f5b611",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "2d55ffa4-d6fa-695f-c9f7-4a76747d509d",
+    "DateCreated": "2021-05-26T14:49:16.3133181Z",
+    "DateUpdated": "2021-05-26T14:49:16.3133181Z",
+    "ActivityLogLevelMask": 0
+  }
+}

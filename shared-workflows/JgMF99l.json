@@ -1,0 +1,251 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "XSL Transform examples",
+    "Nodes": [
+      {
+        "NodeId": "2f115052-2b07-8618-0a45-fe7b636c14d2",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e0df889c-16fd-59bc-5bc3-3f607e762bc6",
+        "Name": "XsltTransform",
+        "ShortDescription": "Basic Transform",
+        "Version": "2.1.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<?xml version=\"1.0\" ?>\r\n<persons>\r\n  <person username=\"FG1\">\r\n    <name>John</name>\r\n    <family-name>Doe</family-name>\r\n  </person>\r\n  <person username=\"GM1\">\r\n    <name>Mary</name>\r\n    <family-name>Jane</family-name>\r\n  </person>\r\n</persons>"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TransformXslt",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:ns=\"http://flowgear.net/Schemas/Emails.xsd\" exclude-result-prefixes=\"ns\">\r\n  <xsl:output method=\"xml\" indent=\"yes\"/>\r\n  <xsl:template match=\"/persons\">\r\n    <root>\r\n      <xsl:apply-templates select=\"person\"/>\r\n    </root>\r\n  </xsl:template>\r\n  <xsl:template match=\"person\">\r\n    <name username=\"{@username}\">\r\n      <xsl:value-of select=\"name\" />\r\n    </name>\r\n  </xsl:template>\r\n</xsl:stylesheet>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TransformedXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<root>\r\n  <name username=\"FG1\">John</name>\r\n  <name username=\"GM1\">Mary</name>\r\n</root>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "XSL Transform",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a56a8953-2a9e-62c8-b0f9-d6ba9e080a9d",
+        "Name": "XsltTransform",
+        "ShortDescription": "Generate XHTML",
+        "Version": "2.1.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<?xml version=\"1.0\" ?>\r\n<persons>\r\n  <person username=\"FG1\">\r\n    <name>John</name>\r\n    <family-name>Doe</family-name>\r\n  </person>\r\n  <person username=\"GM1\">\r\n    <name>Mary</name>\r\n    <family-name>Jane</family-name>\r\n  </person>\r\n</persons>"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TransformXslt",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:ns=\"http://flowgear.net/Schemas/Emails.xsd\" exclude-result-prefixes=\"ns\">\r\n  <xsl:output method=\"xml\" indent=\"yes\" encoding=\"UTF-8\"/>\r\n  <xsl:template match=\"/persons\">\r\n    <html>\r\n      <head> <title>XSLT Transform using Flowgear</title> </head>\r\n      <body>\r\n        <h1>Persons</h1>\r\n        <ul>\r\n          <xsl:apply-templates select=\"person\">\r\n            <xsl:sort select=\"family-name\" />\r\n          </xsl:apply-templates>\r\n        </ul>\r\n      </body>\r\n    </html>\r\n  </xsl:template>\r\n  <xsl:template match=\"person\">\r\n    <li>\r\n      <xsl:value-of select=\"family-name\"/><xsl:text>, </xsl:text><xsl:value-of select=\"name\"/>\r\n    </li>\r\n  </xsl:template>\r\n \r\n</xsl:stylesheet>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TransformedXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<html>\r\n  <head>\r\n    <title>XSLT Transform using Flowgear</title>\r\n  </head>\r\n  <body>\r\n    <h1>Persons</h1>\r\n    <ul>\r\n      <li>Doe, John</li>\r\n      <li>Jane, Mary</li>\r\n    </ul>\r\n  </body>\r\n</html>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "XSL Transform",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "daa28609-2b5a-8f21-428e-cdf4e38c4d8a",
+        "Name": "XsltTransform",
+        "ShortDescription": "Group Entities",
+        "Version": "2.1.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Result>\r\n  <Table>\r\n    <Id>1</Id>\r\n    <Warehouse>abc</Warehouse>\r\n    <StockCode>STK001</StockCode>\r\n  </Table>\r\n  <Table>\r\n    <Id>2</Id>\r\n    <Warehouse>def</Warehouse>\r\n    <StockCode>STK001</StockCode>\r\n  </Table>\r\n  <Table>\r\n    <Id>3</Id>\r\n    <Warehouse>abc</Warehouse>\r\n    <StockCode>STK002</StockCode>\r\n  </Table>\r\n</Result>"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TransformXslt",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\r\n  <xsl:output method=\"xml\" indent=\"yes\" />\r\n  <xsl:key name=\"keyName\" match=\"Table\" use=\"Warehouse\" />\r\n  <xsl:template match=\"Result\">\r\n    <Documents>\r\n      <xsl:apply-templates select=\"Table[generate-id(.)=generate-id(key('keyName',Warehouse)[1])]\" />\r\n    </Documents>\r\n  </xsl:template>\r\n  <xsl:template match=\"Table\">\r\n    <Document Warehouse=\"{Warehouse}\">\r\n      <xsl:for-each select=\"key('keyName', Warehouse)\">\r\n        <StockCode id=\"{Id}\">\r\n          <xsl:value-of select=\"StockCode\" />\r\n        </StockCode>\r\n      </xsl:for-each>\r\n    </Document>\r\n  </xsl:template>\r\n</xsl:stylesheet>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TransformedXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<Documents>\r\n  <Document Warehouse=\"abc\">\r\n    <StockCode id=\"1\">STK001</StockCode>\r\n    <StockCode id=\"3\">STK002</StockCode>\r\n  </Document>\r\n  <Document Warehouse=\"def\">\r\n    <StockCode id=\"2\">STK001</StockCode>\r\n  </Document>\r\n</Documents>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "XSL Transform",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "2f115052-2b07-8618-0a45-fe7b636c14d2",
+    "DateCreated": "2017-08-31T12:22:51.517",
+    "DateUpdated": "2017-08-31T12:22:51.517",
+    "ActivityLogLevelMask": 0
+  }
+}

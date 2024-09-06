@@ -1,0 +1,204 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "XML Flatten Example",
+    "Nodes": [
+      {
+        "NodeId": "2a40a955-47af-0f89-49fa-be2e1aba4491",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "7de68f67-b903-b18b-64b1-328147642233",
+        "Name": "XmlFlatten",
+        "ShortDescription": "Flatten - Human Readable",
+        "Version": "2.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "DeepXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<PostArPayment>\r\n  <Item>\r\n    <Payment>\r\n      <PaymentValue>20</PaymentValue>\r\n      <Reference>11-16LB</Reference>\r\n      <PaymentNarration>11-16LB</PaymentNarration>\r\n      <Bank>B4</Bank>\r\n      <PaymentType>C</PaymentType>\r\n      <Customer>000000000001181</Customer>\r\n      <PaymentDate>2017-11-16</PaymentDate>\r\n      <JournalNotation>11-16LB</JournalNotation>\r\n      <UnappliedPayment>\r\n        <GrossPaymentValue>20</GrossPaymentValue>\r\n      </UnappliedPayment>\r\n    </Payment>\r\n  </Item>\r\n  <Item>\r\n    <Payment>\r\n      <PaymentValue>150</PaymentValue>\r\n      <Reference>11-16LB</Reference>\r\n      <PaymentNarration>11-16LB</PaymentNarration>\r\n      <Bank>B4</Bank>\r\n      <PaymentType>C</PaymentType>\r\n      <Customer>000000000001178</Customer>\r\n      <PaymentDate>2017-11-16</PaymentDate>\r\n      <JournalNotation>11-16LB</JournalNotation>\r\n      <UnappliedPayment>\r\n        <GrossPaymentValue>150</GrossPaymentValue>\r\n      </UnappliedPayment>\r\n    </Payment>\r\n  </Item>\r\n</PostArPayment>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Mode",
+            "TypeName": "Flowgear.Nodes.XmlFlatten.Renderers.XmlToFlatXmlRenderer+Modes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "ColumnAsNodeName",
+              "TableAndColumnAsNodeName",
+              "ColumnAsRowHeader",
+              "TableAndColumnAsRowHeader",
+              "TableOnceAndColumnAsRowHeader"
+            ],
+            "Value": "TableOnceAndColumnAsRowHeader"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "FlatXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Table>\r\n  <Row>\r\n    <Column1>Payment</Column1>\r\n    <Column2 />\r\n    <Column3 />\r\n    <Column4 />\r\n    <Column5 />\r\n    <Column6 />\r\n    <Column7 />\r\n    <Column8 />\r\n    <Column9>UnappliedPayment</Column9>\r\n  </Row>\r\n  <Row>\r\n    <Column1>PaymentValue</Column1>\r\n    <Column2>Reference</Column2>\r\n    <Column3>PaymentNarration</Column3>\r\n    <Column4>Bank</Column4>\r\n    <Column5>PaymentType</Column5>\r\n    <Column6>Customer</Column6>\r\n    <Column7>PaymentDate</Column7>\r\n    <Column8>JournalNotation</Column8>\r\n    <Column9>GrossPaymentValue</Column9>\r\n  </Row>\r\n  <Row>\r\n    <Column1>20</Column1>\r\n    <Column2>11-16LB</Column2>\r\n    <Column3>11-16LB</Column3>\r\n    <Column4>B4</Column4>\r\n    <Column5>C</Column5>\r\n    <Column6>000000000001181</Column6>\r\n    <Column7>2017-11-16</Column7>\r\n    <Column8>11-16LB</Column8>\r\n    <Column9>20</Column9>\r\n  </Row>\r\n  <Row>\r\n    <Column1>150</Column1>\r\n    <Column2>11-16LB</Column2>\r\n    <Column3>11-16LB</Column3>\r\n    <Column4>B4</Column4>\r\n    <Column5>C</Column5>\r\n    <Column6>000000000001178</Column6>\r\n    <Column7>2017-11-16</Column7>\r\n    <Column8>11-16LB</Column8>\r\n    <Column9>150</Column9>\r\n  </Row>\r\n</Table>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "XML Flatten",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "37467a4e-7c81-6f7b-6a73-14e5481d7ccb",
+        "Name": "XmlFlatten",
+        "ShortDescription": "Flatten Basic",
+        "Version": "2.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "DeepXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<PostArPayment>\r\n  <Item>\r\n    <Payment>\r\n      <PaymentValue>20</PaymentValue>\r\n      <Reference>11-16LB</Reference>\r\n      <PaymentNarration>11-16LB</PaymentNarration>\r\n      <Bank>B4</Bank>\r\n      <PaymentType>C</PaymentType>\r\n      <Customer>000000000001181</Customer>\r\n      <PaymentDate>2017-11-16</PaymentDate>\r\n      <JournalNotation>11-16LB</JournalNotation>\r\n      <UnappliedPayment>\r\n        <GrossPaymentValue>20</GrossPaymentValue>\r\n      </UnappliedPayment>\r\n    </Payment>\r\n  </Item>\r\n  <Item>\r\n    <Payment>\r\n      <PaymentValue>150</PaymentValue>\r\n      <Reference>11-16LB</Reference>\r\n      <PaymentNarration>11-16LB</PaymentNarration>\r\n      <Bank>B4</Bank>\r\n      <PaymentType>C</PaymentType>\r\n      <Customer>000000000001178</Customer>\r\n      <PaymentDate>2017-11-16</PaymentDate>\r\n      <JournalNotation>11-16LB</JournalNotation>\r\n      <UnappliedPayment>\r\n        <GrossPaymentValue>150</GrossPaymentValue>\r\n      </UnappliedPayment>\r\n    </Payment>\r\n  </Item>\r\n</PostArPayment>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Mode",
+            "TypeName": "Flowgear.Nodes.XmlFlatten.Renderers.XmlToFlatXmlRenderer+Modes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "ColumnAsNodeName",
+              "TableAndColumnAsNodeName",
+              "ColumnAsRowHeader",
+              "TableAndColumnAsRowHeader",
+              "TableOnceAndColumnAsRowHeader"
+            ],
+            "Value": "TableAndColumnAsNodeName"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "FlatXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Table>\r\n  <Row>\r\n    <Payment.PaymentValue>20</Payment.PaymentValue>\r\n    <Payment.Reference>11-16LB</Payment.Reference>\r\n    <Payment.PaymentNarration>11-16LB</Payment.PaymentNarration>\r\n    <Payment.Bank>B4</Payment.Bank>\r\n    <Payment.PaymentType>C</Payment.PaymentType>\r\n    <Payment.Customer>000000000001181</Payment.Customer>\r\n    <Payment.PaymentDate>2017-11-16</Payment.PaymentDate>\r\n    <Payment.JournalNotation>11-16LB</Payment.JournalNotation>\r\n    <UnappliedPayment.GrossPaymentValue>20</UnappliedPayment.GrossPaymentValue>\r\n  </Row>\r\n  <Row>\r\n    <Payment.PaymentValue>150</Payment.PaymentValue>\r\n    <Payment.Reference>11-16LB</Payment.Reference>\r\n    <Payment.PaymentNarration>11-16LB</Payment.PaymentNarration>\r\n    <Payment.Bank>B4</Payment.Bank>\r\n    <Payment.PaymentType>C</Payment.PaymentType>\r\n    <Payment.Customer>000000000001178</Payment.Customer>\r\n    <Payment.PaymentDate>2017-11-16</Payment.PaymentDate>\r\n    <Payment.JournalNotation>11-16LB</Payment.JournalNotation>\r\n    <UnappliedPayment.GrossPaymentValue>150</UnappliedPayment.GrossPaymentValue>\r\n  </Row>\r\n</Table>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "XML Flatten",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "2a40a955-47af-0f89-49fa-be2e1aba4491",
+    "DateCreated": "2018-04-20T10:43:10.7430353Z",
+    "DateUpdated": "2018-04-20T10:43:10.7430353Z",
+    "ActivityLogLevelMask": 0
+  }
+}

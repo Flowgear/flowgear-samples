@@ -1,0 +1,539 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 2,
+    "Name": "Rest Request Example",
+    "Description": "This workflow uses a freely available API, PetStore, to demonstrate Sample generation from a Swagger URL, custom headers and API calls using the Rest Request Node.",
+    "Nodes": [
+      {
+        "NodeId": "5ac892d7-ff38-6710-5c0b-5676ff8fec7c",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "563ed0f2-d98d-41e4-b892-f59723605768",
+        "Name": "RestRequest",
+        "Version": "1.0.1.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "SwaggerUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "AuthType",
+                "TypeName": "Flowgear.Nodes.RestRequest.Connection+authT",
+                "ExtendedType": 0,
+                "EnumValues": [
+                  "None",
+                  "Basic",
+                  "Bearer"
+                ]
+              },
+              {
+                "Name": "SiteUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "AccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.RestRequest.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Headers",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "api_key : testing2\r\nContent-Type: application/json"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1eadea85-c926-3ac7-34d4-5912fdf94d67"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": 1,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"Rex\",\r\n  \"tags\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"Fluffy\"\r\n    }\r\n  ],\r\n  \"status\": \"In-Store\"\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": 1,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"Rex\",\r\n  \"photoUrls\": [],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"Fluffy\"\r\n    }\r\n  ],\r\n  \"status\": \"In-Store\"\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": true,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Rest Request Preview",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "0556dcf6-2e93-beb6-5d65-264718fec78b",
+        "Name": "Formatter",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": {id},\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"{name}\",\r\n  \"tags\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"Fluffy\"\r\n    }\r\n  ],\r\n  \"status\": \"{Status}\"\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "id",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "name",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "Status",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "32464108-b51f-8c37-da4e-8d9db2e5242a",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ID",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Pet Name",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Rex"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Status",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "In-Store"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d6d5c133-7653-db7e-bc0d-7bf031af4e79",
+        "Name": "RestRequest",
+        "Version": "1.0.1.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "SwaggerUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "AuthType",
+                "TypeName": "Flowgear.Nodes.RestRequest.Connection+authT",
+                "ExtendedType": 0,
+                "EnumValues": [
+                  "None",
+                  "Basic",
+                  "Bearer"
+                ]
+              },
+              {
+                "Name": "SiteUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "AccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.RestRequest.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Headers",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "api_key : testing2\r\nContent-Type: application/json"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "ad408377-3a8a-25d3-dd46-f33b3ad8195e"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": 1,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"oli\",\r\n  \"photoUrls\": [],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"Fluffy\"\r\n    }\r\n  ],\r\n  \"status\": \"yes\"\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "petId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": true,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Rest Request Preview",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "82dc9f27-0965-ac9a-2d78-fe7701b06e18",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "See https://petstore.swagger.io/ for free example API to use when testing the Rest Request node."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "5ac892d7-ff38-6710-5c0b-5676ff8fec7c",
+        "TargetNodeId": "0556dcf6-2e93-beb6-5d65-264718fec78b",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "563ed0f2-d98d-41e4-b892-f59723605768",
+        "TargetNodeId": "d6d5c133-7653-db7e-bc0d-7bf031af4e79",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "0556dcf6-2e93-beb6-5d65-264718fec78b",
+        "TargetNodeId": "563ed0f2-d98d-41e4-b892-f59723605768",
+        "SourceName": "Result",
+        "TargetName": "Request"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "0556dcf6-2e93-beb6-5d65-264718fec78b",
+        "TargetNodeId": "563ed0f2-d98d-41e4-b892-f59723605768",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "32464108-b51f-8c37-da4e-8d9db2e5242a",
+        "TargetNodeId": "0556dcf6-2e93-beb6-5d65-264718fec78b",
+        "SourceName": "ID",
+        "TargetName": "id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "32464108-b51f-8c37-da4e-8d9db2e5242a",
+        "TargetNodeId": "0556dcf6-2e93-beb6-5d65-264718fec78b",
+        "SourceName": "Pet Name",
+        "TargetName": "name"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "32464108-b51f-8c37-da4e-8d9db2e5242a",
+        "TargetNodeId": "0556dcf6-2e93-beb6-5d65-264718fec78b",
+        "SourceName": "Status",
+        "TargetName": "Status"
+      }
+    ],
+    "StartNodeId": "5ac892d7-ff38-6710-5c0b-5676ff8fec7c",
+    "DateCreated": "2019-04-09T07:32:30.273",
+    "DateUpdated": "2019-04-09T07:32:30.273",
+    "ActivityLogLevelMask": 0
+  }
+}

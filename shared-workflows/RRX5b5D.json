@@ -1,0 +1,201 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "If C# Example",
+    "Nodes": [
+      {
+        "NodeId": "30dc8a0e-d22b-4e95-159c-8f95fbcf2e77",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "26a90069-85c4-3348-9ee1-01fb9a13d044",
+        "Name": "IfCSharp",
+        "ShortDescription": "casting example",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": "5"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "((Value != null) && (CustomProperty1 != null) && (int.Parse(Value.ToString()) + int.Parse(CustomProperty1.ToString()) == 11))"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "CustomProperty1",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "6"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "If C#",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f439a5e2-8b4e-35e8-d8aa-19a3f01116b8",
+        "Name": "IfCSharp",
+        "ShortDescription": "simple example",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": "hello world"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "((Value != null) && (Value.ToString() == \"hello world\"))"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "If C#",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "30dc8a0e-d22b-4e95-159c-8f95fbcf2e77",
+    "DateCreated": "2017-09-12T14:02:21.11",
+    "DateUpdated": "2017-09-12T14:02:21.11",
+    "ActivityLogLevelMask": 0
+  }
+}

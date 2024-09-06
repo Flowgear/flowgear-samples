@@ -1,0 +1,244 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "SQL Injection-Safe IN Clause",
+    "Nodes": [
+      {
+        "NodeId": "c1eb4662-7f11-bc2a-0a4b-9369b7c4883c",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "5fb09857-e9d4-9f42-38a1-21768c7208dd",
+        "Name": "SqlQuery",
+        "ShortDescription": "Microsoft SQL Query",
+        "Version": "3.0.0.6",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Sql.Microsoft.MicrosoftSqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "--declare @list varchar(MAX) = 'SKU001,SKU002,SKU003'\r\ndeclare @delim varchar(50) = ','\r\ndeclare @preparedlist varchar(MAX) = @delim + @list +@delim\r\ndeclare @table table(value varchar(50))\r\ndeclare @index int = 1\r\n\r\nwhile(@index > 0)\r\nbegin\r\n  declare @newIndex int = charindex(@delim, @preparedlist, @index + 1)\r\n\r\n  if(@newIndex > 0)\r\n  begin\r\n    declare @value varchar(50) = substring(@preparedlist, @index + 1, @newIndex - @index - 1)\r\n\tinsert into @table(value) values(@value)\r\n  end\r\n\r\n  set @index = @newIndex\r\nend\r\n\r\nSELECT\r\ninvm.StockCode,\r\ninvm.WarehouseToUse AS Warehouse\r\nFROM InvMaster invm\r\nwhere invm.StockCode in (select value from @table)"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "XmlQuery",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "list",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "SKU001,SKU002,SKU003"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Microsoft SQL Query",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "090aad2b-486f-adf3-690d-791939642552",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "The delimiter should be changed to something else if the field can contain a comma."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3458.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "c1eb4662-7f11-bc2a-0a4b-9369b7c4883c",
+    "DateCreated": "2021-09-09T07:51:40.2029142Z",
+    "DateUpdated": "2021-09-09T07:51:40.2029142Z",
+    "ActivityLogLevelMask": 0
+  }
+}
