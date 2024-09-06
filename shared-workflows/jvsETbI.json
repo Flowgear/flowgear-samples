@@ -1,0 +1,278 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Format Value Examples",
+    "Nodes": [
+      {
+        "NodeId": "4a49fceb-0d05-14bf-6cd0-94dd85a20cd6",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a1d139fa-8bce-c3d8-613f-2527b451500c",
+        "Name": "FormatValue",
+        "ShortDescription": "date to string",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Expression",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Format",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "d MMM yyyy"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Emit",
+            "TypeName": "Flwogear.Nodes.FormatValue.FormatValue+EmitTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Boolean",
+              "DateTime",
+              "Double",
+              "String",
+              "Integer"
+            ],
+            "Value": "String"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": "1 Mar 2000"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Format Value",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e9ad183b-56c8-ea1d-b187-2060548ff518",
+        "Name": "Script",
+        "ShortDescription": "generate date",
+        "Version": "1.5.1.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Script",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "using System;\r\nusing System.IO;\r\nusing System.Collections.Generic;\r\nusing System.Xml;\r\nusing System.Linq;\r\nusing System.Xml.Linq;\r\nusing Newtonsoft.Json;\r\n\r\nnamespace CSharpScript\r\n{\r\n    public partial class Processor\r\n    {  \r\n        public object Process()\r\n        {\r\n            //Enter your code here...\r\n            return new DateTime(2000, 3, 1);\r\n        }\r\n    }\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "Script",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a03cd1c3-0108-1bd3-090e-9b3897398dda",
+        "Name": "FormatValue",
+        "ShortDescription": "string to date",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Expression",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": "1 Mar 2000"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Format",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "d MMM yyyy"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Emit",
+            "TypeName": "Flwogear.Nodes.FormatValue.FormatValue+EmitTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Boolean",
+              "DateTime",
+              "Double",
+              "String",
+              "Integer"
+            ],
+            "Value": "DateTime"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Format Value",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "e9ad183b-56c8-ea1d-b187-2060548ff518",
+        "TargetNodeId": "a1d139fa-8bce-c3d8-613f-2527b451500c",
+        "SourceName": "Value",
+        "TargetName": "Expression"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "e9ad183b-56c8-ea1d-b187-2060548ff518",
+        "TargetNodeId": "a1d139fa-8bce-c3d8-613f-2527b451500c",
+        "SourceName": "",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "4a49fceb-0d05-14bf-6cd0-94dd85a20cd6",
+    "DateCreated": "2017-09-14T14:02:37.847",
+    "DateUpdated": "2017-09-14T14:02:37.847",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 2,
+    "Name": "Excel Macro Example",
+    "Nodes": [
+      {
+        "NodeId": "ded340bc-ced1-249b-69cb-232b7bd910fd",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "08d3c870-0214-2da8-c24f-74d509f80ca4",
+        "Name": "ExcelMacro",
+        "Version": "1.0.1.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "FilePath",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ReuseExcelApplication",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "ReuseExcelWorkbook",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.ExcelMacro.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Macro",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "   Set pivotSheet = Sheets.Add\r\n   pivotSheet.Name = SheetName\r\n   ActiveWorkbook.PivotCaches.Create(SourceType:=xlDatabase, SourceData:= _\r\n       \"Sheet1!R1C1:R13C3\", Version:=xlPivotTableVersion15).CreatePivotTable _\r\n       TableDestination:=SheetName & \"!R3C1\", TableName:=\"PivotTable1\", DefaultVersion _\r\n       :=xlPivotTableVersion15\r\n   Sheets(SheetName).Select\r\n   Cells(3, 1).Select\r\n   With ActiveSheet.PivotTables(\"PivotTable1\").PivotFields(\"Month\")\r\n       .Orientation = xlRowField\r\n       .Position = 1\r\n   End With\r\n   With ActiveSheet.PivotTables(\"PivotTable1\").PivotFields(\"City\")\r\n       .Orientation = xlRowField\r\n       .Position = 2\r\n   End With\r\n   ActiveSheet.PivotTables(\"PivotTable1\").AddDataField ActiveSheet.PivotTables( _\r\n       \"PivotTable1\").PivotFields(\"Sales\"), \"Sum of Sales\", xlSum\r\n   With ActiveSheet.PivotTables(\"PivotTable1\").PivotFields(\"City\")\r\n       .Orientation = xlColumnField\r\n       .Position = 1\r\n   End With"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "MacroParamtersXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Parameters>\r\n  <SheetName>\"Pivot\"</SheetName>\r\n</Parameters>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Excel Macro",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "ded340bc-ced1-249b-69cb-232b7bd910fd",
+    "DateCreated": "2017-09-14T15:49:34.623",
+    "DateUpdated": "2017-09-14T15:49:34.623",
+    "ActivityLogLevelMask": 0
+  }
+}

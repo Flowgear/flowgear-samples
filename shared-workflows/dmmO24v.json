@@ -1,0 +1,191 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Expression Example",
+    "Nodes": [
+      {
+        "NodeId": "7d6b5cb9-b611-7197-e776-f33112e0f814",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b434d286-8057-57b4-5d53-ca2fbb5189fc",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "country",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Spain"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "region",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "plain"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "c42d4b67-9f7d-b7f1-b81e-764347a0048c",
+        "Name": "Expression",
+        "Version": "1.5.1.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "\"The rain in \" + country.ToString() + \" falls mainly on the \" + highestRainfallArea.ToString()"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": "The rain in Spain falls mainly on the plain"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "country",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "highestRainfallArea",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "Expression",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "7d6b5cb9-b611-7197-e776-f33112e0f814",
+        "TargetNodeId": "c42d4b67-9f7d-b7f1-b81e-764347a0048c",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b434d286-8057-57b4-5d53-ca2fbb5189fc",
+        "TargetNodeId": "c42d4b67-9f7d-b7f1-b81e-764347a0048c",
+        "SourceName": "country",
+        "TargetName": "country"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b434d286-8057-57b4-5d53-ca2fbb5189fc",
+        "TargetNodeId": "c42d4b67-9f7d-b7f1-b81e-764347a0048c",
+        "SourceName": "region",
+        "TargetName": "highestRainfallArea"
+      }
+    ],
+    "StartNodeId": "7d6b5cb9-b611-7197-e776-f33112e0f814",
+    "DateCreated": "2017-09-14T14:36:59.963",
+    "DateUpdated": "2017-09-14T14:36:59.963",
+    "ActivityLogLevelMask": 0
+  }
+}

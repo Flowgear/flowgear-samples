@@ -1,0 +1,174 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "SQL Table Update Example",
+    "Nodes": [
+      {
+        "NodeId": "5f28c10e-f2d9-10ab-3714-d0a82c409788",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3ac208a1-f36e-c9dd-0236-0be025371a14",
+        "Name": "SqlTableUpdate",
+        "Version": "2.2.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Sql.SqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TableXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<root>\r\n  <inventory>\r\n    <code>123</code>\r\n    <description>first inventory item</description>\r\n  </inventory>\r\n  <inventory>\r\n    <code>456</code>\r\n    <description>second inventory item</description>\r\n  </inventory>\r\n</root>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "KeyFields",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "code"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "AllowInsert",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "AllowUpdate",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 0,
+        "DisplayName": "SQL Table Update",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "5f28c10e-f2d9-10ab-3714-d0a82c409788",
+    "DateCreated": "2017-09-01T10:58:33.077",
+    "DateUpdated": "2017-09-01T10:58:33.077",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,465 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Process Start Examples",
+    "Nodes": [
+      {
+        "NodeId": "a7630733-9060-0f49-b94a-618ee3a9dc11",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6500.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "625ed4f9-f4de-58b9-58ec-e1c5cfcd0dbd",
+        "Name": "ProcessStart",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "CreateNoWindow",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UseShellExecute",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "WaitForExit",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "TimeoutSecs",
+                "TypeName": "System.Int32",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.ProcessStart.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "FileName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "notepad.exe"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Arguments",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "/P \"d:\\temp\\textdocument.txt\""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Verb",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "WorkingDirectory",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "StdIn",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "StdOut",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "StdErr",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ProcessID",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "WindowHandle",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ExitCode",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6500.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Process Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3bbf5c81-c6bf-0575-1122-d274166361ed",
+        "Name": "ProcessStart",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "CreateNoWindow",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UseShellExecute",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "WaitForExit",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "TimeoutSecs",
+                "TypeName": "System.Int32",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.ProcessStart.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "FileName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "cmd.exe"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Arguments",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "/C \"dir /a /s /b\""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Verb",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "WorkingDirectory",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "StdIn",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "StdOut",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "C:\\Windows\\system32\\0409\r\n\r\nC:\\Windows\\system32\\1033\r\n\r\nC:\\Windows\\system32\\acledit.dll"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "StdErr",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ProcessID",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "WindowHandle",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ExitCode",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6500.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Process Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "386df97b-14ec-eaf4-c841-695812058218",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Print a text document using Notepad.\n\nNote that the Connection must use a DropPoint and the DropPoint Service must be run under a Windows user account rather than the default SYSTEM account in order to be able to access printers.\n\nUse these properties for the connection:\nCreateNoWindow: False\nUseShellExecute: False\nWaitForExist: False\nTimeout: 10"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e9443ccc-3188-7fa7-230e-77dca818446a",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "his example executes cmd.exe and uses it to run a console command which is returned to StdOut and can then be parsed downstream in the Workflow.\n\nNote that the Connection must use a DropPoint.\n\nUse these properties for the connection:\nCreateNoWindow: False\nUseShellExecute: False\nWaitForExist: True\nTimeout: 10"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "a7630733-9060-0f49-b94a-618ee3a9dc11",
+    "DateCreated": "2017-09-01T13:02:20.39",
+    "DateUpdated": "2017-09-01T13:02:20.39",
+    "ActivityLogLevelMask": 0
+  }
+}

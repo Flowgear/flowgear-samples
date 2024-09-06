@@ -1,0 +1,143 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Deduplicator Example",
+    "Nodes": [
+      {
+        "NodeId": "46d49352-7932-627a-cbcc-9a5c82ff7c7e",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "dd61bd54-2738-6cb7-5d79-495a231cfd57",
+        "Name": "Deduplicator",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Customers xmlns=\"namespace-default\">\r\n  <Cust>\r\n    <No_>Test1</No_>\r\n  </Cust>\r\n  <Cust>\r\n    <No_>Test2</No_>\r\n  </Cust>\r\n  <Cust>\r\n    <No_>Test2</No_>\r\n  </Cust>\r\n  <Cust>\r\n    <No_>Test1</No_>\r\n  </Cust>\r\n</Customers>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "XPaths",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "ns:Customers/ns:Cust"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "ns:namespace-default"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Customers xmlns=\"namespace-default\">\r\n  <Cust>\r\n    <No_>Test1</No_>\r\n  </Cust>\r\n  <Cust>\r\n    <No_>Test2</No_>\r\n  </Cust>\r\n</Customers>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Deduplicator",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "46d49352-7932-627a-cbcc-9a5c82ff7c7e",
+        "TargetNodeId": "dd61bd54-2738-6cb7-5d79-495a231cfd57",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "46d49352-7932-627a-cbcc-9a5c82ff7c7e",
+    "DateCreated": "2017-09-15T13:09:17.387",
+    "DateUpdated": "2017-09-15T13:09:17.387",
+    "ActivityLogLevelMask": 0
+  }
+}

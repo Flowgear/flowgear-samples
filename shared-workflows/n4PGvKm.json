@@ -1,0 +1,357 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Salesforce Outbound Message",
+    "Nodes": [
+      {
+        "NodeId": "41161992-6b0e-b7fc-7b0e-b1adedefefa0",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "74cd940a-3c8c-a656-1326-53951a48e61e",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "FgRequestBody",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "FgResponseCode",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "200"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "FgResponseBody",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soapenv:Body>\r\n    <notificationsResponse xmlns=\"http://soap.sforce.com/2005/09/outbound\">\r\n      <Ack>true</Ack>\r\n    </notificationsResponse>\r\n  </soapenv:Body>\r\n</soapenv:Envelope>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "FgResponseContentType",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Text_Xml"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "50234460-1f65-4c7c-23fa-b46e865f3db3",
+        "Name": "QuickMap",
+        "Version": "4.0.0.38",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Envelope>\r\n  <Body>\r\n    <notifications>\r\n      <OrganizationId>00D0Y000001KEPpUAO</OrganizationId>\r\n      <ActionId>04k1v000000kAagAAE</ActionId>\r\n      <SessionId nil=\"true\" />\r\n      <EnterpriseUrl>https://d0y000001keppuao-dev-ed.my.salesforce.com/services/Soap/c/46.0/00D0Y000001KEPp</EnterpriseUrl>\r\n      <PartnerUrl>https://d0y000001keppuao-dev-ed.my.salesforce.com/services/Soap/u/46.0/00D0Y000001KEPp</PartnerUrl>\r\n      <Notification>\r\n        <Id>04l1v00001OXWsVAAX</Id>\r\n        <sObject type=\"sf:Contact\">\r\n          <Id>0031v00003SGrE7AAL</Id>\r\n          <Birthdate>1987-03-14</Birthdate>\r\n          <CleanStatus>Pending</CleanStatus>\r\n          <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n          <CreatedDate>2023-01-26T15:28:22.000Z</CreatedDate>\r\n          <Department>Integrations</Department>\r\n          <FirstName>Christopher</FirstName>\r\n          <IsDeleted>false</IsDeleted>\r\n          <IsEmailBounced>false</IsEmailBounced>\r\n          <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n          <LastModifiedDate>2023-01-26T15:28:22.000Z</LastModifiedDate>\r\n          <LastName>De Leon</LastName>\r\n          <LastReferencedDate>2023-01-26T15:29:56.000Z</LastReferencedDate>\r\n          <LastViewedDate>2023-01-26T15:29:56.000Z</LastViewedDate>\r\n          <MailingCity>Jacksonville</MailingCity>\r\n          <MailingCountry>USA</MailingCountry>\r\n          <MailingPostalCode>32222</MailingPostalCode>\r\n          <MailingState>FL</MailingState>\r\n          <MailingStreet>123 Street Lane</MailingStreet>\r\n          <OwnerId>0050Y000000KkjzQAC</OwnerId>\r\n          <Phone>9047654321</Phone>\r\n          <PhotoUrl>/services/images/photo/0031v00003SGrE7AAL</PhotoUrl>\r\n          <Salutation>Mr.</Salutation>\r\n          <SystemModstamp>2023-01-26T15:28:22.000Z</SystemModstamp>\r\n          <Title>Dept Head</Title>\r\n        </sObject>\r\n      </Notification>\r\n    </notifications>\r\n  </Body>\r\n</Envelope>"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"Envelope\"],\"targetPath\":\"Table\"},{\"sourcePaths\":[\"Envelope/Body\"],\"targetPath\":\"Table/Contacts\"},{\"sourcePaths\":[\"Envelope/Body/notifications/Notification/sObject/FirstName\"],\"targetPath\":\"Table/Contacts/first_name\"},{\"sourcePaths\":[\"Envelope/Body/notifications/Notification/sObject/LastName\"],\"targetPath\":\"Table/Contacts/last_name\"},{\"sourcePaths\":[\"Envelope/Body/notifications/Notification/sObject/Phone\"],\"targetPath\":\"Table/Contacts/phone\"}],\"sourceSchema\":\"<Envelope>\\r\\n  <Body>\\r\\n    <notifications>\\r\\n      <OrganizationId>00D0Y000001KEPpUAO</OrganizationId>\\r\\n      <ActionId>04k1v000000kAagAAE</ActionId>\\r\\n      <SessionId nil=\\\"true\\\" />\\r\\n      <EnterpriseUrl>https://d0y000001keppuao-dev-ed.my.salesforce.com/services/Soap/c/46.0/00D0Y000001KEPp</EnterpriseUrl>\\r\\n      <PartnerUrl>https://d0y000001keppuao-dev-ed.my.salesforce.com/services/Soap/u/46.0/00D0Y000001KEPp</PartnerUrl>\\r\\n      <Notification>\\r\\n        <Id>04l1v00001OXWsVAAX</Id>\\r\\n        <sObject type=\\\"sf:Contact\\\">\\r\\n          <Id>0031v00003SGrE7AAL</Id>\\r\\n          <Birthdate>1987-03-14</Birthdate>\\r\\n          <CleanStatus>Pending</CleanStatus>\\r\\n          <CreatedById>0050Y000000KkjzQAC</CreatedById>\\r\\n          <CreatedDate>2023-01-26T15:28:22.000Z</CreatedDate>\\r\\n          <Department>Integrations</Department>\\r\\n          <FirstName>Christopher</FirstName>\\r\\n          <IsDeleted>false</IsDeleted>\\r\\n          <IsEmailBounced>false</IsEmailBounced>\\r\\n          <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\\r\\n          <LastModifiedDate>2023-01-26T15:28:22.000Z</LastModifiedDate>\\r\\n          <LastName>De Leon</LastName>\\r\\n          <LastReferencedDate>2023-01-26T15:29:56.000Z</LastReferencedDate>\\r\\n          <LastViewedDate>2023-01-26T15:29:56.000Z</LastViewedDate>\\r\\n          <MailingCity>Jacksonville</MailingCity>\\r\\n          <MailingCountry>USA</MailingCountry>\\r\\n          <MailingPostalCode>32222</MailingPostalCode>\\r\\n          <MailingState>FL</MailingState>\\r\\n          <MailingStreet>123 Street Lane</MailingStreet>\\r\\n          <OwnerId>0050Y000000KkjzQAC</OwnerId>\\r\\n          <Phone>9047654321</Phone>\\r\\n          <PhotoUrl>/services/images/photo/0031v00003SGrE7AAL</PhotoUrl>\\r\\n          <Salutation>Mr.</Salutation>\\r\\n          <SystemModstamp>2023-01-26T15:28:22.000Z</SystemModstamp>\\r\\n          <Title>Dept Head</Title>\\r\\n        </sObject>\\r\\n      </Notification>\\r\\n    </notifications>\\r\\n  </Body>\\r\\n</Envelope>\",\"sourceSchemaType\":0,\"targetSchema\":\"<Table>\\r\\n  <Contacts>\\r\\n    <first_name />\\r\\n    <last_name />\\r\\n    <phone />\\r\\n    <email />\\r\\n  </Contacts>\\r\\n</Table>\",\"targetSchemaType\":0}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Auto",
+              "Json",
+              "Xml"
+            ],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Table>\r\n  <Contacts>\r\n    <first_name />\r\n    <last_name />\r\n    <phone />\r\n    <email />\r\n  </Contacts>\r\n</Table>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "7cf77c4a-8701-0738-4121-34579e9a6b76",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "This workflow is initiated by utilizing the Salesforce Outbound Message. To trigger this workflow complete the Action in Salesforce then check the Workflow Log to confirm the success of the transaction."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "72f38ac8-1dd4-fb47-5cb4-6c57739925b0",
+        "Name": "XmlNamespaceStrip",
+        "ShortDescription": "XML Namespace Strip",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <soapenv:Body>\r\n    <notifications xmlns=\"http://soap.sforce.com/2005/09/outbound\">\r\n      <OrganizationId>00D0Y000001KEPpUAO</OrganizationId>\r\n      <ActionId>04k1v000000kAagAAE</ActionId>\r\n      <SessionId xsi:nil=\"true\"/>\r\n      <EnterpriseUrl>https://d0y000001keppuao-dev-ed.my.salesforce.com/services/Soap/c/46.0/00D0Y000001KEPp</EnterpriseUrl>\r\n      <PartnerUrl>https://d0y000001keppuao-dev-ed.my.salesforce.com/services/Soap/u/46.0/00D0Y000001KEPp</PartnerUrl>\r\n      <Notification>\r\n        <Id>04l1v00001OXWsVAAX</Id>\r\n        <sObject xsi:type=\"sf:Contact\" xmlns:sf=\"urn:sobject.enterprise.soap.sforce.com\">\r\n          <sf:Id>0031v00003SGrE7AAL</sf:Id>\r\n          <sf:Birthdate>1987-03-14</sf:Birthdate>\r\n          <sf:CleanStatus>Pending</sf:CleanStatus>\r\n          <sf:CreatedById>0050Y000000KkjzQAC</sf:CreatedById>\r\n          <sf:CreatedDate>2023-01-26T15:28:22.000Z</sf:CreatedDate>\r\n          <sf:Department>Integrations</sf:Department>\r\n          <sf:FirstName>Christopher</sf:FirstName>\r\n          <sf:IsDeleted>false</sf:IsDeleted>\r\n          <sf:IsEmailBounced>false</sf:IsEmailBounced>\r\n          <sf:LastModifiedById>0050Y000000KkjzQAC</sf:LastModifiedById>\r\n          <sf:LastModifiedDate>2023-01-26T15:28:22.000Z</sf:LastModifiedDate>\r\n          <sf:LastName>De Leon</sf:LastName>\r\n          <sf:LastReferencedDate>2023-01-26T15:29:56.000Z</sf:LastReferencedDate>\r\n          <sf:LastViewedDate>2023-01-26T15:29:56.000Z</sf:LastViewedDate>\r\n          <sf:MailingCity>Jacksonville</sf:MailingCity>\r\n          <sf:MailingCountry>USA</sf:MailingCountry>\r\n          <sf:MailingPostalCode>32222</sf:MailingPostalCode>\r\n          <sf:MailingState>FL</sf:MailingState>\r\n          <sf:MailingStreet>123 Street Lane</sf:MailingStreet>\r\n          <sf:OwnerId>0050Y000000KkjzQAC</sf:OwnerId>\r\n          <sf:Phone>9047654321</sf:Phone>\r\n          <sf:PhotoUrl>/services/images/photo/0031v00003SGrE7AAL</sf:PhotoUrl>\r\n          <sf:Salutation>Mr.</sf:Salutation>\r\n          <sf:SystemModstamp>2023-01-26T15:28:22.000Z</sf:SystemModstamp>\r\n          <sf:Title>Dept Head</sf:Title>\r\n        </sObject>\r\n      </Notification>\r\n    </notifications>\r\n  </soapenv:Body>\r\n</soapenv:Envelope>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Envelope>\r\n  <Body>\r\n    <notifications>\r\n      <OrganizationId>00D0Y000001KEPpUAO</OrganizationId>\r\n      <ActionId>04k1v000000kAagAAE</ActionId>\r\n      <SessionId nil=\"true\" />\r\n      <EnterpriseUrl>https://d0y000001keppuao-dev-ed.my.salesforce.com/services/Soap/c/46.0/00D0Y000001KEPp</EnterpriseUrl>\r\n      <PartnerUrl>https://d0y000001keppuao-dev-ed.my.salesforce.com/services/Soap/u/46.0/00D0Y000001KEPp</PartnerUrl>\r\n      <Notification>\r\n        <Id>04l1v00001IwfTIAAZ</Id>\r\n        <sObject type=\"sf:Contact\">\r\n          <Id>0031v00003MnUEiAAN</Id>\r\n          <CleanStatus>Pending</CleanStatus>\r\n          <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n          <CreatedDate>2022-08-05T07:57:26.000Z</CreatedDate>\r\n          <Email>ipsum@fusce.co.uk</Email>\r\n          <FirstName>Lois</FirstName>\r\n          <IsDeleted>false</IsDeleted>\r\n          <IsEmailBounced>false</IsEmailBounced>\r\n          <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n          <LastModifiedDate>2022-08-17T11:44:49.000Z</LastModifiedDate>\r\n          <LastName>Oconnor</LastName>\r\n          <LastReferencedDate>2022-08-17T11:44:49.000Z</LastReferencedDate>\r\n          <LastViewedDate>2022-08-17T11:44:49.000Z</LastViewedDate>\r\n          <OwnerId>0050Y000000KkjzQAC</OwnerId>\r\n          <Phone>1-774-825-5248</Phone>\r\n          <PhotoUrl>/services/images/photo/0031v00003MnUEiAAN</PhotoUrl>\r\n          <Salutation>Mr.</Salutation>\r\n          <SystemModstamp>2022-08-17T11:44:49.000Z</SystemModstamp>\r\n        </sObject>\r\n      </Notification>\r\n    </notifications>\r\n  </Body>\r\n</Envelope>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "XML Namespace Strip",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "41161992-6b0e-b7fc-7b0e-b1adedefefa0",
+        "TargetNodeId": "72f38ac8-1dd4-fb47-5cb4-6c57739925b0",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "72f38ac8-1dd4-fb47-5cb4-6c57739925b0",
+        "TargetNodeId": "50234460-1f65-4c7c-23fa-b46e865f3db3",
+        "SourceName": "ResultXml",
+        "TargetName": "Source"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "72f38ac8-1dd4-fb47-5cb4-6c57739925b0",
+        "TargetNodeId": "50234460-1f65-4c7c-23fa-b46e865f3db3",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "74cd940a-3c8c-a656-1326-53951a48e61e",
+        "TargetNodeId": "72f38ac8-1dd4-fb47-5cb4-6c57739925b0",
+        "SourceName": "FgRequestBody",
+        "TargetName": "SourceXml"
+      }
+    ],
+    "StartNodeId": "41161992-6b0e-b7fc-7b0e-b1adedefefa0",
+    "DateCreated": "2023-02-10T11:54:54.8559899Z",
+    "DateUpdated": "2023-02-10T11:54:54.8559899Z",
+    "ActivityLogLevelMask": 0
+  }
+}

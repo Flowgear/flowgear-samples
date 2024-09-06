@@ -1,0 +1,403 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Microsoft SQL Emit a Page",
+    "Description": "This example integration shows how a user can query large datasets from a database using pages. \"Microsoft SQL Emit a Page\" is the partner workflow to \"Microsoft SQL Request a Page\". The certification training database (CertificationTrainingDb.flowgear.net) from our Udemy Course can be used to test this functionality.",
+    "Nodes": [
+      {
+        "NodeId": "6968b016-2a74-5b9f-f7ab-4661debe3741",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ed4a8714-7679-7023-f6af-be20ca2989f8",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "FgRequestBody",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"RequestData\": {\r\n    \"pageRequested\": 1,\r\n    \"pageSize\": 10\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "FgResponseBody",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "FgResponseContentType",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "text/xml"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "537cd745-671d-66fe-f4d6-2b69e60bbd3a",
+        "Name": "Validate",
+        "Version": "3.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Validations",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "{\"PageSize\":[{\"_id\":\"a885358b-e6f0-7c20-f7e6-46f4f1b7202c\",\"name\":\"IsInteger\",\"description\":\"Determines whether the value is an integral number.\",\"parameters\":[]}],\"PageRequested\":[{\"_id\":\"27c24c31-2aa0-145f-de1e-987959b6f8b2\",\"name\":\"IsInteger\",\"description\":\"Determines whether the value is an integral number.\",\"parameters\":[]}],\"RequestBody\":[{\"_id\":\"5819706f-e983-75d5-4340-2c9850360ae2\",\"name\":\"IsJson\",\"description\":\"Determines whether the value is a valid JSON document.\",\"parameters\":[]}]}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Report",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PageSize",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PageRequested",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RequestBody",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Valid",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Invalid",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Validate",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a6f9e514-a598-b4fa-6d8b-8b856bd5529c",
+        "Name": "SqlQuery",
+        "Version": "3.0.0.6",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Training SQL",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Sql.Microsoft.MicrosoftSqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "-- 1 - Cast the page values to integer.\r\ndeclare @IntPageSize INT = CAST(@PageSize AS INT);\r\ndeclare @IntpageNumber INT = CAST(@PageNumber AS INT);\r\n\r\n-- 2 - Build query\r\nSELECT\r\n[id],\r\n[first_name],\r\n[last_name]\r\nFROM [Contacts]\r\n\r\n-- 3 - Order by the field you want to use for paging\r\nORDER BY id\r\n\r\n-- 4 - Return only the requested page.\r\n-- \t   This configuration is for Non-Zero indexing.\r\n--\t   i.e. Page 1 = first IntPageSize of results.\r\nOFFSET  (@IntpageNumber-1) * @IntPageSize ROWS FETCH NEXT @IntPageSize ROWS ONLY"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "XmlQuery",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PageSize",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PageNumber",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Microsoft SQL Query",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "6968b016-2a74-5b9f-f7ab-4661debe3741",
+        "TargetNodeId": "537cd745-671d-66fe-f4d6-2b69e60bbd3a",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "a6f9e514-a598-b4fa-6d8b-8b856bd5529c",
+        "TargetNodeId": "ed4a8714-7679-7023-f6af-be20ca2989f8",
+        "SourceName": "ResultXml",
+        "TargetName": "FgResponseBody"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "537cd745-671d-66fe-f4d6-2b69e60bbd3a",
+        "TargetNodeId": "a6f9e514-a598-b4fa-6d8b-8b856bd5529c",
+        "SourceName": "Valid",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ed4a8714-7679-7023-f6af-be20ca2989f8",
+        "TargetNodeId": "537cd745-671d-66fe-f4d6-2b69e60bbd3a",
+        "SourceName": "FgRequestBody",
+        "TargetName": "PageSize",
+        "Expression": "RequestData.pageSize"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ed4a8714-7679-7023-f6af-be20ca2989f8",
+        "TargetNodeId": "537cd745-671d-66fe-f4d6-2b69e60bbd3a",
+        "SourceName": "FgRequestBody",
+        "TargetName": "PageRequested",
+        "Expression": "RequestData.pageRequested"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ed4a8714-7679-7023-f6af-be20ca2989f8",
+        "TargetNodeId": "537cd745-671d-66fe-f4d6-2b69e60bbd3a",
+        "SourceName": "FgRequestBody",
+        "TargetName": "RequestBody"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ed4a8714-7679-7023-f6af-be20ca2989f8",
+        "TargetNodeId": "a6f9e514-a598-b4fa-6d8b-8b856bd5529c",
+        "SourceName": "FgRequestBody",
+        "TargetName": "PageSize",
+        "Expression": "RequestData.pageSize"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ed4a8714-7679-7023-f6af-be20ca2989f8",
+        "TargetNodeId": "a6f9e514-a598-b4fa-6d8b-8b856bd5529c",
+        "SourceName": "FgRequestBody",
+        "TargetName": "PageNumber",
+        "Expression": "RequestData.pageRequested"
+      }
+    ],
+    "StartNodeId": "6968b016-2a74-5b9f-f7ab-4661debe3741",
+    "DateCreated": "2021-09-21T09:04:19.361766Z",
+    "DateUpdated": "2021-09-21T09:04:19.361766Z",
+    "ActivityLogLevelMask": 0
+  }
+}

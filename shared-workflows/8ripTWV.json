@@ -1,0 +1,246 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "SharePoint Online Example",
+    "Nodes": [
+      {
+        "NodeId": "0c7e9e37-c4fe-81dd-3d9f-95cb1f583858",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "9d691f69-554a-cd84-fe3d-9b20fdfe7933",
+        "Name": "SharePointOnline",
+        "ShortDescription": "View a list",
+        "Version": "1.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "SiteUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "SharePoint Online",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Microsoft.SharePointOnline.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.Microsoft.SharePointOnline.SharePointOnline+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "View",
+              "Insert"
+            ],
+            "Value": "View"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ListName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "the-list-name"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ListXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<List>\r\n  <Item>\r\n    <ContentTypeId>0x01003A4BB657F519CB49875AA542FC4E25FE</ContentTypeId>\r\n    <Title>Item title</Title>\r\n    <_ModerationComments />\r\n    <File_x0020_Type />\r\n    <ComplianceAssetId />\r\n    <Field1>value1</Field1>\r\n    <Field2>value2</Field2>\r\n    <number />\r\n    <ID>1</ID>\r\n    <Modified>2018/02/07 12:48:48</Modified>\r\n    <Created>2018/02/07 12:48:41</Created>\r\n    <Author>Microsoft.SharePoint.Client.FieldUserValue</Author>\r\n    <Editor>Microsoft.SharePoint.Client.FieldUserValue</Editor>\r\n    <_HasCopyDestinations />\r\n    <_CopySource />\r\n    <owshiddenversion>2</owshiddenversion>\r\n    <WorkflowVersion>1</WorkflowVersion>\r\n    <_UIVersion>512</_UIVersion>\r\n    <_UIVersionString>1.0</_UIVersionString>\r\n    <Attachments>False</Attachments>\r\n    <_ModerationStatus>0</_ModerationStatus>\r\n    <InstanceID />\r\n    <Order>100</Order>\r\n    <GUID>9389d120-ae19-4e80-b3fc-32dc7774006f</GUID>\r\n    <WorkflowInstanceID />\r\n    <FileRef>/sites/cabul/Lists/listy/1_.000</FileRef>\r\n    <FileDirRef>/sites/cabul/Lists/listy</FileDirRef>\r\n    <Last_x0020_Modified>2018-02-07T12:48:41Z</Last_x0020_Modified>\r\n    <Created_x0020_Date>2018-02-07T12:48:41Z</Created_x0020_Date>\r\n    <FSObjType>0</FSObjType>\r\n    <SortBehavior>Microsoft.SharePoint.Client.FieldLookupValue</SortBehavior>\r\n    <FileLeafRef>1_.000</FileLeafRef>\r\n    <UniqueId>f13c4c87-a1a1-46ef-ab19-afbe5ec1cb4d</UniqueId>\r\n    <SyncClientId>Microsoft.SharePoint.Client.FieldLookupValue</SyncClientId>\r\n    <ProgId></ProgId>\r\n    <ScopeId>{5C1649E1-48BC-4C20-AD55-FC97482BA2AA}</ScopeId>\r\n    <MetaInfo></MetaInfo>\r\n    <_Level>1</_Level>\r\n    <_IsCurrentVersion>True</_IsCurrentVersion>\r\n    <ItemChildCount>0</ItemChildCount>\r\n    <FolderChildCount>0</FolderChildCount>\r\n    <Restricted></Restricted>\r\n    <OriginatorId></OriginatorId>\r\n    <NoExecute>0</NoExecute>\r\n    <ContentVersion>0</ContentVersion>\r\n    <_ComplianceFlags></_ComplianceFlags>\r\n    <_ComplianceTag></_ComplianceTag>\r\n    <_ComplianceTagWrittenTime></_ComplianceTagWrittenTime>\r\n    <_ComplianceTagUserId></_ComplianceTagUserId>\r\n    <AccessPolicy></AccessPolicy>\r\n    <_VirusStatus></_VirusStatus>\r\n    <_VirusVendorID></_VirusVendorID>\r\n    <_VirusInfo></_VirusInfo>\r\n    <AppAuthor />\r\n    <AppEditor />\r\n    <SMTotalSize>Microsoft.SharePoint.Client.FieldLookupValue</SMTotalSize>\r\n    <SMLastModifiedDate>2018-02-07T12:48:48Z</SMLastModifiedDate>\r\n    <SMTotalFileStreamSize>0</SMTotalFileStreamSize>\r\n    <SMTotalFileCount>Microsoft.SharePoint.Client.FieldLookupValue</SMTotalFileCount>\r\n  </Item>\r\n  <Item>\r\n    <ContentTypeId>0x01003A4BB657F519CB49875AA542FC4E25FE</ContentTypeId>\r\n    <Title>Item Title</Title>\r\n    <_ModerationComments />\r\n    <File_x0020_Type />\r\n    <ComplianceAssetId />\r\n    <Field1>value3</Field1>\r\n    <Field2>value4</Field2>\r\n    <number />\r\n    <ID>2</ID>\r\n    <Modified>2018/02/07 12:48:52</Modified>\r\n    <Created>2018/02/07 12:48:52</Created>\r\n    <Author>Microsoft.SharePoint.Client.FieldUserValue</Author>\r\n    <Editor>Microsoft.SharePoint.Client.FieldUserValue</Editor>\r\n    <_HasCopyDestinations />\r\n    <_CopySource />\r\n    <owshiddenversion>1</owshiddenversion>\r\n    <WorkflowVersion>1</WorkflowVersion>\r\n    <_UIVersion>512</_UIVersion>\r\n    <_UIVersionString>1.0</_UIVersionString>\r\n    <Attachments>False</Attachments>\r\n    <_ModerationStatus>0</_ModerationStatus>\r\n    <InstanceID />\r\n    <Order>200</Order>\r\n    <GUID>31232a00-f3a5-4485-918c-e571642d30ab</GUID>\r\n    <WorkflowInstanceID />\r\n    <FileRef>/sites/cabul/Lists/listy/2_.000</FileRef>\r\n    <FileDirRef>/sites/cabul/Lists/listy</FileDirRef>\r\n    <Last_x0020_Modified>2018-02-07T12:48:52Z</Last_x0020_Modified>\r\n    <Created_x0020_Date>2018-02-07T12:48:52Z</Created_x0020_Date>\r\n    <FSObjType>0</FSObjType>\r\n    <SortBehavior>Microsoft.SharePoint.Client.FieldLookupValue</SortBehavior>\r\n    <FileLeafRef>2_.000</FileLeafRef>\r\n    <UniqueId>917c5f16-437c-469e-99a1-e01bfcded8af</UniqueId>\r\n    <SyncClientId>Microsoft.SharePoint.Client.FieldLookupValue</SyncClientId>\r\n    <ProgId></ProgId>\r\n    <ScopeId>{5C1649E1-48BC-4C20-AD55-FC97482BA2AA}</ScopeId>\r\n    <MetaInfo></MetaInfo>\r\n    <_Level>1</_Level>\r\n    <_IsCurrentVersion>True</_IsCurrentVersion>\r\n    <ItemChildCount>0</ItemChildCount>\r\n    <FolderChildCount>0</FolderChildCount>\r\n    <Restricted></Restricted>\r\n    <OriginatorId></OriginatorId>\r\n    <NoExecute>0</NoExecute>\r\n    <ContentVersion>0</ContentVersion>\r\n    <_ComplianceFlags></_ComplianceFlags>\r\n    <_ComplianceTag></_ComplianceTag>\r\n    <_ComplianceTagWrittenTime></_ComplianceTagWrittenTime>\r\n    <_ComplianceTagUserId></_ComplianceTagUserId>\r\n    <AccessPolicy></AccessPolicy>\r\n    <_VirusStatus></_VirusStatus>\r\n    <_VirusVendorID></_VirusVendorID>\r\n    <_VirusInfo></_VirusInfo>\r\n    <AppAuthor />\r\n    <AppEditor />\r\n    <SMTotalSize>Microsoft.SharePoint.Client.FieldLookupValue</SMTotalSize>\r\n    <SMLastModifiedDate>2018-02-07T12:48:52Z</SMLastModifiedDate>\r\n    <SMTotalFileStreamSize>0</SMTotalFileStreamSize>\r\n    <SMTotalFileCount>Microsoft.SharePoint.Client.FieldLookupValue</SMTotalFileCount>\r\n  </Item>\r\n</List>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 2,
+        "InteractFlags": 0,
+        "DisplayName": "SharePoint Online",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d39b0c8a-d549-8431-ab27-828f154df33f",
+        "Name": "SharePointOnline",
+        "ShortDescription": "Insert into list",
+        "Version": "1.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "SiteUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "SharePoint Online",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Microsoft.SharePointOnline.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.Microsoft.SharePointOnline.SharePointOnline+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "View",
+              "Insert"
+            ],
+            "Value": "Insert"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ListName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "the-list-name"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ListXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<List>\r\n  <Item>\r\n    <Title>name of first item</Title>\r\n    <Field1>value1</Field1>\r\n    <Field2>value2</Field2>\r\n  </Item>\r\n  <Item>\r\n    <Title>name of second item</Title>\r\n    <Field1>value3</Field1>\r\n    <Field2>value4</Field2>\r\n  </Item>\r\n</List>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 2,
+        "InteractFlags": 0,
+        "DisplayName": "SharePoint Online",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "0c7e9e37-c4fe-81dd-3d9f-95cb1f583858",
+    "DateCreated": "2018-03-09T11:57:52.9715964Z",
+    "DateUpdated": "2018-03-09T11:57:52.9715964Z",
+    "ActivityLogLevelMask": 0
+  }
+}

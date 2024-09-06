@@ -1,0 +1,573 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Email Multiple Attachments",
+    "Nodes": [
+      {
+        "NodeId": "463a4722-cf21-1896-43bf-294a4fd69f2e",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 4108.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "73850d33-a91e-158f-2c14-2f2c3e5cc20a",
+        "Name": "SingleEmail",
+        "Version": "1.0.0.9",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Port",
+                "TypeName": "System.Int32",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UseSsl",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Email.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Sender",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Recipients",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Subject",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "multiple attachments"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Body",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Demonstrating Multiple Attachments"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HtmlBody",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "BodyProcessor",
+            "TypeName": "flowgear.Nodes.Email.SingleEmail+BodyProcessors",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "XmlToHtmlTable"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "AttachmentName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Default.txt"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Attachment",
+            "TypeName": "System.Object",
+            "ExtendedType": 4,
+            "Value": "Default Attachment Content"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RecipientsCC",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RecipientsBCC",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "AttachmentName1",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "report.xlsx"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Attachment1",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "attachmentName2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "attachment2.txt"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "attachment2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "attachment2"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 4108.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Single Email",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "cccb3edb-5da2-66bb-52ce-dfcc9629a669",
+        "Name": "EmailAlert",
+        "Version": "1.0.2.8",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Recipients",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Subject",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "multiple attachments"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Body",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Demonstrating multiple attachments\r\n"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HtmlBody",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PreparedBody",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "BodyProcessor",
+            "TypeName": "flowgear.Nodes.fgSystem.EmailAlert+BodyProcessors",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "XmlToHtmlTable"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "AttachmentName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "default.txt"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Attachment",
+            "TypeName": "System.Object",
+            "ExtendedType": 4,
+            "Value": "default"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "AttachmentName1",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Report.xlsx"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Attachment1",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "attachment1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "attachmentName2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "attachment2.txt"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "attachment2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "attachment2"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Email Alert",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b10c86c0-2f18-2b2a-5b5b-e7dba629ee37",
+        "Name": "Excel",
+        "Version": "1.0.7.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Excel.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "flowgear.Nodes.Excel.Excel+ExcelVerb",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Open",
+              "Create",
+              "Insert",
+              "OpenWithoutStyling"
+            ],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Formatting",
+            "TypeName": "flowgear.Nodes.Excel.Excel+Formats",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "AllText",
+              "None",
+              "Smart"
+            ],
+            "Value": "AllText"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "TableXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Result>\r\n  <Table>\r\n    <Field1>sample</Field1>\r\n  </Table>\r\n</Result>"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ExcelDocument",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DocumentTemplate",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "InsertHeaders",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 4108.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Excel",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b10c86c0-2f18-2b2a-5b5b-e7dba629ee37",
+        "TargetNodeId": "73850d33-a91e-158f-2c14-2f2c3e5cc20a",
+        "SourceName": "ExcelDocument",
+        "TargetName": "Attachment1"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b10c86c0-2f18-2b2a-5b5b-e7dba629ee37",
+        "TargetNodeId": "cccb3edb-5da2-66bb-52ce-dfcc9629a669",
+        "SourceName": "ExcelDocument",
+        "TargetName": "Attachment1"
+      }
+    ],
+    "StartNodeId": "463a4722-cf21-1896-43bf-294a4fd69f2e",
+    "DateCreated": "2021-07-06T14:10:08.7732611Z",
+    "DateUpdated": "2021-07-06T14:10:08.7732611Z",
+    "ActivityLogLevelMask": 0
+  }
+}

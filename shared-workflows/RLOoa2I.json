@@ -1,0 +1,186 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 2,
+    "Name": "AD Query Example",
+    "Nodes": [
+      {
+        "NodeId": "e8a0c0b6-b009-666e-821f-801c5468fce1",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "42b92aa6-e1c1-ba0d-0103-dafb8e0dd5a8",
+        "Name": "AdQuery",
+        "Version": "1.1.0.7",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "BaseDn",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Ad.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Dn",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "DC=onecity,DC=corp,DC=fabrikam,DC=com"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Filter",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "(OU=debtors)"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SearchDepth",
+            "TypeName": "flowgear.Nodes.Ad.Enums.SearchDepths",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Base",
+              "OneLevel",
+              "Subtree"
+            ],
+            "Value": "Subtree"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "IncludeGuid",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "IsLockedOut",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "PropertyList",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "cn\r\ndisplayName\r\nmail"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Results>\r\n  <Result Dn=\"LDAP://DC=onecity,DC=corp,DC=fabrikam,DC=com\" ObjectClass=\"none\">\r\n    <Guid>3b87f234-4788-4f8e-84cf-18d73a99e88e</Guid>\r\n    <cn>\r\n      <Value>user@domain.com</Value>\r\n    </cn>\r\n    <displayName>\r\n      <Value>FirstName LastName</Value>\r\n    </displayName>\r\n    <mail>\r\n      <Value>user@domain.com</Value>\r\n    </mail>\r\n  </Result>\r\n</Results"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 2,
+        "DisplayName": "AD Query",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "e8a0c0b6-b009-666e-821f-801c5468fce1",
+    "DateCreated": "2017-09-15T13:45:04.257",
+    "DateUpdated": "2017-09-15T13:45:04.257",
+    "ActivityLogLevelMask": 0
+  }
+}

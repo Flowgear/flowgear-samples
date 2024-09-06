@@ -1,0 +1,202 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Excel Workbook Example",
+    "Nodes": [
+      {
+        "NodeId": "275c6ea1-1044-8fed-3a2e-10740dffb6be",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6428.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f478a630-90f5-727a-20b3-e13712d58602",
+        "Name": "ExcelWorkbook",
+        "Version": "2.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "FilePath",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ReuseExcelApplication",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "ReuseExcelWorkbook",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.ExcelWorkbook.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Worksheet",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Sheet1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "InputRangeXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Inputs>\r\n  <Row>\r\n    <inName>Flowgear</inName>\r\n    <inBirthYear>1980</inBirthYear>\r\n  </Row>\r\n  <Row>\r\n    <inName>Someone</inName>\r\n    <inBirthYear>1990</inBirthYear>\r\n  </Row>\r\n</Inputs>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "OutputRangeXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Outputs>\r\n  <Row>\r\n    <outAge>34</outAge>\r\n    <!--=YEAR(TODAY())-C3-->\r\n    <outSummary>Flowgear is 34 Years old.</outSummary>\r\n    <!-- =CONCATENATE(C2, \" is \", C6, \" Years old.\") -->\r\n  </Row>\r\n  <Row>\r\n    <outAge>24</outAge>\r\n    <!--=YEAR(TODAY())-C3-->\r\n    <outSummary>Someone is 24 Years old.</outSummary>\r\n    <!-- =CONCATENATE(C2, \" is \", C6, \" Years old.\") -->\r\n  </Row>\r\n</Outputs>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6428.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Excel Workbook",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "9615f025-7554-291d-0746-836cd93dc112",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "This example illustrates how to request multiple sets of range values. Each set in the Inputs/Row{x} path is processed sequentially by setting the values to the specified named ranges and reading the resultant output values from named ranges. Note that the name of the \"Row\" does not have to be unique. In the example, outAge takes the value of inBirthYear and subtract it from today's year. Furthermore, outSummary returns a concatenated value of inName, and the generated value of outAge.\n\nNB!! The range name must be set on each cell where it needs to be referenced otherwise the Excel Workbook Node will not know how to communicate to it."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "275c6ea1-1044-8fed-3a2e-10740dffb6be",
+    "DateCreated": "2017-09-14T14:47:15.977",
+    "DateUpdated": "2017-09-14T14:47:15.977",
+    "ActivityLogLevelMask": 0
+  }
+}

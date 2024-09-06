@@ -1,0 +1,127 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "XML to HTML Example",
+    "Nodes": [
+      {
+        "NodeId": "82e83983-a7ab-196a-431e-a43143ca114e",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "13a5110d-b564-fafd-06b1-577e4f6f7495",
+        "Name": "XmlToHtml",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Xml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<data>\r\n  <contact>\r\n    <name>John</name>\r\n    <phone>111-555-1234</phone>\r\n    <addresses>\r\n      <address>\r\n        <line1>1 Office Park</line1>\r\n        <city>London</city>\r\n      </address>\r\n      <address>\r\n        <line1>2 Business Road</line1>\r\n        <city>New York</city>\r\n      </address>\r\n    </addresses>\r\n  </contact>\r\n  <contact>\r\n    <name>Joe</name>\r\n    <phone>111-555-7890</phone>\r\n    <addresses>\r\n      <address>\r\n        <line1>3 City Road</line1>\r\n        <city>Jakarta</city>\r\n      </address>\r\n    </addresses>\r\n  </contact>\r\n</data>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "XHTML",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<html>\r\n  <style>\r\ntable{padding:0px;margin:0px;border-left:none;border-top:none;border-right:1px solid #666666;border-bottom:1px solid #666666;}\r\ntd{font-family:arial;font-size:12px;border-left:1px solid #666666;border-top:1px solid #666666;border-right:none;border-bottom:none;padding:5px;margin:0px;white-space: nowrap;}\r\n.h1{background-color:#008bbd;color:white;font-weight:bold;}\r\n.h2{background-color:#c7c7c7;color:black;font-weight:bold;}\r\n.d1{background-color:#D1F3FF}\r\n.d2{background-color:#FFFFFF}\r\n</style>\r\n  <body>\r\n    <table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\r\n      <tr>\r\n        <td colspan=\"2\" class=\"h1\">contact</td>\r\n        <td colspan=\"2\" class=\"h2\">address</td>\r\n      </tr>\r\n      <tr>\r\n        <td class=\"h1\">name</td>\r\n        <td class=\"h1\">phone</td>\r\n        <td class=\"h2\">line1</td>\r\n        <td class=\"h2\">city</td>\r\n      </tr>\r\n      <tr>\r\n        <td class=\"d1\">John</td>\r\n        <td class=\"d1\">111-555-1234</td>\r\n        <td class=\"d2\">1 Office Park</td>\r\n        <td class=\"d2\">London</td>\r\n      </tr>\r\n      <tr>\r\n        <td class=\"d1\"></td>\r\n        <td class=\"d1\"></td>\r\n        <td class=\"d2\">2 Business Road</td>\r\n        <td class=\"d2\">New York</td>\r\n      </tr>\r\n      <tr>\r\n        <td class=\"d1\">Joe</td>\r\n        <td class=\"d1\">111-555-7890</td>\r\n        <td class=\"d2\">3 City Road</td>\r\n        <td class=\"d2\">Jakarta</td>\r\n      </tr>\r\n    </table>\r\n  </body>\r\n</html>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "XML to HTML",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "82e83983-a7ab-196a-431e-a43143ca114e",
+        "TargetNodeId": "13a5110d-b564-fafd-06b1-577e4f6f7495",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "82e83983-a7ab-196a-431e-a43143ca114e",
+    "DateCreated": "2018-06-22T08:51:09.1451731Z",
+    "DateUpdated": "2018-06-22T08:51:09.1451731Z",
+    "ActivityLogLevelMask": 0
+  }
+}

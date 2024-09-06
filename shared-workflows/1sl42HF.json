@@ -1,0 +1,288 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Query Example",
+    "Nodes": [
+      {
+        "NodeId": "bba9dc78-f523-3043-68b0-79a0a3496a75",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f90c83fe-c150-91b4-6b13-74559c1222a4",
+        "Name": "Salesforce",
+        "ShortDescription": "Get Order",
+        "Version": "4.0.0.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Url",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerKey",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "SecurityToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "DontInterleaveRequestInResponse",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "EncodingMode",
+                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                "ExtendedType": 0,
+                "EnumValues": [
+                  "XmlInXmlOut",
+                  "XmlInJsonOut"
+                ]
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Salesforce FG 2021/08",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Create",
+              "Update",
+              "Get",
+              "Query",
+              "Upsert",
+              "GetNextRecords",
+              "QueryAll",
+              "Delete"
+            ],
+            "Value": "Query"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "OrderItem"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ExternalIdField",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\" type=\"xs:string\" />\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Request>\r\nSELECT\r\n    Order.Id,\r\n    Order.OrderNumber,\r\n\tId,\r\n\tProduct2Id,\r\n\tIsDeleted,\r\n\tOrderId,\r\n\tPricebookEntryId,\r\n\tOriginalOrderItemId,\r\n\tAvailableQuantity,\r\n\tQuantity,\r\n\tUnitPrice,\r\n\tListPrice,\r\n\tTotalPrice,\r\n\tServiceDate,\r\n\tEndDate,\r\n\tDescription,\r\n\tCreatedDate,\r\n\tCreatedById,\r\n\tLastModifiedDate,\r\n\tLastModifiedById,\r\n\tSystemModstamp,\r\n\tOrderItemNumber\r\nFROM OrderItem\r\nWHERE Order.OrderNumber = '{OrderNumber}'\r\n</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HadError",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OrderNumber",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Salesforce",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "993e538f-6807-b973-7c81-89619ec61720",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Order Number",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3458.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "bba9dc78-f523-3043-68b0-79a0a3496a75",
+        "TargetNodeId": "f90c83fe-c150-91b4-6b13-74559c1222a4",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "993e538f-6807-b973-7c81-89619ec61720",
+        "TargetNodeId": "f90c83fe-c150-91b4-6b13-74559c1222a4",
+        "SourceName": "Order Number",
+        "TargetName": "OrderNumber"
+      }
+    ],
+    "StartNodeId": "bba9dc78-f523-3043-68b0-79a0a3496a75",
+    "DateCreated": "2021-09-02T08:38:07.3497821Z",
+    "DateUpdated": "2021-09-02T08:38:07.3497821Z",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "XML Merge",
+    "Description": "This workflow illustrates how to use the XML Merge Node to merge two XML documents together based on a common key",
+    "Nodes": [
+      {
+        "NodeId": "4a4ad52b-2b9c-6fb3-ef54-bea2ef9b8e15",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "6a929573-e7aa-007b-fe16-8c63f8db973b",
+        "Name": "XmlMerge",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ParentDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<invoices>\r\n  <invoice>\r\n    <invoice>123</invoice>\r\n    <customerCode>ABC001</customerCode>\r\n    <date>2020-10-10</date>\r\n    <value>100</value>\r\n  </invoice>\r\n  <invoice>\r\n    <invoice>456</invoice>\r\n    <customerCode>DEF002</customerCode>\r\n    <date>2020-10-12</date>\r\n    <value>500</value>\r\n  </invoice>\r\n</invoices>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ChildDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<customers>\r\n  <customer>\r\n    <code>ABC001</code>\r\n    <name>ABC Corp</name>\r\n    <phone>1115551234</phone>\r\n  </customer>\r\n    <customer>\r\n    <code>DEF002</code>\r\n    <name>Contoso</name>\r\n    <phone>1115555674</phone>\r\n  </customer>\r\n  <!--this record will be stray-->\r\n    <customer>\r\n    <code>GHI003</code>\r\n    <name>Amazing Tech</name>\r\n    <phone>1115559999</phone>\r\n  </customer>\r\n</customers>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ParentNamespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ParentXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "invoices/invoice"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ParentKeyXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "customerCode"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ChildNamespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ChildXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "customers/customer"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ChildKeyXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "code"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "MergedDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<invoices>\r\n  <invoice>\r\n    <invoice>123</invoice>\r\n    <customerCode>ABC001</customerCode>\r\n    <date>2020-10-10</date>\r\n    <value>100</value>\r\n    <customer>\r\n      <code>ABC001</code>\r\n      <name>ABC Corp</name>\r\n      <phone>1115551234</phone>\r\n    </customer>\r\n  </invoice>\r\n  <invoice>\r\n    <invoice>456</invoice>\r\n    <customerCode>DEF002</customerCode>\r\n    <date>2020-10-12</date>\r\n    <value>500</value>\r\n    <customer>\r\n      <code>DEF002</code>\r\n      <name>Contoso</name>\r\n      <phone>1115555674</phone>\r\n    </customer>\r\n  </invoice>\r\n  <customer>\r\n    <code>GHI003</code>\r\n    <name>Amazing Tech</name>\r\n    <phone>1115559999</phone>\r\n  </customer>\r\n</invoices>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "XML Merge",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "4a4ad52b-2b9c-6fb3-ef54-bea2ef9b8e15",
+        "TargetNodeId": "6a929573-e7aa-007b-fe16-8c63f8db973b",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "4a4ad52b-2b9c-6fb3-ef54-bea2ef9b8e15",
+    "DateCreated": "2016-11-11T08:50:25.56",
+    "DateUpdated": "2016-11-11T08:50:25.56",
+    "ActivityLogLevelMask": 0
+  }
+}

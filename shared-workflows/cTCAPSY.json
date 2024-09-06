@@ -1,0 +1,249 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "XPath Match Examples",
+    "Nodes": [
+      {
+        "NodeId": "956a130a-abb5-9c20-b09a-29edef413188",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f29aabce-b08b-8933-a903-4a1e4a83eb92",
+        "Name": "XPathMatch",
+        "ShortDescription": "Basic",
+        "Version": "2.2.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "XmlDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Root>\r\n  <Test1>1</Test1>\r\n  <Test2>2</Test2>\r\n</Root>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "XPaths",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "test1:Root/Test1\r\ntest2:Root/Test2"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Return",
+            "TypeName": "Flowgear.Nodes.XPathMatch.XPathMatch+ReturnTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "InnerText",
+              "OuterXml",
+              "InnerXml",
+              "Evaluate",
+              "AllOuterXml"
+            ],
+            "Value": "InnerText"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "test1",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "test2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "XPath Match",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "44690e4b-38b6-c345-e428-ad69167a91ea",
+        "Name": "XPathMatch",
+        "ShortDescription": "With namespaces",
+        "Version": "2.2.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "XmlDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Root xmlns=\"http://tempuri.org\" xmlns:t=\"http://othernamespace.com/thing\">\r\n  <t:Test1>1</t:Test1>\r\n  <t:Test2>2</t:Test2>\r\n</Root>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "XPaths",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "test1:a:Root/b:Test1\r\ntest2:a:Root/b:Test2"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "a:http://tempuri.org\r\nb:http://othernamespace.com/thing"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Return",
+            "TypeName": "Flowgear.Nodes.XPathMatch.XPathMatch+ReturnTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "InnerText",
+              "OuterXml",
+              "InnerXml",
+              "Evaluate",
+              "AllOuterXml"
+            ],
+            "Value": "InnerText"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "test1",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 2,
+            "Name": "test2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "XPath Match",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "956a130a-abb5-9c20-b09a-29edef413188",
+    "DateCreated": "2017-08-31T12:49:30.473",
+    "DateUpdated": "2017-08-31T12:49:30.473",
+    "ActivityLogLevelMask": 0
+  }
+}

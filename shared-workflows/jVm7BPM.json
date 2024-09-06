@@ -1,0 +1,303 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Text Encrypt Decrypt",
+    "Nodes": [
+      {
+        "NodeId": "012424c8-bd7e-3f94-bb1f-692338e6c7a2",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ae6bcda8-5efd-32c5-1290-132dc5e34d8b",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Sensitive Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Hello there, General Kenobi."
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encrypted Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6405.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "09c620ec-008d-8a22-4c59-c80f41123c38",
+        "Name": "TextEncryptDecrypt",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.EncryptDecrypt.Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Encrypt",
+              "Decrypt"
+            ],
+            "Value": "Encrypt"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Passphrase",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Pass1234"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DecryptedText",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "EncryptedText",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "ACzB72A8MbkasxRFuk//+wrG64Z/UfG/n1Tk2TGIszG5iTpmoZSpIEUzpKAPg2KrOaKavhRk/egdkklLkxrzaFq52dh55z7VQzzNzlFsuJ4azsV/DIC83eOgDkyp1VC3"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Encrypt Decrypt Text",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d891af08-b36c-cb8f-768b-9f10a70eadb1",
+        "Name": "TextEncryptDecrypt",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.EncryptDecrypt.Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Encrypt",
+              "Decrypt"
+            ],
+            "Value": "Decrypt"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Passphrase",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Pass1234"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DecryptedText",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Hello there, General Kenobi."
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "EncryptedText",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Encrypt Decrypt Text",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "012424c8-bd7e-3f94-bb1f-692338e6c7a2",
+        "TargetNodeId": "09c620ec-008d-8a22-4c59-c80f41123c38",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "09c620ec-008d-8a22-4c59-c80f41123c38",
+        "TargetNodeId": "ae6bcda8-5efd-32c5-1290-132dc5e34d8b",
+        "SourceName": "EncryptedText",
+        "TargetName": "Encrypted Text"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "09c620ec-008d-8a22-4c59-c80f41123c38",
+        "TargetNodeId": "d891af08-b36c-cb8f-768b-9f10a70eadb1",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ae6bcda8-5efd-32c5-1290-132dc5e34d8b",
+        "TargetNodeId": "09c620ec-008d-8a22-4c59-c80f41123c38",
+        "SourceName": "Sensitive Text",
+        "TargetName": "DecryptedText"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "09c620ec-008d-8a22-4c59-c80f41123c38",
+        "TargetNodeId": "d891af08-b36c-cb8f-768b-9f10a70eadb1",
+        "SourceName": "EncryptedText",
+        "TargetName": "EncryptedText"
+      }
+    ],
+    "StartNodeId": "012424c8-bd7e-3f94-bb1f-692338e6c7a2",
+    "DateCreated": "2019-12-12T07:46:21.5351186Z",
+    "DateUpdated": "2019-12-12T07:46:21.5351186Z",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "MySQL Table Update Example",
+    "Nodes": [
+      {
+        "NodeId": "e0590376-1670-bdc0-fd28-7955da4817e1",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ce707297-64a1-1323-7fc3-302f176d0aeb",
+        "Name": "MySqlTableUpdate",
+        "Version": "3.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "MySQL Table Update",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Sql.MySql.MySqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "TableXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Table>\r\n  <contacts>\r\n    <id>56878</id>\r\n    <Contact>Priscilla Wooten</Contact>\r\n    <Company>Interdum PC</Company>\r\n    <Phone>1-906-569-1084</Phone>\r\n    <Country>Antarctica</Country>\r\n    <Email>nunc@enimnec.edu</Email>\r\n  </contacts>\r\n</Table>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "KeyFields",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Contact"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "AllowInsert",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "AllowUpdate",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "MySQL Table Update",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "e0590376-1670-bdc0-fd28-7955da4817e1",
+        "TargetNodeId": "ce707297-64a1-1323-7fc3-302f176d0aeb",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "e0590376-1670-bdc0-fd28-7955da4817e1",
+    "DateCreated": "2019-01-14T12:53:47.7055486Z",
+    "DateUpdated": "2019-01-14T12:53:47.7055486Z",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "QuickMap Example",
+    "Nodes": [
+      {
+        "NodeId": "4ff564ee-2df2-c041-e644-fe91c9a1ee88",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "0b68ea17-76a1-d129-a308-8d181a93818a",
+        "Name": "QuickMap",
+        "Version": "3.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "SourceXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "MappingXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<DataMappings><DataMapping><SourceXPath>Result/Table</SourceXPath><TargetXPath>Request/Account</TargetXPath><MappingExpression/></DataMapping><DataMapping><SourceXPath>Result/Table/id</SourceXPath><TargetXPath>Request/Account/Id</TargetXPath><MappingExpression/></DataMapping><DataMapping><SourceXPath>Result/Table/Contact</SourceXPath><TargetXPath>Request/Account/Name</TargetXPath><MappingExpression/></DataMapping><DataMapping><SourceXPath>Result/Table/Phone</SourceXPath><TargetXPath>Request/Account/Phone</TargetXPath><MappingExpression/></DataMapping><SourceDocumentXml>&lt;Result&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;201&lt;/id&gt;\r\n    &lt;Contact&gt;Priscilla Wooten&lt;/Contact&gt;\r\n    &lt;Company&gt;Interdum PC&lt;/Company&gt;\r\n    &lt;Phone&gt;1-906-569-1084&lt;/Phone&gt;\r\n    &lt;Country&gt;Antarctica&lt;/Country&gt;\r\n    &lt;Email&gt;nunc@enimnec.edu&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;202&lt;/id&gt;\r\n    &lt;Contact&gt;Maryam Pate&lt;/Contact&gt;\r\n    &lt;Company&gt;Imperdiet Non Industries&lt;/Company&gt;\r\n    &lt;Phone&gt;1-683-328-9343&lt;/Phone&gt;\r\n    &lt;Country&gt;Sweden&lt;/Country&gt;\r\n    &lt;Email&gt;neque@eutempor.org&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;203&lt;/id&gt;\r\n    &lt;Contact&gt;Audrey Davidson&lt;/Contact&gt;\r\n    &lt;Company&gt;Gravida Praesent Consulting&lt;/Company&gt;\r\n    &lt;Phone&gt;1-772-762-8735&lt;/Phone&gt;\r\n    &lt;Country&gt;Finland&lt;/Country&gt;\r\n    &lt;Email&gt;magna.Duis@Donecnibh.com&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;204&lt;/id&gt;\r\n    &lt;Contact&gt;Zorita Blevins&lt;/Contact&gt;\r\n    &lt;Company&gt;Mauris Vel Turpis Incorporated&lt;/Company&gt;\r\n    &lt;Phone&gt;1-869-713-3148&lt;/Phone&gt;\r\n    &lt;Country&gt;Montserrat&lt;/Country&gt;\r\n    &lt;Email&gt;semper.cursus@eratEtiamvestibulum.co.uk&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;205&lt;/id&gt;\r\n    &lt;Contact&gt;Noel Cortez&lt;/Contact&gt;\r\n    &lt;Company&gt;Penatibus Et Magnis Ltd&lt;/Company&gt;\r\n    &lt;Phone&gt;1-925-815-9513&lt;/Phone&gt;\r\n    &lt;Country&gt;New Caledonia&lt;/Country&gt;\r\n    &lt;Email&gt;ligula.Aenean@rutrumurna.co.uk&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;206&lt;/id&gt;\r\n    &lt;Contact&gt;Gavin Webster&lt;/Contact&gt;\r\n    &lt;Company&gt;Adipiscing Elit Aliquam Inc.&lt;/Company&gt;\r\n    &lt;Phone&gt;1-682-115-2198&lt;/Phone&gt;\r\n    &lt;Country&gt;Cape Verde&lt;/Country&gt;\r\n    &lt;Email&gt;ut.nisi@aliquamarcuAliquam.net&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;207&lt;/id&gt;\r\n    &lt;Contact&gt;Veronica Scott&lt;/Contact&gt;\r\n    &lt;Company&gt;Porttitor Eros Nec Inc.&lt;/Company&gt;\r\n    &lt;Phone&gt;1-988-422-0533&lt;/Phone&gt;\r\n    &lt;Country&gt;Nauru&lt;/Country&gt;\r\n    &lt;Email&gt;sit.amet@Cum.co.uk&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;208&lt;/id&gt;\r\n    &lt;Contact&gt;Ainsley Romero&lt;/Contact&gt;\r\n    &lt;Company&gt;Purus Corporation&lt;/Company&gt;\r\n    &lt;Phone&gt;1-847-150-1946&lt;/Phone&gt;\r\n    &lt;Country&gt;Azerbaijan&lt;/Country&gt;\r\n    &lt;Email&gt;tincidunt.nibh.Phasellus@nonummy.ca&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;209&lt;/id&gt;\r\n    &lt;Contact&gt;Kaitlin Hogan&lt;/Contact&gt;\r\n    &lt;Company&gt;Tellus Suspendisse Sed Corporation&lt;/Company&gt;\r\n    &lt;Phone&gt;1-289-782-1630&lt;/Phone&gt;\r\n    &lt;Country&gt;American Samoa&lt;/Country&gt;\r\n    &lt;Email&gt;odio@non.ca&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n  &lt;Table&gt;\r\n    &lt;id&gt;210&lt;/id&gt;\r\n    &lt;Contact&gt;Lois Oconnor&lt;/Contact&gt;\r\n    &lt;Company&gt;Lacus Cras LLC&lt;/Company&gt;\r\n    &lt;Phone&gt;1-774-825-5248&lt;/Phone&gt;\r\n    &lt;Country&gt;Turkmenistan&lt;/Country&gt;\r\n    &lt;Email&gt;ipsum@Fusce.co.uk&lt;/Email&gt;\r\n  &lt;/Table&gt;\r\n&lt;/Result&gt;</SourceDocumentXml><TargetDocumentXsd>&lt;?xml version=\"1.0\" encoding=\"utf-16\"?&gt;\r\n&lt;xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\"&gt;\r\n  &lt;xs:element name=\"Request\"&gt;\r\n    &lt;xs:complexType&gt;\r\n      &lt;xs:sequence&gt;\r\n        &lt;xs:element name=\"Account\"&gt;\r\n          &lt;xs:complexType&gt;\r\n            &lt;xs:sequence&gt;\r\n              &lt;xs:element name=\"Id\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"IsDeleted\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"MasterRecordId\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Name\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Type\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ParentId\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"BillingStreet\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"BillingCity\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"BillingState\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"BillingPostalCode\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"BillingCountry\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"BillingLatitude\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"BillingLongitude\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"BillingGeocodeAccuracy\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"BillingAddress\"&gt;\r\n                &lt;xs:complexType&gt;\r\n                  &lt;xs:sequence&gt;\r\n                    &lt;xs:element name=\"Accuracy\" /&gt;\r\n                    &lt;xs:element name=\"City\" /&gt;\r\n                    &lt;xs:element name=\"Country\" /&gt;\r\n                    &lt;xs:element name=\"CountryCode\" /&gt;\r\n                    &lt;xs:element name=\"Latitude\" /&gt;\r\n                    &lt;xs:element name=\"Longitude\" /&gt;\r\n                    &lt;xs:element name=\"PostalCode\" /&gt;\r\n                    &lt;xs:element name=\"State\" /&gt;\r\n                    &lt;xs:element name=\"StateCode\" /&gt;\r\n                    &lt;xs:element name=\"Street\" /&gt;\r\n                  &lt;/xs:sequence&gt;\r\n                &lt;/xs:complexType&gt;\r\n              &lt;/xs:element&gt;\r\n              &lt;xs:element name=\"ShippingStreet\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ShippingCity\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ShippingState\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ShippingPostalCode\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ShippingCountry\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ShippingLatitude\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ShippingLongitude\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ShippingGeocodeAccuracy\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"ShippingAddress\"&gt;\r\n                &lt;xs:complexType&gt;\r\n                  &lt;xs:sequence&gt;\r\n                    &lt;xs:element name=\"Accuracy\" /&gt;\r\n                    &lt;xs:element name=\"City\" /&gt;\r\n                    &lt;xs:element name=\"Country\" /&gt;\r\n                    &lt;xs:element name=\"CountryCode\" /&gt;\r\n                    &lt;xs:element name=\"Latitude\" /&gt;\r\n                    &lt;xs:element name=\"Longitude\" /&gt;\r\n                    &lt;xs:element name=\"PostalCode\" /&gt;\r\n                    &lt;xs:element name=\"State\" /&gt;\r\n                    &lt;xs:element name=\"StateCode\" /&gt;\r\n                    &lt;xs:element name=\"Street\" /&gt;\r\n                  &lt;/xs:sequence&gt;\r\n                &lt;/xs:complexType&gt;\r\n              &lt;/xs:element&gt;\r\n              &lt;xs:element name=\"Phone\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Fax\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"AccountNumber\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Website\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"PhotoUrl\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Sic\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Industry\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"AnnualRevenue\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"NumberOfEmployees\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Ownership\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"TickerSymbol\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Description\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Rating\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Site\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"OwnerId\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"CreatedDate\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"CreatedById\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"LastModifiedDate\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"LastModifiedById\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"SystemModstamp\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"LastActivityDate\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"LastViewedDate\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"LastReferencedDate\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Jigsaw\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"JigsawCompanyId\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"CleanStatus\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"AccountSource\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"DunsNumber\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"Tradestyle\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"NaicsCode\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"NaicsDesc\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"YearStarted\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"SicDesc\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"DandbCompanyId\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"flowgear__CustomerPriority__c\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"flowgear__SLA__c\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"flowgear__Active__c\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"flowgear__NumberofLocations__c\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"flowgear__UpsellOpportunity__c\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"flowgear__SLASerialNumber__c\" type=\"xs:string\" /&gt;\r\n              &lt;xs:element name=\"flowgear__SLAExpirationDate__c\" type=\"xs:string\" /&gt;\r\n            &lt;/xs:sequence&gt;\r\n          &lt;/xs:complexType&gt;\r\n        &lt;/xs:element&gt;\r\n      &lt;/xs:sequence&gt;\r\n    &lt;/xs:complexType&gt;\r\n  &lt;/xs:element&gt;\r\n&lt;/xs:schema&gt;</TargetDocumentXsd></DataMappings>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "XslTransform",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "TransformedXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "d002169d-20b4-79fe-c277-d0c4307a2a08",
+        "Name": "SqlQuery",
+        "Version": "2.1.0.6",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": false
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Sql.SqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "select top 10 * from contacts"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "XmlQuery",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Result>\r\n  <Table>\r\n    <id>201</id>\r\n    <FirstName>Priscilla</FirstName>\r\n    <LastName>Wooten</LastName>\r\n    <Company>Interdum PC</Company>\r\n    <Phone>1-906-569-1084</Phone>\r\n    <Country>Antarctica</Country>\r\n    <Email>nunc@enimnec.edu</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>202</id>\r\n    <Contact>Maryam Pate</Contact>\r\n    <Company>Imperdiet Non Industries</Company>\r\n    <Phone>1-683-328-9343</Phone>\r\n    <Country>Sweden</Country>\r\n    <Email>neque@eutempor.org</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>203</id>\r\n    <Contact>Audrey Davidson</Contact>\r\n    <Company>Gravida Praesent Consulting</Company>\r\n    <Phone>1-772-762-8735</Phone>\r\n    <Country>Finland</Country>\r\n    <Email>magna.Duis@Donecnibh.com</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>204</id>\r\n    <Contact>Zorita Blevins</Contact>\r\n    <Company>Mauris Vel Turpis Incorporated</Company>\r\n    <Phone>1-869-713-3148</Phone>\r\n    <Country>Montserrat</Country>\r\n    <Email>semper.cursus@eratEtiamvestibulum.co.uk</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>205</id>\r\n    <Contact>Noel Cortez</Contact>\r\n    <Company>Penatibus Et Magnis Ltd</Company>\r\n    <Phone>1-925-815-9513</Phone>\r\n    <Country>New Caledonia</Country>\r\n    <Email>ligula.Aenean@rutrumurna.co.uk</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>206</id>\r\n    <Contact>Gavin Webster</Contact>\r\n    <Company>Adipiscing Elit Aliquam Inc.</Company>\r\n    <Phone>1-682-115-2198</Phone>\r\n    <Country>Cape Verde</Country>\r\n    <Email>ut.nisi@aliquamarcuAliquam.net</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>207</id>\r\n    <Contact>Veronica Scott</Contact>\r\n    <Company>Porttitor Eros Nec Inc.</Company>\r\n    <Phone>1-988-422-0533</Phone>\r\n    <Country>Nauru</Country>\r\n    <Email>sit.amet@Cum.co.uk</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>208</id>\r\n    <Contact>Ainsley Romero</Contact>\r\n    <Company>Purus Corporation</Company>\r\n    <Phone>1-847-150-1946</Phone>\r\n    <Country>Azerbaijan</Country>\r\n    <Email>tincidunt.nibh.Phasellus@nonummy.ca</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>209</id>\r\n    <Contact>Kaitlin Hogan</Contact>\r\n    <Company>Tellus Suspendisse Sed Corporation</Company>\r\n    <Phone>1-289-782-1630</Phone>\r\n    <Country>American Samoa</Country>\r\n    <Email>odio@non.ca</Email>\r\n  </Table>\r\n  <Table>\r\n    <id>210</id>\r\n    <Contact>Lois Oconnor</Contact>\r\n    <Company>Lacus Cras LLC</Company>\r\n    <Phone>1-774-825-5248</Phone>\r\n    <Country>Turkmenistan</Country>\r\n    <Email>ipsum@Fusce.co.uk</Email>\r\n  </Table>\r\n</Result>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "SQL Query",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "dc8f2b94-5341-458d-6d55-a6b0a460f625",
+        "Name": "Salesforce",
+        "Version": "2.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Url",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerKey",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "SecurityToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Create",
+              "Update",
+              "Get",
+              "Query"
+            ],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ObjectName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Account"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"Account\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"Id\" type=\"xs:string\" />\r\n              <xs:element name=\"IsDeleted\" type=\"xs:string\" />\r\n              <xs:element name=\"MasterRecordId\" type=\"xs:string\" />\r\n              <xs:element name=\"Name\" type=\"xs:string\" />\r\n              <xs:element name=\"Type\" type=\"xs:string\" />\r\n              <xs:element name=\"ParentId\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingStreet\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingCity\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingState\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingPostalCode\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingCountry\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingLatitude\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingLongitude\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingGeocodeAccuracy\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingAddress\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"Accuracy\" />\r\n                    <xs:element name=\"City\" />\r\n                    <xs:element name=\"Country\" />\r\n                    <xs:element name=\"CountryCode\" />\r\n                    <xs:element name=\"Latitude\" />\r\n                    <xs:element name=\"Longitude\" />\r\n                    <xs:element name=\"PostalCode\" />\r\n                    <xs:element name=\"State\" />\r\n                    <xs:element name=\"StateCode\" />\r\n                    <xs:element name=\"Street\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"ShippingStreet\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingCity\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingState\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingPostalCode\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingCountry\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingLatitude\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingLongitude\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingGeocodeAccuracy\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingAddress\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"Accuracy\" />\r\n                    <xs:element name=\"City\" />\r\n                    <xs:element name=\"Country\" />\r\n                    <xs:element name=\"CountryCode\" />\r\n                    <xs:element name=\"Latitude\" />\r\n                    <xs:element name=\"Longitude\" />\r\n                    <xs:element name=\"PostalCode\" />\r\n                    <xs:element name=\"State\" />\r\n                    <xs:element name=\"StateCode\" />\r\n                    <xs:element name=\"Street\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"Phone\" type=\"xs:string\" />\r\n              <xs:element name=\"Fax\" type=\"xs:string\" />\r\n              <xs:element name=\"AccountNumber\" type=\"xs:string\" />\r\n              <xs:element name=\"Website\" type=\"xs:string\" />\r\n              <xs:element name=\"PhotoUrl\" type=\"xs:string\" />\r\n              <xs:element name=\"Sic\" type=\"xs:string\" />\r\n              <xs:element name=\"Industry\" type=\"xs:string\" />\r\n              <xs:element name=\"AnnualRevenue\" type=\"xs:string\" />\r\n              <xs:element name=\"NumberOfEmployees\" type=\"xs:string\" />\r\n              <xs:element name=\"Ownership\" type=\"xs:string\" />\r\n              <xs:element name=\"TickerSymbol\" type=\"xs:string\" />\r\n              <xs:element name=\"Description\" type=\"xs:string\" />\r\n              <xs:element name=\"Rating\" type=\"xs:string\" />\r\n              <xs:element name=\"Site\" type=\"xs:string\" />\r\n              <xs:element name=\"OwnerId\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedById\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedById\" type=\"xs:string\" />\r\n              <xs:element name=\"SystemModstamp\" type=\"xs:string\" />\r\n              <xs:element name=\"LastActivityDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastViewedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastReferencedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"Jigsaw\" type=\"xs:string\" />\r\n              <xs:element name=\"JigsawCompanyId\" type=\"xs:string\" />\r\n              <xs:element name=\"CleanStatus\" type=\"xs:string\" />\r\n              <xs:element name=\"AccountSource\" type=\"xs:string\" />\r\n              <xs:element name=\"DunsNumber\" type=\"xs:string\" />\r\n              <xs:element name=\"Tradestyle\" type=\"xs:string\" />\r\n              <xs:element name=\"NaicsCode\" type=\"xs:string\" />\r\n              <xs:element name=\"NaicsDesc\" type=\"xs:string\" />\r\n              <xs:element name=\"YearStarted\" type=\"xs:string\" />\r\n              <xs:element name=\"SicDesc\" type=\"xs:string\" />\r\n              <xs:element name=\"DandbCompanyId\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__CustomerPriority__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__SLA__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Active__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__NumberofLocations__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__UpsellOpportunity__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__SLASerialNumber__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__SLAExpirationDate__c\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+            "Name": "RequestXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Request>\r\n  <Account>\r\n    <Id>id</Id>\r\n    <IsDeleted>boolean</IsDeleted>\r\n    <MasterRecordId>reference</MasterRecordId>\r\n    <Name>string</Name>\r\n    <Type>picklist</Type>\r\n    <ParentId>reference</ParentId>\r\n    <BillingStreet>textarea</BillingStreet>\r\n    <BillingCity>string</BillingCity>\r\n    <BillingState>string</BillingState>\r\n    <BillingPostalCode>string</BillingPostalCode>\r\n    <BillingCountry>string</BillingCountry>\r\n    <BillingLatitude>double</BillingLatitude>\r\n    <BillingLongitude>double</BillingLongitude>\r\n    <BillingGeocodeAccuracy>picklist</BillingGeocodeAccuracy>\r\n    <BillingAddress>\r\n      <Accuracy></Accuracy>\r\n      <City></City>\r\n      <Country></Country>\r\n      <CountryCode></CountryCode>\r\n      <Latitude></Latitude>\r\n      <Longitude></Longitude>\r\n      <PostalCode></PostalCode>\r\n      <State></State>\r\n      <StateCode></StateCode>\r\n      <Street></Street>\r\n    </BillingAddress>\r\n    <ShippingStreet>textarea</ShippingStreet>\r\n    <ShippingCity>string</ShippingCity>\r\n    <ShippingState>string</ShippingState>\r\n    <ShippingPostalCode>string</ShippingPostalCode>\r\n    <ShippingCountry>string</ShippingCountry>\r\n    <ShippingLatitude>double</ShippingLatitude>\r\n    <ShippingLongitude>double</ShippingLongitude>\r\n    <ShippingGeocodeAccuracy>picklist</ShippingGeocodeAccuracy>\r\n    <ShippingAddress>\r\n      <Accuracy></Accuracy>\r\n      <City></City>\r\n      <Country></Country>\r\n      <CountryCode></CountryCode>\r\n      <Latitude></Latitude>\r\n      <Longitude></Longitude>\r\n      <PostalCode></PostalCode>\r\n      <State></State>\r\n      <StateCode></StateCode>\r\n      <Street></Street>\r\n    </ShippingAddress>\r\n    <Phone>phone</Phone>\r\n    <Fax>phone</Fax>\r\n    <AccountNumber>string</AccountNumber>\r\n    <Website>url</Website>\r\n    <PhotoUrl>url</PhotoUrl>\r\n    <Sic>string</Sic>\r\n    <Industry>picklist</Industry>\r\n    <AnnualRevenue>currency</AnnualRevenue>\r\n    <NumberOfEmployees>int</NumberOfEmployees>\r\n    <Ownership>picklist</Ownership>\r\n    <TickerSymbol>string</TickerSymbol>\r\n    <Description>textarea</Description>\r\n    <Rating>picklist</Rating>\r\n    <Site>string</Site>\r\n    <OwnerId>reference</OwnerId>\r\n    <CreatedDate>datetime</CreatedDate>\r\n    <CreatedById>reference</CreatedById>\r\n    <LastModifiedDate>datetime</LastModifiedDate>\r\n    <LastModifiedById>reference</LastModifiedById>\r\n    <SystemModstamp>datetime</SystemModstamp>\r\n    <LastActivityDate>date</LastActivityDate>\r\n    <LastViewedDate>datetime</LastViewedDate>\r\n    <LastReferencedDate>datetime</LastReferencedDate>\r\n    <Jigsaw>string</Jigsaw>\r\n    <JigsawCompanyId>string</JigsawCompanyId>\r\n    <CleanStatus>picklist</CleanStatus>\r\n    <AccountSource>picklist</AccountSource>\r\n    <DunsNumber>string</DunsNumber>\r\n    <Tradestyle>string</Tradestyle>\r\n    <NaicsCode>string</NaicsCode>\r\n    <NaicsDesc>string</NaicsDesc>\r\n    <YearStarted>string</YearStarted>\r\n    <SicDesc>string</SicDesc>\r\n    <DandbCompanyId>reference</DandbCompanyId>\r\n    <flowgear__CustomerPriority__c>picklist</flowgear__CustomerPriority__c>\r\n    <flowgear__SLA__c>picklist</flowgear__SLA__c>\r\n    <flowgear__Active__c>picklist</flowgear__Active__c>\r\n    <flowgear__NumberofLocations__c>double</flowgear__NumberofLocations__c>\r\n    <flowgear__UpsellOpportunity__c>picklist</flowgear__UpsellOpportunity__c>\r\n    <flowgear__SLASerialNumber__c>string</flowgear__SLASerialNumber__c>\r\n    <flowgear__SLAExpirationDate__c>date</flowgear__SLAExpirationDate__c>\r\n  </Account>\r\n</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ResponseXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": ""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "DisplayName": "Salesforce",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "4ff564ee-2df2-c041-e644-fe91c9a1ee88",
+        "TargetNodeId": "d002169d-20b4-79fe-c277-d0c4307a2a08",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "0b68ea17-76a1-d129-a308-8d181a93818a",
+        "TargetNodeId": "dc8f2b94-5341-458d-6d55-a6b0a460f625",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "d002169d-20b4-79fe-c277-d0c4307a2a08",
+        "TargetNodeId": "0b68ea17-76a1-d129-a308-8d181a93818a",
+        "SourceName": "ResultXml",
+        "TargetName": "SourceXml"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d002169d-20b4-79fe-c277-d0c4307a2a08",
+        "TargetNodeId": "0b68ea17-76a1-d129-a308-8d181a93818a",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "0b68ea17-76a1-d129-a308-8d181a93818a",
+        "TargetNodeId": "dc8f2b94-5341-458d-6d55-a6b0a460f625",
+        "SourceName": "TransformedXml",
+        "TargetName": "RequestXml"
+      }
+    ],
+    "StartNodeId": "4ff564ee-2df2-c041-e644-fe91c9a1ee88",
+    "DateCreated": "2017-09-01T12:44:45.67",
+    "DateUpdated": "2017-09-01T12:44:45.67",
+    "ActivityLogLevelMask": 0
+  }
+}

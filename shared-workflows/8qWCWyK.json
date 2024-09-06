@@ -1,0 +1,162 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Bulk Statistic Example",
+    "Nodes": [
+      {
+        "NodeId": "9abd0b74-65bb-ae67-f2a0-fd197047a0bd",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "4231efa0-835d-ebb5-86b5-4f6e4ec96214",
+        "Name": "SaveBulkStatistic",
+        "Version": "1.2.0.10",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Xml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Root>\r\n  <Row>\r\n    <ID>1</ID>\r\n    <OrderNum>Ord123</OrderNum>\r\n  </Row>\r\n  <Row>\r\n    <ID>4</ID>\r\n    <OrderNum>Ord124</OrderNum>\r\n  </Row>\r\n</Root>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "KeysXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root/Row/ID"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ValuesXPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root/Row/OrderNum"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Status",
+            "TypeName": "flowgear.Nodes.Statistic.StatisticStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Unknown"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Bulk Statistic",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "9abd0b74-65bb-ae67-f2a0-fd197047a0bd",
+        "TargetNodeId": "4231efa0-835d-ebb5-86b5-4f6e4ec96214",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "9abd0b74-65bb-ae67-f2a0-fd197047a0bd",
+    "DateCreated": "2017-09-15T13:26:50.037",
+    "DateUpdated": "2017-09-15T13:26:50.037",
+    "ActivityLogLevelMask": 0
+  }
+}

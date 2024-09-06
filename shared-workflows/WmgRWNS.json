@@ -1,0 +1,665 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Query Salesforce Child",
+    "Description": "Child node for salesforce query continuation sample.",
+    "Nodes": [
+      {
+        "NodeId": "af038f26-adfb-537b-4097-14c896adb190",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "4e503619-0c1a-f909-691d-309bb6a538d9",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Contact"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "SELECT\r\n\tId,\r\n\tIsDeleted,\r\n\tMasterRecordId,\r\n\tAccountId,\r\n\tLastName,\r\n\tFirstName,\r\n\tSalutation,\r\n\tName\r\nFROM Contact"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NextUrl",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "7e6cdc6d-0a71-5754-455d-a7d631cec0d7",
+        "Name": "Salesforce",
+        "ShortDescription": "new query",
+        "Version": "4.0.0.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Url",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerKey",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "SecurityToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "DontInterleaveRequestInResponse",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "EncodingMode",
+                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                "ExtendedType": 0,
+                "EnumValues": [
+                  "XmlInXmlOut",
+                  "XmlInJsonOut"
+                ]
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Salesforce Demo (Sept 2020)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Create",
+              "Update",
+              "Get",
+              "Query",
+              "Upsert",
+              "GetNextRecords",
+              "QueryAll",
+              "Delete"
+            ],
+            "Value": "Query"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Contact"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ExternalIdField",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\" type=\"xs:string\" />\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Request>\r\n  {query}\r\n</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HadError",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Response>\r\n  <nextRecordsUrl>/services/data/v45.0/query/0031v00002rVga5AAD-2000</nextRecordsUrl>\r\n  <totalSize>96316</totalSize>\r\n  <done>false</done>\r\n  <records>\r\n    <attributes>\r\n      <type>Contact</type>\r\n      <url>/services/data/v45.0/sobjects/Contact/0031v00002rVga5AAD</url>\r\n    </attributes>\r\n    <Id>0031v00002rVga5AAD</Id>\r\n    <IsDeleted>false</IsDeleted>\r\n    <MasterRecordId />\r\n    <AccountId />\r\n    <LastName>Foller</LastName>\r\n    <FirstName />\r\n    <Salutation />\r\n    <Name>Foller</Name>\r\n    <OtherStreet />\r\n    <OtherCity />\r\n    <OtherState />\r\n    <OtherPostalCode />\r\n    <OtherCountry />\r\n    <OtherLatitude />\r\n    <OtherLongitude />\r\n    <OtherGeocodeAccuracy />\r\n    <OtherAddress />\r\n    <MailingStreet />\r\n    <MailingCity />\r\n    <MailingState />\r\n    <MailingPostalCode />\r\n  </records>\r\n</Response>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "query",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 4238.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Salesforce",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ae80d22d-00d8-af0a-48fe-cc45abd128e5",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "is continuation?",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value <> \"\""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "091a96dc-efe9-0b52-3e75-7eb1db33c9ed",
+        "Name": "Salesforce",
+        "ShortDescription": "continuation",
+        "Version": "4.0.0.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Url",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerKey",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConsumerSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "SecurityToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "DontInterleaveRequestInResponse",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "EncodingMode",
+                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                "ExtendedType": 0,
+                "EnumValues": [
+                  "XmlInXmlOut",
+                  "XmlInJsonOut"
+                ]
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Salesforce Demo (Sept 2020)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Create",
+              "Update",
+              "Get",
+              "Query",
+              "Upsert",
+              "GetNextRecords",
+              "QueryAll",
+              "Delete"
+            ],
+            "Value": "GetNextRecords"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Contact"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ExternalIdField",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\" type=\"xs:string\" />\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Request>{nextRecordsUrl}</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HadError",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Response>\r\n  <nextRecordsUrl>/services/data/v45.0/query/0031v00002rVga5AAD-2000</nextRecordsUrl>\r\n  <totalSize>96316</totalSize>\r\n  <done>false</done>\r\n  <records>\r\n    <attributes>\r\n      <type>Contact</type>\r\n      <url>/services/data/v45.0/sobjects/Contact/0031v00002rVga5AAD</url>\r\n    </attributes>\r\n    <Id>0031v00002rVga5AAD</Id>\r\n    <IsDeleted>false</IsDeleted>\r\n    <MasterRecordId />\r\n    <AccountId />\r\n    <LastName>Foller</LastName>\r\n    <FirstName />\r\n    <Salutation />\r\n    <Name>Foller</Name>\r\n    <OtherStreet />\r\n    <OtherCity />\r\n    <OtherState />\r\n    <OtherPostalCode />\r\n    <OtherCountry />\r\n    <OtherLatitude />\r\n    <OtherLongitude />\r\n    <OtherGeocodeAccuracy />\r\n    <OtherAddress />\r\n    <MailingStreet />\r\n    <MailingCity />\r\n    <MailingState />\r\n    <MailingPostalCode />\r\n  </records>\r\n</Response>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Description": "Use a Data Flow Expression to push the next records URL to this Property.",
+            "IsSecret": false,
+            "Name": "nextRecordsUrl",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Salesforce",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b4e57463-d8bc-b9ef-652a-b07222d1e4fb",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ReturnedNextUrl",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 3874.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "af038f26-adfb-537b-4097-14c896adb190",
+        "TargetNodeId": "ae80d22d-00d8-af0a-48fe-cc45abd128e5",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "4e503619-0c1a-f909-691d-309bb6a538d9",
+        "TargetNodeId": "7e6cdc6d-0a71-5754-455d-a7d631cec0d7",
+        "SourceName": "ObjectName",
+        "TargetName": "ObjectName"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "4e503619-0c1a-f909-691d-309bb6a538d9",
+        "TargetNodeId": "7e6cdc6d-0a71-5754-455d-a7d631cec0d7",
+        "SourceName": "Query",
+        "TargetName": "query"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ae80d22d-00d8-af0a-48fe-cc45abd128e5",
+        "TargetNodeId": "091a96dc-efe9-0b52-3e75-7eb1db33c9ed",
+        "SourceName": "True",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ae80d22d-00d8-af0a-48fe-cc45abd128e5",
+        "TargetNodeId": "7e6cdc6d-0a71-5754-455d-a7d631cec0d7",
+        "SourceName": "False",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "4e503619-0c1a-f909-691d-309bb6a538d9",
+        "TargetNodeId": "ae80d22d-00d8-af0a-48fe-cc45abd128e5",
+        "SourceName": "NextUrl",
+        "TargetName": "Value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "4e503619-0c1a-f909-691d-309bb6a538d9",
+        "TargetNodeId": "091a96dc-efe9-0b52-3e75-7eb1db33c9ed",
+        "SourceName": "ObjectName",
+        "TargetName": "ObjectName"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "4e503619-0c1a-f909-691d-309bb6a538d9",
+        "TargetNodeId": "091a96dc-efe9-0b52-3e75-7eb1db33c9ed",
+        "SourceName": "NextUrl",
+        "TargetName": "nextRecordsUrl"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "091a96dc-efe9-0b52-3e75-7eb1db33c9ed",
+        "TargetNodeId": "b4e57463-d8bc-b9ef-652a-b07222d1e4fb",
+        "SourceName": "Response",
+        "TargetName": "Result"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7e6cdc6d-0a71-5754-455d-a7d631cec0d7",
+        "TargetNodeId": "b4e57463-d8bc-b9ef-652a-b07222d1e4fb",
+        "SourceName": "Response",
+        "TargetName": "Result"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "091a96dc-efe9-0b52-3e75-7eb1db33c9ed",
+        "TargetNodeId": "b4e57463-d8bc-b9ef-652a-b07222d1e4fb",
+        "SourceName": "Response",
+        "TargetName": "ReturnedNextUrl",
+        "Expression": "Response.nextRecordsUrl"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7e6cdc6d-0a71-5754-455d-a7d631cec0d7",
+        "TargetNodeId": "b4e57463-d8bc-b9ef-652a-b07222d1e4fb",
+        "SourceName": "Response",
+        "TargetName": "ReturnedNextUrl",
+        "Expression": "Response.nextRecordsUrl"
+      }
+    ],
+    "StartNodeId": "af038f26-adfb-537b-4097-14c896adb190",
+    "DateCreated": "2021-06-17T14:59:27.9642332Z",
+    "DateUpdated": "2021-06-17T14:59:27.9642332Z",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Substring Example",
+    "Nodes": [
+      {
+        "NodeId": "57991a5a-ef1c-c822-7748-7654d4140f65",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3de5bf9f-c9aa-bd53-2edc-11d07a2925e5",
+        "Name": "Substring",
+        "Version": "1.0.0.8",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "The Quick Brown Fox"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.Expressions.Substring+MatchMethods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "StringMatch",
+              "Offset"
+            ],
+            "Value": "StringMatch"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Start",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "The "
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "End",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": " Brown"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Match",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Quick"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Substring",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "15816fcb-0593-e1e1-ad2d-fae5dbe8f596",
+        "Name": "Substring",
+        "Version": "1.0.0.8",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "The Quick Brown Fox"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.Expressions.Substring+MatchMethods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "StringMatch",
+              "Offset"
+            ],
+            "Value": "Offset"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Start",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "4"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "End",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "9"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Match",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Substring",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "57991a5a-ef1c-c822-7748-7654d4140f65",
+    "DateCreated": "2017-08-31T15:21:28.753",
+    "DateUpdated": "2017-08-31T15:21:28.753",
+    "ActivityLogLevelMask": 0
+  }
+}

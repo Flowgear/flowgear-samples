@@ -1,0 +1,125 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Blue Tree",
+    "Nodes": [
+      {
+        "NodeId": "3538cd17-a243-19cf-4e3a-0bcb16f25c17",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "2f38e715-487e-d9d3-453f-a9bef7a14801",
+        "Name": "Script",
+        "Version": "1.5.1.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Script",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "using System;\r\nusing System.IO;\r\nusing System.Collections.Generic;\r\nusing System.Xml;\r\nusing System.Linq;\r\nusing System.Xml.Linq;\r\nusing Newtonsoft.Json;\r\n\r\nnamespace CSharpScript\r\n{\r\n    public partial class Processor\r\n    {  \r\n        public object Process()\r\n        {\r\n            return \"Hello \" + MyCustomProperty.ToString();\r\n        }\r\n    }\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 4,
+            "Value": "Hello World"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "MyCustomProperty",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "World"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "DisplayName": "Script",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "3538cd17-a243-19cf-4e3a-0bcb16f25c17",
+    "DateCreated": "2017-09-01T11:25:24.973",
+    "DateUpdated": "2017-09-01T11:25:24.973",
+    "ActivityLogLevelMask": 0
+  }
+}

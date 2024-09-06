@@ -1,0 +1,359 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Web Browser Example",
+    "Nodes": [
+      {
+        "NodeId": "8edd9ba2-599c-fc09-a666-bb330d3569df",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "2d6fe0c1-aea9-c067-d5a4-65e0bdaad1e8",
+        "Name": "WebBrowser",
+        "Version": "1.0.1.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "PageLoadTimeout",
+                "TypeName": "System.Int32",
+                "ExtendedType": 0,
+                "Value": 30
+              },
+              {
+                "Name": "GroupName",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.WebBrowser.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "NavigateTo",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "https://www.flowgear.net"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Script",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "function process() {\r\n\r\n    //your code here\r\n    return document.body.innerHTML;\r\n\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ScriptMode",
+            "TypeName": "flowgear.Nodes.WebBrowser.WebBrowser+ScriptModes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Execute",
+              "ExecuteWait"
+            ],
+            "Value": "Execute"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ReturnValue",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 2,
+        "DisplayName": "Web Browser",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "c40b3119-7773-b9ba-26ef-3383c935a05e",
+        "Name": "WebBrowser",
+        "Version": "1.0.1.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "PageLoadTimeout",
+                "TypeName": "System.Int32",
+                "ExtendedType": 0,
+                "Value": 30
+              },
+              {
+                "Name": "GroupName",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.WebBrowser.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "NavigateTo",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Script",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "function process() {\r\n\r\ndocument.getElementById(\"nav-menu-item-27636\").children[0].click();\r\n\r\n    //your code here\r\n    return null;\r\n\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ScriptMode",
+            "TypeName": "flowgear.Nodes.WebBrowser.WebBrowser+ScriptModes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Execute",
+              "ExecuteWait"
+            ],
+            "Value": "ExecuteWait"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ReturnValue",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 2,
+        "DisplayName": "Web Browser",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "72492cf3-5b66-cebf-7164-58da59d43981",
+        "Name": "WebBrowser",
+        "Version": "1.0.1.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "PageLoadTimeout",
+                "TypeName": "System.Int32",
+                "ExtendedType": 0,
+                "Value": 30
+              },
+              {
+                "Name": "GroupName",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.WebBrowser.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "NavigateTo",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Script",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "function process() {\r\n\r\n    //your code here\r\n    return \"\" + document.body.innerHTML;\r\n\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ScriptMode",
+            "TypeName": "flowgear.Nodes.WebBrowser.WebBrowser+ScriptModes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Execute",
+              "ExecuteWait"
+            ],
+            "Value": "Execute"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ReturnValue",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 2,
+        "DisplayName": "Web Browser",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "8edd9ba2-599c-fc09-a666-bb330d3569df",
+        "TargetNodeId": "2d6fe0c1-aea9-c067-d5a4-65e0bdaad1e8",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "2d6fe0c1-aea9-c067-d5a4-65e0bdaad1e8",
+        "TargetNodeId": "c40b3119-7773-b9ba-26ef-3383c935a05e",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "c40b3119-7773-b9ba-26ef-3383c935a05e",
+        "TargetNodeId": "72492cf3-5b66-cebf-7164-58da59d43981",
+        "SourceName": "",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "8edd9ba2-599c-fc09-a666-bb330d3569df",
+    "DateCreated": "2017-06-15T09:09:08.75",
+    "DateUpdated": "2017-06-15T09:09:08.75",
+    "ActivityLogLevelMask": 0
+  }
+}

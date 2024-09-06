@@ -1,0 +1,197 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Chart Example",
+    "Nodes": [
+      {
+        "NodeId": "b833ef7a-62cd-3f34-8796-7153090a19e1",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "6df94e5d-7b2c-ccdd-c616-605c402cb55f",
+        "Name": "Chart",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "SeriesData",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<root>\r\n  <series>\r\n    <seriesName>Series Name</seriesName>\r\n    <point>35% Complete\r\n      <y>35</y>\r\n    </point>\r\n    <point>65% Incomplete\r\n      <y>65</y>\r\n    </point>\r\n  </series>\r\n</root>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ChartType",
+            "TypeName": "flowgear.Nodes.Chart.Enum.ChartTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Area",
+              "Bar",
+              "BoxPlot",
+              "Bubble",
+              "Candlestick",
+              "Column",
+              "Doughnut",
+              "ErrorBar",
+              "FastLine",
+              "FastPoint",
+              "Funnel",
+              "Kagi",
+              "Line",
+              "Pie",
+              "PointAndFigure",
+              "Point",
+              "Polar",
+              "Pyramid",
+              "Radar",
+              "Range",
+              "RangeBar",
+              "RangeColumn",
+              "Renko",
+              "Spline",
+              "SplineArea",
+              "SplineRange",
+              "StackedArea",
+              "StackedArea100",
+              "StackedBar",
+              "StackedBar100",
+              "StackedColumn",
+              "StackedColumn100",
+              "StepLine",
+              "Stock",
+              "ThreeLineBreak"
+            ],
+            "Value": "Pie"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Width",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "500"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Height",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "500"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "ImageType",
+            "TypeName": "flowgear.Nodes.Chart.Enum.ImageTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Gif",
+              "Jpeg",
+              "Png"
+            ],
+            "Value": "Jpeg"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Image",
+            "TypeName": "System.Object",
+            "ExtendedType": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "DisplayName": "Chart",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b833ef7a-62cd-3f34-8796-7153090a19e1",
+        "TargetNodeId": "6df94e5d-7b2c-ccdd-c616-605c402cb55f",
+        "SourceName": "Start",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "b833ef7a-62cd-3f34-8796-7153090a19e1",
+    "DateCreated": "2017-09-15T13:22:03.267",
+    "DateUpdated": "2017-09-15T13:22:03.267",
+    "ActivityLogLevelMask": 0
+  }
+}

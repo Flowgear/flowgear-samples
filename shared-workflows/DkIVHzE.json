@@ -1,0 +1,369 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 2,
+    "Name": "For Each examples",
+    "Nodes": [
+      {
+        "NodeId": "d02d56da-e56a-2e6c-9c7e-7a41ffaed131",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "68884a75-4b42-f344-a0a0-9a489cdab060",
+        "Name": "ForEach",
+        "ShortDescription": "iterate xml",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Document>\r\n  <Row>\r\n    <id>201</id>\r\n    <Contact>Priscilla Wooten</Contact>\r\n    <Company>Interdum PC</Company>\r\n    <Phone>1-906-569-1084</Phone>\r\n    <Country>Antarctica</Country>\r\n    <Email>nunc@enimnec.edu</Email>\r\n  </Row>\r\n  <Row>\r\n    <id>202</id>\r\n    <Contact>Maryam Pate</Contact>\r\n    <Company>Imperdiet Non Industries</Company>\r\n    <Phone>1-683-328-9343</Phone>\r\n    <Country>Sweden</Country>\r\n    <Email>neque@eutempor.org</Email>\r\n  </Row>\r\n  <Row>\r\n    <id>203</id>\r\n    <Contact>Audrey Davidson</Contact>\r\n    <Company>Gravida Praesent Consulting</Company>\r\n    <Phone>1-772-762-8735</Phone>\r\n    <Country>Finland</Country>\r\n    <Email>magna.Duis@Donecnibh.com</Email>\r\n  </Row>\r\n  <Row>\r\n    <id>204</id>\r\n    <Contact>Zorita Blevins</Contact>\r\n    <Company>Mauris Vel Turpis Incorporated</Company>\r\n    <Phone>1-869-713-3148</Phone>\r\n    <Country>Montserrat</Country>\r\n    <Email>semper.cursus@eratEtiamvestibulum.co.uk</Email>\r\n  </Row>\r\n  <Row>\r\n    <id>205</id>\r\n    <Contact>Noel Cortez</Contact>\r\n    <Company>Penatibus Et Magnis Ltd</Company>\r\n    <Phone>1-925-815-9513</Phone>\r\n    <Country>New Caledonia</Country>\r\n    <Email>ligula.Aenean@rutrumurna.co.uk</Email>\r\n  </Row>\r\n  <Row>\r\n    <id>206</id>\r\n    <Contact>Gavin Webster</Contact>\r\n    <Company>Adipiscing Elit Aliquam Inc.</Company>\r\n    <Phone>1-682-115-2198</Phone>\r\n    <Country>Cape Verde</Country>\r\n    <Email>ut.nisi@aliquamarcuAliquam.net</Email>\r\n  </Row>\r\n  <Row>\r\n    <id>207</id>\r\n    <Contact>Veronica Scott</Contact>\r\n    <Company>Porttitor Eros Nec Inc.</Company>\r\n    <Phone>1-988-422-0533</Phone>\r\n    <Country>Nauru</Country>\r\n    <Email>sit.amet@Cum.co.uk</Email>\r\n  </Row>\r\n  <Row>\r\n    <id>208</id>\r\n    <Contact>Ainsley Romero</Contact>\r\n    <Company>Purus Corporation</Company>\r\n    <Phone>1-847-150-1946</Phone>\r\n    <Country>Azerbaijan</Country>\r\n    <Email>tincidunt.nibh.Phasellus@nonummy.ca</Email>\r\n  </Row>\r\n  <Row>\r\n    <id>209</id>\r\n    <Contact>Kaitlin Hogan</Contact>\r\n    <Company>Tellus Suspendisse Sed Corporation</Company>\r\n    <Phone>1-289-782-1630</Phone>\r\n    <Country>American Samoa</Country>\r\n    <Email>odio@non.ca</Email>\r\n  </Row>\r\n  <Row>\r\n    <id>210</id>\r\n    <Contact>Lois Oconnor</Contact>\r\n    <Company>Lacus Cras LLC</Company>\r\n    <Phone>1-774-825-5248</Phone>\r\n    <Country>Turkmenistan</Country>\r\n    <Email>ipsum@Fusce.co.uk</Email>\r\n  </Row>\r\n</Document>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Document/Row"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "ParentNode",
+              "ParentAndRootNodes"
+            ],
+            "Value": "ParentAndRootNodes"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "2"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Item",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemIndex",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemCount",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Item",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "For Each",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ad50784f-c7b1-8cb6-667f-d5eb21b1f1f0",
+        "Name": "ForEach",
+        "ShortDescription": "iterate json",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"Document\": {\r\n    \"Row\": [\r\n      {\r\n        \"id\": \"201\",\r\n        \"Contact\": \"Priscilla Wooten\",\r\n        \"Company\": \"Interdum PC\",\r\n        \"Phone\": \"1-906-569-1084\",\r\n        \"Country\": \"Antarctica\",\r\n        \"Email\": \"nunc@enimnec.edu\"\r\n      },\r\n      {\r\n        \"id\": \"202\",\r\n        \"Contact\": \"Maryam Pate\",\r\n        \"Company\": \"Imperdiet Non Industries\",\r\n        \"Phone\": \"1-683-328-9343\",\r\n        \"Country\": \"Sweden\",\r\n        \"Email\": \"neque@eutempor.org\"\r\n      },\r\n      {\r\n        \"id\": \"203\",\r\n        \"Contact\": \"Audrey Davidson\",\r\n        \"Company\": \"Gravida Praesent Consulting\",\r\n        \"Phone\": \"1-772-762-8735\",\r\n        \"Country\": \"Finland\",\r\n        \"Email\": \"magna.Duis@Donecnibh.com\"\r\n      },\r\n      {\r\n        \"id\": \"204\",\r\n        \"Contact\": \"Zorita Blevins\",\r\n        \"Company\": \"Mauris Vel Turpis Incorporated\",\r\n        \"Phone\": \"1-869-713-3148\",\r\n        \"Country\": \"Montserrat\",\r\n        \"Email\": \"semper.cursus@eratEtiamvestibulum.co.uk\"\r\n      },\r\n      {\r\n        \"id\": \"205\",\r\n        \"Contact\": \"Noel Cortez\",\r\n        \"Company\": \"Penatibus Et Magnis Ltd\",\r\n        \"Phone\": \"1-925-815-9513\",\r\n        \"Country\": \"New Caledonia\",\r\n        \"Email\": \"ligula.Aenean@rutrumurna.co.uk\"\r\n      },\r\n      {\r\n        \"id\": \"206\",\r\n        \"Contact\": \"Gavin Webster\",\r\n        \"Company\": \"Adipiscing Elit Aliquam Inc.\",\r\n        \"Phone\": \"1-682-115-2198\",\r\n        \"Country\": \"Cape Verde\",\r\n        \"Email\": \"ut.nisi@aliquamarcuAliquam.net\"\r\n      },\r\n      {\r\n        \"id\": \"207\",\r\n        \"Contact\": \"Veronica Scott\",\r\n        \"Company\": \"Porttitor Eros Nec Inc.\",\r\n        \"Phone\": \"1-988-422-0533\",\r\n        \"Country\": \"Nauru\",\r\n        \"Email\": \"sit.amet@Cum.co.uk\"\r\n      },\r\n      {\r\n        \"id\": \"208\",\r\n        \"Contact\": \"Ainsley Romero\",\r\n        \"Company\": \"Purus Corporation\",\r\n        \"Phone\": \"1-847-150-1946\",\r\n        \"Country\": \"Azerbaijan\",\r\n        \"Email\": \"tincidunt.nibh.Phasellus@nonummy.ca\"\r\n      },\r\n      {\r\n        \"id\": \"209\",\r\n        \"Contact\": \"Kaitlin Hogan\",\r\n        \"Company\": \"Tellus Suspendisse Sed Corporation\",\r\n        \"Phone\": \"1-289-782-1630\",\r\n        \"Country\": \"American Samoa\",\r\n        \"Email\": \"odio@non.ca\"\r\n      },\r\n      {\r\n        \"id\": \"210\",\r\n        \"Contact\": \"Lois Oconnor\",\r\n        \"Company\": \"Lacus Cras LLC\",\r\n        \"Phone\": \"1-774-825-5248\",\r\n        \"Country\": \"Turkmenistan\",\r\n        \"Email\": \"ipsum@Fusce.co.uk\"\r\n      }\r\n    ]\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Document.Row[*]"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "ParentNode",
+              "ParentAndRootNodes"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Item",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemIndex",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemCount",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Item",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "For Each",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "65f86756-1e7f-c516-05d2-fe5d11738ac9",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "To only run the first n items:\n\nXML: append [position()<n]\ne.g. Document/Row[position()<5]\n\nJSON: append [1:n]\ne.g. Document.Row[1:5]\n"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3458.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "d02d56da-e56a-2e6c-9c7e-7a41ffaed131",
+    "DateCreated": "2019-11-13T10:32:32.183",
+    "DateUpdated": "2019-11-13T10:32:32.183",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,349 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Merge",
+    "Nodes": [
+      {
+        "NodeId": "eea5f991-f3e5-0ecf-d788-770a5143bb1e",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 4186.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "14258673-739a-8430-9d5f-933aee058657",
+        "Name": "Merge",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "ParentDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Root>\r\n  <Row>\r\n    <OrderNumber>123</OrderNumber>\r\n    <Customer>ABC</Customer>\r\n  </Row>\r\n  <Row>\r\n    <OrderNumber>456</OrderNumber>\r\n    <Customer>DEF</Customer>\r\n  </Row>\r\n  <Row>\r\n    <OrderNumber>789</OrderNumber>\r\n    <Customer>ABC</Customer>\r\n  </Row>\r\n</Root>\r\n"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "ChildDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<Root>\r\n  <Row>\r\n    <Order>123</Order>\r\n    <StockCode>STK001</StockCode>\r\n    <Qty>10</Qty>\r\n  </Row>\r\n  <Row>\r\n    <Order>123</Order>\r\n    <StockCode>STK002</StockCode>\r\n    <Qty>20</Qty>\r\n  </Row>\r\n  <Row>\r\n    <Order>147</Order>\r\n    <StockCode>STK001</StockCode>\r\n    <Qty>10</Qty>\r\n  </Row>\r\n  <Row>\r\n    <Order>789</Order>\r\n    <StockCode>STK001</StockCode>\r\n    <Qty>10</Qty>\r\n  </Row>\r\n</Root>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ParentNamespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ParentPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root/Row"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ParentKeyPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root/Row/OrderNumber"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChildNamespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChildPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root/Row"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChildKeyPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root/Row/Order"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MergedDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "UnmappedItems",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 4186.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Merge",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "5780a9e0-fa11-2b0b-3534-d55a453d1ee8",
+        "Name": "Merge",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "ParentDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"Root\": [\r\n    {\r\n      \"OrderNumber\": \"123\",\r\n      \"Customer\": \"ABC\"\r\n    },\r\n    {\r\n      \"OrderNumber\": \"456\",\r\n      \"Customer\": \"DEF\"\r\n    },\r\n    {\r\n      \"OrderNumber\": \"789\",\r\n      \"Customer\": \"ABC\"\r\n    }\r\n  ]\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "ChildDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"Child\": [\r\n    {\r\n      \"Order\": \"123\",\r\n      \"StockCode\": \"STK001\",\r\n      \"Qty\": 10\r\n    },\r\n    {\r\n      \"Order\": \"123\",\r\n      \"StockCode\": \"STK002\",\r\n      \"Qty\": 20\r\n    },\r\n    {\r\n      \"Order\": \"147\",\r\n      \"StockCode\": \"STK001\",\r\n      \"Qty\": 10\r\n    },\r\n    {\r\n      \"Order\": \"789\",\r\n      \"StockCode\": \"STK001\",\r\n      \"Qty\": 10\r\n    }\r\n  ]\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ParentNamespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ParentPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root[*]"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ParentKeyPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Root[*].OrderNumber"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChildNamespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChildPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Child[*]"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChildKeyPath",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Child[*].Order"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MergedDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "UnmappedItems",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 4186.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Merge",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "eea5f991-f3e5-0ecf-d788-770a5143bb1e",
+        "TargetNodeId": "14258673-739a-8430-9d5f-933aee058657",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "14258673-739a-8430-9d5f-933aee058657",
+        "TargetNodeId": "5780a9e0-fa11-2b0b-3534-d55a453d1ee8",
+        "SourceName": "",
+        "TargetName": ""
+      }
+    ],
+    "StartNodeId": "eea5f991-f3e5-0ecf-d788-770a5143bb1e",
+    "DateCreated": "2020-02-18T06:44:04.9684524Z",
+    "DateUpdated": "2020-02-18T06:44:04.9684524Z",
+    "ActivityLogLevelMask": 0
+  }
+}

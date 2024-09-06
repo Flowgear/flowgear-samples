@@ -1,0 +1,711 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Amazon S3 Pagination",
+    "Nodes": [
+      {
+        "NodeId": "94ef39fa-f496-4b77-8746-d34b167be6d3",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 5795.0,
+          "Y": 3276.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "de32d5a7-cee2-02f5-59e3-fca04338bbfc",
+        "Name": "Loop",
+        "Version": "1.2.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "TestLoop"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Start",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "0"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Stop",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "10"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Increment",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Current",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Loop",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3276.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Loop",
+        "NodeType": 3,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b4ef540f-84d0-9019-2d7f-ced38c5cadc2",
+        "Name": "IfVisualBasic",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "not String.IsNullOrEmpty(Value)"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 3276.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "1f727c07-0e78-db49-abd5-c286f532a072",
+        "Name": "AmazonS3Object",
+        "ShortDescription": "Amazon S3 Object - 3rd Level",
+        "Version": "1.0.1.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "AccessKey",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "SecretKey",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "RegionName",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.AmazonS3.Object.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.AmazonS3.Object.AmazonS3Object+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "GetObject",
+              "PutObject",
+              "DeleteObject",
+              "ListBuckets",
+              "ListObjects"
+            ],
+            "Value": "ListObjects"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "BucketName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "test-bucket-22"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "someobject/insomeplace/object"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectType",
+            "TypeName": "Flowgear.Nodes.AmazonS3.Object.AmazonS3Object+ObjectTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Text",
+              "Binary"
+            ],
+            "Value": "Text"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ListObjectMarker",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ObjectContent",
+            "TypeName": "System.Object",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"IsTruncated\": false,\r\n  \"NextMarker\": null,\r\n  \"S3Objects\": [\r\n    {\r\n      \"ETag\": \"\\\"d41d8cd98f00b204e9800998ecf8427e\\\"\",\r\n      \"BucketName\": \"vatit-techbranch-sftp\",\r\n      \"Key\": \"mobilexpense/sftp-uploads/uploads/HKN/\",\r\n      \"LastModified\": \"2020-07-16T18:00:11+02:00\",\r\n      \"Owner\": {\r\n        \"DisplayName\": \"onlineadmin\",\r\n        \"Id\": \"26622f803830935efadaebc78cb656fb2f0dae207d8c23f0895c6211f0c7fbe3\"\r\n      },\r\n      \"Size\": 0,\r\n      \"StorageClass\": {\r\n        \"Value\": \"STANDARD\"\r\n      }\r\n    }\r\n  ],\r\n  \"Name\": \"vatit-techbranch-sftp\",\r\n  \"Prefix\": \"mobilexpense/sftp-uploads/uploads/HKN/\",\r\n  \"MaxKeys\": 1000,\r\n  \"CommonPrefixes\": [\r\n    \"mobilexpense/sftp-uploads/uploads/HKN/1026 - Heineken NL Expenses/\",\r\n    \"mobilexpense/sftp-uploads/uploads/HKN/1033 - Heineken New Zealand/\",\r\n    \"mobilexpense/sftp-uploads/uploads/HKN/1034 - Heineken Ethiopia HBSC/\",\r\n    \"mobilexpense/sftp-uploads/uploads/HKN/1034 - Heineken Ethiopia/\",\r\n    \"mobilexpense/sftp-uploads/uploads/HKN/1035 - Heineken Ethiopia Harar/\",\r\n    \"mobilexpense/sftp-uploads/uploads/HKN/1036 - Heineken Ethiopia Bedele/\",\r\n    \"mobilexpense/sftp-uploads/uploads/HKN/999 - Heineken Corporate Office/\",\r\n    \"mobilexpense/sftp-uploads/uploads/HKN/999/\"\r\n  ],\r\n  \"Delimiter\": \"/\",\r\n  \"ResponseMetadata\": {\r\n    \"RequestId\": \"16QM1V1G55RZ2QNF\",\r\n    \"Metadata\": {\r\n      \"x-amz-id-2\": \"ZHERvKEyK7cUN1Ni4Pag91BmHjrOqO1BjxMJfscxSk41wdNedu9hY/JRAVqefsV0jsBbJkBEPSk=\"\r\n    }\r\n  },\r\n  \"ContentLength\": -1,\r\n  \"HttpStatusCode\": 200\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 3276.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Amazon S3 Object",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ba97f31d-8c51-ab8e-84bd-6ed15b0d9c62",
+        "Name": "StringBuilder",
+        "Version": "1.2.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Marker"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Read"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3276.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "299be748-d15f-b999-198f-9438fc4361a0",
+        "Name": "StringBuilder",
+        "ShortDescription": "String Builder",
+        "Version": "1.2.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Marker"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Clear"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3276.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "ec0e9fbc-4296-f9c2-53e6-cc1025ff1b87",
+        "Name": "LoopExit",
+        "Version": "1.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "TestLoop"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Error",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Message",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "No More Markers"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 3614.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Loop Exit",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "da863579-443a-0e53-cc29-8b4147509a69",
+        "Name": "StringBuilder",
+        "Version": "1.2.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Marker"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Set"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 3276.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "94ef39fa-f496-4b77-8746-d34b167be6d3",
+        "TargetNodeId": "299be748-d15f-b999-198f-9438fc4361a0",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "de32d5a7-cee2-02f5-59e3-fca04338bbfc",
+        "TargetNodeId": "ba97f31d-8c51-ab8e-84bd-6ed15b0d9c62",
+        "SourceName": "Loop",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b4ef540f-84d0-9019-2d7f-ced38c5cadc2",
+        "TargetNodeId": "da863579-443a-0e53-cc29-8b4147509a69",
+        "SourceName": "True",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b4ef540f-84d0-9019-2d7f-ced38c5cadc2",
+        "TargetNodeId": "ec0e9fbc-4296-f9c2-53e6-cc1025ff1b87",
+        "SourceName": "False",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1f727c07-0e78-db49-abd5-c286f532a072",
+        "TargetNodeId": "b4ef540f-84d0-9019-2d7f-ced38c5cadc2",
+        "SourceName": "ObjectContent",
+        "TargetName": "Value",
+        "Expression": "NextMarker"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "1f727c07-0e78-db49-abd5-c286f532a072",
+        "TargetNodeId": "b4ef540f-84d0-9019-2d7f-ced38c5cadc2",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ba97f31d-8c51-ab8e-84bd-6ed15b0d9c62",
+        "TargetNodeId": "1f727c07-0e78-db49-abd5-c286f532a072",
+        "SourceName": "Value",
+        "TargetName": "ListObjectMarker"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ba97f31d-8c51-ab8e-84bd-6ed15b0d9c62",
+        "TargetNodeId": "1f727c07-0e78-db49-abd5-c286f532a072",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "299be748-d15f-b999-198f-9438fc4361a0",
+        "TargetNodeId": "de32d5a7-cee2-02f5-59e3-fca04338bbfc",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1f727c07-0e78-db49-abd5-c286f532a072",
+        "TargetNodeId": "da863579-443a-0e53-cc29-8b4147509a69",
+        "SourceName": "ObjectContent",
+        "TargetName": "Value",
+        "Expression": "NextMarker"
+      }
+    ],
+    "StartNodeId": "94ef39fa-f496-4b77-8746-d34b167be6d3",
+    "DateCreated": "2022-07-08T08:13:02.7266313Z",
+    "DateUpdated": "2022-07-08T08:13:02.7266313Z",
+    "ActivityLogLevelMask": 0
+  }
+}

@@ -1,0 +1,752 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 2,
+    "Name": "Magento 2 Example",
+    "Description": "This workflow will grab a specified order from Magento 2 and create a sales order in Sage Evolution, based on the information pulled from Magento.",
+    "Nodes": [
+      {
+        "NodeId": "9d3ae198-00b3-1e54-0b59-05103e5159f1",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e791c505-f7d6-371f-ec7a-95ae4f980393",
+        "Name": "Magento2",
+        "Version": "1.0.0.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "MagentoBaseUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "AccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Magento.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "salesOrderRepositoryV1GetListGet | /V1/orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"items\": [\r\n    {\r\n      \"base_currency_code\": \"USD\",\r\n      \"base_discount_amount\": 0,\r\n      \"base_grand_total\": 50,\r\n      \"base_discount_tax_compensation_amount\": 0,\r\n      \"base_shipping_amount\": 10,\r\n      \"base_shipping_discount_amount\": 0,\r\n      \"base_shipping_discount_tax_compensation_amnt\": 0,\r\n      \"base_shipping_incl_tax\": 10,\r\n      \"base_shipping_tax_amount\": 0,\r\n      \"base_subtotal\": 40,\r\n      \"base_subtotal_incl_tax\": 40,\r\n      \"base_tax_amount\": 0,\r\n      \"base_total_due\": 50,\r\n      \"base_to_global_rate\": 1,\r\n      \"base_to_order_rate\": 1,\r\n      \"billing_address_id\": 4,\r\n      \"created_at\": \"2019-02-27 11:03:11\",\r\n      \"customer_email\": \"test@flowgear.net\",\r\n      \"customer_firstname\": \"Daniel\",\r\n      \"customer_gender\": 0,\r\n      \"customer_group_id\": 1,\r\n      \"customer_id\": 2,\r\n      \"customer_is_guest\": 0,\r\n      \"customer_lastname\": \"Chilcott\",\r\n      \"customer_note_notify\": 1,\r\n      \"discount_amount\": 0,\r\n      \"edit_increment\": 1,\r\n      \"email_sent\": 1,\r\n      \"entity_id\": 2,\r\n      \"global_currency_code\": \"USD\",\r\n      \"grand_total\": 50,\r\n      \"discount_tax_compensation_amount\": 0,\r\n      \"increment_id\": \"000000001-1\",\r\n      \"is_virtual\": 0,\r\n      \"order_currency_code\": \"USD\",\r\n      \"original_increment_id\": \"000000001\",\r\n      \"protect_code\": \"2ab34258d8a906a8f86074da38595e60\",\r\n      \"quote_id\": 3,\r\n      \"relation_parent_id\": \"1\",\r\n      \"relation_parent_real_id\": \"000000001\",\r\n      \"shipping_amount\": 10,\r\n      \"shipping_description\": \"Flat Rate - Fixed\",\r\n      \"shipping_discount_amount\": 0,\r\n      \"shipping_discount_tax_compensation_amount\": 0,\r\n      \"shipping_incl_tax\": 10,\r\n      \"shipping_tax_amount\": 0,\r\n      \"state\": \"new\",\r\n      \"status\": \"pending\",\r\n      \"store_currency_code\": \"USD\",\r\n      \"store_id\": 1,\r\n      \"store_name\": \"Main Website\\nMain Website Store\\n\",\r\n      \"store_to_base_rate\": 0,\r\n      \"store_to_order_rate\": 0,\r\n      \"subtotal\": 40,\r\n      \"subtotal_incl_tax\": 40,\r\n      \"tax_amount\": 0,\r\n      \"total_due\": 50,\r\n      \"total_item_count\": 1,\r\n      \"total_qty_ordered\": 2,\r\n      \"updated_at\": \"2019-02-27 11:03:11\",\r\n      \"weight\": 0,\r\n      \"items\": [\r\n        {\r\n          \"amount_refunded\": 0,\r\n          \"base_amount_refunded\": 0,\r\n          \"base_discount_amount\": 0,\r\n          \"base_discount_invoiced\": 0,\r\n          \"base_discount_tax_compensation_amount\": 0,\r\n          \"base_original_price\": 20,\r\n          \"base_price\": 20,\r\n          \"base_price_incl_tax\": 20,\r\n          \"base_row_invoiced\": 0,\r\n          \"base_row_total\": 40,\r\n          \"base_row_total_incl_tax\": 40,\r\n          \"base_tax_amount\": 0,\r\n          \"base_tax_invoiced\": 0,\r\n          \"created_at\": \"2019-02-27 11:03:11\",\r\n          \"discount_amount\": 0,\r\n          \"discount_invoiced\": 0,\r\n          \"discount_percent\": 0,\r\n          \"free_shipping\": 0,\r\n          \"discount_tax_compensation_amount\": 0,\r\n          \"is_qty_decimal\": 0,\r\n          \"is_virtual\": 0,\r\n          \"item_id\": 2,\r\n          \"name\": \"Chicken Mayo Sandwich\",\r\n          \"no_discount\": 0,\r\n          \"order_id\": 2,\r\n          \"original_price\": 20,\r\n          \"price\": 20,\r\n          \"price_incl_tax\": 20,\r\n          \"product_id\": 1,\r\n          \"product_type\": \"simple\",\r\n          \"qty_canceled\": 0,\r\n          \"qty_invoiced\": 0,\r\n          \"qty_ordered\": 2,\r\n          \"qty_refunded\": 0,\r\n          \"qty_shipped\": 0,\r\n          \"quote_item_id\": 3,\r\n          \"row_invoiced\": 0,\r\n          \"row_total\": 40,\r\n          \"row_total_incl_tax\": 40,\r\n          \"row_weight\": 0,\r\n          \"sku\": \"HCS1002\",\r\n          \"store_id\": 1,\r\n          \"tax_amount\": 0,\r\n          \"tax_invoiced\": 0,\r\n          \"tax_percent\": 0,\r\n          \"updated_at\": \"2019-02-27 11:03:11\"\r\n        }\r\n      ],\r\n      \"billing_address\": {\r\n        \"address_type\": \"billing\",\r\n        \"city\": \"Sandton\",\r\n        \"company\": \"Flowgear\",\r\n        \"country_id\": \"ZA\",\r\n        \"customer_address_id\": 1,\r\n        \"email\": \"test@flowgear.net\",\r\n        \"entity_id\": 4,\r\n        \"firstname\": \"Daniel\",\r\n        \"lastname\": \"Chilcott\",\r\n        \"parent_id\": 2,\r\n        \"postcode\": \"2196\",\r\n        \"prefix\": \"Mr.\",\r\n        \"region\": \"Gauteng\",\r\n        \"region_code\": \"Gauteng\",\r\n        \"street\": [\r\n          \"Flowgear, 5th Floor, Global House\",\r\n          \"28 Sturdee Avenue\",\r\n          \"Rosebank\"\r\n        ],\r\n        \"telephone\": \"011 731 0603\"\r\n      },\r\n      \"payment\": {\r\n        \"account_status\": null,\r\n        \"additional_information\": [\r\n          \"Check / Money order\"\r\n        ],\r\n        \"amount_ordered\": 50,\r\n        \"base_amount_ordered\": 50,\r\n        \"base_shipping_amount\": 10,\r\n        \"cc_exp_year\": \"0\",\r\n        \"cc_last4\": null,\r\n        \"cc_ss_start_month\": \"0\",\r\n        \"cc_ss_start_year\": \"0\",\r\n        \"entity_id\": 2,\r\n        \"method\": \"checkmo\",\r\n        \"parent_id\": 2,\r\n        \"shipping_amount\": 10\r\n      },\r\n      \"status_histories\": [],\r\n      \"extension_attributes\": {\r\n        \"shipping_assignments\": [\r\n          {\r\n            \"shipping\": {\r\n              \"address\": {\r\n                \"address_type\": \"shipping\",\r\n                \"city\": \"Sandton\",\r\n                \"company\": \"Flowgear\",\r\n                \"country_id\": \"ZA\",\r\n                \"customer_address_id\": 0,\r\n                \"email\": \"test@flowgear.net\",\r\n                \"entity_id\": 3,\r\n                \"firstname\": \"Daniel\",\r\n                \"lastname\": \"Chilcott\",\r\n                \"parent_id\": 2,\r\n                \"postcode\": \"2196\",\r\n                \"prefix\": \"Mr.\",\r\n                \"region\": \"Gauteng\",\r\n                \"region_code\": \"Gauteng\",\r\n                \"street\": [\r\n                  \"Flowgear, 5th Floor, Global House\",\r\n                  \"28 Sturdee Avenue\",\r\n                  \"Rosebank\"\r\n                ],\r\n                \"telephone\": \"011 731 0603\"\r\n              },\r\n              \"method\": \"flatrate_flatrate\",\r\n              \"total\": {\r\n                \"base_shipping_amount\": 10,\r\n                \"base_shipping_discount_amount\": 0,\r\n                \"base_shipping_discount_tax_compensation_amnt\": 0,\r\n                \"base_shipping_incl_tax\": 10,\r\n                \"base_shipping_tax_amount\": 0,\r\n                \"shipping_amount\": 10,\r\n                \"shipping_discount_amount\": 0,\r\n                \"shipping_discount_tax_compensation_amount\": 0,\r\n                \"shipping_incl_tax\": 10,\r\n                \"shipping_tax_amount\": 0\r\n              }\r\n            },\r\n            \"items\": [\r\n              {\r\n                \"amount_refunded\": 0,\r\n                \"base_amount_refunded\": 0,\r\n                \"base_discount_amount\": 0,\r\n                \"base_discount_invoiced\": 0,\r\n                \"base_discount_tax_compensation_amount\": 0,\r\n                \"base_original_price\": 20,\r\n                \"base_price\": 20,\r\n                \"base_price_incl_tax\": 20,\r\n                \"base_row_invoiced\": 0,\r\n                \"base_row_total\": 40,\r\n                \"base_row_total_incl_tax\": 40,\r\n                \"base_tax_amount\": 0,\r\n                \"base_tax_invoiced\": 0,\r\n                \"created_at\": \"2019-02-27 11:03:11\",\r\n                \"discount_amount\": 0,\r\n                \"discount_invoiced\": 0,\r\n                \"discount_percent\": 0,\r\n                \"free_shipping\": 0,\r\n                \"discount_tax_compensation_amount\": 0,\r\n                \"is_qty_decimal\": 0,\r\n                \"is_virtual\": 0,\r\n                \"item_id\": 2,\r\n                \"name\": \"Chicken Mayo Sandwich\",\r\n                \"no_discount\": 0,\r\n                \"order_id\": 2,\r\n                \"original_price\": 20,\r\n                \"price\": 20,\r\n                \"price_incl_tax\": 20,\r\n                \"product_id\": 1,\r\n                \"product_type\": \"simple\",\r\n                \"qty_canceled\": 0,\r\n                \"qty_invoiced\": 0,\r\n                \"qty_ordered\": 2,\r\n                \"qty_refunded\": 0,\r\n                \"qty_shipped\": 0,\r\n                \"quote_item_id\": 3,\r\n                \"row_invoiced\": 0,\r\n                \"row_total\": 40,\r\n                \"row_total_incl_tax\": 40,\r\n                \"row_weight\": 0,\r\n                \"sku\": \"HCS1002\",\r\n                \"store_id\": 1,\r\n                \"tax_amount\": 0,\r\n                \"tax_invoiced\": 0,\r\n                \"tax_percent\": 0,\r\n                \"updated_at\": \"2019-02-27 11:03:11\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ],\r\n  \"search_criteria\": {\r\n    \"filter_groups\": [\r\n      {\r\n        \"filters\": [\r\n          {\r\n            \"field\": \"customer_email\",\r\n            \"value\": \"test@flowgear.net\",\r\n            \"condition_type\": \"eq\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"total_count\": 1\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "searchCriteria[filterGroups][0][filters][0][field]",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "customer_email"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "searchCriteria[filterGroups][0][filters][0][value]",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "karabo@flowgear.net"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "searchCriteria[filterGroups][0][filters][0][conditionType]",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "eq"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Magento 2",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "5f48a64b-3bc3-1d45-053e-6672d1bf7e83",
+        "Name": "QuickMap",
+        "Version": "4.0.0.7",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<root>\r\n  <items>\r\n    <base_currency_code>USD</base_currency_code>\r\n    <base_discount_amount>0</base_discount_amount>\r\n    <base_grand_total>50</base_grand_total>\r\n    <base_discount_tax_compensation_amount>0</base_discount_tax_compensation_amount>\r\n    <base_shipping_amount>10</base_shipping_amount>\r\n    <base_shipping_discount_amount>0</base_shipping_discount_amount>\r\n    <base_shipping_discount_tax_compensation_amnt>0</base_shipping_discount_tax_compensation_amnt>\r\n    <base_shipping_incl_tax>10</base_shipping_incl_tax>\r\n    <base_shipping_tax_amount>0</base_shipping_tax_amount>\r\n    <base_subtotal>40</base_subtotal>\r\n    <base_subtotal_incl_tax>40</base_subtotal_incl_tax>\r\n    <base_tax_amount>0</base_tax_amount>\r\n    <base_total_due>50</base_total_due>\r\n    <base_to_global_rate>1</base_to_global_rate>\r\n    <base_to_order_rate>1</base_to_order_rate>\r\n    <billing_address_id>4</billing_address_id>\r\n    <created_at>2019-02-27 11:03:11</created_at>\r\n    <customer_email>test@flowgear.net</customer_email>\r\n    <customer_firstname>Daniel</customer_firstname>\r\n    <customer_gender>0</customer_gender>\r\n    <customer_group_id>1</customer_group_id>\r\n    <customer_id>2</customer_id>\r\n    <customer_is_guest>0</customer_is_guest>\r\n    <customer_lastname>Chilcott</customer_lastname>\r\n    <customer_note_notify>1</customer_note_notify>\r\n    <discount_amount>0</discount_amount>\r\n    <edit_increment>1</edit_increment>\r\n    <email_sent>1</email_sent>\r\n    <entity_id>2</entity_id>\r\n    <global_currency_code>USD</global_currency_code>\r\n    <grand_total>50</grand_total>\r\n    <discount_tax_compensation_amount>0</discount_tax_compensation_amount>\r\n    <increment_id>000000001-1</increment_id>\r\n    <is_virtual>0</is_virtual>\r\n    <order_currency_code>USD</order_currency_code>\r\n    <original_increment_id>000000001</original_increment_id>\r\n    <protect_code>2ab34258d8a906a8f86074da38595e60</protect_code>\r\n    <quote_id>3</quote_id>\r\n    <relation_parent_id>1</relation_parent_id>\r\n    <relation_parent_real_id>000000001</relation_parent_real_id>\r\n    <shipping_amount>10</shipping_amount>\r\n    <shipping_description>Flat Rate - Fixed</shipping_description>\r\n    <shipping_discount_amount>0</shipping_discount_amount>\r\n    <shipping_discount_tax_compensation_amount>0</shipping_discount_tax_compensation_amount>\r\n    <shipping_incl_tax>10</shipping_incl_tax>\r\n    <shipping_tax_amount>0</shipping_tax_amount>\r\n    <state>new</state>\r\n    <status>pending</status>\r\n    <store_currency_code>USD</store_currency_code>\r\n    <store_id>1</store_id>\r\n    <store_name>Main Website\r\nMain Website Store\r\n</store_name>\r\n    <store_to_base_rate>0</store_to_base_rate>\r\n    <store_to_order_rate>0</store_to_order_rate>\r\n    <subtotal>40</subtotal>\r\n    <subtotal_incl_tax>40</subtotal_incl_tax>\r\n    <tax_amount>0</tax_amount>\r\n    <total_due>50</total_due>\r\n    <total_item_count>1</total_item_count>\r\n    <total_qty_ordered>2</total_qty_ordered>\r\n    <updated_at>2019-02-27 11:03:11</updated_at>\r\n    <weight>0</weight>\r\n    <items>\r\n      <amount_refunded>0</amount_refunded>\r\n      <base_amount_refunded>0</base_amount_refunded>\r\n      <base_discount_amount>0</base_discount_amount>\r\n      <base_discount_invoiced>0</base_discount_invoiced>\r\n      <base_discount_tax_compensation_amount>0</base_discount_tax_compensation_amount>\r\n      <base_original_price>20</base_original_price>\r\n      <base_price>20</base_price>\r\n      <base_price_incl_tax>20</base_price_incl_tax>\r\n      <base_row_invoiced>0</base_row_invoiced>\r\n      <base_row_total>40</base_row_total>\r\n      <base_row_total_incl_tax>40</base_row_total_incl_tax>\r\n      <base_tax_amount>0</base_tax_amount>\r\n      <base_tax_invoiced>0</base_tax_invoiced>\r\n      <created_at>2019-02-27 11:03:11</created_at>\r\n      <discount_amount>0</discount_amount>\r\n      <discount_invoiced>0</discount_invoiced>\r\n      <discount_percent>0</discount_percent>\r\n      <free_shipping>0</free_shipping>\r\n      <discount_tax_compensation_amount>0</discount_tax_compensation_amount>\r\n      <is_qty_decimal>0</is_qty_decimal>\r\n      <is_virtual>0</is_virtual>\r\n      <item_id>2</item_id>\r\n      <name>Chicken Mayo Sandwich</name>\r\n      <no_discount>0</no_discount>\r\n      <order_id>2</order_id>\r\n      <original_price>20</original_price>\r\n      <price>20</price>\r\n      <price_incl_tax>20</price_incl_tax>\r\n      <product_id>1</product_id>\r\n      <product_type>simple</product_type>\r\n      <qty_canceled>0</qty_canceled>\r\n      <qty_invoiced>0</qty_invoiced>\r\n      <qty_ordered>2</qty_ordered>\r\n      <qty_refunded>0</qty_refunded>\r\n      <qty_shipped>0</qty_shipped>\r\n      <quote_item_id>3</quote_item_id>\r\n      <row_invoiced>0</row_invoiced>\r\n      <row_total>40</row_total>\r\n      <row_total_incl_tax>40</row_total_incl_tax>\r\n      <row_weight>0</row_weight>\r\n      <sku>HCS1002</sku>\r\n      <store_id>1</store_id>\r\n      <tax_amount>0</tax_amount>\r\n      <tax_invoiced>0</tax_invoiced>\r\n      <tax_percent>0</tax_percent>\r\n      <updated_at>2019-02-27 11:03:11</updated_at>\r\n    </items>\r\n    <billing_address>\r\n      <address_type>billing</address_type>\r\n      <city>Sandton</city>\r\n      <company>Flowgear</company>\r\n      <country_id>ZA</country_id>\r\n      <customer_address_id>1</customer_address_id>\r\n      <email>test@flowgear.net</email>\r\n      <entity_id>4</entity_id>\r\n      <firstname>Daniel</firstname>\r\n      <lastname>Chilcott</lastname>\r\n      <parent_id>2</parent_id>\r\n      <postcode>2196</postcode>\r\n      <prefix>Mr.</prefix>\r\n      <region>Gauteng</region>\r\n      <region_code>Gauteng</region_code>\r\n      <street>Flowgear, 5th Floor, Global House</street>\r\n      <street>28 Sturdee Avenue</street>\r\n      <street>Rosebank</street>\r\n      <telephone>011 731 0603</telephone>\r\n    </billing_address>\r\n    <payment>\r\n      <account_status />\r\n      <additional_information>Check / Money order</additional_information>\r\n      <amount_ordered>50</amount_ordered>\r\n      <base_amount_ordered>50</base_amount_ordered>\r\n      <base_shipping_amount>10</base_shipping_amount>\r\n      <cc_exp_year>0</cc_exp_year>\r\n      <cc_last4 />\r\n      <cc_ss_start_month>0</cc_ss_start_month>\r\n      <cc_ss_start_year>0</cc_ss_start_year>\r\n      <entity_id>2</entity_id>\r\n      <method>checkmo</method>\r\n      <parent_id>2</parent_id>\r\n      <shipping_amount>10</shipping_amount>\r\n    </payment>\r\n    <extension_attributes>\r\n      <shipping_assignments>\r\n        <shipping>\r\n          <address>\r\n            <address_type>shipping</address_type>\r\n            <city>Sandton</city>\r\n            <company>Flowgear</company>\r\n            <country_id>ZA</country_id>\r\n            <customer_address_id>0</customer_address_id>\r\n            <email>test@flowgear.net</email>\r\n            <entity_id>3</entity_id>\r\n            <firstname>Daniel</firstname>\r\n            <lastname>Chilcott</lastname>\r\n            <parent_id>2</parent_id>\r\n            <postcode>2196</postcode>\r\n            <prefix>Mr.</prefix>\r\n            <region>Gauteng</region>\r\n            <region_code>Gauteng</region_code>\r\n            <street>Flowgear, 5th Floor, Global House</street>\r\n            <street>28 Sturdee Avenue</street>\r\n            <street>Rosebank</street>\r\n            <telephone>011 731 0603</telephone>\r\n          </address>\r\n          <method>flatrate_flatrate</method>\r\n          <total>\r\n            <base_shipping_amount>10</base_shipping_amount>\r\n            <base_shipping_discount_amount>0</base_shipping_discount_amount>\r\n            <base_shipping_discount_tax_compensation_amnt>0</base_shipping_discount_tax_compensation_amnt>\r\n            <base_shipping_incl_tax>10</base_shipping_incl_tax>\r\n            <base_shipping_tax_amount>0</base_shipping_tax_amount>\r\n            <shipping_amount>10</shipping_amount>\r\n            <shipping_discount_amount>0</shipping_discount_amount>\r\n            <shipping_discount_tax_compensation_amount>0</shipping_discount_tax_compensation_amount>\r\n            <shipping_incl_tax>10</shipping_incl_tax>\r\n            <shipping_tax_amount>0</shipping_tax_amount>\r\n          </total>\r\n        </shipping>\r\n        <items>\r\n          <amount_refunded>0</amount_refunded>\r\n          <base_amount_refunded>0</base_amount_refunded>\r\n          <base_discount_amount>0</base_discount_amount>\r\n          <base_discount_invoiced>0</base_discount_invoiced>\r\n          <base_discount_tax_compensation_amount>0</base_discount_tax_compensation_amount>\r\n          <base_original_price>20</base_original_price>\r\n          <base_price>20</base_price>\r\n          <base_price_incl_tax>20</base_price_incl_tax>\r\n          <base_row_invoiced>0</base_row_invoiced>\r\n          <base_row_total>40</base_row_total>\r\n          <base_row_total_incl_tax>40</base_row_total_incl_tax>\r\n          <base_tax_amount>0</base_tax_amount>\r\n          <base_tax_invoiced>0</base_tax_invoiced>\r\n          <created_at>2019-02-27 11:03:11</created_at>\r\n          <discount_amount>0</discount_amount>\r\n          <discount_invoiced>0</discount_invoiced>\r\n          <discount_percent>0</discount_percent>\r\n          <free_shipping>0</free_shipping>\r\n          <discount_tax_compensation_amount>0</discount_tax_compensation_amount>\r\n          <is_qty_decimal>0</is_qty_decimal>\r\n          <is_virtual>0</is_virtual>\r\n          <item_id>2</item_id>\r\n          <name>Chicken Mayo Sandwich</name>\r\n          <no_discount>0</no_discount>\r\n          <order_id>2</order_id>\r\n          <original_price>20</original_price>\r\n          <price>20</price>\r\n          <price_incl_tax>20</price_incl_tax>\r\n          <product_id>1</product_id>\r\n          <product_type>simple</product_type>\r\n          <qty_canceled>0</qty_canceled>\r\n          <qty_invoiced>0</qty_invoiced>\r\n          <qty_ordered>2</qty_ordered>\r\n          <qty_refunded>0</qty_refunded>\r\n          <qty_shipped>0</qty_shipped>\r\n          <quote_item_id>3</quote_item_id>\r\n          <row_invoiced>0</row_invoiced>\r\n          <row_total>40</row_total>\r\n          <row_total_incl_tax>40</row_total_incl_tax>\r\n          <row_weight>0</row_weight>\r\n          <sku>HCS1002</sku>\r\n          <store_id>1</store_id>\r\n          <tax_amount>0</tax_amount>\r\n          <tax_invoiced>0</tax_invoiced>\r\n          <tax_percent>0</tax_percent>\r\n          <updated_at>2019-02-27 11:03:11</updated_at>\r\n        </items>\r\n      </shipping_assignments>\r\n    </extension_attributes>\r\n  </items>\r\n  <search_criteria>\r\n    <filter_groups>\r\n      <filters>\r\n        <field>customer_email</field>\r\n        <value>test@flowgear.net</value>\r\n        <condition_type>eq</condition_type>\r\n      </filters>\r\n    </filter_groups>\r\n  </search_criteria>\r\n  <total_count>1</total_count>\r\n</root>"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[],\"targetPath\":\"Documents/Configuration/DocumentType\",\"mapExpression\":\"\\\"ArSalesOrders\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Documents/Configuration/ProcessAllOrNone\",\"mapExpression\":\"\\\"false\\\"\"},{\"sourcePaths\":[\"root/items\"],\"targetPath\":\"Documents/Document\"},{\"sourcePaths\":[],\"targetPath\":\"Documents/Document/Account\",\"mapExpression\":\"\\\"CASH\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Documents/Document/InvoiceDate\",\"mapExpression\":\"\\\"16/03/2019\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Documents/Document/OrderDate\",\"mapExpression\":\"\\\"16/03/2019\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Documents/Document/Reference\",\"mapExpression\":\"ROUND(RAND() * 100, 0)\"},{\"sourcePaths\":[],\"targetPath\":\"Documents/Document/TaxMode\",\"mapExpression\":\"\\\"Inc\\\"\"},{\"sourcePaths\":[\"root/items/store_name\"],\"targetPath\":\"Documents/Document/Description\"},{\"sourcePaths\":[\"root/items/items\"],\"targetPath\":\"Documents/Document/DetailLines\"},{\"sourcePaths\":[\"root/items/items/sku\"],\"targetPath\":\"Documents/Document/DetailLines/DetailLine/StockItem\"},{\"sourcePaths\":[\"root/items/items/qty_ordered\"],\"targetPath\":\"Documents/Document/DetailLines/DetailLine/Quantity\"},{\"sourcePaths\":[\"root/items/items/price\"],\"targetPath\":\"Documents/Document/DetailLines/DetailLine/UnitSellingPrice\"},{\"sourcePaths\":[\"root/items/items/name\"],\"targetPath\":\"Documents/Document/DetailLines/DetailLine/Description\"},{\"sourcePaths\":[],\"targetPath\":\"Documents/Document/ProcessAction\",\"mapExpression\":\"\\\"Complete\\\"\"}],\"sourceSchema\":\"<root>\\r\\n  <items>\\r\\n    <base_currency_code>USD</base_currency_code>\\r\\n    <base_discount_amount>0</base_discount_amount>\\r\\n    <base_grand_total>50</base_grand_total>\\r\\n    <base_discount_tax_compensation_amount>0</base_discount_tax_compensation_amount>\\r\\n    <base_shipping_amount>10</base_shipping_amount>\\r\\n    <base_shipping_discount_amount>0</base_shipping_discount_amount>\\r\\n    <base_shipping_discount_tax_compensation_amnt>0</base_shipping_discount_tax_compensation_amnt>\\r\\n    <base_shipping_incl_tax>10</base_shipping_incl_tax>\\r\\n    <base_shipping_tax_amount>0</base_shipping_tax_amount>\\r\\n    <base_subtotal>40</base_subtotal>\\r\\n    <base_subtotal_incl_tax>40</base_subtotal_incl_tax>\\r\\n    <base_tax_amount>0</base_tax_amount>\\r\\n    <base_total_due>50</base_total_due>\\r\\n    <base_to_global_rate>1</base_to_global_rate>\\r\\n    <base_to_order_rate>1</base_to_order_rate>\\r\\n    <billing_address_id>4</billing_address_id>\\r\\n    <created_at>2019-02-27 11:03:11</created_at>\\r\\n    <customer_email>test@flowgear.net</customer_email>\\r\\n    <customer_firstname>Daniel</customer_firstname>\\r\\n    <customer_gender>0</customer_gender>\\r\\n    <customer_group_id>1</customer_group_id>\\r\\n    <customer_id>2</customer_id>\\r\\n    <customer_is_guest>0</customer_is_guest>\\r\\n    <customer_lastname>Chilcott</customer_lastname>\\r\\n    <customer_note_notify>1</customer_note_notify>\\r\\n    <discount_amount>0</discount_amount>\\r\\n    <edit_increment>1</edit_increment>\\r\\n    <email_sent>1</email_sent>\\r\\n    <entity_id>2</entity_id>\\r\\n    <global_currency_code>USD</global_currency_code>\\r\\n    <grand_total>50</grand_total>\\r\\n    <discount_tax_compensation_amount>0</discount_tax_compensation_amount>\\r\\n    <increment_id>000000001-1</increment_id>\\r\\n    <is_virtual>0</is_virtual>\\r\\n    <order_currency_code>USD</order_currency_code>\\r\\n    <original_increment_id>000000001</original_increment_id>\\r\\n    <protect_code>2ab34258d8a906a8f86074da38595e60</protect_code>\\r\\n    <quote_id>3</quote_id>\\r\\n    <relation_parent_id>1</relation_parent_id>\\r\\n    <relation_parent_real_id>000000001</relation_parent_real_id>\\r\\n    <shipping_amount>10</shipping_amount>\\r\\n    <shipping_description>Flat Rate - Fixed</shipping_description>\\r\\n    <shipping_discount_amount>0</shipping_discount_amount>\\r\\n    <shipping_discount_tax_compensation_amount>0</shipping_discount_tax_compensation_amount>\\r\\n    <shipping_incl_tax>10</shipping_incl_tax>\\r\\n    <shipping_tax_amount>0</shipping_tax_amount>\\r\\n    <state>new</state>\\r\\n    <status>pending</status>\\r\\n    <store_currency_code>USD</store_currency_code>\\r\\n    <store_id>1</store_id>\\r\\n    <store_name>Main Website\\r\\nMain Website Store\\r\\n</store_name>\\r\\n    <store_to_base_rate>0</store_to_base_rate>\\r\\n    <store_to_order_rate>0</store_to_order_rate>\\r\\n    <subtotal>40</subtotal>\\r\\n    <subtotal_incl_tax>40</subtotal_incl_tax>\\r\\n    <tax_amount>0</tax_amount>\\r\\n    <total_due>50</total_due>\\r\\n    <total_item_count>1</total_item_count>\\r\\n    <total_qty_ordered>2</total_qty_ordered>\\r\\n    <updated_at>2019-02-27 11:03:11</updated_at>\\r\\n    <weight>0</weight>\\r\\n    <items>\\r\\n      <amount_refunded>0</amount_refunded>\\r\\n      <base_amount_refunded>0</base_amount_refunded>\\r\\n      <base_discount_amount>0</base_discount_amount>\\r\\n      <base_discount_invoiced>0</base_discount_invoiced>\\r\\n      <base_discount_tax_compensation_amount>0</base_discount_tax_compensation_amount>\\r\\n      <base_original_price>20</base_original_price>\\r\\n      <base_price>20</base_price>\\r\\n      <base_price_incl_tax>20</base_price_incl_tax>\\r\\n      <base_row_invoiced>0</base_row_invoiced>\\r\\n      <base_row_total>40</base_row_total>\\r\\n      <base_row_total_incl_tax>40</base_row_total_incl_tax>\\r\\n      <base_tax_amount>0</base_tax_amount>\\r\\n      <base_tax_invoiced>0</base_tax_invoiced>\\r\\n      <created_at>2019-02-27 11:03:11</created_at>\\r\\n      <discount_amount>0</discount_amount>\\r\\n      <discount_invoiced>0</discount_invoiced>\\r\\n      <discount_percent>0</discount_percent>\\r\\n      <free_shipping>0</free_shipping>\\r\\n      <discount_tax_compensation_amount>0</discount_tax_compensation_amount>\\r\\n      <is_qty_decimal>0</is_qty_decimal>\\r\\n      <is_virtual>0</is_virtual>\\r\\n      <item_id>2</item_id>\\r\\n      <name>Chicken Mayo Sandwich</name>\\r\\n      <no_discount>0</no_discount>\\r\\n      <order_id>2</order_id>\\r\\n      <original_price>20</original_price>\\r\\n      <price>20</price>\\r\\n      <price_incl_tax>20</price_incl_tax>\\r\\n      <product_id>1</product_id>\\r\\n      <product_type>simple</product_type>\\r\\n      <qty_canceled>0</qty_canceled>\\r\\n      <qty_invoiced>0</qty_invoiced>\\r\\n      <qty_ordered>2</qty_ordered>\\r\\n      <qty_refunded>0</qty_refunded>\\r\\n      <qty_shipped>0</qty_shipped>\\r\\n      <quote_item_id>3</quote_item_id>\\r\\n      <row_invoiced>0</row_invoiced>\\r\\n      <row_total>40</row_total>\\r\\n      <row_total_incl_tax>40</row_total_incl_tax>\\r\\n      <row_weight>0</row_weight>\\r\\n      <sku>HCS1002</sku>\\r\\n      <store_id>1</store_id>\\r\\n      <tax_amount>0</tax_amount>\\r\\n      <tax_invoiced>0</tax_invoiced>\\r\\n      <tax_percent>0</tax_percent>\\r\\n      <updated_at>2019-02-27 11:03:11</updated_at>\\r\\n    </items>\\r\\n    <billing_address>\\r\\n      <address_type>billing</address_type>\\r\\n      <city>Sandton</city>\\r\\n      <company>Flowgear</company>\\r\\n      <country_id>ZA</country_id>\\r\\n      <customer_address_id>1</customer_address_id>\\r\\n      <email>test@flowgear.net</email>\\r\\n      <entity_id>4</entity_id>\\r\\n      <firstname>Daniel</firstname>\\r\\n      <lastname>Chilcott</lastname>\\r\\n      <parent_id>2</parent_id>\\r\\n      <postcode>2196</postcode>\\r\\n      <prefix>Mr.</prefix>\\r\\n      <region>Gauteng</region>\\r\\n      <region_code>Gauteng</region_code>\\r\\n      <street>Flowgear, 5th Floor, Global House</street>\\r\\n      <street>28 Sturdee Avenue</street>\\r\\n      <street>Rosebank</street>\\r\\n      <telephone>011 731 0603</telephone>\\r\\n    </billing_address>\\r\\n    <payment>\\r\\n      <account_status />\\r\\n      <additional_information>Check / Money order</additional_information>\\r\\n      <amount_ordered>50</amount_ordered>\\r\\n      <base_amount_ordered>50</base_amount_ordered>\\r\\n      <base_shipping_amount>10</base_shipping_amount>\\r\\n      <cc_exp_year>0</cc_exp_year>\\r\\n      <cc_last4 />\\r\\n      <cc_ss_start_month>0</cc_ss_start_month>\\r\\n      <cc_ss_start_year>0</cc_ss_start_year>\\r\\n      <entity_id>2</entity_id>\\r\\n      <method>checkmo</method>\\r\\n      <parent_id>2</parent_id>\\r\\n      <shipping_amount>10</shipping_amount>\\r\\n    </payment>\\r\\n    <extension_attributes>\\r\\n      <shipping_assignments>\\r\\n        <shipping>\\r\\n          <address>\\r\\n            <address_type>shipping</address_type>\\r\\n            <city>Sandton</city>\\r\\n            <company>Flowgear</company>\\r\\n            <country_id>ZA</country_id>\\r\\n            <customer_address_id>0</customer_address_id>\\r\\n            <email>test@flowgear.net</email>\\r\\n            <entity_id>3</entity_id>\\r\\n            <firstname>Daniel</firstname>\\r\\n            <lastname>Chilcott</lastname>\\r\\n            <parent_id>2</parent_id>\\r\\n            <postcode>2196</postcode>\\r\\n            <prefix>Mr.</prefix>\\r\\n            <region>Gauteng</region>\\r\\n            <region_code>Gauteng</region_code>\\r\\n            <street>Flowgear, 5th Floor, Global House</street>\\r\\n            <street>28 Sturdee Avenue</street>\\r\\n            <street>Rosebank</street>\\r\\n            <telephone>011 731 0603</telephone>\\r\\n          </address>\\r\\n          <method>flatrate_flatrate</method>\\r\\n          <total>\\r\\n            <base_shipping_amount>10</base_shipping_amount>\\r\\n            <base_shipping_discount_amount>0</base_shipping_discount_amount>\\r\\n            <base_shipping_discount_tax_compensation_amnt>0</base_shipping_discount_tax_compensation_amnt>\\r\\n            <base_shipping_incl_tax>10</base_shipping_incl_tax>\\r\\n            <base_shipping_tax_amount>0</base_shipping_tax_amount>\\r\\n            <shipping_amount>10</shipping_amount>\\r\\n            <shipping_discount_amount>0</shipping_discount_amount>\\r\\n            <shipping_discount_tax_compensation_amount>0</shipping_discount_tax_compensation_amount>\\r\\n            <shipping_incl_tax>10</shipping_incl_tax>\\r\\n            <shipping_tax_amount>0</shipping_tax_amount>\\r\\n          </total>\\r\\n        </shipping>\\r\\n        <items>\\r\\n          <amount_refunded>0</amount_refunded>\\r\\n          <base_amount_refunded>0</base_amount_refunded>\\r\\n          <base_discount_amount>0</base_discount_amount>\\r\\n          <base_discount_invoiced>0</base_discount_invoiced>\\r\\n          <base_discount_tax_compensation_amount>0</base_discount_tax_compensation_amount>\\r\\n          <base_original_price>20</base_original_price>\\r\\n          <base_price>20</base_price>\\r\\n          <base_price_incl_tax>20</base_price_incl_tax>\\r\\n          <base_row_invoiced>0</base_row_invoiced>\\r\\n          <base_row_total>40</base_row_total>\\r\\n          <base_row_total_incl_tax>40</base_row_total_incl_tax>\\r\\n          <base_tax_amount>0</base_tax_amount>\\r\\n          <base_tax_invoiced>0</base_tax_invoiced>\\r\\n          <created_at>2019-02-27 11:03:11</created_at>\\r\\n          <discount_amount>0</discount_amount>\\r\\n          <discount_invoiced>0</discount_invoiced>\\r\\n          <discount_percent>0</discount_percent>\\r\\n          <free_shipping>0</free_shipping>\\r\\n          <discount_tax_compensation_amount>0</discount_tax_compensation_amount>\\r\\n          <is_qty_decimal>0</is_qty_decimal>\\r\\n          <is_virtual>0</is_virtual>\\r\\n          <item_id>2</item_id>\\r\\n          <name>Chicken Mayo Sandwich</name>\\r\\n          <no_discount>0</no_discount>\\r\\n          <order_id>2</order_id>\\r\\n          <original_price>20</original_price>\\r\\n          <price>20</price>\\r\\n          <price_incl_tax>20</price_incl_tax>\\r\\n          <product_id>1</product_id>\\r\\n          <product_type>simple</product_type>\\r\\n          <qty_canceled>0</qty_canceled>\\r\\n          <qty_invoiced>0</qty_invoiced>\\r\\n          <qty_ordered>2</qty_ordered>\\r\\n          <qty_refunded>0</qty_refunded>\\r\\n          <qty_shipped>0</qty_shipped>\\r\\n          <quote_item_id>3</quote_item_id>\\r\\n          <row_invoiced>0</row_invoiced>\\r\\n          <row_total>40</row_total>\\r\\n          <row_total_incl_tax>40</row_total_incl_tax>\\r\\n          <row_weight>0</row_weight>\\r\\n          <sku>HCS1002</sku>\\r\\n          <store_id>1</store_id>\\r\\n          <tax_amount>0</tax_amount>\\r\\n          <tax_invoiced>0</tax_invoiced>\\r\\n          <tax_percent>0</tax_percent>\\r\\n          <updated_at>2019-02-27 11:03:11</updated_at>\\r\\n        </items>\\r\\n      </shipping_assignments>\\r\\n    </extension_attributes>\\r\\n  </items>\\r\\n  <search_criteria>\\r\\n    <filter_groups>\\r\\n      <filters>\\r\\n        <field>customer_email</field>\\r\\n        <value>test@flowgear.net</value>\\r\\n        <condition_type>eq</condition_type>\\r\\n      </filters>\\r\\n    </filter_groups>\\r\\n  </search_criteria>\\r\\n  <total_count>1</total_count>\\r\\n</root>\",\"sourceSchemaType\":0,\"targetSchema\":\"<Documents>\\r\\n  <Configuration>\\r\\n    <DocumentType>ArSalesOrders</DocumentType>\\r\\n    <ProcessAllOrNone>false</ProcessAllOrNone>\\r\\n  </Configuration>\\r\\n  <Document>\\r\\n    <Account>CASH</Account>\\r\\n    <InvoiceDate>16/03/2019</InvoiceDate>\\r\\n    <OrderDate>16/03/2019</OrderDate>\\r\\n    <Reference>72</Reference>\\r\\n    <TaxMode>Inc</TaxMode>\\r\\n    <Description>Main Website\\r\\nMain Website Store\\r\\n</Description>\\r\\n    <DetailLines>\\r\\n      <DetailLine>\\r\\n        <StockItem>HCS1002</StockItem>\\r\\n        <Quantity>2</Quantity>\\r\\n        <UnitSellingPrice>20</UnitSellingPrice>\\r\\n        <Description>Chicken Mayo Sandwich</Description>\\r\\n      </DetailLine>\\r\\n    </DetailLines>\\r\\n    <ProcessAction>Complete</ProcessAction>\\r\\n  </Document>\\r\\n</Documents>\",\"targetSchemaType\":0}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Json",
+              "Xml"
+            ],
+            "Value": "Xml"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Documents>\r\n  <Configuration>\r\n    <DocumentType>ArSalesOrders</DocumentType>\r\n    <ProcessAllOrNone>false</ProcessAllOrNone>\r\n  </Configuration>\r\n  <Document>\r\n    <Account>CASH</Account>\r\n    <InvoiceDate>16/03/2019</InvoiceDate>\r\n    <OrderDate>16/03/2019</OrderDate>\r\n    <Reference>72</Reference>\r\n    <TaxMode>Inc</TaxMode>\r\n    <Description>Main Website\r\nMain Website Store\r\n</Description>\r\n    <DetailLines>\r\n      <DetailLine>\r\n        <StockItem>HCS1002</StockItem>\r\n        <Quantity>2</Quantity>\r\n        <UnitSellingPrice>20</UnitSellingPrice>\r\n        <Description>Chicken Mayo Sandwich</Description>\r\n      </DetailLine>\r\n    </DetailLines>\r\n    <ProcessAction>Complete</ProcessAction>\r\n  </Document>\r\n</Documents>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "5842c639-526c-eb4e-ec68-60fe108e8955",
+        "Name": "PastelEvolution",
+        "Version": "9.0.0.7",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "CommonDbServer",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "CommonDbDatabase",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "CommonDbUsername",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "CommonDbPassword",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "CommonDbUseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "BranchID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.PastelEvolution.PastelEvolutionConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<xs:schema id=\"Documents\"\r\n           targetNamespace=\"http://flowgear.net/Schemas/PastelEvolution/Documents.xsd\"\r\n           elementFormDefault=\"qualified\"\r\n           xmlns=\"http://flowgear.net/Schemas/PastelEvolution/Documents.xsd\"\r\n           xmlns:mstns=\"http://flowgear.net/Schemas/PastelEvolution/Documents.xsd\"\r\n           xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" >\r\n  <xs:element name=\"Documents\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"Connection\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"Identifier\" type=\"xs:string\" maxOccurs=\"1\" nillable=\"true\"></xs:element>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"Configuration\" nillable=\"false\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"DocumentType\" nillable=\"false\" minOccurs=\"1\" maxOccurs=\"1\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This is the type of document to be created.</xs:documentation>\r\n                </xs:annotation>\r\n                <xs:simpleType>\r\n                  <xs:restriction base=\"xs:string\">\r\n                    <xs:enumeration value=\"ArSalesOrders\"></xs:enumeration>\r\n                    <xs:enumeration value=\"ArCreditNotes\"></xs:enumeration>\r\n                    <xs:enumeration value=\"ApPurchaseOrders\"></xs:enumeration>\r\n                    <xs:enumeration value=\"ApReturns\"></xs:enumeration>\r\n                  </xs:restriction>\r\n                </xs:simpleType>\r\n              </xs:element>\r\n              <xs:element name=\"ProcessAllOrNone\" nillable=\"true\" type=\"xs:boolean\" maxOccurs=\"1\" minOccurs=\"0\">\r\n                <xs:annotation>\r\n                  <xs:documentation>When True, all documents will be processed in a single transaction. After processing all documents, if any have failed the entire transaction will be rolled back. Setting this to false (default behaviour) transacts documents one at a time.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"Document\">\r\n          <xs:annotation>\r\n            <xs:documentation>Supports Adding of Sales Orders, Credit Notes, Purchase Orders and Returns.</xs:documentation>\r\n          </xs:annotation>\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"DocumentID\" nillable=\"true\" type=\"xs:int\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This value is populated by the engine once the document has been created or completed, used to identify the document for 'CompleteExisting'</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"Reference\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>The reference with which to create the document. Only valid if ProcessAction is 'Complete'.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"ProcessAction\" nillable=\"false\">\r\n                <xs:simpleType>\r\n                  <xs:restriction base=\"xs:string\">\r\n                    <xs:enumeration value=\"Create\">\r\n                      <xs:annotation>\r\n                        <xs:documentation>Creates an unprocessed document.</xs:documentation>\r\n                      </xs:annotation>\r\n                    </xs:enumeration>\r\n                    <xs:enumeration value=\"Complete\">\r\n                      <xs:annotation>\r\n                        <xs:documentation>Creates and processes the document. The document will be marked as Archived in Pastel Evolution.</xs:documentation>\r\n                      </xs:annotation>\r\n                    </xs:enumeration>\r\n                    <xs:enumeration value=\"CompleteExisting\">\r\n                      <xs:annotation>\r\n                        <xs:documentation>Complete the document. The document will be marked as Archived in Pastel Evolution.</xs:documentation>\r\n                      </xs:annotation>\r\n                    </xs:enumeration>\r\n                    <xs:enumeration value=\"ProcessExisting\">\r\n                      <xs:annotation>\r\n                        <xs:documentation>Processes an created unproccessed document. The document will be marked as Archived in Pastel Evolution.</xs:documentation>\r\n                      </xs:annotation>\r\n                    </xs:enumeration>\r\n                    <xs:enumeration value=\"Update\">\r\n                      <xs:annotation>\r\n                        <xs:documentation>Updates an existing document. Used to add/update/delete lines.</xs:documentation>\r\n                      </xs:annotation>\r\n                    </xs:enumeration>\r\n                  </xs:restriction>\r\n                </xs:simpleType>\r\n              </xs:element>\r\n              <xs:element name=\"Account\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>For A/R documents, this is the Customer code. For A/P documents, this is the Supplier code.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"Representative\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>Sales Rep (Only applicable to A/R documents).</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"ReferenceDocumentNumber\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>For Sales Orders, this is the delivery note number. For Purchase Orders, this is the supplier invoice number. For Credit Notes and Returns, this is the invoice number.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"ExternalOrderNo\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This is the external order number or Customer Purchase Order Number.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"OrderNo\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This is the Order Number associated with the document.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"InvoiceTo\" type=\"Address\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This is the Postal Address in the order document.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"DeliverTo\" type=\"Address\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This is the Physical Address in the order document.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"Currency\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>The currency to be used for the document. This must be a valid foreign currency code or left blank if local currency is to be used.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"Description\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>The description of the document that appears in statements.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"Discount\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>The currency value discount in local currency to be applied to the document.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"DiscountPercent\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>The percentage discount to be applied to the document.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"DueDate\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>Format as dd/MM/yyyy.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"DeliveryDate\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>Format as dd/MM/yyyy.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"InvoiceDate\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>Format as dd/MM/yyyy.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"MessageLine1\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This is the first message line.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"MessageLine2\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This is the second message line.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"MessageLine3\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This is the third message line.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"OrderDate\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>Format as dd/MM/yyyy.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"OrderStatus\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>A valid order status code as defined in Order Entry/Maintenance/Order Status. This status appears under the \"Order\" tab in the document.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"Tag\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>User-defined field</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"AgingTerm\" nillable=\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>User-defined field</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"TaxMode\" nillable=\"true\">\r\n                <xs:simpleType>\r\n                  <xs:restriction base=\"xs:string\">\r\n                    <xs:enumeration value=\"Inc\">\r\n                      <xs:annotation>\r\n                        <xs:documentation>Tax Inclusive</xs:documentation>\r\n                      </xs:annotation>\r\n                    </xs:enumeration>\r\n                    <xs:enumeration value=\"Exc\">\r\n                      <xs:annotation>\r\n                        <xs:documentation>Tax Exclusive</xs:documentation>\r\n                      </xs:annotation>\r\n                    </xs:enumeration>\r\n                    <xs:enumeration value=\"I\">\r\n                      <xs:annotation>\r\n                        <xs:documentation>Tax Inclusive</xs:documentation>\r\n                      </xs:annotation>\r\n                    </xs:enumeration>\r\n                    <xs:enumeration value=\"E\">\r\n                      <xs:annotation>\r\n                        <xs:documentation>Tax Exclusive</xs:documentation>\r\n                      </xs:annotation>\r\n                    </xs:enumeration>\r\n                  </xs:restriction>\r\n                </xs:simpleType>\r\n              </xs:element>\r\n              <xs:element name=\"DeliveryNote\" nillable =\"true\">\r\n                <xs:annotation>\r\n                  <xs:documentation>This is the delivery note number for the document.</xs:documentation>\r\n                </xs:annotation>\r\n              </xs:element>\r\n              <xs:element name=\"DetailLines\" type=\"DetailLines\" ></xs:element>\r\n              <xs:element name=\"UserDefinedFields\" minOccurs=\"0\" maxOccurs=\"1\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"UserDefinedField\" nillable=\"true\" minOccurs=\"0\" maxOccurs=\"unbounded\">\r\n                      <xs:complexType>\r\n                        <xs:sequence>\r\n                          <xs:element name=\"Field\">\r\n                            <xs:annotation>\r\n                              <xs:documentation>The field you wish to set a user-defined value for. Select the table and then field you wish to update from the Administration/System Configuration/User-Defined Fields dialog in Pastel Evolution in order to discover the database field name for the user-defined field in question.</xs:documentation>\r\n                            </xs:annotation>\r\n                          </xs:element>\r\n                          <xs:element name=\"Value\" nillable=\"true\">\r\n                            <xs:annotation>\r\n                              <xs:documentation>The value you wish to assign to the user-defined field. The interpretation of this value depends on the data-type of the user-defined field.</xs:documentation>\r\n                            </xs:annotation>\r\n                          </xs:element>\r\n                          <xs:element name=\"Tag\" nillable=\"true\">\r\n                            <xs:annotation>\r\n                              <xs:documentation>User-defined field.</xs:documentation>\r\n                            </xs:annotation>\r\n                          </xs:element>\r\n                        </xs:sequence>\r\n                      </xs:complexType>\r\n                    </xs:element>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"Status\">\r\n                <xs:annotation>\r\n                  <xs:documentation>Populated by the engine once for each individual document.</xs:documentation>\r\n                </xs:annotation>\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"Success\" nillable=\"true\" type=\"xs:boolean\" />\r\n                    <xs:element name=\"Message\" nillable=\"true\" type=\"xs:string\"></xs:element>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n            </xs:sequence>\r\n            <xs:attribute name=\"autoPrintProfile\" type=\"xs:string\" use=\"optional\"></xs:attribute>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"StatusSummary\">\r\n          <xs:annotation>\r\n            <xs:documentation>\r\n              Populated by the engine once an entire xml document has been processed,\r\n              element represents a summary of all Status elements.\r\n              Note the outcome based on the value of Configuration/AllOrNone in derived\r\n              schema.\r\n              When False: Successfull and Valid will contain the same values\r\n              When True: Valid will contain the number of documents checked and found valid.\r\n              Successfull will either be 0 or the same as Processed. If one or more documents\r\n              failed, successful will be 0. If nothing failed, successfull will be same\r\n              as processed (and valid).\r\n            </xs:documentation>\r\n          </xs:annotation>\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"Processed\" type=\"xs:int\" />\r\n              <xs:element name=\"Successful\" type=\"xs:int\" />\r\n              <xs:element name=\"Valid\" type=\"xs:int\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n  <xs:complexType name=\"DetailLines\">\r\n    <xs:sequence>\r\n      <xs:annotation>\r\n        <xs:documentation></xs:documentation>\r\n      </xs:annotation>\r\n      <xs:element name=\"DetailLine\" minOccurs=\"0\" maxOccurs=\"unbounded\">\r\n        <xs:complexType>\r\n          <xs:sequence>\r\n            <xs:element name=\"LineID\" nillable =\"true\" type=\"xs:long\">\r\n              <xs:annotation>\r\n                <xs:documentation>This is required when LineAction is Update or Delete. Must be blank when LineAction is Add</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"LineAction\" nillable=\"true\">\r\n              <xs:simpleType>\r\n                <xs:restriction base=\"xs:string\">\r\n                  <xs:enumeration value=\"Add\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>[Default] Adds a new line. LineID must be empty</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:enumeration>\r\n                  <xs:enumeration value=\"Update\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>Update an existing line. The LineID must be specified</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:enumeration>\r\n                  <xs:enumeration value=\"Delete\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>Deletes a line. The LineID must be specified</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:enumeration>\r\n                </xs:restriction>\r\n              </xs:simpleType>\r\n            </xs:element>\r\n            <xs:element name=\"LineType\" nillable=\"true\">\r\n              <xs:simpleType>\r\n                <xs:restriction base=\"xs:string\">\r\n                  <xs:enumeration value=\"Stk\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>[Default] Stock Item</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:enumeration>\r\n                  <xs:enumeration value=\"GL\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>General ledger code</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:enumeration>\r\n                </xs:restriction>\r\n              </xs:simpleType>\r\n            </xs:element>\r\n            <xs:element name=\"StockItem\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The Item Code for this line.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"GL\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The GL Code for this line.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"OverrideCostOfSalesAccount\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The GL Code to override the cost of sales account.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"OverridePurchaseAccount\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The GL Code to override the purchase account.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"OverrideSalesAccount\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The GL Code to override the sales account.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"OverrideStockAccount\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The GL Code to override the stock account.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"Description\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The optional description for this line.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"Quantity\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The quantity to place on order.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"ToProcess\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>When ProcessAction is Create, specify the quantity that should be marked for processing when the document is processed within Pastel Evolution. This field has no effect on unprocessed documents.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"UnitCostPrice\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The Unit Cost price.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"UnitSellingPrice\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>Local currency unit selling price. For local currency documents, populate this field and leave UnitSellingPriceForeign blank</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"UnitSellingPriceForeign\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>Foreign currency unit selling price. For foreign currency documents, populate this field and leave UnitSellingPrice blank</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"Discount\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>Specify a currency value discount here or a percentage in DiscountPercent</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"DiscountPercent\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>Specify a discount percentage here or a currency value discount in Discount</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"TaxMode\" nillable=\"true\">\r\n              <xs:simpleType>\r\n                <xs:restriction base=\"xs:string\">\r\n                  <xs:enumeration value=\"Inc\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>Tax Inclusive</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:enumeration>\r\n                  <xs:enumeration value=\"Exc\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>Tax Exclusive</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:enumeration>\r\n                  <xs:enumeration value=\"I\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>Tax Inclusive</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:enumeration>\r\n                  <xs:enumeration value=\"E\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>Tax Exclusive</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:enumeration>\r\n                </xs:restriction>\r\n              </xs:simpleType>\r\n            </xs:element>\r\n            <xs:element name=\"SerialNumbers\" minOccurs=\"0\" maxOccurs=\"1\">\r\n              <xs:complexType>\r\n                <xs:sequence>\r\n                  <xs:element name=\"Code\" minOccurs=\"1\" maxOccurs=\"unbounded\">\r\n                    <xs:annotation>\r\n                      <xs:documentation>The serial number associated with this line.</xs:documentation>\r\n                    </xs:annotation>\r\n                  </xs:element>\r\n                </xs:sequence>\r\n              </xs:complexType>\r\n            </xs:element>\r\n            <xs:element name=\"TaxType\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The Tax Type for this line. If both the header and line Tax Types are specified, they must be the same.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"Note\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>Additional information for the line.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"Warehouse\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The code of the warehouse to allocate stock from.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"Representative\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>The Sales Rep to allocate this line to.</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"Tag\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>User-defined field</xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n            <xs:element name=\"Project\" nillable=\"true\">\r\n              <xs:annotation>\r\n                <xs:documentation>Set the stock code </xs:documentation>\r\n              </xs:annotation>\r\n            </xs:element>\r\n          </xs:sequence>\r\n        </xs:complexType>\r\n      </xs:element>\r\n    </xs:sequence>\r\n  </xs:complexType>\r\n  <xs:complexType name=\"Address\">\r\n    <xs:sequence>\r\n      <xs:element name=\"Class\" nillable=\"true\">\r\n        <xs:annotation>\r\n          <xs:documentation>PO - Use the Postal Address defined for the account, PH - Use the Physical Address defined for the account. Blank - Use the specified address. When PO or PH are used, none of the other details need to be filled in.</xs:documentation>\r\n        </xs:annotation>\r\n        <xs:simpleType>\r\n          <xs:restriction base=\"xs:string\">\r\n            <xs:enumeration value=\"PO\"></xs:enumeration>\r\n            <xs:enumeration value=\"PH\"></xs:enumeration>\r\n            <xs:enumeration value=\"\"></xs:enumeration>\r\n          </xs:restriction>\r\n        </xs:simpleType>\r\n      </xs:element>\r\n      <xs:element name=\"Line1\" nillable=\"true\">\r\n        <xs:annotation>\r\n          <xs:documentation>This is the first address line.</xs:documentation>\r\n        </xs:annotation>\r\n      </xs:element>\r\n      <xs:element name=\"Line2\" nillable=\"true\">\r\n        <xs:annotation>\r\n          <xs:documentation>This is the second address line.</xs:documentation>\r\n        </xs:annotation>\r\n      </xs:element>\r\n      <xs:element name=\"Line3\" nillable=\"true\">\r\n        <xs:annotation>\r\n          <xs:documentation>This is the third address line.</xs:documentation>\r\n        </xs:annotation>\r\n      </xs:element>\r\n      <xs:element name=\"Line4\" nillable=\"true\">\r\n        <xs:annotation>\r\n          <xs:documentation>This is the fourth address line.</xs:documentation>\r\n        </xs:annotation>\r\n      </xs:element>\r\n      <xs:element name=\"Line5\" nillable=\"true\">\r\n        <xs:annotation>\r\n          <xs:documentation>This is the fifth address line.</xs:documentation>\r\n        </xs:annotation>\r\n      </xs:element>\r\n      <xs:element name=\"PostalCode\" nillable=\"true\">\r\n        <xs:annotation>\r\n          <xs:documentation>This is the postal code.</xs:documentation>\r\n        </xs:annotation>\r\n      </xs:element>\r\n      <xs:element name=\"Tag\" nillable=\"true\">\r\n        <xs:annotation>\r\n          <xs:documentation>User-defined field</xs:documentation>\r\n        </xs:annotation>\r\n      </xs:element>\r\n    </xs:sequence>\r\n  </xs:complexType>\r\n</xs:schema>",
+            "Name": "RequestXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "ResponseXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Documents xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://flowgear.net/Schemas/PastelEvolution/Documents.xsd\">\r\n  <Configuration>\r\n    <DocumentType>ArSalesOrders</DocumentType>\r\n    <ProcessAllOrNone>false</ProcessAllOrNone>\r\n  </Configuration>\r\n  <Document>\r\n    <DocumentID>1021</DocumentID>\r\n    <Reference>72</Reference>\r\n    <ProcessAction>Complete</ProcessAction>\r\n    <Account>CASH</Account>\r\n    <OrderNo>SO0014</OrderNo>\r\n    <Description>Main Website\r\nMain Website Store\r\n</Description>\r\n    <InvoiceDate>16/03/2019</InvoiceDate>\r\n    <OrderDate>16/03/2019</OrderDate>\r\n    <TaxMode>Inclusive</TaxMode>\r\n    <DetailLines>\r\n      <DetailLine>\r\n        <LineID>10042</LineID>\r\n        <StockItem>HCS1002</StockItem>\r\n        <Description>Chicken Mayo Sandwich</Description>\r\n        <Quantity>2</Quantity>\r\n        <UnitSellingPrice>20</UnitSellingPrice>\r\n      </DetailLine>\r\n    </DetailLines>\r\n    <Status>\r\n      <Success>true</Success>\r\n      <Message>72</Message>\r\n    </Status>\r\n  </Document>\r\n  <StatusSummary>\r\n    <Processed>1</Processed>\r\n    <Successful>1</Successful>\r\n    <Valid>1</Valid>\r\n  </StatusSummary>\r\n</Documents>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 1,
+        "InteractFlags": 0,
+        "DisplayName": "Sage Evolution",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "256a2df8-15cd-1858-f77d-23b6b316eb4b",
+        "Name": "Formatter",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"product\": {\r\n    \"sku\": \"HCS1002\",\r\n    \"price\": {Price},\r\n    \"extensionAttributes\": {\r\n      \"stockItem\": {\r\n        \"qty\": {Qty}\r\n      }\r\n    }\r\n  },\r\n  \"saveOptions\": \"true\"\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "Price",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "100"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "Qty",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 6438.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "494ca475-7df4-10ad-865d-e38e21853265",
+        "Name": "JsonConvert",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "JsonConvert.JsonConvert+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "JsonToXml",
+              "XmlToJson"
+            ],
+            "Value": "JsonToXml"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Name": "Json",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Xml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": ""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "JSON Convert",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "05b80324-2921-0e1e-f22a-21ab5e5003a0",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Update Magento product price and quantity."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6438.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "6c60d54a-f563-b739-ff86-c694db0b417d",
+        "Name": "Magento2",
+        "Version": "1.0.0.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "MagentoBaseUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "AccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "Schema": "(None)",
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Magento.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Name": "Action",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "catalogProductRepositoryV1SavePut | /V1/products/{sku}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "Schema": "",
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"product\": {\r\n    \"sku\": \"HCS1002\",\r\n    \"price\": 21,\r\n    \"extensionAttributes\": {\r\n      \"stockItem\": {\r\n        \"qty\": 150\r\n      }\r\n    }\r\n  },\r\n  \"saveOptions\": \"true\"\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": 1,\r\n  \"sku\": \"HCS1002\",\r\n  \"name\": \"Chicken Mayo Sandwich\",\r\n  \"attribute_set_id\": 4,\r\n  \"price\": 20,\r\n  \"status\": 1,\r\n  \"visibility\": 4,\r\n  \"type_id\": \"simple\",\r\n  \"created_at\": \"2019-02-18 14:39:41\",\r\n  \"updated_at\": \"2019-02-27 10:39:31\",\r\n  \"extension_attributes\": {\r\n    \"website_ids\": [\r\n      1\r\n    ],\r\n    \"category_links\": [\r\n      {\r\n        \"position\": 0,\r\n        \"category_id\": \"3\"\r\n      }\r\n    ],\r\n    \"stock_item\": {\r\n      \"item_id\": 1,\r\n      \"product_id\": 1,\r\n      \"stock_id\": 1,\r\n      \"qty\": 100,\r\n      \"is_in_stock\": true,\r\n      \"is_qty_decimal\": false,\r\n      \"show_default_notification_message\": false,\r\n      \"use_config_min_qty\": true,\r\n      \"min_qty\": 0,\r\n      \"use_config_min_sale_qty\": 1,\r\n      \"min_sale_qty\": 1,\r\n      \"use_config_max_sale_qty\": true,\r\n      \"max_sale_qty\": 10000,\r\n      \"use_config_backorders\": true,\r\n      \"backorders\": 0,\r\n      \"use_config_notify_stock_qty\": true,\r\n      \"notify_stock_qty\": 1,\r\n      \"use_config_qty_increments\": true,\r\n      \"qty_increments\": 0,\r\n      \"use_config_enable_qty_inc\": true,\r\n      \"enable_qty_increments\": false,\r\n      \"use_config_manage_stock\": true,\r\n      \"manage_stock\": true,\r\n      \"low_stock_date\": null,\r\n      \"is_decimal_divided\": false,\r\n      \"stock_status_changed_auto\": 0\r\n    }\r\n  },\r\n  \"product_links\": [],\r\n  \"options\": [],\r\n  \"media_gallery_entries\": [],\r\n  \"tier_prices\": [],\r\n  \"custom_attributes\": [\r\n    {\r\n      \"attribute_code\": \"options_container\",\r\n      \"value\": \"container2\"\r\n    },\r\n    {\r\n      \"attribute_code\": \"url_key\",\r\n      \"value\": \"ham-cheese-sandwich\"\r\n    },\r\n    {\r\n      \"attribute_code\": \"gift_message_available\",\r\n      \"value\": \"2\"\r\n    },\r\n    {\r\n      \"attribute_code\": \"required_options\",\r\n      \"value\": \"0\"\r\n    },\r\n    {\r\n      \"attribute_code\": \"has_options\",\r\n      \"value\": \"0\"\r\n    },\r\n    {\r\n      \"attribute_code\": \"meta_title\",\r\n      \"value\": \"Ham & Cheese Sandwich\"\r\n    },\r\n    {\r\n      \"attribute_code\": \"meta_keyword\",\r\n      \"value\": \"Ham & Cheese Sandwich\"\r\n    },\r\n    {\r\n      \"attribute_code\": \"meta_description\",\r\n      \"value\": \"Ham & Cheese Sandwich \"\r\n    },\r\n    {\r\n      \"attribute_code\": \"tax_class_id\",\r\n      \"value\": \"2\"\r\n    },\r\n    {\r\n      \"attribute_code\": \"category_ids\",\r\n      \"value\": [\r\n        \"3\"\r\n      ]\r\n    },\r\n    {\r\n      \"attribute_code\": \"country_of_manufacture\",\r\n      \"value\": \"AF\"\r\n    }\r\n  ]\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "sku",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "HCS1002"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 6438.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Magento 2",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f6ec4fc2-084f-d7d7-b238-2584c396cf1e",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Extract Sales Orders from Magento 2 by using the API with specified search criteria, then map the order into your desired format and push the data into another platform. In this case Sage Evolution. "
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 6100.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "e791c505-f7d6-371f-ec7a-95ae4f980393",
+        "TargetNodeId": "494ca475-7df4-10ad-865d-e38e21853265",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "5f48a64b-3bc3-1d45-053e-6672d1bf7e83",
+        "TargetNodeId": "5842c639-526c-eb4e-ec68-60fe108e8955",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "494ca475-7df4-10ad-865d-e38e21853265",
+        "TargetNodeId": "5f48a64b-3bc3-1d45-053e-6672d1bf7e83",
+        "SourceName": "Xml",
+        "TargetName": "Source"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "5f48a64b-3bc3-1d45-053e-6672d1bf7e83",
+        "TargetNodeId": "5842c639-526c-eb4e-ec68-60fe108e8955",
+        "SourceName": "Result",
+        "TargetName": "Connection"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "256a2df8-15cd-1858-f77d-23b6b316eb4b",
+        "TargetNodeId": "6c60d54a-f563-b739-ff86-c694db0b417d",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "494ca475-7df4-10ad-865d-e38e21853265",
+        "TargetNodeId": "5f48a64b-3bc3-1d45-053e-6672d1bf7e83",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "e791c505-f7d6-371f-ec7a-95ae4f980393",
+        "TargetNodeId": "494ca475-7df4-10ad-865d-e38e21853265",
+        "SourceName": "Response",
+        "TargetName": "Json"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "256a2df8-15cd-1858-f77d-23b6b316eb4b",
+        "TargetNodeId": "6c60d54a-f563-b739-ff86-c694db0b417d",
+        "SourceName": "Result",
+        "TargetName": "Request"
+      }
+    ],
+    "StartNodeId": "9d3ae198-00b3-1e54-0b59-05103e5159f1",
+    "DateCreated": "2019-03-05T11:10:46.307",
+    "DateUpdated": "2019-03-05T11:10:46.307",
+    "ActivityLogLevelMask": 0
+  }
+}

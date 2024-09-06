@@ -1,0 +1,807 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Microsoft SQL Request a Page",
+    "Description": "This example integration shows how a user can query large datasets from a database using pages. \"Microsoft SQL Request a Page\" is the partner workflow to \"Microsoft SQL Emit a Page\". The certification training database (CertificationTrainingDb.flowgear.net) from our Udemy Course can be used to test this functionality.",
+    "Nodes": [
+      {
+        "NodeId": "a3c4d335-ae50-5668-d661-bc6730f9df4d",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "646ed251-a4cd-f279-d57a-0fb65719df2d",
+        "Name": "Loop",
+        "Version": "1.2.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Start",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Stop",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Increment",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Current",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Loop",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Loop",
+        "NodeType": 3,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "3a282847-d7cb-c968-cdff-7fbbd59699d0",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "pageSize",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "10"
+          },
+          {
+            "FlowDirection": 2,
+            "PersistenceKey": "sqlpagetest.authkey",
+            "Behaviour": 1,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": true,
+            "Name": "authorizationKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "maxPages",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "2"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 3,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "LoopGroup",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "RequestedData"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "URL",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "https://connectortesting.flowgear.net/getSQLPage"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "42ee106c-fc95-3760-069c-082b9679ece2",
+        "Name": "HttpRequest",
+        "Version": "1.0.0.26",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ReturnHttpFailureResponses",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "SessionKey",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "TrustedCertificateSubject",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "DecompressionType",
+                "TypeName": "flowgear.Nodes.WebRequest.WebRequest+DecompressionTypes",
+                "ExtendedType": 0,
+                "EnumValues": [
+                  "None",
+                  "Deflate",
+                  "GZip"
+                ],
+                "Value": "None"
+              },
+              {
+                "Name": "CertificateBase64",
+                "TypeName": "System.String",
+                "ExtendedType": 4
+              },
+              {
+                "Name": "Base64Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "Testing Web Request",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.WebRequest.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Url",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": true,
+            "Name": "Headers",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "authorization : Key={authorizationKey}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ContentType",
+            "TypeName": "flowgear.Nodes.WebRequest.WebRequest+CommonContentTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "Application_Json",
+              "Application_Xml",
+              "Text_Html",
+              "Text_Json",
+              "Text_Plain",
+              "Text_Xml"
+            ],
+            "Value": "Text_Json"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Method",
+            "TypeName": "flowgear.Nodes.WebRequest.WebRequest+Methods",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "GET",
+              "POST",
+              "HEAD",
+              "PUT",
+              "DELETE",
+              "TRACE",
+              "OPTIONS",
+              "CONNECT",
+              "PATCH"
+            ],
+            "Value": "POST"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "UserAgent",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "PostData",
+            "TypeName": "System.Object",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"RequestData\": {\r\n    \"pageRequested\": {pageRequested},\r\n    \"pageSize\": {pageSize}\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ReturnBodyAs",
+            "TypeName": "flowgear.Nodes.WebRequest.WebRequest+ResponseBodyTypes",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Text",
+              "Binary"
+            ],
+            "Value": "Text"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "StatusCode",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseHeaders",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "ResponseBody",
+            "TypeName": "System.Object",
+            "ExtendedType": 4,
+            "Value": "<Result>\r\n  <Table>\r\n    <id>1</id>\r\n    <first_name>James</first_name>\r\n    <last_name>Butt</last_name>\r\n  </Table>\r\n  <Table>\r\n    <id>2</id>\r\n    <first_name>Josephine</first_name>\r\n    <last_name>Darakjy</last_name>\r\n  </Table>\r\n  <Table>\r\n    <id>3</id>\r\n    <first_name>Art</first_name>\r\n    <last_name>Venere</last_name>\r\n  </Table>\r\n  <Table>\r\n    <id>4</id>\r\n    <first_name>Lenna</first_name>\r\n    <last_name>Paprocki</last_name>\r\n  </Table>\r\n  <Table>\r\n    <id>5</id>\r\n    <first_name>Donette</first_name>\r\n    <last_name>Foller</last_name>\r\n  </Table>\r\n  <Table>\r\n    <id>6</id>\r\n    <first_name>Simona</first_name>\r\n    <last_name>Morasca</last_name>\r\n  </Table>\r\n  <Table>\r\n    <id>7</id>\r\n    <first_name>Mitsue</first_name>\r\n    <last_name>Tollner</last_name>\r\n  </Table>\r\n  <Table>\r\n    <id>8</id>\r\n    <first_name>Leota</first_name>\r\n    <last_name>Dilliard</last_name>\r\n  </Table>\r\n  <Table>\r\n    <id>9</id>\r\n    <first_name>Sage</first_name>\r\n    <last_name>Wieser</last_name>\r\n  </Table>\r\n  <Table>\r\n    <id>10</id>\r\n    <first_name>Kris</first_name>\r\n    <last_name>Marrier</last_name>\r\n  </Table>\r\n</Result>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": true,
+            "Name": "authorizationKey",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "pageRequested",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "pageSize",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Web Request",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a0808738-bce6-c51f-fcfb-279b3803a9d5",
+        "Name": "LoopExit",
+        "Version": "1.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Error",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Message",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 4465.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Loop Exit",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "6e1e0b04-0c17-8a7d-7fed-de9a3128ea64",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "As long as there is more data to return for the search criteria, response will not be empty (Bearing in mind the maxPages cap)."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "08f6b1d2-4227-a147-b2df-43341b21799d",
+        "Name": "IfVisualBasic",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value.Contains(\"<id>\")"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f3a09a48-2e6c-f923-d0cd-10556ec9f927",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "This is where you add more data"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320.0,
+          "Y": 3945.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "a3c4d335-ae50-5668-d661-bc6730f9df4d",
+        "TargetNodeId": "646ed251-a4cd-f279-d57a-0fb65719df2d",
+        "SourceName": "Run_Now",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "646ed251-a4cd-f279-d57a-0fb65719df2d",
+        "TargetNodeId": "42ee106c-fc95-3760-069c-082b9679ece2",
+        "SourceName": "Loop",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3a282847-d7cb-c968-cdff-7fbbd59699d0",
+        "TargetNodeId": "646ed251-a4cd-f279-d57a-0fb65719df2d",
+        "SourceName": "LoopGroup",
+        "TargetName": "Group"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3a282847-d7cb-c968-cdff-7fbbd59699d0",
+        "TargetNodeId": "646ed251-a4cd-f279-d57a-0fb65719df2d",
+        "SourceName": "maxPages",
+        "TargetName": "Stop"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "42ee106c-fc95-3760-069c-082b9679ece2",
+        "TargetNodeId": "08f6b1d2-4227-a147-b2df-43341b21799d",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3a282847-d7cb-c968-cdff-7fbbd59699d0",
+        "TargetNodeId": "42ee106c-fc95-3760-069c-082b9679ece2",
+        "SourceName": "URL",
+        "TargetName": "Url"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3a282847-d7cb-c968-cdff-7fbbd59699d0",
+        "TargetNodeId": "42ee106c-fc95-3760-069c-082b9679ece2",
+        "SourceName": "authorizationKey",
+        "TargetName": "authorizationKey"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "646ed251-a4cd-f279-d57a-0fb65719df2d",
+        "TargetNodeId": "42ee106c-fc95-3760-069c-082b9679ece2",
+        "SourceName": "Current",
+        "TargetName": "pageRequested"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3a282847-d7cb-c968-cdff-7fbbd59699d0",
+        "TargetNodeId": "42ee106c-fc95-3760-069c-082b9679ece2",
+        "SourceName": "pageSize",
+        "TargetName": "pageSize"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3a282847-d7cb-c968-cdff-7fbbd59699d0",
+        "TargetNodeId": "a0808738-bce6-c51f-fcfb-279b3803a9d5",
+        "SourceName": "LoopGroup",
+        "TargetName": "Group"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "08f6b1d2-4227-a147-b2df-43341b21799d",
+        "TargetNodeId": "a0808738-bce6-c51f-fcfb-279b3803a9d5",
+        "SourceName": "False",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "42ee106c-fc95-3760-069c-082b9679ece2",
+        "TargetNodeId": "08f6b1d2-4227-a147-b2df-43341b21799d",
+        "SourceName": "ResponseBody",
+        "TargetName": "Value",
+        "Expression": ""
+      }
+    ],
+    "StartNodeId": "a3c4d335-ae50-5668-d661-bc6730f9df4d",
+    "DateCreated": "2021-09-21T09:03:38.6510556Z",
+    "DateUpdated": "2021-09-21T09:03:38.6510556Z",
+    "ActivityLogLevelMask": 0
+  }
+}

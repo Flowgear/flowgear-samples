@@ -1,0 +1,266 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 0,
+    "Nodes": [
+      {
+        "Name": "DayScheduler",
+        "Version": "3.0.0.4",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Name": "StartTime",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "08:00",
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          },
+          {
+            "FlowDirection": 1,
+            "Name": "EndTime",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "09:00",
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          },
+          {
+            "FlowDirection": 1,
+            "Name": "IntervalMinutes",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 60,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Day Scheduler",
+        "NodeType": 3,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My4yMreRF30AAAFPSURBVDhPlZI9boNAEIXd50C5QW5AmTbH4AI0KXMU2+vCSBhZAokg5AgX/BS4gMggJDoLXnbWXsAYbAfpaWeXmW9nZ2YGYHYRvt5fuYnz+vl215ZxMphW4OPlGsL3LbBvi9PzxR1goQnAUyLfGwCl/B8NAaqqnhMb+ZqmQVEUiOMYnufh4nv9hCFAUZQWRfYxzxHFEVzXfQygAAmQdvabIQgCOI7zGEBXSwClT3ZyOGDv+7At+3kABVdVJQBhGMLl79+a22lAXZ/Q1A1OdS2CyrJEmqbC/tntYFkWdF2fBuS8UFTtPD8iyzIkSYIgDESwbdswDANsxaYBURSLVsV8pYL5/l44D9Ub/24Sycn1XNFnkvPt8IJZ8jbR0n7/byaRfpobE6ZJ2oh01+t1C9C0bnwnM2BLhhVjYFyLxRLz+bxNvx80CqDDsfeOpd0H/AG1mRFEAy7HKAAAAABJRU5ErkJggg==",
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T17:09:31.3224157+02:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        },
+        "NodeId": "9a85e00d-3528-5a8e-3d41-6d3e3a1c5f8b",
+        "NodeVisual": {
+          "X": 6405,
+          "Y": 3458
+        }
+      },
+      {
+        "Name": "Start",
+        "Version": "1.0.0.3",
+        "RuntimeVersion": 1,
+        "DisplayName": "Start",
+        "NodeId": "a084629b-8fcf-fe94-c55b-8639808a5608",
+        "Properties": [
+          {
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "FlowDirection": 2,
+            "ExtendedType": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100,
+          "Y": 3692
+        }
+      },
+      {
+        "Name": "SqlQuery",
+        "Version": "3.0.0.14",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ConnectionStringFragments",
+                "TypeName": "System.String",
+                "ExtendedType": 4
+              }
+            ],
+            "Name": "Connection",
+            "TypeName": "flowgear.Nodes.Sql.Microsoft.MicrosoftSqlConnection",
+            "ExtendedType": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Schema": "(None)"
+          },
+          {
+            "FlowDirection": 1,
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "select top 10 * from table",
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          },
+          {
+            "FlowDirection": 1,
+            "Name": "XmlQuery",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          },
+          {
+            "FlowDirection": 2,
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          },
+          {
+            "FlowDirection": 2,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Microsoft SQL Query",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAHpePXxfPn5iQJBuNYBlQoNoRIZrRodsRYhuSYpxSopwS450TpJzQZB3UJN6U5V9VayAIpqDW5uEWp6HXaKBRaCJX6uPVKKMYaWPZKiSZauVaK2Yaq6abbCbbbCbbrqbZLOfcLKfcb+jXLWhcbijdLqnebioe8eSFtKWCdqbA9ubBNqcA9qcBN2qJOGhAeGhAuKiAeinAeinAuioAu21Hu22HuW4Pue9RNTAeO/EQ+zGUPDEQ/DFRvDGRfDGRvDKUPDKUfHTZ/DQavHUaPHUafHUavHUa/TVa72rgse0hsi5jMy9jNHElNvPnebZlfDbgfPfgvTfgvTfg+PaqejfrfTjjPTjjffij/fomvbrovHruPPsufvwr/rztfr1wv33wfz4wv34w/35xQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABc9+aIAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQBQYWludC5ORVQgdjMuNS43p4SdzAAAALtJREFUKFM9z4UOwjAUBVDc3d2dQYHB8OHuDsPh/78B1jfCTZo0Jy/tu7wPziTidQVGcOWxZzrfXe7383YW5SD8/kcHEBqebs/X43rsFLUAfrq3ZzYtikQJDYCHHhww5DOECsBV/wEilABODgokSskBHBjWTSqHCCmAvdFnJwAkADa6v2fW7KPZpBjAUukemBX8IgQw1fAeTSqPCAGAsdQGIFGcz5WzBsuLZTUd04t+bT9jt0EhU5t9uP4XyXt2uxKMgs4AAAAASUVORK5CYII=",
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T17:11:51.2528853+02:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        },
+        "NodeId": "7e687012-01db-af87-e535-2a577d56f8d4",
+        "NodeVisual": {
+          "X": 6405,
+          "Y": 3692
+        },
+        "ShortDescription": "first step of workflow"
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "a084629b-8fcf-fe94-c55b-8639808a5608",
+        "TargetNodeId": "9a85e00d-3528-5a8e-3d41-6d3e3a1c5f8b",
+        "SourceName": "Start",
+        "TargetName": null
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "a084629b-8fcf-fe94-c55b-8639808a5608",
+        "TargetNodeId": "7e687012-01db-af87-e535-2a577d56f8d4",
+        "SourceName": "Run_Now",
+        "TargetName": null
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "9a85e00d-3528-5a8e-3d41-6d3e3a1c5f8b",
+        "TargetNodeId": "7e687012-01db-af87-e535-2a577d56f8d4",
+        "SourceName": ""
+      }
+    ],
+    "StartNodeId": "a084629b-8fcf-fe94-c55b-8639808a5608"
+  }
+}

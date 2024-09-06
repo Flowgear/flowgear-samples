@@ -1,0 +1,218 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 1,
+    "Name": "Expand Custom Fields using Quickmap",
+    "Description": "This example shows how to add a custom Json structure into an element using the QuickMap",
+    "Nodes": [
+      {
+        "NodeId": "7d1a38b4-ebde-829f-5e44-e840ec362604",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "a68834fa-8d0e-7ee5-2bc3-0595892ffb2d",
+        "Name": "QuickMap",
+        "Version": "4.0.0.41",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"Opp\": {\r\n    \"id\": \"12\",\r\n    \"Name\": \"Name\"\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"Opp/id\"],\"targetPath\":\"id\",\"mapExpression\":\"CINT(FIRST({id}))\"},{\"sourcePaths\":[\"Opp/id\"],\"targetPath\":\"number\",\"mapExpression\":\"NUMBERVALUE(FIRST({id}))\"},{\"sourcePaths\":[\"Opp/Name\"],\"targetPath\":\"name\",\"mapExpression\":\"FIRST({Name})\"},{\"sourcePaths\":[\"Opp/Name\"],\"targetPath\":\"customFields\",\"mapExpression\":\"JToken.Parse(GETVALUE(\\\"CustomField\\\").Replace(\\\"{udf1}\\\", \\\"abc\\\").Replace(\\\"{udf2}\\\", \\\"def\\\"))\"}],\"sourceSchema\":\"{\\r\\n  \\\"Opp\\\": {\\r\\n    \\\"id\\\": \\\"12\\\",\\r\\n    \\\"Name\\\": \\\"Name\\\"\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"{\\r\\n  \\\"id\\\": \\\"(integer)\\\",\\r\\n  \\\"number\\\": 0,\\r\\n  \\\"name\\\": \\\"Max length: 100; (string)\\\",\\r\\n  \\\"customFields\\\": {}\\r\\n}\",\"targetSchemaType\":2}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Auto",
+              "Json",
+              "Xml"
+            ],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": \"(integer)\",\r\n  \"number\": 0,\r\n  \"name\": \"Max length: 100; (string)\",\r\n  \"customFields\": {}\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "CustomField",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "[\r\n  {\r\n    \"id\": 12,\r\n    \"value\": \"{udf1}\"\r\n  },\r\n  {\r\n    \"id\": 24,\r\n    \"value\": \"{udf2}\"\r\n  }\r\n]"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3763.0
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "7cec05a2-e4aa-ffc6-77f8-35ad62ea376c",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "The \"customFields\" node must be an empty object for this to work.\nThe sample that is loaded will contain the array of custom fields. \nWRONG: \n\"customFields\":[\n    {\"id\":\"(int)\", \"value\":\"(string)\"}\n]\n\nCORRECT:\n\"customFields\": {}"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3458.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [],
+    "StartNodeId": "7d1a38b4-ebde-829f-5e44-e840ec362604",
+    "DateCreated": "2023-09-15T13:41:39.3832629Z",
+    "DateUpdated": "2023-09-15T13:41:39.3832629Z",
+    "ActivityLogLevelMask": 0
+  }
+}
