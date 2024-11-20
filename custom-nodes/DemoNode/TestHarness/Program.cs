@@ -5,18 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestHarness
+namespace Flowgear.Nodes.TestHarness
 {
     class Program
     {
         static void Main(string[] args)
         {
 
-            Flowgear.Nodes.TestHarness.NodesTestHarness.AttachNode(typeof(DemoNode.DemoNode), null, null);
+            var node = new Flowgear.Nodes.DemoNode.DemoNode();
+            node.Connection = new DemoNode.Connection()
+            {
+                AccessToken = "123"
+            };
+            node.Action = DemoNode.Actions.ThisAction;
+            node.Properties = new Dictionary<string, object>(){
+                {  "CustomProp1","value" }
+            };
 
-            Console.ReadKey();
+            node.Invoke();
         }
 
-     
+
     }
 }

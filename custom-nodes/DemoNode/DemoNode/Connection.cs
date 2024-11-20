@@ -1,11 +1,6 @@
 ﻿using flowgear.Sdk;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DemoNode
+namespace Flowgear.Nodes.DemoNode
 {
     // Connections are defined in their own class
     public class Connection

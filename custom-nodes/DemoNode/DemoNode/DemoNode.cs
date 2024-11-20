@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DemoNode
+namespace Flowgear.Nodes.DemoNode
 {
 
     // Enums are presented as Dropdowns in the UI
