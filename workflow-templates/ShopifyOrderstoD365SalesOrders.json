@@ -993,5 +993,5 @@
     "ActivityLogLevelMask": 255
   },
   "Name": "Shopify Order Sync to Microsoft D365 Sales Example",
-  "Description": "This workflow syncs Shopify orders to Dynamics 365 Sales, mapping data, checking for duplicates, creating new orders, and handling errors with alerts."
+  "Description": "This Workflow syncs Shopify orders to Dynamics 365 Sales, mapping data, checking for duplicates, creating new orders, and handling errors with alerts."
 }

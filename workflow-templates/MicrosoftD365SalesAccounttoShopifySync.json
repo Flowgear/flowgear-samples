@@ -987,5 +987,5 @@
     "ActivityLogLevelMask": 255
   },
   "Name": "Microsoft D365 Sales Account Sync to Shopify Example",
-  "Description": "This workflow Syncs Accounts in Microsoft D365 Sales to Shopify."
+  "Description": "This Workflow Syncs Accounts in Microsoft D365 Sales to Shopify."
 }

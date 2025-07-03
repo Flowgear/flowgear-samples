@@ -1863,5 +1863,5 @@
     "ActivityLogLevelMask": 0
   },
   "Name": "Shopify Sales Orders Sync to Acumatica Example",
-  "Description": "This workflow syncs Shopify orders to Acumatica by checking if each order and customer already exist, creating them if needed, and logging the result. It maps and processes order and customer data, handling both success and error outcomes."
+  "Description": "This Workflow syncs Shopify orders to Acumatica by checking if each order and customer already exist, creating them if needed, and logging the result. It maps and processes order and customer data, handling both success and error outcomes."
 }

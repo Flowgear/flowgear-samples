@@ -1091,5 +1091,5 @@
     "ActivityLogLevelMask": 0
   },
   "Name": "Shopify Orders Sync to Syspro Example",
-  "Description": "This workflow gets Shopify Orders and syncs them to Syspro while logging successes and errors based on the process."
+  "Description": "This Workflow gets Shopify Orders and syncs them to Syspro while logging successes and errors based on the process."
 }
