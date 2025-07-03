@@ -1,0 +1,997 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 0,
+    "Nodes": [
+      {
+        "NodeId": "dc0c11bb-55dd-8198-a419-60610e5b1415",
+        "Name": "Start",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          { "Label": "Start", "IsException": false, "IsDefault": true },
+          { "Label": "Run_Now", "IsException": false, "IsDefault": false },
+          { "Label": "Any_Error", "IsException": true, "IsDefault": false },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": { "X": 6100, "Y": 3640 },
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 1,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "01b9cc2f-2fb2-5f80-caef-fd2c550ac0ea",
+        "Name": "ShopifyRest",
+        "LongDescription": "Retrieves a list of draft orders",
+        "Version": "1.1.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiVersion",
+                "TypeName": "System.String",
+                "ExtendedType": 0,
+                "Value": "2024-01"
+              },
+              {
+                "Name": "ShopifyBaseUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "XShopifyAccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ReturnRestFailureResponses",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "ExcludeEmptyQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "AllowCustomQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.ShopifyRest.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "f0f3274a-ad4d-b609-20e9-a0d32036388d"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Retrieves a list of draft orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseCode",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseHeaders",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"draft_orders\": [\r\n    {\r\n      \"id\": 1115377697055,\r\n      \"note\": null,\r\n      \"email\": null,\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:54-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"name\": \"#D1\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257069834527,\r\n          \"variant_id\": 44861007593759,\r\n          \"product_id\": 8223769952543,\r\n          \"title\": \"The Minimal Snowboard\",\r\n          \"variant_title\": null,\r\n          \"sku\": \"\",\r\n          \"vendor\": \"FlowgearSandbox01\",\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 0,\r\n          \"tax_lines\": [\r\n            {\r\n              \"rate\": 0.15,\r\n              \"title\": \"VAT\",\r\n              \"price\": \"132.89\"\r\n            }\r\n          ],\r\n          \"applied_discount\": null,\r\n          \"name\": \"The Minimal Snowboard\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"885.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257069834527\"\r\n        }\r\n      ],\r\n      \"shipping_address\": null,\r\n      \"billing_address\": null,\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/a2b653346f99bb76088d81d3aa9ee251\",\r\n      \"applied_discount\": null,\r\n      \"order_id\": 5329877958943,\r\n      \"shipping_line\": null,\r\n      \"tax_lines\": [\r\n        {\r\n          \"rate\": 0.15,\r\n          \"title\": \"VAT\",\r\n          \"price\": \"132.89\"\r\n        }\r\n      ],\r\n      \"tags\": \"Edited\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"1018.84\",\r\n      \"subtotal_price\": \"885.95\",\r\n      \"total_tax\": \"132.89\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377697055\"\r\n    },\r\n    {\r\n      \"id\": 1115377729823,\r\n      \"note\": null,\r\n      \"email\": null,\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:54-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:55-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:55-04:00\",\r\n      \"name\": \"#D2\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257069867295,\r\n          \"variant_id\": 44861007593759,\r\n          \"product_id\": 8223769952543,\r\n          \"title\": \"The Minimal Snowboard\",\r\n          \"variant_title\": null,\r\n          \"sku\": \"\",\r\n          \"vendor\": \"FlowgearSandbox01\",\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 0,\r\n          \"tax_lines\": [\r\n            {\r\n              \"rate\": 0.15,\r\n              \"title\": \"VAT\",\r\n              \"price\": \"132.89\"\r\n            }\r\n          ],\r\n          \"applied_discount\": null,\r\n          \"name\": \"The Minimal Snowboard\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"885.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257069867295\"\r\n        }\r\n      ],\r\n      \"shipping_address\": null,\r\n      \"billing_address\": null,\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/471516f94e7bf8b9db1fe35dce9e8c22\",\r\n      \"applied_discount\": null,\r\n      \"order_id\": 5329877729567,\r\n      \"shipping_line\": null,\r\n      \"tax_lines\": [\r\n        {\r\n          \"rate\": 0.15,\r\n          \"title\": \"VAT\",\r\n          \"price\": \"132.89\"\r\n        }\r\n      ],\r\n      \"tags\": \"Minimal Info\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"1018.84\",\r\n      \"subtotal_price\": \"885.95\",\r\n      \"total_tax\": \"132.89\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377729823\"\r\n    },\r\n    {\r\n      \"id\": 1115377762591,\r\n      \"note\": null,\r\n      \"email\": \"russel.winfield@example.com\",\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:55-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"name\": \"#D3\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257069900063,\r\n          \"variant_id\": null,\r\n          \"product_id\": null,\r\n          \"title\": \"Custom Snowboard\",\r\n          \"variant_title\": null,\r\n          \"sku\": null,\r\n          \"vendor\": null,\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 0,\r\n          \"tax_lines\": [],\r\n          \"applied_discount\": null,\r\n          \"name\": \"Custom Snowboard\",\r\n          \"properties\": [\r\n            {\r\n              \"name\": \"wrap description\",\r\n              \"value\": \"Put my cat on it so I can shred these slopes like he shreds my couch!\"\r\n            }\r\n          ],\r\n          \"custom\": true,\r\n          \"price\": \"200.00\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257069900063\"\r\n        }\r\n      ],\r\n      \"shipping_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": null,\r\n        \"longitude\": null,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"billing_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": 43.6522608,\r\n        \"longitude\": -79.3776862,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/a160467c66df7ea5ea430d062c3db405\",\r\n      \"applied_discount\": null,\r\n      \"order_id\": 5329877762335,\r\n      \"shipping_line\": {\r\n        \"title\": \"International Shipping\",\r\n        \"custom\": false,\r\n        \"handle\": \"424511c542b4a872d35401261319b9d1\",\r\n        \"price\": \"30.00\"\r\n      },\r\n      \"tax_lines\": [],\r\n      \"tags\": \"Custom Item\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"230.00\",\r\n      \"subtotal_price\": \"200.00\",\r\n      \"total_tax\": \"0.00\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377762591\",\r\n      \"customer\": {\r\n        \"id\": 6889709863199,\r\n        \"email\": \"russel.winfield@example.com\",\r\n        \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n        \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n        \"first_name\": \"Russell\",\r\n        \"last_name\": \"Winfield\",\r\n        \"orders_count\": 4,\r\n        \"state\": \"disabled\",\r\n        \"total_spent\": \"6656.19\",\r\n        \"last_order_id\": 5329877991711,\r\n        \"note\": \"This customer is created with most available fields\",\r\n        \"verified_email\": true,\r\n        \"multipass_identifier\": null,\r\n        \"tax_exempt\": false,\r\n        \"tags\": \"VIP\",\r\n        \"last_order_name\": \"#1009\",\r\n        \"currency\": \"ZAR\",\r\n        \"phone\": \"+16135550135\",\r\n        \"tax_exemptions\": [],\r\n        \"email_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null\r\n        },\r\n        \"sms_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"unknown\",\r\n          \"consent_updated_at\": null,\r\n          \"consent_collected_from\": \"OTHER\"\r\n        },\r\n        \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709863199\",\r\n        \"default_address\": {\r\n          \"id\": 9160311439647,\r\n          \"customer_id\": 6889709863199,\r\n          \"first_name\": \"Russell\",\r\n          \"last_name\": \"Winfield\",\r\n          \"company\": \"Company Name\",\r\n          \"address1\": \"105 Victoria St\",\r\n          \"address2\": null,\r\n          \"city\": \"Toronto\",\r\n          \"province\": null,\r\n          \"country\": \"Canada\",\r\n          \"zip\": \"M5C1N7\",\r\n          \"phone\": null,\r\n          \"name\": \"Russell Winfield\",\r\n          \"province_code\": null,\r\n          \"country_code\": \"CA\",\r\n          \"country_name\": \"Canada\",\r\n          \"default\": true\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": 1115377795359,\r\n      \"note\": null,\r\n      \"email\": \"karine.ruby@example.com\",\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"name\": \"#D4\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257069932831,\r\n          \"variant_id\": 44861008150815,\r\n          \"product_id\": 8223770181919,\r\n          \"title\": \"The Complete Snowboard\",\r\n          \"variant_title\": \"Sunset\",\r\n          \"sku\": \"\",\r\n          \"vendor\": \"Snowboard Vendor\",\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 4536,\r\n          \"tax_lines\": [\r\n            {\r\n              \"rate\": 0.15,\r\n              \"title\": \"VAT\",\r\n              \"price\": \"104.99\"\r\n            }\r\n          ],\r\n          \"applied_discount\": null,\r\n          \"name\": \"The Complete Snowboard - Sunset\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"699.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257069932831\"\r\n        }\r\n      ],\r\n      \"shipping_address\": null,\r\n      \"billing_address\": null,\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/b997ef8255fbeb1764b3068b6e028bfa\",\r\n      \"applied_discount\": null,\r\n      \"order_id\": 5329877827871,\r\n      \"shipping_line\": {\r\n        \"title\": \"Custom Shipping Rate\",\r\n        \"custom\": true,\r\n        \"handle\": null,\r\n        \"price\": \"52.23\"\r\n      },\r\n      \"tax_lines\": [\r\n        {\r\n          \"rate\": 0.15,\r\n          \"title\": \"VAT\",\r\n          \"price\": \"104.99\"\r\n        }\r\n      ],\r\n      \"tags\": \"Custom Shipping Rate\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"857.17\",\r\n      \"subtotal_price\": \"699.95\",\r\n      \"total_tax\": \"104.99\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377795359\",\r\n      \"customer\": {\r\n        \"id\": 6889709830431,\r\n        \"email\": \"karine.ruby@example.com\",\r\n        \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n        \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n        \"first_name\": \"Karine\",\r\n        \"last_name\": \"Ruby\",\r\n        \"orders_count\": 1,\r\n        \"state\": \"disabled\",\r\n        \"total_spent\": \"857.17\",\r\n        \"last_order_id\": 5329877827871,\r\n        \"note\": null,\r\n        \"verified_email\": true,\r\n        \"multipass_identifier\": null,\r\n        \"tax_exempt\": false,\r\n        \"tags\": \"\",\r\n        \"last_order_name\": \"#1004\",\r\n        \"currency\": \"ZAR\",\r\n        \"phone\": \"+16135550142\",\r\n        \"tax_exemptions\": [],\r\n        \"email_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null\r\n        },\r\n        \"sms_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null,\r\n          \"consent_collected_from\": \"OTHER\"\r\n        },\r\n        \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709830431\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": 1115377828127,\r\n      \"note\": null,\r\n      \"email\": null,\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"name\": \"#D6\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257069965599,\r\n          \"variant_id\": 44861008019743,\r\n          \"product_id\": 8223770181919,\r\n          \"title\": \"The Complete Snowboard\",\r\n          \"variant_title\": \"Ice\",\r\n          \"sku\": \"\",\r\n          \"vendor\": \"Snowboard Vendor\",\r\n          \"quantity\": 4,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 4536,\r\n          \"tax_lines\": [\r\n            {\r\n              \"rate\": 0.15,\r\n              \"title\": \"VAT\",\r\n              \"price\": \"419.97\"\r\n            }\r\n          ],\r\n          \"applied_discount\": null,\r\n          \"name\": \"The Complete Snowboard - Ice\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"699.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257069965599\"\r\n        }\r\n      ],\r\n      \"shipping_address\": null,\r\n      \"billing_address\": null,\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/e343cb73ee2f46cd472d82fcc97c2890\",\r\n      \"applied_discount\": null,\r\n      \"order_id\": 5329877795103,\r\n      \"shipping_line\": null,\r\n      \"tax_lines\": [\r\n        {\r\n          \"rate\": 0.15,\r\n          \"title\": \"VAT\",\r\n          \"price\": \"419.97\"\r\n        }\r\n      ],\r\n      \"tags\": \"International Market\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"3219.77\",\r\n      \"subtotal_price\": \"2799.80\",\r\n      \"total_tax\": \"419.97\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377828127\"\r\n    },\r\n    {\r\n      \"id\": 1115377860895,\r\n      \"note\": null,\r\n      \"email\": \"ayumu.hirano@example.com\",\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:59-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:59-04:00\",\r\n      \"name\": \"#D5\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257069998367,\r\n          \"variant_id\": 44861008019743,\r\n          \"product_id\": 8223770181919,\r\n          \"title\": \"The Complete Snowboard\",\r\n          \"variant_title\": \"Ice\",\r\n          \"sku\": \"\",\r\n          \"vendor\": \"Snowboard Vendor\",\r\n          \"quantity\": 4,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 4536,\r\n          \"tax_lines\": [\r\n            {\r\n              \"rate\": 0.15,\r\n              \"title\": \"VAT\",\r\n              \"price\": \"314.98\"\r\n            }\r\n          ],\r\n          \"applied_discount\": {\r\n            \"description\": null,\r\n            \"value\": \"25.0\",\r\n            \"title\": null,\r\n            \"amount\": \"699.95\",\r\n            \"value_type\": \"percentage\"\r\n          },\r\n          \"name\": \"The Complete Snowboard - Ice\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"699.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257069998367\"\r\n        }\r\n      ],\r\n      \"shipping_address\": null,\r\n      \"billing_address\": null,\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/813893afa9a3eb802270f5b4500a872b\",\r\n      \"applied_discount\": null,\r\n      \"order_id\": 5329878024479,\r\n      \"shipping_line\": {\r\n        \"title\": \"International Shipping\",\r\n        \"custom\": true,\r\n        \"handle\": null,\r\n        \"price\": \"30.00\"\r\n      },\r\n      \"tax_lines\": [\r\n        {\r\n          \"rate\": 0.15,\r\n          \"title\": \"VAT\",\r\n          \"price\": \"314.98\"\r\n        }\r\n      ],\r\n      \"tags\": \"Line Item Discount\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"2444.83\",\r\n      \"subtotal_price\": \"2099.85\",\r\n      \"total_tax\": \"314.98\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377860895\",\r\n      \"customer\": {\r\n        \"id\": 6889709895967,\r\n        \"email\": \"ayumu.hirano@example.com\",\r\n        \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n        \"updated_at\": \"2023-04-25T03:35:59-04:00\",\r\n        \"first_name\": \"Ayumu\",\r\n        \"last_name\": \"Hirano\",\r\n        \"orders_count\": 2,\r\n        \"state\": \"disabled\",\r\n        \"total_spent\": \"3284.27\",\r\n        \"last_order_id\": 5329878024479,\r\n        \"note\": null,\r\n        \"verified_email\": true,\r\n        \"multipass_identifier\": null,\r\n        \"tax_exempt\": false,\r\n        \"tags\": \"\",\r\n        \"last_order_name\": \"#1010\",\r\n        \"currency\": \"ZAR\",\r\n        \"phone\": \"+16135550127\",\r\n        \"tax_exemptions\": [],\r\n        \"email_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null\r\n        },\r\n        \"sms_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null,\r\n          \"consent_collected_from\": \"OTHER\"\r\n        },\r\n        \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709895967\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": 1115377893663,\r\n      \"note\": null,\r\n      \"email\": \"ayumu.hirano@example.com\",\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"name\": \"#D7\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257070031135,\r\n          \"variant_id\": 44861008347423,\r\n          \"product_id\": 8223770280223,\r\n          \"title\": \"The Multi-location Snowboard\",\r\n          \"variant_title\": null,\r\n          \"sku\": \"\",\r\n          \"vendor\": \"FlowgearSandbox01\",\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 0,\r\n          \"tax_lines\": [\r\n            {\r\n              \"rate\": 0.15,\r\n              \"title\": \"VAT\",\r\n              \"price\": \"109.49\"\r\n            }\r\n          ],\r\n          \"applied_discount\": null,\r\n          \"name\": \"The Multi-location Snowboard\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"729.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257070031135\"\r\n        }\r\n      ],\r\n      \"shipping_address\": null,\r\n      \"billing_address\": null,\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/761f4bf9f3becb8330954e7ba52f929a\",\r\n      \"applied_discount\": null,\r\n      \"order_id\": 5329877860639,\r\n      \"shipping_line\": {\r\n        \"title\": \"Discount Shipping Rate\",\r\n        \"custom\": true,\r\n        \"handle\": null,\r\n        \"price\": \"0.00\"\r\n      },\r\n      \"tax_lines\": [\r\n        {\r\n          \"rate\": 0.15,\r\n          \"title\": \"VAT\",\r\n          \"price\": \"109.49\"\r\n        }\r\n      ],\r\n      \"tags\": \"Shipping Discount\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"839.44\",\r\n      \"subtotal_price\": \"729.95\",\r\n      \"total_tax\": \"109.49\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377893663\",\r\n      \"customer\": {\r\n        \"id\": 6889709895967,\r\n        \"email\": \"ayumu.hirano@example.com\",\r\n        \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n        \"updated_at\": \"2023-04-25T03:35:59-04:00\",\r\n        \"first_name\": \"Ayumu\",\r\n        \"last_name\": \"Hirano\",\r\n        \"orders_count\": 2,\r\n        \"state\": \"disabled\",\r\n        \"total_spent\": \"3284.27\",\r\n        \"last_order_id\": 5329878024479,\r\n        \"note\": null,\r\n        \"verified_email\": true,\r\n        \"multipass_identifier\": null,\r\n        \"tax_exempt\": false,\r\n        \"tags\": \"\",\r\n        \"last_order_name\": \"#1010\",\r\n        \"currency\": \"ZAR\",\r\n        \"phone\": \"+16135550127\",\r\n        \"tax_exemptions\": [],\r\n        \"email_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null\r\n        },\r\n        \"sms_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null,\r\n          \"consent_collected_from\": \"OTHER\"\r\n        },\r\n        \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709895967\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": 1115377926431,\r\n      \"note\": null,\r\n      \"email\": \"russel.winfield@example.com\",\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"name\": \"#D8\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257070063903,\r\n          \"variant_id\": 44861008052511,\r\n          \"product_id\": 8223770181919,\r\n          \"title\": \"The Complete Snowboard\",\r\n          \"variant_title\": \"Dawn\",\r\n          \"sku\": \"\",\r\n          \"vendor\": \"Snowboard Vendor\",\r\n          \"quantity\": 2,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 4536,\r\n          \"tax_lines\": [],\r\n          \"applied_discount\": null,\r\n          \"name\": \"The Complete Snowboard - Dawn\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"699.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257070063903\"\r\n        }\r\n      ],\r\n      \"shipping_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": 43.6522608,\r\n        \"longitude\": -79.3776862,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"billing_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": null,\r\n        \"longitude\": null,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/b46b3bbaf6d8217d47066cc3a7460c7f\",\r\n      \"applied_discount\": {\r\n        \"description\": null,\r\n        \"value\": \"10.0\",\r\n        \"title\": null,\r\n        \"amount\": \"139.99\",\r\n        \"value_type\": \"percentage\"\r\n      },\r\n      \"order_id\": 5329877893407,\r\n      \"shipping_line\": {\r\n        \"title\": \"International Shipping\",\r\n        \"custom\": false,\r\n        \"handle\": \"424511c542b4a872d35401261319b9d1\",\r\n        \"price\": \"30.00\"\r\n      },\r\n      \"tax_lines\": [],\r\n      \"tags\": \"Order Discount\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"1289.91\",\r\n      \"subtotal_price\": \"1259.91\",\r\n      \"total_tax\": \"0.00\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377926431\",\r\n      \"customer\": {\r\n        \"id\": 6889709863199,\r\n        \"email\": \"russel.winfield@example.com\",\r\n        \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n        \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n        \"first_name\": \"Russell\",\r\n        \"last_name\": \"Winfield\",\r\n        \"orders_count\": 4,\r\n        \"state\": \"disabled\",\r\n        \"total_spent\": \"6656.19\",\r\n        \"last_order_id\": 5329877991711,\r\n        \"note\": \"This customer is created with most available fields\",\r\n        \"verified_email\": true,\r\n        \"multipass_identifier\": null,\r\n        \"tax_exempt\": false,\r\n        \"tags\": \"VIP\",\r\n        \"last_order_name\": \"#1009\",\r\n        \"currency\": \"ZAR\",\r\n        \"phone\": \"+16135550135\",\r\n        \"tax_exemptions\": [],\r\n        \"email_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null\r\n        },\r\n        \"sms_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"unknown\",\r\n          \"consent_updated_at\": null,\r\n          \"consent_collected_from\": \"OTHER\"\r\n        },\r\n        \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709863199\",\r\n        \"default_address\": {\r\n          \"id\": 9160311439647,\r\n          \"customer_id\": 6889709863199,\r\n          \"first_name\": \"Russell\",\r\n          \"last_name\": \"Winfield\",\r\n          \"company\": \"Company Name\",\r\n          \"address1\": \"105 Victoria St\",\r\n          \"address2\": null,\r\n          \"city\": \"Toronto\",\r\n          \"province\": null,\r\n          \"country\": \"Canada\",\r\n          \"zip\": \"M5C1N7\",\r\n          \"phone\": null,\r\n          \"name\": \"Russell Winfield\",\r\n          \"province_code\": null,\r\n          \"country_code\": \"CA\",\r\n          \"country_name\": \"Canada\",\r\n          \"default\": true\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": 1115377959199,\r\n      \"note\": null,\r\n      \"email\": \"russel.winfield@example.com\",\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"name\": \"#D9\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257070096671,\r\n          \"variant_id\": 44861008085279,\r\n          \"product_id\": 8223770181919,\r\n          \"title\": \"The Complete Snowboard\",\r\n          \"variant_title\": \"Powder\",\r\n          \"sku\": \"\",\r\n          \"vendor\": \"Snowboard Vendor\",\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 4536,\r\n          \"tax_lines\": [],\r\n          \"applied_discount\": {\r\n            \"description\": null,\r\n            \"value\": \"10.0\",\r\n            \"title\": null,\r\n            \"amount\": \"10.00\",\r\n            \"value_type\": \"fixed_amount\"\r\n          },\r\n          \"name\": \"The Complete Snowboard - Powder\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"699.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257070096671\"\r\n        },\r\n        {\r\n          \"id\": 58257070129439,\r\n          \"variant_id\": 44861008118047,\r\n          \"product_id\": 8223770181919,\r\n          \"title\": \"The Complete Snowboard\",\r\n          \"variant_title\": \"Electric\",\r\n          \"sku\": \"\",\r\n          \"vendor\": \"Snowboard Vendor\",\r\n          \"quantity\": 2,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 4536,\r\n          \"tax_lines\": [],\r\n          \"applied_discount\": null,\r\n          \"name\": \"The Complete Snowboard - Electric\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"699.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257070129439\"\r\n        }\r\n      ],\r\n      \"shipping_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": 43.6522608,\r\n        \"longitude\": -79.3776862,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"billing_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": null,\r\n        \"longitude\": null,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/e5e29023cd18f598280ac0c88149431d\",\r\n      \"applied_discount\": {\r\n        \"description\": null,\r\n        \"value\": \"15.0\",\r\n        \"title\": null,\r\n        \"amount\": \"313.47\",\r\n        \"value_type\": \"percentage\"\r\n      },\r\n      \"order_id\": 5329877926175,\r\n      \"shipping_line\": {\r\n        \"title\": \"International Shipping\",\r\n        \"custom\": false,\r\n        \"handle\": \"424511c542b4a872d35401261319b9d1\",\r\n        \"price\": \"30.00\"\r\n      },\r\n      \"tax_lines\": [],\r\n      \"tags\": \"Line Item Discount, Order Discount\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"1806.38\",\r\n      \"subtotal_price\": \"1776.38\",\r\n      \"total_tax\": \"0.00\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377959199\",\r\n      \"customer\": {\r\n        \"id\": 6889709863199,\r\n        \"email\": \"russel.winfield@example.com\",\r\n        \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n        \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n        \"first_name\": \"Russell\",\r\n        \"last_name\": \"Winfield\",\r\n        \"orders_count\": 4,\r\n        \"state\": \"disabled\",\r\n        \"total_spent\": \"6656.19\",\r\n        \"last_order_id\": 5329877991711,\r\n        \"note\": \"This customer is created with most available fields\",\r\n        \"verified_email\": true,\r\n        \"multipass_identifier\": null,\r\n        \"tax_exempt\": false,\r\n        \"tags\": \"VIP\",\r\n        \"last_order_name\": \"#1009\",\r\n        \"currency\": \"ZAR\",\r\n        \"phone\": \"+16135550135\",\r\n        \"tax_exemptions\": [],\r\n        \"email_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null\r\n        },\r\n        \"sms_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"unknown\",\r\n          \"consent_updated_at\": null,\r\n          \"consent_collected_from\": \"OTHER\"\r\n        },\r\n        \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709863199\",\r\n        \"default_address\": {\r\n          \"id\": 9160311439647,\r\n          \"customer_id\": 6889709863199,\r\n          \"first_name\": \"Russell\",\r\n          \"last_name\": \"Winfield\",\r\n          \"company\": \"Company Name\",\r\n          \"address1\": \"105 Victoria St\",\r\n          \"address2\": null,\r\n          \"city\": \"Toronto\",\r\n          \"province\": null,\r\n          \"country\": \"Canada\",\r\n          \"zip\": \"M5C1N7\",\r\n          \"phone\": null,\r\n          \"name\": \"Russell Winfield\",\r\n          \"province_code\": null,\r\n          \"country_code\": \"CA\",\r\n          \"country_name\": \"Canada\",\r\n          \"default\": true\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": 1115377991967,\r\n      \"note\": null,\r\n      \"email\": \"russel.winfield@example.com\",\r\n      \"taxes_included\": false,\r\n      \"currency\": \"ZAR\",\r\n      \"invoice_sent_at\": null,\r\n      \"created_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"tax_exempt\": false,\r\n      \"completed_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"name\": \"#D10\",\r\n      \"status\": \"completed\",\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 58257070162207,\r\n          \"variant_id\": 44861008150815,\r\n          \"product_id\": 8223770181919,\r\n          \"title\": \"The Complete Snowboard\",\r\n          \"variant_title\": \"Sunset\",\r\n          \"sku\": \"\",\r\n          \"vendor\": \"Snowboard Vendor\",\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 4536,\r\n          \"tax_lines\": [],\r\n          \"applied_discount\": null,\r\n          \"name\": \"The Complete Snowboard - Sunset\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"699.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257070162207\"\r\n        },\r\n        {\r\n          \"id\": 58257070194975,\r\n          \"variant_id\": 44861008445727,\r\n          \"product_id\": 8223770378527,\r\n          \"title\": \"The 3p Fulfilled Snowboard\",\r\n          \"variant_title\": null,\r\n          \"sku\": \"sku-hosted-1\",\r\n          \"vendor\": \"FlowgearSandbox01\",\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"taxable\": true,\r\n          \"gift_card\": false,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"grams\": 0,\r\n          \"tax_lines\": [],\r\n          \"applied_discount\": null,\r\n          \"name\": \"The 3p Fulfilled Snowboard\",\r\n          \"properties\": [],\r\n          \"custom\": false,\r\n          \"price\": \"2629.95\",\r\n          \"admin_graphql_api_id\": \"gid://shopify/DraftOrderLineItem/58257070194975\"\r\n        }\r\n      ],\r\n      \"shipping_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": null,\r\n        \"longitude\": null,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"billing_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": 43.6522608,\r\n        \"longitude\": -79.3776862,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"invoice_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/invoices/6e0a080feed1dcec63100ec4ce62268e\",\r\n      \"applied_discount\": null,\r\n      \"order_id\": 5329877991711,\r\n      \"shipping_line\": null,\r\n      \"tax_lines\": [],\r\n      \"tags\": \"Multiple Fulfillments\",\r\n      \"note_attributes\": [],\r\n      \"total_price\": \"3329.90\",\r\n      \"subtotal_price\": \"3329.90\",\r\n      \"total_tax\": \"0.00\",\r\n      \"payment_terms\": null,\r\n      \"admin_graphql_api_id\": \"gid://shopify/DraftOrder/1115377991967\",\r\n      \"customer\": {\r\n        \"id\": 6889709863199,\r\n        \"email\": \"russel.winfield@example.com\",\r\n        \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n        \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n        \"first_name\": \"Russell\",\r\n        \"last_name\": \"Winfield\",\r\n        \"orders_count\": 4,\r\n        \"state\": \"disabled\",\r\n        \"total_spent\": \"6656.19\",\r\n        \"last_order_id\": 5329877991711,\r\n        \"note\": \"This customer is created with most available fields\",\r\n        \"verified_email\": true,\r\n        \"multipass_identifier\": null,\r\n        \"tax_exempt\": false,\r\n        \"tags\": \"VIP\",\r\n        \"last_order_name\": \"#1009\",\r\n        \"currency\": \"ZAR\",\r\n        \"phone\": \"+16135550135\",\r\n        \"tax_exemptions\": [],\r\n        \"email_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null\r\n        },\r\n        \"sms_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"unknown\",\r\n          \"consent_updated_at\": null,\r\n          \"consent_collected_from\": \"OTHER\"\r\n        },\r\n        \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709863199\",\r\n        \"default_address\": {\r\n          \"id\": 9160311439647,\r\n          \"customer_id\": 6889709863199,\r\n          \"first_name\": \"Russell\",\r\n          \"last_name\": \"Winfield\",\r\n          \"company\": \"Company Name\",\r\n          \"address1\": \"105 Victoria St\",\r\n          \"address2\": null,\r\n          \"city\": \"Toronto\",\r\n          \"province\": null,\r\n          \"country\": \"Canada\",\r\n          \"zip\": \"M5C1N7\",\r\n          \"phone\": null,\r\n          \"name\": \"Russell Winfield\",\r\n          \"province_code\": null,\r\n          \"country_code\": \"CA\",\r\n          \"country_name\": \"Canada\",\r\n          \"default\": true\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "limit",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "10"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 6405, "Y": 3640 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "DisplayName": "Shopify",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-02-06T10:22:44.9640039+00:00",
+          "Username": "nicholas.christodoulou@flowgear.net",
+          "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+        }
+      },
+      {
+        "NodeId": "f7609b5f-679a-5fc5-3de7-0c04e27ed612",
+        "Name": "QuickMap",
+        "LongDescription": "Quickmap is used to map values from Shopify payload to the format that D365 requires to create Sales Orders",
+        "Version": "4.0.0.43",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"draft_orders/name\"],\"targetPath\":\"Request/salesorder/accountidname\"},{\"sourcePaths\":[\"draft_orders/created_at\"],\"targetPath\":\"Request/salesorder/createdon\"},{\"sourcePaths\":[\"draft_orders/email\"],\"targetPath\":\"Request/salesorder/emailaddress\"},{\"sourcePaths\":[\"draft_orders/order_id\"],\"targetPath\":\"Request/salesorder/ordernumber\",\"mapExpression\":\"TEXTVALUE(DAY(NOW())) + TEXTVALUE({order_id})\"},{\"sourcePaths\":[],\"targetPath\":\"Request/salesorder/salesorderid\",\"mapExpression\":\"GUID()\"},{\"sourcePaths\":[\"draft_orders/status\"],\"targetPath\":\"Request/salesorder/submitstatusdescription\"},{\"sourcePaths\":[\"draft_orders/total_price\"],\"targetPath\":\"Request/salesorder/totalamount\"},{\"sourcePaths\":[\"draft_orders/total_tax\"],\"targetPath\":\"Request/salesorder/totaltax\"},{\"sourcePaths\":[\"draft_orders/currency\"],\"targetPath\":\"Request/salesorder/transactioncurrencyidname\"}],\"sourceSchema\":\"{\\r\\n  \\\"draft_orders\\\": [\\r\\n    {\\r\\n      \\\"id\\\": 1115377697055,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": null,\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:54-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D1\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257069834527,\\r\\n          \\\"variant_id\\\": 44861007593759,\\r\\n          \\\"product_id\\\": 8223769952543,\\r\\n          \\\"title\\\": \\\"The Minimal Snowboard\\\",\\r\\n          \\\"variant_title\\\": null,\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"FlowgearSandbox01\\\",\\r\\n          \\\"quantity\\\": 1,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 0,\\r\\n          \\\"tax_lines\\\": [\\r\\n            {\\r\\n              \\\"rate\\\": 0.15,\\r\\n              \\\"title\\\": \\\"VAT\\\",\\r\\n              \\\"price\\\": \\\"132.89\\\"\\r\\n            }\\r\\n          ],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"The Minimal Snowboard\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"885.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257069834527\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": null,\\r\\n      \\\"billing_address\\\": null,\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/a2b653346f99bb76088d81d3aa9ee251\\\",\\r\\n      \\\"applied_discount\\\": null,\\r\\n      \\\"order_id\\\": 5329877958943,\\r\\n      \\\"shipping_line\\\": null,\\r\\n      \\\"tax_lines\\\": [\\r\\n        {\\r\\n          \\\"rate\\\": 0.15,\\r\\n          \\\"title\\\": \\\"VAT\\\",\\r\\n          \\\"price\\\": \\\"132.89\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"tags\\\": \\\"Edited\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"1018.84\\\",\\r\\n      \\\"subtotal_price\\\": \\\"885.95\\\",\\r\\n      \\\"total_tax\\\": \\\"132.89\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377697055\\\"\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 1115377729823,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": null,\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:54-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:55-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:55-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D2\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257069867295,\\r\\n          \\\"variant_id\\\": 44861007593759,\\r\\n          \\\"product_id\\\": 8223769952543,\\r\\n          \\\"title\\\": \\\"The Minimal Snowboard\\\",\\r\\n          \\\"variant_title\\\": null,\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"FlowgearSandbox01\\\",\\r\\n          \\\"quantity\\\": 1,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 0,\\r\\n          \\\"tax_lines\\\": [\\r\\n            {\\r\\n              \\\"rate\\\": 0.15,\\r\\n              \\\"title\\\": \\\"VAT\\\",\\r\\n              \\\"price\\\": \\\"132.89\\\"\\r\\n            }\\r\\n          ],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"The Minimal Snowboard\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"885.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257069867295\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": null,\\r\\n      \\\"billing_address\\\": null,\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/471516f94e7bf8b9db1fe35dce9e8c22\\\",\\r\\n      \\\"applied_discount\\\": null,\\r\\n      \\\"order_id\\\": 5329877729567,\\r\\n      \\\"shipping_line\\\": null,\\r\\n      \\\"tax_lines\\\": [\\r\\n        {\\r\\n          \\\"rate\\\": 0.15,\\r\\n          \\\"title\\\": \\\"VAT\\\",\\r\\n          \\\"price\\\": \\\"132.89\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"tags\\\": \\\"Minimal Info\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"1018.84\\\",\\r\\n      \\\"subtotal_price\\\": \\\"885.95\\\",\\r\\n      \\\"total_tax\\\": \\\"132.89\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377729823\\\"\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 1115377762591,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:55-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D3\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257069900063,\\r\\n          \\\"variant_id\\\": null,\\r\\n          \\\"product_id\\\": null,\\r\\n          \\\"title\\\": \\\"Custom Snowboard\\\",\\r\\n          \\\"variant_title\\\": null,\\r\\n          \\\"sku\\\": null,\\r\\n          \\\"vendor\\\": null,\\r\\n          \\\"quantity\\\": 1,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 0,\\r\\n          \\\"tax_lines\\\": [],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"Custom Snowboard\\\",\\r\\n          \\\"properties\\\": [\\r\\n            {\\r\\n              \\\"name\\\": \\\"wrap description\\\",\\r\\n              \\\"value\\\": \\\"Put my cat on it so I can shred these slopes like he shreds my couch!\\\"\\r\\n            }\\r\\n          ],\\r\\n          \\\"custom\\\": true,\\r\\n          \\\"price\\\": \\\"200.00\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257069900063\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": {\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"latitude\\\": null,\\r\\n        \\\"longitude\\\": null,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"province_code\\\": null\\r\\n      },\\r\\n      \\\"billing_address\\\": {\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"latitude\\\": 43.6522608,\\r\\n        \\\"longitude\\\": -79.3776862,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"province_code\\\": null\\r\\n      },\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/a160467c66df7ea5ea430d062c3db405\\\",\\r\\n      \\\"applied_discount\\\": null,\\r\\n      \\\"order_id\\\": 5329877762335,\\r\\n      \\\"shipping_line\\\": {\\r\\n        \\\"title\\\": \\\"International Shipping\\\",\\r\\n        \\\"custom\\\": false,\\r\\n        \\\"handle\\\": \\\"424511c542b4a872d35401261319b9d1\\\",\\r\\n        \\\"price\\\": \\\"30.00\\\"\\r\\n      },\\r\\n      \\\"tax_lines\\\": [],\\r\\n      \\\"tags\\\": \\\"Custom Item\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"230.00\\\",\\r\\n      \\\"subtotal_price\\\": \\\"200.00\\\",\\r\\n      \\\"total_tax\\\": \\\"0.00\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377762591\\\",\\r\\n      \\\"customer\\\": {\\r\\n        \\\"id\\\": 6889709863199,\\r\\n        \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n        \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n        \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"orders_count\\\": 4,\\r\\n        \\\"state\\\": \\\"disabled\\\",\\r\\n        \\\"total_spent\\\": \\\"6656.19\\\",\\r\\n        \\\"last_order_id\\\": 5329877991711,\\r\\n        \\\"note\\\": \\\"This customer is created with most available fields\\\",\\r\\n        \\\"verified_email\\\": true,\\r\\n        \\\"multipass_identifier\\\": null,\\r\\n        \\\"tax_exempt\\\": false,\\r\\n        \\\"tags\\\": \\\"VIP\\\",\\r\\n        \\\"last_order_name\\\": \\\"#1009\\\",\\r\\n        \\\"currency\\\": \\\"ZAR\\\",\\r\\n        \\\"phone\\\": \\\"+16135550135\\\",\\r\\n        \\\"tax_exemptions\\\": [],\\r\\n        \\\"email_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null\\r\\n        },\\r\\n        \\\"sms_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"unknown\\\",\\r\\n          \\\"consent_updated_at\\\": null,\\r\\n          \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n        },\\r\\n        \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709863199\\\",\\r\\n        \\\"default_address\\\": {\\r\\n          \\\"id\\\": 9160311439647,\\r\\n          \\\"customer_id\\\": 6889709863199,\\r\\n          \\\"first_name\\\": \\\"Russell\\\",\\r\\n          \\\"last_name\\\": \\\"Winfield\\\",\\r\\n          \\\"company\\\": \\\"Company Name\\\",\\r\\n          \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n          \\\"address2\\\": null,\\r\\n          \\\"city\\\": \\\"Toronto\\\",\\r\\n          \\\"province\\\": null,\\r\\n          \\\"country\\\": \\\"Canada\\\",\\r\\n          \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n          \\\"phone\\\": null,\\r\\n          \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n          \\\"province_code\\\": null,\\r\\n          \\\"country_code\\\": \\\"CA\\\",\\r\\n          \\\"country_name\\\": \\\"Canada\\\",\\r\\n          \\\"default\\\": true\\r\\n        }\\r\\n      }\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 1115377795359,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": \\\"karine.ruby@example.com\\\",\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D4\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257069932831,\\r\\n          \\\"variant_id\\\": 44861008150815,\\r\\n          \\\"product_id\\\": 8223770181919,\\r\\n          \\\"title\\\": \\\"The Complete Snowboard\\\",\\r\\n          \\\"variant_title\\\": \\\"Sunset\\\",\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"Snowboard Vendor\\\",\\r\\n          \\\"quantity\\\": 1,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 4536,\\r\\n          \\\"tax_lines\\\": [\\r\\n            {\\r\\n              \\\"rate\\\": 0.15,\\r\\n              \\\"title\\\": \\\"VAT\\\",\\r\\n              \\\"price\\\": \\\"104.99\\\"\\r\\n            }\\r\\n          ],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"The Complete Snowboard - Sunset\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"699.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257069932831\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": null,\\r\\n      \\\"billing_address\\\": null,\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/b997ef8255fbeb1764b3068b6e028bfa\\\",\\r\\n      \\\"applied_discount\\\": null,\\r\\n      \\\"order_id\\\": 5329877827871,\\r\\n      \\\"shipping_line\\\": {\\r\\n        \\\"title\\\": \\\"Custom Shipping Rate\\\",\\r\\n        \\\"custom\\\": true,\\r\\n        \\\"handle\\\": null,\\r\\n        \\\"price\\\": \\\"52.23\\\"\\r\\n      },\\r\\n      \\\"tax_lines\\\": [\\r\\n        {\\r\\n          \\\"rate\\\": 0.15,\\r\\n          \\\"title\\\": \\\"VAT\\\",\\r\\n          \\\"price\\\": \\\"104.99\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"tags\\\": \\\"Custom Shipping Rate\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"857.17\\\",\\r\\n      \\\"subtotal_price\\\": \\\"699.95\\\",\\r\\n      \\\"total_tax\\\": \\\"104.99\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377795359\\\",\\r\\n      \\\"customer\\\": {\\r\\n        \\\"id\\\": 6889709830431,\\r\\n        \\\"email\\\": \\\"karine.ruby@example.com\\\",\\r\\n        \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n        \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n        \\\"first_name\\\": \\\"Karine\\\",\\r\\n        \\\"last_name\\\": \\\"Ruby\\\",\\r\\n        \\\"orders_count\\\": 1,\\r\\n        \\\"state\\\": \\\"disabled\\\",\\r\\n        \\\"total_spent\\\": \\\"857.17\\\",\\r\\n        \\\"last_order_id\\\": 5329877827871,\\r\\n        \\\"note\\\": null,\\r\\n        \\\"verified_email\\\": true,\\r\\n        \\\"multipass_identifier\\\": null,\\r\\n        \\\"tax_exempt\\\": false,\\r\\n        \\\"tags\\\": \\\"\\\",\\r\\n        \\\"last_order_name\\\": \\\"#1004\\\",\\r\\n        \\\"currency\\\": \\\"ZAR\\\",\\r\\n        \\\"phone\\\": \\\"+16135550142\\\",\\r\\n        \\\"tax_exemptions\\\": [],\\r\\n        \\\"email_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null\\r\\n        },\\r\\n        \\\"sms_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null,\\r\\n          \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n        },\\r\\n        \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709830431\\\"\\r\\n      }\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 1115377828127,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": null,\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D6\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257069965599,\\r\\n          \\\"variant_id\\\": 44861008019743,\\r\\n          \\\"product_id\\\": 8223770181919,\\r\\n          \\\"title\\\": \\\"The Complete Snowboard\\\",\\r\\n          \\\"variant_title\\\": \\\"Ice\\\",\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"Snowboard Vendor\\\",\\r\\n          \\\"quantity\\\": 4,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 4536,\\r\\n          \\\"tax_lines\\\": [\\r\\n            {\\r\\n              \\\"rate\\\": 0.15,\\r\\n              \\\"title\\\": \\\"VAT\\\",\\r\\n              \\\"price\\\": \\\"419.97\\\"\\r\\n            }\\r\\n          ],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"The Complete Snowboard - Ice\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"699.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257069965599\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": null,\\r\\n      \\\"billing_address\\\": null,\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/e343cb73ee2f46cd472d82fcc97c2890\\\",\\r\\n      \\\"applied_discount\\\": null,\\r\\n      \\\"order_id\\\": 5329877795103,\\r\\n      \\\"shipping_line\\\": null,\\r\\n      \\\"tax_lines\\\": [\\r\\n        {\\r\\n          \\\"rate\\\": 0.15,\\r\\n          \\\"title\\\": \\\"VAT\\\",\\r\\n          \\\"price\\\": \\\"419.97\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"tags\\\": \\\"International Market\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"3219.77\\\",\\r\\n      \\\"subtotal_price\\\": \\\"2799.80\\\",\\r\\n      \\\"total_tax\\\": \\\"419.97\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377828127\\\"\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 1115377860895,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": \\\"ayumu.hirano@example.com\\\",\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:59-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:59-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D5\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257069998367,\\r\\n          \\\"variant_id\\\": 44861008019743,\\r\\n          \\\"product_id\\\": 8223770181919,\\r\\n          \\\"title\\\": \\\"The Complete Snowboard\\\",\\r\\n          \\\"variant_title\\\": \\\"Ice\\\",\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"Snowboard Vendor\\\",\\r\\n          \\\"quantity\\\": 4,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 4536,\\r\\n          \\\"tax_lines\\\": [\\r\\n            {\\r\\n              \\\"rate\\\": 0.15,\\r\\n              \\\"title\\\": \\\"VAT\\\",\\r\\n              \\\"price\\\": \\\"314.98\\\"\\r\\n            }\\r\\n          ],\\r\\n          \\\"applied_discount\\\": {\\r\\n            \\\"description\\\": null,\\r\\n            \\\"value\\\": \\\"25.0\\\",\\r\\n            \\\"title\\\": null,\\r\\n            \\\"amount\\\": \\\"699.95\\\",\\r\\n            \\\"value_type\\\": \\\"percentage\\\"\\r\\n          },\\r\\n          \\\"name\\\": \\\"The Complete Snowboard - Ice\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"699.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257069998367\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": null,\\r\\n      \\\"billing_address\\\": null,\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/813893afa9a3eb802270f5b4500a872b\\\",\\r\\n      \\\"applied_discount\\\": null,\\r\\n      \\\"order_id\\\": 5329878024479,\\r\\n      \\\"shipping_line\\\": {\\r\\n        \\\"title\\\": \\\"International Shipping\\\",\\r\\n        \\\"custom\\\": true,\\r\\n        \\\"handle\\\": null,\\r\\n        \\\"price\\\": \\\"30.00\\\"\\r\\n      },\\r\\n      \\\"tax_lines\\\": [\\r\\n        {\\r\\n          \\\"rate\\\": 0.15,\\r\\n          \\\"title\\\": \\\"VAT\\\",\\r\\n          \\\"price\\\": \\\"314.98\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"tags\\\": \\\"Line Item Discount\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"2444.83\\\",\\r\\n      \\\"subtotal_price\\\": \\\"2099.85\\\",\\r\\n      \\\"total_tax\\\": \\\"314.98\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377860895\\\",\\r\\n      \\\"customer\\\": {\\r\\n        \\\"id\\\": 6889709895967,\\r\\n        \\\"email\\\": \\\"ayumu.hirano@example.com\\\",\\r\\n        \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n        \\\"updated_at\\\": \\\"2023-04-25T03:35:59-04:00\\\",\\r\\n        \\\"first_name\\\": \\\"Ayumu\\\",\\r\\n        \\\"last_name\\\": \\\"Hirano\\\",\\r\\n        \\\"orders_count\\\": 2,\\r\\n        \\\"state\\\": \\\"disabled\\\",\\r\\n        \\\"total_spent\\\": \\\"3284.27\\\",\\r\\n        \\\"last_order_id\\\": 5329878024479,\\r\\n        \\\"note\\\": null,\\r\\n        \\\"verified_email\\\": true,\\r\\n        \\\"multipass_identifier\\\": null,\\r\\n        \\\"tax_exempt\\\": false,\\r\\n        \\\"tags\\\": \\\"\\\",\\r\\n        \\\"last_order_name\\\": \\\"#1010\\\",\\r\\n        \\\"currency\\\": \\\"ZAR\\\",\\r\\n        \\\"phone\\\": \\\"+16135550127\\\",\\r\\n        \\\"tax_exemptions\\\": [],\\r\\n        \\\"email_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null\\r\\n        },\\r\\n        \\\"sms_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null,\\r\\n          \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n        },\\r\\n        \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709895967\\\"\\r\\n      }\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 1115377893663,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": \\\"ayumu.hirano@example.com\\\",\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D7\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257070031135,\\r\\n          \\\"variant_id\\\": 44861008347423,\\r\\n          \\\"product_id\\\": 8223770280223,\\r\\n          \\\"title\\\": \\\"The Multi-location Snowboard\\\",\\r\\n          \\\"variant_title\\\": null,\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"FlowgearSandbox01\\\",\\r\\n          \\\"quantity\\\": 1,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 0,\\r\\n          \\\"tax_lines\\\": [\\r\\n            {\\r\\n              \\\"rate\\\": 0.15,\\r\\n              \\\"title\\\": \\\"VAT\\\",\\r\\n              \\\"price\\\": \\\"109.49\\\"\\r\\n            }\\r\\n          ],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"The Multi-location Snowboard\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"729.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257070031135\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": null,\\r\\n      \\\"billing_address\\\": null,\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/761f4bf9f3becb8330954e7ba52f929a\\\",\\r\\n      \\\"applied_discount\\\": null,\\r\\n      \\\"order_id\\\": 5329877860639,\\r\\n      \\\"shipping_line\\\": {\\r\\n        \\\"title\\\": \\\"Discount Shipping Rate\\\",\\r\\n        \\\"custom\\\": true,\\r\\n        \\\"handle\\\": null,\\r\\n        \\\"price\\\": \\\"0.00\\\"\\r\\n      },\\r\\n      \\\"tax_lines\\\": [\\r\\n        {\\r\\n          \\\"rate\\\": 0.15,\\r\\n          \\\"title\\\": \\\"VAT\\\",\\r\\n          \\\"price\\\": \\\"109.49\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"tags\\\": \\\"Shipping Discount\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"839.44\\\",\\r\\n      \\\"subtotal_price\\\": \\\"729.95\\\",\\r\\n      \\\"total_tax\\\": \\\"109.49\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377893663\\\",\\r\\n      \\\"customer\\\": {\\r\\n        \\\"id\\\": 6889709895967,\\r\\n        \\\"email\\\": \\\"ayumu.hirano@example.com\\\",\\r\\n        \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n        \\\"updated_at\\\": \\\"2023-04-25T03:35:59-04:00\\\",\\r\\n        \\\"first_name\\\": \\\"Ayumu\\\",\\r\\n        \\\"last_name\\\": \\\"Hirano\\\",\\r\\n        \\\"orders_count\\\": 2,\\r\\n        \\\"state\\\": \\\"disabled\\\",\\r\\n        \\\"total_spent\\\": \\\"3284.27\\\",\\r\\n        \\\"last_order_id\\\": 5329878024479,\\r\\n        \\\"note\\\": null,\\r\\n        \\\"verified_email\\\": true,\\r\\n        \\\"multipass_identifier\\\": null,\\r\\n        \\\"tax_exempt\\\": false,\\r\\n        \\\"tags\\\": \\\"\\\",\\r\\n        \\\"last_order_name\\\": \\\"#1010\\\",\\r\\n        \\\"currency\\\": \\\"ZAR\\\",\\r\\n        \\\"phone\\\": \\\"+16135550127\\\",\\r\\n        \\\"tax_exemptions\\\": [],\\r\\n        \\\"email_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null\\r\\n        },\\r\\n        \\\"sms_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null,\\r\\n          \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n        },\\r\\n        \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709895967\\\"\\r\\n      }\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 1115377926431,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D8\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257070063903,\\r\\n          \\\"variant_id\\\": 44861008052511,\\r\\n          \\\"product_id\\\": 8223770181919,\\r\\n          \\\"title\\\": \\\"The Complete Snowboard\\\",\\r\\n          \\\"variant_title\\\": \\\"Dawn\\\",\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"Snowboard Vendor\\\",\\r\\n          \\\"quantity\\\": 2,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 4536,\\r\\n          \\\"tax_lines\\\": [],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"The Complete Snowboard - Dawn\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"699.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257070063903\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": {\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"latitude\\\": 43.6522608,\\r\\n        \\\"longitude\\\": -79.3776862,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"province_code\\\": null\\r\\n      },\\r\\n      \\\"billing_address\\\": {\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"latitude\\\": null,\\r\\n        \\\"longitude\\\": null,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"province_code\\\": null\\r\\n      },\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/b46b3bbaf6d8217d47066cc3a7460c7f\\\",\\r\\n      \\\"applied_discount\\\": {\\r\\n        \\\"description\\\": null,\\r\\n        \\\"value\\\": \\\"10.0\\\",\\r\\n        \\\"title\\\": null,\\r\\n        \\\"amount\\\": \\\"139.99\\\",\\r\\n        \\\"value_type\\\": \\\"percentage\\\"\\r\\n      },\\r\\n      \\\"order_id\\\": 5329877893407,\\r\\n      \\\"shipping_line\\\": {\\r\\n        \\\"title\\\": \\\"International Shipping\\\",\\r\\n        \\\"custom\\\": false,\\r\\n        \\\"handle\\\": \\\"424511c542b4a872d35401261319b9d1\\\",\\r\\n        \\\"price\\\": \\\"30.00\\\"\\r\\n      },\\r\\n      \\\"tax_lines\\\": [],\\r\\n      \\\"tags\\\": \\\"Order Discount\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"1289.91\\\",\\r\\n      \\\"subtotal_price\\\": \\\"1259.91\\\",\\r\\n      \\\"total_tax\\\": \\\"0.00\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377926431\\\",\\r\\n      \\\"customer\\\": {\\r\\n        \\\"id\\\": 6889709863199,\\r\\n        \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n        \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n        \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"orders_count\\\": 4,\\r\\n        \\\"state\\\": \\\"disabled\\\",\\r\\n        \\\"total_spent\\\": \\\"6656.19\\\",\\r\\n        \\\"last_order_id\\\": 5329877991711,\\r\\n        \\\"note\\\": \\\"This customer is created with most available fields\\\",\\r\\n        \\\"verified_email\\\": true,\\r\\n        \\\"multipass_identifier\\\": null,\\r\\n        \\\"tax_exempt\\\": false,\\r\\n        \\\"tags\\\": \\\"VIP\\\",\\r\\n        \\\"last_order_name\\\": \\\"#1009\\\",\\r\\n        \\\"currency\\\": \\\"ZAR\\\",\\r\\n        \\\"phone\\\": \\\"+16135550135\\\",\\r\\n        \\\"tax_exemptions\\\": [],\\r\\n        \\\"email_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null\\r\\n        },\\r\\n        \\\"sms_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"unknown\\\",\\r\\n          \\\"consent_updated_at\\\": null,\\r\\n          \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n        },\\r\\n        \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709863199\\\",\\r\\n        \\\"default_address\\\": {\\r\\n          \\\"id\\\": 9160311439647,\\r\\n          \\\"customer_id\\\": 6889709863199,\\r\\n          \\\"first_name\\\": \\\"Russell\\\",\\r\\n          \\\"last_name\\\": \\\"Winfield\\\",\\r\\n          \\\"company\\\": \\\"Company Name\\\",\\r\\n          \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n          \\\"address2\\\": null,\\r\\n          \\\"city\\\": \\\"Toronto\\\",\\r\\n          \\\"province\\\": null,\\r\\n          \\\"country\\\": \\\"Canada\\\",\\r\\n          \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n          \\\"phone\\\": null,\\r\\n          \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n          \\\"province_code\\\": null,\\r\\n          \\\"country_code\\\": \\\"CA\\\",\\r\\n          \\\"country_name\\\": \\\"Canada\\\",\\r\\n          \\\"default\\\": true\\r\\n        }\\r\\n      }\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 1115377959199,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D9\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257070096671,\\r\\n          \\\"variant_id\\\": 44861008085279,\\r\\n          \\\"product_id\\\": 8223770181919,\\r\\n          \\\"title\\\": \\\"The Complete Snowboard\\\",\\r\\n          \\\"variant_title\\\": \\\"Powder\\\",\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"Snowboard Vendor\\\",\\r\\n          \\\"quantity\\\": 1,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 4536,\\r\\n          \\\"tax_lines\\\": [],\\r\\n          \\\"applied_discount\\\": {\\r\\n            \\\"description\\\": null,\\r\\n            \\\"value\\\": \\\"10.0\\\",\\r\\n            \\\"title\\\": null,\\r\\n            \\\"amount\\\": \\\"10.00\\\",\\r\\n            \\\"value_type\\\": \\\"fixed_amount\\\"\\r\\n          },\\r\\n          \\\"name\\\": \\\"The Complete Snowboard - Powder\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"699.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257070096671\\\"\\r\\n        },\\r\\n        {\\r\\n          \\\"id\\\": 58257070129439,\\r\\n          \\\"variant_id\\\": 44861008118047,\\r\\n          \\\"product_id\\\": 8223770181919,\\r\\n          \\\"title\\\": \\\"The Complete Snowboard\\\",\\r\\n          \\\"variant_title\\\": \\\"Electric\\\",\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"Snowboard Vendor\\\",\\r\\n          \\\"quantity\\\": 2,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 4536,\\r\\n          \\\"tax_lines\\\": [],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"The Complete Snowboard - Electric\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"699.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257070129439\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": {\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"latitude\\\": 43.6522608,\\r\\n        \\\"longitude\\\": -79.3776862,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"province_code\\\": null\\r\\n      },\\r\\n      \\\"billing_address\\\": {\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"latitude\\\": null,\\r\\n        \\\"longitude\\\": null,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"province_code\\\": null\\r\\n      },\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/e5e29023cd18f598280ac0c88149431d\\\",\\r\\n      \\\"applied_discount\\\": {\\r\\n        \\\"description\\\": null,\\r\\n        \\\"value\\\": \\\"15.0\\\",\\r\\n        \\\"title\\\": null,\\r\\n        \\\"amount\\\": \\\"313.47\\\",\\r\\n        \\\"value_type\\\": \\\"percentage\\\"\\r\\n      },\\r\\n      \\\"order_id\\\": 5329877926175,\\r\\n      \\\"shipping_line\\\": {\\r\\n        \\\"title\\\": \\\"International Shipping\\\",\\r\\n        \\\"custom\\\": false,\\r\\n        \\\"handle\\\": \\\"424511c542b4a872d35401261319b9d1\\\",\\r\\n        \\\"price\\\": \\\"30.00\\\"\\r\\n      },\\r\\n      \\\"tax_lines\\\": [],\\r\\n      \\\"tags\\\": \\\"Line Item Discount, Order Discount\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"1806.38\\\",\\r\\n      \\\"subtotal_price\\\": \\\"1776.38\\\",\\r\\n      \\\"total_tax\\\": \\\"0.00\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377959199\\\",\\r\\n      \\\"customer\\\": {\\r\\n        \\\"id\\\": 6889709863199,\\r\\n        \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n        \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n        \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"orders_count\\\": 4,\\r\\n        \\\"state\\\": \\\"disabled\\\",\\r\\n        \\\"total_spent\\\": \\\"6656.19\\\",\\r\\n        \\\"last_order_id\\\": 5329877991711,\\r\\n        \\\"note\\\": \\\"This customer is created with most available fields\\\",\\r\\n        \\\"verified_email\\\": true,\\r\\n        \\\"multipass_identifier\\\": null,\\r\\n        \\\"tax_exempt\\\": false,\\r\\n        \\\"tags\\\": \\\"VIP\\\",\\r\\n        \\\"last_order_name\\\": \\\"#1009\\\",\\r\\n        \\\"currency\\\": \\\"ZAR\\\",\\r\\n        \\\"phone\\\": \\\"+16135550135\\\",\\r\\n        \\\"tax_exemptions\\\": [],\\r\\n        \\\"email_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null\\r\\n        },\\r\\n        \\\"sms_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"unknown\\\",\\r\\n          \\\"consent_updated_at\\\": null,\\r\\n          \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n        },\\r\\n        \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709863199\\\",\\r\\n        \\\"default_address\\\": {\\r\\n          \\\"id\\\": 9160311439647,\\r\\n          \\\"customer_id\\\": 6889709863199,\\r\\n          \\\"first_name\\\": \\\"Russell\\\",\\r\\n          \\\"last_name\\\": \\\"Winfield\\\",\\r\\n          \\\"company\\\": \\\"Company Name\\\",\\r\\n          \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n          \\\"address2\\\": null,\\r\\n          \\\"city\\\": \\\"Toronto\\\",\\r\\n          \\\"province\\\": null,\\r\\n          \\\"country\\\": \\\"Canada\\\",\\r\\n          \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n          \\\"phone\\\": null,\\r\\n          \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n          \\\"province_code\\\": null,\\r\\n          \\\"country_code\\\": \\\"CA\\\",\\r\\n          \\\"country_name\\\": \\\"Canada\\\",\\r\\n          \\\"default\\\": true\\r\\n        }\\r\\n      }\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 1115377991967,\\r\\n      \\\"note\\\": null,\\r\\n      \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n      \\\"taxes_included\\\": false,\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"invoice_sent_at\\\": null,\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"completed_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"name\\\": \\\"#D10\\\",\\r\\n      \\\"status\\\": \\\"completed\\\",\\r\\n      \\\"line_items\\\": [\\r\\n        {\\r\\n          \\\"id\\\": 58257070162207,\\r\\n          \\\"variant_id\\\": 44861008150815,\\r\\n          \\\"product_id\\\": 8223770181919,\\r\\n          \\\"title\\\": \\\"The Complete Snowboard\\\",\\r\\n          \\\"variant_title\\\": \\\"Sunset\\\",\\r\\n          \\\"sku\\\": \\\"\\\",\\r\\n          \\\"vendor\\\": \\\"Snowboard Vendor\\\",\\r\\n          \\\"quantity\\\": 1,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 4536,\\r\\n          \\\"tax_lines\\\": [],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"The Complete Snowboard - Sunset\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"699.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257070162207\\\"\\r\\n        },\\r\\n        {\\r\\n          \\\"id\\\": 58257070194975,\\r\\n          \\\"variant_id\\\": 44861008445727,\\r\\n          \\\"product_id\\\": 8223770378527,\\r\\n          \\\"title\\\": \\\"The 3p Fulfilled Snowboard\\\",\\r\\n          \\\"variant_title\\\": null,\\r\\n          \\\"sku\\\": \\\"sku-hosted-1\\\",\\r\\n          \\\"vendor\\\": \\\"FlowgearSandbox01\\\",\\r\\n          \\\"quantity\\\": 1,\\r\\n          \\\"requires_shipping\\\": true,\\r\\n          \\\"taxable\\\": true,\\r\\n          \\\"gift_card\\\": false,\\r\\n          \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n          \\\"grams\\\": 0,\\r\\n          \\\"tax_lines\\\": [],\\r\\n          \\\"applied_discount\\\": null,\\r\\n          \\\"name\\\": \\\"The 3p Fulfilled Snowboard\\\",\\r\\n          \\\"properties\\\": [],\\r\\n          \\\"custom\\\": false,\\r\\n          \\\"price\\\": \\\"2629.95\\\",\\r\\n          \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrderLineItem/58257070194975\\\"\\r\\n        }\\r\\n      ],\\r\\n      \\\"shipping_address\\\": {\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"latitude\\\": null,\\r\\n        \\\"longitude\\\": null,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"province_code\\\": null\\r\\n      },\\r\\n      \\\"billing_address\\\": {\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"latitude\\\": 43.6522608,\\r\\n        \\\"longitude\\\": -79.3776862,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"province_code\\\": null\\r\\n      },\\r\\n      \\\"invoice_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/invoices/6e0a080feed1dcec63100ec4ce62268e\\\",\\r\\n      \\\"applied_discount\\\": null,\\r\\n      \\\"order_id\\\": 5329877991711,\\r\\n      \\\"shipping_line\\\": null,\\r\\n      \\\"tax_lines\\\": [],\\r\\n      \\\"tags\\\": \\\"Multiple Fulfillments\\\",\\r\\n      \\\"note_attributes\\\": [],\\r\\n      \\\"total_price\\\": \\\"3329.90\\\",\\r\\n      \\\"subtotal_price\\\": \\\"3329.90\\\",\\r\\n      \\\"total_tax\\\": \\\"0.00\\\",\\r\\n      \\\"payment_terms\\\": null,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/DraftOrder/1115377991967\\\",\\r\\n      \\\"customer\\\": {\\r\\n        \\\"id\\\": 6889709863199,\\r\\n        \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n        \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n        \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"orders_count\\\": 4,\\r\\n        \\\"state\\\": \\\"disabled\\\",\\r\\n        \\\"total_spent\\\": \\\"6656.19\\\",\\r\\n        \\\"last_order_id\\\": 5329877991711,\\r\\n        \\\"note\\\": \\\"This customer is created with most available fields\\\",\\r\\n        \\\"verified_email\\\": true,\\r\\n        \\\"multipass_identifier\\\": null,\\r\\n        \\\"tax_exempt\\\": false,\\r\\n        \\\"tags\\\": \\\"VIP\\\",\\r\\n        \\\"last_order_name\\\": \\\"#1009\\\",\\r\\n        \\\"currency\\\": \\\"ZAR\\\",\\r\\n        \\\"phone\\\": \\\"+16135550135\\\",\\r\\n        \\\"tax_exemptions\\\": [],\\r\\n        \\\"email_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n          \\\"consent_updated_at\\\": null\\r\\n        },\\r\\n        \\\"sms_marketing_consent\\\": {\\r\\n          \\\"state\\\": \\\"not_subscribed\\\",\\r\\n          \\\"opt_in_level\\\": \\\"unknown\\\",\\r\\n          \\\"consent_updated_at\\\": null,\\r\\n          \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n        },\\r\\n        \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709863199\\\",\\r\\n        \\\"default_address\\\": {\\r\\n          \\\"id\\\": 9160311439647,\\r\\n          \\\"customer_id\\\": 6889709863199,\\r\\n          \\\"first_name\\\": \\\"Russell\\\",\\r\\n          \\\"last_name\\\": \\\"Winfield\\\",\\r\\n          \\\"company\\\": \\\"Company Name\\\",\\r\\n          \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n          \\\"address2\\\": null,\\r\\n          \\\"city\\\": \\\"Toronto\\\",\\r\\n          \\\"province\\\": null,\\r\\n          \\\"country\\\": \\\"Canada\\\",\\r\\n          \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n          \\\"phone\\\": null,\\r\\n          \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n          \\\"province_code\\\": null,\\r\\n          \\\"country_code\\\": \\\"CA\\\",\\r\\n          \\\"country_name\\\": \\\"Canada\\\",\\r\\n          \\\"default\\\": true\\r\\n        }\\r\\n      }\\r\\n    }\\r\\n  ]\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<Request>\\r\\n  <salesorder>\\r\\n    <accountidname>#D1</accountidname>\\r\\n    <createdon>2023-04-25T03:35:54-04:00</createdon>\\r\\n    <emailaddress />\\r\\n    <ordernumber>5329877958943</ordernumber>\\r\\n    <salesorderid>75ed7acc-33c5-49fd-bdf7-62aac74ccfa0</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>1018.84</totalamount>\\r\\n    <totaltax>132.89</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n  <salesorder>\\r\\n    <accountidname>#D2</accountidname>\\r\\n    <createdon>2023-04-25T03:35:54-04:00</createdon>\\r\\n    <emailaddress />\\r\\n    <ordernumber>5329877729567</ordernumber>\\r\\n    <salesorderid>a28b7f44-7bdf-4b69-b428-9038a308abd2</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>1018.84</totalamount>\\r\\n    <totaltax>132.89</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n  <salesorder>\\r\\n    <accountidname>#D3</accountidname>\\r\\n    <createdon>2023-04-25T03:35:55-04:00</createdon>\\r\\n    <emailaddress>russel.winfield@example.com</emailaddress>\\r\\n    <ordernumber>5329877762335</ordernumber>\\r\\n    <salesorderid>b7265fb1-41fc-4b81-a6ef-584bc310a49e</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>230.00</totalamount>\\r\\n    <totaltax>0.00</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n  <salesorder>\\r\\n    <accountidname>#D4</accountidname>\\r\\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\\r\\n    <emailaddress>karine.ruby@example.com</emailaddress>\\r\\n    <ordernumber>5329877827871</ordernumber>\\r\\n    <salesorderid>4b0ed8bb-c4eb-4305-9865-bba7b550bc55</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>857.17</totalamount>\\r\\n    <totaltax>104.99</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n  <salesorder>\\r\\n    <accountidname>#D6</accountidname>\\r\\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\\r\\n    <emailaddress />\\r\\n    <ordernumber>5329877795103</ordernumber>\\r\\n    <salesorderid>3ae53731-a6df-456d-a426-7a48717ce52a</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>3219.77</totalamount>\\r\\n    <totaltax>419.97</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n  <salesorder>\\r\\n    <accountidname>#D5</accountidname>\\r\\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\\r\\n    <emailaddress>ayumu.hirano@example.com</emailaddress>\\r\\n    <ordernumber>5329878024479</ordernumber>\\r\\n    <salesorderid>75051a67-0d7d-45b7-b451-14fd620d3583</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>2444.83</totalamount>\\r\\n    <totaltax>314.98</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n  <salesorder>\\r\\n    <accountidname>#D7</accountidname>\\r\\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\\r\\n    <emailaddress>ayumu.hirano@example.com</emailaddress>\\r\\n    <ordernumber>5329877860639</ordernumber>\\r\\n    <salesorderid>47a005b5-1091-469f-9bc5-e10525e30a74</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>839.44</totalamount>\\r\\n    <totaltax>109.49</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n  <salesorder>\\r\\n    <accountidname>#D8</accountidname>\\r\\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\\r\\n    <emailaddress>russel.winfield@example.com</emailaddress>\\r\\n    <ordernumber>5329877893407</ordernumber>\\r\\n    <salesorderid>04e7c816-5054-495d-bb0d-383704abfce3</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>1289.91</totalamount>\\r\\n    <totaltax>0.00</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n  <salesorder>\\r\\n    <accountidname>#D9</accountidname>\\r\\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\\r\\n    <emailaddress>russel.winfield@example.com</emailaddress>\\r\\n    <ordernumber>5329877926175</ordernumber>\\r\\n    <salesorderid>dade8859-8152-46c9-97ad-c42d8687a241</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>1806.38</totalamount>\\r\\n    <totaltax>0.00</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n  <salesorder>\\r\\n    <accountidname>#D10</accountidname>\\r\\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\\r\\n    <emailaddress>russel.winfield@example.com</emailaddress>\\r\\n    <ordernumber>5329877991711</ordernumber>\\r\\n    <salesorderid>cabff095-9722-4428-8062-059629b418ff</salesorderid>\\r\\n    <submitstatusdescription>completed</submitstatusdescription>\\r\\n    <totalamount>3329.90</totalamount>\\r\\n    <totaltax>0.00</totaltax>\\r\\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\\r\\n  </salesorder>\\r\\n</Request>\",\"targetSchemaType\":0}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": ["Auto", "Json", "Xml"],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Request>\r\n  <salesorder>\r\n    <accountidname>#D1</accountidname>\r\n    <createdon>2023-04-25T03:35:54-04:00</createdon>\r\n    <emailaddress />\r\n    <ordernumber>5329877958943</ordernumber>\r\n    <salesorderid>75ed7acc-33c5-49fd-bdf7-62aac74ccfa0</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>1018.84</totalamount>\r\n    <totaltax>132.89</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n  <salesorder>\r\n    <accountidname>#D2</accountidname>\r\n    <createdon>2023-04-25T03:35:54-04:00</createdon>\r\n    <emailaddress />\r\n    <ordernumber>5329877729567</ordernumber>\r\n    <salesorderid>a28b7f44-7bdf-4b69-b428-9038a308abd2</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>1018.84</totalamount>\r\n    <totaltax>132.89</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n  <salesorder>\r\n    <accountidname>#D3</accountidname>\r\n    <createdon>2023-04-25T03:35:55-04:00</createdon>\r\n    <emailaddress>russel.winfield@example.com</emailaddress>\r\n    <ordernumber>5329877762335</ordernumber>\r\n    <salesorderid>b7265fb1-41fc-4b81-a6ef-584bc310a49e</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>230.00</totalamount>\r\n    <totaltax>0.00</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n  <salesorder>\r\n    <accountidname>#D4</accountidname>\r\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\r\n    <emailaddress>karine.ruby@example.com</emailaddress>\r\n    <ordernumber>5329877827871</ordernumber>\r\n    <salesorderid>4b0ed8bb-c4eb-4305-9865-bba7b550bc55</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>857.17</totalamount>\r\n    <totaltax>104.99</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n  <salesorder>\r\n    <accountidname>#D6</accountidname>\r\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\r\n    <emailaddress />\r\n    <ordernumber>5329877795103</ordernumber>\r\n    <salesorderid>3ae53731-a6df-456d-a426-7a48717ce52a</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>3219.77</totalamount>\r\n    <totaltax>419.97</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n  <salesorder>\r\n    <accountidname>#D5</accountidname>\r\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\r\n    <emailaddress>ayumu.hirano@example.com</emailaddress>\r\n    <ordernumber>5329878024479</ordernumber>\r\n    <salesorderid>75051a67-0d7d-45b7-b451-14fd620d3583</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>2444.83</totalamount>\r\n    <totaltax>314.98</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n  <salesorder>\r\n    <accountidname>#D7</accountidname>\r\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\r\n    <emailaddress>ayumu.hirano@example.com</emailaddress>\r\n    <ordernumber>5329877860639</ordernumber>\r\n    <salesorderid>47a005b5-1091-469f-9bc5-e10525e30a74</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>839.44</totalamount>\r\n    <totaltax>109.49</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n  <salesorder>\r\n    <accountidname>#D8</accountidname>\r\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\r\n    <emailaddress>russel.winfield@example.com</emailaddress>\r\n    <ordernumber>5329877893407</ordernumber>\r\n    <salesorderid>04e7c816-5054-495d-bb0d-383704abfce3</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>1289.91</totalamount>\r\n    <totaltax>0.00</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n  <salesorder>\r\n    <accountidname>#D9</accountidname>\r\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\r\n    <emailaddress>russel.winfield@example.com</emailaddress>\r\n    <ordernumber>5329877926175</ordernumber>\r\n    <salesorderid>dade8859-8152-46c9-97ad-c42d8687a241</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>1806.38</totalamount>\r\n    <totaltax>0.00</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n  <salesorder>\r\n    <accountidname>#D10</accountidname>\r\n    <createdon>2023-04-25T03:35:56-04:00</createdon>\r\n    <emailaddress>russel.winfield@example.com</emailaddress>\r\n    <ordernumber>5329877991711</ordernumber>\r\n    <salesorderid>cabff095-9722-4428-8062-059629b418ff</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>3329.90</totalamount>\r\n    <totaltax>0.00</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n</Request>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 6710, "Y": 3640 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-01-26T08:48:08.2149778+00:00",
+          "Username": "nicholas.christodoulou@flowgear.net",
+          "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+        }
+      },
+      {
+        "NodeId": "7bc2c1fa-277f-9ccd-eae3-91eb7f01897e",
+        "Name": "ForEach",
+        "LongDescription": "This passes each Sales Order one row at a time.\nThis can be increased depending on your requirements.",
+        "Version": "1.0.0.9",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Request/salesorder[1]"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": ["None", "ParentNode", "ParentAndRootNodes"],
+            "Value": "ParentAndRootNodes"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Item",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Request>\r\n  <salesorder>\r\n    <accountidname>#D2</accountidname>\r\n    <createdon>2023-04-25T03:35:54-04:00</createdon>\r\n    <emailaddress/>\r\n    <ordernumber>5329877729567</ordernumber>\r\n    <salesorderid>c52719ad-da86-4bc0-8662-ea901511ebb2</salesorderid>\r\n    <submitstatusdescription>completed</submitstatusdescription>\r\n    <totalamount>1018.84</totalamount>\r\n    <totaltax>132.89</totaltax>\r\n    <transactioncurrencyidname>ZAR</transactioncurrencyidname>\r\n  </salesorder>\r\n</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemIndex",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemCount",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "Item", "IsException": false, "IsDefault": true },
+          { "Label": "Finished", "IsException": false, "IsDefault": false },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7015, "Y": 3640 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "For Each",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-03-20T15:42:23.8561624+00:00",
+          "Username": "test@flowgear.net",
+          "UserKey": "31722ca6-5987-4cfe-98ca-159ed1c36b41"
+        }
+      },
+      {
+        "NodeId": "b477edcb-dc37-a1f4-ca41-4c0395632590",
+        "Name": "GetKeyValue2",
+        "LongDescription": "Validate if the Sales Order has already beeen processed.",
+        "Version": "3.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "FG_Orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DateTime",
+            "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "Found", "IsException": false, "IsDefault": true },
+          { "Label": "Missing", "IsException": false, "IsDefault": false },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7320, "Y": 3640 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Get Key-Value 2",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-18T19:06:18.3456334+00:00",
+          "Username": "rikard.schouwstra@flowgear.net",
+          "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+        }
+      },
+      {
+        "NodeId": "e259b4b4-675d-5aa5-0797-7a8de6690818",
+        "Name": "MicrosoftDynamicsCrm",
+        "LongDescription": "Create Sales Order in D635",
+        "Version": "4.0.0.12",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Mode",
+                "TypeName": "Flowgear.Nodes.MicrosoftDynamicsCrm.Connection+ConnectionModes",
+                "ExtendedType": 0,
+                "EnumValues": ["ServiceClient", "OrganizationServiceProxy"]
+              },
+              { "Name": "Url", "TypeName": "System.String", "ExtendedType": 0 },
+              {
+                "Name": "ClientId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ClientSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.MicrosoftDynamicsCrm.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.MicrosoftDynamicsCrm.DynamicsCrm+Actions",
+            "ExtendedType": 0,
+            "EnumValues": ["Query", "Create", "Update"],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Entity",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "salesorder"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n  <xs:element name=\"Request\">\n    <xs:complexType>\n      <xs:sequence>\n        <xs:element name=\"salesorder\">\n          <xs:complexType>\n            <xs:sequence>\n              <xs:element name=\"accountid\" type=\"xs:string\"/>\n              <xs:element name=\"accountidname\" type=\"xs:string\"/>\n              <xs:element name=\"accountidyominame\" type=\"xs:string\"/>\n              <xs:element name=\"billto_addressid\" type=\"xs:string\"/>\n              <xs:element name=\"billto_city\" type=\"xs:string\"/>\n              <xs:element name=\"billto_composite\" type=\"xs:string\"/>\n              <xs:element name=\"billto_contactname\" type=\"xs:string\"/>\n              <xs:element name=\"billto_country\" type=\"xs:string\"/>\n              <xs:element name=\"billto_fax\" type=\"xs:string\"/>\n              <xs:element name=\"billto_line1\" type=\"xs:string\"/>\n              <xs:element name=\"billto_line2\" type=\"xs:string\"/>\n              <xs:element name=\"billto_line3\" type=\"xs:string\"/>\n              <xs:element name=\"billto_name\" type=\"xs:string\"/>\n              <xs:element name=\"billto_postalcode\" type=\"xs:string\"/>\n              <xs:element name=\"billto_stateorprovince\" type=\"xs:string\"/>\n              <xs:element name=\"billto_telephone\" type=\"xs:string\"/>\n              <xs:element name=\"campaignid\" type=\"xs:string\"/>\n              <xs:element name=\"campaignidname\" type=\"xs:string\"/>\n              <xs:element name=\"contactid\" type=\"xs:string\"/>\n              <xs:element name=\"contactidname\" type=\"xs:string\"/>\n              <xs:element name=\"contactidyominame\" type=\"xs:string\"/>\n              <xs:element name=\"createdby\" type=\"xs:string\"/>\n              <xs:element name=\"createdbyname\" type=\"xs:string\"/>\n              <xs:element name=\"createdbyyominame\" type=\"xs:string\"/>\n              <xs:element name=\"createdon\" type=\"xs:string\"/>\n              <xs:element name=\"createdonbehalfby\" type=\"xs:string\"/>\n              <xs:element name=\"createdonbehalfbyname\" type=\"xs:string\"/>\n              <xs:element name=\"createdonbehalfbyyominame\" type=\"xs:string\"/>\n              <xs:element name=\"customerid\" type=\"xs:string\"/>\n              <xs:element name=\"customeridname\" type=\"xs:string\"/>\n              <xs:element name=\"customeridtype\" type=\"xs:string\"/>\n              <xs:element name=\"customeridyominame\" type=\"xs:string\"/>\n              <xs:element name=\"datefulfilled\" type=\"xs:string\"/>\n              <xs:element name=\"description\" type=\"xs:string\"/>\n              <xs:element name=\"discountamount\" type=\"xs:string\"/>\n              <xs:element name=\"discountamount_base\" type=\"xs:string\"/>\n              <xs:element name=\"discountpercentage\" type=\"xs:string\"/>\n              <xs:element name=\"emailaddress\" type=\"xs:string\"/>\n              <xs:element name=\"entityimage\" type=\"xs:string\"/>\n              <xs:element name=\"entityimage_timestamp\" type=\"xs:string\"/>\n              <xs:element name=\"entityimage_url\" type=\"xs:string\"/>\n              <xs:element name=\"entityimageid\" type=\"xs:string\"/>\n              <xs:element name=\"exchangerate\" type=\"xs:string\"/>\n              <xs:element name=\"freightamount\" type=\"xs:string\"/>\n              <xs:element name=\"freightamount_base\" type=\"xs:string\"/>\n              <xs:element name=\"freighttermscode\" type=\"xs:string\"/>\n              <xs:element name=\"freighttermscodename\" type=\"xs:string\"/>\n              <xs:element name=\"importsequencenumber\" type=\"xs:string\"/>\n              <xs:element name=\"ispricelocked\" type=\"xs:string\"/>\n              <xs:element name=\"ispricelockedname\" type=\"xs:string\"/>\n              <xs:element name=\"lastbackofficesubmit\" type=\"xs:string\"/>\n              <xs:element name=\"lastonholdtime\" type=\"xs:string\"/>\n              <xs:element name=\"modifiedby\" type=\"xs:string\"/>\n              <xs:element name=\"modifiedbyname\" type=\"xs:string\"/>\n              <xs:element name=\"modifiedbyyominame\" type=\"xs:string\"/>\n              <xs:element name=\"modifiedon\" type=\"xs:string\"/>\n              <xs:element name=\"modifiedonbehalfby\" type=\"xs:string\"/>\n              <xs:element name=\"modifiedonbehalfbyname\" type=\"xs:string\"/>\n              <xs:element name=\"modifiedonbehalfbyyominame\" type=\"xs:string\"/>\n              <xs:element name=\"name\" type=\"xs:string\"/>\n              <xs:element name=\"onholdtime\" type=\"xs:string\"/>\n              <xs:element name=\"opportunityid\" type=\"xs:string\"/>\n              <xs:element name=\"opportunityidname\" type=\"xs:string\"/>\n              <xs:element name=\"ordercreationmethod\" type=\"xs:string\"/>\n              <xs:element name=\"ordercreationmethodname\" type=\"xs:string\"/>\n              <xs:element name=\"ordernumber\" type=\"xs:string\"/>\n              <xs:element name=\"overriddencreatedon\" type=\"xs:string\"/>\n              <xs:element name=\"ownerid\" type=\"xs:string\"/>\n              <xs:element name=\"owneridname\" type=\"xs:string\"/>\n              <xs:element name=\"owneridtype\" type=\"xs:string\"/>\n              <xs:element name=\"owneridyominame\" type=\"xs:string\"/>\n              <xs:element name=\"owningbusinessunit\" type=\"xs:string\"/>\n              <xs:element name=\"owningbusinessunitname\" type=\"xs:string\"/>\n              <xs:element name=\"owningteam\" type=\"xs:string\"/>\n              <xs:element name=\"owninguser\" type=\"xs:string\"/>\n              <xs:element name=\"paymenttermscode\" type=\"xs:string\"/>\n              <xs:element name=\"paymenttermscodename\" type=\"xs:string\"/>\n              <xs:element name=\"pricelevelid\" type=\"xs:string\"/>\n              <xs:element name=\"pricelevelidname\" type=\"xs:string\"/>\n              <xs:element name=\"pricingerrorcode\" type=\"xs:string\"/>\n              <xs:element name=\"pricingerrorcodename\" type=\"xs:string\"/>\n              <xs:element name=\"prioritycode\" type=\"xs:string\"/>\n              <xs:element name=\"prioritycodename\" type=\"xs:string\"/>\n              <xs:element name=\"processid\" type=\"xs:string\"/>\n              <xs:element name=\"quoteid\" type=\"xs:string\"/>\n              <xs:element name=\"quoteidname\" type=\"xs:string\"/>\n              <xs:element name=\"requestdeliveryby\" type=\"xs:string\"/>\n              <xs:element name=\"salesorderid\" type=\"xs:string\"/>\n              <xs:element name=\"shippingmethodcode\" type=\"xs:string\"/>\n              <xs:element name=\"shippingmethodcodename\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_addressid\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_city\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_composite\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_contactname\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_country\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_fax\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_freighttermscode\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_freighttermscodename\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_line1\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_line2\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_line3\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_name\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_postalcode\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_stateorprovince\" type=\"xs:string\"/>\n              <xs:element name=\"shipto_telephone\" type=\"xs:string\"/>\n              <xs:element name=\"skippricecalculation\" type=\"xs:string\"/>\n              <xs:element name=\"skippricecalculationname\" type=\"xs:string\"/>\n              <xs:element name=\"slaid\" type=\"xs:string\"/>\n              <xs:element name=\"slainvokedid\" type=\"xs:string\"/>\n              <xs:element name=\"slainvokedidname\" type=\"xs:string\"/>\n              <xs:element name=\"slaname\" type=\"xs:string\"/>\n              <xs:element name=\"stageid\" type=\"xs:string\"/>\n              <xs:element name=\"statecode\" type=\"xs:string\"/>\n              <xs:element name=\"statecodename\" type=\"xs:string\"/>\n              <xs:element name=\"statuscode\" type=\"xs:string\"/>\n              <xs:element name=\"statuscodename\" type=\"xs:string\"/>\n              <xs:element name=\"submitdate\" type=\"xs:string\"/>\n              <xs:element name=\"submitstatus\" type=\"xs:string\"/>\n              <xs:element name=\"submitstatusdescription\" type=\"xs:string\"/>\n              <xs:element name=\"timezoneruleversionnumber\" type=\"xs:string\"/>\n              <xs:element name=\"totalamount\" type=\"xs:string\"/>\n              <xs:element name=\"totalamount_base\" type=\"xs:string\"/>\n              <xs:element name=\"totalamountlessfreight\" type=\"xs:string\"/>\n              <xs:element name=\"totalamountlessfreight_base\" type=\"xs:string\"/>\n              <xs:element name=\"totaldiscountamount\" type=\"xs:string\"/>\n              <xs:element name=\"totaldiscountamount_base\" type=\"xs:string\"/>\n              <xs:element name=\"totallineitemamount\" type=\"xs:string\"/>\n              <xs:element name=\"totallineitemamount_base\" type=\"xs:string\"/>\n              <xs:element name=\"totallineitemdiscountamount\" type=\"xs:string\"/>\n              <xs:element name=\"totallineitemdiscountamount_base\" type=\"xs:string\"/>\n              <xs:element name=\"totaltax\" type=\"xs:string\"/>\n              <xs:element name=\"totaltax_base\" type=\"xs:string\"/>\n              <xs:element name=\"transactioncurrencyid\" type=\"xs:string\"/>\n              <xs:element name=\"transactioncurrencyidname\" type=\"xs:string\"/>\n              <xs:element name=\"traversedpath\" type=\"xs:string\"/>\n              <xs:element name=\"utcconversiontimezonecode\" type=\"xs:string\"/>\n              <xs:element name=\"versionnumber\" type=\"xs:string\"/>\n              <xs:element name=\"willcall\" type=\"xs:string\"/>\n              <xs:element name=\"willcallname\" type=\"xs:string\"/>\n            </xs:sequence>\n          </xs:complexType>\n        </xs:element>\n      </xs:sequence>\n    </xs:complexType>\n  </xs:element>\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "RequestXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Request>\r\n  <salesorder>\r\n    <accountid>Lookup</accountid>\r\n    <accountidname>String</accountidname>\r\n    <accountidyominame>String</accountidyominame>\r\n    <billto_addressid>Uniqueidentifier</billto_addressid>\r\n    <billto_city>String</billto_city>\r\n    <billto_composite>Memo</billto_composite>\r\n    <billto_contactname>String</billto_contactname>\r\n    <billto_country>String</billto_country>\r\n    <billto_fax>String</billto_fax>\r\n    <billto_line1>String</billto_line1>\r\n    <billto_line2>String</billto_line2>\r\n    <billto_line3>String</billto_line3>\r\n    <billto_name>String</billto_name>\r\n    <billto_postalcode>String</billto_postalcode>\r\n    <billto_stateorprovince>String</billto_stateorprovince>\r\n    <billto_telephone>String</billto_telephone>\r\n    <campaignid>Lookup</campaignid>\r\n    <campaignidname>String</campaignidname>\r\n    <contactid>Lookup</contactid>\r\n    <contactidname>String</contactidname>\r\n    <contactidyominame>String</contactidyominame>\r\n    <createdby>Lookup</createdby>\r\n    <createdbyname>String</createdbyname>\r\n    <createdbyyominame>String</createdbyyominame>\r\n    <createdon>DateTime</createdon>\r\n    <createdonbehalfby>Lookup</createdonbehalfby>\r\n    <createdonbehalfbyname>String</createdonbehalfbyname>\r\n    <createdonbehalfbyyominame>String</createdonbehalfbyyominame>\r\n    <customerid>Customer</customerid>\r\n    <customeridname>String</customeridname>\r\n    <customeridtype>EntityName</customeridtype>\r\n    <customeridyominame>String</customeridyominame>\r\n    <datefulfilled>DateTime</datefulfilled>\r\n    <description>Memo</description>\r\n    <discountamount>Money</discountamount>\r\n    <discountamount_base>Money</discountamount_base>\r\n    <discountpercentage>Decimal</discountpercentage>\r\n    <emailaddress>String</emailaddress>\r\n    <entityimage>Virtual</entityimage>\r\n    <entityimage_timestamp>BigInt</entityimage_timestamp>\r\n    <entityimage_url>String</entityimage_url>\r\n    <entityimageid>Uniqueidentifier</entityimageid>\r\n    <exchangerate>Decimal</exchangerate>\r\n    <freightamount>Money</freightamount>\r\n    <freightamount_base>Money</freightamount_base>\r\n    <freighttermscode>Picklist</freighttermscode>\r\n    <freighttermscodename>Virtual</freighttermscodename>\r\n    <importsequencenumber>Integer</importsequencenumber>\r\n    <ispricelocked>Boolean</ispricelocked>\r\n    <ispricelockedname>Virtual</ispricelockedname>\r\n    <lastbackofficesubmit>DateTime</lastbackofficesubmit>\r\n    <lastonholdtime>DateTime</lastonholdtime>\r\n    <modifiedby>Lookup</modifiedby>\r\n    <modifiedbyname>String</modifiedbyname>\r\n    <modifiedbyyominame>String</modifiedbyyominame>\r\n    <modifiedon>DateTime</modifiedon>\r\n    <modifiedonbehalfby>Lookup</modifiedonbehalfby>\r\n    <modifiedonbehalfbyname>String</modifiedonbehalfbyname>\r\n    <modifiedonbehalfbyyominame>String</modifiedonbehalfbyyominame>\r\n    <name>String</name>\r\n    <onholdtime>Integer</onholdtime>\r\n    <opportunityid>Lookup</opportunityid>\r\n    <opportunityidname>String</opportunityidname>\r\n    <ordercreationmethod>Picklist</ordercreationmethod>\r\n    <ordercreationmethodname>Virtual</ordercreationmethodname>\r\n    <ordernumber>String</ordernumber>\r\n    <overriddencreatedon>DateTime</overriddencreatedon>\r\n    <ownerid>Owner</ownerid>\r\n    <owneridname>String</owneridname>\r\n    <owneridtype>EntityName</owneridtype>\r\n    <owneridyominame>String</owneridyominame>\r\n    <owningbusinessunit>Lookup</owningbusinessunit>\r\n    <owningbusinessunitname>String</owningbusinessunitname>\r\n    <owningteam>Lookup</owningteam>\r\n    <owninguser>Lookup</owninguser>\r\n    <paymenttermscode>Picklist</paymenttermscode>\r\n    <paymenttermscodename>Virtual</paymenttermscodename>\r\n    <pricelevelid>Lookup</pricelevelid>\r\n    <pricelevelidname>String</pricelevelidname>\r\n    <pricingerrorcode>Picklist</pricingerrorcode>\r\n    <pricingerrorcodename>Virtual</pricingerrorcodename>\r\n    <prioritycode>Picklist</prioritycode>\r\n    <prioritycodename>Virtual</prioritycodename>\r\n    <processid>Uniqueidentifier</processid>\r\n    <quoteid>Lookup</quoteid>\r\n    <quoteidname>String</quoteidname>\r\n    <requestdeliveryby>DateTime</requestdeliveryby>\r\n    <salesorderid>Uniqueidentifier</salesorderid>\r\n    <shippingmethodcode>Picklist</shippingmethodcode>\r\n    <shippingmethodcodename>Virtual</shippingmethodcodename>\r\n    <shipto_addressid>Uniqueidentifier</shipto_addressid>\r\n    <shipto_city>String</shipto_city>\r\n    <shipto_composite>Memo</shipto_composite>\r\n    <shipto_contactname>String</shipto_contactname>\r\n    <shipto_country>String</shipto_country>\r\n    <shipto_fax>String</shipto_fax>\r\n    <shipto_freighttermscode>Picklist</shipto_freighttermscode>\r\n    <shipto_freighttermscodename>Virtual</shipto_freighttermscodename>\r\n    <shipto_line1>String</shipto_line1>\r\n    <shipto_line2>String</shipto_line2>\r\n    <shipto_line3>String</shipto_line3>\r\n    <shipto_name>String</shipto_name>\r\n    <shipto_postalcode>String</shipto_postalcode>\r\n    <shipto_stateorprovince>String</shipto_stateorprovince>\r\n    <shipto_telephone>String</shipto_telephone>\r\n    <skippricecalculation>Picklist</skippricecalculation>\r\n    <skippricecalculationname>Virtual</skippricecalculationname>\r\n    <slaid>Lookup</slaid>\r\n    <slainvokedid>Lookup</slainvokedid>\r\n    <slainvokedidname>String</slainvokedidname>\r\n    <slaname>String</slaname>\r\n    <stageid>Uniqueidentifier</stageid>\r\n    <statecode>State</statecode>\r\n    <statecodename>Virtual</statecodename>\r\n    <statuscode>Status</statuscode>\r\n    <statuscodename>Virtual</statuscodename>\r\n    <submitdate>DateTime</submitdate>\r\n    <submitstatus>Integer</submitstatus>\r\n    <submitstatusdescription>Memo</submitstatusdescription>\r\n    <timezoneruleversionnumber>Integer</timezoneruleversionnumber>\r\n    <totalamount>Money</totalamount>\r\n    <totalamount_base>Money</totalamount_base>\r\n    <totalamountlessfreight>Money</totalamountlessfreight>\r\n    <totalamountlessfreight_base>Money</totalamountlessfreight_base>\r\n    <totaldiscountamount>Money</totaldiscountamount>\r\n    <totaldiscountamount_base>Money</totaldiscountamount_base>\r\n    <totallineitemamount>Money</totallineitemamount>\r\n    <totallineitemamount_base>Money</totallineitemamount_base>\r\n    <totallineitemdiscountamount>Money</totallineitemdiscountamount>\r\n    <totallineitemdiscountamount_base>Money</totallineitemdiscountamount_base>\r\n    <totaltax>Money</totaltax>\r\n    <totaltax_base>Money</totaltax_base>\r\n    <transactioncurrencyid>Lookup</transactioncurrencyid>\r\n    <transactioncurrencyidname>String</transactioncurrencyidname>\r\n    <traversedpath>String</traversedpath>\r\n    <utcconversiontimezonecode>Integer</utcconversiontimezonecode>\r\n    <versionnumber>BigInt</versionnumber>\r\n    <willcall>Boolean</willcall>\r\n    <willcallname>Virtual</willcallname>\r\n  </salesorder>\r\n</Request>"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n  <xs:element name=\"Response\">\n    <xs:complexType>\n      <xs:sequence>\n        <xs:element name=\"salesorder\">\n          <xs:complexType>\n            <xs:sequence>\n              <xs:element name=\"status\" type=\"xs:string\"/>\n              <xs:element name=\"id\" type=\"xs:string\"/>\n              <xs:element name=\"error\" type=\"xs:string\"/>\n            </xs:sequence>\n          </xs:complexType>\n        </xs:element>\n      </xs:sequence>\n    </xs:complexType>\n  </xs:element>\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "ResponseXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1,
+            "Value": "<Response>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>fecd9d2c-44b2-4652-95bb-7ee3f3270915</id>\r\n  </salesorder>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>ddda0338-2cd0-4d9a-a8a0-249db709e5be</id>\r\n  </salesorder>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>11858c9b-ec6c-44af-b367-aaa9c8ca3e76</id>\r\n  </salesorder>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>871214ab-9b11-4a1b-bdfd-125c19350d00</id>\r\n  </salesorder>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>2275f638-c61e-492d-bafd-ebf8747eec97</id>\r\n  </salesorder>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>9272cb2e-6502-4398-92e8-4e7396aa9b0a</id>\r\n  </salesorder>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>ee7fb85d-c149-42a3-8452-d9dd56d6f607</id>\r\n  </salesorder>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>0453cab5-448f-4999-b20c-32674713a5cf</id>\r\n  </salesorder>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>054cf2ed-7df3-48d8-af49-fb3233361baf</id>\r\n  </salesorder>\r\n  <salesorder>\r\n    <status>true</status>\r\n    <id>4b3874c2-567a-4a4d-97d3-d2d76ad2abb3</id>\r\n  </salesorder>\r\n</Response>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7625, "Y": 3640 },
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "DisplayName": "Microsoft Dynamics 365 Sales",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-03-22T07:23:28.5575785+00:00",
+          "Username": "nicholas.christodoulou@flowgear.net",
+          "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+        }
+      },
+      {
+        "NodeId": "1c87926b-1cd8-8b7c-627d-4d3d01341c62",
+        "Name": "IfEqual",
+        "LongDescription": "Last validation to set a Success or Error key Value",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression1",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "true"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchNotEqual",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsEqual",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "True", "IsException": false, "IsDefault": true },
+          { "Label": "False", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7930, "Y": 3640 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "If Equal",
+        "NodeType": 2,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-08-28T14:50:20.8172408+00:00",
+          "Username": "rikard.schouwstra@flowgear.net",
+          "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+        }
+      },
+      {
+        "NodeId": "e3cef9f9-f278-5e39-de3a-3c89633b698e",
+        "Name": "SetKeyValue2",
+        "LongDescription": "Sets the Success Sales Order Key Value",
+        "Version": "3.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "FG_Orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Success"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 8235, "Y": 3640 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Set Key-Value 2",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+          "Username": "rikard.schouwstra@flowgear.net",
+          "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+        }
+      },
+      {
+        "NodeId": "4aaacc3b-c6bf-74ae-4a56-9fbc5f0d2731",
+        "Name": "EmailAlert",
+        "LongDescription": "This Email Alert sends an email when there is an error in the workflow.",
+        "Version": "1.0.3.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Recipients",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "recipient@example.net"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Subject",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Order Errors"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Body",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HtmlBody",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PreparedBody",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "BodyProcessor",
+            "TypeName": "flowgear.Nodes.fgSystem.EmailAlert+BodyProcessors",
+            "ExtendedType": 0,
+            "EnumValues": ["None", "XmlToHtmlTable"],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "AttachmentName",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Attachment",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 6405, "Y": 4056 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Email Alert",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-06-23T10:05:30.1846301+00:00",
+          "Username": "rikard.schouwstra@flowgear.net",
+          "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+        }
+      },
+      {
+        "NodeId": "2350bef2-ec3b-2ecb-2b5f-dcfc5b710d8e",
+        "Name": "SetKeyValue2",
+        "LongDescription": "Sets the Error Sales Order Key Value",
+        "Version": "3.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "FG_Orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Error"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 8235, "Y": 4420 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Set Key-Value 2",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+          "Username": "rikard.schouwstra@flowgear.net",
+          "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+        }
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "01b9cc2f-2fb2-5f80-caef-fd2c550ac0ea",
+        "TargetNodeId": "f7609b5f-679a-5fc5-3de7-0c04e27ed612",
+        "SourceName": "Response",
+        "TargetName": "Source"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "01b9cc2f-2fb2-5f80-caef-fd2c550ac0ea",
+        "TargetNodeId": "f7609b5f-679a-5fc5-3de7-0c04e27ed612",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "f7609b5f-679a-5fc5-3de7-0c04e27ed612",
+        "TargetNodeId": "7bc2c1fa-277f-9ccd-eae3-91eb7f01897e",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "f7609b5f-679a-5fc5-3de7-0c04e27ed612",
+        "TargetNodeId": "7bc2c1fa-277f-9ccd-eae3-91eb7f01897e",
+        "SourceName": "Result",
+        "TargetName": "SourceDocument"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "7bc2c1fa-277f-9ccd-eae3-91eb7f01897e",
+        "TargetNodeId": "b477edcb-dc37-a1f4-ca41-4c0395632590",
+        "SourceName": "Item"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7bc2c1fa-277f-9ccd-eae3-91eb7f01897e",
+        "TargetNodeId": "b477edcb-dc37-a1f4-ca41-4c0395632590",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "Request.salesorder.ordernumber"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b477edcb-dc37-a1f4-ca41-4c0395632590",
+        "TargetNodeId": "e259b4b4-675d-5aa5-0797-7a8de6690818",
+        "SourceName": "Missing"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7bc2c1fa-277f-9ccd-eae3-91eb7f01897e",
+        "TargetNodeId": "e259b4b4-675d-5aa5-0797-7a8de6690818",
+        "SourceName": "Item",
+        "TargetName": "RequestXml"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "1c87926b-1cd8-8b7c-627d-4d3d01341c62",
+        "TargetNodeId": "e3cef9f9-f278-5e39-de3a-3c89633b698e",
+        "SourceName": "True"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "1c87926b-1cd8-8b7c-627d-4d3d01341c62",
+        "TargetNodeId": "2350bef2-ec3b-2ecb-2b5f-dcfc5b710d8e",
+        "SourceName": "False"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "e259b4b4-675d-5aa5-0797-7a8de6690818",
+        "TargetNodeId": "1c87926b-1cd8-8b7c-627d-4d3d01341c62",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "e259b4b4-675d-5aa5-0797-7a8de6690818",
+        "TargetNodeId": "1c87926b-1cd8-8b7c-627d-4d3d01341c62",
+        "SourceName": "ResponseXml",
+        "TargetName": "Expression1"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7bc2c1fa-277f-9ccd-eae3-91eb7f01897e",
+        "TargetNodeId": "e3cef9f9-f278-5e39-de3a-3c89633b698e",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "Request.salesorder.ordernumber"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7bc2c1fa-277f-9ccd-eae3-91eb7f01897e",
+        "TargetNodeId": "2350bef2-ec3b-2ecb-2b5f-dcfc5b710d8e",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "Request.salesorder.ordernumber"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "e259b4b4-675d-5aa5-0797-7a8de6690818",
+        "TargetNodeId": "e3cef9f9-f278-5e39-de3a-3c89633b698e",
+        "SourceName": "ResponseXml",
+        "TargetName": "Value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "e259b4b4-675d-5aa5-0797-7a8de6690818",
+        "TargetNodeId": "2350bef2-ec3b-2ecb-2b5f-dcfc5b710d8e",
+        "SourceName": "ResponseXml",
+        "TargetName": "Value"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "dc0c11bb-55dd-8198-a419-60610e5b1415",
+        "TargetNodeId": "01b9cc2f-2fb2-5f80-caef-fd2c550ac0ea",
+        "SourceName": "Start"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dc0c11bb-55dd-8198-a419-60610e5b1415",
+        "TargetNodeId": "4aaacc3b-c6bf-74ae-4a56-9fbc5f0d2731",
+        "SourceName": "Last_Error_Info",
+        "TargetName": "Body"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "dc0c11bb-55dd-8198-a419-60610e5b1415",
+        "TargetNodeId": "4aaacc3b-c6bf-74ae-4a56-9fbc5f0d2731",
+        "SourceName": "Unhandled_Error"
+      }
+    ],
+    "StartNodeId": "dc0c11bb-55dd-8198-a419-60610e5b1415",
+    "ActivityLogLevelMask": 255
+  },
+  "Name": "Shopify Order Sync to Microsoft D365 Sales Example",
+  "Description": "This workflow syncs Shopify orders to Dynamics 365 Sales, mapping data, checking for duplicates, creating new orders, and handling errors with alerts."
+}

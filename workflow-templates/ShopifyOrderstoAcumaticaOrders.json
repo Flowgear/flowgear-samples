@@ -1,0 +1,1867 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 0,
+    "Nodes": [
+      {
+        "NodeId": "79706eae-3d20-b9ad-472f-623ae61fdd5a",
+        "Name": "VariableBar",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "FgSample"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": { "X": 6100, "Y": 3640 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:14:12.5597178+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "5d586ef9-f78a-efae-e0d8-28672153bdf2",
+        "Name": "SetKeyValue2",
+        "ShortDescription": "TagSuccess",
+        "LongDescription": "Log the Key Value for successes",
+        "Version": "3.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Success"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 9455, "Y": 3640 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Set Key-Value 2",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "8bb08aec-2fe0-b9b0-ec3c-90fd1403398f",
+        "Name": "Start",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          { "Label": "Start", "IsException": false, "IsDefault": true },
+          { "Label": "Run_Now", "IsException": false, "IsDefault": false },
+          { "Label": "Any_Error", "IsException": true, "IsDefault": false },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": { "X": 6100, "Y": 3900 },
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 1,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "f7cd862e-c220-ef80-f52b-03ead2cafb6f",
+        "Name": "ShopifyRest",
+        "ShortDescription": "GetOrders",
+        "LongDescription": "Retrieves a list of Orders.",
+        "Version": "1.1.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiVersion",
+                "TypeName": "System.String",
+                "ExtendedType": 0,
+                "Value": "2024-01"
+              },
+              {
+                "Name": "ShopifyBaseUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "XShopifyAccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ReturnRestFailureResponses",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "ExcludeEmptyQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "AllowCustomQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.ShopifyRest.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "8cd822ed-80b3-b862-a973-5b3562143e68"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Retrieves a list of orders"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseCode",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseHeaders",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"orders\": [\r\n    {\r\n      \"id\": 5329877991711,\r\n      \"admin_graphql_api_id\": \"gid://shopify/Order/5329877991711\",\r\n      \"app_id\": 16818700289,\r\n      \"browser_ip\": \"244.100.98.48\",\r\n      \"buyer_accepts_marketing\": false,\r\n      \"cancel_reason\": null,\r\n      \"cancelled_at\": null,\r\n      \"cart_token\": null,\r\n      \"checkout_id\": 36669577036063,\r\n      \"checkout_token\": \"360c8da4d31ce7f8964067eabd8295bd\",\r\n      \"client_details\": {\r\n        \"accept_language\": null,\r\n        \"browser_height\": null,\r\n        \"browser_ip\": \"244.100.98.48\",\r\n        \"browser_width\": null,\r\n        \"session_hash\": null,\r\n        \"user_agent\": \"Sunflower/production Cusco/1.12.1 Ruby/3.2.2\"\r\n      },\r\n      \"closed_at\": null,\r\n      \"company\": null,\r\n      \"confirmation_number\": \"58XYJ8YIR\",\r\n      \"confirmed\": true,\r\n      \"contact_email\": \"russel.winfield@example.com\",\r\n      \"created_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"currency\": \"ZAR\",\r\n      \"current_subtotal_price\": \"3329.90\",\r\n      \"current_subtotal_price_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"current_total_additional_fees_set\": null,\r\n      \"current_total_discounts\": \"0.00\",\r\n      \"current_total_discounts_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"current_total_duties_set\": null,\r\n      \"current_total_price\": \"3329.90\",\r\n      \"current_total_price_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"current_total_tax\": \"0.00\",\r\n      \"current_total_tax_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"customer_locale\": \"en\",\r\n      \"device_id\": null,\r\n      \"discount_codes\": [],\r\n      \"email\": \"russel.winfield@example.com\",\r\n      \"estimated_taxes\": false,\r\n      \"financial_status\": \"paid\",\r\n      \"fulfillment_status\": null,\r\n      \"landing_site\": null,\r\n      \"landing_site_ref\": null,\r\n      \"location_id\": null,\r\n      \"merchant_of_record_app_id\": null,\r\n      \"name\": \"#1009\",\r\n      \"note\": null,\r\n      \"note_attributes\": [],\r\n      \"number\": 9,\r\n      \"order_number\": 1009,\r\n      \"order_status_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/orders/8d0f4b608b8ccd378f27b750bbfc5525/authenticate?key=b108f8329646a86e8edac3f2419b4230\",\r\n      \"original_total_additional_fees_set\": null,\r\n      \"original_total_duties_set\": null,\r\n      \"payment_gateway_names\": [\r\n        \"manual\"\r\n      ],\r\n      \"phone\": null,\r\n      \"po_number\": null,\r\n      \"presentment_currency\": \"ZAR\",\r\n      \"processed_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"reference\": \"27145a0b14036fb8557891daf25751e6\",\r\n      \"referring_site\": null,\r\n      \"source_identifier\": \"27145a0b14036fb8557891daf25751e6\",\r\n      \"source_name\": \"16818700289\",\r\n      \"source_url\": null,\r\n      \"subtotal_price\": \"3329.90\",\r\n      \"subtotal_price_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"tags\": \"Multiple Fulfillments\",\r\n      \"tax_exempt\": false,\r\n      \"tax_lines\": [],\r\n      \"taxes_included\": false,\r\n      \"test\": true,\r\n      \"token\": \"8d0f4b608b8ccd378f27b750bbfc5525\",\r\n      \"total_discounts\": \"0.00\",\r\n      \"total_discounts_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"total_line_items_price\": \"3329.90\",\r\n      \"total_line_items_price_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"total_outstanding\": \"0.00\",\r\n      \"total_price\": \"3329.90\",\r\n      \"total_price_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"3329.90\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"total_shipping_price_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"total_tax\": \"0.00\",\r\n      \"total_tax_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"total_tip_received\": \"0.00\",\r\n      \"total_weight\": 4535,\r\n      \"updated_at\": \"2024-03-10T21:54:45-04:00\",\r\n      \"user_id\": null,\r\n      \"billing_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": null,\r\n        \"longitude\": null,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"customer\": {\r\n        \"id\": 6889709863199,\r\n        \"email\": \"russel.winfield@example.com\",\r\n        \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n        \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n        \"first_name\": \"Russell\",\r\n        \"last_name\": \"Winfield\",\r\n        \"state\": \"disabled\",\r\n        \"note\": \"This customer is created with most available fields\",\r\n        \"verified_email\": true,\r\n        \"multipass_identifier\": null,\r\n        \"tax_exempt\": false,\r\n        \"phone\": \"+16135550135\",\r\n        \"email_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"single_opt_in\",\r\n          \"consent_updated_at\": null\r\n        },\r\n        \"sms_marketing_consent\": {\r\n          \"state\": \"not_subscribed\",\r\n          \"opt_in_level\": \"unknown\",\r\n          \"consent_updated_at\": null,\r\n          \"consent_collected_from\": \"OTHER\"\r\n        },\r\n        \"tags\": \"VIP\",\r\n        \"currency\": \"ZAR\",\r\n        \"tax_exemptions\": [],\r\n        \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709863199\",\r\n        \"default_address\": {\r\n          \"id\": 9160311439647,\r\n          \"customer_id\": 6889709863199,\r\n          \"first_name\": \"Russell\",\r\n          \"last_name\": \"Winfield\",\r\n          \"company\": \"Company Name\",\r\n          \"address1\": \"105 Victoria St\",\r\n          \"address2\": null,\r\n          \"city\": \"Toronto\",\r\n          \"province\": null,\r\n          \"country\": \"Canada\",\r\n          \"zip\": \"M5C1N7\",\r\n          \"phone\": null,\r\n          \"name\": \"Russell Winfield\",\r\n          \"province_code\": null,\r\n          \"country_code\": \"CA\",\r\n          \"country_name\": \"Canada\",\r\n          \"default\": true\r\n        }\r\n      },\r\n      \"discount_applications\": [],\r\n      \"fulfillments\": [],\r\n      \"line_items\": [\r\n        {\r\n          \"id\": 13864578384159,\r\n          \"admin_graphql_api_id\": \"gid://shopify/LineItem/13864578384159\",\r\n          \"current_quantity\": 1,\r\n          \"fulfillable_quantity\": 1,\r\n          \"fulfillment_service\": \"manual\",\r\n          \"fulfillment_status\": null,\r\n          \"gift_card\": false,\r\n          \"grams\": 4536,\r\n          \"name\": \"The Complete Snowboard - Sunset\",\r\n          \"price\": \"699.95\",\r\n          \"price_set\": {\r\n            \"shop_money\": {\r\n              \"amount\": \"699.95\",\r\n              \"currency_code\": \"ZAR\"\r\n            },\r\n            \"presentment_money\": {\r\n              \"amount\": \"699.95\",\r\n              \"currency_code\": \"ZAR\"\r\n            }\r\n          },\r\n          \"product_exists\": false,\r\n          \"product_id\": null,\r\n          \"properties\": [],\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"sku\": \"\",\r\n          \"taxable\": true,\r\n          \"title\": \"The Complete Snowboard\",\r\n          \"total_discount\": \"0.00\",\r\n          \"total_discount_set\": {\r\n            \"shop_money\": {\r\n              \"amount\": \"0.00\",\r\n              \"currency_code\": \"ZAR\"\r\n            },\r\n            \"presentment_money\": {\r\n              \"amount\": \"0.00\",\r\n              \"currency_code\": \"ZAR\"\r\n            }\r\n          },\r\n          \"variant_id\": null,\r\n          \"variant_inventory_management\": null,\r\n          \"variant_title\": \"Sunset\",\r\n          \"vendor\": \"Snowboard Vendor\",\r\n          \"tax_lines\": [],\r\n          \"duties\": [],\r\n          \"discount_allocations\": []\r\n        },\r\n        {\r\n          \"id\": 13864578416927,\r\n          \"admin_graphql_api_id\": \"gid://shopify/LineItem/13864578416927\",\r\n          \"current_quantity\": 1,\r\n          \"fulfillable_quantity\": 1,\r\n          \"fulfillment_service\": \"snow-city-warehouse\",\r\n          \"fulfillment_status\": null,\r\n          \"gift_card\": false,\r\n          \"grams\": 0,\r\n          \"name\": \"The 3p Fulfilled Snowboard\",\r\n          \"price\": \"2629.95\",\r\n          \"price_set\": {\r\n            \"shop_money\": {\r\n              \"amount\": \"2629.95\",\r\n              \"currency_code\": \"ZAR\"\r\n            },\r\n            \"presentment_money\": {\r\n              \"amount\": \"2629.95\",\r\n              \"currency_code\": \"ZAR\"\r\n            }\r\n          },\r\n          \"product_exists\": false,\r\n          \"product_id\": null,\r\n          \"properties\": [],\r\n          \"quantity\": 1,\r\n          \"requires_shipping\": true,\r\n          \"sku\": \"sku-hosted-1\",\r\n          \"taxable\": true,\r\n          \"title\": \"The 3p Fulfilled Snowboard\",\r\n          \"total_discount\": \"0.00\",\r\n          \"total_discount_set\": {\r\n            \"shop_money\": {\r\n              \"amount\": \"0.00\",\r\n              \"currency_code\": \"ZAR\"\r\n            },\r\n            \"presentment_money\": {\r\n              \"amount\": \"0.00\",\r\n              \"currency_code\": \"ZAR\"\r\n            }\r\n          },\r\n          \"variant_id\": null,\r\n          \"variant_inventory_management\": null,\r\n          \"variant_title\": null,\r\n          \"vendor\": \"FlowgearSandbox01\",\r\n          \"tax_lines\": [],\r\n          \"duties\": [],\r\n          \"discount_allocations\": []\r\n        }\r\n      ],\r\n      \"payment_terms\": null,\r\n      \"refunds\": [],\r\n      \"shipping_address\": {\r\n        \"first_name\": \"Russell\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"phone\": null,\r\n        \"city\": \"Toronto\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"last_name\": \"Winfield\",\r\n        \"address2\": null,\r\n        \"company\": \"Company Name\",\r\n        \"latitude\": 43.6522608,\r\n        \"longitude\": -79.3776862,\r\n        \"name\": \"Russell Winfield\",\r\n        \"country_code\": \"CA\",\r\n        \"province_code\": null\r\n      },\r\n      \"shipping_lines\": []\r\n    }\r\n  ]\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ids",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "5329877991711"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 6405, "Y": 3900 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "DisplayName": "Shopify",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:13:46.944439+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "1c50f791-4089-9cb5-c203-50ae56e85e1a",
+        "Name": "ForEach",
+        "ShortDescription": "ForEach",
+        "LongDescription": "Splits through each order",
+        "Version": "1.0.0.9",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "orders[*]"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": ["None", "ParentNode", "ParentAndRootNodes"],
+            "Value": "ParentNode"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Item",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"id\": 5329877991711,\r\n  \"admin_graphql_api_id\": \"gid://shopify/Order/5329877991711\",\r\n  \"app_id\": 16818700289,\r\n  \"browser_ip\": \"244.100.98.48\",\r\n  \"buyer_accepts_marketing\": false,\r\n  \"cancel_reason\": null,\r\n  \"cancelled_at\": null,\r\n  \"cart_token\": null,\r\n  \"checkout_id\": 36669577036063,\r\n  \"checkout_token\": \"360c8da4d31ce7f8964067eabd8295bd\",\r\n  \"client_details\": {\r\n    \"accept_language\": null,\r\n    \"browser_height\": null,\r\n    \"browser_ip\": \"244.100.98.48\",\r\n    \"browser_width\": null,\r\n    \"session_hash\": null,\r\n    \"user_agent\": \"Sunflower/production Cusco/1.12.1 Ruby/3.2.2\"\r\n  },\r\n  \"closed_at\": null,\r\n  \"company\": null,\r\n  \"confirmation_number\": \"58XYJ8YIR\",\r\n  \"confirmed\": true,\r\n  \"contact_email\": \"russel.winfield@example.com\",\r\n  \"created_at\": \"2023-04-25T07:35:57+00:00\",\r\n  \"currency\": \"ZAR\",\r\n  \"current_subtotal_price\": \"3329.90\",\r\n  \"current_subtotal_price_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"current_total_additional_fees_set\": null,\r\n  \"current_total_discounts\": \"0.00\",\r\n  \"current_total_discounts_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"current_total_duties_set\": null,\r\n  \"current_total_price\": \"3329.90\",\r\n  \"current_total_price_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"current_total_tax\": \"0.00\",\r\n  \"current_total_tax_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"customer_locale\": \"en\",\r\n  \"device_id\": null,\r\n  \"discount_codes\": [],\r\n  \"email\": \"russel.winfield@example.com\",\r\n  \"estimated_taxes\": false,\r\n  \"financial_status\": \"paid\",\r\n  \"fulfillment_status\": null,\r\n  \"landing_site\": null,\r\n  \"landing_site_ref\": null,\r\n  \"location_id\": null,\r\n  \"merchant_of_record_app_id\": null,\r\n  \"name\": \"#1009\",\r\n  \"note\": null,\r\n  \"note_attributes\": [],\r\n  \"number\": 9,\r\n  \"order_number\": 1009,\r\n  \"order_status_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/orders/8d0f4b608b8ccd378f27b750bbfc5525/authenticate?key=b108f8329646a86e8edac3f2419b4230\",\r\n  \"original_total_additional_fees_set\": null,\r\n  \"original_total_duties_set\": null,\r\n  \"payment_gateway_names\": [\r\n    \"manual\"\r\n  ],\r\n  \"phone\": null,\r\n  \"po_number\": null,\r\n  \"presentment_currency\": \"ZAR\",\r\n  \"processed_at\": \"2023-04-25T07:35:57+00:00\",\r\n  \"reference\": \"27145a0b14036fb8557891daf25751e6\",\r\n  \"referring_site\": null,\r\n  \"source_identifier\": \"27145a0b14036fb8557891daf25751e6\",\r\n  \"source_name\": \"16818700289\",\r\n  \"source_url\": null,\r\n  \"subtotal_price\": \"3329.90\",\r\n  \"subtotal_price_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"tags\": \"Multiple Fulfillments\",\r\n  \"tax_exempt\": false,\r\n  \"tax_lines\": [],\r\n  \"taxes_included\": false,\r\n  \"test\": true,\r\n  \"token\": \"8d0f4b608b8ccd378f27b750bbfc5525\",\r\n  \"total_discounts\": \"0.00\",\r\n  \"total_discounts_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"total_line_items_price\": \"3329.90\",\r\n  \"total_line_items_price_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"total_outstanding\": \"0.00\",\r\n  \"total_price\": \"3329.90\",\r\n  \"total_price_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"3329.90\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"total_shipping_price_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"total_tax\": \"0.00\",\r\n  \"total_tax_set\": {\r\n    \"shop_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    },\r\n    \"presentment_money\": {\r\n      \"amount\": \"0.00\",\r\n      \"currency_code\": \"ZAR\"\r\n    }\r\n  },\r\n  \"total_tip_received\": \"0.00\",\r\n  \"total_weight\": 4535,\r\n  \"updated_at\": \"2024-03-11T01:54:45+00:00\",\r\n  \"user_id\": null,\r\n  \"billing_address\": {\r\n    \"first_name\": \"Russell\",\r\n    \"address1\": \"105 Victoria St\",\r\n    \"phone\": null,\r\n    \"city\": \"Toronto\",\r\n    \"zip\": \"M5C1N7\",\r\n    \"province\": null,\r\n    \"country\": \"Canada\",\r\n    \"last_name\": \"Winfield\",\r\n    \"address2\": null,\r\n    \"company\": \"Company Name\",\r\n    \"latitude\": null,\r\n    \"longitude\": null,\r\n    \"name\": \"Russell Winfield\",\r\n    \"country_code\": \"CA\",\r\n    \"province_code\": null\r\n  },\r\n  \"customer\": {\r\n    \"id\": 6889709863199,\r\n    \"email\": \"russel.winfield@example.com\",\r\n    \"created_at\": \"2023-04-25T07:35:53+00:00\",\r\n    \"updated_at\": \"2023-04-25T07:35:57+00:00\",\r\n    \"first_name\": \"Russell\",\r\n    \"last_name\": \"Winfield\",\r\n    \"state\": \"disabled\",\r\n    \"note\": \"This customer is created with most available fields\",\r\n    \"verified_email\": true,\r\n    \"multipass_identifier\": null,\r\n    \"tax_exempt\": false,\r\n    \"phone\": \"+16135550135\",\r\n    \"email_marketing_consent\": {\r\n      \"state\": \"not_subscribed\",\r\n      \"opt_in_level\": \"single_opt_in\",\r\n      \"consent_updated_at\": null\r\n    },\r\n    \"sms_marketing_consent\": {\r\n      \"state\": \"not_subscribed\",\r\n      \"opt_in_level\": \"unknown\",\r\n      \"consent_updated_at\": null,\r\n      \"consent_collected_from\": \"OTHER\"\r\n    },\r\n    \"tags\": \"VIP\",\r\n    \"currency\": \"ZAR\",\r\n    \"tax_exemptions\": [],\r\n    \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709863199\",\r\n    \"default_address\": {\r\n      \"id\": 9160311439647,\r\n      \"customer_id\": 6889709863199,\r\n      \"first_name\": \"Russell\",\r\n      \"last_name\": \"Winfield\",\r\n      \"company\": \"Company Name\",\r\n      \"address1\": \"105 Victoria St\",\r\n      \"address2\": null,\r\n      \"city\": \"Toronto\",\r\n      \"province\": null,\r\n      \"country\": \"Canada\",\r\n      \"zip\": \"M5C1N7\",\r\n      \"phone\": null,\r\n      \"name\": \"Russell Winfield\",\r\n      \"province_code\": null,\r\n      \"country_code\": \"CA\",\r\n      \"country_name\": \"Canada\",\r\n      \"default\": true\r\n    }\r\n  },\r\n  \"discount_applications\": [],\r\n  \"fulfillments\": [],\r\n  \"line_items\": [\r\n    {\r\n      \"id\": 13864578384159,\r\n      \"admin_graphql_api_id\": \"gid://shopify/LineItem/13864578384159\",\r\n      \"current_quantity\": 1,\r\n      \"fulfillable_quantity\": 1,\r\n      \"fulfillment_service\": \"manual\",\r\n      \"fulfillment_status\": null,\r\n      \"gift_card\": false,\r\n      \"grams\": 4536,\r\n      \"name\": \"The Complete Snowboard - Sunset\",\r\n      \"price\": \"699.95\",\r\n      \"price_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"699.95\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"699.95\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"product_exists\": false,\r\n      \"product_id\": null,\r\n      \"properties\": [],\r\n      \"quantity\": 1,\r\n      \"requires_shipping\": true,\r\n      \"sku\": \"\",\r\n      \"taxable\": true,\r\n      \"title\": \"The Complete Snowboard\",\r\n      \"total_discount\": \"0.00\",\r\n      \"total_discount_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"variant_id\": null,\r\n      \"variant_inventory_management\": null,\r\n      \"variant_title\": \"Sunset\",\r\n      \"vendor\": \"Snowboard Vendor\",\r\n      \"tax_lines\": [],\r\n      \"duties\": [],\r\n      \"discount_allocations\": []\r\n    },\r\n    {\r\n      \"id\": 13864578416927,\r\n      \"admin_graphql_api_id\": \"gid://shopify/LineItem/13864578416927\",\r\n      \"current_quantity\": 1,\r\n      \"fulfillable_quantity\": 1,\r\n      \"fulfillment_service\": \"snow-city-warehouse\",\r\n      \"fulfillment_status\": null,\r\n      \"gift_card\": false,\r\n      \"grams\": 0,\r\n      \"name\": \"The 3p Fulfilled Snowboard\",\r\n      \"price\": \"2629.95\",\r\n      \"price_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"2629.95\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"2629.95\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"product_exists\": false,\r\n      \"product_id\": null,\r\n      \"properties\": [],\r\n      \"quantity\": 1,\r\n      \"requires_shipping\": true,\r\n      \"sku\": \"sku-hosted-1\",\r\n      \"taxable\": true,\r\n      \"title\": \"The 3p Fulfilled Snowboard\",\r\n      \"total_discount\": \"0.00\",\r\n      \"total_discount_set\": {\r\n        \"shop_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        },\r\n        \"presentment_money\": {\r\n          \"amount\": \"0.00\",\r\n          \"currency_code\": \"ZAR\"\r\n        }\r\n      },\r\n      \"variant_id\": null,\r\n      \"variant_inventory_management\": null,\r\n      \"variant_title\": null,\r\n      \"vendor\": \"FlowgearSandbox01\",\r\n      \"tax_lines\": [],\r\n      \"duties\": [],\r\n      \"discount_allocations\": []\r\n    }\r\n  ],\r\n  \"payment_terms\": null,\r\n  \"refunds\": [],\r\n  \"shipping_address\": {\r\n    \"first_name\": \"Russell\",\r\n    \"address1\": \"105 Victoria St\",\r\n    \"phone\": null,\r\n    \"city\": \"Toronto\",\r\n    \"zip\": \"M5C1N7\",\r\n    \"province\": null,\r\n    \"country\": \"Canada\",\r\n    \"last_name\": \"Winfield\",\r\n    \"address2\": null,\r\n    \"company\": \"Company Name\",\r\n    \"latitude\": 43.6522608,\r\n    \"longitude\": -79.3776862,\r\n    \"name\": \"Russell Winfield\",\r\n    \"country_code\": \"CA\",\r\n    \"province_code\": null\r\n  },\r\n  \"shipping_lines\": []\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemIndex",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemCount",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "Item", "IsException": false, "IsDefault": true },
+          { "Label": "Finished", "IsException": false, "IsDefault": false },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 6710, "Y": 3900 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "For Each",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:11:31.140455+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "a60d44ff-6afe-8ad2-1212-b3506652a09d",
+        "Name": "GetKeyValue2",
+        "ShortDescription": "OrderProcessed?",
+        "LongDescription": "Finds if the order has been processed before.",
+        "Version": "3.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "DateTime",
+            "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+            "ExtendedType": 0,
+            "Value": "2000-01-01T00:00:00"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "Found", "IsException": false, "IsDefault": true },
+          { "Label": "Missing", "IsException": false, "IsDefault": false },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7015, "Y": 3900 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Get Key-Value 2",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:11:47.090843+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "8b543f3f-3663-d1f4-9d0a-83ca1e0505fb",
+        "Name": "ShopifyRest",
+        "ShortDescription": "GetCustomer",
+        "LongDescription": "Get the customer details of the current order",
+        "Version": "1.1.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiVersion",
+                "TypeName": "System.String",
+                "ExtendedType": 0,
+                "Value": "2024-01"
+              },
+              {
+                "Name": "ShopifyBaseUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "XShopifyAccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ReturnRestFailureResponses",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "ExcludeEmptyQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "AllowCustomQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.ShopifyRest.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "b528e3ca-9fe5-3354-481f-dcb45ce0153b"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Retrieves a single customer"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseCode",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseHeaders",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"customer\": {\r\n    \"id\": 6889709863199,\r\n    \"email\": \"russel.winfield@example.com\",\r\n    \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n    \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n    \"first_name\": \"Russell\",\r\n    \"last_name\": \"Winfield\",\r\n    \"orders_count\": 4,\r\n    \"state\": \"disabled\",\r\n    \"total_spent\": \"6656.19\",\r\n    \"last_order_id\": 5329877991711,\r\n    \"note\": \"This customer is created with most available fields\",\r\n    \"verified_email\": true,\r\n    \"multipass_identifier\": null,\r\n    \"tax_exempt\": false,\r\n    \"tags\": \"VIP\",\r\n    \"last_order_name\": \"#1009\",\r\n    \"currency\": \"ZAR\",\r\n    \"phone\": \"+16135550135\",\r\n    \"addresses\": [\r\n      {\r\n        \"id\": 9160311439647,\r\n        \"customer_id\": 6889709863199,\r\n        \"first_name\": \"Russell\",\r\n        \"last_name\": \"Winfield\",\r\n        \"company\": \"Company Name\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"address2\": null,\r\n        \"city\": \"Toronto\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"phone\": null,\r\n        \"name\": \"Russell Winfield\",\r\n        \"province_code\": null,\r\n        \"country_code\": \"CA\",\r\n        \"country_name\": \"Canada\",\r\n        \"default\": true\r\n      }\r\n    ],\r\n    \"tax_exemptions\": [],\r\n    \"email_marketing_consent\": {\r\n      \"state\": \"not_subscribed\",\r\n      \"opt_in_level\": \"single_opt_in\",\r\n      \"consent_updated_at\": null\r\n    },\r\n    \"sms_marketing_consent\": {\r\n      \"state\": \"not_subscribed\",\r\n      \"opt_in_level\": \"unknown\",\r\n      \"consent_updated_at\": null,\r\n      \"consent_collected_from\": \"OTHER\"\r\n    },\r\n    \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709863199\",\r\n    \"default_address\": {\r\n      \"id\": 9160311439647,\r\n      \"customer_id\": 6889709863199,\r\n      \"first_name\": \"Russell\",\r\n      \"last_name\": \"Winfield\",\r\n      \"company\": \"Company Name\",\r\n      \"address1\": \"105 Victoria St\",\r\n      \"address2\": null,\r\n      \"city\": \"Toronto\",\r\n      \"province\": null,\r\n      \"country\": \"Canada\",\r\n      \"zip\": \"M5C1N7\",\r\n      \"phone\": null,\r\n      \"name\": \"Russell Winfield\",\r\n      \"province_code\": null,\r\n      \"country_code\": \"CA\",\r\n      \"country_name\": \"Canada\",\r\n      \"default\": true\r\n    }\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "customer_id",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7320, "Y": 3900 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "DisplayName": "Shopify",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:13:46.944439+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "ac346033-e702-5b9a-70ca-3c88a0601f70",
+        "Name": "QuickMap",
+        "ShortDescription": "MapCustomerFilter",
+        "LongDescription": "Map fields for the filter of Acumatica",
+        "Version": "4.0.0.43",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"customer/first_name\",\"customer/last_name\"],\"targetPath\":\"root/cust_name\",\"mapExpression\":\"\\\"CustomerName eq \\\" + \\\"'\\\" + TEXTVALUE({first_name}) + \\\" \\\" + TEXTVALUE({last_name}) + \\\"'\\\"\"}],\"sourceSchema\":\"{\\r\\n  \\\"customer\\\": {\\r\\n    \\\"id\\\": 6889709863199,\\r\\n    \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n    \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n    \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n    \\\"first_name\\\": \\\"Russell\\\",\\r\\n    \\\"last_name\\\": \\\"Winfield\\\",\\r\\n    \\\"orders_count\\\": 4,\\r\\n    \\\"state\\\": \\\"disabled\\\",\\r\\n    \\\"total_spent\\\": \\\"6656.19\\\",\\r\\n    \\\"last_order_id\\\": 5329877991711,\\r\\n    \\\"note\\\": \\\"This customer is created with most available fields\\\",\\r\\n    \\\"verified_email\\\": true,\\r\\n    \\\"multipass_identifier\\\": null,\\r\\n    \\\"tax_exempt\\\": false,\\r\\n    \\\"tags\\\": \\\"VIP\\\",\\r\\n    \\\"last_order_name\\\": \\\"#1009\\\",\\r\\n    \\\"currency\\\": \\\"ZAR\\\",\\r\\n    \\\"phone\\\": \\\"+16135550135\\\",\\r\\n    \\\"addresses\\\": [\\r\\n      {\\r\\n        \\\"id\\\": 9160311439647,\\r\\n        \\\"customer_id\\\": 6889709863199,\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"province_code\\\": null,\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"country_name\\\": \\\"Canada\\\",\\r\\n        \\\"default\\\": true\\r\\n      }\\r\\n    ],\\r\\n    \\\"tax_exemptions\\\": [],\\r\\n    \\\"email_marketing_consent\\\": {\\r\\n      \\\"state\\\": \\\"not_subscribed\\\",\\r\\n      \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n      \\\"consent_updated_at\\\": null\\r\\n    },\\r\\n    \\\"sms_marketing_consent\\\": {\\r\\n      \\\"state\\\": \\\"not_subscribed\\\",\\r\\n      \\\"opt_in_level\\\": \\\"unknown\\\",\\r\\n      \\\"consent_updated_at\\\": null,\\r\\n      \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n    },\\r\\n    \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709863199\\\",\\r\\n    \\\"default_address\\\": {\\r\\n      \\\"id\\\": 9160311439647,\\r\\n      \\\"customer_id\\\": 6889709863199,\\r\\n      \\\"first_name\\\": \\\"Russell\\\",\\r\\n      \\\"last_name\\\": \\\"Winfield\\\",\\r\\n      \\\"company\\\": \\\"Company Name\\\",\\r\\n      \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n      \\\"address2\\\": null,\\r\\n      \\\"city\\\": \\\"Toronto\\\",\\r\\n      \\\"province\\\": null,\\r\\n      \\\"country\\\": \\\"Canada\\\",\\r\\n      \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n      \\\"phone\\\": null,\\r\\n      \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n      \\\"province_code\\\": null,\\r\\n      \\\"country_code\\\": \\\"CA\\\",\\r\\n      \\\"country_name\\\": \\\"Canada\\\",\\r\\n      \\\"default\\\": true\\r\\n    }\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<root>\\r\\n  <cust_name>string</cust_name>\\r\\n</root>\",\"targetSchemaType\":0}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": ["Auto", "Json", "Xml"],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<root>\r\n  <cust_name>string</cust_name>\r\n</root>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7625, "Y": 3900 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-12-02T05:15:52.8098009+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "69c42ba0-89bb-87b9-ce6d-cf57f8d133b8",
+        "Name": "Acumatica",
+        "ShortDescription": "CustomerLookup",
+        "LongDescription": "Looks up for the filtered Customer on Acumatica",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "OpenApiUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ClientId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ClientSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "AccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "RefreshToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ExcludeEmptyQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "AllowCustomQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "ReturnRestFailureResponses",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Acumatica.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "da2508f0-cd17-c70b-5cd0-659f4538e982"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Retrieves records that satisfy the specified conditions from the system."
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "StatusCode",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseHeaders",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "[\r\n  {\r\n    \"id\": \"ad9917a5-6c24-f011-a7f0-002248a59414\",\r\n    \"rowNumber\": 1,\r\n    \"note\": {\r\n      \"value\": \"This customer is created with most available fields\"\r\n    },\r\n    \"CustomerID\": {\r\n      \"value\": \"RUSSELLWIN\"\r\n    },\r\n    \"CustomerName\": {\r\n      \"value\": \"Russell Winfield\"\r\n    },\r\n    \"custom\": {},\r\n    \"_links\": {\r\n      \"self\": \"/ASWiDemo1/entity/Default/23.200.001/Customer/ad9917a5-6c24-f011-a7f0-002248a59414\",\r\n      \"files:put\": \"/ASWiDemo1/entity/Default/23.200.001/files/PX.Objects.AR.CustomerMaint/BAccount/ad9917a5-6c24-f011-a7f0-002248a59414/{filename}\"\r\n    }\r\n  }\r\n]"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "$select",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "CustomerId"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "$filter",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7930, "Y": 3900 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": true,
+        "SupportsListSamples": true,
+        "DisplayName": "Acumatica Cloud ERP",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-01-22T06:49:57.6955426+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "901515bd-e477-cb33-4f4f-7e57a4c848ac",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "CustomerExists?",
+        "LongDescription": "Validate if the Customer exists",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value <> \"\""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "True", "IsException": false, "IsDefault": true },
+          { "Label": "False", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 8235, "Y": 3900 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:11:59.7406957+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "7f435735-70f1-5159-c8a9-825169f70ec7",
+        "Name": "QuickMap",
+        "ShortDescription": "MapSalesOrder",
+        "LongDescription": "Map fields and prepares the Sales Order payload to Acumatica",
+        "Version": "4.0.0.43",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[],\"targetPath\":\"Branch/value\",\"mapExpression\":\"\\\"PRODWHOLE\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"CustomerID/value\",\"mapExpression\":\"GETVALUE(\\\"cust_id\\\")\"},{\"sourcePaths\":[\"confirmation_number\"],\"targetPath\":\"CustomerOrder/value\",\"mapExpression\":\"UPPER({confirmation_number})\"},{\"sourcePaths\":[\"id\"],\"targetPath\":\"Description/value\",\"mapExpression\":\"\\\"SO for Shopify Order \\\" + TEXTVALUE({id})\"},{\"sourcePaths\":[],\"targetPath\":\"DestinationWarehouseID/value\",\"mapExpression\":\"\\\"WHOLESALE\\\"\"},{\"sourcePaths\":[\"line_items\"],\"targetPath\":\"Details\"},{\"sourcePaths\":[\"line_items/name\"],\"targetPath\":\"Details/InventoryID/value\",\"mapExpression\":\"LOOKUP({name}, \\\"prdctmapping\\\", \\\"value\\\", \\\"fetched\\\", \\\"\\\")\"},{\"sourcePaths\":[\"line_items/name\"],\"targetPath\":\"Details/LineDescription/value\"},{\"sourcePaths\":[\"line_items/quantity\"],\"targetPath\":\"Details/OrderQty/value\"},{\"sourcePaths\":[],\"targetPath\":\"Details/UOM/value\",\"mapExpression\":\"\\\"EA\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Details/WarehouseID/value\",\"mapExpression\":\"\\\"WHOLESALE\\\"\"},{\"sourcePaths\":[\"id\"],\"targetPath\":\"ExternalRef/value\",\"mapExpression\":\"TEXTVALUE({id})\"},{\"sourcePaths\":[],\"targetPath\":\"OrderType/value\",\"mapExpression\":\"\\\"SO\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"PreferredWarehouseID/value\",\"mapExpression\":\"\\\"WHOLESALE\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Status/value\",\"mapExpression\":\"\\\"Active\\\"\"}],\"sourceSchema\":\"{\\r\\n  \\\"id\\\": 5329877991711,\\r\\n  \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Order/5329877991711\\\",\\r\\n  \\\"app_id\\\": 16818700289,\\r\\n  \\\"browser_ip\\\": \\\"244.100.98.48\\\",\\r\\n  \\\"buyer_accepts_marketing\\\": false,\\r\\n  \\\"cancel_reason\\\": null,\\r\\n  \\\"cancelled_at\\\": null,\\r\\n  \\\"cart_token\\\": null,\\r\\n  \\\"checkout_id\\\": 36669577036063,\\r\\n  \\\"checkout_token\\\": \\\"360c8da4d31ce7f8964067eabd8295bd\\\",\\r\\n  \\\"client_details\\\": {\\r\\n    \\\"accept_language\\\": null,\\r\\n    \\\"browser_height\\\": null,\\r\\n    \\\"browser_ip\\\": \\\"244.100.98.48\\\",\\r\\n    \\\"browser_width\\\": null,\\r\\n    \\\"session_hash\\\": null,\\r\\n    \\\"user_agent\\\": \\\"Sunflower/production Cusco/1.12.1 Ruby/3.2.2\\\"\\r\\n  },\\r\\n  \\\"closed_at\\\": null,\\r\\n  \\\"company\\\": null,\\r\\n  \\\"confirmation_number\\\": \\\"58XYJ8YIR\\\",\\r\\n  \\\"confirmed\\\": true,\\r\\n  \\\"contact_email\\\": \\\"russel.winfield@example.com\\\",\\r\\n  \\\"created_at\\\": \\\"2023-04-25T07:35:57+00:00\\\",\\r\\n  \\\"currency\\\": \\\"ZAR\\\",\\r\\n  \\\"current_subtotal_price\\\": \\\"3329.90\\\",\\r\\n  \\\"current_subtotal_price_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"current_total_additional_fees_set\\\": null,\\r\\n  \\\"current_total_discounts\\\": \\\"0.00\\\",\\r\\n  \\\"current_total_discounts_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"current_total_duties_set\\\": null,\\r\\n  \\\"current_total_price\\\": \\\"3329.90\\\",\\r\\n  \\\"current_total_price_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"current_total_tax\\\": \\\"0.00\\\",\\r\\n  \\\"current_total_tax_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"customer_locale\\\": \\\"en\\\",\\r\\n  \\\"device_id\\\": null,\\r\\n  \\\"discount_codes\\\": [],\\r\\n  \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n  \\\"estimated_taxes\\\": false,\\r\\n  \\\"financial_status\\\": \\\"paid\\\",\\r\\n  \\\"fulfillment_status\\\": null,\\r\\n  \\\"landing_site\\\": null,\\r\\n  \\\"landing_site_ref\\\": null,\\r\\n  \\\"location_id\\\": null,\\r\\n  \\\"merchant_of_record_app_id\\\": null,\\r\\n  \\\"name\\\": \\\"#1009\\\",\\r\\n  \\\"note\\\": null,\\r\\n  \\\"note_attributes\\\": [],\\r\\n  \\\"number\\\": 9,\\r\\n  \\\"order_number\\\": 1009,\\r\\n  \\\"order_status_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/orders/8d0f4b608b8ccd378f27b750bbfc5525/authenticate?key=b108f8329646a86e8edac3f2419b4230\\\",\\r\\n  \\\"original_total_additional_fees_set\\\": null,\\r\\n  \\\"original_total_duties_set\\\": null,\\r\\n  \\\"payment_gateway_names\\\": [\\r\\n    \\\"manual\\\"\\r\\n  ],\\r\\n  \\\"phone\\\": null,\\r\\n  \\\"po_number\\\": null,\\r\\n  \\\"presentment_currency\\\": \\\"ZAR\\\",\\r\\n  \\\"processed_at\\\": \\\"2023-04-25T07:35:57+00:00\\\",\\r\\n  \\\"reference\\\": \\\"27145a0b14036fb8557891daf25751e6\\\",\\r\\n  \\\"referring_site\\\": null,\\r\\n  \\\"source_identifier\\\": \\\"27145a0b14036fb8557891daf25751e6\\\",\\r\\n  \\\"source_name\\\": \\\"16818700289\\\",\\r\\n  \\\"source_url\\\": null,\\r\\n  \\\"subtotal_price\\\": \\\"3329.90\\\",\\r\\n  \\\"subtotal_price_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"tags\\\": \\\"Multiple Fulfillments\\\",\\r\\n  \\\"tax_exempt\\\": false,\\r\\n  \\\"tax_lines\\\": [],\\r\\n  \\\"taxes_included\\\": false,\\r\\n  \\\"test\\\": true,\\r\\n  \\\"token\\\": \\\"8d0f4b608b8ccd378f27b750bbfc5525\\\",\\r\\n  \\\"total_discounts\\\": \\\"0.00\\\",\\r\\n  \\\"total_discounts_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"total_line_items_price\\\": \\\"3329.90\\\",\\r\\n  \\\"total_line_items_price_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"total_outstanding\\\": \\\"0.00\\\",\\r\\n  \\\"total_price\\\": \\\"3329.90\\\",\\r\\n  \\\"total_price_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"3329.90\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"total_shipping_price_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"total_tax\\\": \\\"0.00\\\",\\r\\n  \\\"total_tax_set\\\": {\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.00\\\",\\r\\n      \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"total_tip_received\\\": \\\"0.00\\\",\\r\\n  \\\"total_weight\\\": 4535,\\r\\n  \\\"updated_at\\\": \\\"2024-03-11T01:54:45+00:00\\\",\\r\\n  \\\"user_id\\\": null,\\r\\n  \\\"billing_address\\\": {\\r\\n    \\\"first_name\\\": \\\"Russell\\\",\\r\\n    \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n    \\\"phone\\\": null,\\r\\n    \\\"city\\\": \\\"Toronto\\\",\\r\\n    \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n    \\\"province\\\": null,\\r\\n    \\\"country\\\": \\\"Canada\\\",\\r\\n    \\\"last_name\\\": \\\"Winfield\\\",\\r\\n    \\\"address2\\\": null,\\r\\n    \\\"company\\\": \\\"Company Name\\\",\\r\\n    \\\"latitude\\\": null,\\r\\n    \\\"longitude\\\": null,\\r\\n    \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n    \\\"country_code\\\": \\\"CA\\\",\\r\\n    \\\"province_code\\\": null\\r\\n  },\\r\\n  \\\"customer\\\": {\\r\\n    \\\"id\\\": 6889709863199,\\r\\n    \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n    \\\"created_at\\\": \\\"2023-04-25T07:35:53+00:00\\\",\\r\\n    \\\"updated_at\\\": \\\"2023-04-25T07:35:57+00:00\\\",\\r\\n    \\\"first_name\\\": \\\"Russell\\\",\\r\\n    \\\"last_name\\\": \\\"Winfield\\\",\\r\\n    \\\"state\\\": \\\"disabled\\\",\\r\\n    \\\"note\\\": \\\"This customer is created with most available fields\\\",\\r\\n    \\\"verified_email\\\": true,\\r\\n    \\\"multipass_identifier\\\": null,\\r\\n    \\\"tax_exempt\\\": false,\\r\\n    \\\"phone\\\": \\\"+16135550135\\\",\\r\\n    \\\"email_marketing_consent\\\": {\\r\\n      \\\"state\\\": \\\"not_subscribed\\\",\\r\\n      \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n      \\\"consent_updated_at\\\": null\\r\\n    },\\r\\n    \\\"sms_marketing_consent\\\": {\\r\\n      \\\"state\\\": \\\"not_subscribed\\\",\\r\\n      \\\"opt_in_level\\\": \\\"unknown\\\",\\r\\n      \\\"consent_updated_at\\\": null,\\r\\n      \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n    },\\r\\n    \\\"tags\\\": \\\"VIP\\\",\\r\\n    \\\"currency\\\": \\\"ZAR\\\",\\r\\n    \\\"tax_exemptions\\\": [],\\r\\n    \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709863199\\\",\\r\\n    \\\"default_address\\\": {\\r\\n      \\\"id\\\": 9160311439647,\\r\\n      \\\"customer_id\\\": 6889709863199,\\r\\n      \\\"first_name\\\": \\\"Russell\\\",\\r\\n      \\\"last_name\\\": \\\"Winfield\\\",\\r\\n      \\\"company\\\": \\\"Company Name\\\",\\r\\n      \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n      \\\"address2\\\": null,\\r\\n      \\\"city\\\": \\\"Toronto\\\",\\r\\n      \\\"province\\\": null,\\r\\n      \\\"country\\\": \\\"Canada\\\",\\r\\n      \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n      \\\"phone\\\": null,\\r\\n      \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n      \\\"province_code\\\": null,\\r\\n      \\\"country_code\\\": \\\"CA\\\",\\r\\n      \\\"country_name\\\": \\\"Canada\\\",\\r\\n      \\\"default\\\": true\\r\\n    }\\r\\n  },\\r\\n  \\\"discount_applications\\\": [],\\r\\n  \\\"fulfillments\\\": [],\\r\\n  \\\"line_items\\\": [\\r\\n    {\\r\\n      \\\"id\\\": 13864578384159,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/LineItem/13864578384159\\\",\\r\\n      \\\"current_quantity\\\": 1,\\r\\n      \\\"fulfillable_quantity\\\": 1,\\r\\n      \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n      \\\"fulfillment_status\\\": null,\\r\\n      \\\"gift_card\\\": false,\\r\\n      \\\"grams\\\": 4536,\\r\\n      \\\"name\\\": \\\"The Complete Snowboard - Sunset\\\",\\r\\n      \\\"price\\\": \\\"699.95\\\",\\r\\n      \\\"price_set\\\": {\\r\\n        \\\"shop_money\\\": {\\r\\n          \\\"amount\\\": \\\"699.95\\\",\\r\\n          \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n        },\\r\\n        \\\"presentment_money\\\": {\\r\\n          \\\"amount\\\": \\\"699.95\\\",\\r\\n          \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n        }\\r\\n      },\\r\\n      \\\"product_exists\\\": false,\\r\\n      \\\"product_id\\\": null,\\r\\n      \\\"properties\\\": [],\\r\\n      \\\"quantity\\\": 1,\\r\\n      \\\"requires_shipping\\\": true,\\r\\n      \\\"sku\\\": \\\"\\\",\\r\\n      \\\"taxable\\\": true,\\r\\n      \\\"title\\\": \\\"The Complete Snowboard\\\",\\r\\n      \\\"total_discount\\\": \\\"0.00\\\",\\r\\n      \\\"total_discount_set\\\": {\\r\\n        \\\"shop_money\\\": {\\r\\n          \\\"amount\\\": \\\"0.00\\\",\\r\\n          \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n        },\\r\\n        \\\"presentment_money\\\": {\\r\\n          \\\"amount\\\": \\\"0.00\\\",\\r\\n          \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n        }\\r\\n      },\\r\\n      \\\"variant_id\\\": null,\\r\\n      \\\"variant_inventory_management\\\": null,\\r\\n      \\\"variant_title\\\": \\\"Sunset\\\",\\r\\n      \\\"vendor\\\": \\\"Snowboard Vendor\\\",\\r\\n      \\\"tax_lines\\\": [],\\r\\n      \\\"duties\\\": [],\\r\\n      \\\"discount_allocations\\\": []\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": 13864578416927,\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/LineItem/13864578416927\\\",\\r\\n      \\\"current_quantity\\\": 1,\\r\\n      \\\"fulfillable_quantity\\\": 1,\\r\\n      \\\"fulfillment_service\\\": \\\"snow-city-warehouse\\\",\\r\\n      \\\"fulfillment_status\\\": null,\\r\\n      \\\"gift_card\\\": false,\\r\\n      \\\"grams\\\": 0,\\r\\n      \\\"name\\\": \\\"The 3p Fulfilled Snowboard\\\",\\r\\n      \\\"price\\\": \\\"2629.95\\\",\\r\\n      \\\"price_set\\\": {\\r\\n        \\\"shop_money\\\": {\\r\\n          \\\"amount\\\": \\\"2629.95\\\",\\r\\n          \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n        },\\r\\n        \\\"presentment_money\\\": {\\r\\n          \\\"amount\\\": \\\"2629.95\\\",\\r\\n          \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n        }\\r\\n      },\\r\\n      \\\"product_exists\\\": false,\\r\\n      \\\"product_id\\\": null,\\r\\n      \\\"properties\\\": [],\\r\\n      \\\"quantity\\\": 1,\\r\\n      \\\"requires_shipping\\\": true,\\r\\n      \\\"sku\\\": \\\"sku-hosted-1\\\",\\r\\n      \\\"taxable\\\": true,\\r\\n      \\\"title\\\": \\\"The 3p Fulfilled Snowboard\\\",\\r\\n      \\\"total_discount\\\": \\\"0.00\\\",\\r\\n      \\\"total_discount_set\\\": {\\r\\n        \\\"shop_money\\\": {\\r\\n          \\\"amount\\\": \\\"0.00\\\",\\r\\n          \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n        },\\r\\n        \\\"presentment_money\\\": {\\r\\n          \\\"amount\\\": \\\"0.00\\\",\\r\\n          \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n        }\\r\\n      },\\r\\n      \\\"variant_id\\\": null,\\r\\n      \\\"variant_inventory_management\\\": null,\\r\\n      \\\"variant_title\\\": null,\\r\\n      \\\"vendor\\\": \\\"FlowgearSandbox01\\\",\\r\\n      \\\"tax_lines\\\": [],\\r\\n      \\\"duties\\\": [],\\r\\n      \\\"discount_allocations\\\": []\\r\\n    }\\r\\n  ],\\r\\n  \\\"payment_terms\\\": null,\\r\\n  \\\"refunds\\\": [],\\r\\n  \\\"shipping_address\\\": {\\r\\n    \\\"first_name\\\": \\\"Russell\\\",\\r\\n    \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n    \\\"phone\\\": null,\\r\\n    \\\"city\\\": \\\"Toronto\\\",\\r\\n    \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n    \\\"province\\\": null,\\r\\n    \\\"country\\\": \\\"Canada\\\",\\r\\n    \\\"last_name\\\": \\\"Winfield\\\",\\r\\n    \\\"address2\\\": null,\\r\\n    \\\"company\\\": \\\"Company Name\\\",\\r\\n    \\\"latitude\\\": 43.6522608,\\r\\n    \\\"longitude\\\": -79.3776862,\\r\\n    \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n    \\\"country_code\\\": \\\"CA\\\",\\r\\n    \\\"province_code\\\": null\\r\\n  },\\r\\n  \\\"shipping_lines\\\": []\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"{\\r\\n  \\\"id\\\": \\\"(string)\\\",\\r\\n  \\\"rowNumber\\\": \\\"(integer)\\\",\\r\\n  \\\"note\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"Branch\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"CashAccount\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"CustomerID\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"CustomerOrder\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"Date\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"Description\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"DestinationWarehouseID\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"Details\\\": [\\r\\n    {\\r\\n      \\\"id\\\": \\\"15a2ec57-46b4-ec11-8358-1293d93768b3\\\",\\r\\n      \\\"rowNumber\\\": 1,\\r\\n      \\\"note\\\": {\\r\\n        \\\"value\\\": \\\"\\\"\\r\\n      },\\r\\n      \\\"Account\\\": {\\r\\n        \\\"value\\\": \\\"40000\\\"\\r\\n      },\\r\\n      \\\"Amount\\\": {\\r\\n        \\\"value\\\": 20187.5\\r\\n      },\\r\\n      \\\"AverageCost\\\": {\\r\\n        \\\"value\\\": 249.86\\r\\n      },\\r\\n      \\\"Branch\\\": {\\r\\n        \\\"value\\\": \\\"PRODWHOLE\\\"\\r\\n      },\\r\\n      \\\"DiscountAmount\\\": {\\r\\n        \\\"value\\\": 3562.5\\r\\n      },\\r\\n      \\\"DiscountedUnitPrice\\\": {\\r\\n        \\\"value\\\": 403.75\\r\\n      },\\r\\n      \\\"DiscountPercent\\\": {\\r\\n        \\\"value\\\": 15\\r\\n      },\\r\\n      \\\"ExtendedPrice\\\": {\\r\\n        \\\"value\\\": 23750\\r\\n      },\\r\\n      \\\"InventoryID\\\": {\\r\\n        \\\"value\\\": \\\"AACOMPUT01\\\"\\r\\n      },\\r\\n      \\\"LastModifiedDate\\\": {\\r\\n        \\\"value\\\": \\\"01/01/2023 00:00:00\\\"\\r\\n      },\\r\\n      \\\"LineDescription\\\": {\\r\\n        \\\"value\\\": \\\"Acer Laptop Computer\\\"\\r\\n      },\\r\\n      \\\"LineNbr\\\": {\\r\\n        \\\"value\\\": 1\\r\\n      },\\r\\n      \\\"LineType\\\": {\\r\\n        \\\"value\\\": \\\"Goods for Inventory\\\"\\r\\n      },\\r\\n      \\\"OpenQty\\\": {\\r\\n        \\\"value\\\": 50\\r\\n      },\\r\\n      \\\"Operation\\\": {\\r\\n        \\\"value\\\": \\\"Issue\\\"\\r\\n      },\\r\\n      \\\"OrderQty\\\": {\\r\\n        \\\"value\\\": 50\\r\\n      },\\r\\n      \\\"OvershipThreshold\\\": {\\r\\n        \\\"value\\\": 100\\r\\n      },\\r\\n      \\\"QtyOnShipments\\\": {\\r\\n        \\\"value\\\": 0\\r\\n      },\\r\\n      \\\"RequestedOn\\\": {\\r\\n        \\\"value\\\": \\\"2022-04-04T00:00:00+00:00\\\"\\r\\n      },\\r\\n      \\\"SchedOrderDate\\\": {\\r\\n        \\\"value\\\": \\\"2022-04-04T00:00:00+00:00\\\"\\r\\n      },\\r\\n      \\\"ShipOn\\\": {\\r\\n        \\\"value\\\": \\\"2022-04-04T00:00:00+00:00\\\"\\r\\n      },\\r\\n      \\\"ShippingRule\\\": {\\r\\n        \\\"value\\\": \\\"Back Order Allowed\\\"\\r\\n      },\\r\\n      \\\"ShipToLocation\\\": {\\r\\n        \\\"value\\\": \\\"MAIN\\\"\\r\\n      },\\r\\n      \\\"TaxCategory\\\": {\\r\\n        \\\"value\\\": \\\"EXEMPT\\\"\\r\\n      },\\r\\n      \\\"UnbilledAmount\\\": {\\r\\n        \\\"value\\\": 20187.5\\r\\n      },\\r\\n      \\\"UndershipThreshold\\\": {\\r\\n        \\\"value\\\": 100\\r\\n      },\\r\\n      \\\"UnitCost\\\": {\\r\\n        \\\"value\\\": 250\\r\\n      },\\r\\n      \\\"UnitPrice\\\": {\\r\\n        \\\"value\\\": 475\\r\\n      },\\r\\n      \\\"UOM\\\": {\\r\\n        \\\"value\\\": \\\"EA\\\"\\r\\n      },\\r\\n      \\\"WarehouseID\\\": {\\r\\n        \\\"value\\\": \\\"WHOLESALE\\\"\\r\\n      },\\r\\n      \\\"custom\\\": {}\\r\\n    },\\r\\n    {\\r\\n      \\\"id\\\": \\\"15a2ec57-46b4-ec11-8358-1293d93768b3\\\",\\r\\n      \\\"rowNumber\\\": 1,\\r\\n      \\\"note\\\": {\\r\\n        \\\"value\\\": \\\"\\\"\\r\\n      },\\r\\n      \\\"Account\\\": {\\r\\n        \\\"value\\\": \\\"40000\\\"\\r\\n      },\\r\\n      \\\"Amount\\\": {\\r\\n        \\\"value\\\": 20187.5\\r\\n      },\\r\\n      \\\"AverageCost\\\": {\\r\\n        \\\"value\\\": 249.86\\r\\n      },\\r\\n      \\\"Branch\\\": {\\r\\n        \\\"value\\\": \\\"PRODWHOLE\\\"\\r\\n      },\\r\\n      \\\"DiscountAmount\\\": {\\r\\n        \\\"value\\\": 3562.5\\r\\n      },\\r\\n      \\\"DiscountedUnitPrice\\\": {\\r\\n        \\\"value\\\": 403.75\\r\\n      },\\r\\n      \\\"DiscountPercent\\\": {\\r\\n        \\\"value\\\": 15\\r\\n      },\\r\\n      \\\"ExtendedPrice\\\": {\\r\\n        \\\"value\\\": 23750\\r\\n      },\\r\\n      \\\"InventoryID\\\": {\\r\\n        \\\"value\\\": \\\"AACOMPUT01\\\"\\r\\n      },\\r\\n      \\\"LastModifiedDate\\\": {\\r\\n        \\\"value\\\": \\\"01/01/2023 00:00:00\\\"\\r\\n      },\\r\\n      \\\"LineDescription\\\": {\\r\\n        \\\"value\\\": \\\"Acer Laptop Computer\\\"\\r\\n      },\\r\\n      \\\"LineNbr\\\": {\\r\\n        \\\"value\\\": 1\\r\\n      },\\r\\n      \\\"LineType\\\": {\\r\\n        \\\"value\\\": \\\"Goods for Inventory\\\"\\r\\n      },\\r\\n      \\\"OpenQty\\\": {\\r\\n        \\\"value\\\": 50\\r\\n      },\\r\\n      \\\"Operation\\\": {\\r\\n        \\\"value\\\": \\\"Issue\\\"\\r\\n      },\\r\\n      \\\"OrderQty\\\": {\\r\\n        \\\"value\\\": 50\\r\\n      },\\r\\n      \\\"OvershipThreshold\\\": {\\r\\n        \\\"value\\\": 100\\r\\n      },\\r\\n      \\\"QtyOnShipments\\\": {\\r\\n        \\\"value\\\": 0\\r\\n      },\\r\\n      \\\"RequestedOn\\\": {\\r\\n        \\\"value\\\": \\\"2022-04-04T00:00:00+00:00\\\"\\r\\n      },\\r\\n      \\\"SchedOrderDate\\\": {\\r\\n        \\\"value\\\": \\\"2022-04-04T00:00:00+00:00\\\"\\r\\n      },\\r\\n      \\\"ShipOn\\\": {\\r\\n        \\\"value\\\": \\\"2022-04-04T00:00:00+00:00\\\"\\r\\n      },\\r\\n      \\\"ShippingRule\\\": {\\r\\n        \\\"value\\\": \\\"Back Order Allowed\\\"\\r\\n      },\\r\\n      \\\"ShipToLocation\\\": {\\r\\n        \\\"value\\\": \\\"MAIN\\\"\\r\\n      },\\r\\n      \\\"TaxCategory\\\": {\\r\\n        \\\"value\\\": \\\"EXEMPT\\\"\\r\\n      },\\r\\n      \\\"UnbilledAmount\\\": {\\r\\n        \\\"value\\\": 20187.5\\r\\n      },\\r\\n      \\\"UndershipThreshold\\\": {\\r\\n        \\\"value\\\": 100\\r\\n      },\\r\\n      \\\"UnitCost\\\": {\\r\\n        \\\"value\\\": 250\\r\\n      },\\r\\n      \\\"UnitPrice\\\": {\\r\\n        \\\"value\\\": 475\\r\\n      },\\r\\n      \\\"UOM\\\": {\\r\\n        \\\"value\\\": \\\"EA\\\"\\r\\n      },\\r\\n      \\\"WarehouseID\\\": {\\r\\n        \\\"value\\\": \\\"WHOLESALE\\\"\\r\\n      },\\r\\n      \\\"custom\\\": {}\\r\\n    }\\r\\n  ],\\r\\n  \\\"EffectiveDate\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"ExternalRef\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"LastModified\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"LocationID\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"OrderedQty\\\": {\\r\\n    \\\"value\\\": \\\"(number)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"OrderNbr\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"OrderTotal\\\": {\\r\\n    \\\"value\\\": \\\"(number)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"OrderType\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"PaymentMethod\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"PreferredWarehouseID\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"RequestedOn\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"ShipVia\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"Status\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"ExternalOrderOriginal\\\": {\\r\\n    \\\"value\\\": \\\"(boolean)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"ExternalRefundRef\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"PaymentRef\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"CreatedDate\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  }\\r\\n}\",\"targetSchemaType\":2}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": ["Auto", "Json", "Xml"],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "cust_id",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "xxx"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "prdctmapping",
+            "TypeName": "apiTypes.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"root\": {\r\n    \"nest\": [\r\n      {\r\n        \"value\": \"The Complete Snowboard - Sunset\",\r\n        \"fetched\": \"SNWBSUNSET\"\r\n      },\r\n      {\r\n        \"value\": \"The 3p Fulfilled Snowboard\",\r\n        \"fetched\": \"3PSNOWBRD\"\r\n      }\r\n    ]\r\n  }\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 8540, "Y": 3900 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-12-02T05:15:52.8098009+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "154e37d5-d11e-9511-d184-8603bfaaebba",
+        "Name": "Acumatica",
+        "ShortDescription": "CreateSalesOrder",
+        "LongDescription": "Create Sales Order in Acumatica",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "OpenApiUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ClientId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ClientSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "AccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "RefreshToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ExcludeEmptyQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "AllowCustomQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "ReturnRestFailureResponses",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Acumatica.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "67f70690-80c6-de15-1d11-b66fe19c04bd"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Creates a record or updates an existing record."
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"id\": \"(string)\",\r\n  \"rowNumber\": \"(integer)\",\r\n  \"note\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Branch\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CashAccount\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerOrder\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Date\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Description\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"DestinationWarehouseID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Details\": [\r\n    {\r\n      \"id\": \"15a2ec57-46b4-ec11-8358-1293d93768b3\",\r\n      \"rowNumber\": 1,\r\n      \"note\": {\r\n        \"value\": \"\"\r\n      },\r\n      \"Account\": {\r\n        \"value\": \"40000\"\r\n      },\r\n      \"Amount\": {\r\n        \"value\": 20187.5\r\n      },\r\n      \"AverageCost\": {\r\n        \"value\": 249.86\r\n      },\r\n      \"Branch\": {\r\n        \"value\": \"PRODWHOLE\"\r\n      },\r\n      \"DiscountAmount\": {\r\n        \"value\": 3562.5\r\n      },\r\n      \"DiscountedUnitPrice\": {\r\n        \"value\": 403.75\r\n      },\r\n      \"DiscountPercent\": {\r\n        \"value\": 15\r\n      },\r\n      \"ExtendedPrice\": {\r\n        \"value\": 23750\r\n      },\r\n      \"InventoryID\": {\r\n        \"value\": \"AACOMPUT01\"\r\n      },\r\n      \"LastModifiedDate\": {\r\n        \"value\": \"01/01/2023 00:00:00\"\r\n      },\r\n      \"LineDescription\": {\r\n        \"value\": \"Acer Laptop Computer\"\r\n      },\r\n      \"LineNbr\": {\r\n        \"value\": 1\r\n      },\r\n      \"LineType\": {\r\n        \"value\": \"Goods for Inventory\"\r\n      },\r\n      \"OpenQty\": {\r\n        \"value\": 50\r\n      },\r\n      \"Operation\": {\r\n        \"value\": \"Issue\"\r\n      },\r\n      \"OrderQty\": {\r\n        \"value\": 50\r\n      },\r\n      \"OvershipThreshold\": {\r\n        \"value\": 100\r\n      },\r\n      \"QtyOnShipments\": {\r\n        \"value\": 0\r\n      },\r\n      \"RequestedOn\": {\r\n        \"value\": \"2022-04-04T00:00:00+00:00\"\r\n      },\r\n      \"SchedOrderDate\": {\r\n        \"value\": \"2022-04-04T00:00:00+00:00\"\r\n      },\r\n      \"ShipOn\": {\r\n        \"value\": \"2022-04-04T00:00:00+00:00\"\r\n      },\r\n      \"ShippingRule\": {\r\n        \"value\": \"Back Order Allowed\"\r\n      },\r\n      \"ShipToLocation\": {\r\n        \"value\": \"MAIN\"\r\n      },\r\n      \"TaxCategory\": {\r\n        \"value\": \"EXEMPT\"\r\n      },\r\n      \"UnbilledAmount\": {\r\n        \"value\": 20187.5\r\n      },\r\n      \"UndershipThreshold\": {\r\n        \"value\": 100\r\n      },\r\n      \"UnitCost\": {\r\n        \"value\": 250\r\n      },\r\n      \"UnitPrice\": {\r\n        \"value\": 475\r\n      },\r\n      \"UOM\": {\r\n        \"value\": \"EA\"\r\n      },\r\n      \"WarehouseID\": {\r\n        \"value\": \"WHOLESALE\"\r\n      },\r\n      \"custom\": {}\r\n    },\r\n    {\r\n      \"id\": \"15a2ec57-46b4-ec11-8358-1293d93768b3\",\r\n      \"rowNumber\": 1,\r\n      \"note\": {\r\n        \"value\": \"\"\r\n      },\r\n      \"Account\": {\r\n        \"value\": \"40000\"\r\n      },\r\n      \"Amount\": {\r\n        \"value\": 20187.5\r\n      },\r\n      \"AverageCost\": {\r\n        \"value\": 249.86\r\n      },\r\n      \"Branch\": {\r\n        \"value\": \"PRODWHOLE\"\r\n      },\r\n      \"DiscountAmount\": {\r\n        \"value\": 3562.5\r\n      },\r\n      \"DiscountedUnitPrice\": {\r\n        \"value\": 403.75\r\n      },\r\n      \"DiscountPercent\": {\r\n        \"value\": 15\r\n      },\r\n      \"ExtendedPrice\": {\r\n        \"value\": 23750\r\n      },\r\n      \"InventoryID\": {\r\n        \"value\": \"AACOMPUT01\"\r\n      },\r\n      \"LastModifiedDate\": {\r\n        \"value\": \"01/01/2023 00:00:00\"\r\n      },\r\n      \"LineDescription\": {\r\n        \"value\": \"Acer Laptop Computer\"\r\n      },\r\n      \"LineNbr\": {\r\n        \"value\": 1\r\n      },\r\n      \"LineType\": {\r\n        \"value\": \"Goods for Inventory\"\r\n      },\r\n      \"OpenQty\": {\r\n        \"value\": 50\r\n      },\r\n      \"Operation\": {\r\n        \"value\": \"Issue\"\r\n      },\r\n      \"OrderQty\": {\r\n        \"value\": 50\r\n      },\r\n      \"OvershipThreshold\": {\r\n        \"value\": 100\r\n      },\r\n      \"QtyOnShipments\": {\r\n        \"value\": 0\r\n      },\r\n      \"RequestedOn\": {\r\n        \"value\": \"2022-04-04T00:00:00+00:00\"\r\n      },\r\n      \"SchedOrderDate\": {\r\n        \"value\": \"2022-04-04T00:00:00+00:00\"\r\n      },\r\n      \"ShipOn\": {\r\n        \"value\": \"2022-04-04T00:00:00+00:00\"\r\n      },\r\n      \"ShippingRule\": {\r\n        \"value\": \"Back Order Allowed\"\r\n      },\r\n      \"ShipToLocation\": {\r\n        \"value\": \"MAIN\"\r\n      },\r\n      \"TaxCategory\": {\r\n        \"value\": \"EXEMPT\"\r\n      },\r\n      \"UnbilledAmount\": {\r\n        \"value\": 20187.5\r\n      },\r\n      \"UndershipThreshold\": {\r\n        \"value\": 100\r\n      },\r\n      \"UnitCost\": {\r\n        \"value\": 250\r\n      },\r\n      \"UnitPrice\": {\r\n        \"value\": 475\r\n      },\r\n      \"UOM\": {\r\n        \"value\": \"EA\"\r\n      },\r\n      \"WarehouseID\": {\r\n        \"value\": \"WHOLESALE\"\r\n      },\r\n      \"custom\": {}\r\n    }\r\n  ],\r\n  \"EffectiveDate\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ExternalRef\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"LastModified\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"LocationID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"OrderedQty\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"OrderNbr\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"OrderTotal\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"OrderType\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PaymentMethod\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PreferredWarehouseID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"RequestedOn\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShipVia\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Status\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ExternalOrderOriginal\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ExternalRefundRef\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PaymentRef\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CreatedDate\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "StatusCode",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseHeaders",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"id\": \"(string)\",\r\n  \"rowNumber\": \"(integer)\",\r\n  \"note\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"custom\": {},\r\n  \"error\": \"(string)\",\r\n  \"files\": [\r\n    {\r\n      \"id\": \"(string)\",\r\n      \"filename\": \"(string)\",\r\n      \"href\": \"(string)\"\r\n    }\r\n  ],\r\n  \"Approved\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"BaseCurrencyID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"BillToAddress\": \"()\",\r\n  \"BillToAddressOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"BillToAddressValidated\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"BillToContact\": \"()\",\r\n  \"BillToContactOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Branch\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CashAccount\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Commissions\": \"()\",\r\n  \"ContactID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ControlTotal\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CreditHold\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CurrencyID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CurrencyRate\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CurrencyRateTypeID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerOrder\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Date\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Description\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"DestinationWarehouseID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Details\": [\r\n    {}\r\n  ],\r\n  \"DisableAutomaticDiscountUpdate\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"DisableAutomaticTaxCalculation\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"DiscountDetails\": [\r\n    {}\r\n  ],\r\n  \"EffectiveDate\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ExternalRef\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"FinancialSettings\": \"()\",\r\n  \"Hold\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"IsTaxValid\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"LastModified\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"LocationID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"MaxRiskScore\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"OrderedQty\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"OrderNbr\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"OrderRisks\": [\r\n    {}\r\n  ],\r\n  \"OrderTotal\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"OrderType\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PaymentMethod\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Payments\": [\r\n    {}\r\n  ],\r\n  \"PreferredWarehouseID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Project\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ReciprocalRate\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Relations\": [\r\n    {}\r\n  ],\r\n  \"RequestedOn\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Shipments\": [\r\n    {}\r\n  ],\r\n  \"ShippingSettings\": \"()\",\r\n  \"ShipToAddress\": \"()\",\r\n  \"ShipToAddressOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShipToAddressValidated\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShipToContact\": \"()\",\r\n  \"ShipToContactOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShipVia\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Status\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"TaxDetails\": [\r\n    {}\r\n  ],\r\n  \"TaxTotal\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Totals\": \"()\",\r\n  \"VATExemptTotal\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"VATTaxableTotal\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ExternalOrderOriginal\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ExternalRefundRef\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"WillCall\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PaymentRef\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"NoteID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"UsrExternalOrderOriginal\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ExternalOrderOrigin\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ExternalOrderSource\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"TaxCalcMode\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CreatedDate\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  }\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 8845, "Y": 3900 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": true,
+        "SupportsListSamples": true,
+        "DisplayName": "Acumatica Cloud ERP",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-01-22T06:49:57.6955426+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "87202207-9e13-b869-2e9c-c23576064315",
+        "Name": "IfEqual",
+        "ShortDescription": "SOCreated?",
+        "LongDescription": "Validate if the Sales Order was created successfully.",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression1",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "200"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchNotEqual",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsEqual",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "True", "IsException": false, "IsDefault": true },
+          { "Label": "False", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 9150, "Y": 3900 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "If Equal",
+        "NodeType": 2,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:11:59.1861176+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "b0bebdb2-ac30-d473-ab7a-4c66fb521d90",
+        "Name": "SetKeyValue2",
+        "ShortDescription": "TagFailure",
+        "LongDescription": "Log the Key Value for errors",
+        "Version": "3.0.0.5",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Key",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Status",
+            "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Unknown",
+              "InProgress",
+              "Warning",
+              "Error",
+              "Success"
+            ],
+            "Value": "Error"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 9455, "Y": 3900 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Set Key-Value 2",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "42b2ab69-2973-70e3-6502-d7d12cbb2675",
+        "Name": "QuickMap",
+        "ShortDescription": "MapCustomer",
+        "LongDescription": "Map fields and prepares the Customer payload to Acumatica",
+        "Version": "4.0.0.43",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"customer/note\"],\"targetPath\":\"note/value\",\"mapExpression\":\"TRIM({note})\"},{\"sourcePaths\":[\"customer/tags\"],\"targetPath\":\"CustomerClass/value\",\"mapExpression\":\"IIF(FIRST({tags}) = \\\"VIP\\\", \\\"KEY\\\", \\\"LOCAL\\\")\"},{\"sourcePaths\":[\"customer/first_name\",\"customer/last_name\"],\"targetPath\":\"CustomerID/value\",\"mapExpression\":\"UPPER(TEXTVALUE({first_name}) + TEXTVALUE({last_name}))\"},{\"sourcePaths\":[\"customer/first_name\",\"customer/last_name\"],\"targetPath\":\"CustomerName/value\",\"mapExpression\":\"TEXTVALUE({first_name}) + \\\" \\\" + TEXTVALUE({last_name})\"},{\"sourcePaths\":[\"customer/email\"],\"targetPath\":\"Email/value\",\"mapExpression\":\"LOWER({email})\"},{\"sourcePaths\":[\"customer/addresses/address1\"],\"targetPath\":\"MainContact/Address/AddressLine1/value\",\"mapExpression\":\"TRIM({address1})\"},{\"sourcePaths\":[\"customer/addresses/address2\"],\"targetPath\":\"MainContact/Address/AddressLine2/value\",\"mapExpression\":\"TRIM({address2})\"},{\"sourcePaths\":[\"customer/addresses/city\"],\"targetPath\":\"MainContact/Address/City/value\",\"mapExpression\":\"TRIM({city})\"},{\"sourcePaths\":[\"customer/addresses/zip\"],\"targetPath\":\"MainContact/Address/PostalCode/value\",\"mapExpression\":\"UPPER({zip})\"},{\"sourcePaths\":[],\"targetPath\":\"MainContact/Address/State/value\",\"mapExpression\":\"\\\"ON\\\"\"},{\"sourcePaths\":[\"customer/email\"],\"targetPath\":\"MainContact/Email/value\",\"mapExpression\":\"LOWER({email})\"},{\"sourcePaths\":[\"customer/phone\"],\"targetPath\":\"MainContact/Phone1/value\",\"mapExpression\":\"REPLACE({phone}, \\\"+1\\\", \\\"\\\")\"},{\"sourcePaths\":[\"customer/first_name\",\"customer/last_name\"],\"targetPath\":\"PrimaryContact/Name/value\",\"mapExpression\":\"TEXTVALUE({first_name}) + \\\" \\\" + TEXTVALUE({last_name})\"},{\"sourcePaths\":[\"customer/addresses/name\"],\"targetPath\":\"PrimaryContact/FirstName/value\",\"mapExpression\":\"LEFTOF({name}, \\\" \\\")\"},{\"sourcePaths\":[\"customer/addresses/name\"],\"targetPath\":\"PrimaryContact/LastName/value\",\"mapExpression\":\"RIGHTOF({name}, \\\" \\\")\"},{\"sourcePaths\":[\"customer/email\"],\"targetPath\":\"PrimaryContact/Email/value\",\"mapExpression\":\"LOWER({email})\"},{\"sourcePaths\":[\"customer/phone\"],\"targetPath\":\"PrimaryContact/Phone1/value\",\"mapExpression\":\"REPLACE({phone}, \\\"+1\\\", \\\"\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Status/value\",\"mapExpression\":\"\\\"Active\\\"\"}],\"sourceSchema\":\"{\\r\\n  \\\"customer\\\": {\\r\\n    \\\"id\\\": 6889709863199,\\r\\n    \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n    \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n    \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n    \\\"first_name\\\": \\\"Russell\\\",\\r\\n    \\\"last_name\\\": \\\"Winfield\\\",\\r\\n    \\\"orders_count\\\": 4,\\r\\n    \\\"state\\\": \\\"disabled\\\",\\r\\n    \\\"total_spent\\\": \\\"6656.19\\\",\\r\\n    \\\"last_order_id\\\": 5329877991711,\\r\\n    \\\"note\\\": \\\"This customer is created with most available fields\\\",\\r\\n    \\\"verified_email\\\": true,\\r\\n    \\\"multipass_identifier\\\": null,\\r\\n    \\\"tax_exempt\\\": false,\\r\\n    \\\"tags\\\": \\\"VIP\\\",\\r\\n    \\\"last_order_name\\\": \\\"#1009\\\",\\r\\n    \\\"currency\\\": \\\"ZAR\\\",\\r\\n    \\\"phone\\\": \\\"+16135550135\\\",\\r\\n    \\\"addresses\\\": [\\r\\n      {\\r\\n        \\\"id\\\": 9160311439647,\\r\\n        \\\"customer_id\\\": 6889709863199,\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"province_code\\\": null,\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"country_name\\\": \\\"Canada\\\",\\r\\n        \\\"default\\\": true\\r\\n      }\\r\\n    ],\\r\\n    \\\"tax_exemptions\\\": [],\\r\\n    \\\"email_marketing_consent\\\": {\\r\\n      \\\"state\\\": \\\"not_subscribed\\\",\\r\\n      \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n      \\\"consent_updated_at\\\": null\\r\\n    },\\r\\n    \\\"sms_marketing_consent\\\": {\\r\\n      \\\"state\\\": \\\"not_subscribed\\\",\\r\\n      \\\"opt_in_level\\\": \\\"unknown\\\",\\r\\n      \\\"consent_updated_at\\\": null,\\r\\n      \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n    },\\r\\n    \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709863199\\\",\\r\\n    \\\"default_address\\\": {\\r\\n      \\\"id\\\": 9160311439647,\\r\\n      \\\"customer_id\\\": 6889709863199,\\r\\n      \\\"first_name\\\": \\\"Russell\\\",\\r\\n      \\\"last_name\\\": \\\"Winfield\\\",\\r\\n      \\\"company\\\": \\\"Company Name\\\",\\r\\n      \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n      \\\"address2\\\": null,\\r\\n      \\\"city\\\": \\\"Toronto\\\",\\r\\n      \\\"province\\\": null,\\r\\n      \\\"country\\\": \\\"Canada\\\",\\r\\n      \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n      \\\"phone\\\": null,\\r\\n      \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n      \\\"province_code\\\": null,\\r\\n      \\\"country_code\\\": \\\"CA\\\",\\r\\n      \\\"country_name\\\": \\\"Canada\\\",\\r\\n      \\\"default\\\": true\\r\\n    }\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"{\\r\\n  \\\"id\\\": \\\"(string)\\\",\\r\\n  \\\"rowNumber\\\": \\\"(integer)\\\",\\r\\n  \\\"note\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"custom\\\": {},\\r\\n  \\\"CustomerClass\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"CustomerID\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"CustomerCategory\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"CustomerName\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"Email\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"LastModifiedDateTime\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"LocationName\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"MainContact\\\": {\\r\\n    \\\"id\\\": \\\"(String)\\\",\\r\\n    \\\"rowNumber\\\": \\\"(string)\\\",\\r\\n    \\\"note\\\": \\\"(string)\\\",\\r\\n    \\\"Address\\\": {\\r\\n      \\\"id\\\": \\\"793096e5-7f89-46f8-a28f-44f67e0bd5b6\\\",\\r\\n      \\\"rowNumber\\\": \\\"(string)\\\",\\r\\n      \\\"note\\\": \\\"(string)\\\",\\r\\n      \\\"AddressLine1\\\": {\\r\\n        \\\"value\\\": \\\"156 10th Ave\\\"\\r\\n      },\\r\\n      \\\"AddressLine2\\\": {\\r\\n        \\\"value\\\": \\\"Unit 1\\\"\\r\\n      },\\r\\n      \\\"City\\\": {\\r\\n        \\\"value\\\": \\\"New York\\\"\\r\\n      },\\r\\n      \\\"PostalCode\\\": {\\r\\n        \\\"value\\\": \\\"10011\\\"\\r\\n      },\\r\\n      \\\"State\\\": {\\r\\n        \\\"value\\\": \\\"NY\\\"\\r\\n      },\\r\\n      \\\"custom\\\": {}\\r\\n    },\\r\\n    \\\"Email\\\": {\\r\\n      \\\"value\\\": \\\"ap@altaace.con\\\"\\r\\n    },\\r\\n    \\\"Phone1\\\": {\\r\\n      \\\"value\\\": \\\"+1 (212) 555-6724\\\"\\r\\n    },\\r\\n    \\\"custom\\\": {}\\r\\n  },\\r\\n  \\\"PrimaryContact\\\": {\\r\\n    \\\"id\\\": \\\"(string)\\\",\\r\\n    \\\"rowNumber\\\": \\\"(integer)\\\",\\r\\n    \\\"note\\\": \\\"(string)\\\",\\r\\n    \\\"Name\\\": {\\r\\n      \\\"value\\\": \\\"John Doe\\\"\\r\\n    },\\r\\n    \\\"FirstName\\\": {\\r\\n      \\\"value\\\": \\\"(string)\\\"\\r\\n    },\\r\\n    \\\"LastName\\\": {\\r\\n      \\\"value\\\": \\\"(string)\\\"\\r\\n    },\\r\\n    \\\"JobTitle\\\": {\\r\\n      \\\"value\\\": \\\"Manager\\\"\\r\\n    },\\r\\n    \\\"Email\\\": {\\r\\n      \\\"value\\\": \\\"john.doe@example.com\\\"\\r\\n    },\\r\\n    \\\"Phone1\\\": {\\r\\n      \\\"value\\\": \\\"123-456-3334\\\"\\r\\n    },\\r\\n    \\\"custom\\\": {}\\r\\n  },\\r\\n  \\\"ParentRecord\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"PaymentInstructions\\\": [\\r\\n    {}\\r\\n  ],\\r\\n  \\\"PriceClassID\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"PrimaryContactID\\\": {\\r\\n    \\\"value\\\": \\\"(integer)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"Salespersons\\\": [\\r\\n    {}\\r\\n  ],\\r\\n  \\\"ShippingAddressOverride\\\": {\\r\\n    \\\"value\\\": \\\"(boolean)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"ShippingBranch\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"ShippingContact\\\": \\\"()\\\",\\r\\n  \\\"StatementType\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"Status\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  },\\r\\n  \\\"WarehouseID\\\": {\\r\\n    \\\"value\\\": \\\"(string)\\\",\\r\\n    \\\"error\\\": \\\"(string)\\\"\\r\\n  }\\r\\n}\",\"targetSchemaType\":2}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": ["Auto", "Json", "Xml"],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 8540, "Y": 4316 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-12-02T05:15:52.8098009+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "3ea060a0-7db0-bc7a-53e1-5c6ac95aac8d",
+        "Name": "Acumatica",
+        "ShortDescription": "CreateCustomer",
+        "LongDescription": "Creates the Customer in Acumatica",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "OpenApiUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ClientId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ClientSecret",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Username",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "AccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "RefreshToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ExcludeEmptyQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "AllowCustomQueryParameters",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              },
+              {
+                "Name": "ReturnRestFailureResponses",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0,
+                "Value": true
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Acumatica.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "8c4b503d-5941-fc1d-dad7-0944e22ad718"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "Creates a record or updates an existing record."
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"id\": \"(string)\",\r\n  \"rowNumber\": \"(integer)\",\r\n  \"note\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"custom\": {},\r\n  \"CustomerClass\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerCategory\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerName\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Email\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"LastModifiedDateTime\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"LocationName\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"MainContact\": {\r\n    \"id\": \"(String)\",\r\n    \"rowNumber\": \"(string)\",\r\n    \"note\": \"(string)\",\r\n    \"Address\": {\r\n      \"id\": \"793096e5-7f89-46f8-a28f-44f67e0bd5b6\",\r\n      \"rowNumber\": \"(string)\",\r\n      \"note\": \"(string)\",\r\n      \"AddressLine1\": {\r\n        \"value\": \"156 10th Ave\"\r\n      },\r\n      \"AddressLine2\": {\r\n        \"value\": \"Unit 1\"\r\n      },\r\n      \"City\": {\r\n        \"value\": \"New York\"\r\n      },\r\n      \"PostalCode\": {\r\n        \"value\": \"10011\"\r\n      },\r\n      \"State\": {\r\n        \"value\": \"NY\"\r\n      },\r\n      \"custom\": {}\r\n    },\r\n    \"Email\": {\r\n      \"value\": \"ap@altaace.con\"\r\n    },\r\n    \"Phone1\": {\r\n      \"value\": \"+1 (212) 555-6724\"\r\n    },\r\n    \"custom\": {}\r\n  },\r\n  \"PrimaryContact\": {\r\n    \"id\": \"(string)\",\r\n    \"rowNumber\": \"(integer)\",\r\n    \"note\": \"(string)\",\r\n    \"Name\": {\r\n      \"value\": \"John Doe\"\r\n    },\r\n    \"FirstName\": {\r\n      \"value\": \"(string)\"\r\n    },\r\n    \"LastName\": {\r\n      \"value\": \"(string)\"\r\n    },\r\n    \"JobTitle\": {\r\n      \"value\": \"Manager\"\r\n    },\r\n    \"Email\": {\r\n      \"value\": \"john.doe@example.com\"\r\n    },\r\n    \"Phone1\": {\r\n      \"value\": \"123-456-3334\"\r\n    },\r\n    \"custom\": {}\r\n  },\r\n  \"ParentRecord\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PaymentInstructions\": [\r\n    {}\r\n  ],\r\n  \"PriceClassID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PrimaryContactID\": {\r\n    \"value\": \"(integer)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Salespersons\": [\r\n    {}\r\n  ],\r\n  \"ShippingAddressOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShippingBranch\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShippingContact\": \"()\",\r\n  \"StatementType\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Status\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"WarehouseID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  }\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "StatusCode",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseHeaders",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"id\": \"(string)\",\r\n  \"rowNumber\": \"(integer)\",\r\n  \"note\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"custom\": {},\r\n  \"error\": \"(string)\",\r\n  \"files\": [\r\n    {\r\n      \"id\": \"(string)\",\r\n      \"filename\": \"(string)\",\r\n      \"href\": \"(string)\"\r\n    }\r\n  ],\r\n  \"AccountRef\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ApplyOverdueCharges\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Attributes\": [\r\n    {}\r\n  ],\r\n  \"AutoApplyPayments\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"BAccountID\": {\r\n    \"value\": \"(integer)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"BillingAddressOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"BillingContact\": \"()\",\r\n  \"BillingContactOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Contacts\": [\r\n    {}\r\n  ],\r\n  \"CreatedDateTime\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CreditVerificationRules\": \"()\",\r\n  \"CurrencyID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CurrencyRateType\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerClass\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerCategory\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CustomerName\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Email\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"EnableCurrencyOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"EnableRateOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"EnableWriteOffs\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"FOBPoint\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"LastModifiedDateTime\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"LeadTimedays\": {\r\n    \"value\": \"(integer)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"LocationName\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"MainContact\": \"()\",\r\n  \"MultiCurrencyStatements\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"OrderPriority\": {\r\n    \"value\": \"(integer)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ParentRecord\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PaymentInstructions\": [\r\n    {}\r\n  ],\r\n  \"PriceClassID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PrimaryContact\": \"()\",\r\n  \"PrimaryContactID\": {\r\n    \"value\": \"(integer)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PrintDunningLetters\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PrintInvoices\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"PrintStatements\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ResidentialDelivery\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Salespersons\": [\r\n    {}\r\n  ],\r\n  \"SaturdayDelivery\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"SendDunningLettersbyEmail\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"SendInvoicesbyEmail\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"SendStatementsbyEmail\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShippingAddressOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShippingBranch\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShippingContact\": \"()\",\r\n  \"ShippingContactOverride\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShippingRule\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShippingTerms\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShippingZoneID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"ShipVia\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"StatementCycleID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"StatementType\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Status\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"TaxRegistrationID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"TaxZone\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"Terms\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"WarehouseID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"WriteOffLimit\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"RestrictVisibilityTo\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"CreditLimit\": {\r\n    \"value\": \"(number)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"NoteID\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"EntityUsageType\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"TaxExemptionNumber\": {\r\n    \"value\": \"(string)\",\r\n    \"error\": \"(string)\"\r\n  },\r\n  \"IsGuestCustomer\": {\r\n    \"value\": \"(boolean)\",\r\n    \"error\": \"(string)\"\r\n  }\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 8845, "Y": 4316 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": true,
+        "SupportsListSamples": true,
+        "DisplayName": "Acumatica Cloud ERP",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-01-22T06:49:57.6955426+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "4f7e0009-9649-114a-c701-7f47502b28c1",
+        "Name": "IfEqual",
+        "ShortDescription": "CustomerCreated?",
+        "LongDescription": "Validate if the customer was created successfully.",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression1",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression2",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "200"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "MatchNotEqual",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsEqual",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "True", "IsException": false, "IsDefault": true },
+          { "Label": "False", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 9150, "Y": 4316 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "If Equal",
+        "NodeType": 2,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-10-29T07:11:59.1861176+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "8bb08aec-2fe0-b9b0-ec3c-90fd1403398f",
+        "TargetNodeId": "f7cd862e-c220-ef80-f52b-03ead2cafb6f",
+        "SourceName": "Run_Now"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "f7cd862e-c220-ef80-f52b-03ead2cafb6f",
+        "TargetNodeId": "1c50f791-4089-9cb5-c203-50ae56e85e1a",
+        "SourceName": "Response",
+        "TargetName": "SourceDocument"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "f7cd862e-c220-ef80-f52b-03ead2cafb6f",
+        "TargetNodeId": "1c50f791-4089-9cb5-c203-50ae56e85e1a",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "1c50f791-4089-9cb5-c203-50ae56e85e1a",
+        "TargetNodeId": "a60d44ff-6afe-8ad2-1212-b3506652a09d",
+        "SourceName": "Item"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "79706eae-3d20-b9ad-472f-623ae61fdd5a",
+        "TargetNodeId": "a60d44ff-6afe-8ad2-1212-b3506652a09d",
+        "SourceName": "Group",
+        "TargetName": "Group"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1c50f791-4089-9cb5-c203-50ae56e85e1a",
+        "TargetNodeId": "a60d44ff-6afe-8ad2-1212-b3506652a09d",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1c50f791-4089-9cb5-c203-50ae56e85e1a",
+        "TargetNodeId": "8b543f3f-3663-d1f4-9d0a-83ca1e0505fb",
+        "SourceName": "Item",
+        "TargetName": "customer_id",
+        "Expression": "customer.id"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "a60d44ff-6afe-8ad2-1212-b3506652a09d",
+        "TargetNodeId": "8b543f3f-3663-d1f4-9d0a-83ca1e0505fb",
+        "SourceName": "Missing"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "8b543f3f-3663-d1f4-9d0a-83ca1e0505fb",
+        "TargetNodeId": "ac346033-e702-5b9a-70ca-3c88a0601f70",
+        "SourceName": "Response",
+        "TargetName": "Source"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "8b543f3f-3663-d1f4-9d0a-83ca1e0505fb",
+        "TargetNodeId": "ac346033-e702-5b9a-70ca-3c88a0601f70",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ac346033-e702-5b9a-70ca-3c88a0601f70",
+        "TargetNodeId": "69c42ba0-89bb-87b9-ce6d-cf57f8d133b8",
+        "SourceName": "Result",
+        "TargetName": "$filter",
+        "Expression": "root.cust_name"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ac346033-e702-5b9a-70ca-3c88a0601f70",
+        "TargetNodeId": "69c42ba0-89bb-87b9-ce6d-cf57f8d133b8",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "8b543f3f-3663-d1f4-9d0a-83ca1e0505fb",
+        "TargetNodeId": "42b2ab69-2973-70e3-6502-d7d12cbb2675",
+        "SourceName": "Response",
+        "TargetName": "Source"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "901515bd-e477-cb33-4f4f-7e57a4c848ac",
+        "TargetNodeId": "42b2ab69-2973-70e3-6502-d7d12cbb2675",
+        "SourceName": "False"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "42b2ab69-2973-70e3-6502-d7d12cbb2675",
+        "TargetNodeId": "3ea060a0-7db0-bc7a-53e1-5c6ac95aac8d",
+        "SourceName": "Result",
+        "TargetName": "Request"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3ea060a0-7db0-bc7a-53e1-5c6ac95aac8d",
+        "TargetNodeId": "4f7e0009-9649-114a-c701-7f47502b28c1",
+        "SourceName": "StatusCode",
+        "TargetName": "Expression1"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "3ea060a0-7db0-bc7a-53e1-5c6ac95aac8d",
+        "TargetNodeId": "4f7e0009-9649-114a-c701-7f47502b28c1",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "42b2ab69-2973-70e3-6502-d7d12cbb2675",
+        "TargetNodeId": "3ea060a0-7db0-bc7a-53e1-5c6ac95aac8d",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "4f7e0009-9649-114a-c701-7f47502b28c1",
+        "TargetNodeId": "7f435735-70f1-5159-c8a9-825169f70ec7",
+        "SourceName": "True"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "901515bd-e477-cb33-4f4f-7e57a4c848ac",
+        "TargetNodeId": "7f435735-70f1-5159-c8a9-825169f70ec7",
+        "SourceName": "True"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3ea060a0-7db0-bc7a-53e1-5c6ac95aac8d",
+        "TargetNodeId": "7f435735-70f1-5159-c8a9-825169f70ec7",
+        "SourceName": "Response",
+        "TargetName": "cust_id",
+        "Expression": "CustomerID.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "69c42ba0-89bb-87b9-ce6d-cf57f8d133b8",
+        "TargetNodeId": "7f435735-70f1-5159-c8a9-825169f70ec7",
+        "SourceName": "Response",
+        "TargetName": "cust_id",
+        "Expression": "[0].CustomerID.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1c50f791-4089-9cb5-c203-50ae56e85e1a",
+        "TargetNodeId": "7f435735-70f1-5159-c8a9-825169f70ec7",
+        "SourceName": "Item",
+        "TargetName": "Source"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f435735-70f1-5159-c8a9-825169f70ec7",
+        "TargetNodeId": "154e37d5-d11e-9511-d184-8603bfaaebba",
+        "SourceName": "Result",
+        "TargetName": "Request"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "7f435735-70f1-5159-c8a9-825169f70ec7",
+        "TargetNodeId": "154e37d5-d11e-9511-d184-8603bfaaebba",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "154e37d5-d11e-9511-d184-8603bfaaebba",
+        "TargetNodeId": "87202207-9e13-b869-2e9c-c23576064315",
+        "SourceName": "StatusCode",
+        "TargetName": "Expression1"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "154e37d5-d11e-9511-d184-8603bfaaebba",
+        "TargetNodeId": "87202207-9e13-b869-2e9c-c23576064315",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "87202207-9e13-b869-2e9c-c23576064315",
+        "TargetNodeId": "5d586ef9-f78a-efae-e0d8-28672153bdf2",
+        "SourceName": "True"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "87202207-9e13-b869-2e9c-c23576064315",
+        "TargetNodeId": "b0bebdb2-ac30-d473-ab7a-4c66fb521d90",
+        "SourceName": "False"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "79706eae-3d20-b9ad-472f-623ae61fdd5a",
+        "TargetNodeId": "5d586ef9-f78a-efae-e0d8-28672153bdf2",
+        "SourceName": "Group",
+        "TargetName": "Group"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "79706eae-3d20-b9ad-472f-623ae61fdd5a",
+        "TargetNodeId": "b0bebdb2-ac30-d473-ab7a-4c66fb521d90",
+        "SourceName": "Group",
+        "TargetName": "Group"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1c50f791-4089-9cb5-c203-50ae56e85e1a",
+        "TargetNodeId": "5d586ef9-f78a-efae-e0d8-28672153bdf2",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "154e37d5-d11e-9511-d184-8603bfaaebba",
+        "TargetNodeId": "5d586ef9-f78a-efae-e0d8-28672153bdf2",
+        "SourceName": "Response",
+        "TargetName": "Value",
+        "Expression": "OrderNbr.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "154e37d5-d11e-9511-d184-8603bfaaebba",
+        "TargetNodeId": "b0bebdb2-ac30-d473-ab7a-4c66fb521d90",
+        "SourceName": "Response",
+        "TargetName": "Value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1c50f791-4089-9cb5-c203-50ae56e85e1a",
+        "TargetNodeId": "b0bebdb2-ac30-d473-ab7a-4c66fb521d90",
+        "SourceName": "Item",
+        "TargetName": "Key",
+        "Expression": "id"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "69c42ba0-89bb-87b9-ce6d-cf57f8d133b8",
+        "TargetNodeId": "901515bd-e477-cb33-4f4f-7e57a4c848ac",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "69c42ba0-89bb-87b9-ce6d-cf57f8d133b8",
+        "TargetNodeId": "901515bd-e477-cb33-4f4f-7e57a4c848ac",
+        "SourceName": "Response",
+        "TargetName": "Value",
+        "Expression": "[0].CustomerID.value"
+      }
+    ],
+    "StartNodeId": "8bb08aec-2fe0-b9b0-ec3c-90fd1403398f",
+    "ActivityLogLevelMask": 0
+  },
+  "Name": "Shopify Sales Orders Sync to Acumatica Example",
+  "Description": "This workflow syncs Shopify orders to Acumatica by checking if each order and customer already exist, creating them if needed, and logging the result. It maps and processes order and customer data, handling both success and error outcomes."
+}
