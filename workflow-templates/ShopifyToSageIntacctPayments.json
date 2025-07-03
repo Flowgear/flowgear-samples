@@ -1,0 +1,2039 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "a5266db6-a2f4-60f3-7990-ff2b533ec5cb",
+                "Name": "Note",
+                "ShortDescription": "About This Workflow",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow integrates Shopify with Sage Intacct.\nIt retrieves a list of transactions from Shopify, separates each payment into individual records, and checks whether they have already been processed against a Key Value. \nFor each transaction, it fetches the associated Shopify order items and Sage Intacct customer details.\nIf the customer does not exist in Sage Intacct, the Workflow creates the customer record.\nFinally, it maps the data and creates a Payment in Sage Intacct, logging either a success or error for each processed order.\n"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "ad985028-22cd-3654-bd16-0be8b0ab60bb",
+                "Name": "VariableBar",
+                "ShortDescription": "SetKeyValueGroup",
+                "LongDescription": "Here we are setting the Key Value Group",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "ShopifyPayments"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:14:12.5597178+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "8da99f3d-6cc8-fd01-f131-edd5cc1a12a2",
+                "Name": "Formatter",
+                "ShortDescription": "PaymentProcessed",
+                "LongDescription": "Here we are displaying a message if the Payment ID has been found in the Key Value Group",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "Transaction: \"{TransactionID}\" has already been processed."
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "TransactionID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "fbb55905-21b3-8ff9-d0cf-8ae8e34ef2ab",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogSuccess",
+                "LongDescription": "Here we are logging the Key Value record for successful records.\nWe get the Group from the Variable bar.\nWe use the Payment ID as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\nWe use the Sage RecordNO Key as the Value.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 9150,
+                    "Y": 3945
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "1b63b5ed-0a6c-be11-295c-209971249825",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 4205
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "51587491-6008-eda5-3eb0-94841df4f9bf",
+                "Name": "ShopifyRest",
+                "ShortDescription": "GetPayments",
+                "LongDescription": "Here we are retrieving a list of Payments",
+                "Version": "1.1.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "2024-01"
+                            },
+                            {
+                                "Name": "ShopifyBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "XShopifyAccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "ReturnRestFailureResponses",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            },
+                            {
+                                "Name": "ExcludeEmptyQueryParameters",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            },
+                            {
+                                "Name": "AllowCustomQueryParameters",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.ShopifyRest.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "62319f7f-8acf-5d4a-806c-3ee7185cf5e5"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Retrieves a list of transactions"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ResponseCode",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ResponseHeaders",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"transactions\": [\r\n    {\r\n      \"id\": 6510299480351,\r\n      \"order_id\": 5329877893407,\r\n      \"kind\": \"sale\",\r\n      \"gateway\": \"manual\",\r\n      \"status\": \"success\",\r\n      \"message\": \"Marked the manual payment as received\",\r\n      \"created_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"test\": false,\r\n      \"authorization\": null,\r\n      \"location_id\": null,\r\n      \"user_id\": null,\r\n      \"parent_id\": null,\r\n      \"processed_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"device_id\": null,\r\n      \"error_code\": null,\r\n      \"source_name\": \"checkout_one\",\r\n      \"receipt\": {},\r\n      \"amount\": \"1289.91\",\r\n      \"currency\": \"ZAR\",\r\n      \"payment_id\": \"rJmEWOQYKZlx3wvvw4r4RLwpj\",\r\n      \"total_unsettled_set\": {\r\n        \"presentment_money\": {\r\n          \"amount\": \"0.0\",\r\n          \"currency\": \"ZAR\"\r\n        },\r\n        \"shop_money\": {\r\n          \"amount\": \"0.0\",\r\n          \"currency\": \"ZAR\"\r\n        }\r\n      },\r\n      \"manual_payment_gateway\": true,\r\n      \"admin_graphql_api_id\": \"gid://shopify/OrderTransaction/6510299480351\"\r\n    }\r\n  ]\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "order_id",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "5329877893407"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Shopify",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:46.944439+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "Name": "ForEach",
+                "ShortDescription": "SplitPayments",
+                "LongDescription": "Here we are splitting the payments into individual payment records.",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"transactions\": [\r\n    {\r\n      \"id\": 6510299480351,\r\n      \"order_id\": 5329877893407,\r\n      \"kind\": \"sale\",\r\n      \"gateway\": \"manual\",\r\n      \"status\": \"success\",\r\n      \"message\": \"Marked the manual payment as received\",\r\n      \"created_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"test\": false,\r\n      \"authorization\": null,\r\n      \"location_id\": null,\r\n      \"user_id\": null,\r\n      \"parent_id\": null,\r\n      \"processed_at\": \"2023-04-25T03:35:56-04:00\",\r\n      \"device_id\": null,\r\n      \"error_code\": null,\r\n      \"source_name\": \"checkout_one\",\r\n      \"receipt\": {},\r\n      \"amount\": \"1289.91\",\r\n      \"currency\": \"ZAR\",\r\n      \"payment_id\": \"rJmEWOQYKZlx3wvvw4r4RLwpj\",\r\n      \"total_unsettled_set\": {\r\n        \"presentment_money\": {\r\n          \"amount\": \"0.0\",\r\n          \"currency\": \"ZAR\"\r\n        },\r\n        \"shop_money\": {\r\n          \"amount\": \"0.0\",\r\n          \"currency\": \"ZAR\"\r\n        }\r\n      },\r\n      \"manual_payment_gateway\": true,\r\n      \"admin_graphql_api_id\": \"gid://shopify/OrderTransaction/6510299480351\"\r\n    }\r\n  ]\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "transactions[*]"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "ParentNode"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"id\": 6510299480351,\r\n  \"order_id\": 5329877893407,\r\n  \"kind\": \"sale\",\r\n  \"gateway\": \"manual\",\r\n  \"status\": \"success\",\r\n  \"message\": \"Marked the manual payment as received\",\r\n  \"created_at\": \"2023-04-25T07:35:56+00:00\",\r\n  \"test\": false,\r\n  \"authorization\": null,\r\n  \"location_id\": null,\r\n  \"user_id\": null,\r\n  \"parent_id\": null,\r\n  \"processed_at\": \"2023-04-25T07:35:56+00:00\",\r\n  \"device_id\": null,\r\n  \"error_code\": null,\r\n  \"source_name\": \"checkout_one\",\r\n  \"receipt\": {},\r\n  \"amount\": \"1289.91\",\r\n  \"currency\": \"ZAR\",\r\n  \"payment_id\": \"rJmEWOQYKZlx3wvvw4r4RLwpj\",\r\n  \"total_unsettled_set\": {\r\n    \"presentment_money\": {\r\n      \"amount\": \"0.0\",\r\n      \"currency\": \"ZAR\"\r\n    },\r\n    \"shop_money\": {\r\n      \"amount\": \"0.0\",\r\n      \"currency\": \"ZAR\"\r\n    }\r\n  },\r\n  \"manual_payment_gateway\": true,\r\n  \"admin_graphql_api_id\": \"gid://shopify/OrderTransaction/6510299480351\"\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:31.140455+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "5cbbb50a-8410-148a-3da2-f212f514f08f",
+                "Name": "GetKeyValue2",
+                "ShortDescription": "PaymentFound?",
+                "LongDescription": "Here we check to see if the Payment ID has been processed before by checking if a Key Value record has already been logged for this Payment ID.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DateTime",
+                        "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+                        "ExtendedType": 0,
+                        "Value": "2000-01-01T00:00:00"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Found",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Missing",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:47.090843+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "0e2960aa-6b0c-9dcd-a54e-e02a95007bcc",
+                "Name": "ShopifyRest",
+                "ShortDescription": "GetOrder",
+                "LongDescription": "Here we are getting the order from Shopify based on the OrderID from the specific Payment",
+                "Version": "1.1.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "2024-01"
+                            },
+                            {
+                                "Name": "ShopifyBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "XShopifyAccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "ReturnRestFailureResponses",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            },
+                            {
+                                "Name": "ExcludeEmptyQueryParameters",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            },
+                            {
+                                "Name": "AllowCustomQueryParameters",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.ShopifyRest.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "bddde3fc-a870-2433-00c5-78faa25336ae"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Retrieves a specific order"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ResponseCode",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ResponseHeaders",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"order\": {\r\n    \"id\": 5329877893407,\r\n    \"admin_graphql_api_id\": \"gid://shopify/Order/5329877893407\",\r\n    \"app_id\": 16818700289,\r\n    \"browser_ip\": \"244.100.98.48\",\r\n    \"buyer_accepts_marketing\": false,\r\n    \"cancel_reason\": null,\r\n    \"cancelled_at\": null,\r\n    \"cart_token\": null,\r\n    \"checkout_id\": 36669577003295,\r\n    \"checkout_token\": \"da2fcb543ddc9387fe02cc904f6b2e17\",\r\n    \"client_details\": {\r\n      \"accept_language\": null,\r\n      \"browser_height\": null,\r\n      \"browser_ip\": \"244.100.98.48\",\r\n      \"browser_width\": null,\r\n      \"session_hash\": null,\r\n      \"user_agent\": \"Sunflower/production Cusco/1.12.1 Ruby/3.2.2\"\r\n    },\r\n    \"closed_at\": null,\r\n    \"company\": null,\r\n    \"confirmation_number\": \"MNP0C08X4\",\r\n    \"confirmed\": true,\r\n    \"contact_email\": \"russel.winfield@example.com\",\r\n    \"created_at\": \"2023-04-25T03:35:57-04:00\",\r\n    \"currency\": \"ZAR\",\r\n    \"current_subtotal_price\": \"1259.91\",\r\n    \"current_subtotal_price_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"1259.91\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"1259.91\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"current_total_additional_fees_set\": null,\r\n    \"current_total_discounts\": \"139.99\",\r\n    \"current_total_discounts_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"139.99\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"139.99\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"current_total_duties_set\": null,\r\n    \"current_total_price\": \"1289.91\",\r\n    \"current_total_price_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"1289.91\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"1289.91\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"current_total_tax\": \"0.00\",\r\n    \"current_total_tax_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"0.00\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"0.00\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"customer_locale\": \"en\",\r\n    \"device_id\": null,\r\n    \"discount_codes\": [\r\n      {\r\n        \"code\": \"\",\r\n        \"amount\": \"139.99\",\r\n        \"type\": \"percentage\"\r\n      }\r\n    ],\r\n    \"email\": \"russel.winfield@example.com\",\r\n    \"estimated_taxes\": false,\r\n    \"financial_status\": \"paid\",\r\n    \"fulfillment_status\": null,\r\n    \"landing_site\": null,\r\n    \"landing_site_ref\": null,\r\n    \"location_id\": null,\r\n    \"merchant_of_record_app_id\": null,\r\n    \"name\": \"#1007\",\r\n    \"note\": null,\r\n    \"note_attributes\": [],\r\n    \"number\": 7,\r\n    \"order_number\": 1007,\r\n    \"order_status_url\": \"https://flowgearsandbox01.myshopify.com/75016044831/orders/5e0837ca28ecdb7771c4ba9e308ac5dd/authenticate?key=327eef40ecd8ceee3ab32ac7570ff32a\",\r\n    \"original_total_additional_fees_set\": null,\r\n    \"original_total_duties_set\": null,\r\n    \"payment_gateway_names\": [\r\n      \"manual\"\r\n    ],\r\n    \"phone\": null,\r\n    \"po_number\": null,\r\n    \"presentment_currency\": \"ZAR\",\r\n    \"processed_at\": \"2023-04-25T03:35:56-04:00\",\r\n    \"reference\": \"59dfed74b5d594c3443bf6dc5c3bebce\",\r\n    \"referring_site\": null,\r\n    \"source_identifier\": \"59dfed74b5d594c3443bf6dc5c3bebce\",\r\n    \"source_name\": \"16818700289\",\r\n    \"source_url\": null,\r\n    \"subtotal_price\": \"1259.91\",\r\n    \"subtotal_price_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"1259.91\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"1259.91\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"tags\": \"Order Discount\",\r\n    \"tax_exempt\": false,\r\n    \"tax_lines\": [],\r\n    \"taxes_included\": false,\r\n    \"test\": true,\r\n    \"token\": \"5e0837ca28ecdb7771c4ba9e308ac5dd\",\r\n    \"total_discounts\": \"139.99\",\r\n    \"total_discounts_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"139.99\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"139.99\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"total_line_items_price\": \"1399.90\",\r\n    \"total_line_items_price_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"1399.90\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"1399.90\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"total_outstanding\": \"0.00\",\r\n    \"total_price\": \"1289.91\",\r\n    \"total_price_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"1289.91\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"1289.91\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"total_shipping_price_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"30.00\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"30.00\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"total_tax\": \"0.00\",\r\n    \"total_tax_set\": {\r\n      \"shop_money\": {\r\n        \"amount\": \"0.00\",\r\n        \"currency_code\": \"ZAR\"\r\n      },\r\n      \"presentment_money\": {\r\n        \"amount\": \"0.00\",\r\n        \"currency_code\": \"ZAR\"\r\n      }\r\n    },\r\n    \"total_tip_received\": \"0.00\",\r\n    \"total_weight\": 9070,\r\n    \"updated_at\": \"2024-03-10T21:54:44-04:00\",\r\n    \"user_id\": null,\r\n    \"billing_address\": {\r\n      \"first_name\": \"Russell\",\r\n      \"address1\": \"105 Victoria St\",\r\n      \"phone\": null,\r\n      \"city\": \"Toronto\",\r\n      \"zip\": \"M5C1N7\",\r\n      \"province\": null,\r\n      \"country\": \"Canada\",\r\n      \"last_name\": \"Winfield\",\r\n      \"address2\": null,\r\n      \"company\": \"Company Name\",\r\n      \"latitude\": null,\r\n      \"longitude\": null,\r\n      \"name\": \"Russell Winfield\",\r\n      \"country_code\": \"CA\",\r\n      \"province_code\": null\r\n    },\r\n    \"customer\": {\r\n      \"id\": 6889709863199,\r\n      \"email\": \"russel.winfield@example.com\",\r\n      \"created_at\": \"2023-04-25T03:35:53-04:00\",\r\n      \"updated_at\": \"2023-04-25T03:35:57-04:00\",\r\n      \"first_name\": \"Russell\",\r\n      \"last_name\": \"Winfield\",\r\n      \"state\": \"disabled\",\r\n      \"note\": \"This customer is created with most available fields\",\r\n      \"verified_email\": true,\r\n      \"multipass_identifier\": null,\r\n      \"tax_exempt\": false,\r\n      \"phone\": \"+16135550135\",\r\n      \"email_marketing_consent\": {\r\n        \"state\": \"not_subscribed\",\r\n        \"opt_in_level\": \"single_opt_in\",\r\n        \"consent_updated_at\": null\r\n      },\r\n      \"sms_marketing_consent\": {\r\n        \"state\": \"not_subscribed\",\r\n        \"opt_in_level\": \"unknown\",\r\n        \"consent_updated_at\": null,\r\n        \"consent_collected_from\": \"OTHER\"\r\n      },\r\n      \"tags\": \"VIP\",\r\n      \"currency\": \"ZAR\",\r\n      \"tax_exemptions\": [],\r\n      \"admin_graphql_api_id\": \"gid://shopify/Customer/6889709863199\",\r\n      \"default_address\": {\r\n        \"id\": 9160311439647,\r\n        \"customer_id\": 6889709863199,\r\n        \"first_name\": \"Russell\",\r\n        \"last_name\": \"Winfield\",\r\n        \"company\": \"Company Name\",\r\n        \"address1\": \"105 Victoria St\",\r\n        \"address2\": null,\r\n        \"city\": \"Toronto\",\r\n        \"province\": null,\r\n        \"country\": \"Canada\",\r\n        \"zip\": \"M5C1N7\",\r\n        \"phone\": null,\r\n        \"name\": \"Russell Winfield\",\r\n        \"province_code\": null,\r\n        \"country_code\": \"CA\",\r\n        \"country_name\": \"Canada\",\r\n        \"default\": true\r\n      }\r\n    },\r\n    \"discount_applications\": [\r\n      {\r\n        \"target_type\": \"line_item\",\r\n        \"type\": \"manual\",\r\n        \"value\": \"10.0\",\r\n        \"value_type\": \"percentage\",\r\n        \"allocation_method\": \"across\",\r\n        \"target_selection\": \"all\",\r\n        \"title\": \"\",\r\n        \"description\": null\r\n      }\r\n    ],\r\n    \"fulfillments\": [],\r\n    \"line_items\": [\r\n      {\r\n        \"id\": 13864578318623,\r\n        \"admin_graphql_api_id\": \"gid://shopify/LineItem/13864578318623\",\r\n        \"current_quantity\": 2,\r\n        \"fulfillable_quantity\": 2,\r\n        \"fulfillment_service\": \"manual\",\r\n        \"fulfillment_status\": null,\r\n        \"gift_card\": false,\r\n        \"grams\": 4536,\r\n        \"name\": \"The Complete Snowboard - Dawn\",\r\n        \"price\": \"699.95\",\r\n        \"price_set\": {\r\n          \"shop_money\": {\r\n            \"amount\": \"699.95\",\r\n            \"currency_code\": \"ZAR\"\r\n          },\r\n          \"presentment_money\": {\r\n            \"amount\": \"699.95\",\r\n            \"currency_code\": \"ZAR\"\r\n          }\r\n        },\r\n        \"product_exists\": false,\r\n        \"product_id\": null,\r\n        \"properties\": [],\r\n        \"quantity\": 2,\r\n        \"requires_shipping\": true,\r\n        \"sku\": \"\",\r\n        \"taxable\": true,\r\n        \"title\": \"The Complete Snowboard\",\r\n        \"total_discount\": \"0.00\",\r\n        \"total_discount_set\": {\r\n          \"shop_money\": {\r\n            \"amount\": \"0.00\",\r\n            \"currency_code\": \"ZAR\"\r\n          },\r\n          \"presentment_money\": {\r\n            \"amount\": \"0.00\",\r\n            \"currency_code\": \"ZAR\"\r\n          }\r\n        },\r\n        \"variant_id\": null,\r\n        \"variant_inventory_management\": null,\r\n        \"variant_title\": \"Dawn\",\r\n        \"vendor\": \"Snowboard Vendor\",\r\n        \"tax_lines\": [],\r\n        \"duties\": [],\r\n        \"discount_allocations\": [\r\n          {\r\n            \"amount\": \"139.99\",\r\n            \"amount_set\": {\r\n              \"shop_money\": {\r\n                \"amount\": \"139.99\",\r\n                \"currency_code\": \"ZAR\"\r\n              },\r\n              \"presentment_money\": {\r\n                \"amount\": \"139.99\",\r\n                \"currency_code\": \"ZAR\"\r\n              }\r\n            },\r\n            \"discount_application_index\": 0\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"payment_terms\": null,\r\n    \"refunds\": [],\r\n    \"shipping_address\": {\r\n      \"first_name\": \"Russell\",\r\n      \"address1\": \"105 Victoria St\",\r\n      \"phone\": null,\r\n      \"city\": \"Toronto\",\r\n      \"zip\": \"M5C1N7\",\r\n      \"province\": null,\r\n      \"country\": \"Canada\",\r\n      \"last_name\": \"Winfield\",\r\n      \"address2\": null,\r\n      \"company\": \"Company Name\",\r\n      \"latitude\": 43.6522608,\r\n      \"longitude\": -79.3776862,\r\n      \"name\": \"Russell Winfield\",\r\n      \"country_code\": \"CA\",\r\n      \"province_code\": null\r\n    },\r\n    \"shipping_lines\": [\r\n      {\r\n        \"id\": 4361148760351,\r\n        \"carrier_identifier\": \"071e9d6cd4a1d56acf60bc21aea1e689\",\r\n        \"code\": \"International Shipping\",\r\n        \"discounted_price\": \"30.00\",\r\n        \"discounted_price_set\": {\r\n          \"shop_money\": {\r\n            \"amount\": \"30.00\",\r\n            \"currency_code\": \"ZAR\"\r\n          },\r\n          \"presentment_money\": {\r\n            \"amount\": \"30.00\",\r\n            \"currency_code\": \"ZAR\"\r\n          }\r\n        },\r\n        \"is_removed\": false,\r\n        \"phone\": null,\r\n        \"price\": \"30.00\",\r\n        \"price_set\": {\r\n          \"shop_money\": {\r\n            \"amount\": \"30.00\",\r\n            \"currency_code\": \"ZAR\"\r\n          },\r\n          \"presentment_money\": {\r\n            \"amount\": \"30.00\",\r\n            \"currency_code\": \"ZAR\"\r\n          }\r\n        },\r\n        \"requested_fulfillment_service_id\": null,\r\n        \"source\": \"shopify\",\r\n        \"title\": \"International Shipping\",\r\n        \"tax_lines\": [],\r\n        \"discount_allocations\": []\r\n      }\r\n    ]\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OrderID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Shopify",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:46.944439+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "d4d6194c-a164-aeb3-d579-94c763aa76fd",
+                "Name": "SageIntacct",
+                "ShortDescription": "CustomerLookup",
+                "LongDescription": "Here we are looking up the Customer in Sage based on the Customer ID from the Shopify Order",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "UserID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "query"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Object",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "CUSTOMER"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"object\" type=\"xs:string\"/>\r\n        <xs:element name=\"keys\" type=\"xs:string\"/>\r\n        <xs:element name=\"fields\" type=\"xs:string\"/>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<query>\r\n  <object>CUSTOMER</object>\r\n  <filter>\r\n    <equalto>\r\n      <field>CUSTOMERID</field>\r\n      <value>{CustID}</value>\r\n    </equalto>\r\n  </filter>\r\n  <select>\r\n    <field>RECORDNO</field>\r\n    <field>CUSTOMERID</field>\r\n  </select>\r\n</query>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "LocationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <result>\r\n    <status>success</status>\r\n    <function>query</function>\r\n    <controlid>638817910751601493</controlid>\r\n    <data listtype=\"CUSTOMER\" totalcount=\"1\" offset=\"0\" count=\"1\" numremaining=\"0\">\r\n      <CUSTOMER>\r\n        <RECORDNO>1571</RECORDNO>\r\n        <CUSTOMERID>6889709863199</CUSTOMERID>\r\n      </CUSTOMER>\r\n    </data>\r\n  </result>\r\n</Response>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "CustID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Sage Intacct",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:12.9116426+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "b45a7b16-3dd8-ca6b-e67e-d10273d75c68",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "CustomerExists?",
+                "LongDescription": "Here we are checking if the Customer exists by validating that the value of the CustomerID is not null\nIf Exists: create the Payment in Sage\nIf Not: Create the Customer in Sage and the Create the Invoice.",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value <> \"\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:59.7406957+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "a1705d29-eb0d-1230-6843-ea32c8a83fc2",
+                "Name": "QuickMap",
+                "ShortDescription": "MapPayment",
+                "LongDescription": "Here we map the Payment items retrieved from Shopify to the Sage Intacct format before creating the Payment in Sage",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[],\"targetPath\":\"Request/ARPYMT/FINANCIALENTITY\",\"mapExpression\":\"\\\"100_SVB\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Request/ARPYMT/PAYMENTMETHOD\",\"mapExpression\":\"\\\"Cash\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Request/ARPYMT/CUSTOMERID\",\"mapExpression\":\"GETVALUE(\\\"CustID\\\")\"},{\"sourcePaths\":[\"created_at\"],\"targetPath\":\"Request/ARPYMT/RECEIPTDATE\",\"mapExpression\":\"DATEVALUE(NOW()).ToString(\\\"MM/dd/yyyy\\\")\"},{\"sourcePaths\":[\"created_at\"],\"targetPath\":\"Request/ARPYMT/PAYMENTDATE\",\"mapExpression\":\"DATEVALUE(NOW()).AddDays(2).ToString(\\\"MM/dd/yyyy\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Request/ARPYMT/ARPYMTDETAILS/ARPYMTDETAIL/RECORDKEY\",\"mapExpression\":\"\\\"1740\\\"\"},{\"sourcePaths\":[\"amount\"],\"targetPath\":\"Request/ARPYMT/ARPYMTDETAILS/ARPYMTDETAIL/TRX_PAYMENTAMOUNT\"}],\"sourceSchema\":\"{\\r\\n  \\\"id\\\": 6510299480351,\\r\\n  \\\"order_id\\\": 5329877893407,\\r\\n  \\\"kind\\\": \\\"sale\\\",\\r\\n  \\\"gateway\\\": \\\"manual\\\",\\r\\n  \\\"status\\\": \\\"success\\\",\\r\\n  \\\"message\\\": \\\"Marked the manual payment as received\\\",\\r\\n  \\\"created_at\\\": \\\"2023-04-25T07:35:56+00:00\\\",\\r\\n  \\\"test\\\": false,\\r\\n  \\\"authorization\\\": null,\\r\\n  \\\"location_id\\\": null,\\r\\n  \\\"user_id\\\": null,\\r\\n  \\\"parent_id\\\": null,\\r\\n  \\\"processed_at\\\": \\\"2023-04-25T07:35:56+00:00\\\",\\r\\n  \\\"device_id\\\": null,\\r\\n  \\\"error_code\\\": null,\\r\\n  \\\"source_name\\\": \\\"checkout_one\\\",\\r\\n  \\\"receipt\\\": {},\\r\\n  \\\"amount\\\": \\\"1289.91\\\",\\r\\n  \\\"currency\\\": \\\"ZAR\\\",\\r\\n  \\\"payment_id\\\": \\\"rJmEWOQYKZlx3wvvw4r4RLwpj\\\",\\r\\n  \\\"total_unsettled_set\\\": {\\r\\n    \\\"presentment_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.0\\\",\\r\\n      \\\"currency\\\": \\\"ZAR\\\"\\r\\n    },\\r\\n    \\\"shop_money\\\": {\\r\\n      \\\"amount\\\": \\\"0.0\\\",\\r\\n      \\\"currency\\\": \\\"ZAR\\\"\\r\\n    }\\r\\n  },\\r\\n  \\\"manual_payment_gateway\\\": true,\\r\\n  \\\"admin_graphql_api_id\\\": \\\"gid://shopify/OrderTransaction/6510299480351\\\"\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema attributeFormDefault=\\\"unqualified\\\" elementFormDefault=\\\"qualified\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:element name=\\\"Request\\\">\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:element maxOccurs=\\\"unbounded\\\" name=\\\"ARPYMT\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"FINANCIALENTITY\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"PAYMENTMETHOD\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"CUSTOMERID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"DOCNUMBER\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"RECEIPTDATE\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"PAYMENTDATE\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"ARPYMTDETAILS\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"ARPYMTDETAIL\\\">\\r\\n                      <xs:complexType>\\r\\n                        <xs:sequence>\\r\\n                          <xs:element name=\\\"RECORDKEY\\\" type=\\\"xs:unsignedByte\\\"/>\\r\\n                          <xs:element name=\\\"TRX_PAYMENTAMOUNT\\\" type=\\\"xs:unsignedByte\\\"/>\\r\\n                        </xs:sequence>\\r\\n                      </xs:complexType>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\"targetSchemaType\":1}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "CustID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "xxx"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-12-02T05:15:52.8098009+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "3af03999-1a67-5588-05e3-82e038ff2d17",
+                "Name": "SageIntacct",
+                "ShortDescription": "CreatePayment",
+                "LongDescription": "Here we are creating the Payment in Sage",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "UserID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "create"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Object",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "ARPYMT"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element maxOccurs=\"unbounded\" name=\"ARPYMT\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"FINANCIALENTITY\" type=\"xs:string\"/>\r\n              <xs:element name=\"PAYMENTMETHOD\" type=\"xs:string\"/>\r\n              <xs:element name=\"CUSTOMERID\" type=\"xs:string\"/>\r\n              <xs:element name=\"DOCNUMBER\" type=\"xs:string\"/>\r\n              <xs:element name=\"RECEIPTDATE\" type=\"xs:string\"/>\r\n              <xs:element name=\"PAYMENTDATE\" type=\"xs:string\"/>\r\n              <xs:element name=\"ARPYMTDETAILS\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"ARPYMTDETAIL\">\r\n                      <xs:complexType>\r\n                        <xs:sequence>\r\n                          <xs:element name=\"RECORDKEY\" type=\"xs:unsignedByte\"/>\r\n                          <xs:element name=\"TRX_PAYMENTAMOUNT\" type=\"xs:unsignedByte\"/>\r\n                        </xs:sequence>\r\n                      </xs:complexType>\r\n                    </xs:element>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <ARPYMT>\r\n    <FINANCIALENTITY>BOA</FINANCIALENTITY>\r\n    <PAYMENTMETHOD>Cash</PAYMENTMETHOD>\r\n    <CUSTOMERID>JHC</CUSTOMERID>\r\n    <DOCNUMBER>INV-007</DOCNUMBER>\r\n    <RECEIPTDATE>05/15/2019</RECEIPTDATE>\r\n    <PAYMENTDATE>05/16/2019</PAYMENTDATE>\r\n    <ARPYMTDETAILS>\r\n      <ARPYMTDETAIL>\r\n        <RECORDKEY>101</RECORDKEY>\r\n        <TRX_PAYMENTAMOUNT>125</TRX_PAYMENTAMOUNT>\r\n      </ARPYMTDETAIL>\r\n    </ARPYMTDETAILS>\r\n  </ARPYMT>\r\n  <ARPYMT>\r\n    <FINANCIALENTITY>BOA</FINANCIALENTITY>\r\n    <PAYMENTMETHOD>Cash</PAYMENTMETHOD>\r\n    <CUSTOMERID>JHC</CUSTOMERID>\r\n    <DOCNUMBER>INV-007</DOCNUMBER>\r\n    <RECEIPTDATE>05/15/2019</RECEIPTDATE>\r\n    <PAYMENTDATE>05/16/2019</PAYMENTDATE>\r\n    <ARPYMTDETAILS>\r\n      <ARPYMTDETAIL>\r\n        <RECORDKEY>101</RECORDKEY>\r\n        <TRX_PAYMENTAMOUNT>125</TRX_PAYMENTAMOUNT>\r\n      </ARPYMTDETAIL>\r\n    </ARPYMTDETAILS>\r\n  </ARPYMT>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "LocationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <result>\r\n    <status>success</status>\r\n    <function>create</function>\r\n    <controlid>638817937111033357</controlid>\r\n    <data listtype=\"objects\" count=\"1\">\r\n      <arpymt>\r\n        <RECORDNO>1735</RECORDNO>\r\n      </arpymt>\r\n    </data>\r\n  </result>\r\n</Response>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Sage Intacct",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:12.9116426+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "c7c8a45d-7b63-94e1-6650-5ebdaf46d2aa",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "PaymentCreated?",
+                "LongDescription": "Here we are checking if the Payment was successfully created by validating the Response to check if the it contains a RecordNo",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value.Contains(\"RECORDNO\")"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8845,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:59.7406957+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "1910aa8b-c3fd-189f-e743-f0d5fc602888",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogError",
+                "LongDescription": "Here we are logging the Key Value record for error records.\nWe get the Group from the Variable bar.\nWe use the Payment ID as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\nWe use the Sage Response Status as the Value.\n",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 9150,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "679eb190-4989-90fa-a41c-e9259768e971",
+                "Name": "QuickMap",
+                "ShortDescription": "MapCustomer",
+                "LongDescription": "Here we map the Customer data retrieved from the Shopify Order to the Sage Intacct format before creating the Customer record in Sage.\n",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"order/customer/id\"],\"targetPath\":\"Request/CUSTOMER/CUSTOMERID\"},{\"sourcePaths\":[\"order/customer/first_name\",\"order/customer/last_name\"],\"targetPath\":\"Request/CUSTOMER/NAME\",\"mapExpression\":\"TEXTVALUE({first_name}) + \\\" \\\" + TEXTVALUE({last_name})\"},{\"sourcePaths\":[\"order/customer/first_name\",\"order/customer/last_name\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/COMPANYNAME\",\"mapExpression\":\"TEXTVALUE({first_name}) + \\\" \\\" + TEXTVALUE({last_name})\"},{\"sourcePaths\":[\"order/customer/first_name\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/FIRSTNAME\"},{\"sourcePaths\":[\"order/customer/last_name\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/LASTNAME\"},{\"sourcePaths\":[\"order/customer/phone\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/PHONE1\",\"mapExpression\":\"REPLACE({phone}, \\\"+1\\\", \\\"\\\")\"},{\"sourcePaths\":[\"order/customer/email\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/EMAIL1\"},{\"sourcePaths\":[\"order/customer/default_address/address1\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/ADDRESS1\"},{\"sourcePaths\":[\"order/customer/default_address/address2\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/ADDRESS2\"},{\"sourcePaths\":[\"order/customer/default_address/city\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/CITY\"},{\"sourcePaths\":[\"order/customer/default_address/zip\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/ZIP\"},{\"sourcePaths\":[\"order/customer/default_address/country\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/COUNTRY\"},{\"sourcePaths\":[\"order/customer/tags\"],\"targetPath\":\"Request/CUSTOMER/CUSTTYPE\",\"mapExpression\":\"IIF(FIRST({tags}) = \\\"VIP\\\", \\\"Consumer\\\", \\\"Distributor\\\")\"}],\"sourceSchema\":\"{\\r\\n  \\\"order\\\": {\\r\\n    \\\"id\\\": 5329877893407,\\r\\n    \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Order/5329877893407\\\",\\r\\n    \\\"app_id\\\": 16818700289,\\r\\n    \\\"browser_ip\\\": \\\"244.100.98.48\\\",\\r\\n    \\\"buyer_accepts_marketing\\\": false,\\r\\n    \\\"cancel_reason\\\": null,\\r\\n    \\\"cancelled_at\\\": null,\\r\\n    \\\"cart_token\\\": null,\\r\\n    \\\"checkout_id\\\": 36669577003295,\\r\\n    \\\"checkout_token\\\": \\\"da2fcb543ddc9387fe02cc904f6b2e17\\\",\\r\\n    \\\"client_details\\\": {\\r\\n      \\\"accept_language\\\": null,\\r\\n      \\\"browser_height\\\": null,\\r\\n      \\\"browser_ip\\\": \\\"244.100.98.48\\\",\\r\\n      \\\"browser_width\\\": null,\\r\\n      \\\"session_hash\\\": null,\\r\\n      \\\"user_agent\\\": \\\"Sunflower/production Cusco/1.12.1 Ruby/3.2.2\\\"\\r\\n    },\\r\\n    \\\"closed_at\\\": null,\\r\\n    \\\"company\\\": null,\\r\\n    \\\"confirmation_number\\\": \\\"MNP0C08X4\\\",\\r\\n    \\\"confirmed\\\": true,\\r\\n    \\\"contact_email\\\": \\\"russel.winfield@example.com\\\",\\r\\n    \\\"created_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n    \\\"currency\\\": \\\"ZAR\\\",\\r\\n    \\\"current_subtotal_price\\\": \\\"1259.91\\\",\\r\\n    \\\"current_subtotal_price_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"1259.91\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"1259.91\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"current_total_additional_fees_set\\\": null,\\r\\n    \\\"current_total_discounts\\\": \\\"139.99\\\",\\r\\n    \\\"current_total_discounts_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"139.99\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"139.99\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"current_total_duties_set\\\": null,\\r\\n    \\\"current_total_price\\\": \\\"1289.91\\\",\\r\\n    \\\"current_total_price_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"1289.91\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"1289.91\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"current_total_tax\\\": \\\"0.00\\\",\\r\\n    \\\"current_total_tax_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"0.00\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"0.00\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"customer_locale\\\": \\\"en\\\",\\r\\n    \\\"device_id\\\": null,\\r\\n    \\\"discount_codes\\\": [\\r\\n      {\\r\\n        \\\"code\\\": \\\"\\\",\\r\\n        \\\"amount\\\": \\\"139.99\\\",\\r\\n        \\\"type\\\": \\\"percentage\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n    \\\"estimated_taxes\\\": false,\\r\\n    \\\"financial_status\\\": \\\"paid\\\",\\r\\n    \\\"fulfillment_status\\\": null,\\r\\n    \\\"landing_site\\\": null,\\r\\n    \\\"landing_site_ref\\\": null,\\r\\n    \\\"location_id\\\": null,\\r\\n    \\\"merchant_of_record_app_id\\\": null,\\r\\n    \\\"name\\\": \\\"#1007\\\",\\r\\n    \\\"note\\\": null,\\r\\n    \\\"note_attributes\\\": [],\\r\\n    \\\"number\\\": 7,\\r\\n    \\\"order_number\\\": 1007,\\r\\n    \\\"order_status_url\\\": \\\"https://flowgearsandbox01.myshopify.com/75016044831/orders/5e0837ca28ecdb7771c4ba9e308ac5dd/authenticate?key=327eef40ecd8ceee3ab32ac7570ff32a\\\",\\r\\n    \\\"original_total_additional_fees_set\\\": null,\\r\\n    \\\"original_total_duties_set\\\": null,\\r\\n    \\\"payment_gateway_names\\\": [\\r\\n      \\\"manual\\\"\\r\\n    ],\\r\\n    \\\"phone\\\": null,\\r\\n    \\\"po_number\\\": null,\\r\\n    \\\"presentment_currency\\\": \\\"ZAR\\\",\\r\\n    \\\"processed_at\\\": \\\"2023-04-25T03:35:56-04:00\\\",\\r\\n    \\\"reference\\\": \\\"59dfed74b5d594c3443bf6dc5c3bebce\\\",\\r\\n    \\\"referring_site\\\": null,\\r\\n    \\\"source_identifier\\\": \\\"59dfed74b5d594c3443bf6dc5c3bebce\\\",\\r\\n    \\\"source_name\\\": \\\"16818700289\\\",\\r\\n    \\\"source_url\\\": null,\\r\\n    \\\"subtotal_price\\\": \\\"1259.91\\\",\\r\\n    \\\"subtotal_price_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"1259.91\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"1259.91\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"tags\\\": \\\"Order Discount\\\",\\r\\n    \\\"tax_exempt\\\": false,\\r\\n    \\\"tax_lines\\\": [],\\r\\n    \\\"taxes_included\\\": false,\\r\\n    \\\"test\\\": true,\\r\\n    \\\"token\\\": \\\"5e0837ca28ecdb7771c4ba9e308ac5dd\\\",\\r\\n    \\\"total_discounts\\\": \\\"139.99\\\",\\r\\n    \\\"total_discounts_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"139.99\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"139.99\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"total_line_items_price\\\": \\\"1399.90\\\",\\r\\n    \\\"total_line_items_price_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"1399.90\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"1399.90\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"total_outstanding\\\": \\\"0.00\\\",\\r\\n    \\\"total_price\\\": \\\"1289.91\\\",\\r\\n    \\\"total_price_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"1289.91\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"1289.91\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"total_shipping_price_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"30.00\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"30.00\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"total_tax\\\": \\\"0.00\\\",\\r\\n    \\\"total_tax_set\\\": {\\r\\n      \\\"shop_money\\\": {\\r\\n        \\\"amount\\\": \\\"0.00\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      },\\r\\n      \\\"presentment_money\\\": {\\r\\n        \\\"amount\\\": \\\"0.00\\\",\\r\\n        \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n      }\\r\\n    },\\r\\n    \\\"total_tip_received\\\": \\\"0.00\\\",\\r\\n    \\\"total_weight\\\": 9070,\\r\\n    \\\"updated_at\\\": \\\"2024-03-10T21:54:44-04:00\\\",\\r\\n    \\\"user_id\\\": null,\\r\\n    \\\"billing_address\\\": {\\r\\n      \\\"first_name\\\": \\\"Russell\\\",\\r\\n      \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n      \\\"phone\\\": null,\\r\\n      \\\"city\\\": \\\"Toronto\\\",\\r\\n      \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n      \\\"province\\\": null,\\r\\n      \\\"country\\\": \\\"Canada\\\",\\r\\n      \\\"last_name\\\": \\\"Winfield\\\",\\r\\n      \\\"address2\\\": null,\\r\\n      \\\"company\\\": \\\"Company Name\\\",\\r\\n      \\\"latitude\\\": null,\\r\\n      \\\"longitude\\\": null,\\r\\n      \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n      \\\"country_code\\\": \\\"CA\\\",\\r\\n      \\\"province_code\\\": null\\r\\n    },\\r\\n    \\\"customer\\\": {\\r\\n      \\\"id\\\": 6889709863199,\\r\\n      \\\"email\\\": \\\"russel.winfield@example.com\\\",\\r\\n      \\\"created_at\\\": \\\"2023-04-25T03:35:53-04:00\\\",\\r\\n      \\\"updated_at\\\": \\\"2023-04-25T03:35:57-04:00\\\",\\r\\n      \\\"first_name\\\": \\\"Russell\\\",\\r\\n      \\\"last_name\\\": \\\"Winfield\\\",\\r\\n      \\\"state\\\": \\\"disabled\\\",\\r\\n      \\\"note\\\": \\\"This customer is created with most available fields\\\",\\r\\n      \\\"verified_email\\\": true,\\r\\n      \\\"multipass_identifier\\\": null,\\r\\n      \\\"tax_exempt\\\": false,\\r\\n      \\\"phone\\\": \\\"+16135550135\\\",\\r\\n      \\\"email_marketing_consent\\\": {\\r\\n        \\\"state\\\": \\\"not_subscribed\\\",\\r\\n        \\\"opt_in_level\\\": \\\"single_opt_in\\\",\\r\\n        \\\"consent_updated_at\\\": null\\r\\n      },\\r\\n      \\\"sms_marketing_consent\\\": {\\r\\n        \\\"state\\\": \\\"not_subscribed\\\",\\r\\n        \\\"opt_in_level\\\": \\\"unknown\\\",\\r\\n        \\\"consent_updated_at\\\": null,\\r\\n        \\\"consent_collected_from\\\": \\\"OTHER\\\"\\r\\n      },\\r\\n      \\\"tags\\\": \\\"VIP\\\",\\r\\n      \\\"currency\\\": \\\"ZAR\\\",\\r\\n      \\\"tax_exemptions\\\": [],\\r\\n      \\\"admin_graphql_api_id\\\": \\\"gid://shopify/Customer/6889709863199\\\",\\r\\n      \\\"default_address\\\": {\\r\\n        \\\"id\\\": 9160311439647,\\r\\n        \\\"customer_id\\\": 6889709863199,\\r\\n        \\\"first_name\\\": \\\"Russell\\\",\\r\\n        \\\"last_name\\\": \\\"Winfield\\\",\\r\\n        \\\"company\\\": \\\"Company Name\\\",\\r\\n        \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n        \\\"address2\\\": null,\\r\\n        \\\"city\\\": \\\"Toronto\\\",\\r\\n        \\\"province\\\": null,\\r\\n        \\\"country\\\": \\\"Canada\\\",\\r\\n        \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n        \\\"province_code\\\": null,\\r\\n        \\\"country_code\\\": \\\"CA\\\",\\r\\n        \\\"country_name\\\": \\\"Canada\\\",\\r\\n        \\\"default\\\": true\\r\\n      }\\r\\n    },\\r\\n    \\\"discount_applications\\\": [\\r\\n      {\\r\\n        \\\"target_type\\\": \\\"line_item\\\",\\r\\n        \\\"type\\\": \\\"manual\\\",\\r\\n        \\\"value\\\": \\\"10.0\\\",\\r\\n        \\\"value_type\\\": \\\"percentage\\\",\\r\\n        \\\"allocation_method\\\": \\\"across\\\",\\r\\n        \\\"target_selection\\\": \\\"all\\\",\\r\\n        \\\"title\\\": \\\"\\\",\\r\\n        \\\"description\\\": null\\r\\n      }\\r\\n    ],\\r\\n    \\\"fulfillments\\\": [],\\r\\n    \\\"line_items\\\": [\\r\\n      {\\r\\n        \\\"id\\\": 13864578318623,\\r\\n        \\\"admin_graphql_api_id\\\": \\\"gid://shopify/LineItem/13864578318623\\\",\\r\\n        \\\"current_quantity\\\": 2,\\r\\n        \\\"fulfillable_quantity\\\": 2,\\r\\n        \\\"fulfillment_service\\\": \\\"manual\\\",\\r\\n        \\\"fulfillment_status\\\": null,\\r\\n        \\\"gift_card\\\": false,\\r\\n        \\\"grams\\\": 4536,\\r\\n        \\\"name\\\": \\\"The Complete Snowboard - Dawn\\\",\\r\\n        \\\"price\\\": \\\"699.95\\\",\\r\\n        \\\"price_set\\\": {\\r\\n          \\\"shop_money\\\": {\\r\\n            \\\"amount\\\": \\\"699.95\\\",\\r\\n            \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n          },\\r\\n          \\\"presentment_money\\\": {\\r\\n            \\\"amount\\\": \\\"699.95\\\",\\r\\n            \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n          }\\r\\n        },\\r\\n        \\\"product_exists\\\": false,\\r\\n        \\\"product_id\\\": null,\\r\\n        \\\"properties\\\": [],\\r\\n        \\\"quantity\\\": 2,\\r\\n        \\\"requires_shipping\\\": true,\\r\\n        \\\"sku\\\": \\\"\\\",\\r\\n        \\\"taxable\\\": true,\\r\\n        \\\"title\\\": \\\"The Complete Snowboard\\\",\\r\\n        \\\"total_discount\\\": \\\"0.00\\\",\\r\\n        \\\"total_discount_set\\\": {\\r\\n          \\\"shop_money\\\": {\\r\\n            \\\"amount\\\": \\\"0.00\\\",\\r\\n            \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n          },\\r\\n          \\\"presentment_money\\\": {\\r\\n            \\\"amount\\\": \\\"0.00\\\",\\r\\n            \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n          }\\r\\n        },\\r\\n        \\\"variant_id\\\": null,\\r\\n        \\\"variant_inventory_management\\\": null,\\r\\n        \\\"variant_title\\\": \\\"Dawn\\\",\\r\\n        \\\"vendor\\\": \\\"Snowboard Vendor\\\",\\r\\n        \\\"tax_lines\\\": [],\\r\\n        \\\"duties\\\": [],\\r\\n        \\\"discount_allocations\\\": [\\r\\n          {\\r\\n            \\\"amount\\\": \\\"139.99\\\",\\r\\n            \\\"amount_set\\\": {\\r\\n              \\\"shop_money\\\": {\\r\\n                \\\"amount\\\": \\\"139.99\\\",\\r\\n                \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n              },\\r\\n              \\\"presentment_money\\\": {\\r\\n                \\\"amount\\\": \\\"139.99\\\",\\r\\n                \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n              }\\r\\n            },\\r\\n            \\\"discount_application_index\\\": 0\\r\\n          }\\r\\n        ]\\r\\n      }\\r\\n    ],\\r\\n    \\\"payment_terms\\\": null,\\r\\n    \\\"refunds\\\": [],\\r\\n    \\\"shipping_address\\\": {\\r\\n      \\\"first_name\\\": \\\"Russell\\\",\\r\\n      \\\"address1\\\": \\\"105 Victoria St\\\",\\r\\n      \\\"phone\\\": null,\\r\\n      \\\"city\\\": \\\"Toronto\\\",\\r\\n      \\\"zip\\\": \\\"M5C1N7\\\",\\r\\n      \\\"province\\\": null,\\r\\n      \\\"country\\\": \\\"Canada\\\",\\r\\n      \\\"last_name\\\": \\\"Winfield\\\",\\r\\n      \\\"address2\\\": null,\\r\\n      \\\"company\\\": \\\"Company Name\\\",\\r\\n      \\\"latitude\\\": 43.6522608,\\r\\n      \\\"longitude\\\": -79.3776862,\\r\\n      \\\"name\\\": \\\"Russell Winfield\\\",\\r\\n      \\\"country_code\\\": \\\"CA\\\",\\r\\n      \\\"province_code\\\": null\\r\\n    },\\r\\n    \\\"shipping_lines\\\": [\\r\\n      {\\r\\n        \\\"id\\\": 4361148760351,\\r\\n        \\\"carrier_identifier\\\": \\\"071e9d6cd4a1d56acf60bc21aea1e689\\\",\\r\\n        \\\"code\\\": \\\"International Shipping\\\",\\r\\n        \\\"discounted_price\\\": \\\"30.00\\\",\\r\\n        \\\"discounted_price_set\\\": {\\r\\n          \\\"shop_money\\\": {\\r\\n            \\\"amount\\\": \\\"30.00\\\",\\r\\n            \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n          },\\r\\n          \\\"presentment_money\\\": {\\r\\n            \\\"amount\\\": \\\"30.00\\\",\\r\\n            \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n          }\\r\\n        },\\r\\n        \\\"is_removed\\\": false,\\r\\n        \\\"phone\\\": null,\\r\\n        \\\"price\\\": \\\"30.00\\\",\\r\\n        \\\"price_set\\\": {\\r\\n          \\\"shop_money\\\": {\\r\\n            \\\"amount\\\": \\\"30.00\\\",\\r\\n            \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n          },\\r\\n          \\\"presentment_money\\\": {\\r\\n            \\\"amount\\\": \\\"30.00\\\",\\r\\n            \\\"currency_code\\\": \\\"ZAR\\\"\\r\\n          }\\r\\n        },\\r\\n        \\\"requested_fulfillment_service_id\\\": null,\\r\\n        \\\"source\\\": \\\"shopify\\\",\\r\\n        \\\"title\\\": \\\"International Shipping\\\",\\r\\n        \\\"tax_lines\\\": [],\\r\\n        \\\"discount_allocations\\\": []\\r\\n      }\\r\\n    ]\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema attributeFormDefault=\\\"unqualified\\\" elementFormDefault=\\\"qualified\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:element name=\\\"Request\\\">\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:element maxOccurs=\\\"unbounded\\\" name=\\\"CUSTOMER\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"CUSTOMERID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"NAME\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"DISPLAYCONTACT\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"PRINTAS\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"COMPANYNAME\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"TAXABLE\\\" type=\\\"xs:boolean\\\" />\\r\\n                    <xs:element name=\\\"TAXGROUP\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"PREFIX\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"FIRSTNAME\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"LASTNAME\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"INITIAL\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"PHONE1\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                    <xs:element name=\\\"PHONE2\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                    <xs:element name=\\\"CELLPHONE\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                    <xs:element name=\\\"PAGER\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                    <xs:element name=\\\"FAX\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                    <xs:element name=\\\"EMAIL1\\\" />\\r\\n                    <xs:element name=\\\"EMAIL2\\\" />\\r\\n                    <xs:element name=\\\"URL1\\\" />\\r\\n                    <xs:element name=\\\"URL2\\\" />\\r\\n                    <xs:element name=\\\"MAILADDRESS\\\">\\r\\n                      <xs:complexType>\\r\\n                        <xs:sequence>\\r\\n                          <xs:element name=\\\"ADDRESS1\\\" type=\\\"xs:string\\\" />\\r\\n                          <xs:element name=\\\"ADDRESS2\\\" type=\\\"xs:string\\\" />\\r\\n                          <xs:element name=\\\"CITY\\\" type=\\\"xs:string\\\" />\\r\\n                          <xs:element name=\\\"STATE\\\" type=\\\"xs:string\\\" />\\r\\n                          <xs:element name=\\\"ZIP\\\" type=\\\"xs:unsignedInt\\\" />\\r\\n                          <xs:element name=\\\"COUNTRY\\\" type=\\\"xs:string\\\" />\\r\\n                        </xs:sequence>\\r\\n                      </xs:complexType>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"ONETIME\\\" type=\\\"xs:boolean\\\" />\\r\\n              <xs:element name=\\\"STATUS\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"HIDEDISPLAYCONTACT\\\" type=\\\"xs:boolean\\\" />\\r\\n              <xs:element name=\\\"CUSTTYPE\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"PARENTID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"GLGROUP\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"TERRITORYID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"SUPDOCID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"TERMNAME\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OFFSETGLACCOUNTNO\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n              <xs:element name=\\\"ARACCOUNT\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n              <xs:element name=\\\"SHIPPINGMETHOD\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"RESALENO\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n              <xs:element name=\\\"TAXID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CREDITLIMIT\\\" type=\\\"xs:decimal\\\" />\\r\\n              <xs:element name=\\\"ONHOLD\\\" type=\\\"xs:boolean\\\" />\\r\\n              <xs:element name=\\\"DELIVERY_OPTIONS\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CUSTMESSAGEID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"COMMENTS\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CURRENCY\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"ARINVOICEPRINTTEMPLATEID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OEQUOTEPRINTTEMPLATEID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OEORDERPRINTTEMPLATEID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OELISTPRINTTEMPLATEID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OEINVOICEPRINTTEMPLATEID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OEADJPRINTTEMPLATEID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"OEOTHERPRINTTEMPLATEID\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CONTACTINFO\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"CONTACTNAME\\\" type=\\\"xs:string\\\" />\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"BILLTO\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"CONTACTNAME\\\" type=\\\"xs:string\\\" />\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"SHIPTO\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"CONTACTNAME\\\" type=\\\"xs:string\\\" />\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"OBJECTRESTRICTION\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"RESTRICTEDLOCATIONS\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"RESTRICTEDDEPARTMENTS\\\" type=\\\"xs:string\\\" />\\r\\n              <xs:element name=\\\"CUSTOMFIELD1\\\" type=\\\"xs:string\\\" />\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\"targetSchemaType\":1}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4621
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-12-02T05:15:52.8098009+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "ebfce040-24dd-a6e6-17c4-c8f55cffca95",
+                "Name": "SageIntacct",
+                "ShortDescription": "CreateCustomer",
+                "LongDescription": "Here we are creating the Customer record in Sage",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "UserID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "create"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Object",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "CUSTOMER"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element maxOccurs=\"unbounded\" name=\"CUSTOMER\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"CUSTOMERID\" type=\"xs:string\" />\r\n              <xs:element name=\"NAME\" type=\"xs:string\" />\r\n              <xs:element name=\"DISPLAYCONTACT\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"PRINTAS\" type=\"xs:string\" />\r\n                    <xs:element name=\"COMPANYNAME\" type=\"xs:string\" />\r\n                    <xs:element name=\"TAXABLE\" type=\"xs:boolean\" />\r\n                    <xs:element name=\"TAXGROUP\" type=\"xs:string\" />\r\n                    <xs:element name=\"PREFIX\" type=\"xs:string\" />\r\n                    <xs:element name=\"FIRSTNAME\" type=\"xs:string\" />\r\n                    <xs:element name=\"LASTNAME\" type=\"xs:string\" />\r\n                    <xs:element name=\"INITIAL\" type=\"xs:string\" />\r\n                    <xs:element name=\"PHONE1\" type=\"xs:unsignedByte\" />\r\n                    <xs:element name=\"PHONE2\" type=\"xs:unsignedByte\" />\r\n                    <xs:element name=\"CELLPHONE\" type=\"xs:unsignedByte\" />\r\n                    <xs:element name=\"PAGER\" type=\"xs:unsignedByte\" />\r\n                    <xs:element name=\"FAX\" type=\"xs:unsignedByte\" />\r\n                    <xs:element name=\"EMAIL1\" />\r\n                    <xs:element name=\"EMAIL2\" />\r\n                    <xs:element name=\"URL1\" />\r\n                    <xs:element name=\"URL2\" />\r\n                    <xs:element name=\"MAILADDRESS\">\r\n                      <xs:complexType>\r\n                        <xs:sequence>\r\n                          <xs:element name=\"ADDRESS1\" type=\"xs:string\" />\r\n                          <xs:element name=\"ADDRESS2\" type=\"xs:string\" />\r\n                          <xs:element name=\"CITY\" type=\"xs:string\" />\r\n                          <xs:element name=\"STATE\" type=\"xs:string\" />\r\n                          <xs:element name=\"ZIP\" type=\"xs:unsignedInt\" />\r\n                          <xs:element name=\"COUNTRY\" type=\"xs:string\" />\r\n                        </xs:sequence>\r\n                      </xs:complexType>\r\n                    </xs:element>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"ONETIME\" type=\"xs:boolean\" />\r\n              <xs:element name=\"STATUS\" type=\"xs:string\" />\r\n              <xs:element name=\"HIDEDISPLAYCONTACT\" type=\"xs:boolean\" />\r\n              <xs:element name=\"CUSTTYPE\" type=\"xs:string\" />\r\n              <xs:element name=\"PARENTID\" type=\"xs:string\" />\r\n              <xs:element name=\"GLGROUP\" type=\"xs:string\" />\r\n              <xs:element name=\"TERRITORYID\" type=\"xs:string\" />\r\n              <xs:element name=\"SUPDOCID\" type=\"xs:string\" />\r\n              <xs:element name=\"TERMNAME\" type=\"xs:string\" />\r\n              <xs:element name=\"OFFSETGLACCOUNTNO\" type=\"xs:unsignedShort\" />\r\n              <xs:element name=\"ARACCOUNT\" type=\"xs:unsignedShort\" />\r\n              <xs:element name=\"SHIPPINGMETHOD\" type=\"xs:string\" />\r\n              <xs:element name=\"RESALENO\" type=\"xs:unsignedByte\" />\r\n              <xs:element name=\"TAXID\" type=\"xs:string\" />\r\n              <xs:element name=\"CREDITLIMIT\" type=\"xs:decimal\" />\r\n              <xs:element name=\"ONHOLD\" type=\"xs:boolean\" />\r\n              <xs:element name=\"DELIVERY_OPTIONS\" type=\"xs:string\" />\r\n              <xs:element name=\"CUSTMESSAGEID\" type=\"xs:string\" />\r\n              <xs:element name=\"COMMENTS\" type=\"xs:string\" />\r\n              <xs:element name=\"CURRENCY\" type=\"xs:string\" />\r\n              <xs:element name=\"ARINVOICEPRINTTEMPLATEID\" type=\"xs:string\" />\r\n              <xs:element name=\"OEQUOTEPRINTTEMPLATEID\" type=\"xs:string\" />\r\n              <xs:element name=\"OEORDERPRINTTEMPLATEID\" type=\"xs:string\" />\r\n              <xs:element name=\"OELISTPRINTTEMPLATEID\" type=\"xs:string\" />\r\n              <xs:element name=\"OEINVOICEPRINTTEMPLATEID\" type=\"xs:string\" />\r\n              <xs:element name=\"OEADJPRINTTEMPLATEID\" type=\"xs:string\" />\r\n              <xs:element name=\"OEOTHERPRINTTEMPLATEID\" type=\"xs:string\" />\r\n              <xs:element name=\"CONTACTINFO\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"BILLTO\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"SHIPTO\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"OBJECTRESTRICTION\" type=\"xs:string\" />\r\n              <xs:element name=\"RESTRICTEDLOCATIONS\" type=\"xs:string\" />\r\n              <xs:element name=\"RESTRICTEDDEPARTMENTS\" type=\"xs:string\" />\r\n              <xs:element name=\"CUSTOMFIELD1\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <CUSTOMER>\r\n    <CUSTOMERID>C1234</CUSTOMERID>\r\n    <NAME>SaaS Company Inc</NAME>\r\n    <DISPLAYCONTACT>\r\n      <PRINTAS>SaaS Company Inc</PRINTAS>\r\n      <COMPANYNAME>SaaS Co</COMPANYNAME>\r\n      <TAXABLE>true</TAXABLE>\r\n      <TAXGROUP>CA</TAXGROUP>\r\n      <PREFIX>Mr</PREFIX>\r\n      <FIRSTNAME>Bill</FIRSTNAME>\r\n      <LASTNAME>Smith</LASTNAME>\r\n      <INITIAL>G</INITIAL>\r\n      <PHONE1>12</PHONE1>\r\n      <PHONE2>34</PHONE2>\r\n      <CELLPHONE>56</CELLPHONE>\r\n      <PAGER>78</PAGER>\r\n      <FAX>90</FAX>\r\n      <EMAIL1 />\r\n      <EMAIL2 />\r\n      <URL1 />\r\n      <URL2 />\r\n      <MAILADDRESS>\r\n        <ADDRESS1>300 Park Ave</ADDRESS1>\r\n        <ADDRESS2>Ste 1400</ADDRESS2>\r\n        <CITY>San Jose</CITY>\r\n        <STATE>CA</STATE>\r\n        <ZIP>95110</ZIP>\r\n        <COUNTRY>United States</COUNTRY>\r\n      </MAILADDRESS>\r\n    </DISPLAYCONTACT>\r\n    <ONETIME>false</ONETIME>\r\n    <STATUS>active</STATUS>\r\n    <HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT>\r\n    <CUSTTYPE>SaaS</CUSTTYPE>\r\n    <PARENTID>C5678</PARENTID>\r\n    <GLGROUP>Group</GLGROUP>\r\n    <TERRITORYID>NE</TERRITORYID>\r\n    <SUPDOCID>A1234</SUPDOCID>\r\n    <TERMNAME>N30</TERMNAME>\r\n    <OFFSETGLACCOUNTNO>1200</OFFSETGLACCOUNTNO>\r\n    <ARACCOUNT>4000</ARACCOUNT>\r\n    <SHIPPINGMETHOD>USPS</SHIPPINGMETHOD>\r\n    <RESALENO>123</RESALENO>\r\n    <TAXID>12-3456789</TAXID>\r\n    <CREDITLIMIT>1234.56</CREDITLIMIT>\r\n    <ONHOLD>false</ONHOLD>\r\n    <DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS>\r\n    <CUSTMESSAGEID>hello</CUSTMESSAGEID>\r\n    <COMMENTS>my comment</COMMENTS>\r\n    <CURRENCY>USD</CURRENCY>\r\n    <ARINVOICEPRINTTEMPLATEID>temp1</ARINVOICEPRINTTEMPLATEID>\r\n    <OEQUOTEPRINTTEMPLATEID>temp2</OEQUOTEPRINTTEMPLATEID>\r\n    <OEORDERPRINTTEMPLATEID>temp3</OEORDERPRINTTEMPLATEID>\r\n    <OELISTPRINTTEMPLATEID>temp4</OELISTPRINTTEMPLATEID>\r\n    <OEINVOICEPRINTTEMPLATEID>temp5</OEINVOICEPRINTTEMPLATEID>\r\n    <OEADJPRINTTEMPLATEID>temp6</OEADJPRINTTEMPLATEID>\r\n    <OEOTHERPRINTTEMPLATEID>temp7</OEOTHERPRINTTEMPLATEID>\r\n    <CONTACTINFO>\r\n      <CONTACTNAME>primary</CONTACTNAME>\r\n    </CONTACTINFO>\r\n    <BILLTO>\r\n      <CONTACTNAME>bill to</CONTACTNAME>\r\n    </BILLTO>\r\n    <SHIPTO>\r\n      <CONTACTNAME>ship to</CONTACTNAME>\r\n    </SHIPTO>\r\n    <OBJECTRESTRICTION>Restricted</OBJECTRESTRICTION>\r\n    <RESTRICTEDLOCATIONS>100#~#200</RESTRICTEDLOCATIONS>\r\n    <RESTRICTEDDEPARTMENTS>D100#~#D200</RESTRICTEDDEPARTMENTS>\r\n    <CUSTOMFIELD1>Hello</CUSTOMFIELD1>\r\n  </CUSTOMER>\r\n  <CUSTOMER>\r\n    <CUSTOMERID>C1234</CUSTOMERID>\r\n    <NAME>SaaS Company Inc</NAME>\r\n    <DISPLAYCONTACT>\r\n      <PRINTAS>SaaS Company Inc</PRINTAS>\r\n      <COMPANYNAME>SaaS Co</COMPANYNAME>\r\n      <TAXABLE>true</TAXABLE>\r\n      <TAXGROUP>CA</TAXGROUP>\r\n      <PREFIX>Mr</PREFIX>\r\n      <FIRSTNAME>Bill</FIRSTNAME>\r\n      <LASTNAME>Smith</LASTNAME>\r\n      <INITIAL>G</INITIAL>\r\n      <PHONE1>12</PHONE1>\r\n      <PHONE2>34</PHONE2>\r\n      <CELLPHONE>56</CELLPHONE>\r\n      <PAGER>78</PAGER>\r\n      <FAX>90</FAX>\r\n      <EMAIL1 />\r\n      <EMAIL2 />\r\n      <URL1 />\r\n      <URL2 />\r\n      <MAILADDRESS>\r\n        <ADDRESS1>300 Park Ave</ADDRESS1>\r\n        <ADDRESS2>Ste 1400</ADDRESS2>\r\n        <CITY>San Jose</CITY>\r\n        <STATE>CA</STATE>\r\n        <ZIP>95110</ZIP>\r\n        <COUNTRY>United States</COUNTRY>\r\n      </MAILADDRESS>\r\n    </DISPLAYCONTACT>\r\n    <ONETIME>false</ONETIME>\r\n    <STATUS>active</STATUS>\r\n    <HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT>\r\n    <CUSTTYPE>SaaS</CUSTTYPE>\r\n    <PARENTID>C5678</PARENTID>\r\n    <GLGROUP>Group</GLGROUP>\r\n    <TERRITORYID>NE</TERRITORYID>\r\n    <SUPDOCID>A1234</SUPDOCID>\r\n    <TERMNAME>N30</TERMNAME>\r\n    <OFFSETGLACCOUNTNO>1200</OFFSETGLACCOUNTNO>\r\n    <ARACCOUNT>4000</ARACCOUNT>\r\n    <SHIPPINGMETHOD>USPS</SHIPPINGMETHOD>\r\n    <RESALENO>123</RESALENO>\r\n    <TAXID>12-3456789</TAXID>\r\n    <CREDITLIMIT>1234.56</CREDITLIMIT>\r\n    <ONHOLD>false</ONHOLD>\r\n    <DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS>\r\n    <CUSTMESSAGEID>hello</CUSTMESSAGEID>\r\n    <COMMENTS>my comment</COMMENTS>\r\n    <CURRENCY>USD</CURRENCY>\r\n    <ARINVOICEPRINTTEMPLATEID>temp1</ARINVOICEPRINTTEMPLATEID>\r\n    <OEQUOTEPRINTTEMPLATEID>temp2</OEQUOTEPRINTTEMPLATEID>\r\n    <OEORDERPRINTTEMPLATEID>temp3</OEORDERPRINTTEMPLATEID>\r\n    <OELISTPRINTTEMPLATEID>temp4</OELISTPRINTTEMPLATEID>\r\n    <OEINVOICEPRINTTEMPLATEID>temp5</OEINVOICEPRINTTEMPLATEID>\r\n    <OEADJPRINTTEMPLATEID>temp6</OEADJPRINTTEMPLATEID>\r\n    <OEOTHERPRINTTEMPLATEID>temp7</OEOTHERPRINTTEMPLATEID>\r\n    <CONTACTINFO>\r\n      <CONTACTNAME>primary</CONTACTNAME>\r\n    </CONTACTINFO>\r\n    <BILLTO>\r\n      <CONTACTNAME>bill to</CONTACTNAME>\r\n    </BILLTO>\r\n    <SHIPTO>\r\n      <CONTACTNAME>ship to</CONTACTNAME>\r\n    </SHIPTO>\r\n    <OBJECTRESTRICTION>Restricted</OBJECTRESTRICTION>\r\n    <RESTRICTEDLOCATIONS>100#~#200</RESTRICTEDLOCATIONS>\r\n    <RESTRICTEDDEPARTMENTS>D100#~#D200</RESTRICTEDDEPARTMENTS>\r\n    <CUSTOMFIELD1>Hello</CUSTOMFIELD1>\r\n  </CUSTOMER>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "LocationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 4621
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Sage Intacct",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:12.9116426+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "162eb446-cacc-3fb7-5415-46025f5b4911",
+                "Name": "IfEqual",
+                "ShortDescription": "CustomerCreated?",
+                "LongDescription": "Here we are verifying that the Customer was successfully created before proceeding to creating the Payment record in Sage",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression1",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression2",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "False"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "MatchNotEqual",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsEqual",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8845,
+                    "Y": 4621
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If Equal",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:59.1861176+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "51587491-6008-eda5-3eb0-94841df4f9bf",
+                "TargetNodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "SourceName": "Response",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "51587491-6008-eda5-3eb0-94841df4f9bf",
+                "TargetNodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ad985028-22cd-3654-bd16-0be8b0ab60bb",
+                "TargetNodeId": "5cbbb50a-8410-148a-3da2-f212f514f08f",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "TargetNodeId": "5cbbb50a-8410-148a-3da2-f212f514f08f",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "5cbbb50a-8410-148a-3da2-f212f514f08f",
+                "TargetNodeId": "0e2960aa-6b0c-9dcd-a54e-e02a95007bcc",
+                "SourceName": "Missing"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "0e2960aa-6b0c-9dcd-a54e-e02a95007bcc",
+                "TargetNodeId": "d4d6194c-a164-aeb3-d579-94c763aa76fd",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d4d6194c-a164-aeb3-d579-94c763aa76fd",
+                "TargetNodeId": "b45a7b16-3dd8-ca6b-e67e-d10273d75c68",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "b45a7b16-3dd8-ca6b-e67e-d10273d75c68",
+                "TargetNodeId": "679eb190-4989-90fa-a41c-e9259768e971",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "679eb190-4989-90fa-a41c-e9259768e971",
+                "TargetNodeId": "ebfce040-24dd-a6e6-17c4-c8f55cffca95",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "679eb190-4989-90fa-a41c-e9259768e971",
+                "TargetNodeId": "ebfce040-24dd-a6e6-17c4-c8f55cffca95",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ebfce040-24dd-a6e6-17c4-c8f55cffca95",
+                "TargetNodeId": "162eb446-cacc-3fb7-5415-46025f5b4911",
+                "SourceName": "HadError",
+                "TargetName": "Expression1"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "ebfce040-24dd-a6e6-17c4-c8f55cffca95",
+                "TargetNodeId": "162eb446-cacc-3fb7-5415-46025f5b4911",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a1705d29-eb0d-1230-6843-ea32c8a83fc2",
+                "TargetNodeId": "3af03999-1a67-5588-05e3-82e038ff2d17",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "a1705d29-eb0d-1230-6843-ea32c8a83fc2",
+                "TargetNodeId": "3af03999-1a67-5588-05e3-82e038ff2d17",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ad985028-22cd-3654-bd16-0be8b0ab60bb",
+                "TargetNodeId": "fbb55905-21b3-8ff9-d0cf-8ae8e34ef2ab",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ad985028-22cd-3654-bd16-0be8b0ab60bb",
+                "TargetNodeId": "1910aa8b-c3fd-189f-e743-f0d5fc602888",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "b45a7b16-3dd8-ca6b-e67e-d10273d75c68",
+                "TargetNodeId": "a1705d29-eb0d-1230-6843-ea32c8a83fc2",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "162eb446-cacc-3fb7-5415-46025f5b4911",
+                "TargetNodeId": "a1705d29-eb0d-1230-6843-ea32c8a83fc2",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "d4d6194c-a164-aeb3-d579-94c763aa76fd",
+                "TargetNodeId": "a1705d29-eb0d-1230-6843-ea32c8a83fc2",
+                "SourceName": "Response",
+                "TargetName": "CustID",
+                "Expression": "Response.result.data.CUSTOMER.CUSTOMERID"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "3af03999-1a67-5588-05e3-82e038ff2d17",
+                "TargetNodeId": "c7c8a45d-7b63-94e1-6650-5ebdaf46d2aa",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "c7c8a45d-7b63-94e1-6650-5ebdaf46d2aa",
+                "TargetNodeId": "fbb55905-21b3-8ff9-d0cf-8ae8e34ef2ab",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "c7c8a45d-7b63-94e1-6650-5ebdaf46d2aa",
+                "TargetNodeId": "1910aa8b-c3fd-189f-e743-f0d5fc602888",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "TargetNodeId": "fbb55905-21b3-8ff9-d0cf-8ae8e34ef2ab",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "id"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "1b63b5ed-0a6c-be11-295c-209971249825",
+                "TargetNodeId": "51587491-6008-eda5-3eb0-94841df4f9bf",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "5cbbb50a-8410-148a-3da2-f212f514f08f",
+                "TargetNodeId": "8da99f3d-6cc8-fd01-f131-edd5cc1a12a2",
+                "SourceName": "Found"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "TargetNodeId": "5cbbb50a-8410-148a-3da2-f212f514f08f",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "payment_id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "TargetNodeId": "1910aa8b-c3fd-189f-e743-f0d5fc602888",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3af03999-1a67-5588-05e3-82e038ff2d17",
+                "TargetNodeId": "1910aa8b-c3fd-189f-e743-f0d5fc602888",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "Response.result.status"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "d4d6194c-a164-aeb3-d579-94c763aa76fd",
+                "TargetNodeId": "b45a7b16-3dd8-ca6b-e67e-d10273d75c68",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "Response.result.data.CUSTOMER.CUSTOMERID"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "0e2960aa-6b0c-9dcd-a54e-e02a95007bcc",
+                "TargetNodeId": "679eb190-4989-90fa-a41c-e9259768e971",
+                "SourceName": "Response",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "TargetNodeId": "a1705d29-eb0d-1230-6843-ea32c8a83fc2",
+                "SourceName": "Item",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3af03999-1a67-5588-05e3-82e038ff2d17",
+                "TargetNodeId": "fbb55905-21b3-8ff9-d0cf-8ae8e34ef2ab",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "Response.result.data.arpymt.RECORDNO"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3af03999-1a67-5588-05e3-82e038ff2d17",
+                "TargetNodeId": "c7c8a45d-7b63-94e1-6650-5ebdaf46d2aa",
+                "SourceName": "Response",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "TargetNodeId": "8da99f3d-6cc8-fd01-f131-edd5cc1a12a2",
+                "SourceName": "Item",
+                "TargetName": "TransactionID",
+                "Expression": "id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "0e2960aa-6b0c-9dcd-a54e-e02a95007bcc",
+                "TargetNodeId": "d4d6194c-a164-aeb3-d579-94c763aa76fd",
+                "SourceName": "Response",
+                "TargetName": "CustID",
+                "Expression": "order.customer.default_address.customer_id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "5bad4edf-8eeb-a97c-3fe8-e6ba61dcd4d4",
+                "TargetNodeId": "0e2960aa-6b0c-9dcd-a54e-e02a95007bcc",
+                "SourceName": "Item",
+                "TargetName": "OrderID",
+                "Expression": "order_id"
+            }
+        ],
+        "StartNodeId": "1b63b5ed-0a6c-be11-295c-209971249825",
+        "ActivityLogLevelMask": 0
+    },
+      "Name": "Shopify To Sage Intacct Payments",
+      "Description": "This Workflow integrates Shopify with Sage Intacct by processing transactions, retrieving order items and customer details, and checking against a Key-Value store. It creates missing customers and posts payments to Sage Intacct, logging the result for each.\n"
+}

@@ -1,0 +1,1227 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "2468438e-1316-2798-0bee-370445bd88b2",
+                "Name": "VariableBar",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "KVGroup",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Bamboo-tst"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                }
+            },
+            {
+                "NodeId": "85593a38-12e0-58e6-4ff5-9ef76c0bec72",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3822
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "7e0afa2f-094e-1037-ff06-a5f3aeb7bae5",
+                "Name": "BambooHR",
+                "LongDescription": "Here we use the BambooHR node to retrieve a list of Employees. ",
+                "Version": "1.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyDomain",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "BambooHR",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.BambooHR.BambooHrConnection",
+                        "ExtendedType": 2,
+                        "Value": "0ffb9f3f-d9ed-4eb5-8420-6f6c3895dc37"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Unique identifier for the sample operation.",
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "6fb1abe6-8f20-c994-24fc-dbdbdd45a231"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "A brief description or summary of the operation.",
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Get Employee Directory"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Example JSON response payload",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"id\": \"The ID of the employee (string)\"\r\n}"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "BambooHR",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-19T07:07:47.0853582+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "f3842dd1-3ef9-89a7-65bf-b03141c9d63c",
+                "Name": "ForEach",
+                "ShortDescription": "Loop Through Employees",
+                "LongDescription": "Here we are using a For Each node to iterate through each employee record found in the Bamboo payload.",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "employees"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": "1"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"id\":\"4\",\"displayName\":\"Charlotte Abbott\",\"firstName\":\"Charlotte\",\"lastName\":\"Abbott\",\"preferredName\":null,\"jobTitle\":\"Sr. HR Administrator\",\"workPhone\":\"801-724-6600\",\"mobilePhone\":\"801-724-6600\",\"workEmail\":\"cabbott@efficientoffice.com\",\"department\":\"Human Resources\",\"location\":\"Lindon, Utah\",\"division\":\"North America\",\"facebook\":\"www.facebook.com\",\"linkedIn\":\"www.linkedin.com\",\"twitterFeed\":\"@twitter\",\"pinterest\":\"www.pinterest.com\",\"instagram\":\"@instagram\",\"pronouns\":null,\"workPhoneExtension\":\"1272\",\"supervisor\":\"Jennifer Caldwell\",\"photoUploaded\":true,\"photoUrl\":\"https://images7.bamboohr.com/625441/photos/4-6-4.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9pbWFnZXM3LmJhbWJvb2hyLmNvbS82MjU0NDEvKiIsIkNvbmRpdGlvbiI6eyJEYXRlR3JlYXRlclRoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyMjg0MzUyMX0sIkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzI1NDM1NTMxfX19XX0_&Signature=Zxaf4yrVm6HJMtzh9rZaFMszEfnzylCwCtbFCacIFEXfOtpELI3-JgGAAlcXkVna~3gtuyFbPsTG~T0safPQqslu1dEg0bCHPXu4z9SHfVJWWr-FpIs~VYJraGvEtuW2Rvnvm79it5isN9EzolVqrGPJl7JUGYDW0v4~k3-JSIsvX-PfaJWR8j1szbvkMTv3u0uaWguQB3NmswyzYKLTb1FoRQnmsaNP6Dv2bn4NcJl5uoR4LsodQY~lctYc~wLJ6DEaj0SIZVt1xP4mtKJtNBjrVeIqq4157eoVQNyXQpiz9Hcghtkm~BlPhEEKqUlraYysTMmM9q9qBANmGxiGJQ__&Key-Pair-Id=APKAIZ7QQNDH4DJY7K4Q\",\"canUploadPhoto\":1}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 3822
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:23.8561624+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "31722ca6-5987-4cfe-98ca-159ed1c36b41"
+                }
+            },
+            {
+                "NodeId": "3f9e991b-9854-47da-b010-739b94c1c06f",
+                "Name": "Formatter",
+                "LongDescription": "Here we are formatting the Key, so that it corresponds to the  key used in the Sage payload, as well as the key used for the Key Value records.",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "FGW01{id}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "Name": "id",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "bfedd5b7-7970-65c7-f924-955230ca622d",
+                "Name": "GetKeyValue2",
+                "ShortDescription": "Found?",
+                "LongDescription": "Here we check the Key value records to see if this records has been processed before. If nothing found, it will process.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DateTime",
+                        "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+                        "ExtendedType": 0,
+                        "Value": "2000-01-01T00:00:00"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Found",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Missing",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3822
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:18.3456334+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "523f0001-736b-0034-6393-52d53b39bb0f",
+                "Name": "IfVisualBasic",
+                "LongDescription": "We are using the If node to check found KV records, to see that they weren't successful. We don't want to process Success records.",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = \"Success\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "Name": "QuickMap",
+                "ShortDescription": "Map Data",
+                "LongDescription": "We are using the Quickmap node to do some validations and format the payload into a Sage friendly format. Note the change to the CustomerID, which is now our Key.",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"id\"],\"targetPath\":\"Request/CUSTOMER/CUSTOMERID\",\"mapExpression\":\"\\\"FGW01\\\" + {id}\"},{\"sourcePaths\":[\"firstName\",\"lastName\"],\"targetPath\":\"Request/CUSTOMER/NAME\",\"mapExpression\":\"{firstName} + \\\" \\\" + {lastName}\"},{\"sourcePaths\":[\"firstName\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/FIRSTNAME\",\"mapExpression\":\"UPPER({firstName})\"},{\"sourcePaths\":[\"lastName\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/LASTNAME\"}],\"sourceSchema\":\"{\\\"id\\\":\\\"4\\\",\\\"displayName\\\":\\\"Charlotte Abbott\\\",\\\"firstName\\\":\\\"Charlotte\\\",\\\"lastName\\\":\\\"Abbott\\\",\\\"preferredName\\\":null,\\\"jobTitle\\\":\\\"Sr. HR Administrator\\\",\\\"workPhone\\\":\\\"801-724-6600\\\",\\\"mobilePhone\\\":\\\"801-724-6600\\\",\\\"workEmail\\\":\\\"cabbott@efficientoffice.com\\\",\\\"department\\\":\\\"Human Resources\\\",\\\"location\\\":\\\"Lindon, Utah\\\",\\\"division\\\":\\\"North America\\\",\\\"facebook\\\":\\\"www.facebook.com\\\",\\\"linkedIn\\\":\\\"www.linkedin.com\\\",\\\"twitterFeed\\\":\\\"@twitter\\\",\\\"pinterest\\\":\\\"www.pinterest.com\\\",\\\"instagram\\\":\\\"@instagram\\\",\\\"pronouns\\\":null,\\\"workPhoneExtension\\\":\\\"1272\\\",\\\"supervisor\\\":\\\"Jennifer Caldwell\\\",\\\"photoUploaded\\\":true,\\\"photoUrl\\\":\\\"https://images7.bamboohr.com/625441/photos/4-6-4.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9pbWFnZXM3LmJhbWJvb2hyLmNvbS82MjU0NDEvKiIsIkNvbmRpdGlvbiI6eyJEYXRlR3JlYXRlclRoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyMjg0MzUyMX0sIkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzI1NDM1NTMxfX19XX0_&Signature=Zxaf4yrVm6HJMtzh9rZaFMszEfnzylCwCtbFCacIFEXfOtpELI3-JgGAAlcXkVna~3gtuyFbPsTG~T0safPQqslu1dEg0bCHPXu4z9SHfVJWWr-FpIs~VYJraGvEtuW2Rvnvm79it5isN9EzolVqrGPJl7JUGYDW0v4~k3-JSIsvX-PfaJWR8j1szbvkMTv3u0uaWguQB3NmswyzYKLTb1FoRQnmsaNP6Dv2bn4NcJl5uoR4LsodQY~lctYc~wLJ6DEaj0SIZVt1xP4mtKJtNBjrVeIqq4157eoVQNyXQpiz9Hcghtkm~BlPhEEKqUlraYysTMmM9q9qBANmGxiGJQ__&Key-Pair-Id=APKAIZ7QQNDH4DJY7K4Q\\\",\\\"canUploadPhoto\\\":1}\",\"sourceSchemaType\":2,\"targetSchema\":\"<Request>\\r\\n  <CUSTOMER>\\r\\n    <CUSTOMERID>C1234</CUSTOMERID>\\r\\n    <NAME>SaaS Company Inc</NAME>\\r\\n    <DISPLAYCONTACT>\\r\\n      <Test></Test>\\r\\n      <PRINTAS>SaaS Company Inc</PRINTAS>\\r\\n      <COMPANYNAME>SaaS Co</COMPANYNAME>\\r\\n      <TAXABLE>true</TAXABLE>\\r\\n      <TAXGROUP>CA</TAXGROUP>\\r\\n      <PREFIX>Mr</PREFIX>\\r\\n      <FIRSTNAME>Bill</FIRSTNAME>\\r\\n      <LASTNAME>Smith</LASTNAME>\\r\\n      <INITIAL>G</INITIAL>\\r\\n      <PHONE1>12</PHONE1>\\r\\n      <PHONE2>34</PHONE2>\\r\\n      <CELLPHONE>56</CELLPHONE>\\r\\n      <PAGER>78</PAGER>\\r\\n      <FAX>90</FAX>\\r\\n      <EMAIL1/>\\r\\n      <EMAIL2/>\\r\\n      <URL1/>\\r\\n      <URL2/>\\r\\n      <MAILADDRESS>\\r\\n        <ADDRESS1>300 Park Ave</ADDRESS1>\\r\\n        <ADDRESS2>Ste 1400</ADDRESS2>\\r\\n        <CITY>San Jose</CITY>\\r\\n        <STATE>CA</STATE>\\r\\n        <ZIP>95110</ZIP>\\r\\n        <COUNTRY>United States</COUNTRY>\\r\\n      </MAILADDRESS>\\r\\n    </DISPLAYCONTACT>\\r\\n    <ONETIME>false</ONETIME>\\r\\n    <STATUS>active</STATUS>\\r\\n    <HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT>\\r\\n    <CUSTTYPE>SaaS</CUSTTYPE>\\r\\n    <PARENTID>C5678</PARENTID>\\r\\n    <GLGROUP>Group</GLGROUP>\\r\\n    <TERRITORYID>NE</TERRITORYID>\\r\\n    <SUPDOCID>A1234</SUPDOCID>\\r\\n    <TERMNAME>N30</TERMNAME>\\r\\n    <OFFSETGLACCOUNTNO>1200</OFFSETGLACCOUNTNO>\\r\\n    <ARACCOUNT>4000</ARACCOUNT>\\r\\n    <SHIPPINGMETHOD>USPS</SHIPPINGMETHOD>\\r\\n    <RESALENO>123</RESALENO>\\r\\n    <TAXID>12-3456789</TAXID>\\r\\n    <CREDITLIMIT>1234.56</CREDITLIMIT>\\r\\n    <ONHOLD>false</ONHOLD>\\r\\n    <DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS>\\r\\n    <CUSTMESSAGEID>hello</CUSTMESSAGEID>\\r\\n    <COMMENTS>my comment</COMMENTS>\\r\\n    <CURRENCY>USD</CURRENCY>\\r\\n    <ARINVOICEPRINTTEMPLATEID>temp1</ARINVOICEPRINTTEMPLATEID>\\r\\n    <OEQUOTEPRINTTEMPLATEID>temp2</OEQUOTEPRINTTEMPLATEID>\\r\\n    <OEORDERPRINTTEMPLATEID>temp3</OEORDERPRINTTEMPLATEID>\\r\\n    <OELISTPRINTTEMPLATEID>temp4</OELISTPRINTTEMPLATEID>\\r\\n    <OEINVOICEPRINTTEMPLATEID>temp5</OEINVOICEPRINTTEMPLATEID>\\r\\n    <OEADJPRINTTEMPLATEID>temp6</OEADJPRINTTEMPLATEID>\\r\\n    <OEOTHERPRINTTEMPLATEID>temp7</OEOTHERPRINTTEMPLATEID>\\r\\n    <CONTACTINFO>\\r\\n      <CONTACTNAME>primary</CONTACTNAME>\\r\\n    </CONTACTINFO>\\r\\n    <BILLTO>\\r\\n      <CONTACTNAME>bill to</CONTACTNAME>\\r\\n    </BILLTO>\\r\\n    <SHIPTO>\\r\\n      <CONTACTNAME>ship to</CONTACTNAME>\\r\\n    </SHIPTO>\\r\\n    <OBJECTRESTRICTION>Restricted</OBJECTRESTRICTION>\\r\\n    <RESTRICTEDLOCATIONS>100#~#200</RESTRICTEDLOCATIONS>\\r\\n    <RESTRICTEDDEPARTMENTS>D100#~#D200</RESTRICTEDDEPARTMENTS>\\r\\n    <CUSTOMFIELD1>Hello</CUSTOMFIELD1>\\r\\n  </CUSTOMER>\\r\\n  <CUSTOMER>\\r\\n    <CUSTOMERID>C1234</CUSTOMERID>\\r\\n    <NAME>SaaS Company Inc</NAME>\\r\\n    <DISPLAYCONTACT>\\r\\n      <PRINTAS>SaaS Company Inc</PRINTAS>\\r\\n      <COMPANYNAME>SaaS Co</COMPANYNAME>\\r\\n      <TAXABLE>true</TAXABLE>\\r\\n      <TAXGROUP>CA</TAXGROUP>\\r\\n      <PREFIX>Mr</PREFIX>\\r\\n      <FIRSTNAME>Bill</FIRSTNAME>\\r\\n      <LASTNAME>Smith</LASTNAME>\\r\\n      <INITIAL>G</INITIAL>\\r\\n      <PHONE1>12</PHONE1>\\r\\n      <PHONE2>34</PHONE2>\\r\\n      <CELLPHONE>56</CELLPHONE>\\r\\n      <PAGER>78</PAGER>\\r\\n      <FAX>90</FAX>\\r\\n      <EMAIL1/>\\r\\n      <EMAIL2/>\\r\\n      <URL1/>\\r\\n      <URL2/>\\r\\n      <MAILADDRESS>\\r\\n        <ADDRESS1>300 Park Ave</ADDRESS1>\\r\\n        <ADDRESS2>Ste 1400</ADDRESS2>\\r\\n        <CITY>San Jose</CITY>\\r\\n        <STATE>CA</STATE>\\r\\n        <ZIP>95110</ZIP>\\r\\n        <COUNTRY>United States</COUNTRY>\\r\\n      </MAILADDRESS>\\r\\n    </DISPLAYCONTACT>\\r\\n    <ONETIME>false</ONETIME>\\r\\n    <STATUS>active</STATUS>\\r\\n    <HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT>\\r\\n    <CUSTTYPE>SaaS</CUSTTYPE>\\r\\n    <PARENTID>C5678</PARENTID>\\r\\n    <GLGROUP>Group</GLGROUP>\\r\\n    <TERRITORYID>NE</TERRITORYID>\\r\\n    <SUPDOCID>A1234</SUPDOCID>\\r\\n    <TERMNAME>N30</TERMNAME>\\r\\n    <OFFSETGLACCOUNTNO>1200</OFFSETGLACCOUNTNO>\\r\\n    <ARACCOUNT>4000</ARACCOUNT>\\r\\n    <SHIPPINGMETHOD>USPS</SHIPPINGMETHOD>\\r\\n    <RESALENO>123</RESALENO>\\r\\n    <TAXID>12-3456789</TAXID>\\r\\n    <CREDITLIMIT>1234.56</CREDITLIMIT>\\r\\n    <ONHOLD>false</ONHOLD>\\r\\n    <DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS>\\r\\n    <CUSTMESSAGEID>hello</CUSTMESSAGEID>\\r\\n    <COMMENTS>my comment</COMMENTS>\\r\\n    <CURRENCY>USD</CURRENCY>\\r\\n    <ARINVOICEPRINTTEMPLATEID>temp1</ARINVOICEPRINTTEMPLATEID>\\r\\n    <OEQUOTEPRINTTEMPLATEID>temp2</OEQUOTEPRINTTEMPLATEID>\\r\\n    <OEORDERPRINTTEMPLATEID>temp3</OEORDERPRINTTEMPLATEID>\\r\\n    <OELISTPRINTTEMPLATEID>temp4</OELISTPRINTTEMPLATEID>\\r\\n    <OEINVOICEPRINTTEMPLATEID>temp5</OEINVOICEPRINTTEMPLATEID>\\r\\n    <OEADJPRINTTEMPLATEID>temp6</OEADJPRINTTEMPLATEID>\\r\\n    <OEOTHERPRINTTEMPLATEID>temp7</OEOTHERPRINTTEMPLATEID>\\r\\n    <CONTACTINFO>\\r\\n      <CONTACTNAME>primary</CONTACTNAME>\\r\\n    </CONTACTINFO>\\r\\n    <BILLTO>\\r\\n      <CONTACTNAME>bill to</CONTACTNAME>\\r\\n    </BILLTO>\\r\\n    <SHIPTO>\\r\\n      <CONTACTNAME>ship to</CONTACTNAME>\\r\\n    </SHIPTO>\\r\\n    <OBJECTRESTRICTION>Restricted</OBJECTRESTRICTION>\\r\\n    <RESTRICTEDLOCATIONS>100#~#200</RESTRICTEDLOCATIONS>\\r\\n    <RESTRICTEDDEPARTMENTS>D100#~#D200</RESTRICTEDDEPARTMENTS>\\r\\n    <CUSTOMFIELD1>Hello</CUSTOMFIELD1>\\r\\n  </CUSTOMER>\\r\\n</Request>\",\"targetSchemaType\":0}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <CUSTOMER>\r\n    <CUSTOMERID>C1234</CUSTOMERID>\r\n    <NAME>SaaS Company Inc</NAME>\r\n    <DISPLAYCONTACT>\r\n      <Test></Test>\r\n      <PRINTAS>SaaS Company Inc</PRINTAS>\r\n      <COMPANYNAME>SaaS Co</COMPANYNAME>\r\n      <TAXABLE>true</TAXABLE>\r\n      <TAXGROUP>CA</TAXGROUP>\r\n      <PREFIX>Mr</PREFIX>\r\n      <FIRSTNAME>Bill</FIRSTNAME>\r\n      <LASTNAME>Smith</LASTNAME>\r\n      <INITIAL>G</INITIAL>\r\n      <PHONE1>12</PHONE1>\r\n      <PHONE2>34</PHONE2>\r\n      <CELLPHONE>56</CELLPHONE>\r\n      <PAGER>78</PAGER>\r\n      <FAX>90</FAX>\r\n      <EMAIL1/>\r\n      <EMAIL2/>\r\n      <URL1/>\r\n      <URL2/>\r\n      <MAILADDRESS>\r\n        <ADDRESS1>300 Park Ave</ADDRESS1>\r\n        <ADDRESS2>Ste 1400</ADDRESS2>\r\n        <CITY>San Jose</CITY>\r\n        <STATE>CA</STATE>\r\n        <ZIP>95110</ZIP>\r\n        <COUNTRY>United States</COUNTRY>\r\n      </MAILADDRESS>\r\n    </DISPLAYCONTACT>\r\n    <ONETIME>false</ONETIME>\r\n    <STATUS>active</STATUS>\r\n    <HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT>\r\n    <CUSTTYPE>SaaS</CUSTTYPE>\r\n    <PARENTID>C5678</PARENTID>\r\n    <GLGROUP>Group</GLGROUP>\r\n    <TERRITORYID>NE</TERRITORYID>\r\n    <SUPDOCID>A1234</SUPDOCID>\r\n    <TERMNAME>N30</TERMNAME>\r\n    <OFFSETGLACCOUNTNO>1200</OFFSETGLACCOUNTNO>\r\n    <ARACCOUNT>4000</ARACCOUNT>\r\n    <SHIPPINGMETHOD>USPS</SHIPPINGMETHOD>\r\n    <RESALENO>123</RESALENO>\r\n    <TAXID>12-3456789</TAXID>\r\n    <CREDITLIMIT>1234.56</CREDITLIMIT>\r\n    <ONHOLD>false</ONHOLD>\r\n    <DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS>\r\n    <CUSTMESSAGEID>hello</CUSTMESSAGEID>\r\n    <COMMENTS>my comment</COMMENTS>\r\n    <CURRENCY>USD</CURRENCY>\r\n    <ARINVOICEPRINTTEMPLATEID>temp1</ARINVOICEPRINTTEMPLATEID>\r\n    <OEQUOTEPRINTTEMPLATEID>temp2</OEQUOTEPRINTTEMPLATEID>\r\n    <OEORDERPRINTTEMPLATEID>temp3</OEORDERPRINTTEMPLATEID>\r\n    <OELISTPRINTTEMPLATEID>temp4</OELISTPRINTTEMPLATEID>\r\n    <OEINVOICEPRINTTEMPLATEID>temp5</OEINVOICEPRINTTEMPLATEID>\r\n    <OEADJPRINTTEMPLATEID>temp6</OEADJPRINTTEMPLATEID>\r\n    <OEOTHERPRINTTEMPLATEID>temp7</OEOTHERPRINTTEMPLATEID>\r\n    <CONTACTINFO>\r\n      <CONTACTNAME>primary</CONTACTNAME>\r\n    </CONTACTINFO>\r\n    <BILLTO>\r\n      <CONTACTNAME>bill to</CONTACTNAME>\r\n    </BILLTO>\r\n    <SHIPTO>\r\n      <CONTACTNAME>ship to</CONTACTNAME>\r\n    </SHIPTO>\r\n    <OBJECTRESTRICTION>Restricted</OBJECTRESTRICTION>\r\n    <RESTRICTEDLOCATIONS>100#~#200</RESTRICTEDLOCATIONS>\r\n    <RESTRICTEDDEPARTMENTS>D100#~#D200</RESTRICTEDDEPARTMENTS>\r\n    <CUSTOMFIELD1>Hello</CUSTOMFIELD1>\r\n  </CUSTOMER>\r\n  <CUSTOMER>\r\n    <CUSTOMERID>C1234</CUSTOMERID>\r\n    <NAME>SaaS Company Inc</NAME>\r\n    <DISPLAYCONTACT>\r\n      <PRINTAS>SaaS Company Inc</PRINTAS>\r\n      <COMPANYNAME>SaaS Co</COMPANYNAME>\r\n      <TAXABLE>true</TAXABLE>\r\n      <TAXGROUP>CA</TAXGROUP>\r\n      <PREFIX>Mr</PREFIX>\r\n      <FIRSTNAME>Bill</FIRSTNAME>\r\n      <LASTNAME>Smith</LASTNAME>\r\n      <INITIAL>G</INITIAL>\r\n      <PHONE1>12</PHONE1>\r\n      <PHONE2>34</PHONE2>\r\n      <CELLPHONE>56</CELLPHONE>\r\n      <PAGER>78</PAGER>\r\n      <FAX>90</FAX>\r\n      <EMAIL1/>\r\n      <EMAIL2/>\r\n      <URL1/>\r\n      <URL2/>\r\n      <MAILADDRESS>\r\n        <ADDRESS1>300 Park Ave</ADDRESS1>\r\n        <ADDRESS2>Ste 1400</ADDRESS2>\r\n        <CITY>San Jose</CITY>\r\n        <STATE>CA</STATE>\r\n        <ZIP>95110</ZIP>\r\n        <COUNTRY>United States</COUNTRY>\r\n      </MAILADDRESS>\r\n    </DISPLAYCONTACT>\r\n    <ONETIME>false</ONETIME>\r\n    <STATUS>active</STATUS>\r\n    <HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT>\r\n    <CUSTTYPE>SaaS</CUSTTYPE>\r\n    <PARENTID>C5678</PARENTID>\r\n    <GLGROUP>Group</GLGROUP>\r\n    <TERRITORYID>NE</TERRITORYID>\r\n    <SUPDOCID>A1234</SUPDOCID>\r\n    <TERMNAME>N30</TERMNAME>\r\n    <OFFSETGLACCOUNTNO>1200</OFFSETGLACCOUNTNO>\r\n    <ARACCOUNT>4000</ARACCOUNT>\r\n    <SHIPPINGMETHOD>USPS</SHIPPINGMETHOD>\r\n    <RESALENO>123</RESALENO>\r\n    <TAXID>12-3456789</TAXID>\r\n    <CREDITLIMIT>1234.56</CREDITLIMIT>\r\n    <ONHOLD>false</ONHOLD>\r\n    <DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS>\r\n    <CUSTMESSAGEID>hello</CUSTMESSAGEID>\r\n    <COMMENTS>my comment</COMMENTS>\r\n    <CURRENCY>USD</CURRENCY>\r\n    <ARINVOICEPRINTTEMPLATEID>temp1</ARINVOICEPRINTTEMPLATEID>\r\n    <OEQUOTEPRINTTEMPLATEID>temp2</OEQUOTEPRINTTEMPLATEID>\r\n    <OEORDERPRINTTEMPLATEID>temp3</OEORDERPRINTTEMPLATEID>\r\n    <OELISTPRINTTEMPLATEID>temp4</OELISTPRINTTEMPLATEID>\r\n    <OEINVOICEPRINTTEMPLATEID>temp5</OEINVOICEPRINTTEMPLATEID>\r\n    <OEADJPRINTTEMPLATEID>temp6</OEADJPRINTTEMPLATEID>\r\n    <OEOTHERPRINTTEMPLATEID>temp7</OEOTHERPRINTTEMPLATEID>\r\n    <CONTACTINFO>\r\n      <CONTACTNAME>primary</CONTACTNAME>\r\n    </CONTACTINFO>\r\n    <BILLTO>\r\n      <CONTACTNAME>bill to</CONTACTNAME>\r\n    </BILLTO>\r\n    <SHIPTO>\r\n      <CONTACTNAME>ship to</CONTACTNAME>\r\n    </SHIPTO>\r\n    <OBJECTRESTRICTION>Restricted</OBJECTRESTRICTION>\r\n    <RESTRICTEDLOCATIONS>100#~#200</RESTRICTEDLOCATIONS>\r\n    <RESTRICTEDDEPARTMENTS>D100#~#D200</RESTRICTEDDEPARTMENTS>\r\n    <CUSTOMFIELD1>Hello</CUSTOMFIELD1>\r\n  </CUSTOMER>\r\n</Request>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-01-26T08:48:08.2149778+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "0f519677-db4d-1a0e-cfc2-0b67cff12d8f",
+                "Name": "SageIntacct",
+                "ShortDescription": "Create Record",
+                "LongDescription": "Here we are creating Customer records in Sage Intacct, one by one.",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "UserID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "Sage Intacct [Sandbox]",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+                        "ExtendedType": 2,
+                        "Value": "237b42a2-fa73-17a1-a8d6-927a93ab65a9"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "create"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Object",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "CUSTOMER"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n  <xs:element name=\"Request\">\n    <xs:complexType>\n      <xs:sequence>\n        <xs:element maxOccurs=\"unbounded\" name=\"CUSTOMER\">\n          <xs:complexType>\n            <xs:sequence>\n              <xs:element name=\"CUSTOMERID\" type=\"xs:string\"/>\n              <xs:element name=\"NAME\" type=\"xs:string\"/>\n              <xs:element name=\"DISPLAYCONTACT\">\n                <xs:complexType>\n                  <xs:sequence>\n                    <xs:element name=\"PRINTAS\" type=\"xs:string\"/>\n                    <xs:element name=\"COMPANYNAME\" type=\"xs:string\"/>\n                    <xs:element name=\"TAXABLE\" type=\"xs:boolean\"/>\n                    <xs:element name=\"TAXGROUP\" type=\"xs:string\"/>\n                    <xs:element name=\"PREFIX\" type=\"xs:string\"/>\n                    <xs:element name=\"FIRSTNAME\" type=\"xs:string\"/>\n                    <xs:element name=\"LASTNAME\" type=\"xs:string\"/>\n                    <xs:element name=\"INITIAL\" type=\"xs:string\"/>\n                    <xs:element name=\"PHONE1\" type=\"xs:unsignedByte\"/>\n                    <xs:element name=\"PHONE2\" type=\"xs:unsignedByte\"/>\n                    <xs:element name=\"CELLPHONE\" type=\"xs:unsignedByte\"/>\n                    <xs:element name=\"PAGER\" type=\"xs:unsignedByte\"/>\n                    <xs:element name=\"FAX\" type=\"xs:unsignedByte\"/>\n                    <xs:element name=\"EMAIL1\"/>\n                    <xs:element name=\"EMAIL2\"/>\n                    <xs:element name=\"URL1\"/>\n                    <xs:element name=\"URL2\"/>\n                    <xs:element name=\"MAILADDRESS\">\n                      <xs:complexType>\n                        <xs:sequence>\n                          <xs:element name=\"ADDRESS1\" type=\"xs:string\"/>\n                          <xs:element name=\"ADDRESS2\" type=\"xs:string\"/>\n                          <xs:element name=\"CITY\" type=\"xs:string\"/>\n                          <xs:element name=\"STATE\" type=\"xs:string\"/>\n                          <xs:element name=\"ZIP\" type=\"xs:unsignedInt\"/>\n                          <xs:element name=\"COUNTRY\" type=\"xs:string\"/>\n                        </xs:sequence>\n                      </xs:complexType>\n                    </xs:element>\n                  </xs:sequence>\n                </xs:complexType>\n              </xs:element>\n              <xs:element name=\"ONETIME\" type=\"xs:boolean\"/>\n              <xs:element name=\"STATUS\" type=\"xs:string\"/>\n              <xs:element name=\"HIDEDISPLAYCONTACT\" type=\"xs:boolean\"/>\n              <xs:element name=\"CUSTTYPE\" type=\"xs:string\"/>\n              <xs:element name=\"PARENTID\" type=\"xs:string\"/>\n              <xs:element name=\"GLGROUP\" type=\"xs:string\"/>\n              <xs:element name=\"TERRITORYID\" type=\"xs:string\"/>\n              <xs:element name=\"SUPDOCID\" type=\"xs:string\"/>\n              <xs:element name=\"TERMNAME\" type=\"xs:string\"/>\n              <xs:element name=\"OFFSETGLACCOUNTNO\" type=\"xs:unsignedShort\"/>\n              <xs:element name=\"ARACCOUNT\" type=\"xs:unsignedShort\"/>\n              <xs:element name=\"SHIPPINGMETHOD\" type=\"xs:string\"/>\n              <xs:element name=\"RESALENO\" type=\"xs:unsignedByte\"/>\n              <xs:element name=\"TAXID\" type=\"xs:string\"/>\n              <xs:element name=\"CREDITLIMIT\" type=\"xs:decimal\"/>\n              <xs:element name=\"ONHOLD\" type=\"xs:boolean\"/>\n              <xs:element name=\"DELIVERY_OPTIONS\" type=\"xs:string\"/>\n              <xs:element name=\"CUSTMESSAGEID\" type=\"xs:string\"/>\n              <xs:element name=\"COMMENTS\" type=\"xs:string\"/>\n              <xs:element name=\"CURRENCY\" type=\"xs:string\"/>\n              <xs:element name=\"ARINVOICEPRINTTEMPLATEID\" type=\"xs:string\"/>\n              <xs:element name=\"OEQUOTEPRINTTEMPLATEID\" type=\"xs:string\"/>\n              <xs:element name=\"OEORDERPRINTTEMPLATEID\" type=\"xs:string\"/>\n              <xs:element name=\"OELISTPRINTTEMPLATEID\" type=\"xs:string\"/>\n              <xs:element name=\"OEINVOICEPRINTTEMPLATEID\" type=\"xs:string\"/>\n              <xs:element name=\"OEADJPRINTTEMPLATEID\" type=\"xs:string\"/>\n              <xs:element name=\"OEOTHERPRINTTEMPLATEID\" type=\"xs:string\"/>\n              <xs:element name=\"CONTACTINFO\">\n                <xs:complexType>\n                  <xs:sequence>\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\"/>\n                  </xs:sequence>\n                </xs:complexType>\n              </xs:element>\n              <xs:element name=\"BILLTO\">\n                <xs:complexType>\n                  <xs:sequence>\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\"/>\n                  </xs:sequence>\n                </xs:complexType>\n              </xs:element>\n              <xs:element name=\"SHIPTO\">\n                <xs:complexType>\n                  <xs:sequence>\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\"/>\n                  </xs:sequence>\n                </xs:complexType>\n              </xs:element>\n              <xs:element name=\"OBJECTRESTRICTION\" type=\"xs:string\"/>\n              <xs:element name=\"RESTRICTEDLOCATIONS\" type=\"xs:string\"/>\n              <xs:element name=\"RESTRICTEDDEPARTMENTS\" type=\"xs:string\"/>\n              <xs:element name=\"CUSTOMFIELD1\" type=\"xs:string\"/>\n            </xs:sequence>\n          </xs:complexType>\n        </xs:element>\n      </xs:sequence>\n    </xs:complexType>\n  </xs:element>\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <CUSTOMER>\r\n    <CUSTOMERID>C1234</CUSTOMERID>\r\n    <NAME>SaaS Company Inc</NAME>\r\n    <DISPLAYCONTACT>\r\n      <Test></Test>\r\n      <PRINTAS>SaaS Company Inc</PRINTAS>\r\n      <COMPANYNAME>SaaS Co</COMPANYNAME>\r\n      <TAXABLE>true</TAXABLE>\r\n      <TAXGROUP>CA</TAXGROUP>\r\n      <PREFIX>Mr</PREFIX>\r\n      <FIRSTNAME>Bill</FIRSTNAME>\r\n      <LASTNAME>Smith</LASTNAME>\r\n      <INITIAL>G</INITIAL>\r\n      <PHONE1>12</PHONE1>\r\n      <PHONE2>34</PHONE2>\r\n      <CELLPHONE>56</CELLPHONE>\r\n      <PAGER>78</PAGER>\r\n      <FAX>90</FAX>\r\n      <EMAIL1/>\r\n      <EMAIL2/>\r\n      <URL1/>\r\n      <URL2/>\r\n      <MAILADDRESS>\r\n        <ADDRESS1>300 Park Ave</ADDRESS1>\r\n        <ADDRESS2>Ste 1400</ADDRESS2>\r\n        <CITY>San Jose</CITY>\r\n        <STATE>CA</STATE>\r\n        <ZIP>95110</ZIP>\r\n        <COUNTRY>United States</COUNTRY>\r\n      </MAILADDRESS>\r\n    </DISPLAYCONTACT>\r\n    <ONETIME>false</ONETIME>\r\n    <STATUS>active</STATUS>\r\n    <HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT>\r\n    <CUSTTYPE>SaaS</CUSTTYPE>\r\n    <PARENTID>C5678</PARENTID>\r\n    <GLGROUP>Group</GLGROUP>\r\n    <TERRITORYID>NE</TERRITORYID>\r\n    <SUPDOCID>A1234</SUPDOCID>\r\n    <TERMNAME>N30</TERMNAME>\r\n    <OFFSETGLACCOUNTNO>1200</OFFSETGLACCOUNTNO>\r\n    <ARACCOUNT>4000</ARACCOUNT>\r\n    <SHIPPINGMETHOD>USPS</SHIPPINGMETHOD>\r\n    <RESALENO>123</RESALENO>\r\n    <TAXID>12-3456789</TAXID>\r\n    <CREDITLIMIT>1234.56</CREDITLIMIT>\r\n    <ONHOLD>false</ONHOLD>\r\n    <DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS>\r\n    <CUSTMESSAGEID>hello</CUSTMESSAGEID>\r\n    <COMMENTS>my comment</COMMENTS>\r\n    <CURRENCY>USD</CURRENCY>\r\n    <ARINVOICEPRINTTEMPLATEID>temp1</ARINVOICEPRINTTEMPLATEID>\r\n    <OEQUOTEPRINTTEMPLATEID>temp2</OEQUOTEPRINTTEMPLATEID>\r\n    <OEORDERPRINTTEMPLATEID>temp3</OEORDERPRINTTEMPLATEID>\r\n    <OELISTPRINTTEMPLATEID>temp4</OELISTPRINTTEMPLATEID>\r\n    <OEINVOICEPRINTTEMPLATEID>temp5</OEINVOICEPRINTTEMPLATEID>\r\n    <OEADJPRINTTEMPLATEID>temp6</OEADJPRINTTEMPLATEID>\r\n    <OEOTHERPRINTTEMPLATEID>temp7</OEOTHERPRINTTEMPLATEID>\r\n    <CONTACTINFO>\r\n      <CONTACTNAME>primary</CONTACTNAME>\r\n    </CONTACTINFO>\r\n    <BILLTO>\r\n      <CONTACTNAME>bill to</CONTACTNAME>\r\n    </BILLTO>\r\n    <SHIPTO>\r\n      <CONTACTNAME>ship to</CONTACTNAME>\r\n    </SHIPTO>\r\n    <OBJECTRESTRICTION>Restricted</OBJECTRESTRICTION>\r\n    <RESTRICTEDLOCATIONS>100#~#200</RESTRICTEDLOCATIONS>\r\n    <RESTRICTEDDEPARTMENTS>D100#~#D200</RESTRICTEDDEPARTMENTS>\r\n    <CUSTOMFIELD1>Hello</CUSTOMFIELD1>\r\n  </CUSTOMER>\r\n  <CUSTOMER>\r\n    <CUSTOMERID>C1234</CUSTOMERID>\r\n    <NAME>SaaS Company Inc</NAME>\r\n    <DISPLAYCONTACT>\r\n      <PRINTAS>SaaS Company Inc</PRINTAS>\r\n      <COMPANYNAME>SaaS Co</COMPANYNAME>\r\n      <TAXABLE>true</TAXABLE>\r\n      <TAXGROUP>CA</TAXGROUP>\r\n      <PREFIX>Mr</PREFIX>\r\n      <FIRSTNAME>Bill</FIRSTNAME>\r\n      <LASTNAME>Smith</LASTNAME>\r\n      <INITIAL>G</INITIAL>\r\n      <PHONE1>12</PHONE1>\r\n      <PHONE2>34</PHONE2>\r\n      <CELLPHONE>56</CELLPHONE>\r\n      <PAGER>78</PAGER>\r\n      <FAX>90</FAX>\r\n      <EMAIL1/>\r\n      <EMAIL2/>\r\n      <URL1/>\r\n      <URL2/>\r\n      <MAILADDRESS>\r\n        <ADDRESS1>300 Park Ave</ADDRESS1>\r\n        <ADDRESS2>Ste 1400</ADDRESS2>\r\n        <CITY>San Jose</CITY>\r\n        <STATE>CA</STATE>\r\n        <ZIP>95110</ZIP>\r\n        <COUNTRY>United States</COUNTRY>\r\n      </MAILADDRESS>\r\n    </DISPLAYCONTACT>\r\n    <ONETIME>false</ONETIME>\r\n    <STATUS>active</STATUS>\r\n    <HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT>\r\n    <CUSTTYPE>SaaS</CUSTTYPE>\r\n    <PARENTID>C5678</PARENTID>\r\n    <GLGROUP>Group</GLGROUP>\r\n    <TERRITORYID>NE</TERRITORYID>\r\n    <SUPDOCID>A1234</SUPDOCID>\r\n    <TERMNAME>N30</TERMNAME>\r\n    <OFFSETGLACCOUNTNO>1200</OFFSETGLACCOUNTNO>\r\n    <ARACCOUNT>4000</ARACCOUNT>\r\n    <SHIPPINGMETHOD>USPS</SHIPPINGMETHOD>\r\n    <RESALENO>123</RESALENO>\r\n    <TAXID>12-3456789</TAXID>\r\n    <CREDITLIMIT>1234.56</CREDITLIMIT>\r\n    <ONHOLD>false</ONHOLD>\r\n    <DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS>\r\n    <CUSTMESSAGEID>hello</CUSTMESSAGEID>\r\n    <COMMENTS>my comment</COMMENTS>\r\n    <CURRENCY>USD</CURRENCY>\r\n    <ARINVOICEPRINTTEMPLATEID>temp1</ARINVOICEPRINTTEMPLATEID>\r\n    <OEQUOTEPRINTTEMPLATEID>temp2</OEQUOTEPRINTTEMPLATEID>\r\n    <OEORDERPRINTTEMPLATEID>temp3</OEORDERPRINTTEMPLATEID>\r\n    <OELISTPRINTTEMPLATEID>temp4</OELISTPRINTTEMPLATEID>\r\n    <OEINVOICEPRINTTEMPLATEID>temp5</OEINVOICEPRINTTEMPLATEID>\r\n    <OEADJPRINTTEMPLATEID>temp6</OEADJPRINTTEMPLATEID>\r\n    <OEOTHERPRINTTEMPLATEID>temp7</OEOTHERPRINTTEMPLATEID>\r\n    <CONTACTINFO>\r\n      <CONTACTNAME>primary</CONTACTNAME>\r\n    </CONTACTINFO>\r\n    <BILLTO>\r\n      <CONTACTNAME>bill to</CONTACTNAME>\r\n    </BILLTO>\r\n    <SHIPTO>\r\n      <CONTACTNAME>ship to</CONTACTNAME>\r\n    </SHIPTO>\r\n    <OBJECTRESTRICTION>Restricted</OBJECTRESTRICTION>\r\n    <RESTRICTEDLOCATIONS>100#~#200</RESTRICTEDLOCATIONS>\r\n    <RESTRICTEDDEPARTMENTS>D100#~#D200</RESTRICTEDDEPARTMENTS>\r\n    <CUSTOMFIELD1>Hello</CUSTOMFIELD1>\r\n  </CUSTOMER>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "LocationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <result>\r\n    <status>success</status>\r\n    <function>create</function>\r\n    <controlid>638870585352057543</controlid>\r\n    <data listtype=\"objects\" count=\"1\">\r\n      <customer>\r\n        <RECORDNO>1644</RECORDNO>\r\n        <CUSTOMERID>FGW015</CUSTOMERID>\r\n      </customer>\r\n    </data>\r\n  </result>\r\n</Response>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 3822
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Sage Intacct",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-11-17T14:28:06.0175447+00:00",
+                    "Username": "daniel.chilcott@flowgear.net",
+                    "UserKey": "948d657b-e37c-4fd3-9bfa-c94f493379f0"
+                }
+            },
+            {
+                "NodeId": "9ffc789a-49df-5396-87cf-be00a923c816",
+                "Name": "IfVisualBasic",
+                "LongDescription": "We check to see if the create in Sage was Successful or not.",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = \"success\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "7146ace8-d9a6-35f7-4647-9883bfe6ce56",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "Set KV Success",
+                "LongDescription": "Here we write away a Successful Key Value record, so that this specific employee(key) is not processed by this integration again.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8845,
+                    "Y": 3822
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "94931cbd-d10e-06d1-dbe2-8d8ea8161aad",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "Set KV Error",
+                "LongDescription": "Here we write away an Error Key Value record, so that if this employee(Key) get's processed again, it will try and run the update again, until this changes to Successful.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8845,
+                    "Y": 4238
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f3842dd1-3ef9-89a7-65bf-b03141c9d63c",
+                "TargetNodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "SourceName": "Item",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "bfedd5b7-7970-65c7-f924-955230ca622d",
+                "TargetNodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "SourceName": "Missing"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "TargetNodeId": "0f519677-db4d-1a0e-cfc2-0b67cff12d8f",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "85593a38-12e0-58e6-4ff5-9ef76c0bec72",
+                "TargetNodeId": "7e0afa2f-094e-1037-ff06-a5f3aeb7bae5",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "TargetNodeId": "0f519677-db4d-1a0e-cfc2-0b67cff12d8f",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "0f519677-db4d-1a0e-cfc2-0b67cff12d8f",
+                "TargetNodeId": "9ffc789a-49df-5396-87cf-be00a923c816",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "Response.result.status"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "9ffc789a-49df-5396-87cf-be00a923c816",
+                "TargetNodeId": "7146ace8-d9a6-35f7-4647-9883bfe6ce56",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "9ffc789a-49df-5396-87cf-be00a923c816",
+                "TargetNodeId": "94931cbd-d10e-06d1-dbe2-8d8ea8161aad",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "2468438e-1316-2798-0bee-370445bd88b2",
+                "TargetNodeId": "94931cbd-d10e-06d1-dbe2-8d8ea8161aad",
+                "SourceName": "KVGroup",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "TargetNodeId": "7146ace8-d9a6-35f7-4647-9883bfe6ce56",
+                "SourceName": "Result",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "TargetNodeId": "94931cbd-d10e-06d1-dbe2-8d8ea8161aad",
+                "SourceName": "Result",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "TargetNodeId": "94931cbd-d10e-06d1-dbe2-8d8ea8161aad",
+                "SourceName": "Result",
+                "TargetName": "Key",
+                "Expression": "Request.CUSTOMER.CUSTOMERID"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "0f519677-db4d-1a0e-cfc2-0b67cff12d8f",
+                "TargetNodeId": "9ffc789a-49df-5396-87cf-be00a923c816",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7e0afa2f-094e-1037-ff06-a5f3aeb7bae5",
+                "TargetNodeId": "f3842dd1-3ef9-89a7-65bf-b03141c9d63c",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "7e0afa2f-094e-1037-ff06-a5f3aeb7bae5",
+                "TargetNodeId": "f3842dd1-3ef9-89a7-65bf-b03141c9d63c",
+                "SourceName": "Response",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "bfedd5b7-7970-65c7-f924-955230ca622d",
+                "TargetNodeId": "523f0001-736b-0034-6393-52d53b39bb0f",
+                "SourceName": "Found"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "bfedd5b7-7970-65c7-f924-955230ca622d",
+                "TargetNodeId": "523f0001-736b-0034-6393-52d53b39bb0f",
+                "SourceName": "Value",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "523f0001-736b-0034-6393-52d53b39bb0f",
+                "TargetNodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f3842dd1-3ef9-89a7-65bf-b03141c9d63c",
+                "TargetNodeId": "3f9e991b-9854-47da-b010-739b94c1c06f",
+                "SourceName": "Item",
+                "TargetName": "id",
+                "Expression": "id"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "f3842dd1-3ef9-89a7-65bf-b03141c9d63c",
+                "TargetNodeId": "3f9e991b-9854-47da-b010-739b94c1c06f",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "3f9e991b-9854-47da-b010-739b94c1c06f",
+                "TargetNodeId": "bfedd5b7-7970-65c7-f924-955230ca622d",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3f9e991b-9854-47da-b010-739b94c1c06f",
+                "TargetNodeId": "bfedd5b7-7970-65c7-f924-955230ca622d",
+                "SourceName": "Result",
+                "TargetName": "Key"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "2468438e-1316-2798-0bee-370445bd88b2",
+                "TargetNodeId": "7146ace8-d9a6-35f7-4647-9883bfe6ce56",
+                "SourceName": "KVGroup",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "2468438e-1316-2798-0bee-370445bd88b2",
+                "TargetNodeId": "bfedd5b7-7970-65c7-f924-955230ca622d",
+                "SourceName": "KVGroup",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e849e3a0-e29b-6769-cd2a-5d6589494791",
+                "TargetNodeId": "7146ace8-d9a6-35f7-4647-9883bfe6ce56",
+                "SourceName": "Result",
+                "TargetName": "Key",
+                "Expression": "Request.CUSTOMER.CUSTOMERID"
+            }
+        ],
+        "StartNodeId": "85593a38-12e0-58e6-4ff5-9ef76c0bec72",
+        "ActivityLogLevelMask": 0
+    },
+    "Name": "BambooHR to Sage Intacct Customers",
+    "Description": "This Workflow retrieves employee records from BambooHR and attempts to create corresponding user records in the Sage Intacct Customer table. Successes and failures are logged as key-value records to prevent duplicate processing in future runs.\n"
+}
