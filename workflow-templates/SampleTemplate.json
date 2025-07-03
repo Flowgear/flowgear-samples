@@ -1,0 +1,359 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 2,
+    "Name": "Flat File Example",
+    "Description": "An example for Flat Files (to be removed from templates repo)",
+    "Nodes": [
+      {
+        "NodeId": "06cba6b3-7ec4-81c8-5469-3bab4c9f46d1",
+        "Name": "Start",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 0,
+        "InteractFlags": 0,
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "e10dcfb6-a341-5106-5972-783939de1047",
+        "Name": "FlatFile",
+        "ShortDescription": "Create",
+        "Version": "1.0.0.11",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "flowgear.Nodes.FlatFile.Enums+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Parse",
+              "Create",
+              "ParseRetainEmptyRows",
+              "CreateRetainEmptyColumns"
+            ],
+            "Value": "Create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "FileType",
+            "TypeName": "flowgear.Nodes.FlatFile.Enums+FileType",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Delimited",
+              "FixedWidth"
+            ],
+            "Value": "Delimited"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RowDelimiter",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "\\r\\n"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ColumnDelimiter",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ","
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulator",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HasColumnNames",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ColumnNames",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "FlatFileDocument",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "XmlDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Document>\r\n  <Row>\r\n    <Name>John</Name>\r\n    <Surname>Doe</Surname>\r\n    <Age>26</Age>\r\n  </Row>\r\n  <Row>\r\n    <Name>Jill</Name>\r\n    <Surname>Hill</Surname>\r\n    <Age>32</Age>\r\n  </Row>\r\n</Document>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Flat File",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "6e0269cd-a6d0-901d-020a-d8d714dec832",
+        "Name": "FlatFile",
+        "ShortDescription": "Parse",
+        "Version": "1.0.0.11",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "flowgear.Nodes.FlatFile.Enums+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Parse",
+              "Create",
+              "ParseRetainEmptyRows",
+              "CreateRetainEmptyColumns"
+            ],
+            "Value": "Parse"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "FileType",
+            "TypeName": "flowgear.Nodes.FlatFile.Enums+FileType",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Delimited",
+              "FixedWidth"
+            ],
+            "Value": "Delimited"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RowDelimiter",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "\\r\\n"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ColumnDelimiter",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ","
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulator",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HasColumnNames",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ColumnNames",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "FlatFileDocument",
+            "TypeName": "System.Object",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "XmlDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Document>\r\n  <Row>\r\n    <Name>John</Name>\r\n    <Surname>Doe</Surname>\r\n    <Age>26</Age>\r\n  </Row>\r\n  <Row>\r\n    <Name>Jill</Name>\r\n    <Surname>Hill</Surname>\r\n    <Age>32</Age>\r\n  </Row>\r\n</Document>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710.0,
+          "Y": 3640.0
+        },
+        "SupportsCustomInputProperties": false,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "RunFrom": 3,
+        "InteractFlags": 0,
+        "DisplayName": "Flat File",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "06cba6b3-7ec4-81c8-5469-3bab4c9f46d1",
+        "TargetNodeId": "e10dcfb6-a341-5106-5972-783939de1047",
+        "SourceName": "Start",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "e10dcfb6-a341-5106-5972-783939de1047",
+        "TargetNodeId": "6e0269cd-a6d0-901d-020a-d8d714dec832",
+        "SourceName": "",
+        "TargetName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "e10dcfb6-a341-5106-5972-783939de1047",
+        "TargetNodeId": "6e0269cd-a6d0-901d-020a-d8d714dec832",
+        "SourceName": "FlatFileDocument",
+        "TargetName": "FlatFileDocument"
+      }
+    ],
+    "StartNodeId": "06cba6b3-7ec4-81c8-5469-3bab4c9f46d1",
+    "DateCreated": "2021-09-28T10:33:35.437",
+    "DateUpdated": "2021-09-28T10:33:35.437",
+    "ActivityLogLevelMask": 0
+  }
+}
