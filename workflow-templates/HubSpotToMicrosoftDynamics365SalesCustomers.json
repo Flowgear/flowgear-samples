@@ -1,0 +1,1319 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "f1f7e70f-17c1-2ce5-9f38-6ebd17b6fcd7",
+                "Name": "Note",
+                "ShortDescription": "About this Workflow",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow synchronizes customers from HubSpot CRM to Microsoft Dynamics 365 Sales. \nIt begins by retrieving customer records from HubSpot, then splits and processes each record individually. For each customer, the Workflow checks if it has already been processed. If so, a message is displayed using the Formatter. \nIf not, it builds the source payload, maps the data into the required Dynamics 365 format, and creates the customer in Microsoft Dynamics 365 Sales. \nThe outcome—success or error—is then logged using key-value records."
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "461e4467-dfd9-b15c-b463-5bed19b35c78",
+                "Name": "VariableBar",
+                "LongDescription": "Here we are setting the Group for Key Values",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Customers Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Dynamics365Customers"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                }
+            },
+            {
+                "NodeId": "148d1aeb-5394-ee64-4a87-bde7b8e08abc",
+                "Name": "Formatter",
+                "ShortDescription": "CustomerProcessed",
+                "LongDescription": "Here we display a message if the Customer ID has been found in the Key Values",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "Customer ID: \"{CustomerID}\" has already been processed."
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "CustomerID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "5e0e1c78-d535-7dfc-f032-a090b03fd106",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogSuccess",
+                "LongDescription": "Here we are logging the Key Value record for successful records.\nWe get the Group from the Variable bar.\nWe use the Customer ID as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\nWe use the MS Dynamics 365 Sales Response Id as the Value.\n",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 3945
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "dc7851cb-ab11-4a14-a556-3a467773156c",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 4205
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "1842e307-f7ca-ae76-ca6c-bef1e22ed23b",
+                "Name": "HubSpotCrm",
+                "ShortDescription": "GetCustomers",
+                "LongDescription": "Here we are retrieving a list of HubSpot Customers limited to 10 for this sample Workflow",
+                "Version": "3.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ClientId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.HubSpot.HubSpotCRM.Connection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "3c80fed1-9486-321b-65e1-0840ea604b3a"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Read a page of contacts. Control what is returned via the `properties` query param.",
+                        "IsSecret": false,
+                        "Name": "Name",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Retrieve contacts"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "JSON Request Body.",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "JSON Response Body.",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\"results\":[{\"id\":\"300443411666\",\"properties\":{\"createdate\":\"2025-05-19T09:04:22.466Z\",\"email\":\"bh@hubspot.com\",\"firstname\":\"Brian\",\"hs_object_id\":\"300443411666\",\"lastmodifieddate\":\"2025-05-21T21:48:03.798Z\",\"lastname\":\"Halligan (Sample Contact)\"},\"createdAt\":\"2025-05-19T09:04:22.466Z\",\"updatedAt\":\"2025-05-21T21:48:03.798Z\",\"archived\":false},{\"id\":\"300443879646\",\"properties\":{\"createdate\":\"2025-05-19T09:04:22.090Z\",\"email\":\"emailmaria@hubspot.com\",\"firstname\":\"Maria\",\"hs_object_id\":\"300443879646\",\"lastmodifieddate\":\"2025-05-21T17:18:36.273Z\",\"lastname\":\"Johnson (Sample Contact)\"},\"createdAt\":\"2025-05-19T09:04:22.090Z\",\"updatedAt\":\"2025-05-21T17:18:36.273Z\",\"archived\":false},{\"id\":\"300741865692\",\"properties\":{\"createdate\":\"2025-05-19T12:26:04.258Z\",\"email\":\"yes.ofcourse@gmail.com\",\"firstname\":\"Yes\",\"hs_object_id\":\"300741865692\",\"lastmodifieddate\":\"2025-05-21T13:28:58.122Z\",\"lastname\":\"Ofcourse\"},\"createdAt\":\"2025-05-19T12:26:04.258Z\",\"updatedAt\":\"2025-05-21T13:28:58.122Z\",\"archived\":false},{\"id\":\"303735932138\",\"properties\":{\"createdate\":\"2025-05-21T09:39:56.360Z\",\"email\":\"cassandra.s.wallace@gmail.com\",\"firstname\":\"Cassandra\",\"hs_object_id\":\"303735932138\",\"lastmodifieddate\":\"2025-05-21T13:31:38.375Z\",\"lastname\":\"Wallace\"},\"createdAt\":\"2025-05-21T09:39:56.360Z\",\"updatedAt\":\"2025-05-21T13:31:38.375Z\",\"archived\":false},{\"id\":\"303952405752\",\"properties\":{\"createdate\":\"2025-05-21T13:20:30.069Z\",\"email\":\"abracadabra.billy@example.com\",\"firstname\":\"Abracadabra\",\"hs_object_id\":\"303952405752\",\"lastmodifieddate\":\"2025-05-21T13:25:36.672Z\",\"lastname\":\"Billy\"},\"createdAt\":\"2025-05-21T13:20:30.069Z\",\"updatedAt\":\"2025-05-21T13:25:36.672Z\",\"archived\":false},{\"id\":\"305233275068\",\"properties\":{\"createdate\":\"2025-05-22T12:42:38.661Z\",\"email\":\"test@example.com\",\"firstname\":\"Test\",\"hs_object_id\":\"305233275068\",\"lastmodifieddate\":\"2025-05-22T12:47:39.822Z\",\"lastname\":\"User\"},\"createdAt\":\"2025-05-22T12:42:38.661Z\",\"updatedAt\":\"2025-05-22T12:47:39.822Z\",\"archived\":false},{\"id\":\"308998215927\",\"properties\":{\"createdate\":\"2025-05-26T07:41:12.732Z\",\"email\":\"dc@yahoo.com\",\"firstname\":\"D\",\"hs_object_id\":\"308998215927\",\"lastmodifieddate\":\"2025-05-26T07:46:16.868Z\",\"lastname\":\"C\"},\"createdAt\":\"2025-05-26T07:41:12.732Z\",\"updatedAt\":\"2025-05-26T07:46:16.868Z\",\"archived\":false},{\"id\":\"309157164280\",\"properties\":{\"createdate\":\"2025-05-26T12:13:12.220Z\",\"email\":\"ugh@gmail.com\",\"firstname\":\"ugh\",\"hs_object_id\":\"309157164280\",\"lastmodifieddate\":\"2025-05-26T12:18:14.030Z\",\"lastname\":\"ugh\"},\"createdAt\":\"2025-05-26T12:13:12.220Z\",\"updatedAt\":\"2025-05-26T12:18:14.030Z\",\"archived\":false},{\"id\":\"312277473521\",\"properties\":{\"createdate\":\"2025-05-29T15:09:09.662Z\",\"email\":\"madelyn.smitham1@asteroidinnovations.com\",\"firstname\":\"Madelyn\",\"hs_object_id\":\"312277473521\",\"lastmodifieddate\":\"2025-05-29T15:39:25.289Z\",\"lastname\":\"Smitham\"},\"createdAt\":\"2025-05-29T15:09:09.662Z\",\"updatedAt\":\"2025-05-29T15:39:25.289Z\",\"archived\":false},{\"id\":\"312277486814\",\"properties\":{\"createdate\":\"2025-05-29T15:10:41.767Z\",\"email\":\"benton.wintheiser1@omegaenterprises.com\",\"firstname\":\"Benton\",\"hs_object_id\":\"312277486814\",\"lastmodifieddate\":\"2025-05-29T15:41:01.044Z\",\"lastname\":\"Wintheiser\"},\"createdAt\":\"2025-05-29T15:10:41.767Z\",\"updatedAt\":\"2025-05-29T15:41:01.044Z\",\"archived\":false}],\"paging\":{\"next\":{\"after\":\"312277486815\",\"link\":\"https://api.hubapi.com/crm/v3/objects/contacts?limit=10&after=312277486815\"}}}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "The maximum number of results to display per page.",
+                        "IsSecret": false,
+                        "Name": "limit",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "10"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "HubSpot CRM",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-19T07:07:47.5886108+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
+                "Name": "ForEach",
+                "ShortDescription": "SplitCustomers",
+                "LongDescription": "Here we split the full Customer List from Shopify into individual customer records",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "results[*].id"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "ParentNode"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"id\": \"300443411666\",\r\n  \"properties\": {\r\n    \"createdate\": \"2025-05-19T09:04:22.466Z\",\r\n    \"email\": \"bh@hubspot.com\",\r\n    \"firstname\": \"Brian\",\r\n    \"hs_object_id\": \"300443411666\",\r\n    \"lastmodifieddate\": \"2025-05-21T21:48:03.798Z\",\r\n    \"lastname\": \"Halligan (Sample Contact)\"\r\n  },\r\n  \"createdAt\": \"2025-05-19T09:04:22.466Z\",\r\n  \"updatedAt\": \"2025-05-21T21:48:03.798Z\",\r\n  \"archived\": false\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:23.8561624+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "31722ca6-5987-4cfe-98ca-159ed1c36b41"
+                }
+            },
+            {
+                "NodeId": "d341e718-c4cb-0ddc-a6e7-0205a1418f24",
+                "Name": "GetKeyValue2",
+                "ShortDescription": "CustomerFound?",
+                "LongDescription": "Here we check to see if the Customer ID has been processed before by checking if a Key Value record has already been logged for this Customer ID.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DateTime",
+                        "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Found",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Missing",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:18.3456334+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "6824e583-9995-7a0a-3f6a-8520fb8ac54d",
+                "Name": "Formatter",
+                "ShortDescription": "BuildSource",
+                "LongDescription": "Here we are building the Source Payload for the QuickMap by wrapping the Item Payload from the For Each Node",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n\"customer\": {ItemPayload}\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemPayload",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-19T15:09:52.911541+00:00",
+                    "Username": "daniel.chilcott@flowgear.net",
+                    "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+                }
+            },
+            {
+                "NodeId": "167c22c2-1a6e-3353-eede-7d2278ff9c51",
+                "Name": "QuickMap",
+                "ShortDescription": "MapCustomer",
+                "LongDescription": "Here we map the customer data retrieved from HubSpot to the MS Dynamics 365 Sales format before creating the customer record.\nBoth JSON and XML document types are utilized in this step.\n",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n\"customer\": {\"id\":\"312277486814\",\"properties\":{\"createdate\":\"2025-05-29T15:10:41.767Z\",\"email\":\"benton.wintheiser1@omegaenterprises.com\",\"firstname\":\"Benton\",\"hs_object_id\":\"312277486814\",\"lastmodifieddate\":\"2025-05-29T15:41:01.044Z\",\"lastname\":\"Wintheiser\"},\"createdAt\":\"2025-05-29T15:10:41.767Z\",\"updatedAt\":\"2025-05-29T15:41:01.044Z\",\"archived\":false}\r\n}"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"customer\"],\"targetPath\":\"Request\"},{\"sourcePaths\":[\"customer/id\"],\"targetPath\":\"Request/contact/contactid\",\"mapExpression\":\"GUID()\"},{\"sourcePaths\":[\"customer/properties/createdate\"],\"targetPath\":\"Request/contact/createdon\"},{\"sourcePaths\":[\"customer/properties/email\"],\"targetPath\":\"Request/contact/emailaddress1\"},{\"sourcePaths\":[\"customer/properties/firstname\"],\"targetPath\":\"Request/contact/firstname\"},{\"sourcePaths\":[\"customer/properties/firstname\",\"customer/properties/lastname\"],\"targetPath\":\"Request/contact/fullname\",\"mapExpression\":\"CONCAT(TEXTVALUE({firstname}) + \\\" \\\" + TEXTVALUE({lastname}))\"},{\"sourcePaths\":[\"customer/properties/lastname\"],\"targetPath\":\"Request/contact/lastname\"},{\"sourcePaths\":[\"customer/updatedAt\"],\"targetPath\":\"Request/contact/modifiedon\"}],\"sourceSchema\":\"{\\r\\n\\\"customer\\\": {\\\"id\\\":\\\"312277486814\\\",\\\"properties\\\":{\\\"createdate\\\":\\\"2025-05-29T15:10:41.767Z\\\",\\\"email\\\":\\\"benton.wintheiser1@omegaenterprises.com\\\",\\\"firstname\\\":\\\"Benton\\\",\\\"hs_object_id\\\":\\\"312277486814\\\",\\\"lastmodifieddate\\\":\\\"2025-05-29T15:41:01.044Z\\\",\\\"lastname\\\":\\\"Wintheiser\\\"},\\\"createdAt\\\":\\\"2025-05-29T15:10:41.767Z\\\",\\\"updatedAt\\\":\\\"2025-05-29T15:41:01.044Z\\\",\\\"archived\\\":false}\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<Request>\\r\\n  <contact>\\r\\n    <accountid>Lookup</accountid>\\r\\n    <accountidname>String</accountidname>\\r\\n    <accountidyominame>String</accountidyominame>\\r\\n    <accountrolecode>Picklist</accountrolecode>\\r\\n    <accountrolecodename>Virtual</accountrolecodename>\\r\\n    <address1_addressid>Uniqueidentifier</address1_addressid>\\r\\n    <address1_addresstypecode>Picklist</address1_addresstypecode>\\r\\n    <address1_addresstypecodename>Virtual</address1_addresstypecodename>\\r\\n    <address1_city>String</address1_city>\\r\\n    <address1_composite>Memo</address1_composite>\\r\\n    <address1_country>String</address1_country>\\r\\n    <address1_county>String</address1_county>\\r\\n    <address1_fax>String</address1_fax>\\r\\n    <address1_freighttermscode>Picklist</address1_freighttermscode>\\r\\n    <address1_freighttermscodename>Virtual</address1_freighttermscodename>\\r\\n    <address1_latitude>Double</address1_latitude>\\r\\n    <address1_line1>String</address1_line1>\\r\\n    <address1_line2>String</address1_line2>\\r\\n    <address1_line3>String</address1_line3>\\r\\n    <address1_longitude>Double</address1_longitude>\\r\\n    <address1_name>String</address1_name>\\r\\n    <address1_postalcode>String</address1_postalcode>\\r\\n    <address1_postofficebox>String</address1_postofficebox>\\r\\n    <address1_primarycontactname>String</address1_primarycontactname>\\r\\n    <address1_shippingmethodcode>Picklist</address1_shippingmethodcode>\\r\\n    <address1_shippingmethodcodename>Virtual</address1_shippingmethodcodename>\\r\\n    <address1_stateorprovince>String</address1_stateorprovince>\\r\\n    <address1_telephone1>String</address1_telephone1>\\r\\n    <address1_telephone2>String</address1_telephone2>\\r\\n    <address1_telephone3>String</address1_telephone3>\\r\\n    <address1_upszone>String</address1_upszone>\\r\\n    <address1_utcoffset>Integer</address1_utcoffset>\\r\\n    <company>String</company>\\r\\n    <contactid>Uniqueidentifier</contactid>\\r\\n    <createdby>Lookup</createdby>\\r\\n    <createdbyexternalparty>Lookup</createdbyexternalparty>\\r\\n    <createdbyexternalpartyname>String</createdbyexternalpartyname>\\r\\n    <createdbyexternalpartyyominame>String</createdbyexternalpartyyominame>\\r\\n    <createdbyname>String</createdbyname>\\r\\n    <createdbyyominame>String</createdbyyominame>\\r\\n    <createdon>DateTime</createdon>\\r\\n    <createdonbehalfby>Lookup</createdonbehalfby>\\r\\n    <createdonbehalfbyname>String</createdonbehalfbyname>\\r\\n    <createdonbehalfbyyominame>String</createdonbehalfbyyominame>\\r\\n    <creditlimit>Money</creditlimit>\\r\\n    <creditlimit_base>Money</creditlimit_base>\\r\\n    <creditonhold>Boolean</creditonhold>\\r\\n    <creditonholdname>Virtual</creditonholdname>\\r\\n    <customersizecode>Picklist</customersizecode>\\r\\n    <customersizecodename>Virtual</customersizecodename>\\r\\n    <customertypecode>Picklist</customertypecode>\\r\\n    <customertypecodename>Virtual</customertypecodename>\\r\\n    <defaultpricelevelid>Lookup</defaultpricelevelid>\\r\\n    <emailaddress1>String</emailaddress1>\\r\\n    <fax>String</fax>\\r\\n    <firstname>String</firstname>\\r\\n    <followemail>Boolean</followemail>\\r\\n    <followemailname>Virtual</followemailname>\\r\\n    <ftpsiteurl>String</ftpsiteurl>\\r\\n    <fullname>String</fullname>\\r\\n    <gendercode>Picklist</gendercode>\\r\\n    <isautocreate>Boolean</isautocreate>\\r\\n    <isbackofficecustomer>Boolean</isbackofficecustomer>\\r\\n    <isbackofficecustomername>Virtual</isbackofficecustomername>\\r\\n    <isprivate>Boolean</isprivate>\\r\\n    <isprivatename>Virtual</isprivatename>\\r\\n    <jobtitle>String</jobtitle>\\r\\n    <lastname>String</lastname>\\r\\n    <lastonholdtime>DateTime</lastonholdtime>\\r\\n    <lastusedincampaign>DateTime</lastusedincampaign>\\r\\n    <leadsourcecode>Picklist</leadsourcecode>\\r\\n    <middlename>String</middlename>\\r\\n    <mobilephone>String</mobilephone>\\r\\n    <modifiedon>DateTime</modifiedon>\\r\\n    <ownerid>Owner</ownerid>\\r\\n    <owneridname>String</owneridname>\\r\\n    <owneridtype>EntityName</owneridtype>\\r\\n    <owneridyominame>String</owneridyominame>\\r\\n    <owningbusinessunit>Lookup</owningbusinessunit>\\r\\n    <owningbusinessunitname>String</owningbusinessunitname>\\r\\n    <owningteam>Lookup</owningteam>\\r\\n    <owninguser>Lookup</owninguser>\\r\\n    <pager>String</pager>\\r\\n    <parentcontactid>Lookup</parentcontactid>\\r\\n    <parentcontactidname>String</parentcontactidname>\\r\\n    <parentcontactidyominame>String</parentcontactidyominame>\\r\\n    <parentcustomerid>Customer</parentcustomerid>\\r\\n    <parentcustomeridname>String</parentcustomeridname>\\r\\n    <parentcustomeridtype>EntityName</parentcustomeridtype>\\r\\n    <parentcustomeridyominame>String</parentcustomeridyominame>\\r\\n    <participatesinworkflow>Boolean</participatesinworkflow>\\r\\n    <participatesinworkflowname>Virtual</participatesinworkflowname>\\r\\n    <paymenttermscode>Picklist</paymenttermscode>\\r\\n    <paymenttermscodename>Virtual</paymenttermscodename>\\r\\n    <processid>Uniqueidentifier</processid>\\r\\n    <salutation>String</salutation>\\r\\n    <shippingmethodcode>Picklist</shippingmethodcode>\\r\\n    <shippingmethodcodename>Virtual</shippingmethodcodename>\\r\\n    <slaid>Lookup</slaid>\\r\\n    <slainvokedid>Lookup</slainvokedid>\\r\\n    <slainvokedidname>String</slainvokedidname>\\r\\n    <slaname>String</slaname>\\r\\n    <spousesname>String</spousesname>\\r\\n    <stageid>Uniqueidentifier</stageid>\\r\\n    <statecode>State</statecode>\\r\\n    <statecodename>Virtual</statecodename>\\r\\n    <statuscode>Status</statuscode>\\r\\n    <statuscodename>Virtual</statuscodename>\\r\\n    <subscriptionid>Uniqueidentifier</subscriptionid>\\r\\n    <suffix>String</suffix>\\r\\n    <territorycodename>Virtual</territorycodename>\\r\\n    <timespentbymeonemailandmeetings>String</timespentbymeonemailandmeetings>\\r\\n    <timezoneruleversionnumber>Integer</timezoneruleversionnumber>\\r\\n    <transactioncurrencyid>Lookup</transactioncurrencyid>\\r\\n    <transactioncurrencyidname>String</transactioncurrencyidname>\\r\\n    <traversedpath>String</traversedpath>\\r\\n    <utcconversiontimezonecode>Integer</utcconversiontimezonecode>\\r\\n    <versionnumber>BigInt</versionnumber>\\r\\n    <websiteurl>String</websiteurl>\\r\\n  </contact>\\r\\n</Request>\",\"targetSchemaType\":0}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <contact>\r\n    <accountid>Lookup</accountid>\r\n    <accountidname>String</accountidname>\r\n    <accountidyominame>String</accountidyominame>\r\n    <accountrolecode>Picklist</accountrolecode>\r\n    <accountrolecodename>Virtual</accountrolecodename>\r\n    <address1_addressid>Uniqueidentifier</address1_addressid>\r\n    <address1_addresstypecode>Picklist</address1_addresstypecode>\r\n    <address1_addresstypecodename>Virtual</address1_addresstypecodename>\r\n    <address1_city>String</address1_city>\r\n    <address1_composite>Memo</address1_composite>\r\n    <address1_country>String</address1_country>\r\n    <address1_county>String</address1_county>\r\n    <address1_fax>String</address1_fax>\r\n    <address1_freighttermscode>Picklist</address1_freighttermscode>\r\n    <address1_freighttermscodename>Virtual</address1_freighttermscodename>\r\n    <address1_latitude>Double</address1_latitude>\r\n    <address1_line1>String</address1_line1>\r\n    <address1_line2>String</address1_line2>\r\n    <address1_line3>String</address1_line3>\r\n    <address1_longitude>Double</address1_longitude>\r\n    <address1_name>String</address1_name>\r\n    <address1_postalcode>String</address1_postalcode>\r\n    <address1_postofficebox>String</address1_postofficebox>\r\n    <address1_primarycontactname>String</address1_primarycontactname>\r\n    <address1_shippingmethodcode>Picklist</address1_shippingmethodcode>\r\n    <address1_shippingmethodcodename>Virtual</address1_shippingmethodcodename>\r\n    <address1_stateorprovince>String</address1_stateorprovince>\r\n    <address1_telephone1>String</address1_telephone1>\r\n    <address1_telephone2>String</address1_telephone2>\r\n    <address1_telephone3>String</address1_telephone3>\r\n    <address1_upszone>String</address1_upszone>\r\n    <address1_utcoffset>Integer</address1_utcoffset>\r\n    <company>String</company>\r\n    <contactid>Uniqueidentifier</contactid>\r\n    <createdby>Lookup</createdby>\r\n    <createdbyexternalparty>Lookup</createdbyexternalparty>\r\n    <createdbyexternalpartyname>String</createdbyexternalpartyname>\r\n    <createdbyexternalpartyyominame>String</createdbyexternalpartyyominame>\r\n    <createdbyname>String</createdbyname>\r\n    <createdbyyominame>String</createdbyyominame>\r\n    <createdon>DateTime</createdon>\r\n    <createdonbehalfby>Lookup</createdonbehalfby>\r\n    <createdonbehalfbyname>String</createdonbehalfbyname>\r\n    <createdonbehalfbyyominame>String</createdonbehalfbyyominame>\r\n    <creditlimit>Money</creditlimit>\r\n    <creditlimit_base>Money</creditlimit_base>\r\n    <creditonhold>Boolean</creditonhold>\r\n    <creditonholdname>Virtual</creditonholdname>\r\n    <customersizecode>Picklist</customersizecode>\r\n    <customersizecodename>Virtual</customersizecodename>\r\n    <customertypecode>Picklist</customertypecode>\r\n    <customertypecodename>Virtual</customertypecodename>\r\n    <defaultpricelevelid>Lookup</defaultpricelevelid>\r\n    <emailaddress1>String</emailaddress1>\r\n    <fax>String</fax>\r\n    <firstname>String</firstname>\r\n    <followemail>Boolean</followemail>\r\n    <followemailname>Virtual</followemailname>\r\n    <ftpsiteurl>String</ftpsiteurl>\r\n    <fullname>String</fullname>\r\n    <gendercode>Picklist</gendercode>\r\n    <isautocreate>Boolean</isautocreate>\r\n    <isbackofficecustomer>Boolean</isbackofficecustomer>\r\n    <isbackofficecustomername>Virtual</isbackofficecustomername>\r\n    <isprivate>Boolean</isprivate>\r\n    <isprivatename>Virtual</isprivatename>\r\n    <jobtitle>String</jobtitle>\r\n    <lastname>String</lastname>\r\n    <lastonholdtime>DateTime</lastonholdtime>\r\n    <lastusedincampaign>DateTime</lastusedincampaign>\r\n    <leadsourcecode>Picklist</leadsourcecode>\r\n    <middlename>String</middlename>\r\n    <mobilephone>String</mobilephone>\r\n    <modifiedon>DateTime</modifiedon>\r\n    <ownerid>Owner</ownerid>\r\n    <owneridname>String</owneridname>\r\n    <owneridtype>EntityName</owneridtype>\r\n    <owneridyominame>String</owneridyominame>\r\n    <owningbusinessunit>Lookup</owningbusinessunit>\r\n    <owningbusinessunitname>String</owningbusinessunitname>\r\n    <owningteam>Lookup</owningteam>\r\n    <owninguser>Lookup</owninguser>\r\n    <pager>String</pager>\r\n    <parentcontactid>Lookup</parentcontactid>\r\n    <parentcontactidname>String</parentcontactidname>\r\n    <parentcontactidyominame>String</parentcontactidyominame>\r\n    <parentcustomerid>Customer</parentcustomerid>\r\n    <parentcustomeridname>String</parentcustomeridname>\r\n    <parentcustomeridtype>EntityName</parentcustomeridtype>\r\n    <parentcustomeridyominame>String</parentcustomeridyominame>\r\n    <participatesinworkflow>Boolean</participatesinworkflow>\r\n    <participatesinworkflowname>Virtual</participatesinworkflowname>\r\n    <paymenttermscode>Picklist</paymenttermscode>\r\n    <paymenttermscodename>Virtual</paymenttermscodename>\r\n    <processid>Uniqueidentifier</processid>\r\n    <salutation>String</salutation>\r\n    <shippingmethodcode>Picklist</shippingmethodcode>\r\n    <shippingmethodcodename>Virtual</shippingmethodcodename>\r\n    <slaid>Lookup</slaid>\r\n    <slainvokedid>Lookup</slainvokedid>\r\n    <slainvokedidname>String</slainvokedidname>\r\n    <slaname>String</slaname>\r\n    <spousesname>String</spousesname>\r\n    <stageid>Uniqueidentifier</stageid>\r\n    <statecode>State</statecode>\r\n    <statecodename>Virtual</statecodename>\r\n    <statuscode>Status</statuscode>\r\n    <statuscodename>Virtual</statuscodename>\r\n    <subscriptionid>Uniqueidentifier</subscriptionid>\r\n    <suffix>String</suffix>\r\n    <territorycodename>Virtual</territorycodename>\r\n    <timespentbymeonemailandmeetings>String</timespentbymeonemailandmeetings>\r\n    <timezoneruleversionnumber>Integer</timezoneruleversionnumber>\r\n    <transactioncurrencyid>Lookup</transactioncurrencyid>\r\n    <transactioncurrencyidname>String</transactioncurrencyidname>\r\n    <traversedpath>String</traversedpath>\r\n    <utcconversiontimezonecode>Integer</utcconversiontimezonecode>\r\n    <versionnumber>BigInt</versionnumber>\r\n    <websiteurl>String</websiteurl>\r\n  </contact>\r\n</Request>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:07.8027684+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "a4b5a816-fc92-908b-68c3-0ca862b2ec26",
+                "Name": "MicrosoftDynamicsCrm",
+                "ShortDescription": "CreateCustomer",
+                "LongDescription": "Here we are creating the Customer record in MS Dynamics 365 Sales ",
+                "Version": "4.0.0.12",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Mode",
+                                "TypeName": "Flowgear.Nodes.MicrosoftDynamicsCrm.Connection+ConnectionModes",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "ServiceClient",
+                                    "OrganizationServiceProxy"
+                                ]
+                            },
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Username",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.MicrosoftDynamicsCrm.Connection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.MicrosoftDynamicsCrm.DynamicsCrm+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Query",
+                            "Create",
+                            "Update"
+                        ],
+                        "Value": "Create"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Entity",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "contact"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"contact\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"accountid\" type=\"xs:string\" />\r\n              <xs:element name=\"accountidname\" type=\"xs:string\" />\r\n              <xs:element name=\"accountidyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"accountrolecode\" type=\"xs:string\" />\r\n              <xs:element name=\"accountrolecodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_addressid\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_addresstypecode\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_addresstypecodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_city\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_composite\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_country\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_county\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_fax\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_freighttermscode\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_freighttermscodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_latitude\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_line1\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_line2\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_line3\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_longitude\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_name\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_postalcode\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_postofficebox\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_primarycontactname\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_shippingmethodcode\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_shippingmethodcodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_stateorprovince\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_telephone1\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_telephone2\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_telephone3\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_upszone\" type=\"xs:string\" />\r\n              <xs:element name=\"address1_utcoffset\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_addressid\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_addresstypecode\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_addresstypecodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_city\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_composite\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_country\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_county\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_fax\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_freighttermscode\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_freighttermscodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_latitude\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_line1\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_line2\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_line3\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_longitude\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_name\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_postalcode\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_postofficebox\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_primarycontactname\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_shippingmethodcode\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_shippingmethodcodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_stateorprovince\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_telephone1\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_telephone2\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_telephone3\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_upszone\" type=\"xs:string\" />\r\n              <xs:element name=\"address2_utcoffset\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_addressid\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_addresstypecode\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_addresstypecodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_city\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_composite\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_country\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_county\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_fax\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_freighttermscode\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_freighttermscodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_latitude\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_line1\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_line2\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_line3\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_longitude\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_name\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_postalcode\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_postofficebox\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_primarycontactname\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_shippingmethodcode\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_shippingmethodcodename\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_stateorprovince\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_telephone1\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_telephone2\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_telephone3\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_upszone\" type=\"xs:string\" />\r\n              <xs:element name=\"address3_utcoffset\" type=\"xs:string\" />\r\n              <xs:element name=\"aging30\" type=\"xs:string\" />\r\n              <xs:element name=\"aging30_base\" type=\"xs:string\" />\r\n              <xs:element name=\"aging60\" type=\"xs:string\" />\r\n              <xs:element name=\"aging60_base\" type=\"xs:string\" />\r\n              <xs:element name=\"aging90\" type=\"xs:string\" />\r\n              <xs:element name=\"aging90_base\" type=\"xs:string\" />\r\n              <xs:element name=\"anniversary\" type=\"xs:string\" />\r\n              <xs:element name=\"annualincome\" type=\"xs:string\" />\r\n              <xs:element name=\"annualincome_base\" type=\"xs:string\" />\r\n              <xs:element name=\"assistantname\" type=\"xs:string\" />\r\n              <xs:element name=\"assistantphone\" type=\"xs:string\" />\r\n              <xs:element name=\"birthdate\" type=\"xs:string\" />\r\n              <xs:element name=\"business2\" type=\"xs:string\" />\r\n              <xs:element name=\"businesscard\" type=\"xs:string\" />\r\n              <xs:element name=\"businesscardattributes\" type=\"xs:string\" />\r\n              <xs:element name=\"callback\" type=\"xs:string\" />\r\n              <xs:element name=\"childrensnames\" type=\"xs:string\" />\r\n              <xs:element name=\"company\" type=\"xs:string\" />\r\n              <xs:element name=\"contactid\" type=\"xs:string\" />\r\n              <xs:element name=\"createdby\" type=\"xs:string\" />\r\n              <xs:element name=\"createdbyexternalparty\" type=\"xs:string\" />\r\n              <xs:element name=\"createdbyexternalpartyname\" type=\"xs:string\" />\r\n              <xs:element name=\"createdbyexternalpartyyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"createdbyname\" type=\"xs:string\" />\r\n              <xs:element name=\"createdbyyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"createdon\" type=\"xs:string\" />\r\n              <xs:element name=\"createdonbehalfby\" type=\"xs:string\" />\r\n              <xs:element name=\"createdonbehalfbyname\" type=\"xs:string\" />\r\n              <xs:element name=\"createdonbehalfbyyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"creditlimit\" type=\"xs:string\" />\r\n              <xs:element name=\"creditlimit_base\" type=\"xs:string\" />\r\n              <xs:element name=\"creditonhold\" type=\"xs:string\" />\r\n              <xs:element name=\"creditonholdname\" type=\"xs:string\" />\r\n              <xs:element name=\"customersizecode\" type=\"xs:string\" />\r\n              <xs:element name=\"customersizecodename\" type=\"xs:string\" />\r\n              <xs:element name=\"customertypecode\" type=\"xs:string\" />\r\n              <xs:element name=\"customertypecodename\" type=\"xs:string\" />\r\n              <xs:element name=\"defaultpricelevelid\" type=\"xs:string\" />\r\n              <xs:element name=\"defaultpricelevelidname\" type=\"xs:string\" />\r\n              <xs:element name=\"department\" type=\"xs:string\" />\r\n              <xs:element name=\"description\" type=\"xs:string\" />\r\n              <xs:element name=\"donotbulkemail\" type=\"xs:string\" />\r\n              <xs:element name=\"donotbulkemailname\" type=\"xs:string\" />\r\n              <xs:element name=\"donotbulkpostalmail\" type=\"xs:string\" />\r\n              <xs:element name=\"donotbulkpostalmailname\" type=\"xs:string\" />\r\n              <xs:element name=\"donotemail\" type=\"xs:string\" />\r\n              <xs:element name=\"donotemailname\" type=\"xs:string\" />\r\n              <xs:element name=\"donotfax\" type=\"xs:string\" />\r\n              <xs:element name=\"donotfaxname\" type=\"xs:string\" />\r\n              <xs:element name=\"donotphone\" type=\"xs:string\" />\r\n              <xs:element name=\"donotphonename\" type=\"xs:string\" />\r\n              <xs:element name=\"donotpostalmail\" type=\"xs:string\" />\r\n              <xs:element name=\"donotpostalmailname\" type=\"xs:string\" />\r\n              <xs:element name=\"donotsendmarketingmaterialname\" type=\"xs:string\" />\r\n              <xs:element name=\"donotsendmm\" type=\"xs:string\" />\r\n              <xs:element name=\"educationcode\" type=\"xs:string\" />\r\n              <xs:element name=\"educationcodename\" type=\"xs:string\" />\r\n              <xs:element name=\"emailaddress1\" type=\"xs:string\" />\r\n              <xs:element name=\"emailaddress2\" type=\"xs:string\" />\r\n              <xs:element name=\"emailaddress3\" type=\"xs:string\" />\r\n              <xs:element name=\"employeeid\" type=\"xs:string\" />\r\n              <xs:element name=\"entityimage\" type=\"xs:string\" />\r\n              <xs:element name=\"entityimage_timestamp\" type=\"xs:string\" />\r\n              <xs:element name=\"entityimage_url\" type=\"xs:string\" />\r\n              <xs:element name=\"entityimageid\" type=\"xs:string\" />\r\n              <xs:element name=\"exchangerate\" type=\"xs:string\" />\r\n              <xs:element name=\"externaluseridentifier\" type=\"xs:string\" />\r\n              <xs:element name=\"familystatuscode\" type=\"xs:string\" />\r\n              <xs:element name=\"familystatuscodename\" type=\"xs:string\" />\r\n              <xs:element name=\"fax\" type=\"xs:string\" />\r\n              <xs:element name=\"firstname\" type=\"xs:string\" />\r\n              <xs:element name=\"followemail\" type=\"xs:string\" />\r\n              <xs:element name=\"followemailname\" type=\"xs:string\" />\r\n              <xs:element name=\"ftpsiteurl\" type=\"xs:string\" />\r\n              <xs:element name=\"fullname\" type=\"xs:string\" />\r\n              <xs:element name=\"gendercode\" type=\"xs:string\" />\r\n              <xs:element name=\"gendercodename\" type=\"xs:string\" />\r\n              <xs:element name=\"governmentid\" type=\"xs:string\" />\r\n              <xs:element name=\"haschildrencode\" type=\"xs:string\" />\r\n              <xs:element name=\"haschildrencodename\" type=\"xs:string\" />\r\n              <xs:element name=\"home2\" type=\"xs:string\" />\r\n              <xs:element name=\"importsequencenumber\" type=\"xs:string\" />\r\n              <xs:element name=\"isautocreate\" type=\"xs:string\" />\r\n              <xs:element name=\"isbackofficecustomer\" type=\"xs:string\" />\r\n              <xs:element name=\"isbackofficecustomername\" type=\"xs:string\" />\r\n              <xs:element name=\"isprivate\" type=\"xs:string\" />\r\n              <xs:element name=\"isprivatename\" type=\"xs:string\" />\r\n              <xs:element name=\"jobtitle\" type=\"xs:string\" />\r\n              <xs:element name=\"lastname\" type=\"xs:string\" />\r\n              <xs:element name=\"lastonholdtime\" type=\"xs:string\" />\r\n              <xs:element name=\"lastusedincampaign\" type=\"xs:string\" />\r\n              <xs:element name=\"leadsourcecode\" type=\"xs:string\" />\r\n              <xs:element name=\"leadsourcecodename\" type=\"xs:string\" />\r\n              <xs:element name=\"managername\" type=\"xs:string\" />\r\n              <xs:element name=\"managerphone\" type=\"xs:string\" />\r\n              <xs:element name=\"marketingonly\" type=\"xs:string\" />\r\n              <xs:element name=\"marketingonlyname\" type=\"xs:string\" />\r\n              <xs:element name=\"mastercontactidname\" type=\"xs:string\" />\r\n              <xs:element name=\"mastercontactidyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"masterid\" type=\"xs:string\" />\r\n              <xs:element name=\"merged\" type=\"xs:string\" />\r\n              <xs:element name=\"mergedname\" type=\"xs:string\" />\r\n              <xs:element name=\"middlename\" type=\"xs:string\" />\r\n              <xs:element name=\"mobilephone\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedby\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedbyexternalparty\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedbyexternalpartyname\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedbyexternalpartyyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedbyname\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedbyyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedon\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedonbehalfby\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedonbehalfbyname\" type=\"xs:string\" />\r\n              <xs:element name=\"modifiedonbehalfbyyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_contactkpiid\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_contactkpiidname\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_decisioninfluencetag\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_decisioninfluencetagname\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_gdproptout\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_gdproptoutname\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_isassistantinorgchart\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_isassistantinorgchartname\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_orgchangestatus\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_orgchangestatusname\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_primarytimezone\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_segmentid\" type=\"xs:string\" />\r\n              <xs:element name=\"msdyn_segmentidname\" type=\"xs:string\" />\r\n              <xs:element name=\"nickname\" type=\"xs:string\" />\r\n              <xs:element name=\"numberofchildren\" type=\"xs:string\" />\r\n              <xs:element name=\"onholdtime\" type=\"xs:string\" />\r\n              <xs:element name=\"originatingleadid\" type=\"xs:string\" />\r\n              <xs:element name=\"originatingleadidname\" type=\"xs:string\" />\r\n              <xs:element name=\"originatingleadidyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"overriddencreatedon\" type=\"xs:string\" />\r\n              <xs:element name=\"ownerid\" type=\"xs:string\" />\r\n              <xs:element name=\"owneridname\" type=\"xs:string\" />\r\n              <xs:element name=\"owneridtype\" type=\"xs:string\" />\r\n              <xs:element name=\"owneridyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"owningbusinessunit\" type=\"xs:string\" />\r\n              <xs:element name=\"owningbusinessunitname\" type=\"xs:string\" />\r\n              <xs:element name=\"owningteam\" type=\"xs:string\" />\r\n              <xs:element name=\"owninguser\" type=\"xs:string\" />\r\n              <xs:element name=\"pager\" type=\"xs:string\" />\r\n              <xs:element name=\"parentcontactid\" type=\"xs:string\" />\r\n              <xs:element name=\"parentcontactidname\" type=\"xs:string\" />\r\n              <xs:element name=\"parentcontactidyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"parentcustomerid\" type=\"xs:string\" />\r\n              <xs:element name=\"parentcustomeridname\" type=\"xs:string\" />\r\n              <xs:element name=\"parentcustomeridtype\" type=\"xs:string\" />\r\n              <xs:element name=\"parentcustomeridyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"participatesinworkflow\" type=\"xs:string\" />\r\n              <xs:element name=\"participatesinworkflowname\" type=\"xs:string\" />\r\n              <xs:element name=\"paymenttermscode\" type=\"xs:string\" />\r\n              <xs:element name=\"paymenttermscodename\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredappointmentdaycode\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredappointmentdaycodename\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredappointmenttimecode\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredappointmenttimecodename\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredcontactmethodcode\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredcontactmethodcodename\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredequipmentid\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredequipmentidname\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredserviceid\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredserviceidname\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredsystemuserid\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredsystemuseridname\" type=\"xs:string\" />\r\n              <xs:element name=\"preferredsystemuseridyominame\" type=\"xs:string\" />\r\n              <xs:element name=\"processid\" type=\"xs:string\" />\r\n              <xs:element name=\"salutation\" type=\"xs:string\" />\r\n              <xs:element name=\"shippingmethodcode\" type=\"xs:string\" />\r\n              <xs:element name=\"shippingmethodcodename\" type=\"xs:string\" />\r\n              <xs:element name=\"slaid\" type=\"xs:string\" />\r\n              <xs:element name=\"slainvokedid\" type=\"xs:string\" />\r\n              <xs:element name=\"slainvokedidname\" type=\"xs:string\" />\r\n              <xs:element name=\"slaname\" type=\"xs:string\" />\r\n              <xs:element name=\"spousesname\" type=\"xs:string\" />\r\n              <xs:element name=\"stageid\" type=\"xs:string\" />\r\n              <xs:element name=\"statecode\" type=\"xs:string\" />\r\n              <xs:element name=\"statecodename\" type=\"xs:string\" />\r\n              <xs:element name=\"statuscode\" type=\"xs:string\" />\r\n              <xs:element name=\"statuscodename\" type=\"xs:string\" />\r\n              <xs:element name=\"subscriptionid\" type=\"xs:string\" />\r\n              <xs:element name=\"suffix\" type=\"xs:string\" />\r\n              <xs:element name=\"teamsfollowed\" type=\"xs:string\" />\r\n              <xs:element name=\"telephone1\" type=\"xs:string\" />\r\n              <xs:element name=\"telephone2\" type=\"xs:string\" />\r\n              <xs:element name=\"telephone3\" type=\"xs:string\" />\r\n              <xs:element name=\"territorycode\" type=\"xs:string\" />\r\n              <xs:element name=\"territorycodename\" type=\"xs:string\" />\r\n              <xs:element name=\"timespentbymeonemailandmeetings\" type=\"xs:string\" />\r\n              <xs:element name=\"timezoneruleversionnumber\" type=\"xs:string\" />\r\n              <xs:element name=\"transactioncurrencyid\" type=\"xs:string\" />\r\n              <xs:element name=\"transactioncurrencyidname\" type=\"xs:string\" />\r\n              <xs:element name=\"traversedpath\" type=\"xs:string\" />\r\n              <xs:element name=\"utcconversiontimezonecode\" type=\"xs:string\" />\r\n              <xs:element name=\"versionnumber\" type=\"xs:string\" />\r\n              <xs:element name=\"websiteurl\" type=\"xs:string\" />\r\n              <xs:element name=\"yomifirstname\" type=\"xs:string\" />\r\n              <xs:element name=\"yomifullname\" type=\"xs:string\" />\r\n              <xs:element name=\"yomilastname\" type=\"xs:string\" />\r\n              <xs:element name=\"yomimiddlename\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "RequestXml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1,
+                        "Value": "<Request>\r\n  <contact>\r\n    <accountid>Lookup</accountid>\r\n    <accountidname>String</accountidname>\r\n    <accountidyominame>String</accountidyominame>\r\n    <accountrolecode>Picklist</accountrolecode>\r\n    <accountrolecodename>Virtual</accountrolecodename>\r\n    <address1_addressid>Uniqueidentifier</address1_addressid>\r\n    <address1_addresstypecode>Picklist</address1_addresstypecode>\r\n    <address1_addresstypecodename>Virtual</address1_addresstypecodename>\r\n    <address1_city>String</address1_city>\r\n    <address1_composite>Memo</address1_composite>\r\n    <address1_country>String</address1_country>\r\n    <address1_county>String</address1_county>\r\n    <address1_fax>String</address1_fax>\r\n    <address1_freighttermscode>Picklist</address1_freighttermscode>\r\n    <address1_freighttermscodename>Virtual</address1_freighttermscodename>\r\n    <address1_latitude>Double</address1_latitude>\r\n    <address1_line1>String</address1_line1>\r\n    <address1_line2>String</address1_line2>\r\n    <address1_line3>String</address1_line3>\r\n    <address1_longitude>Double</address1_longitude>\r\n    <address1_name>String</address1_name>\r\n    <address1_postalcode>String</address1_postalcode>\r\n    <address1_postofficebox>String</address1_postofficebox>\r\n    <address1_primarycontactname>String</address1_primarycontactname>\r\n    <address1_shippingmethodcode>Picklist</address1_shippingmethodcode>\r\n    <address1_shippingmethodcodename>Virtual</address1_shippingmethodcodename>\r\n    <address1_stateorprovince>String</address1_stateorprovince>\r\n    <address1_telephone1>String</address1_telephone1>\r\n    <address1_telephone2>String</address1_telephone2>\r\n    <address1_telephone3>String</address1_telephone3>\r\n    <address1_upszone>String</address1_upszone>\r\n    <address1_utcoffset>Integer</address1_utcoffset>\r\n    <company>String</company>\r\n    <contactid>Uniqueidentifier</contactid>\r\n    <createdby>Lookup</createdby>\r\n    <createdbyexternalparty>Lookup</createdbyexternalparty>\r\n    <createdbyexternalpartyname>String</createdbyexternalpartyname>\r\n    <createdbyexternalpartyyominame>String</createdbyexternalpartyyominame>\r\n    <createdbyname>String</createdbyname>\r\n    <createdbyyominame>String</createdbyyominame>\r\n    <createdon>DateTime</createdon>\r\n    <createdonbehalfby>Lookup</createdonbehalfby>\r\n    <createdonbehalfbyname>String</createdonbehalfbyname>\r\n    <createdonbehalfbyyominame>String</createdonbehalfbyyominame>\r\n    <creditlimit>Money</creditlimit>\r\n    <creditlimit_base>Money</creditlimit_base>\r\n    <creditonhold>Boolean</creditonhold>\r\n    <creditonholdname>Virtual</creditonholdname>\r\n    <customersizecode>Picklist</customersizecode>\r\n    <customersizecodename>Virtual</customersizecodename>\r\n    <customertypecode>Picklist</customertypecode>\r\n    <customertypecodename>Virtual</customertypecodename>\r\n    <defaultpricelevelid>Lookup</defaultpricelevelid>\r\n    <emailaddress1>String</emailaddress1>\r\n    <fax>String</fax>\r\n    <firstname>String</firstname>\r\n    <followemail>Boolean</followemail>\r\n    <followemailname>Virtual</followemailname>\r\n    <ftpsiteurl>String</ftpsiteurl>\r\n    <fullname>String</fullname>\r\n    <gendercode>Picklist</gendercode>\r\n    <isautocreate>Boolean</isautocreate>\r\n    <isbackofficecustomer>Boolean</isbackofficecustomer>\r\n    <isbackofficecustomername>Virtual</isbackofficecustomername>\r\n    <isprivate>Boolean</isprivate>\r\n    <isprivatename>Virtual</isprivatename>\r\n    <jobtitle>String</jobtitle>\r\n    <lastname>String</lastname>\r\n    <lastonholdtime>DateTime</lastonholdtime>\r\n    <lastusedincampaign>DateTime</lastusedincampaign>\r\n    <leadsourcecode>Picklist</leadsourcecode>\r\n    <middlename>String</middlename>\r\n    <mobilephone>String</mobilephone>\r\n    <modifiedon>DateTime</modifiedon>\r\n    <ownerid>Owner</ownerid>\r\n    <owneridname>String</owneridname>\r\n    <owneridtype>EntityName</owneridtype>\r\n    <owneridyominame>String</owneridyominame>\r\n    <owningbusinessunit>Lookup</owningbusinessunit>\r\n    <owningbusinessunitname>String</owningbusinessunitname>\r\n    <owningteam>Lookup</owningteam>\r\n    <owninguser>Lookup</owninguser>\r\n    <pager>String</pager>\r\n    <parentcontactid>Lookup</parentcontactid>\r\n    <parentcontactidname>String</parentcontactidname>\r\n    <parentcontactidyominame>String</parentcontactidyominame>\r\n    <parentcustomerid>Customer</parentcustomerid>\r\n    <parentcustomeridname>String</parentcustomeridname>\r\n    <parentcustomeridtype>EntityName</parentcustomeridtype>\r\n    <parentcustomeridyominame>String</parentcustomeridyominame>\r\n    <participatesinworkflow>Boolean</participatesinworkflow>\r\n    <participatesinworkflowname>Virtual</participatesinworkflowname>\r\n    <paymenttermscode>Picklist</paymenttermscode>\r\n    <paymenttermscodename>Virtual</paymenttermscodename>\r\n    <processid>Uniqueidentifier</processid>\r\n    <salutation>String</salutation>\r\n    <shippingmethodcode>Picklist</shippingmethodcode>\r\n    <shippingmethodcodename>Virtual</shippingmethodcodename>\r\n    <slaid>Lookup</slaid>\r\n    <slainvokedid>Lookup</slainvokedid>\r\n    <slainvokedidname>String</slainvokedidname>\r\n    <slaname>String</slaname>\r\n    <spousesname>String</spousesname>\r\n    <stageid>Uniqueidentifier</stageid>\r\n    <statecode>State</statecode>\r\n    <statecodename>Virtual</statecodename>\r\n    <statuscode>Status</statuscode>\r\n    <statuscodename>Virtual</statuscodename>\r\n    <subscriptionid>Uniqueidentifier</subscriptionid>\r\n    <suffix>String</suffix>\r\n    <territorycodename>Virtual</territorycodename>\r\n    <timespentbymeonemailandmeetings>String</timespentbymeonemailandmeetings>\r\n    <timezoneruleversionnumber>Integer</timezoneruleversionnumber>\r\n    <transactioncurrencyid>Lookup</transactioncurrencyid>\r\n    <transactioncurrencyidname>String</transactioncurrencyidname>\r\n    <traversedpath>String</traversedpath>\r\n    <utcconversiontimezonecode>Integer</utcconversiontimezonecode>\r\n    <versionnumber>BigInt</versionnumber>\r\n    <websiteurl>String</websiteurl>\r\n  </contact>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Response\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"contact\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"status\" type=\"xs:string\" />\r\n              <xs:element name=\"id\" type=\"xs:string\" />\r\n              <xs:element name=\"error\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "ResponseXml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Microsoft Dynamics 365 Sales",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-02-03T11:43:33.3239344+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "2a511c08-a87c-418f-8bf3-7659902e93aa",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "CustomerCreated?",
+                "LongDescription": "Here we are checking if the Customer was created successfully in MS Dynamics 365 Sales by filtering on the status field.\n\nA successful MS Dynamics 365 Sales Response contains a status of true:\n<Response>\n  <result>\n    <status>success</status>\n    <function>create</function>\n    <controlid>638859300410961774</controlid>\n    <data listtype=\"objects\" count=\"1\">\n      <customer>\n        <RECORDNO>1629</RECORDNO>\n        <CUSTOMERID>9037440024123</CUSTOMERID>\n      </customer>\n    </data>\n  </result>\n</Response>",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = true"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "60ee9a0e-8a17-9480-b9f8-84efba58340d",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogError",
+                "LongDescription": "Here we are logging the Key Value record for error records.\nWe get the Group from the Variable bar.\nWe use the Customer ID as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\nWe use the MS Dynamics 365 Sales Response error as the Value.\n",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
+                "TargetNodeId": "d341e718-c4cb-0ddc-a6e7-0205a1418f24",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "461e4467-dfd9-b15c-b463-5bed19b35c78",
+                "TargetNodeId": "d341e718-c4cb-0ddc-a6e7-0205a1418f24",
+                "SourceName": "Customers Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "461e4467-dfd9-b15c-b463-5bed19b35c78",
+                "TargetNodeId": "60ee9a0e-8a17-9480-b9f8-84efba58340d",
+                "SourceName": "Customers Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d341e718-c4cb-0ddc-a6e7-0205a1418f24",
+                "TargetNodeId": "148d1aeb-5394-ee64-4a87-bde7b8e08abc",
+                "SourceName": "Found"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
+                "TargetNodeId": "d341e718-c4cb-0ddc-a6e7-0205a1418f24",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
+                "TargetNodeId": "60ee9a0e-8a17-9480-b9f8-84efba58340d",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
+                "TargetNodeId": "148d1aeb-5394-ee64-4a87-bde7b8e08abc",
+                "SourceName": "Item",
+                "TargetName": "CustomerID",
+                "Expression": "id"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "1842e307-f7ca-ae76-ca6c-bef1e22ed23b",
+                "TargetNodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "dc7851cb-ab11-4a14-a556-3a467773156c",
+                "TargetNodeId": "1842e307-f7ca-ae76-ca6c-bef1e22ed23b",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "1842e307-f7ca-ae76-ca6c-bef1e22ed23b",
+                "TargetNodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
+                "SourceName": "Response",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "6824e583-9995-7a0a-3f6a-8520fb8ac54d",
+                "TargetNodeId": "167c22c2-1a6e-3353-eede-7d2278ff9c51",
+                "SourceName": "Result",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "6824e583-9995-7a0a-3f6a-8520fb8ac54d",
+                "TargetNodeId": "167c22c2-1a6e-3353-eede-7d2278ff9c51",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
+                "TargetNodeId": "6824e583-9995-7a0a-3f6a-8520fb8ac54d",
+                "SourceName": "Item",
+                "TargetName": "ItemPayload"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d341e718-c4cb-0ddc-a6e7-0205a1418f24",
+                "TargetNodeId": "6824e583-9995-7a0a-3f6a-8520fb8ac54d",
+                "SourceName": "Missing"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "167c22c2-1a6e-3353-eede-7d2278ff9c51",
+                "TargetNodeId": "a4b5a816-fc92-908b-68c3-0ca862b2ec26",
+                "SourceName": "Result",
+                "TargetName": "RequestXml"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "167c22c2-1a6e-3353-eede-7d2278ff9c51",
+                "TargetNodeId": "a4b5a816-fc92-908b-68c3-0ca862b2ec26",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "a4b5a816-fc92-908b-68c3-0ca862b2ec26",
+                "TargetNodeId": "2a511c08-a87c-418f-8bf3-7659902e93aa",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "461e4467-dfd9-b15c-b463-5bed19b35c78",
+                "TargetNodeId": "5e0e1c78-d535-7dfc-f032-a090b03fd106",
+                "SourceName": "Customers Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
+                "TargetNodeId": "5e0e1c78-d535-7dfc-f032-a090b03fd106",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a4b5a816-fc92-908b-68c3-0ca862b2ec26",
+                "TargetNodeId": "5e0e1c78-d535-7dfc-f032-a090b03fd106",
+                "SourceName": "ResponseXml",
+                "TargetName": "Value",
+                "Expression": "Response.contact.id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a4b5a816-fc92-908b-68c3-0ca862b2ec26",
+                "TargetNodeId": "60ee9a0e-8a17-9480-b9f8-84efba58340d",
+                "SourceName": "ResponseXml",
+                "TargetName": "Value",
+                "Expression": "Response.contact.error"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a4b5a816-fc92-908b-68c3-0ca862b2ec26",
+                "TargetNodeId": "2a511c08-a87c-418f-8bf3-7659902e93aa",
+                "SourceName": "ResponseXml",
+                "TargetName": "Value",
+                "Expression": "Response.contact.status"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "2a511c08-a87c-418f-8bf3-7659902e93aa",
+                "TargetNodeId": "60ee9a0e-8a17-9480-b9f8-84efba58340d",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "2a511c08-a87c-418f-8bf3-7659902e93aa",
+                "TargetNodeId": "5e0e1c78-d535-7dfc-f032-a090b03fd106",
+                "SourceName": "True"
+            }
+        ],
+        "StartNodeId": "dc7851cb-ab11-4a14-a556-3a467773156c",
+        "ActivityLogLevelMask": 255
+    },
+    "Name": "HubSpot To Microsoft Dynamics 365 Sales Customers",
+    "Description": "This Workflow syncs customers from HubSpot to Microsoft Dynamics 365 Sales, processing each record individually. It checks for prior processing, maps new records, creates them in Dynamics 365, and logs the outcome."
+}

@@ -1,0 +1,1225 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "ae6018d5-33e7-8637-510b-8f1af097b8ab",
+                "Name": "Note",
+                "ShortDescription": "About This Workflow",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This workflow synchronizes customers from Sage Intacct to Autotask.\nIt fetches customer records from Sage, splits them into individual records, and checks whether each has already been processed against a Key-Value. \nIf a customer does not exist in Autotask, the Workflow maps the data into the required format, creates the customer in Autotask, and logs the result of each operation—whether successful or failed."
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "620e0642-4aa2-74d8-3aca-103fdeab1ca0",
+                "Name": "VariableBar",
+                "ShortDescription": "SetKeyValueGroup",
+                "LongDescription": "Here we are setting the Key Value Group",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "ATCustomers"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                }
+            },
+            {
+                "NodeId": "48cf4cab-7694-b796-456b-3b01b5ed0a53",
+                "Name": "Formatter",
+                "ShortDescription": "CustomerProcessed",
+                "LongDescription": "Here we are displaying a message if the Customer has already been processed",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "Customer: \"{CustomerID}\" has already been processed."
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "CustomerID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "03cff7cf-b1dc-6851-3410-1e823dc1f8dc",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogSuccess",
+                "LongDescription": "Here we are logging the Key Value record for successful records.\nWe get the Group from the Variable bar.\nWe use the Customer ID as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\nWe use the Autotask Response EntityID as the Value",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 3945
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "e1bc4608-4c47-1b61-efeb-75bab15f9be4",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 4205
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "bf3bd196-a975-b79c-f737-60b57ed81706",
+                "Name": "SageIntacct",
+                "ShortDescription": "GetCustomers",
+                "LongDescription": "Here we are retrieving a list of Sage Intacct Customers limited to 5 for the purposes of this sample",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "UserID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "readByQuery"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Object",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "CUSTOMER"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"object\" type=\"xs:string\" />\r\n        <xs:element name=\"fields\" type=\"xs:string\" />\r\n        <xs:element name=\"query\" />\r\n        <xs:element name=\"pagesize\" type=\"xs:unsignedByte\" />\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <object>CUSTOMER</object>\r\n  <fields>*</fields>\r\n  <query/>\r\n  <pagesize>5</pagesize>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "LocationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Sage Intacct",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-05-21T14:19:45.3707678+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "f3f81634-b92c-03c7-ff76-e434c10f6dac",
+                "Name": "ForEach",
+                "ShortDescription": "SplitCustomers",
+                "LongDescription": "Here we are splitting the Customers to be processed into individual records",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Response/result/data/customer"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "ParentNode"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<customer><RECORDNO>1590</RECORDNO><CUSTOMERID>1</CUSTOMERID><NAME>James Butt</NAME><ENTITY>C1</ENTITY><PARENTKEY></PARENTKEY><PARENTID></PARENTID><PARENTNAME></PARENTNAME><DISPLAYCONTACT.CONTACTNAME>James Butt(C1)</DISPLAYCONTACT.CONTACTNAME><DISPLAYCONTACT.COMPANYNAME>James Butt</DISPLAYCONTACT.COMPANYNAME><DISPLAYCONTACT.PREFIX></DISPLAYCONTACT.PREFIX><DISPLAYCONTACT.FIRSTNAME>James</DISPLAYCONTACT.FIRSTNAME><DISPLAYCONTACT.LASTNAME>Butt</DISPLAYCONTACT.LASTNAME><DISPLAYCONTACT.INITIAL></DISPLAYCONTACT.INITIAL><DISPLAYCONTACT.PRINTAS>James Butt</DISPLAYCONTACT.PRINTAS><DISPLAYCONTACT.TAXABLE>true</DISPLAYCONTACT.TAXABLE><DISPLAYCONTACT.TAXGROUP></DISPLAYCONTACT.TAXGROUP><DISPLAYCONTACT.TAXSOLUTIONKEY></DISPLAYCONTACT.TAXSOLUTIONKEY><DISPLAYCONTACT.TAXSOLUTIONID></DISPLAYCONTACT.TAXSOLUTIONID><DISPLAYCONTACT.TAXSCHEDULE></DISPLAYCONTACT.TAXSCHEDULE><DISPLAYCONTACT.TAXID></DISPLAYCONTACT.TAXID><DISPLAYCONTACT.SIRET></DISPLAYCONTACT.SIRET><DISPLAYCONTACT.LEGAL_CATEGORY></DISPLAYCONTACT.LEGAL_CATEGORY><DISPLAYCONTACT.MAIN_ACTIVITY></DISPLAYCONTACT.MAIN_ACTIVITY><DISPLAYCONTACT.TYPE_OF_COMPANY></DISPLAYCONTACT.TYPE_OF_COMPANY><DISPLAYCONTACT.REGISTERED_CAPITAL></DISPLAYCONTACT.REGISTERED_CAPITAL><DISPLAYCONTACT.VAT_REGIME></DISPLAYCONTACT.VAT_REGIME><DISPLAYCONTACT.PHONE1></DISPLAYCONTACT.PHONE1><DISPLAYCONTACT.PHONE2></DISPLAYCONTACT.PHONE2><DISPLAYCONTACT.CELLPHONE></DISPLAYCONTACT.CELLPHONE><DISPLAYCONTACT.PAGER></DISPLAYCONTACT.PAGER><DISPLAYCONTACT.FAX></DISPLAYCONTACT.FAX><DISPLAYCONTACT.TAXIDVALIDATIONDATE></DISPLAYCONTACT.TAXIDVALIDATIONDATE><DISPLAYCONTACT.GSTREGISTERED></DISPLAYCONTACT.GSTREGISTERED><DISPLAYCONTACT.TAXCOMPANYNAME></DISPLAYCONTACT.TAXCOMPANYNAME><DISPLAYCONTACT.TAXADDRESS></DISPLAYCONTACT.TAXADDRESS><DISPLAYCONTACT.EMAIL1></DISPLAYCONTACT.EMAIL1><DISPLAYCONTACT.EMAIL2></DISPLAYCONTACT.EMAIL2><DISPLAYCONTACT.URL1></DISPLAYCONTACT.URL1><DISPLAYCONTACT.URL2></DISPLAYCONTACT.URL2><DISPLAYCONTACT.VISIBLE>true</DISPLAYCONTACT.VISIBLE><DISPLAYCONTACT.MAILADDRESS.ADDRESS1>6649 N Blue Gum St</DISPLAYCONTACT.MAILADDRESS.ADDRESS1><DISPLAYCONTACT.MAILADDRESS.ADDRESS2></DISPLAYCONTACT.MAILADDRESS.ADDRESS2><DISPLAYCONTACT.MAILADDRESS.ADDRESS3></DISPLAYCONTACT.MAILADDRESS.ADDRESS3><DISPLAYCONTACT.MAILADDRESS.CITY>New Orleans</DISPLAYCONTACT.MAILADDRESS.CITY><DISPLAYCONTACT.MAILADDRESS.STATE>LA</DISPLAYCONTACT.MAILADDRESS.STATE><DISPLAYCONTACT.MAILADDRESS.ZIP>70116</DISPLAYCONTACT.MAILADDRESS.ZIP><DISPLAYCONTACT.MAILADDRESS.COUNTRY>United States</DISPLAYCONTACT.MAILADDRESS.COUNTRY><DISPLAYCONTACT.MAILADDRESS.COUNTRYCODE>US</DISPLAYCONTACT.MAILADDRESS.COUNTRYCODE><DISPLAYCONTACT.MAILADDRESS.LATITUDE></DISPLAYCONTACT.MAILADDRESS.LATITUDE><DISPLAYCONTACT.MAILADDRESS.LONGITUDE></DISPLAYCONTACT.MAILADDRESS.LONGITUDE><DISPLAYCONTACT.STATUS>active</DISPLAYCONTACT.STATUS><TERMNAME></TERMNAME><TERMVALUE></TERMVALUE><CUSTREPID></CUSTREPID><CUSTREPNAME></CUSTREPNAME><RESALENO></RESALENO><TAXID></TAXID><DATEVID></DATEVID><CREDITLIMIT></CREDITLIMIT><TOTALDUE>0</TOTALDUE><COMMENTS></COMMENTS><ACCOUNTLABEL></ACCOUNTLABEL><ARACCOUNT></ARACCOUNT><ARACCOUNTTITLE></ARACCOUNTTITLE><LAST_INVOICEDATE></LAST_INVOICEDATE><LAST_STATEMENTDATE></LAST_STATEMENTDATE><DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS><TERRITORYID></TERRITORYID><TERRITORYNAME></TERRITORYNAME><SHIPPINGMETHOD></SHIPPINGMETHOD><CUSTTYPE></CUSTTYPE><GLGRPKEY></GLGRPKEY><GLGROUP></GLGROUP><PRICESCHEDULE></PRICESCHEDULE><DISCOUNT></DISCOUNT><PRICELIST></PRICELIST><VSOEPRICELIST></VSOEPRICELIST><CURRENCY></CURRENCY><CONTACTINFO.CONTACTNAME></CONTACTINFO.CONTACTNAME><CONTACTINFO.PREFIX></CONTACTINFO.PREFIX><CONTACTINFO.FIRSTNAME></CONTACTINFO.FIRSTNAME><CONTACTINFO.INITIAL></CONTACTINFO.INITIAL><CONTACTINFO.LASTNAME></CONTACTINFO.LASTNAME><CONTACTINFO.COMPANYNAME></CONTACTINFO.COMPANYNAME><CONTACTINFO.PRINTAS></CONTACTINFO.PRINTAS><CONTACTINFO.PHONE1></CONTACTINFO.PHONE1><CONTACTINFO.PHONE2></CONTACTINFO.PHONE2><CONTACTINFO.CELLPHONE></CONTACTINFO.CELLPHONE><CONTACTINFO.PAGER></CONTACTINFO.PAGER><CONTACTINFO.FAX></CONTACTINFO.FAX><CONTACTINFO.EMAIL1></CONTACTINFO.EMAIL1><CONTACTINFO.EMAIL2></CONTACTINFO.EMAIL2><CONTACTINFO.URL1></CONTACTINFO.URL1><CONTACTINFO.URL2></CONTACTINFO.URL2><CONTACTINFO.VISIBLE></CONTACTINFO.VISIBLE><CONTACTINFO.MAILADDRESS.ADDRESS1></CONTACTINFO.MAILADDRESS.ADDRESS1><CONTACTINFO.MAILADDRESS.ADDRESS2></CONTACTINFO.MAILADDRESS.ADDRESS2><CONTACTINFO.MAILADDRESS.ADDRESS3></CONTACTINFO.MAILADDRESS.ADDRESS3><CONTACTINFO.MAILADDRESS.CITY></CONTACTINFO.MAILADDRESS.CITY><CONTACTINFO.MAILADDRESS.STATE></CONTACTINFO.MAILADDRESS.STATE><CONTACTINFO.MAILADDRESS.ZIP></CONTACTINFO.MAILADDRESS.ZIP><CONTACTINFO.MAILADDRESS.COUNTRY></CONTACTINFO.MAILADDRESS.COUNTRY><CONTACTINFO.MAILADDRESS.COUNTRYCODE></CONTACTINFO.MAILADDRESS.COUNTRYCODE><SHIPTO.CONTACTNAME></SHIPTO.CONTACTNAME><SHIPTO.PREFIX></SHIPTO.PREFIX><SHIPTO.FIRSTNAME></SHIPTO.FIRSTNAME><SHIPTO.INITIAL></SHIPTO.INITIAL><SHIPTO.LASTNAME></SHIPTO.LASTNAME><SHIPTO.COMPANYNAME></SHIPTO.COMPANYNAME><SHIPTO.PRINTAS></SHIPTO.PRINTAS><SHIPTO.TAXABLE></SHIPTO.TAXABLE><SHIPTO.TAXGROUP></SHIPTO.TAXGROUP><SHIPTO.TAXSOLUTIONKEY></SHIPTO.TAXSOLUTIONKEY><SHIPTO.TAXSOLUTIONID></SHIPTO.TAXSOLUTIONID><SHIPTO.TAXSCHEDULE></SHIPTO.TAXSCHEDULE><SHIPTO.TAXID></SHIPTO.TAXID><SHIPTO.PHONE1></SHIPTO.PHONE1><SHIPTO.PHONE2></SHIPTO.PHONE2><SHIPTO.CELLPHONE></SHIPTO.CELLPHONE><SHIPTO.PAGER></SHIPTO.PAGER><SHIPTO.FAX></SHIPTO.FAX><SHIPTO.EMAIL1></SHIPTO.EMAIL1><SHIPTO.EMAIL2></SHIPTO.EMAIL2><SHIPTO.URL1></SHIPTO.URL1><SHIPTO.URL2></SHIPTO.URL2><SHIPTO.VISIBLE></SHIPTO.VISIBLE><SHIPTO.MAILADDRESS.ADDRESS1></SHIPTO.MAILADDRESS.ADDRESS1><SHIPTO.MAILADDRESS.ADDRESS2></SHIPTO.MAILADDRESS.ADDRESS2><SHIPTO.MAILADDRESS.ADDRESS3></SHIPTO.MAILADDRESS.ADDRESS3><SHIPTO.MAILADDRESS.CITY></SHIPTO.MAILADDRESS.CITY><SHIPTO.MAILADDRESS.STATE></SHIPTO.MAILADDRESS.STATE><SHIPTO.MAILADDRESS.ZIP></SHIPTO.MAILADDRESS.ZIP><SHIPTO.MAILADDRESS.COUNTRY></SHIPTO.MAILADDRESS.COUNTRY><SHIPTO.MAILADDRESS.COUNTRYCODE></SHIPTO.MAILADDRESS.COUNTRYCODE><BILLTO.CONTACTNAME></BILLTO.CONTACTNAME><BILLTO.PREFIX></BILLTO.PREFIX><BILLTO.FIRSTNAME></BILLTO.FIRSTNAME><BILLTO.INITIAL></BILLTO.INITIAL><BILLTO.LASTNAME></BILLTO.LASTNAME><BILLTO.COMPANYNAME></BILLTO.COMPANYNAME><BILLTO.PRINTAS></BILLTO.PRINTAS><BILLTO.TAXABLE></BILLTO.TAXABLE><BILLTO.TAXGROUP></BILLTO.TAXGROUP><BILLTO.TAXSOLUTIONKEY></BILLTO.TAXSOLUTIONKEY><BILLTO.TAXSOLUTIONID></BILLTO.TAXSOLUTIONID><BILLTO.TAXSCHEDULE></BILLTO.TAXSCHEDULE><BILLTO.PHONE1></BILLTO.PHONE1><BILLTO.PHONE2></BILLTO.PHONE2><BILLTO.CELLPHONE></BILLTO.CELLPHONE><BILLTO.PAGER></BILLTO.PAGER><BILLTO.FAX></BILLTO.FAX><BILLTO.EMAIL1></BILLTO.EMAIL1><BILLTO.EMAIL2></BILLTO.EMAIL2><BILLTO.URL1></BILLTO.URL1><BILLTO.URL2></BILLTO.URL2><BILLTO.VISIBLE></BILLTO.VISIBLE><BILLTO.MAILADDRESS.ADDRESS1></BILLTO.MAILADDRESS.ADDRESS1><BILLTO.MAILADDRESS.ADDRESS2></BILLTO.MAILADDRESS.ADDRESS2><BILLTO.MAILADDRESS.ADDRESS3></BILLTO.MAILADDRESS.ADDRESS3><BILLTO.MAILADDRESS.CITY></BILLTO.MAILADDRESS.CITY><BILLTO.MAILADDRESS.STATE></BILLTO.MAILADDRESS.STATE><BILLTO.MAILADDRESS.ZIP></BILLTO.MAILADDRESS.ZIP><BILLTO.MAILADDRESS.COUNTRY></BILLTO.MAILADDRESS.COUNTRY><BILLTO.MAILADDRESS.COUNTRYCODE></BILLTO.MAILADDRESS.COUNTRYCODE><STATUS>active</STATUS><ONETIME>false</ONETIME><CUSTMESSAGEKEY></CUSTMESSAGEKEY><CUSTMESSAGEID></CUSTMESSAGEID><ONHOLD>false</ONHOLD><PRCLST_OVERRIDE>C</PRCLST_OVERRIDE><OEPRCLSTKEY></OEPRCLSTKEY><OEPRICESCHEDKEY></OEPRICESCHEDKEY><ENABLEONLINECARDPAYMENT>true</ENABLEONLINECARDPAYMENT><ENABLEONLINEACHPAYMENT>true</ENABLEONLINEACHPAYMENT><VSOEPRCLSTKEY></VSOEPRCLSTKEY><WHENMODIFIED>05/16/2025 18:05:39</WHENMODIFIED><ARINVOICEPRINTTEMPLATEID></ARINVOICEPRINTTEMPLATEID><OEQUOTEPRINTTEMPLATEID></OEQUOTEPRINTTEMPLATEID><OEORDERPRINTTEMPLATEID></OEORDERPRINTTEMPLATEID><OELISTPRINTTEMPLATEID></OELISTPRINTTEMPLATEID><OEINVOICEPRINTTEMPLATEID></OEINVOICEPRINTTEMPLATEID><OEADJPRINTTEMPLATEID></OEADJPRINTTEMPLATEID><OEOTHERPRINTTEMPLATEID></OEOTHERPRINTTEMPLATEID><WHENCREATED>05/16/2025 18:05:39</WHENCREATED><CREATEDBY>16</CREATEDBY><MODIFIEDBY>16</MODIFIEDBY><OBJECTRESTRICTION>Unrestricted</OBJECTRESTRICTION><DISPLAYCONTACTKEY>1756</DISPLAYCONTACTKEY><CONTACTKEY></CONTACTKEY><SHIPTOKEY></SHIPTOKEY><BILLTOKEY></BILLTOKEY><CUSTREPKEY></CUSTREPKEY><SHIPVIAKEY></SHIPVIAKEY><TERRITORYKEY></TERRITORYKEY><TERMSKEY></TERMSKEY><ACCOUNTLABELKEY></ACCOUNTLABELKEY><ACCOUNTKEY></ACCOUNTKEY><CUSTTYPEKEY></CUSTTYPEKEY><PRICESCHEDULEKEY></PRICESCHEDULEKEY><OFFSETACCOUNTKEY></OFFSETACCOUNTKEY><OFFSETGLACCOUNTNO></OFFSETGLACCOUNTNO><OFFSETGLACCOUNTNOTITLE></OFFSETGLACCOUNTNOTITLE><ADVBILLBY></ADVBILLBY><ADVBILLBYTYPE></ADVBILLBYTYPE><SUPDOCID></SUPDOCID><RETAINAGEPERCENTAGE></RETAINAGEPERCENTAGE><EMAILOPTIN>false</EMAILOPTIN><SUBSCRIPTIONENDDATE></SUBSCRIPTIONENDDATE><SUPDOCKEY></SUPDOCKEY><CUSTMESSAGE.MESSAGE></CUSTMESSAGE.MESSAGE><MEGAENTITYKEY></MEGAENTITYKEY><MEGAENTITYID></MEGAENTITYID><MEGAENTITYNAME></MEGAENTITYNAME><RCLASS></RCLASS><R10007></R10007><RDEPARTMENT></RDEPARTMENT><R10008></R10008><HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT><LOCATIONKEY></LOCATIONKEY><RESTRICTEDLOCATIONS></RESTRICTEDLOCATIONS><RESTRICTEDDEPARTMENTS></RESTRICTEDDEPARTMENTS></customer>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:23.8561624+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "31722ca6-5987-4cfe-98ca-159ed1c36b41"
+                }
+            },
+            {
+                "NodeId": "2e7116ab-bba2-963e-9e18-31f54380f751",
+                "Name": "GetKeyValue2",
+                "ShortDescription": "CustomerFound?",
+                "LongDescription": "Here we check to see if the Customer has been processed before by checking if a Key Value record has already been logged for this Customer ID.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DateTime",
+                        "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+                        "ExtendedType": 0,
+                        "Value": "2000-01-01T00:00:00"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Found",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Missing",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:47.090843+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "129ff607-703e-4939-b342-48633ed91419",
+                "Name": "QuickMap",
+                "ShortDescription": "MapCustomer",
+                "LongDescription": "Here we map the Customer data retrieved from Shopify to the Autotask format before creating the customer record in Autotask.\nBoth JSON and XML document types are utilized in this step.",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"customer\"],\"targetPath\":\"create\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.STATUS\"],\"targetPath\":\"create/Entities/Entity/Active\",\"mapExpression\":\"IIF({DISPLAYCONTACT.STATUS} = \\\"active\\\", 1, 0)\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.MAILADDRESS.ADDRESS1\"],\"targetPath\":\"create/Entities/Entity/AddressLine\",\"mapExpression\":\"IIF(ISEMPTY({DISPLAYCONTACT.MAILADDRESS.ADDRESS1}), \\\"null\\\", {DISPLAYCONTACT.MAILADDRESS.ADDRESS1})\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.MAILADDRESS.CITY\"],\"targetPath\":\"create/Entities/Entity/City\",\"mapExpression\":\"IIF(ISEMPTY({DISPLAYCONTACT.MAILADDRESS.CITY}), \\\"null\\\", {DISPLAYCONTACT.MAILADDRESS.CITY})\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.MAILADDRESS.COUNTRY\"],\"targetPath\":\"create/Entities/Entity/Country\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.EMAIL1\"],\"targetPath\":\"create/Entities/Entity/EMailAddress\",\"mapExpression\":\"IIF(ISEMPTY({DISPLAYCONTACT.EMAIL1}), \\\"null\\\", {DISPLAYCONTACT.EMAIL1})\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.FIRSTNAME\"],\"targetPath\":\"create/Entities/Entity/FirstName\",\"mapExpression\":\"\"},{\"sourcePaths\":[],\"targetPath\":\"create/Entities/Entity/AccountID\",\"mapExpression\":\"\\\"29683589\\\"\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.LASTNAME\"],\"targetPath\":\"create/Entities/Entity/LastName\",\"mapExpression\":\"\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.PHONE1\"],\"targetPath\":\"create/Entities/Entity/Phone\",\"mapExpression\":\"IIF(ISEMPTY({DISPLAYCONTACT.PHONE1}), \\\"null\\\", {DISPLAYCONTACT.PHONE1})\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.MAILADDRESS.STATE\"],\"targetPath\":\"create/Entities/Entity/State\",\"mapExpression\":\"IIF(ISEMPTY({DISPLAYCONTACT.MAILADDRESS.STATE}), \\\"Default\\\", {DISPLAYCONTACT.MAILADDRESS.STATE})\"},{\"sourcePaths\":[\"customer/DISPLAYCONTACT.MAILADDRESS.ZIP\"],\"targetPath\":\"create/Entities/Entity/ZipCode\",\"mapExpression\":\"IIF(ISEMPTY({DISPLAYCONTACT.MAILADDRESS.ZIP}), \\\"Default\\\", {DISPLAYCONTACT.MAILADDRESS.ZIP})\"}],\"sourceSchema\":\"<customer><RECORDNO>1590</RECORDNO><CUSTOMERID>1</CUSTOMERID><NAME>James Butt</NAME><ENTITY>C1</ENTITY><PARENTKEY></PARENTKEY><PARENTID></PARENTID><PARENTNAME></PARENTNAME><DISPLAYCONTACT.CONTACTNAME>James Butt(C1)</DISPLAYCONTACT.CONTACTNAME><DISPLAYCONTACT.COMPANYNAME>James Butt</DISPLAYCONTACT.COMPANYNAME><DISPLAYCONTACT.PREFIX></DISPLAYCONTACT.PREFIX><DISPLAYCONTACT.FIRSTNAME>James</DISPLAYCONTACT.FIRSTNAME><DISPLAYCONTACT.LASTNAME>Butt</DISPLAYCONTACT.LASTNAME><DISPLAYCONTACT.INITIAL></DISPLAYCONTACT.INITIAL><DISPLAYCONTACT.PRINTAS>James Butt</DISPLAYCONTACT.PRINTAS><DISPLAYCONTACT.TAXABLE>true</DISPLAYCONTACT.TAXABLE><DISPLAYCONTACT.TAXGROUP></DISPLAYCONTACT.TAXGROUP><DISPLAYCONTACT.TAXSOLUTIONKEY></DISPLAYCONTACT.TAXSOLUTIONKEY><DISPLAYCONTACT.TAXSOLUTIONID></DISPLAYCONTACT.TAXSOLUTIONID><DISPLAYCONTACT.TAXSCHEDULE></DISPLAYCONTACT.TAXSCHEDULE><DISPLAYCONTACT.TAXID></DISPLAYCONTACT.TAXID><DISPLAYCONTACT.SIRET></DISPLAYCONTACT.SIRET><DISPLAYCONTACT.LEGAL_CATEGORY></DISPLAYCONTACT.LEGAL_CATEGORY><DISPLAYCONTACT.MAIN_ACTIVITY></DISPLAYCONTACT.MAIN_ACTIVITY><DISPLAYCONTACT.TYPE_OF_COMPANY></DISPLAYCONTACT.TYPE_OF_COMPANY><DISPLAYCONTACT.REGISTERED_CAPITAL></DISPLAYCONTACT.REGISTERED_CAPITAL><DISPLAYCONTACT.VAT_REGIME></DISPLAYCONTACT.VAT_REGIME><DISPLAYCONTACT.PHONE1></DISPLAYCONTACT.PHONE1><DISPLAYCONTACT.PHONE2></DISPLAYCONTACT.PHONE2><DISPLAYCONTACT.CELLPHONE></DISPLAYCONTACT.CELLPHONE><DISPLAYCONTACT.PAGER></DISPLAYCONTACT.PAGER><DISPLAYCONTACT.FAX></DISPLAYCONTACT.FAX><DISPLAYCONTACT.TAXIDVALIDATIONDATE></DISPLAYCONTACT.TAXIDVALIDATIONDATE><DISPLAYCONTACT.GSTREGISTERED></DISPLAYCONTACT.GSTREGISTERED><DISPLAYCONTACT.TAXCOMPANYNAME></DISPLAYCONTACT.TAXCOMPANYNAME><DISPLAYCONTACT.TAXADDRESS></DISPLAYCONTACT.TAXADDRESS><DISPLAYCONTACT.EMAIL1></DISPLAYCONTACT.EMAIL1><DISPLAYCONTACT.EMAIL2></DISPLAYCONTACT.EMAIL2><DISPLAYCONTACT.URL1></DISPLAYCONTACT.URL1><DISPLAYCONTACT.URL2></DISPLAYCONTACT.URL2><DISPLAYCONTACT.VISIBLE>true</DISPLAYCONTACT.VISIBLE><DISPLAYCONTACT.MAILADDRESS.ADDRESS1>6649 N Blue Gum St</DISPLAYCONTACT.MAILADDRESS.ADDRESS1><DISPLAYCONTACT.MAILADDRESS.ADDRESS2></DISPLAYCONTACT.MAILADDRESS.ADDRESS2><DISPLAYCONTACT.MAILADDRESS.ADDRESS3></DISPLAYCONTACT.MAILADDRESS.ADDRESS3><DISPLAYCONTACT.MAILADDRESS.CITY>New Orleans</DISPLAYCONTACT.MAILADDRESS.CITY><DISPLAYCONTACT.MAILADDRESS.STATE>LA</DISPLAYCONTACT.MAILADDRESS.STATE><DISPLAYCONTACT.MAILADDRESS.ZIP>70116</DISPLAYCONTACT.MAILADDRESS.ZIP><DISPLAYCONTACT.MAILADDRESS.COUNTRY>United States</DISPLAYCONTACT.MAILADDRESS.COUNTRY><DISPLAYCONTACT.MAILADDRESS.COUNTRYCODE>US</DISPLAYCONTACT.MAILADDRESS.COUNTRYCODE><DISPLAYCONTACT.MAILADDRESS.LATITUDE></DISPLAYCONTACT.MAILADDRESS.LATITUDE><DISPLAYCONTACT.MAILADDRESS.LONGITUDE></DISPLAYCONTACT.MAILADDRESS.LONGITUDE><DISPLAYCONTACT.STATUS>active</DISPLAYCONTACT.STATUS><TERMNAME></TERMNAME><TERMVALUE></TERMVALUE><CUSTREPID></CUSTREPID><CUSTREPNAME></CUSTREPNAME><RESALENO></RESALENO><TAXID></TAXID><DATEVID></DATEVID><CREDITLIMIT></CREDITLIMIT><TOTALDUE>0</TOTALDUE><COMMENTS></COMMENTS><ACCOUNTLABEL></ACCOUNTLABEL><ARACCOUNT></ARACCOUNT><ARACCOUNTTITLE></ARACCOUNTTITLE><LAST_INVOICEDATE></LAST_INVOICEDATE><LAST_STATEMENTDATE></LAST_STATEMENTDATE><DELIVERY_OPTIONS>Print</DELIVERY_OPTIONS><TERRITORYID></TERRITORYID><TERRITORYNAME></TERRITORYNAME><SHIPPINGMETHOD></SHIPPINGMETHOD><CUSTTYPE></CUSTTYPE><GLGRPKEY></GLGRPKEY><GLGROUP></GLGROUP><PRICESCHEDULE></PRICESCHEDULE><DISCOUNT></DISCOUNT><PRICELIST></PRICELIST><VSOEPRICELIST></VSOEPRICELIST><CURRENCY></CURRENCY><CONTACTINFO.CONTACTNAME></CONTACTINFO.CONTACTNAME><CONTACTINFO.PREFIX></CONTACTINFO.PREFIX><CONTACTINFO.FIRSTNAME></CONTACTINFO.FIRSTNAME><CONTACTINFO.INITIAL></CONTACTINFO.INITIAL><CONTACTINFO.LASTNAME></CONTACTINFO.LASTNAME><CONTACTINFO.COMPANYNAME></CONTACTINFO.COMPANYNAME><CONTACTINFO.PRINTAS></CONTACTINFO.PRINTAS><CONTACTINFO.PHONE1></CONTACTINFO.PHONE1><CONTACTINFO.PHONE2></CONTACTINFO.PHONE2><CONTACTINFO.CELLPHONE></CONTACTINFO.CELLPHONE><CONTACTINFO.PAGER></CONTACTINFO.PAGER><CONTACTINFO.FAX></CONTACTINFO.FAX><CONTACTINFO.EMAIL1></CONTACTINFO.EMAIL1><CONTACTINFO.EMAIL2></CONTACTINFO.EMAIL2><CONTACTINFO.URL1></CONTACTINFO.URL1><CONTACTINFO.URL2></CONTACTINFO.URL2><CONTACTINFO.VISIBLE></CONTACTINFO.VISIBLE><CONTACTINFO.MAILADDRESS.ADDRESS1></CONTACTINFO.MAILADDRESS.ADDRESS1><CONTACTINFO.MAILADDRESS.ADDRESS2></CONTACTINFO.MAILADDRESS.ADDRESS2><CONTACTINFO.MAILADDRESS.ADDRESS3></CONTACTINFO.MAILADDRESS.ADDRESS3><CONTACTINFO.MAILADDRESS.CITY></CONTACTINFO.MAILADDRESS.CITY><CONTACTINFO.MAILADDRESS.STATE></CONTACTINFO.MAILADDRESS.STATE><CONTACTINFO.MAILADDRESS.ZIP></CONTACTINFO.MAILADDRESS.ZIP><CONTACTINFO.MAILADDRESS.COUNTRY></CONTACTINFO.MAILADDRESS.COUNTRY><CONTACTINFO.MAILADDRESS.COUNTRYCODE></CONTACTINFO.MAILADDRESS.COUNTRYCODE><SHIPTO.CONTACTNAME></SHIPTO.CONTACTNAME><SHIPTO.PREFIX></SHIPTO.PREFIX><SHIPTO.FIRSTNAME></SHIPTO.FIRSTNAME><SHIPTO.INITIAL></SHIPTO.INITIAL><SHIPTO.LASTNAME></SHIPTO.LASTNAME><SHIPTO.COMPANYNAME></SHIPTO.COMPANYNAME><SHIPTO.PRINTAS></SHIPTO.PRINTAS><SHIPTO.TAXABLE></SHIPTO.TAXABLE><SHIPTO.TAXGROUP></SHIPTO.TAXGROUP><SHIPTO.TAXSOLUTIONKEY></SHIPTO.TAXSOLUTIONKEY><SHIPTO.TAXSOLUTIONID></SHIPTO.TAXSOLUTIONID><SHIPTO.TAXSCHEDULE></SHIPTO.TAXSCHEDULE><SHIPTO.TAXID></SHIPTO.TAXID><SHIPTO.PHONE1></SHIPTO.PHONE1><SHIPTO.PHONE2></SHIPTO.PHONE2><SHIPTO.CELLPHONE></SHIPTO.CELLPHONE><SHIPTO.PAGER></SHIPTO.PAGER><SHIPTO.FAX></SHIPTO.FAX><SHIPTO.EMAIL1></SHIPTO.EMAIL1><SHIPTO.EMAIL2></SHIPTO.EMAIL2><SHIPTO.URL1></SHIPTO.URL1><SHIPTO.URL2></SHIPTO.URL2><SHIPTO.VISIBLE></SHIPTO.VISIBLE><SHIPTO.MAILADDRESS.ADDRESS1></SHIPTO.MAILADDRESS.ADDRESS1><SHIPTO.MAILADDRESS.ADDRESS2></SHIPTO.MAILADDRESS.ADDRESS2><SHIPTO.MAILADDRESS.ADDRESS3></SHIPTO.MAILADDRESS.ADDRESS3><SHIPTO.MAILADDRESS.CITY></SHIPTO.MAILADDRESS.CITY><SHIPTO.MAILADDRESS.STATE></SHIPTO.MAILADDRESS.STATE><SHIPTO.MAILADDRESS.ZIP></SHIPTO.MAILADDRESS.ZIP><SHIPTO.MAILADDRESS.COUNTRY></SHIPTO.MAILADDRESS.COUNTRY><SHIPTO.MAILADDRESS.COUNTRYCODE></SHIPTO.MAILADDRESS.COUNTRYCODE><BILLTO.CONTACTNAME></BILLTO.CONTACTNAME><BILLTO.PREFIX></BILLTO.PREFIX><BILLTO.FIRSTNAME></BILLTO.FIRSTNAME><BILLTO.INITIAL></BILLTO.INITIAL><BILLTO.LASTNAME></BILLTO.LASTNAME><BILLTO.COMPANYNAME></BILLTO.COMPANYNAME><BILLTO.PRINTAS></BILLTO.PRINTAS><BILLTO.TAXABLE></BILLTO.TAXABLE><BILLTO.TAXGROUP></BILLTO.TAXGROUP><BILLTO.TAXSOLUTIONKEY></BILLTO.TAXSOLUTIONKEY><BILLTO.TAXSOLUTIONID></BILLTO.TAXSOLUTIONID><BILLTO.TAXSCHEDULE></BILLTO.TAXSCHEDULE><BILLTO.PHONE1></BILLTO.PHONE1><BILLTO.PHONE2></BILLTO.PHONE2><BILLTO.CELLPHONE></BILLTO.CELLPHONE><BILLTO.PAGER></BILLTO.PAGER><BILLTO.FAX></BILLTO.FAX><BILLTO.EMAIL1></BILLTO.EMAIL1><BILLTO.EMAIL2></BILLTO.EMAIL2><BILLTO.URL1></BILLTO.URL1><BILLTO.URL2></BILLTO.URL2><BILLTO.VISIBLE></BILLTO.VISIBLE><BILLTO.MAILADDRESS.ADDRESS1></BILLTO.MAILADDRESS.ADDRESS1><BILLTO.MAILADDRESS.ADDRESS2></BILLTO.MAILADDRESS.ADDRESS2><BILLTO.MAILADDRESS.ADDRESS3></BILLTO.MAILADDRESS.ADDRESS3><BILLTO.MAILADDRESS.CITY></BILLTO.MAILADDRESS.CITY><BILLTO.MAILADDRESS.STATE></BILLTO.MAILADDRESS.STATE><BILLTO.MAILADDRESS.ZIP></BILLTO.MAILADDRESS.ZIP><BILLTO.MAILADDRESS.COUNTRY></BILLTO.MAILADDRESS.COUNTRY><BILLTO.MAILADDRESS.COUNTRYCODE></BILLTO.MAILADDRESS.COUNTRYCODE><STATUS>active</STATUS><ONETIME>false</ONETIME><CUSTMESSAGEKEY></CUSTMESSAGEKEY><CUSTMESSAGEID></CUSTMESSAGEID><ONHOLD>false</ONHOLD><PRCLST_OVERRIDE>C</PRCLST_OVERRIDE><OEPRCLSTKEY></OEPRCLSTKEY><OEPRICESCHEDKEY></OEPRICESCHEDKEY><ENABLEONLINECARDPAYMENT>true</ENABLEONLINECARDPAYMENT><ENABLEONLINEACHPAYMENT>true</ENABLEONLINEACHPAYMENT><VSOEPRCLSTKEY></VSOEPRCLSTKEY><WHENMODIFIED>05/16/2025 18:05:39</WHENMODIFIED><ARINVOICEPRINTTEMPLATEID></ARINVOICEPRINTTEMPLATEID><OEQUOTEPRINTTEMPLATEID></OEQUOTEPRINTTEMPLATEID><OEORDERPRINTTEMPLATEID></OEORDERPRINTTEMPLATEID><OELISTPRINTTEMPLATEID></OELISTPRINTTEMPLATEID><OEINVOICEPRINTTEMPLATEID></OEINVOICEPRINTTEMPLATEID><OEADJPRINTTEMPLATEID></OEADJPRINTTEMPLATEID><OEOTHERPRINTTEMPLATEID></OEOTHERPRINTTEMPLATEID><WHENCREATED>05/16/2025 18:05:39</WHENCREATED><CREATEDBY>16</CREATEDBY><MODIFIEDBY>16</MODIFIEDBY><OBJECTRESTRICTION>Unrestricted</OBJECTRESTRICTION><DISPLAYCONTACTKEY>1756</DISPLAYCONTACTKEY><CONTACTKEY></CONTACTKEY><SHIPTOKEY></SHIPTOKEY><BILLTOKEY></BILLTOKEY><CUSTREPKEY></CUSTREPKEY><SHIPVIAKEY></SHIPVIAKEY><TERRITORYKEY></TERRITORYKEY><TERMSKEY></TERMSKEY><ACCOUNTLABELKEY></ACCOUNTLABELKEY><ACCOUNTKEY></ACCOUNTKEY><CUSTTYPEKEY></CUSTTYPEKEY><PRICESCHEDULEKEY></PRICESCHEDULEKEY><OFFSETACCOUNTKEY></OFFSETACCOUNTKEY><OFFSETGLACCOUNTNO></OFFSETGLACCOUNTNO><OFFSETGLACCOUNTNOTITLE></OFFSETGLACCOUNTNOTITLE><ADVBILLBY></ADVBILLBY><ADVBILLBYTYPE></ADVBILLBYTYPE><SUPDOCID></SUPDOCID><RETAINAGEPERCENTAGE></RETAINAGEPERCENTAGE><EMAILOPTIN>false</EMAILOPTIN><SUBSCRIPTIONENDDATE></SUBSCRIPTIONENDDATE><SUPDOCKEY></SUPDOCKEY><CUSTMESSAGE.MESSAGE></CUSTMESSAGE.MESSAGE><MEGAENTITYKEY></MEGAENTITYKEY><MEGAENTITYID></MEGAENTITYID><MEGAENTITYNAME></MEGAENTITYNAME><RCLASS></RCLASS><R10007></R10007><RDEPARTMENT></RDEPARTMENT><R10008></R10008><HIDEDISPLAYCONTACT>false</HIDEDISPLAYCONTACT><LOCATIONKEY></LOCATIONKEY><RESTRICTEDLOCATIONS></RESTRICTEDLOCATIONS><RESTRICTEDDEPARTMENTS></RESTRICTEDDEPARTMENTS></customer>\",\"sourceSchemaType\":0,\"targetSchema\":\"<create>\\r\\n  <Entities>\\r\\n    <Entity>\\r\\n      <Active>*integer</Active>\\r\\n      <AddressLine>string</AddressLine>\\r\\n      <City>string</City>\\r\\n      <Country>string</Country>\\r\\n      <CreatedDate>string</CreatedDate>\\r\\n      <EMailAddress>string</EMailAddress>\\r\\n      <FirstName>*string</FirstName>\\r\\n      <AccountID>*integer</AccountID>\\r\\n      <LastName>*string</LastName>\\r\\n      <LastActivityDate>*integer</LastActivityDate>\\r\\n      <LastModifiedDate>*integer</LastModifiedDate>\\r\\n      <Notification>boolean</Notification>\\r\\n      <Phone>string</Phone>\\r\\n      <State>string</State>\\r\\n      <Title>string</Title>\\r\\n      <ZipCode>string</ZipCode>\\r\\n      <AddressLine1>string</AddressLine1>\\r\\n      <BulkEmailOptOut>boolean</BulkEmailOptOut>\\r\\n      <PrimaryContact>boolean</PrimaryContact>\\r\\n    </Entity>\\r\\n  </Entities>\\r\\n</create>\",\"targetSchemaType\":0}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<create>\r\n  <Entities>\r\n    <Entity>\r\n      <Active>*integer</Active>\r\n      <AddressLine>string</AddressLine>\r\n      <City>string</City>\r\n      <Country>string</Country>\r\n      <CreatedDate>string</CreatedDate>\r\n      <EMailAddress>string</EMailAddress>\r\n      <FirstName>*string</FirstName>\r\n      <AccountID>*integer</AccountID>\r\n      <LastName>*string</LastName>\r\n      <LastActivityDate>*integer</LastActivityDate>\r\n      <LastModifiedDate>*integer</LastModifiedDate>\r\n      <Notification>boolean</Notification>\r\n      <Phone>string</Phone>\r\n      <State>string</State>\r\n      <Title>string</Title>\r\n      <ZipCode>string</ZipCode>\r\n      <AddressLine1>string</AddressLine1>\r\n      <BulkEmailOptOut>boolean</BulkEmailOptOut>\r\n      <PrimaryContact>boolean</PrimaryContact>\r\n    </Entity>\r\n  </Entities>\r\n</create>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-12-02T05:15:52.8098009+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "a8d23cce-7417-9400-1251-d0e200143bd0",
+                "Name": "Autotask",
+                "ShortDescription": "CreateCustomer",
+                "LongDescription": "Here we are creating the Customer record in Autotask",
+                "Version": "1.2.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Username",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "IntegrationCode",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "KeepNamespaces",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.MSP.Autotask.AutotaskConnection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Operation",
+                        "TypeName": "Flowgear.Nodes.MSP.Autotask.Autotask+Operations",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "GetAttachment",
+                            "CreateAttachment",
+                            "DeleteAttachment",
+                            "create",
+                            "query",
+                            "update",
+                            "delete",
+                            "GetEntityInfo",
+                            "GetFieldInfo",
+                            "getThresholdAndUsageInfo",
+                            "GetWsdlVersion",
+                            "getZoneInfo"
+                        ],
+                        "Value": "create"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Entity",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Contact"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"create\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"Entities\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"Entity\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"AccountID\" type=\"xs:string\" />\r\n                    <xs:element name=\"FirstName\" type=\"xs:string\" />\r\n                    <xs:element name=\"LastName\" type=\"xs:string\" />\r\n                    <xs:element name=\"MiddleInitial\" type=\"xs:string\" />\r\n                    <xs:element name=\"Title\" type=\"xs:string\" />\r\n                    <xs:element name=\"AddressLine\" type=\"xs:string\" />\r\n                    <xs:element name=\"AddressLine1\" type=\"xs:string\" />\r\n                    <xs:element name=\"City\" type=\"xs:string\" />\r\n                    <xs:element name=\"State\" type=\"xs:string\" />\r\n                    <xs:element name=\"ZipCode\" type=\"xs:string\" />\r\n                    <xs:element name=\"Country\" type=\"xs:string\" />\r\n                    <xs:element name=\"EMailAddress\" type=\"xs:string\" />\r\n                    <xs:element name=\"EMailAddress2\" type=\"xs:string\" />\r\n                    <xs:element name=\"EMailAddress3\" type=\"xs:string\" />\r\n                    <xs:element name=\"Notification\" type=\"xs:string\" />\r\n                    <xs:element name=\"Phone\" type=\"xs:string\" />\r\n                    <xs:element name=\"Extension\" type=\"xs:string\" />\r\n                    <xs:element name=\"AlternatePhone\" type=\"xs:string\" />\r\n                    <xs:element name=\"MobilePhone\" type=\"xs:string\" />\r\n                    <xs:element name=\"FaxNumber\" type=\"xs:string\" />\r\n                    <xs:element name=\"Note\" type=\"xs:string\" />\r\n                    <xs:element name=\"RoomNumber\" type=\"xs:string\" />\r\n                    <xs:element name=\"Active\" type=\"xs:string\" />\r\n                    <xs:element name=\"AdditionalAddressInformation\" type=\"xs:string\" />\r\n                    <xs:element name=\"ExternalID\" type=\"xs:string\" />\r\n                    <xs:element name=\"CountryID\" type=\"xs:string\" />\r\n                    <xs:element name=\"BulkEmailOptOut\" type=\"xs:string\" />\r\n                    <xs:element name=\"NamePrefix\" type=\"xs:string\" />\r\n                    <xs:element name=\"NameSuffix\" type=\"xs:string\" />\r\n                    <xs:element name=\"FacebookUrl\" type=\"xs:string\" />\r\n                    <xs:element name=\"TwitterUrl\" type=\"xs:string\" />\r\n                    <xs:element name=\"LinkedInUrl\" type=\"xs:string\" />\r\n                    <xs:element name=\"PrimaryContact\" type=\"xs:string\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1,
+                        "Value": "<create>\r\n  <Entities>\r\n    <Entity>\r\n      <Active>*integer</Active>\r\n      <AddressLine>string</AddressLine>\r\n      <City>string</City>\r\n      <Country>string</Country>\r\n      <CreatedDate>string</CreatedDate>\r\n      <EMailAddress>string</EMailAddress>\r\n      <FirstName>*string</FirstName>\r\n      <AccountID>*integer</AccountID>\r\n      <LastName>*string</LastName>\r\n      <LastActivityDate>*integer</LastActivityDate>\r\n      <LastModifiedDate>*integer</LastModifiedDate>\r\n      <Notification>boolean</Notification>\r\n      <Phone>string</Phone>\r\n      <State>string</State>\r\n      <Title>string</Title>\r\n      <ZipCode>string</ZipCode>\r\n      <AddressLine1>string</AddressLine1>\r\n      <BulkEmailOptOut>boolean</BulkEmailOptOut>\r\n      <PrimaryContact>boolean</PrimaryContact>\r\n    </Entity>\r\n  </Entities>\r\n</create>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1,
+                        "Value": "<Response><createResult xmlns=\"http://autotask.net/ATWS/v1_6/\"><ReturnCode>1</ReturnCode><EntityResults><Entity xsi:type=\"Contact\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><id>30684033</id><UserDefinedFields /><Active xsi:type=\"xsd:int\">1</Active><AddressLine xsi:type=\"xsd:string\">null</AddressLine><AddressLine1 xsi:type=\"xsd:string\" /><AlternatePhone xsi:type=\"xsd:string\" /><City xsi:type=\"xsd:string\">null</City><Country xsi:type=\"xsd:string\">United States</Country><CreateDate xsi:type=\"xsd:dateTime\">2025-07-02T07:55:29.55</CreateDate><EMailAddress xsi:type=\"xsd:string\">null</EMailAddress><Extension xsi:type=\"xsd:string\" /><FaxNumber xsi:type=\"xsd:string\" /><FirstName xsi:type=\"xsd:string\">Ingrid</FirstName><AccountID xsi:type=\"xsd:int\">29683589</AccountID><LastName xsi:type=\"xsd:string\">Van Dijk</LastName><LastActivityDate xsi:type=\"xsd:dateTime\">2025-07-02T07:55:29.627</LastActivityDate><LastModifiedDate xsi:type=\"xsd:dateTime\">2025-07-02T07:55:29.627</LastModifiedDate><MobilePhone xsi:type=\"xsd:string\" /><Note xsi:type=\"xsd:string\" /><Notification xsi:type=\"xsd:boolean\">true</Notification><Phone xsi:type=\"xsd:string\">null</Phone><RoomNumber xsi:type=\"xsd:string\" /><State xsi:type=\"xsd:string\">Default</State><Title xsi:type=\"xsd:string\" /><ZipCode xsi:type=\"xsd:string\">Default</ZipCode><AdditionalAddressInformation xsi:type=\"xsd:string\" /><ExternalID xsi:type=\"xsd:string\" /><CountryID xsi:type=\"xsd:int\">237</CountryID><BulkEmailOptOut xsi:type=\"xsd:boolean\">false</BulkEmailOptOut><SurveyOptOut xsi:type=\"xsd:boolean\">false</SurveyOptOut><FacebookUrl xsi:type=\"xsd:string\" /><TwitterUrl xsi:type=\"xsd:string\" /><LinkedInUrl xsi:type=\"xsd:string\" /><PrimaryContact xsi:type=\"xsd:boolean\">false</PrimaryContact><SolicitationOptOut xsi:type=\"xsd:boolean\">false</SolicitationOptOut><ApiVendorID xsi:type=\"xsd:int\">22</ApiVendorID><BillingContact xsi:type=\"xsd:boolean\">false</BillingContact></Entity></EntityResults><EntityResultType>contact</EntityResultType><Errors /><EntityReturnInfoResults><EntityReturnInfo><EntityId>30684033</EntityId><DatabaseAction>None</DatabaseAction><DuplicateStatus><Found>false</Found><Ignored>false</Ignored></DuplicateStatus></EntityReturnInfo></EntityReturnInfoResults></createResult></Response>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Autotask",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "2d775b35-ee9e-40d9-bdf4-af7af95acea7",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-05-30T10:18:12.6705485+00:00",
+                    "Username": "cassandra.wallace@flowgear.net",
+                    "UserKey": "051e8265-b8b3-49d8-b1a4-befe5b40f7c6"
+                }
+            },
+            {
+                "NodeId": "528c3993-5544-cb6a-adc1-885afdcc78fb",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "CustomerCreated?",
+                "LongDescription": "Here we are checking if the customer has been created in Autotask by validating against the Autotask Response.\n\nResponse: Contains an EntityID indicating a successful creation.\nThe EntityID is used as the Value when logging Successful records.\nBlank Response: Indicates error creating Customer",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value <> \"\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "8e20949c-efc7-7f42-4275-869ce1d0f219",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogError",
+                "LongDescription": "Here we are logging the Key Value record for error records.\nWe get the Group from the Variable bar.\nWe use the Customer ID as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\n\n",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "620e0642-4aa2-74d8-3aca-103fdeab1ca0",
+                "TargetNodeId": "2e7116ab-bba2-963e-9e18-31f54380f751",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "2e7116ab-bba2-963e-9e18-31f54380f751",
+                "TargetNodeId": "48cf4cab-7694-b796-456b-3b01b5ed0a53",
+                "SourceName": "Found"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "129ff607-703e-4939-b342-48633ed91419",
+                "TargetNodeId": "a8d23cce-7417-9400-1251-d0e200143bd0",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "620e0642-4aa2-74d8-3aca-103fdeab1ca0",
+                "TargetNodeId": "03cff7cf-b1dc-6851-3410-1e823dc1f8dc",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "620e0642-4aa2-74d8-3aca-103fdeab1ca0",
+                "TargetNodeId": "8e20949c-efc7-7f42-4275-869ce1d0f219",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "bf3bd196-a975-b79c-f737-60b57ed81706",
+                "TargetNodeId": "f3f81634-b92c-03c7-ff76-e434c10f6dac",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "bf3bd196-a975-b79c-f737-60b57ed81706",
+                "TargetNodeId": "f3f81634-b92c-03c7-ff76-e434c10f6dac",
+                "SourceName": "Response",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "f3f81634-b92c-03c7-ff76-e434c10f6dac",
+                "TargetNodeId": "2e7116ab-bba2-963e-9e18-31f54380f751",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f3f81634-b92c-03c7-ff76-e434c10f6dac",
+                "TargetNodeId": "48cf4cab-7694-b796-456b-3b01b5ed0a53",
+                "SourceName": "Item",
+                "TargetName": "CustomerID",
+                "Expression": "customer.CUSTOMERID"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f3f81634-b92c-03c7-ff76-e434c10f6dac",
+                "TargetNodeId": "8e20949c-efc7-7f42-4275-869ce1d0f219",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "customer.CUSTOMERID"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f3f81634-b92c-03c7-ff76-e434c10f6dac",
+                "TargetNodeId": "03cff7cf-b1dc-6851-3410-1e823dc1f8dc",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "customer.CUSTOMERID"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f3f81634-b92c-03c7-ff76-e434c10f6dac",
+                "TargetNodeId": "129ff607-703e-4939-b342-48633ed91419",
+                "SourceName": "Item",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "2e7116ab-bba2-963e-9e18-31f54380f751",
+                "TargetNodeId": "129ff607-703e-4939-b342-48633ed91419",
+                "SourceName": "Missing"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f3f81634-b92c-03c7-ff76-e434c10f6dac",
+                "TargetNodeId": "2e7116ab-bba2-963e-9e18-31f54380f751",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "customer.CUSTOMERID"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "e1bc4608-4c47-1b61-efeb-75bab15f9be4",
+                "TargetNodeId": "bf3bd196-a975-b79c-f737-60b57ed81706",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "129ff607-703e-4939-b342-48633ed91419",
+                "TargetNodeId": "a8d23cce-7417-9400-1251-d0e200143bd0",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a8d23cce-7417-9400-1251-d0e200143bd0",
+                "TargetNodeId": "528c3993-5544-cb6a-adc1-885afdcc78fb",
+                "SourceName": "Response",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "a8d23cce-7417-9400-1251-d0e200143bd0",
+                "TargetNodeId": "528c3993-5544-cb6a-adc1-885afdcc78fb",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "528c3993-5544-cb6a-adc1-885afdcc78fb",
+                "TargetNodeId": "03cff7cf-b1dc-6851-3410-1e823dc1f8dc",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "528c3993-5544-cb6a-adc1-885afdcc78fb",
+                "TargetNodeId": "8e20949c-efc7-7f42-4275-869ce1d0f219",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a8d23cce-7417-9400-1251-d0e200143bd0",
+                "TargetNodeId": "03cff7cf-b1dc-6851-3410-1e823dc1f8dc",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "Response.createResult.EntityReturnInfoResults.EntityReturnInfo.EntityId"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a8d23cce-7417-9400-1251-d0e200143bd0",
+                "TargetNodeId": "8e20949c-efc7-7f42-4275-869ce1d0f219",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": ""
+            }
+        ],
+        "StartNodeId": "e1bc4608-4c47-1b61-efeb-75bab15f9be4",
+        "ActivityLogLevelMask": 255
+    },
+    "Name": "Sage Intacct Customers To Autotask",
+    "Description": "This Workflow syncs customers from Sage Intacct to Autotask by checking each record against a Key-Value. New customers are mapped, created in Autotask, and the result is logged per record.\n"
+}

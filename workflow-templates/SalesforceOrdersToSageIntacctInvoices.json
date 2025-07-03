@@ -1,0 +1,2371 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "52042414-8c22-fb11-7f96-6760f93ace6d",
+                "Name": "Note",
+                "ShortDescription": "About This Workflow",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow integrates Salesforce with Sage Intacct. \nIt retrieves Orders from Salesforce, verifies whether each has already been processed, and fetches the related Order Items and Account Details. If the customer doesn't exist in Sage Intacct, the Workflow creates it. \nIt then maps the data and generates an invoice in Sage Intacct, logging a success or error for each processed Order.\n"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "67dab30e-f6cd-2667-9b5b-46347080a467",
+                "Name": "VariableBar",
+                "LongDescription": "Here we are setting the Group for the Key-Values",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "SFtoSageInvoices"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:14:12.5597178+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "84b03497-e93e-032b-7066-295be9336363",
+                "Name": "Formatter",
+                "ShortDescription": "OrderProcessed",
+                "LongDescription": "Here we display a message if the Customer ID has been found in the Key Values",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "Order: {OrderID} has already been processed."
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OrderID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "2bf8ec05-0092-0a61-9678-71cda3925dd0",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogSuccess",
+                "LongDescription": "Here we are logging the Key Value record for successful records.\nWe get the Group from the Variable bar.\nWe use the Order ID as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\nWe use the Sage Response Key as the Value.\n",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 9455,
+                    "Y": 3945
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "bb59c930-8131-58b8-882e-b1c655ee5baa",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 4205
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "627f73b7-17fe-094b-d9dc-0ce67305c546",
+                "Name": "Salesforce",
+                "ShortDescription": "GetOrders",
+                "LongDescription": "Here we are querying the Orders from Salesforce",
+                "Version": "4.1.1.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "full refresh_token offline_access"
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "InstanceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Username",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "SecurityToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "DontInterleaveRequestInResponse",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "EncodingMode",
+                                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "XmlInXmlOut",
+                                    "XmlInJsonOut"
+                                ]
+                            },
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "v59.0"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Create",
+                            "Update",
+                            "Get",
+                            "Query",
+                            "Upsert",
+                            "GetNextRecords",
+                            "QueryAll",
+                            "Delete"
+                        ],
+                        "Value": "Query"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ObjectName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Order"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExternalIdField",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\" type=\"xs:string\"/>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>SELECT\r\n\tId,\r\n\tOwnerId,\r\n\tContractId,\r\n\tAccountId,\r\n\tPricebook2Id,\r\n\tOriginalOrderId,\r\n\tEffectiveDate,\r\n\tEndDate,\r\n\tIsReductionOrder,\r\n\tStatus,\r\n\tDescription,\r\n\tCustomerAuthorizedById,\r\n\tCustomerAuthorizedDate,\r\n\tCompanyAuthorizedById,\r\n\tCompanyAuthorizedDate,\r\n\tType,\r\n\tBillingStreet,\r\n\tBillingCity,\r\n\tBillingState,\r\n\tBillingPostalCode,\r\n\tBillingCountry,\r\n\tBillingLatitude,\r\n\tBillingLongitude,\r\n\tBillingGeocodeAccuracy,\r\n\tBillingAddress,\r\n\tShippingStreet,\r\n\tShippingCity,\r\n\tShippingState,\r\n\tShippingPostalCode,\r\n\tShippingCountry,\r\n\tShippingLatitude,\r\n\tShippingLongitude,\r\n\tShippingGeocodeAccuracy,\r\n\tShippingAddress,\r\n\tName,\r\n\tPoDate,\r\n\tPoNumber,\r\n\tOrderReferenceNumber,\r\n\tBillToContactId,\r\n\tShipToContactId,\r\n\tActivatedDate,\r\n\tActivatedById,\r\n\tStatusCode,\r\n\tOrderNumber,\r\n\tTotalAmount,\r\n\tCreatedDate,\r\n\tCreatedById,\r\n\tLastModifiedDate,\r\n\tLastModifiedById,\r\n\tIsDeleted,\r\n\tSystemModstamp,\r\n\tLastViewedDate,\r\n\tLastReferencedDate\r\nFROM Order WHERE Status = 'Activated' LIMIT 3</Request>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Salesforce",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-05-14T13:06:37.471798+00:00",
+                    "Username": "terrence.meiring@flowgear.net",
+                    "UserKey": "0775f4d0-3620-4347-a077-90f46d4cc5a8"
+                }
+            },
+            {
+                "NodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "Name": "ForEach",
+                "ShortDescription": "SplitOrders",
+                "LongDescription": "Here we are splitting each order to be processed individually",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Response/records"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "ParentAndRootNodes"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <records>\r\n    <attributes>\r\n      <type>Order</type>\r\n      <url>/services/data/v59.0/sobjects/Order/8011v00000GT62vAAD</url>\r\n    </attributes>\r\n    <Id>8011v00000GT62vAAD</Id>\r\n    <OwnerId>0050Y000000KkjzQAC</OwnerId>\r\n    <ContractId>8001v000003wXt9AAE</ContractId>\r\n    <AccountId>0011v00002GRr1iAAD</AccountId>\r\n    <Pricebook2Id>01s0Y000003jtc8QAA</Pricebook2Id>\r\n    <OriginalOrderId/>\r\n    <EffectiveDate>2020-08-13</EffectiveDate>\r\n    <EndDate/>\r\n    <IsReductionOrder>false</IsReductionOrder>\r\n    <Status>Activated</Status>\r\n    <Description>AALEGO500</Description>\r\n    <CustomerAuthorizedById/>\r\n    <CustomerAuthorizedDate/>\r\n    <CompanyAuthorizedById/>\r\n    <CompanyAuthorizedDate/>\r\n    <Type/>\r\n    <BillingStreet/>\r\n    <BillingCity/>\r\n    <BillingState/>\r\n    <BillingPostalCode/>\r\n    <BillingCountry/>\r\n    <BillingLatitude/>\r\n    <BillingLongitude/>\r\n    <BillingGeocodeAccuracy/>\r\n    <BillingAddress/>\r\n    <ShippingStreet/>\r\n    <ShippingCity/>\r\n    <ShippingState/>\r\n    <ShippingPostalCode/>\r\n    <ShippingCountry/>\r\n    <ShippingLatitude/>\r\n    <ShippingLongitude/>\r\n    <ShippingGeocodeAccuracy/>\r\n    <ShippingAddress/>\r\n    <Name>PR-7474-1785-7498-001</Name>\r\n    <PoDate>2020-08-13</PoDate>\r\n    <PoNumber>PO 17</PoNumber>\r\n    <OrderReferenceNumber/>\r\n    <BillToContactId/>\r\n    <ShipToContactId/>\r\n    <ActivatedDate>2025-05-21T17:23:34+00:00</ActivatedDate>\r\n    <ActivatedById>0050Y000000KkjzQAC</ActivatedById>\r\n    <StatusCode>Activated</StatusCode>\r\n    <OrderNumber>00000185</OrderNumber>\r\n    <TotalAmount>3329.9</TotalAmount>\r\n    <CreatedDate>2020-08-13T13:16:20+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2025-05-21T17:23:34+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <IsDeleted>false</IsDeleted>\r\n    <SystemModstamp>2025-05-21T17:23:34+00:00</SystemModstamp>\r\n    <LastViewedDate>2025-05-22T13:31:25+00:00</LastViewedDate>\r\n    <LastReferencedDate>2025-05-22T13:31:25+00:00</LastReferencedDate>\r\n  </records>\r\n</Response>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:31.140455+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "7f344c4f-f262-14d4-547d-3eee7af60f50",
+                "Name": "GetKeyValue2",
+                "ShortDescription": "OrderProcessed?",
+                "LongDescription": "Here we check to see if the Order has been processed before by checking if a Key Value record has already been logged for this Order ID.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DateTime",
+                        "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+                        "ExtendedType": 0,
+                        "Value": "2000-01-01T00:00:00"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Found",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Missing",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:47.090843+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "88a12a48-4ec4-58dd-f0b3-d47766eb06a9",
+                "Name": "Salesforce",
+                "ShortDescription": "GetOrderItems",
+                "LongDescription": "Here we are fetching the related Order Items for the Order",
+                "Version": "4.1.1.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "full refresh_token offline_access"
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "InstanceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Username",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "SecurityToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "DontInterleaveRequestInResponse",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "EncodingMode",
+                                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "XmlInXmlOut",
+                                    "XmlInJsonOut"
+                                ]
+                            },
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "v59.0"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Create",
+                            "Update",
+                            "Get",
+                            "Query",
+                            "Upsert",
+                            "GetNextRecords",
+                            "QueryAll",
+                            "Delete"
+                        ],
+                        "Value": "Query"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ObjectName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "OrderItem"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExternalIdField",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\" type=\"xs:string\"/>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>SELECT\r\n\tId,\r\n\tProduct2Id,\r\n\tIsDeleted,\r\n\tOrderId,\r\n\tPricebookEntryId,\r\n\tOriginalOrderItemId,\r\n\tAvailableQuantity,\r\n\tQuantity,\r\n\tUnitPrice,\r\n\tListPrice,\r\n\tTotalPrice,\r\n\tServiceDate,\r\n\tEndDate,\r\n\tDescription,\r\n\tCreatedDate,\r\n\tCreatedById,\r\n\tLastModifiedDate,\r\n\tLastModifiedById,\r\n\tSystemModstamp,\r\n\tOrderItemNumber\r\nFROM OrderItem WHERE OrderId = '{OrderID}'</Request>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <nextRecordsUrl/>\r\n  <totalSize>2</totalSize>\r\n  <done>true</done>\r\n  <records>\r\n    <attributes>\r\n      <type>OrderItem</type>\r\n      <url>/services/data/v59.0/sobjects/OrderItem/802J6000000e8z5IAA</url>\r\n    </attributes>\r\n    <Id>802J6000000e8z5IAA</Id>\r\n    <Product2Id>01tJ60000001cfmIAA</Product2Id>\r\n    <IsDeleted>false</IsDeleted>\r\n    <OrderId>8011v00000GT62vAAD</OrderId>\r\n    <PricebookEntryId>01uJ6000000LIsZIAW</PricebookEntryId>\r\n    <OriginalOrderItemId/>\r\n    <AvailableQuantity>1</AvailableQuantity>\r\n    <Quantity>1</Quantity>\r\n    <UnitPrice>2629.95</UnitPrice>\r\n    <ListPrice>2629.95</ListPrice>\r\n    <TotalPrice>2629.95</TotalPrice>\r\n    <ServiceDate/>\r\n    <EndDate/>\r\n    <Description>The 3p Fulfilled Snowboard</Description>\r\n    <CreatedDate>2025-05-21T17:23:04+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2025-05-21T17:23:04+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2025-05-21T17:23:04+00:00</SystemModstamp>\r\n    <OrderItemNumber>0000000032</OrderItemNumber>\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>OrderItem</type>\r\n      <url>/services/data/v59.0/sobjects/OrderItem/802J6000000e8z6IAA</url>\r\n    </attributes>\r\n    <Id>802J6000000e8z6IAA</Id>\r\n    <Product2Id>01tJ60000001cfhIAA</Product2Id>\r\n    <IsDeleted>false</IsDeleted>\r\n    <OrderId>8011v00000GT62vAAD</OrderId>\r\n    <PricebookEntryId>01uJ6000000LIsUIAW</PricebookEntryId>\r\n    <OriginalOrderItemId/>\r\n    <AvailableQuantity>1</AvailableQuantity>\r\n    <Quantity>1</Quantity>\r\n    <UnitPrice>699.95</UnitPrice>\r\n    <ListPrice>699.95</ListPrice>\r\n    <TotalPrice>699.95</TotalPrice>\r\n    <ServiceDate/>\r\n    <EndDate/>\r\n    <Description>The Complete Snowboard - Electric</Description>\r\n    <CreatedDate>2025-05-21T17:23:04+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2025-05-21T17:23:04+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2025-05-21T17:23:04+00:00</SystemModstamp>\r\n    <OrderItemNumber>0000000033</OrderItemNumber>\r\n  </records>\r\n</Response>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OrderID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Salesforce",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-05-14T13:06:37.471798+00:00",
+                    "Username": "terrence.meiring@flowgear.net",
+                    "UserKey": "0775f4d0-3620-4347-a077-90f46d4cc5a8"
+                }
+            },
+            {
+                "NodeId": "f5bd5bf6-9d4a-bfc3-8e52-6a8c2644d114",
+                "Name": "Salesforce",
+                "ShortDescription": "GetAccountDtls",
+                "LongDescription": "Here we are fetching the Customer Details based on the AccountId",
+                "Version": "4.1.1.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "full refresh_token offline_access"
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "InstanceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Username",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "SecurityToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "DontInterleaveRequestInResponse",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "EncodingMode",
+                                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "XmlInXmlOut",
+                                    "XmlInJsonOut"
+                                ]
+                            },
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "v59.0"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Create",
+                            "Update",
+                            "Get",
+                            "Query",
+                            "Upsert",
+                            "GetNextRecords",
+                            "QueryAll",
+                            "Delete"
+                        ],
+                        "Value": "Query"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ObjectName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Account"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExternalIdField",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\" type=\"xs:string\"/>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>SELECT\r\n\tId,\r\n\tIsDeleted,\r\n\tMasterRecordId,\r\n\tName,\r\n\tType,\r\n\tParentId,\r\n\tBillingStreet,\r\n\tBillingCity,\r\n\tBillingState,\r\n\tBillingPostalCode,\r\n\tBillingCountry,\r\n\tBillingLatitude,\r\n\tBillingLongitude,\r\n\tBillingGeocodeAccuracy,\r\n\tBillingAddress,\r\n\tShippingStreet,\r\n\tShippingCity,\r\n\tShippingState,\r\n\tShippingPostalCode,\r\n\tShippingCountry,\r\n\tShippingLatitude,\r\n\tShippingLongitude,\r\n\tShippingGeocodeAccuracy,\r\n\tShippingAddress,\r\n\tPhone,\r\n\tFax,\r\n\tAccountNumber,\r\n\tWebsite,\r\n\tPhotoUrl,\r\n\tSic,\r\n\tIndustry,\r\n\tAnnualRevenue,\r\n\tNumberOfEmployees,\r\n\tOwnership,\r\n\tTickerSymbol,\r\n\tDescription,\r\n\tRating,\r\n\tSite,\r\n\tOwnerId,\r\n\tCreatedDate,\r\n\tCreatedById,\r\n\tLastModifiedDate,\r\n\tLastModifiedById,\r\n\tSystemModstamp,\r\n\tLastActivityDate,\r\n\tLastViewedDate,\r\n\tLastReferencedDate,\r\n\tJigsaw,\r\n\tJigsawCompanyId,\r\n\tCleanStatus,\r\n\tAccountSource,\r\n\tDunsNumber,\r\n\tTradestyle,\r\n\tNaicsCode,\r\n\tNaicsDesc,\r\n\tYearStarted,\r\n\tSicDesc,\r\n\tDandbCompanyId,\r\n\tflowgear__CustomerPriority__c,\r\n\tflowgear__SLA__c,\r\n\tflowgear__Active__c,\r\n\tflowgear__NumberofLocations__c,\r\n\tflowgear__UpsellOpportunity__c,\r\n\tflowgear__SLASerialNumber__c,\r\n\tflowgear__SLAExpirationDate__c,\r\n\tflowgear__ExternalId__c,\r\n\tflowgear__Location__c,\r\n  (SELECT Name, FirstName, LastName from Contacts)\r\nFROM Account WHERE Id = '{AccID}'</Request>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <nextRecordsUrl/>\r\n  <totalSize>1</totalSize>\r\n  <done>true</done>\r\n  <records>\r\n    <attributes>\r\n      <type>Account</type>\r\n      <url>/services/data/v59.0/sobjects/Account/0011v00002GRr1iAAD</url>\r\n    </attributes>\r\n    <Id>0011v00002GRr1iAAD</Id>\r\n    <IsDeleted>false</IsDeleted>\r\n    <MasterRecordId/>\r\n    <Name>ABC Trading Co</Name>\r\n    <Type>Customer - Direct</Type>\r\n    <ParentId/>\r\n    <BillingStreet>12345 Allen Street</BillingStreet>\r\n    <BillingCity>Atlanta</BillingCity>\r\n    <BillingState>GA</BillingState>\r\n    <BillingPostalCode>30024</BillingPostalCode>\r\n    <BillingCountry>US</BillingCountry>\r\n    <BillingLatitude/>\r\n    <BillingLongitude/>\r\n    <BillingGeocodeAccuracy/>\r\n    <BillingAddress>\r\n      <city>Atlanta</city>\r\n      <country>US</country>\r\n      <geocodeAccuracy/>\r\n      <latitude/>\r\n      <longitude/>\r\n      <postalCode>30024</postalCode>\r\n      <state>GA</state>\r\n      <street>12345 Allen Street</street>\r\n    </BillingAddress>\r\n    <ShippingStreet>12345 Allen Street</ShippingStreet>\r\n    <ShippingCity>Atlanta</ShippingCity>\r\n    <ShippingState>GA</ShippingState>\r\n    <ShippingPostalCode>30024</ShippingPostalCode>\r\n    <ShippingCountry>US</ShippingCountry>\r\n    <ShippingLatitude/>\r\n    <ShippingLongitude/>\r\n    <ShippingGeocodeAccuracy/>\r\n    <ShippingAddress>\r\n      <city>Atlanta</city>\r\n      <country>US</country>\r\n      <geocodeAccuracy/>\r\n      <latitude/>\r\n      <longitude/>\r\n      <postalCode>30024</postalCode>\r\n      <state>GA</state>\r\n      <street>12345 Allen Street</street>\r\n    </ShippingAddress>\r\n    <Phone>(445)-334-5456</Phone>\r\n    <Fax/>\r\n    <AccountNumber>909000</AccountNumber>\r\n    <Website/>\r\n    <PhotoUrl>/services/images/photo/0011v00002GRr1iAAD</PhotoUrl>\r\n    <Sic/>\r\n    <Industry/>\r\n    <AnnualRevenue/>\r\n    <NumberOfEmployees/>\r\n    <Ownership/>\r\n    <TickerSymbol/>\r\n    <Description>abctradingco@gmail.com</Description>\r\n    <Rating/>\r\n    <Site/>\r\n    <OwnerId>0050Y000000KkjzQAC</OwnerId>\r\n    <CreatedDate>2019-08-22T10:08:20+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2025-03-13T16:49:36+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2025-03-13T16:49:36+00:00</SystemModstamp>\r\n    <LastActivityDate/>\r\n    <LastViewedDate>2025-05-21T18:43:45+00:00</LastViewedDate>\r\n    <LastReferencedDate>2025-05-21T18:43:45+00:00</LastReferencedDate>\r\n    <Jigsaw/>\r\n    <JigsawCompanyId/>\r\n    <CleanStatus>Pending</CleanStatus>\r\n    <AccountSource/>\r\n    <DunsNumber/>\r\n    <Tradestyle/>\r\n    <NaicsCode/>\r\n    <NaicsDesc/>\r\n    <YearStarted/>\r\n    <SicDesc/>\r\n    <DandbCompanyId/>\r\n    <flowgear__CustomerPriority__c/>\r\n    <flowgear__SLA__c/>\r\n    <flowgear__Active__c/>\r\n    <flowgear__NumberofLocations__c/>\r\n    <flowgear__UpsellOpportunity__c/>\r\n    <flowgear__SLASerialNumber__c/>\r\n    <flowgear__SLAExpirationDate__c/>\r\n    <flowgear__ExternalId__c>ABCTRADING</flowgear__ExternalId__c>\r\n    <flowgear__Location__c/>\r\n    <Contacts>\r\n      <totalSize>1</totalSize>\r\n      <done>true</done>\r\n      <records>\r\n        <attributes>\r\n          <type>Contact</type>\r\n          <url>/services/data/v59.0/sobjects/Contact/003J60000070tQjIAI</url>\r\n        </attributes>\r\n        <Name>James Smith</Name>\r\n        <FirstName>James</FirstName>\r\n        <LastName>Smith</LastName>\r\n      </records>\r\n    </Contacts>\r\n  </records>\r\n</Response>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "AccID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Salesforce",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-05-14T13:06:37.471798+00:00",
+                    "Username": "terrence.meiring@flowgear.net",
+                    "UserKey": "0775f4d0-3620-4347-a077-90f46d4cc5a8"
+                }
+            },
+            {
+                "NodeId": "b8b86d92-f7d6-7330-985b-3d6245a33712",
+                "Name": "SageIntacct",
+                "ShortDescription": "CustomerLookup",
+                "LongDescription": "Here we are checking to see if the Customer exists in Sage",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "UserID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "query"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Object",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "CUSTOMER"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<query>\r\n  <object>CUSTOMER</object>\r\n  <filter>\r\n    <equalto>\r\n      <field>CUSTOMERID</field>\r\n      <value>{CustID}</value>\r\n    </equalto>\r\n  </filter>\r\n  <select>\r\n    <field>RECORDNO</field>\r\n    <field>CUSTOMERID</field>\r\n  </select>\r\n</query>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "LocationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <result>\r\n    <status>success</status>\r\n    <function>query</function>\r\n    <controlid>638835192070577924</controlid>\r\n    <data listtype=\"CUSTOMER\" totalcount=\"1\" offset=\"0\" count=\"1\" numremaining=\"0\">\r\n      <CUSTOMER>\r\n        <RECORDNO>1597</RECORDNO>\r\n        <CUSTOMERID>0011v00002GRr1iAAD</CUSTOMERID>\r\n      </CUSTOMER>\r\n    </data>\r\n  </result>\r\n</Response>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "CustID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Sage Intacct",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-05-19T14:37:11.2705137+00:00",
+                    "Username": "matt.baldner@flowgear.net",
+                    "UserKey": "b0d1b54b-4906-441c-8667-8a0b07ff3dbf"
+                }
+            },
+            {
+                "NodeId": "cb291eae-7b36-f303-f5d6-cba619120cfa",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "CustomerExists?",
+                "LongDescription": "Here, the Execution Flow follows different paths depending on whether the customer exists in Sage:\n\n* If the customer exists, the invoice is created directly in Sage.\n* If the customer does not exist, a new customer is first created in Sage, followed by the invoice creation.\n",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value.Contains(\"RECORDNO\")"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:59.7406957+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "ee4c82c1-3d1b-8a57-eec5-adc3e167dda6",
+                "Name": "QuickMap",
+                "ShortDescription": "MapInvoice",
+                "LongDescription": "Here we map the Order Items retrieved from Salesforce to the Sage Intacct format before creating the Invoice in Sage.\n",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[],\"targetPath\":\"Request/customerid\",\"mapExpression\":\"GETVALUE(\\\"CustID\\\")\"},{\"sourcePaths\":[\"Response/records/CreatedDate\"],\"targetPath\":\"Request/datecreated/year\",\"mapExpression\":\"FORMATDATE({CreatedDate}, \\\"yyyy\\\")\"},{\"sourcePaths\":[\"Response/records/CreatedDate\"],\"targetPath\":\"Request/datecreated/month\",\"mapExpression\":\"FORMATDATE({CreatedDate}, \\\"MM\\\")\"},{\"sourcePaths\":[\"Response/records/CreatedDate\"],\"targetPath\":\"Request/datecreated/day\",\"mapExpression\":\"FORMATDATE({CreatedDate}, \\\"dd\\\")\"},{\"sourcePaths\":[\"Response/records/CreatedDate\"],\"targetPath\":\"Request/dateposted/year\",\"mapExpression\":\"FORMATDATE({CreatedDate}, \\\"yyyy\\\")\"},{\"sourcePaths\":[\"Response/records/CreatedDate\"],\"targetPath\":\"Request/dateposted/month\",\"mapExpression\":\"FORMATDATE({CreatedDate}, \\\"MM\\\")\"},{\"sourcePaths\":[\"Response/records/CreatedDate\"],\"targetPath\":\"Request/dateposted/day\",\"mapExpression\":\"FORMATDATE({CreatedDate}, \\\"dd\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Request/datedue/year\",\"mapExpression\":\"NOW().ADDDAYS(30).TOSTRING(\\\"yyyy\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Request/datedue/month\",\"mapExpression\":\"NOW().ADDDAYS(30).TOSTRING(\\\"MM\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Request/datedue/day\",\"mapExpression\":\"NOW().ADDDAYS(30).TOSTRING(\\\"dd\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Request/ponumber\",\"mapExpression\":\"GETVALUE(\\\"PoNum\\\")\"},{\"sourcePaths\":[\"Response/records/OrderId\"],\"targetPath\":\"Request/description\",\"mapExpression\":\"\\\"Invoice for SF Order \\\" + TEXTVALUE({OrderId})\"},{\"sourcePaths\":[\"Response/records\"],\"targetPath\":\"Request/invoiceitems/lineitem\"},{\"sourcePaths\":[],\"targetPath\":\"Request/invoiceitems/lineitem/accountlabel\",\"mapExpression\":\"10100\"},{\"sourcePaths\":[\"Response/records/TotalPrice\"],\"targetPath\":\"Request/invoiceitems/lineitem/amount\"},{\"sourcePaths\":[\"Response/records/Description\"],\"targetPath\":\"Request/invoiceitems/lineitem/memo\"},{\"sourcePaths\":[],\"targetPath\":\"Request/invoiceitems/lineitem/locationid\",\"mapExpression\":\"100\"}],\"sourceSchema\":\"<Response>\\r\\n  <nextRecordsUrl/>\\r\\n  <totalSize>2</totalSize>\\r\\n  <done>true</done>\\r\\n  <records>\\r\\n    <attributes>\\r\\n      <type>OrderItem</type>\\r\\n      <url>/services/data/v59.0/sobjects/OrderItem/802J6000000e8z5IAA</url>\\r\\n    </attributes>\\r\\n    <Id>802J6000000e8z5IAA</Id>\\r\\n    <Product2Id>01tJ60000001cfmIAA</Product2Id>\\r\\n    <IsDeleted>false</IsDeleted>\\r\\n    <OrderId>8011v00000GT62vAAD</OrderId>\\r\\n    <PricebookEntryId>01uJ6000000LIsZIAW</PricebookEntryId>\\r\\n    <OriginalOrderItemId/>\\r\\n    <AvailableQuantity>1</AvailableQuantity>\\r\\n    <Quantity>1</Quantity>\\r\\n    <UnitPrice>2629.95</UnitPrice>\\r\\n    <ListPrice>2629.95</ListPrice>\\r\\n    <TotalPrice>2629.95</TotalPrice>\\r\\n    <ServiceDate/>\\r\\n    <EndDate/>\\r\\n    <Description>The 3p Fulfilled Snowboard</Description>\\r\\n    <CreatedDate>2025-05-21T17:23:04+00:00</CreatedDate>\\r\\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\\r\\n    <LastModifiedDate>2025-05-21T17:23:04+00:00</LastModifiedDate>\\r\\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\\r\\n    <SystemModstamp>2025-05-21T17:23:04+00:00</SystemModstamp>\\r\\n    <OrderItemNumber>0000000032</OrderItemNumber>\\r\\n  </records>\\r\\n  <records>\\r\\n    <attributes>\\r\\n      <type>OrderItem</type>\\r\\n      <url>/services/data/v59.0/sobjects/OrderItem/802J6000000e8z6IAA</url>\\r\\n    </attributes>\\r\\n    <Id>802J6000000e8z6IAA</Id>\\r\\n    <Product2Id>01tJ60000001cfhIAA</Product2Id>\\r\\n    <IsDeleted>false</IsDeleted>\\r\\n    <OrderId>8011v00000GT62vAAD</OrderId>\\r\\n    <PricebookEntryId>01uJ6000000LIsUIAW</PricebookEntryId>\\r\\n    <OriginalOrderItemId/>\\r\\n    <AvailableQuantity>1</AvailableQuantity>\\r\\n    <Quantity>1</Quantity>\\r\\n    <UnitPrice>699.95</UnitPrice>\\r\\n    <ListPrice>699.95</ListPrice>\\r\\n    <TotalPrice>699.95</TotalPrice>\\r\\n    <ServiceDate/>\\r\\n    <EndDate/>\\r\\n    <Description>The Complete Snowboard - Electric</Description>\\r\\n    <CreatedDate>2025-05-21T17:23:04+00:00</CreatedDate>\\r\\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\\r\\n    <LastModifiedDate>2025-05-21T17:23:04+00:00</LastModifiedDate>\\r\\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\\r\\n    <SystemModstamp>2025-05-21T17:23:04+00:00</SystemModstamp>\\r\\n    <OrderItemNumber>0000000033</OrderItemNumber>\\r\\n  </records>\\r\\n</Response>\",\"sourceSchemaType\":0,\"targetSchema\":\"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema attributeFormDefault=\\\"unqualified\\\" elementFormDefault=\\\"qualified\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:element name=\\\"Request\\\">\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:element name=\\\"customerid\\\" type=\\\"xs:string\\\" />\\r\\n        <xs:element name=\\\"datecreated\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"year\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n              <xs:element name=\\\"month\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n              <xs:element name=\\\"day\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n        <xs:element name=\\\"dateposted\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"year\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n              <xs:element name=\\\"month\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n              <xs:element name=\\\"day\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n        <xs:element name=\\\"datedue\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"year\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n              <xs:element name=\\\"month\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n              <xs:element name=\\\"day\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n        <xs:element name=\\\"termname\\\" type=\\\"xs:string\\\" />\\r\\n        <xs:element name=\\\"batchkey\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n        <xs:element name=\\\"action\\\" type=\\\"xs:string\\\" />\\r\\n        <xs:element name=\\\"invoiceno\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n        <xs:element name=\\\"ponumber\\\" type=\\\"xs:unsignedInt\\\" />\\r\\n        <xs:element name=\\\"description\\\" type=\\\"xs:string\\\" />\\r\\n        <xs:element name=\\\"externalid\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n        <xs:element name=\\\"billto\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"contactname\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n        <xs:element name=\\\"shipto\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"contactname\\\" type=\\\"xs:unsignedInt\\\" />\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n        <xs:element name=\\\"basecurr\\\" type=\\\"xs:string\\\" />\\r\\n        <xs:element name=\\\"currency\\\" type=\\\"xs:string\\\" />\\r\\n        <xs:element name=\\\"exchratedate\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"year\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n              <xs:element name=\\\"month\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n              <xs:element name=\\\"day\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n        <xs:element name=\\\"exchratetype\\\" type=\\\"xs:string\\\" />\\r\\n        <xs:element name=\\\"nogl\\\" type=\\\"xs:boolean\\\" />\\r\\n        <xs:element name=\\\"supdocid\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n        <xs:element name=\\\"customfields\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"customfield\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"customfieldname\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"customfieldvalue\\\" type=\\\"xs:string\\\" />\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n        <xs:element name=\\\"invoiceitems\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"lineitem\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"accountlabel\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"offsetglaccountno\\\" type=\\\"xs:unsignedInt\\\" />\\r\\n                    <xs:element name=\\\"amount\\\" type=\\\"xs:decimal\\\" />\\r\\n                    <xs:element name=\\\"memo\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"locationid\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"departmentid\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"key\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"totalpaid\\\" type=\\\"xs:decimal\\\" />\\r\\n                    <xs:element name=\\\"totaldue\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                    <xs:element name=\\\"customfields\\\">\\r\\n                      <xs:complexType>\\r\\n                        <xs:sequence>\\r\\n                          <xs:element name=\\\"customfield\\\">\\r\\n                            <xs:complexType>\\r\\n                              <xs:sequence>\\r\\n                                <xs:element name=\\\"customfieldname\\\" type=\\\"xs:string\\\" />\\r\\n                                <xs:element name=\\\"customfieldvalue\\\" type=\\\"xs:string\\\" />\\r\\n                              </xs:sequence>\\r\\n                            </xs:complexType>\\r\\n                          </xs:element>\\r\\n                        </xs:sequence>\\r\\n                      </xs:complexType>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"revrectemplate\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"defrevaccount\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n                    <xs:element name=\\\"revrecstartdate\\\">\\r\\n                      <xs:complexType>\\r\\n                        <xs:sequence>\\r\\n                          <xs:element name=\\\"year\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n                          <xs:element name=\\\"month\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                          <xs:element name=\\\"day\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                        </xs:sequence>\\r\\n                      </xs:complexType>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"revrecenddate\\\">\\r\\n                      <xs:complexType>\\r\\n                        <xs:sequence>\\r\\n                          <xs:element name=\\\"year\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n                          <xs:element name=\\\"month\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                          <xs:element name=\\\"day\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n                        </xs:sequence>\\r\\n                      </xs:complexType>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"projectid\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"customerid\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"vendorid\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"employeeid\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"itemid\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"classid\\\" type=\\\"xs:string\\\" />\\r\\n                    <xs:element name=\\\"warehouseid\\\" type=\\\"xs:string\\\" />\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\"targetSchemaType\":1}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "CustID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "xx"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "PoNum",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "xx"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-12-02T05:15:52.8098009+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "56bffc80-b4a2-070f-2d95-160ba52d2c8a",
+                "Name": "SageIntacct",
+                "ShortDescription": "CreateInvoice",
+                "LongDescription": "Here we are creating the Invoice in Sage ",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "UserID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "create_invoice"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Object",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "customerid"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"customerid\" type=\"xs:string\" />\r\n        <xs:element name=\"datecreated\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"year\" type=\"xs:unsignedShort\" />\r\n              <xs:element name=\"month\" type=\"xs:unsignedByte\" />\r\n              <xs:element name=\"day\" type=\"xs:unsignedByte\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"dateposted\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"year\" type=\"xs:unsignedShort\" />\r\n              <xs:element name=\"month\" type=\"xs:unsignedByte\" />\r\n              <xs:element name=\"day\" type=\"xs:unsignedByte\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"datedue\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"year\" type=\"xs:unsignedShort\" />\r\n              <xs:element name=\"month\" type=\"xs:unsignedByte\" />\r\n              <xs:element name=\"day\" type=\"xs:unsignedByte\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"termname\" type=\"xs:string\" />\r\n        <xs:element name=\"batchkey\" type=\"xs:unsignedShort\" />\r\n        <xs:element name=\"action\" type=\"xs:string\" />\r\n        <xs:element name=\"invoiceno\" type=\"xs:unsignedByte\" />\r\n        <xs:element name=\"ponumber\" type=\"xs:unsignedInt\" />\r\n        <xs:element name=\"description\" type=\"xs:string\" />\r\n        <xs:element name=\"externalid\" type=\"xs:unsignedShort\" />\r\n        <xs:element name=\"billto\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"contactname\" type=\"xs:unsignedShort\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"shipto\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"contactname\" type=\"xs:unsignedInt\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"basecurr\" type=\"xs:string\" />\r\n        <xs:element name=\"currency\" type=\"xs:string\" />\r\n        <xs:element name=\"exchratedate\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"year\" type=\"xs:unsignedShort\" />\r\n              <xs:element name=\"month\" type=\"xs:unsignedByte\" />\r\n              <xs:element name=\"day\" type=\"xs:unsignedByte\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"exchratetype\" type=\"xs:string\" />\r\n        <xs:element name=\"nogl\" type=\"xs:boolean\" />\r\n        <xs:element name=\"supdocid\" type=\"xs:unsignedShort\" />\r\n        <xs:element name=\"customfields\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"customfield\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"customfieldname\" type=\"xs:string\" />\r\n                    <xs:element name=\"customfieldvalue\" type=\"xs:string\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n        <xs:element name=\"invoiceitems\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"lineitem\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"accountlabel\" type=\"xs:string\" />\r\n                    <xs:element name=\"offsetglaccountno\" type=\"xs:unsignedInt\" />\r\n                    <xs:element name=\"amount\" type=\"xs:decimal\" />\r\n                    <xs:element name=\"memo\" type=\"xs:string\" />\r\n                    <xs:element name=\"locationid\" type=\"xs:string\" />\r\n                    <xs:element name=\"departmentid\" type=\"xs:string\" />\r\n                    <xs:element name=\"key\" type=\"xs:string\" />\r\n                    <xs:element name=\"totalpaid\" type=\"xs:decimal\" />\r\n                    <xs:element name=\"totaldue\" type=\"xs:unsignedByte\" />\r\n                    <xs:element name=\"customfields\">\r\n                      <xs:complexType>\r\n                        <xs:sequence>\r\n                          <xs:element name=\"customfield\">\r\n                            <xs:complexType>\r\n                              <xs:sequence>\r\n                                <xs:element name=\"customfieldname\" type=\"xs:string\" />\r\n                                <xs:element name=\"customfieldvalue\" type=\"xs:string\" />\r\n                              </xs:sequence>\r\n                            </xs:complexType>\r\n                          </xs:element>\r\n                        </xs:sequence>\r\n                      </xs:complexType>\r\n                    </xs:element>\r\n                    <xs:element name=\"revrectemplate\" type=\"xs:string\" />\r\n                    <xs:element name=\"defrevaccount\" type=\"xs:unsignedShort\" />\r\n                    <xs:element name=\"revrecstartdate\">\r\n                      <xs:complexType>\r\n                        <xs:sequence>\r\n                          <xs:element name=\"year\" type=\"xs:unsignedShort\" />\r\n                          <xs:element name=\"month\" type=\"xs:unsignedByte\" />\r\n                          <xs:element name=\"day\" type=\"xs:unsignedByte\" />\r\n                        </xs:sequence>\r\n                      </xs:complexType>\r\n                    </xs:element>\r\n                    <xs:element name=\"revrecenddate\">\r\n                      <xs:complexType>\r\n                        <xs:sequence>\r\n                          <xs:element name=\"year\" type=\"xs:unsignedShort\" />\r\n                          <xs:element name=\"month\" type=\"xs:unsignedByte\" />\r\n                          <xs:element name=\"day\" type=\"xs:unsignedByte\" />\r\n                        </xs:sequence>\r\n                      </xs:complexType>\r\n                    </xs:element>\r\n                    <xs:element name=\"projectid\" type=\"xs:string\" />\r\n                    <xs:element name=\"customerid\" type=\"xs:string\" />\r\n                    <xs:element name=\"vendorid\" type=\"xs:string\" />\r\n                    <xs:element name=\"employeeid\" type=\"xs:string\" />\r\n                    <xs:element name=\"itemid\" type=\"xs:string\" />\r\n                    <xs:element name=\"classid\" type=\"xs:string\" />\r\n                    <xs:element name=\"warehouseid\" type=\"xs:string\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <customerid>CUSTOMER1</customerid>\r\n  <datecreated>\r\n    <year>2015</year>\r\n    <month>06</month>\r\n    <day>30</day>\r\n  </datecreated>\r\n  <dateposted>\r\n    <year>2015</year>\r\n    <month>06</month>\r\n    <day>30</day>\r\n  </dateposted>\r\n  <datedue>\r\n    <year>2020</year>\r\n    <month>09</month>\r\n    <day>24</day>\r\n  </datedue>\r\n  <termname>N30</termname>\r\n  <batchkey>20323</batchkey>\r\n  <action>Submit</action>\r\n  <invoiceno>234</invoiceno>\r\n  <ponumber>234235</ponumber>\r\n  <description>Some description</description>\r\n  <externalid>20394</externalid>\r\n  <billto>\r\n    <contactname>28952</contactname>\r\n  </billto>\r\n  <shipto>\r\n    <contactname>289533</contactname>\r\n  </shipto>\r\n  <basecurr>USD</basecurr>\r\n  <currency>USD</currency>\r\n  <exchratedate>\r\n    <year>2015</year>\r\n    <month>06</month>\r\n    <day>30</day>\r\n  </exchratedate>\r\n  <exchratetype>Intacct Daily Rate</exchratetype>\r\n  <nogl>false</nogl>\r\n  <supdocid>6942</supdocid>\r\n  <customfields>\r\n    <customfield>\r\n      <customfieldname>customfield1</customfieldname>\r\n      <customfieldvalue>customvalue1</customfieldvalue>\r\n    </customfield>\r\n  </customfields>\r\n  <invoiceitems>\r\n    <lineitem>\r\n      <accountlabel>TestBill Account1</accountlabel>\r\n      <offsetglaccountno>93590253</offsetglaccountno>\r\n      <amount>76343.43</amount>\r\n      <memo>Just another memo</memo>\r\n      <locationid>Location1</locationid>\r\n      <departmentid>Department1</departmentid>\r\n      <key>Key1</key>\r\n      <totalpaid>23484.93</totalpaid>\r\n      <totaldue>0</totaldue>\r\n      <customfields>\r\n        <customfield>\r\n          <customfieldname>customfield1</customfieldname>\r\n          <customfieldvalue>customvalue1</customfieldvalue>\r\n        </customfield>\r\n      </customfields>\r\n      <revrectemplate>RevRec1</revrectemplate>\r\n      <defrevaccount>2100</defrevaccount>\r\n      <revrecstartdate>\r\n        <year>2016</year>\r\n        <month>06</month>\r\n        <day>01</day>\r\n      </revrecstartdate>\r\n      <revrecenddate>\r\n        <year>2017</year>\r\n        <month>05</month>\r\n        <day>31</day>\r\n      </revrecenddate>\r\n      <projectid>Project1</projectid>\r\n      <customerid>Customer1</customerid>\r\n      <vendorid>Vendor1</vendorid>\r\n      <employeeid>Employee1</employeeid>\r\n      <itemid>Item1</itemid>\r\n      <classid>Class1</classid>\r\n      <warehouseid>Warehouse1</warehouseid>\r\n    </lineitem>\r\n  </invoiceitems>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "LocationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <result>\r\n    <status>success</status>\r\n    <function>create_invoice</function>\r\n    <controlid>638835201483048576</controlid>\r\n    <key>1757</key>\r\n  </result>\r\n</Response>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8845,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Sage Intacct",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-05-19T14:37:11.2705137+00:00",
+                    "Username": "matt.baldner@flowgear.net",
+                    "UserKey": "b0d1b54b-4906-441c-8667-8a0b07ff3dbf"
+                }
+            },
+            {
+                "NodeId": "5841ecda-63a7-089f-e446-acc4ddd5a9bb",
+                "Name": "IfEqual",
+                "ShortDescription": "InvoiceCreated?",
+                "LongDescription": "Here we are checking if the Invoice was created successfully in Sage by checking if it returned an error or not.\n\nA successful Sage Response looks as follows:\n<Response>\n  <result>\n    <status>success</status>\n    <function>create_invoice</function>\n    <controlid>638864426211810406</controlid>\n    <key>1792</key>\n  </result>\n</Response>",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression1",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression2",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "False"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "MatchNotEqual",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsEqual",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 9150,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If Equal",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:59.1861176+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "4e5c710e-be2d-8a2d-5ddd-89b809fb4d58",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogError",
+                "LongDescription": "Here we are logging the Key Value record for error records.\nWe get the Group from the Variable bar.\nWe use the Order ID as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\nWe use the Sage Response as the Value.\n",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 9455,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "676e2958-3dbe-9caa-53c3-225b41dab7a7",
+                "Name": "QuickMap",
+                "ShortDescription": "MapCustomer",
+                "LongDescription": "Here we map the customer data retrieved from Salesforce to the Sage Intacct format before creating the customer record in Sage.\n",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"Response/records/Id\"],\"targetPath\":\"Request/CUSTOMER/CUSTOMERID\"},{\"sourcePaths\":[\"Response/records/Name\"],\"targetPath\":\"Request/CUSTOMER/NAME\"},{\"sourcePaths\":[\"Response/records/Name\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/COMPANYNAME\"},{\"sourcePaths\":[\"Response/records/Contacts/records/Name\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/FIRSTNAME\",\"mapExpression\":\"LEFTOF({Name}, \\\" \\\")\"},{\"sourcePaths\":[\"Response/records/Contacts/records/Name\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/LASTNAME\",\"mapExpression\":\"RIGHTOF({Name}, \\\" \\\")\"},{\"sourcePaths\":[\"Response/records/Phone\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/PHONE1\"},{\"sourcePaths\":[\"Response/records/Description\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/EMAIL1\"},{\"sourcePaths\":[\"Response/records/BillingStreet\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/ADDRESS1\"},{\"sourcePaths\":[\"Response/records/BillingCity\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/CITY\"},{\"sourcePaths\":[\"Response/records/BillingState\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/STATE\"},{\"sourcePaths\":[\"Response/records/BillingPostalCode\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/ZIP\"},{\"sourcePaths\":[\"Response/records/BillingCountry\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/COUNTRY\"},{\"sourcePaths\":[\"Response/records/Type\"],\"targetPath\":\"Request/CUSTOMER/CUSTTYPE\",\"mapExpression\":\"IIF(FIRST({Type}) = \\\"Customer - Direct\\\", \\\"Consumer\\\", \\\"Distributor\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Request/CUSTOMER/TERMNAME\",\"mapExpression\":\"\\\"Net 30\\\"\"}],\"sourceSchema\":\"<Response>\\r\\n  <nextRecordsUrl/>\\r\\n  <totalSize>1</totalSize>\\r\\n  <done>true</done>\\r\\n  <records>\\r\\n    <attributes>\\r\\n      <type>Account</type>\\r\\n      <url>/services/data/v59.0/sobjects/Account/0011v00002GRr1iAAD</url>\\r\\n    </attributes>\\r\\n    <Id>0011v00002GRr1iAAD</Id>\\r\\n    <IsDeleted>false</IsDeleted>\\r\\n    <MasterRecordId/>\\r\\n    <Name>ABC Trading Co</Name>\\r\\n    <Type>Customer - Direct</Type>\\r\\n    <ParentId/>\\r\\n    <BillingStreet>12345 Allen Street</BillingStreet>\\r\\n    <BillingCity>Atlanta</BillingCity>\\r\\n    <BillingState>GA</BillingState>\\r\\n    <BillingPostalCode>30024</BillingPostalCode>\\r\\n    <BillingCountry>US</BillingCountry>\\r\\n    <BillingLatitude/>\\r\\n    <BillingLongitude/>\\r\\n    <BillingGeocodeAccuracy/>\\r\\n    <BillingAddress>\\r\\n      <city>Atlanta</city>\\r\\n      <country>US</country>\\r\\n      <geocodeAccuracy/>\\r\\n      <latitude/>\\r\\n      <longitude/>\\r\\n      <postalCode>30024</postalCode>\\r\\n      <state>GA</state>\\r\\n      <street>12345 Allen Street</street>\\r\\n    </BillingAddress>\\r\\n    <ShippingStreet>12345 Allen Street</ShippingStreet>\\r\\n    <ShippingCity>Atlanta</ShippingCity>\\r\\n    <ShippingState>GA</ShippingState>\\r\\n    <ShippingPostalCode>30024</ShippingPostalCode>\\r\\n    <ShippingCountry>US</ShippingCountry>\\r\\n    <ShippingLatitude/>\\r\\n    <ShippingLongitude/>\\r\\n    <ShippingGeocodeAccuracy/>\\r\\n    <ShippingAddress>\\r\\n      <city>Atlanta</city>\\r\\n      <country>US</country>\\r\\n      <geocodeAccuracy/>\\r\\n      <latitude/>\\r\\n      <longitude/>\\r\\n      <postalCode>30024</postalCode>\\r\\n      <state>GA</state>\\r\\n      <street>12345 Allen Street</street>\\r\\n    </ShippingAddress>\\r\\n    <Phone>(445)-334-5456</Phone>\\r\\n    <Fax/>\\r\\n    <AccountNumber>909000</AccountNumber>\\r\\n    <Website/>\\r\\n    <PhotoUrl>/services/images/photo/0011v00002GRr1iAAD</PhotoUrl>\\r\\n    <Sic/>\\r\\n    <Industry/>\\r\\n    <AnnualRevenue/>\\r\\n    <NumberOfEmployees/>\\r\\n    <Ownership/>\\r\\n    <TickerSymbol/>\\r\\n    <Description>abctradingco@gmail.com</Description>\\r\\n    <Rating/>\\r\\n    <Site/>\\r\\n    <OwnerId>0050Y000000KkjzQAC</OwnerId>\\r\\n    <CreatedDate>2019-08-22T10:08:20+00:00</CreatedDate>\\r\\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\\r\\n    <LastModifiedDate>2025-03-13T16:49:36+00:00</LastModifiedDate>\\r\\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\\r\\n    <SystemModstamp>2025-03-13T16:49:36+00:00</SystemModstamp>\\r\\n    <LastActivityDate/>\\r\\n    <LastViewedDate>2025-05-21T18:43:45+00:00</LastViewedDate>\\r\\n    <LastReferencedDate>2025-05-21T18:43:45+00:00</LastReferencedDate>\\r\\n    <Jigsaw/>\\r\\n    <JigsawCompanyId/>\\r\\n    <CleanStatus>Pending</CleanStatus>\\r\\n    <AccountSource/>\\r\\n    <DunsNumber/>\\r\\n    <Tradestyle/>\\r\\n    <NaicsCode/>\\r\\n    <NaicsDesc/>\\r\\n    <YearStarted/>\\r\\n    <SicDesc/>\\r\\n    <DandbCompanyId/>\\r\\n    <flowgear__CustomerPriority__c/>\\r\\n    <flowgear__SLA__c/>\\r\\n    <flowgear__Active__c/>\\r\\n    <flowgear__NumberofLocations__c/>\\r\\n    <flowgear__UpsellOpportunity__c/>\\r\\n    <flowgear__SLASerialNumber__c/>\\r\\n    <flowgear__SLAExpirationDate__c/>\\r\\n    <flowgear__ExternalId__c>ABCTRADING</flowgear__ExternalId__c>\\r\\n    <flowgear__Location__c/>\\r\\n    <Contacts>\\r\\n      <totalSize>1</totalSize>\\r\\n      <done>true</done>\\r\\n      <records>\\r\\n        <attributes>\\r\\n          <type>Contact</type>\\r\\n          <url>/services/data/v59.0/sobjects/Contact/003J60000070tQjIAI</url>\\r\\n        </attributes>\\r\\n        <Name>James Smith</Name>\\r\\n        <FirstName>James</FirstName>\\r\\n        <LastName>Smith</LastName>\\r\\n      </records>\\r\\n    </Contacts>\\r\\n  </records>\\r\\n</Response>\",\"sourceSchemaType\":0,\"targetSchema\":\"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema attributeFormDefault=\\\"unqualified\\\" elementFormDefault=\\\"qualified\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:element name=\\\"Request\\\">\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:element maxOccurs=\\\"unbounded\\\" name=\\\"CUSTOMER\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element name=\\\"CUSTOMERID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"NAME\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"DISPLAYCONTACT\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"PRINTAS\\\" type=\\\"xs:string\\\"/>\\r\\n                    <xs:element name=\\\"COMPANYNAME\\\" type=\\\"xs:string\\\"/>\\r\\n                    <xs:element name=\\\"TAXABLE\\\" type=\\\"xs:boolean\\\"/>\\r\\n                    <xs:element name=\\\"TAXGROUP\\\" type=\\\"xs:string\\\"/>\\r\\n                    <xs:element name=\\\"PREFIX\\\" type=\\\"xs:string\\\"/>\\r\\n                    <xs:element name=\\\"FIRSTNAME\\\" type=\\\"xs:string\\\"/>\\r\\n                    <xs:element name=\\\"LASTNAME\\\" type=\\\"xs:string\\\"/>\\r\\n                    <xs:element name=\\\"INITIAL\\\" type=\\\"xs:string\\\"/>\\r\\n                    <xs:element name=\\\"PHONE1\\\" type=\\\"xs:unsignedByte\\\"/>\\r\\n                    <xs:element name=\\\"PHONE2\\\" type=\\\"xs:unsignedByte\\\"/>\\r\\n                    <xs:element name=\\\"CELLPHONE\\\" type=\\\"xs:unsignedByte\\\"/>\\r\\n                    <xs:element name=\\\"PAGER\\\" type=\\\"xs:unsignedByte\\\"/>\\r\\n                    <xs:element name=\\\"FAX\\\" type=\\\"xs:unsignedByte\\\"/>\\r\\n                    <xs:element name=\\\"EMAIL1\\\"/>\\r\\n                    <xs:element name=\\\"EMAIL2\\\"/>\\r\\n                    <xs:element name=\\\"URL1\\\"/>\\r\\n                    <xs:element name=\\\"URL2\\\"/>\\r\\n                    <xs:element name=\\\"MAILADDRESS\\\">\\r\\n                      <xs:complexType>\\r\\n                        <xs:sequence>\\r\\n                          <xs:element name=\\\"ADDRESS1\\\" type=\\\"xs:string\\\"/>\\r\\n                          <xs:element name=\\\"ADDRESS2\\\" type=\\\"xs:string\\\"/>\\r\\n                          <xs:element name=\\\"CITY\\\" type=\\\"xs:string\\\"/>\\r\\n                          <xs:element name=\\\"STATE\\\" type=\\\"xs:string\\\"/>\\r\\n                          <xs:element name=\\\"ZIP\\\" type=\\\"xs:unsignedInt\\\"/>\\r\\n                          <xs:element name=\\\"COUNTRY\\\" type=\\\"xs:string\\\"/>\\r\\n                        </xs:sequence>\\r\\n                      </xs:complexType>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"ONETIME\\\" type=\\\"xs:boolean\\\"/>\\r\\n              <xs:element name=\\\"STATUS\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"HIDEDISPLAYCONTACT\\\" type=\\\"xs:boolean\\\"/>\\r\\n              <xs:element name=\\\"CUSTTYPE\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"PARENTID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"GLGROUP\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"TERRITORYID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"SUPDOCID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"TERMNAME\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"OFFSETGLACCOUNTNO\\\" type=\\\"xs:unsignedShort\\\"/>\\r\\n              <xs:element name=\\\"ARACCOUNT\\\" type=\\\"xs:unsignedShort\\\"/>\\r\\n              <xs:element name=\\\"SHIPPINGMETHOD\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"RESALENO\\\" type=\\\"xs:unsignedByte\\\"/>\\r\\n              <xs:element name=\\\"TAXID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"CREDITLIMIT\\\" type=\\\"xs:decimal\\\"/>\\r\\n              <xs:element name=\\\"ONHOLD\\\" type=\\\"xs:boolean\\\"/>\\r\\n              <xs:element name=\\\"DELIVERY_OPTIONS\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"CUSTMESSAGEID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"COMMENTS\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"CURRENCY\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"ARINVOICEPRINTTEMPLATEID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"OEQUOTEPRINTTEMPLATEID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"OEORDERPRINTTEMPLATEID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"OELISTPRINTTEMPLATEID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"OEINVOICEPRINTTEMPLATEID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"OEADJPRINTTEMPLATEID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"OEOTHERPRINTTEMPLATEID\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"CONTACTINFO\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"CONTACTNAME\\\" type=\\\"xs:string\\\"/>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"BILLTO\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"CONTACTNAME\\\" type=\\\"xs:string\\\"/>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"SHIPTO\\\">\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:element name=\\\"CONTACTNAME\\\" type=\\\"xs:string\\\"/>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element name=\\\"OBJECTRESTRICTION\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"RESTRICTEDLOCATIONS\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"RESTRICTEDDEPARTMENTS\\\" type=\\\"xs:string\\\"/>\\r\\n              <xs:element name=\\\"CUSTOMFIELD1\\\" type=\\\"xs:string\\\"/>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\"targetSchemaType\":1}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 4621
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-12-02T05:15:52.8098009+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "b32706dd-571c-25c0-f22c-772e12bb1aac",
+                "Name": "SageIntacct",
+                "ShortDescription": "CreateCustomer",
+                "LongDescription": "Here we are creating the Customer record in Sage",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "UserID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "create"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Object",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "CUSTOMER"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element maxOccurs=\"unbounded\" name=\"CUSTOMER\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"CUSTOMERID\" type=\"xs:string\"/>\r\n              <xs:element name=\"NAME\" type=\"xs:string\"/>\r\n              <xs:element name=\"DISPLAYCONTACT\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"PRINTAS\" type=\"xs:string\"/>\r\n                    <xs:element name=\"COMPANYNAME\" type=\"xs:string\"/>\r\n                    <xs:element name=\"TAXABLE\" type=\"xs:boolean\"/>\r\n                    <xs:element name=\"TAXGROUP\" type=\"xs:string\"/>\r\n                    <xs:element name=\"PREFIX\" type=\"xs:string\"/>\r\n                    <xs:element name=\"FIRSTNAME\" type=\"xs:string\"/>\r\n                    <xs:element name=\"LASTNAME\" type=\"xs:string\"/>\r\n                    <xs:element name=\"INITIAL\" type=\"xs:string\"/>\r\n                    <xs:element name=\"PHONE1\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"PHONE2\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"CELLPHONE\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"PAGER\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"FAX\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"EMAIL1\"/>\r\n                    <xs:element name=\"EMAIL2\"/>\r\n                    <xs:element name=\"URL1\"/>\r\n                    <xs:element name=\"URL2\"/>\r\n                    <xs:element name=\"MAILADDRESS\">\r\n                      <xs:complexType>\r\n                        <xs:sequence>\r\n                          <xs:element name=\"ADDRESS1\" type=\"xs:string\"/>\r\n                          <xs:element name=\"ADDRESS2\" type=\"xs:string\"/>\r\n                          <xs:element name=\"CITY\" type=\"xs:string\"/>\r\n                          <xs:element name=\"STATE\" type=\"xs:string\"/>\r\n                          <xs:element name=\"ZIP\" type=\"xs:unsignedInt\"/>\r\n                          <xs:element name=\"COUNTRY\" type=\"xs:string\"/>\r\n                        </xs:sequence>\r\n                      </xs:complexType>\r\n                    </xs:element>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"ONETIME\" type=\"xs:boolean\"/>\r\n              <xs:element name=\"STATUS\" type=\"xs:string\"/>\r\n              <xs:element name=\"HIDEDISPLAYCONTACT\" type=\"xs:boolean\"/>\r\n              <xs:element name=\"CUSTTYPE\" type=\"xs:string\"/>\r\n              <xs:element name=\"PARENTID\" type=\"xs:string\"/>\r\n              <xs:element name=\"GLGROUP\" type=\"xs:string\"/>\r\n              <xs:element name=\"TERRITORYID\" type=\"xs:string\"/>\r\n              <xs:element name=\"SUPDOCID\" type=\"xs:string\"/>\r\n              <xs:element name=\"TERMNAME\" type=\"xs:string\"/>\r\n              <xs:element name=\"OFFSETGLACCOUNTNO\" type=\"xs:unsignedShort\"/>\r\n              <xs:element name=\"ARACCOUNT\" type=\"xs:unsignedShort\"/>\r\n              <xs:element name=\"SHIPPINGMETHOD\" type=\"xs:string\"/>\r\n              <xs:element name=\"RESALENO\" type=\"xs:unsignedByte\"/>\r\n              <xs:element name=\"TAXID\" type=\"xs:string\"/>\r\n              <xs:element name=\"CREDITLIMIT\" type=\"xs:decimal\"/>\r\n              <xs:element name=\"ONHOLD\" type=\"xs:boolean\"/>\r\n              <xs:element name=\"DELIVERY_OPTIONS\" type=\"xs:string\"/>\r\n              <xs:element name=\"CUSTMESSAGEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"COMMENTS\" type=\"xs:string\"/>\r\n              <xs:element name=\"CURRENCY\" type=\"xs:string\"/>\r\n              <xs:element name=\"ARINVOICEPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEQUOTEPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEORDERPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OELISTPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEINVOICEPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEADJPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEOTHERPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"CONTACTINFO\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\"/>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"BILLTO\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\"/>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"SHIPTO\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\"/>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"OBJECTRESTRICTION\" type=\"xs:string\"/>\r\n              <xs:element name=\"RESTRICTEDLOCATIONS\" type=\"xs:string\"/>\r\n              <xs:element name=\"RESTRICTEDDEPARTMENTS\" type=\"xs:string\"/>\r\n              <xs:element name=\"CUSTOMFIELD1\" type=\"xs:string\"/>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <CUSTOMER>\r\n    <CUSTOMERID>value</CUSTOMERID>\r\n    <NAME>value</NAME>\r\n    <DISPLAYCONTACT>\r\n      <MAILADDRESS>\r\n        <CITY>value</CITY>\r\n        <STATE>value</STATE>\r\n        <ZIP>value</ZIP>\r\n      </MAILADDRESS>\r\n    </DISPLAYCONTACT>\r\n  </CUSTOMER>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "LocationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8845,
+                    "Y": 4621
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Sage Intacct",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-05-19T14:37:11.2705137+00:00",
+                    "Username": "matt.baldner@flowgear.net",
+                    "UserKey": "b0d1b54b-4906-441c-8667-8a0b07ff3dbf"
+                }
+            },
+            {
+                "NodeId": "1aa6438c-a3ab-18af-bf42-1b806bea3bdd",
+                "Name": "IfEqual",
+                "ShortDescription": "CustomerCreated?",
+                "LongDescription": "Once the Customer is created we are creating the Invoice",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression1",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression2",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "False"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "MatchNotEqual",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsEqual",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 9150,
+                    "Y": 4621
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If Equal",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:11:59.1861176+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "627f73b7-17fe-094b-d9dc-0ce67305c546",
+                "TargetNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "SourceName": "Response",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "627f73b7-17fe-094b-d9dc-0ce67305c546",
+                "TargetNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "67dab30e-f6cd-2667-9b5b-46347080a467",
+                "TargetNodeId": "7f344c4f-f262-14d4-547d-3eee7af60f50",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "TargetNodeId": "7f344c4f-f262-14d4-547d-3eee7af60f50",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7f344c4f-f262-14d4-547d-3eee7af60f50",
+                "TargetNodeId": "88a12a48-4ec4-58dd-f0b3-d47766eb06a9",
+                "SourceName": "Missing"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "88a12a48-4ec4-58dd-f0b3-d47766eb06a9",
+                "TargetNodeId": "f5bd5bf6-9d4a-bfc3-8e52-6a8c2644d114",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f5bd5bf6-9d4a-bfc3-8e52-6a8c2644d114",
+                "TargetNodeId": "b8b86d92-f7d6-7330-985b-3d6245a33712",
+                "SourceName": "Response",
+                "TargetName": "CustID",
+                "Expression": "Response.records.Id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b8b86d92-f7d6-7330-985b-3d6245a33712",
+                "TargetNodeId": "cb291eae-7b36-f303-f5d6-cba619120cfa",
+                "SourceName": "Response",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "cb291eae-7b36-f303-f5d6-cba619120cfa",
+                "TargetNodeId": "676e2958-3dbe-9caa-53c3-225b41dab7a7",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "676e2958-3dbe-9caa-53c3-225b41dab7a7",
+                "TargetNodeId": "b32706dd-571c-25c0-f22c-772e12bb1aac",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b32706dd-571c-25c0-f22c-772e12bb1aac",
+                "TargetNodeId": "1aa6438c-a3ab-18af-bf42-1b806bea3bdd",
+                "SourceName": "HadError",
+                "TargetName": "Expression1"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "b32706dd-571c-25c0-f22c-772e12bb1aac",
+                "TargetNodeId": "1aa6438c-a3ab-18af-bf42-1b806bea3bdd",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "cb291eae-7b36-f303-f5d6-cba619120cfa",
+                "TargetNodeId": "ee4c82c1-3d1b-8a57-eec5-adc3e167dda6",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "1aa6438c-a3ab-18af-bf42-1b806bea3bdd",
+                "TargetNodeId": "ee4c82c1-3d1b-8a57-eec5-adc3e167dda6",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ee4c82c1-3d1b-8a57-eec5-adc3e167dda6",
+                "TargetNodeId": "56bffc80-b4a2-070f-2d95-160ba52d2c8a",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b8b86d92-f7d6-7330-985b-3d6245a33712",
+                "TargetNodeId": "ee4c82c1-3d1b-8a57-eec5-adc3e167dda6",
+                "SourceName": "Response",
+                "TargetName": "CustID",
+                "Expression": "Response.result.data.CUSTOMER.CUSTOMERID"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b32706dd-571c-25c0-f22c-772e12bb1aac",
+                "TargetNodeId": "ee4c82c1-3d1b-8a57-eec5-adc3e167dda6",
+                "SourceName": "Response",
+                "TargetName": "CustID",
+                "Expression": "Response.result.data.customer.CUSTOMERID"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "b8b86d92-f7d6-7330-985b-3d6245a33712",
+                "TargetNodeId": "cb291eae-7b36-f303-f5d6-cba619120cfa",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "TargetNodeId": "ee4c82c1-3d1b-8a57-eec5-adc3e167dda6",
+                "SourceName": "Item",
+                "TargetName": "PoNum",
+                "Expression": "Response.records.PoNumber"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "56bffc80-b4a2-070f-2d95-160ba52d2c8a",
+                "TargetNodeId": "5841ecda-63a7-089f-e446-acc4ddd5a9bb",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "56bffc80-b4a2-070f-2d95-160ba52d2c8a",
+                "TargetNodeId": "5841ecda-63a7-089f-e446-acc4ddd5a9bb",
+                "SourceName": "HadError",
+                "TargetName": "Expression1"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "67dab30e-f6cd-2667-9b5b-46347080a467",
+                "TargetNodeId": "2bf8ec05-0092-0a61-9678-71cda3925dd0",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "TargetNodeId": "4e5c710e-be2d-8a2d-5ddd-89b809fb4d58",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "Response.records.Id"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "5841ecda-63a7-089f-e446-acc4ddd5a9bb",
+                "TargetNodeId": "2bf8ec05-0092-0a61-9678-71cda3925dd0",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "5841ecda-63a7-089f-e446-acc4ddd5a9bb",
+                "TargetNodeId": "4e5c710e-be2d-8a2d-5ddd-89b809fb4d58",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "TargetNodeId": "88a12a48-4ec4-58dd-f0b3-d47766eb06a9",
+                "SourceName": "Item",
+                "TargetName": "OrderID",
+                "Expression": "Response.records.Id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f5bd5bf6-9d4a-bfc3-8e52-6a8c2644d114",
+                "TargetNodeId": "676e2958-3dbe-9caa-53c3-225b41dab7a7",
+                "SourceName": "Response",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "bb59c930-8131-58b8-882e-b1c655ee5baa",
+                "TargetNodeId": "627f73b7-17fe-094b-d9dc-0ce67305c546",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "f5bd5bf6-9d4a-bfc3-8e52-6a8c2644d114",
+                "TargetNodeId": "b8b86d92-f7d6-7330-985b-3d6245a33712",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "ee4c82c1-3d1b-8a57-eec5-adc3e167dda6",
+                "TargetNodeId": "56bffc80-b4a2-070f-2d95-160ba52d2c8a",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "676e2958-3dbe-9caa-53c3-225b41dab7a7",
+                "TargetNodeId": "b32706dd-571c-25c0-f22c-772e12bb1aac",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "TargetNodeId": "f5bd5bf6-9d4a-bfc3-8e52-6a8c2644d114",
+                "SourceName": "Item",
+                "TargetName": "AccID",
+                "Expression": "Response.records.AccountId"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "67dab30e-f6cd-2667-9b5b-46347080a467",
+                "TargetNodeId": "4e5c710e-be2d-8a2d-5ddd-89b809fb4d58",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7f344c4f-f262-14d4-547d-3eee7af60f50",
+                "TargetNodeId": "84b03497-e93e-032b-7066-295be9336363",
+                "SourceName": "Found"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "TargetNodeId": "84b03497-e93e-032b-7066-295be9336363",
+                "SourceName": "Item",
+                "TargetName": "OrderID",
+                "Expression": "Response.records.Id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "TargetNodeId": "7f344c4f-f262-14d4-547d-3eee7af60f50",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "Response.records.Id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "88a12a48-4ec4-58dd-f0b3-d47766eb06a9",
+                "TargetNodeId": "ee4c82c1-3d1b-8a57-eec5-adc3e167dda6",
+                "SourceName": "Response",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "56bffc80-b4a2-070f-2d95-160ba52d2c8a",
+                "TargetNodeId": "2bf8ec05-0092-0a61-9678-71cda3925dd0",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "Response.result.key"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "8a60f831-5cc9-4ac1-d392-e9b03664fe06",
+                "TargetNodeId": "2bf8ec05-0092-0a61-9678-71cda3925dd0",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "Response.records.Id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "56bffc80-b4a2-070f-2d95-160ba52d2c8a",
+                "TargetNodeId": "4e5c710e-be2d-8a2d-5ddd-89b809fb4d58",
+                "SourceName": "Response",
+                "TargetName": "Value"
+            }
+        ],
+        "StartNodeId": "bb59c930-8131-58b8-882e-b1c655ee5baa",
+        "ActivityLogLevelMask": 255
+    },
+    "Name": "Salesforce Orders To Sage Intacct Invoices",
+    "Description": "This Workflow integrates Salesforce with Sage Intacct by retrieving and processing orders, including related items and customer data. It creates missing customers and generates invoices in Sage Intacct, logging the outcome for each order."
+}

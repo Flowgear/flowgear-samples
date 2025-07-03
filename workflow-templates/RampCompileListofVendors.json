@@ -1,0 +1,1355 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "74e00287-996e-442e-2968-ddbff27b7f2c",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "4dafd1f8-0453-62d5-6ebc-c7220356a663",
+                "Name": "Ramp",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "IsSandbox",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": false
+                            },
+                            {
+                                "Name": "ClientId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Ramp.RampConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "3ab0fb29-6368-76b6-6e3e-d45db0ec47aa"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "List vendors"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"data\": [\r\n    {\r\n      \"accounting_vendor_remote_id\": \"The accounting remote id of the vendor. (string)\",\r\n      \"address\": \"The address of the vendor. ()\",\r\n      \"billing_frequency\": \"ANNUAL/MONTHLY/MULTIPLE/NA/OTHER/QUARTERLY/ROLLING/TBD/TWICE_A_YEAR. The billing frequency for this vendor. (string)\",\r\n      \"contacts\": [\r\n        {}\r\n      ],\r\n      \"country\": \"The 2-letter country of the vendor. (string)\",\r\n      \"created_at\": \"The date and time when this vendor was created. (string)\",\r\n      \"description\": \"Description of the vendor. (string)\",\r\n      \"federal_tax_classification\": \"C_CORPORATION/INDIVIDUAL_SOLE_PROPRIETOR_SINGLE_MEMBER_LLC/INTERNATIONAL/LLC_C_CORPORATION/LLC_PARTNERSHIP/LLC_S_CORPORATION/OTHER/PARTNERSHIP/S_CORPORATION/TRUST_ESTATE. The federal tax classification of the vendor. (string)\",\r\n      \"id\": \"Unique identifier of the vendor. (string)\",\r\n      \"is_active\": \"Whether this vendor is active. (boolean)\",\r\n      \"is_deletable\": \"Whether this vendor is deletable. (boolean)\",\r\n      \"merchant_id\": \"The id of the card merchant. (string)\",\r\n      \"name\": \"Name of the vendor. (string)\",\r\n      \"name_legal\": \"Legal name of the vendor. (string)\",\r\n      \"sk_category_id\": \"Ramp category code of the vendor. (integer)\",\r\n      \"sk_category_name\": \"The category name of the vendor. (string)\",\r\n      \"state\": \"(string)\",\r\n      \"tax_address\": \"The tax address of the vendor. ()\",\r\n      \"total_spend_all_time\": \"Total spend for all time for this vendor. ()\",\r\n      \"total_spend_last_30_days\": \"Total spend for the last 30 days for this vendor. ()\",\r\n      \"total_spend_last_365_days\": \"Total spend for the last 365 days for this vendor. ()\",\r\n      \"total_spend_ytd\": \"Total spend year-to-date for this vendor. ()\",\r\n      \"vendor_owner_id\": \"Unique identifier of the user which owns this vendor. (string)\",\r\n      \"vendor_type\": \"BUSINESS/INDIVIDUAL. The type of vendor if bill pay. (string)\"\r\n    }\r\n  ],\r\n  \"page\": {\r\n    \"next\": \"the query to get to the next page; it is in the format of <BASE_URL>?<new_params> (string)\"\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "The number of results to be returned in each page. The value must be between 2 and 100. If not specified, the default value 20 will be used.",
+                        "IsSecret": false,
+                        "Name": "page_size",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "100"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 3640
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Ramp",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-19T05:10:32.4303296+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "ece27d26-f67e-1fc7-006b-0b5aadcc0de9",
+                "Name": "QuickMap",
+                "ShortDescription": "Strip Essential Fields",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"data\"],\"targetPath\":\"Vendors/Vendor\"},{\"sourcePaths\":[\"data/name\"],\"targetPath\":\"Vendors/Vendor/Name\"},{\"sourcePaths\":[\"data/id\"],\"targetPath\":\"Vendors/Vendor/UUID\"},{\"sourcePaths\":[\"data/accounting_vendor_remote_id\"],\"targetPath\":\"Vendors/Vendor/accounting_vendor_remote_id\"}],\"sourceSchema\":\"{\\r\\n  \\\"data\\\": [\\r\\n    {\\r\\n      \\\"accounting_vendor_remote_id\\\": \\\"The accounting remote id of the vendor. (string)\\\",\\r\\n      \\\"address\\\": \\\"The address of the vendor. ()\\\",\\r\\n      \\\"billing_frequency\\\": \\\"ANNUAL/MONTHLY/MULTIPLE/NA/OTHER/QUARTERLY/ROLLING/TBD/TWICE_A_YEAR. The billing frequency for this vendor. (string)\\\",\\r\\n      \\\"contacts\\\": [\\r\\n        {}\\r\\n      ],\\r\\n      \\\"country\\\": \\\"The 2-letter country of the vendor. (string)\\\",\\r\\n      \\\"created_at\\\": \\\"The date and time when this vendor was created. (string)\\\",\\r\\n      \\\"description\\\": \\\"Description of the vendor. (string)\\\",\\r\\n      \\\"federal_tax_classification\\\": \\\"C_CORPORATION/INDIVIDUAL_SOLE_PROPRIETOR_SINGLE_MEMBER_LLC/INTERNATIONAL/LLC_C_CORPORATION/LLC_PARTNERSHIP/LLC_S_CORPORATION/OTHER/PARTNERSHIP/S_CORPORATION/TRUST_ESTATE. The federal tax classification of the vendor. (string)\\\",\\r\\n      \\\"id\\\": \\\"Unique identifier of the vendor. (string)\\\",\\r\\n      \\\"is_active\\\": \\\"Whether this vendor is active. (boolean)\\\",\\r\\n      \\\"is_deletable\\\": \\\"Whether this vendor is deletable. (boolean)\\\",\\r\\n      \\\"merchant_id\\\": \\\"The id of the card merchant. (string)\\\",\\r\\n      \\\"name\\\": \\\"Name of the vendor. (string)\\\",\\r\\n      \\\"name_legal\\\": \\\"Legal name of the vendor. (string)\\\",\\r\\n      \\\"sk_category_id\\\": \\\"Ramp category code of the vendor. (integer)\\\",\\r\\n      \\\"sk_category_name\\\": \\\"The category name of the vendor. (string)\\\",\\r\\n      \\\"state\\\": \\\"(string)\\\",\\r\\n      \\\"tax_address\\\": \\\"The tax address of the vendor. ()\\\",\\r\\n      \\\"total_spend_all_time\\\": \\\"Total spend for all time for this vendor. ()\\\",\\r\\n      \\\"total_spend_last_30_days\\\": \\\"Total spend for the last 30 days for this vendor. ()\\\",\\r\\n      \\\"total_spend_last_365_days\\\": \\\"Total spend for the last 365 days for this vendor. ()\\\",\\r\\n      \\\"total_spend_ytd\\\": \\\"Total spend year-to-date for this vendor. ()\\\",\\r\\n      \\\"vendor_owner_id\\\": \\\"Unique identifier of the user which owns this vendor. (string)\\\",\\r\\n      \\\"vendor_type\\\": \\\"BUSINESS/INDIVIDUAL. The type of vendor if bill pay. (string)\\\"\\r\\n    }\\r\\n  ],\\r\\n  \\\"page\\\": {\\r\\n    \\\"next\\\": \\\"the query to get to the next page; it is in the format of <BASE_URL>?<new_params> (string)\\\"\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<Vendors>\\r\\n  <Vendor>\\r\\n    <Name/>\\r\\n    <UUID/>\\r\\n    <accounting_vendor_remote_id/>\\r\\n  </Vendor>\\r\\n</Vendors>\",\"targetSchemaType\":0}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Vendors>\r\n  <Vendor>\r\n    <Name/>\r\n    <UUID/>\r\n    <accounting_vendor_remote_id/>\r\n  </Vendor>\r\n</Vendors>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 3640
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:27:20.5728688+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "7fd156ed-ce0f-8adb-2079-bc8bd3c910a3",
+                "Name": "StringBuilder",
+                "ShortDescription": "BuildVendorList",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "VariableName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "BuildVendorList"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Clear",
+                            "Set",
+                            "Append",
+                            "Read"
+                        ],
+                        "Value": "Append"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "String Builder",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:28:57.0302181+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "48a6ce4a-deaa-8220-f8b7-c2b8afe3cd0f",
+                "Name": "IfVisualBasic",
+                "LongDescription": "Check to see if there is one page of Vendors, or multiple pages",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value <> \"\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3640
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:25:58.360568+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "7d9a321a-15cd-dd07-0a47-1ca52f397147",
+                "Name": "Loop",
+                "LongDescription": "Loop through the pagination results",
+                "Version": "1.2.1.0",
+                "Properties": [
+                    {
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "VendorBuild",
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    },
+                    {
+                        "Name": "Start",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    },
+                    {
+                        "Name": "Stop",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    },
+                    {
+                        "Name": "Increment",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    },
+                    {
+                        "Name": "Current",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Loop",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Loop",
+                "NodeType": 3,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:26:04.3929942+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "acc74411-c742-8ab9-306f-ccd2d770765b",
+                "Name": "Ramp",
+                "LongDescription": "The ramp node feeds the proceeding start UUID back into itself within the loop. \n",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "IsSandbox",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": false
+                            },
+                            {
+                                "Name": "ClientId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Ramp.RampConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Unique identifier for the sample operation.",
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "3ab0fb29-6368-76b6-6e3e-d45db0ec47aa"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "A brief description or summary of the operation.",
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Vendor - List vendors"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Example JSON response payload",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"data\": [\r\n    {\r\n      \"accounting_vendor_remote_id\": \"The accounting remote id of the vendor. (string)\",\r\n      \"address\": \"The address of the vendor. ()\",\r\n      \"billing_frequency\": \"ANNUAL/MONTHLY/MULTIPLE/NA/OTHER/QUARTERLY/ROLLING/TBD/TWICE_A_YEAR. The billing frequency for this vendor. (string)\",\r\n      \"contacts\": [\r\n        {}\r\n      ],\r\n      \"country\": \"The 2-letter country of the vendor. (string)\",\r\n      \"created_at\": \"The date and time when this vendor was created. (string)\",\r\n      \"description\": \"Description of the vendor. (string)\",\r\n      \"federal_tax_classification\": \"C_CORPORATION/INDIVIDUAL_SOLE_PROPRIETOR_SINGLE_MEMBER_LLC/INTERNATIONAL/LLC_C_CORPORATION/LLC_PARTNERSHIP/LLC_S_CORPORATION/OTHER/PARTNERSHIP/S_CORPORATION/TRUST_ESTATE. The federal tax classification of the vendor. (string)\",\r\n      \"id\": \"Unique identifier of the vendor. (string)\",\r\n      \"is_active\": \"Whether this vendor is active. (boolean)\",\r\n      \"is_deletable\": \"Whether this vendor is deletable. (boolean)\",\r\n      \"merchant_id\": \"The id of the card merchant. (string)\",\r\n      \"name\": \"Name of the vendor. (string)\",\r\n      \"name_legal\": \"Legal name of the vendor. (string)\",\r\n      \"sk_category_id\": \"Ramp category code of the vendor. (integer)\",\r\n      \"sk_category_name\": \"The category name of the vendor. (string)\",\r\n      \"state\": \"(string)\",\r\n      \"tax_address\": \"The tax address of the vendor. ()\",\r\n      \"total_spend_all_time\": \"Total spend for all time for this vendor. ()\",\r\n      \"total_spend_last_30_days\": \"Total spend for the last 30 days for this vendor. ()\",\r\n      \"total_spend_last_365_days\": \"Total spend for the last 365 days for this vendor. ()\",\r\n      \"total_spend_ytd\": \"Total spend year-to-date for this vendor. ()\",\r\n      \"vendor_owner_id\": \"Unique identifier of the user which owns this vendor. (string)\",\r\n      \"vendor_type\": \"BUSINESS/INDIVIDUAL. The type of vendor if bill pay. (string)\"\r\n    }\r\n  ],\r\n  \"page\": {\r\n    \"next\": \"the query to get to the next page; it is in the format of <BASE_URL>?<new_params> (string)\"\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "The ID of the last entity of the previous page, used for pagination to get the next page. (string)",
+                        "IsSecret": false,
+                        "Name": "start",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "The number of results to be returned in each page. The value must be between 2 and 100. If not specified, the default value 20 will be used. (integer)",
+                        "IsSecret": false,
+                        "Name": "page_size",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "100"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 3640
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Ramp",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-26T05:10:30.0907719+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "e701298e-57f5-e1fd-1721-09945f78664e",
+                "Name": "QuickMap",
+                "ShortDescription": "Strip Essential Fields",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"data\"],\"targetPath\":\"Vendors/Vendor\"},{\"sourcePaths\":[\"data/name\"],\"targetPath\":\"Vendors/Vendor/Name\"},{\"sourcePaths\":[\"data/id\"],\"targetPath\":\"Vendors/Vendor/UUID\"},{\"sourcePaths\":[\"data/accounting_vendor_remote_id\"],\"targetPath\":\"Vendors/Vendor/accounting_vendor_remote_id\"}],\"sourceSchema\":\"{\\r\\n  \\\"data\\\": [\\r\\n    {\\r\\n      \\\"accounting_vendor_remote_id\\\": \\\"The accounting remote id of the vendor. (string)\\\",\\r\\n      \\\"address\\\": \\\"The address of the vendor. ()\\\",\\r\\n      \\\"billing_frequency\\\": \\\"ANNUAL/MONTHLY/MULTIPLE/NA/OTHER/QUARTERLY/ROLLING/TBD/TWICE_A_YEAR. The billing frequency for this vendor. (string)\\\",\\r\\n      \\\"contacts\\\": [\\r\\n        {}\\r\\n      ],\\r\\n      \\\"country\\\": \\\"The 2-letter country of the vendor. (string)\\\",\\r\\n      \\\"created_at\\\": \\\"The date and time when this vendor was created. (string)\\\",\\r\\n      \\\"description\\\": \\\"Description of the vendor. (string)\\\",\\r\\n      \\\"federal_tax_classification\\\": \\\"C_CORPORATION/INDIVIDUAL_SOLE_PROPRIETOR_SINGLE_MEMBER_LLC/INTERNATIONAL/LLC_C_CORPORATION/LLC_PARTNERSHIP/LLC_S_CORPORATION/OTHER/PARTNERSHIP/S_CORPORATION/TRUST_ESTATE. The federal tax classification of the vendor. (string)\\\",\\r\\n      \\\"id\\\": \\\"Unique identifier of the vendor. (string)\\\",\\r\\n      \\\"is_active\\\": \\\"Whether this vendor is active. (boolean)\\\",\\r\\n      \\\"is_deletable\\\": \\\"Whether this vendor is deletable. (boolean)\\\",\\r\\n      \\\"merchant_id\\\": \\\"The id of the card merchant. (string)\\\",\\r\\n      \\\"name\\\": \\\"Name of the vendor. (string)\\\",\\r\\n      \\\"name_legal\\\": \\\"Legal name of the vendor. (string)\\\",\\r\\n      \\\"sk_category_id\\\": \\\"Ramp category code of the vendor. (integer)\\\",\\r\\n      \\\"sk_category_name\\\": \\\"The category name of the vendor. (string)\\\",\\r\\n      \\\"state\\\": \\\"(string)\\\",\\r\\n      \\\"tax_address\\\": \\\"The tax address of the vendor. ()\\\",\\r\\n      \\\"total_spend_all_time\\\": \\\"Total spend for all time for this vendor. ()\\\",\\r\\n      \\\"total_spend_last_30_days\\\": \\\"Total spend for the last 30 days for this vendor. ()\\\",\\r\\n      \\\"total_spend_last_365_days\\\": \\\"Total spend for the last 365 days for this vendor. ()\\\",\\r\\n      \\\"total_spend_ytd\\\": \\\"Total spend year-to-date for this vendor. ()\\\",\\r\\n      \\\"vendor_owner_id\\\": \\\"Unique identifier of the user which owns this vendor. (string)\\\",\\r\\n      \\\"vendor_type\\\": \\\"BUSINESS/INDIVIDUAL. The type of vendor if bill pay. (string)\\\"\\r\\n    }\\r\\n  ],\\r\\n  \\\"page\\\": {\\r\\n    \\\"next\\\": \\\"the query to get to the next page; it is in the format of <BASE_URL>?<new_params> (string)\\\"\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<Vendors>\\r\\n  <Vendor>\\r\\n    <Name/>\\r\\n    <UUID/>\\r\\n    <accounting_vendor_remote_id/>\\r\\n  </Vendor>\\r\\n</Vendors>\",\"targetSchemaType\":0}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Vendors>\r\n  <Vendor>\r\n    <Name/>\r\n    <UUID/>\r\n    <accounting_vendor_remote_id/>\r\n  </Vendor>\r\n</Vendors>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 3640
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:27:20.5728688+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "890594bf-648c-229b-67e0-679f17c1b173",
+                "Name": "StringBuilder",
+                "ShortDescription": "AddToVendorList",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "VariableName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "BuildVendorList"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Clear",
+                            "Set",
+                            "Append",
+                            "Read"
+                        ],
+                        "Value": "Append"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "String Builder",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:28:57.0302181+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "d4e9f10e-21db-5019-4626-eeca804a516d",
+                "Name": "IfVisualBasic",
+                "LongDescription": "Check to see if there is another page, or if this was the last page, exit the loop",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value <> \"\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8845,
+                    "Y": 3640
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:25:58.360568+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "ff1ec55f-af3f-e01f-b60a-7ac2390e043a",
+                "Name": "LoopExit",
+                "Version": "1.2.1.0",
+                "Properties": [
+                    {
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "VendorBuild",
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    },
+                    {
+                        "Name": "Error",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0,
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    },
+                    {
+                        "Name": "Message",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 9150,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Loop Exit",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:26:04.7486883+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "5d34a56f-e881-31aa-15b5-c97e12c365c3",
+                "Name": "StringBuilder",
+                "ShortDescription": "Retreive List",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "VariableName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "BuildVendorList"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Clear",
+                            "Set",
+                            "Append",
+                            "Read"
+                        ],
+                        "Value": "Read"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 3978
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "String Builder",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:28:57.0302181+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "10127363-e20f-7373-853b-bd2abe543cc3",
+                "Name": "StringBuilder",
+                "ShortDescription": "ClearList",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "VariableName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "BuildVendorList"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Clear",
+                            "Set",
+                            "Append",
+                            "Read"
+                        ],
+                        "Value": "Clear"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 3978
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "String Builder",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:28:57.0302181+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "8a1a8ef2-9df3-8e01-3371-a3f86aa61d8e",
+                "Name": "Replace",
+                "ShortDescription": "Strip Parent Tags",
+                "LongDescription": "Strip Parent tags. \nCompiling multiple full payloads appends closing parent tags. \nThis replace removes these tags giving us a properly structured payload",
+                "Version": "1.0.0.10",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Method",
+                        "TypeName": "flowgear.Nodes.Expressions.Replace+MatchMethods",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Text",
+                            "RegEx"
+                        ],
+                        "Value": "Text"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Find",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "</Vendors><Vendors>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ReplaceWith",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Output",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 3978
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Replace",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-12T06:27:25.3277131+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "ece27d26-f67e-1fc7-006b-0b5aadcc0de9",
+                "TargetNodeId": "7fd156ed-ce0f-8adb-2079-bc8bd3c910a3",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ece27d26-f67e-1fc7-006b-0b5aadcc0de9",
+                "TargetNodeId": "7fd156ed-ce0f-8adb-2079-bc8bd3c910a3",
+                "SourceName": "Result",
+                "TargetName": "Value",
+                "Expression": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7fd156ed-ce0f-8adb-2079-bc8bd3c910a3",
+                "TargetNodeId": "48a6ce4a-deaa-8220-f8b7-c2b8afe3cd0f",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "48a6ce4a-deaa-8220-f8b7-c2b8afe3cd0f",
+                "TargetNodeId": "7d9a321a-15cd-dd07-0a47-1ca52f397147",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e701298e-57f5-e1fd-1721-09945f78664e",
+                "TargetNodeId": "890594bf-648c-229b-67e0-679f17c1b173",
+                "SourceName": "Result",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "e701298e-57f5-e1fd-1721-09945f78664e",
+                "TargetNodeId": "890594bf-648c-229b-67e0-679f17c1b173",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "890594bf-648c-229b-67e0-679f17c1b173",
+                "TargetNodeId": "d4e9f10e-21db-5019-4626-eeca804a516d",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d4e9f10e-21db-5019-4626-eeca804a516d",
+                "TargetNodeId": "ff1ec55f-af3f-e01f-b60a-7ac2390e043a",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7d9a321a-15cd-dd07-0a47-1ca52f397147",
+                "TargetNodeId": "5d34a56f-e881-31aa-15b5-c97e12c365c3",
+                "SourceName": "Finished"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "5d34a56f-e881-31aa-15b5-c97e12c365c3",
+                "TargetNodeId": "10127363-e20f-7373-853b-bd2abe543cc3",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "5d34a56f-e881-31aa-15b5-c97e12c365c3",
+                "TargetNodeId": "8a1a8ef2-9df3-8e01-3371-a3f86aa61d8e",
+                "SourceName": "Value",
+                "TargetName": "Expression"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "10127363-e20f-7373-853b-bd2abe543cc3",
+                "TargetNodeId": "8a1a8ef2-9df3-8e01-3371-a3f86aa61d8e",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "4dafd1f8-0453-62d5-6ebc-c7220356a663",
+                "TargetNodeId": "acc74411-c742-8ab9-306f-ccd2d770765b",
+                "SourceName": "Response",
+                "TargetName": "start",
+                "Expression": "page.start"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "acc74411-c742-8ab9-306f-ccd2d770765b",
+                "TargetNodeId": "acc74411-c742-8ab9-306f-ccd2d770765b",
+                "SourceName": "Response",
+                "TargetName": "start",
+                "Expression": "page.start"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "acc74411-c742-8ab9-306f-ccd2d770765b",
+                "TargetNodeId": "e701298e-57f5-e1fd-1721-09945f78664e",
+                "SourceName": "Response",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "acc74411-c742-8ab9-306f-ccd2d770765b",
+                "TargetNodeId": "d4e9f10e-21db-5019-4626-eeca804a516d",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "page.start"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "acc74411-c742-8ab9-306f-ccd2d770765b",
+                "TargetNodeId": "e701298e-57f5-e1fd-1721-09945f78664e",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "4dafd1f8-0453-62d5-6ebc-c7220356a663",
+                "TargetNodeId": "ece27d26-f67e-1fc7-006b-0b5aadcc0de9",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "4dafd1f8-0453-62d5-6ebc-c7220356a663",
+                "TargetNodeId": "ece27d26-f67e-1fc7-006b-0b5aadcc0de9",
+                "SourceName": "Response",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "4dafd1f8-0453-62d5-6ebc-c7220356a663",
+                "TargetNodeId": "48a6ce4a-deaa-8220-f8b7-c2b8afe3cd0f",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "page.start"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7d9a321a-15cd-dd07-0a47-1ca52f397147",
+                "TargetNodeId": "acc74411-c742-8ab9-306f-ccd2d770765b",
+                "SourceName": "Loop"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "74e00287-996e-442e-2968-ddbff27b7f2c",
+                "TargetNodeId": "4dafd1f8-0453-62d5-6ebc-c7220356a663",
+                "SourceName": "Start"
+            }
+        ],
+        "StartNodeId": "74e00287-996e-442e-2968-ddbff27b7f2c",
+        "ActivityLogLevelMask": 255
+    },
+    "Name": "Ramp Compile List of Vendors",
+    "Description": "This Workflow retrieves a paginated list of vendors from Ramp, processes and aggregates the results, and outputs a consolidated vendor list. It handles pagination, data mapping, and formatting to ensure a clean, structured output."
+}

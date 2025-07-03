@@ -1,0 +1,1491 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 36,
+        "Name": "Sync Customers from Salesforce to SYSPRO",
+        "Nodes": [
+            {
+                "NodeId": "6385354e-3681-8088-834f-b62115368df9",
+                "Name": "VariableBar",
+                "LongDescription": "Sending the Excel file to the Variable bar, returns the Excel report to the Run Now screen, to the workflow initiator.",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "FileExtension": "xlsx",
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Report",
+                        "TypeName": "Object",
+                        "ExtendedType": 5
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 3640
+                },
+                "SupportsCustomInputProperties": false,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "RunFrom": 0,
+                "InteractFlags": 0,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "1ea6527d-10e7-10ab-5aca-dd1fbe004c34",
+                "Name": "Start",
+                "Version": "1.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": false,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "RunFrom": 0,
+                "InteractFlags": 0,
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "67395672-4abe-df69-528b-3e39ed956978",
+                "Name": "Salesforce",
+                "LongDescription": "Here we are getting a complete list of Accounts from Salesforce...limited to 5 for sample purposes.",
+                "Version": "4.1.1.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "full refresh_token offline_access"
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "InstanceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Username",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "SecurityToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "DontInterleaveRequestInResponse",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "EncodingMode",
+                                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "XmlInXmlOut",
+                                    "XmlInJsonOut"
+                                ]
+                            },
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "v59.0"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Create",
+                            "Update",
+                            "Get",
+                            "Query",
+                            "Upsert",
+                            "GetNextRecords",
+                            "QueryAll",
+                            "Delete"
+                        ],
+                        "Value": "Query"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ObjectName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Account"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExternalIdField",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\" type=\"xs:string\"/>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>SELECT\r\n\tId,\r\n\tIsDeleted,\r\n\tMasterRecordId,\r\n\tName,\r\n\tType,\r\n\tParentId,\r\n\tBillingStreet,\r\n\tBillingCity,\r\n\tBillingState,\r\n\tBillingPostalCode,\r\n\tBillingCountry,\r\n\tBillingLatitude,\r\n\tBillingLongitude,\r\n\tBillingGeocodeAccuracy,\r\n\tBillingAddress,\r\n\tShippingStreet,\r\n\tShippingCity,\r\n\tShippingState,\r\n\tShippingPostalCode,\r\n\tShippingCountry,\r\n\tShippingLatitude,\r\n\tShippingLongitude,\r\n\tShippingGeocodeAccuracy,\r\n\tShippingAddress,\r\n\tPhone,\r\n\tFax,\r\n\tAccountNumber,\r\n\tWebsite,\r\n\tPhotoUrl,\r\n\tSic,\r\n\tIndustry,\r\n\tAnnualRevenue,\r\n\tNumberOfEmployees,\r\n\tOwnership,\r\n\tTickerSymbol,\r\n\tDescription,\r\n\tRating,\r\n\tSite,\r\n\tOwnerId,\r\n\tCreatedDate,\r\n\tCreatedById,\r\n\tLastModifiedDate,\r\n\tLastModifiedById,\r\n\tSystemModstamp,\r\n\tLastActivityDate,\r\n\tLastViewedDate,\r\n\tLastReferencedDate,\r\n\tJigsaw,\r\n\tJigsawCompanyId,\r\n\tCleanStatus,\r\n\tAccountSource,\r\n\tDunsNumber,\r\n\tTradestyle,\r\n\tNaicsCode,\r\n\tNaicsDesc,\r\n\tYearStarted,\r\n\tSicDesc,\r\n\tDandbCompanyId,\r\n\tflowgear__CustomerPriority__c,\r\n\tflowgear__SLA__c,\r\n\tflowgear__Active__c,\r\n\tflowgear__NumberofLocations__c,\r\n\tflowgear__UpsellOpportunity__c,\r\n\tflowgear__SLASerialNumber__c,\r\n\tflowgear__SLAExpirationDate__c\r\nFROM Account\r\n  LIMIT 5</Request>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 3822
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 0,
+                "DisplayName": "Salesforce",
+                "NodeType": 0,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "3539d94c-24d7-2960-4a90-edd2624332d5",
+                "Name": "ForEach",
+                "ShortDescription": "Split Accounts",
+                "LongDescription": "Here we are processing each account into a customer record in SYSPRO. Once finished, we send a report of the finished process to the initiator of the workflow.",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\n  <nextRecordsUrl />\n  <totalSize>3</totalSize>\n  <done>true</done>\n  <records>\n    <attributes>\n      <type>Account</type>\n      <url>/services/data/v45.0/sobjects/Account/0010Y00000H3880QAB</url>\n    </attributes>\n    <Id>0010Y00000H3880QAB</Id>\n    <IsDeleted>false</IsDeleted>\n    <MasterRecordId />\n    <Name>GenePoint</Name>\n    <Type>Customer - Channel</Type>\n    <ParentId />\n    <BillingStreet>345 Shoreline Park\nMountain View, CA 94043\nUSA</BillingStreet>\n    <BillingCity>Mountain View</BillingCity>\n    <BillingState>CA</BillingState>\n    <BillingPostalCode />\n    <BillingCountry />\n    <BillingLatitude />\n    <BillingLongitude />\n    <BillingGeocodeAccuracy />\n    <BillingAddress>\n      <city>Mountain View</city>\n      <country />\n      <geocodeAccuracy />\n      <latitude />\n      <longitude />\n      <postalCode />\n      <state>CA</state>\n      <street>345 Shoreline Park\nMountain View, CA 94043\nUSA</street>\n    </BillingAddress>\n    <ShippingStreet>345 Shoreline Park\nMountain View, CA 94043\nUSA</ShippingStreet>\n    <ShippingCity />\n    <ShippingState />\n    <ShippingPostalCode />\n    <ShippingCountry />\n    <ShippingLatitude />\n    <ShippingLongitude />\n    <ShippingGeocodeAccuracy />\n    <ShippingAddress>\n      <city />\n      <country />\n      <geocodeAccuracy />\n      <latitude />\n      <longitude />\n      <postalCode />\n      <state />\n      <street>345 Shoreline Park\nMountain View, CA 94043\nUSA</street>\n    </ShippingAddress>\n    <Phone>(650) 867-3450</Phone>\n    <Fax>(650) 867-9895</Fax>\n    <AccountNumber>CC978213</AccountNumber>\n    <Website>www.genepoint.com</Website>\n    <PhotoUrl>/services/images/photo/0010Y00000H3880QAB</PhotoUrl>\n    <Sic>3712</Sic>\n    <Industry>Biotechnology</Industry>\n    <AnnualRevenue>30000000</AnnualRevenue>\n    <NumberOfEmployees>265</NumberOfEmployees>\n    <Ownership>Private</Ownership>\n    <TickerSymbol />\n    <Description>Genomics company engaged in mapping and sequencing of the human genome and developing gene-based drugs</Description>\n    <Rating>Cold</Rating>\n    <Site />\n    <OwnerId>0050Y000000KkjzQAC</OwnerId>\n    <CreatedDate>2017-02-24T08:12:55+00:00</CreatedDate>\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\n    <LastModifiedDate>2017-02-24T08:12:55+00:00</LastModifiedDate>\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\n    <SystemModstamp>2017-02-24T08:12:55+00:00</SystemModstamp>\n    <LastActivityDate />\n    <LastViewedDate />\n    <LastReferencedDate />\n    <Jigsaw />\n    <JigsawCompanyId />\n    <CleanStatus>Pending</CleanStatus>\n    <AccountSource />\n    <DunsNumber />\n    <Tradestyle />\n    <NaicsCode />\n    <NaicsDesc />\n    <YearStarted />\n    <SicDesc />\n    <DandbCompanyId />\n    <flowgear__CustomerPriority__c>Low</flowgear__CustomerPriority__c>\n    <flowgear__SLA__c>Bronze</flowgear__SLA__c>\n    <flowgear__Active__c>Yes</flowgear__Active__c>\n    <flowgear__NumberofLocations__c>1</flowgear__NumberofLocations__c>\n    <flowgear__UpsellOpportunity__c>Yes</flowgear__UpsellOpportunity__c>\n    <flowgear__SLASerialNumber__c>7324</flowgear__SLASerialNumber__c>\n    <flowgear__SLAExpirationDate__c>2017-09-21</flowgear__SLAExpirationDate__c>\n  </records>\n  <records>\n    <attributes>\n      <type>Account</type>\n      <url>/services/data/v45.0/sobjects/Account/0010Y00000H387yQAB</url>\n    </attributes>\n    <Id>0010Y00000H387yQAB</Id>\n    <IsDeleted>false</IsDeleted>\n    <MasterRecordId />\n    <Name>United Oil &amp; Gas, UK</Name>\n    <Type>Customer - Direct</Type>\n    <ParentId />\n    <BillingStreet>Kings Park, 17th Avenue, Team Valley Trading Estate,\nGateshead, Tyne and Wear NE26 3HS\nUnited Kingdom</BillingStreet>\n    <BillingCity />\n    <BillingState>UK</BillingState>\n    <BillingPostalCode />\n    <BillingCountry />\n    <BillingLatitude />\n    <BillingLongitude />\n    <BillingGeocodeAccuracy />\n    <BillingAddress>\n      <city />\n      <country />\n      <geocodeAccuracy />\n      <latitude />\n      <longitude />\n      <postalCode />\n      <state>UK</state>\n      <street>Kings Park, 17th Avenue, Team Valley Trading Estate,\nGateshead, Tyne and Wear NE26 3HS\nUnited Kingdom</street>\n    </BillingAddress>\n    <ShippingStreet>Kings Park, 17th Avenue, Team Valley Trading Estate,\nGateshead, Tyne and Wear NE26 3HS\nUnited Kingdom</ShippingStreet>\n    <ShippingCity />\n    <ShippingState />\n    <ShippingPostalCode />\n    <ShippingCountry />\n    <ShippingLatitude />\n    <ShippingLongitude />\n    <ShippingGeocodeAccuracy />\n    <ShippingAddress>\n      <city />\n      <country />\n      <geocodeAccuracy />\n      <latitude />\n      <longitude />\n      <postalCode />\n      <state />\n      <street>Kings Park, 17th Avenue, Team Valley Trading Estate,\nGateshead, Tyne and Wear NE26 3HS\nUnited Kingdom</street>\n    </ShippingAddress>\n    <Phone>+44 191 4956203</Phone>\n    <Fax>+44 191 4956620</Fax>\n    <AccountNumber>CD355119-A</AccountNumber>\n    <Website>http://www.uos.com</Website>\n    <PhotoUrl>/services/images/photo/0010Y00000H387yQAB</PhotoUrl>\n    <Sic>4437</Sic>\n    <Industry>Energy</Industry>\n    <AnnualRevenue />\n    <NumberOfEmployees>24000</NumberOfEmployees>\n    <Ownership>Public</Ownership>\n    <TickerSymbol>UOS</TickerSymbol>\n    <Description />\n    <Rating />\n    <Site />\n    <OwnerId>0050Y000000KkjzQAC</OwnerId>\n    <CreatedDate>2017-02-24T08:12:55+00:00</CreatedDate>\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\n    <LastModifiedDate>2017-02-24T08:12:55+00:00</LastModifiedDate>\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\n    <SystemModstamp>2017-02-24T08:12:55+00:00</SystemModstamp>\n    <LastActivityDate />\n    <LastViewedDate />\n    <LastReferencedDate />\n    <Jigsaw />\n    <JigsawCompanyId />\n    <CleanStatus>Pending</CleanStatus>\n    <AccountSource />\n    <DunsNumber />\n    <Tradestyle />\n    <NaicsCode />\n    <NaicsDesc />\n    <YearStarted />\n    <SicDesc />\n    <DandbCompanyId />\n    <flowgear__CustomerPriority__c>High</flowgear__CustomerPriority__c>\n    <flowgear__SLA__c>Platinum</flowgear__SLA__c>\n    <flowgear__Active__c>Yes</flowgear__Active__c>\n    <flowgear__NumberofLocations__c>34</flowgear__NumberofLocations__c>\n    <flowgear__UpsellOpportunity__c>No</flowgear__UpsellOpportunity__c>\n    <flowgear__SLASerialNumber__c>3479</flowgear__SLASerialNumber__c>\n    <flowgear__SLAExpirationDate__c>2017-03-21</flowgear__SLAExpirationDate__c>\n  </records>\n  <records>\n    <attributes>\n      <type>Account</type>\n      <url>/services/data/v45.0/sobjects/Account/0010Y00000H387zQAB</url>\n    </attributes>\n    <Id>0010Y00000H387zQAB</Id>\n    <IsDeleted>false</IsDeleted>\n    <MasterRecordId />\n    <Name>United Oil &amp; Gas, Singapore</Name>\n    <Type>Customer - Direct</Type>\n    <ParentId />\n    <BillingStreet>9 Tagore Lane\nSingapore, Singapore 787472\nSingapore</BillingStreet>\n    <BillingCity>Singapore</BillingCity>\n    <BillingState>Singapore</BillingState>\n    <BillingPostalCode />\n    <BillingCountry />\n    <BillingLatitude />\n    <BillingLongitude />\n    <BillingGeocodeAccuracy />\n    <BillingAddress>\n      <city>Singapore</city>\n      <country />\n      <geocodeAccuracy />\n      <latitude />\n      <longitude />\n      <postalCode />\n      <state>Singapore</state>\n      <street>9 Tagore Lane\nSingapore, Singapore 787472\nSingapore</street>\n    </BillingAddress>\n    <ShippingStreet>9 Tagore Lane\nSingapore, Singapore 787472\nSingapore</ShippingStreet>\n    <ShippingCity />\n    <ShippingState />\n    <ShippingPostalCode />\n    <ShippingCountry />\n    <ShippingLatitude />\n    <ShippingLongitude />\n    <ShippingGeocodeAccuracy />\n    <ShippingAddress>\n      <city />\n      <country />\n      <geocodeAccuracy />\n      <latitude />\n      <longitude />\n      <postalCode />\n      <state />\n      <street>9 Tagore Lane\nSingapore, Singapore 787472\nSingapore</street>\n    </ShippingAddress>\n    <Phone>(650) 450-8810</Phone>\n    <Fax>(650) 450-8820</Fax>\n    <AccountNumber>CD355120-B</AccountNumber>\n    <Website>http://www.uos.com</Website>\n    <PhotoUrl>/services/images/photo/0010Y00000H387zQAB</PhotoUrl>\n    <Sic>4437</Sic>\n    <Industry>Energy</Industry>\n    <AnnualRevenue />\n    <NumberOfEmployees>3000</NumberOfEmployees>\n    <Ownership>Public</Ownership>\n    <TickerSymbol>UOS</TickerSymbol>\n    <Description />\n    <Rating />\n    <Site />\n    <OwnerId>0050Y000000KkjzQAC</OwnerId>\n    <CreatedDate>2017-02-24T08:12:55+00:00</CreatedDate>\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\n    <LastModifiedDate>2017-02-24T08:12:55+00:00</LastModifiedDate>\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\n    <SystemModstamp>2017-02-24T08:12:55+00:00</SystemModstamp>\n    <LastActivityDate />\n    <LastViewedDate />\n    <LastReferencedDate />\n    <Jigsaw />\n    <JigsawCompanyId />\n    <CleanStatus>Pending</CleanStatus>\n    <AccountSource />\n    <DunsNumber />\n    <Tradestyle />\n    <NaicsCode />\n    <NaicsDesc />\n    <YearStarted />\n    <SicDesc />\n    <DandbCompanyId />\n    <flowgear__CustomerPriority__c>High</flowgear__CustomerPriority__c>\n    <flowgear__SLA__c>Platinum</flowgear__SLA__c>\n    <flowgear__Active__c>Yes</flowgear__Active__c>\n    <flowgear__NumberofLocations__c>6</flowgear__NumberofLocations__c>\n    <flowgear__UpsellOpportunity__c>Maybe</flowgear__UpsellOpportunity__c>\n    <flowgear__SLASerialNumber__c>2457</flowgear__SLASerialNumber__c>\n    <flowgear__SLAExpirationDate__c>2017-09-21</flowgear__SLAExpirationDate__c>\n  </records>\n</Response>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Response/records"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "ParentAndRootNodes"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <records>\r\n    <attributes>\r\n      <type>Account</type>\r\n      <url>/services/data/v45.0/sobjects/Account/0010Y00000H387zQAB</url>\r\n    </attributes>\r\n    <Id>0010Y00000H387zQAB</Id>\r\n    <IsDeleted>false</IsDeleted>\r\n    <MasterRecordId/>\r\n    <Name>United Oil &amp; Gas, Singapore</Name>\r\n    <Type>Customer - Direct</Type>\r\n    <ParentId/>\r\n    <BillingStreet>115 Tagore Lane\r\nSingapore, Singapore 787472\r\nSingapore</BillingStreet>\r\n    <BillingCity>Singapore</BillingCity>\r\n    <BillingState>Singapore</BillingState>\r\n    <BillingPostalCode/>\r\n    <BillingCountry/>\r\n    <BillingLatitude/>\r\n    <BillingLongitude/>\r\n    <BillingGeocodeAccuracy/>\r\n    <BillingAddress>\r\n      <city>Singapore</city>\r\n      <country/>\r\n      <geocodeAccuracy/>\r\n      <latitude/>\r\n      <longitude/>\r\n      <postalCode/>\r\n      <state>Singapore</state>\r\n      <street>115 Tagore Lane\r\nSingapore, Singapore 787472\r\nSingapore</street>\r\n    </BillingAddress>\r\n    <ShippingStreet>115 Tagore Lane\r\nSingapore, Singapore 787472\r\nSingapore</ShippingStreet>\r\n    <ShippingCity/>\r\n    <ShippingState/>\r\n    <ShippingPostalCode/>\r\n    <ShippingCountry/>\r\n    <ShippingLatitude/>\r\n    <ShippingLongitude/>\r\n    <ShippingGeocodeAccuracy/>\r\n    <ShippingAddress>\r\n      <city/>\r\n      <country/>\r\n      <geocodeAccuracy/>\r\n      <latitude/>\r\n      <longitude/>\r\n      <postalCode/>\r\n      <state/>\r\n      <street>115 Tagore Lane\r\nSingapore, Singapore 787472\r\nSingapore</street>\r\n    </ShippingAddress>\r\n    <Phone>(650) 450-1234</Phone>\r\n    <Fax>(650) 450-1234</Fax>\r\n    <AccountNumber>CD355123-A</AccountNumber>\r\n    <Website>http://www.utest.com</Website>\r\n    <PhotoUrl>/services/images/photo/0010Y00000H387zQQQ</PhotoUrl>\r\n    <Sic>4437</Sic>\r\n    <Industry>Energy</Industry>\r\n    <AnnualRevenue/>\r\n    <NumberOfEmployees>3000</NumberOfEmployees>\r\n    <Ownership>Public</Ownership>\r\n    <TickerSymbol>UPS</TickerSymbol>\r\n    <Description/>\r\n    <Rating/>\r\n    <Site/>\r\n    <OwnerId>0050Y000000KkjzQQR</OwnerId>\r\n    <CreatedDate>2017-02-24T08:12:55+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQQS</CreatedById>\r\n    <LastModifiedDate>2017-02-24T08:12:55+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQQS</LastModifiedById>\r\n    <SystemModstamp>2017-02-24T08:12:55+00:00</SystemModstamp>\r\n    <LastActivityDate/>\r\n    <LastViewedDate/>\r\n    <LastReferencedDate/>\r\n    <Jigsaw/>\r\n    <JigsawCompanyId/>\r\n    <CleanStatus>Pending</CleanStatus>\r\n    <AccountSource/>\r\n    <DunsNumber/>\r\n    <Tradestyle/>\r\n    <NaicsCode/>\r\n    <NaicsDesc/>\r\n    <YearStarted/>\r\n    <SicDesc/>\r\n    <DandbCompanyId/>\r\n    <flowgear__CustomerPriority__c>High</flowgear__CustomerPriority__c>\r\n    <flowgear__SLA__c>Platinum</flowgear__SLA__c>\r\n    <flowgear__Active__c>Yes</flowgear__Active__c>\r\n    <flowgear__NumberofLocations__c>6</flowgear__NumberofLocations__c>\r\n    <flowgear__UpsellOpportunity__c>Maybe</flowgear__UpsellOpportunity__c>\r\n    <flowgear__SLASerialNumber__c>2457</flowgear__SLASerialNumber__c>\r\n    <flowgear__SLAExpirationDate__c>2017-09-21</flowgear__SLAExpirationDate__c>\r\n  </records>\r\n</Response>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": false,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "RunFrom": 3,
+                "InteractFlags": 0,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "ff242a3f-ff50-4b3b-49a3-5eb39d6102d9",
+                "Name": "GetKeyValue2",
+                "ShortDescription": "Check for existing Account",
+                "LongDescription": "Here we are checking to see if this account was processed by this integration before.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Tst-Accounts"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DateTime",
+                        "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+                        "ExtendedType": 0,
+                        "Value": "2000-01-01T00:00:00"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Found",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Missing",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 3822
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:18.3456334+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "1c2dcb6f-900b-538a-f622-e140621e3c84",
+                "Name": "IfVisualBasic",
+                "LongDescription": "If we do find Key Value records, check that it wasn't a success, which we don't want to re-process.",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = \"Success\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "14434bac-cfe3-6ff3-5157-6b016a9748f9",
+                "Name": "QuickMap",
+                "ShortDescription": "Map Account",
+                "LongDescription": "Here we are using Quickmap to format the payload into a SYSPRO friendly format.",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"Response/records/Name\"],\"targetPath\":\"SetupArCustomer/Item/Key/Customer\",\"mapExpression\":\"UPPER(LEFT({Name}, 3)) + (ROUND(RAND() * 1000, 0)).ToString()\"},{\"sourcePaths\":[\"Response/records/Name\"],\"targetPath\":\"SetupArCustomer/Item/Name\",\"mapExpression\":\"\"},{\"sourcePaths\":[],\"targetPath\":\"SetupArCustomer/Item/Salesperson\",\"mapExpression\":\"100\"},{\"sourcePaths\":[],\"targetPath\":\"SetupArCustomer/Item/TermsCode\",\"mapExpression\":\"10\"},{\"sourcePaths\":[],\"targetPath\":\"SetupArCustomer/Item/StatementReqd\",\"mapExpression\":\"\\\"N\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"SetupArCustomer/Item/Branch\",\"mapExpression\":\"10\"}],\"sourceSchema\":\"<Response><records><attributes><type>Account</type><url>/services/data/v45.0/sobjects/Account/0010Y00000H387zQAB</url></attributes><Id>0010Y00000H387zQAB</Id><IsDeleted>false</IsDeleted><MasterRecordId /><Name>United Oil &amp; Gas, Singapore</Name><Type>Customer - Direct</Type><ParentId /><BillingStreet>9 Tagore Lane\\nSingapore, Singapore 787472\\nSingapore</BillingStreet><BillingCity>Singapore</BillingCity><BillingState>Singapore</BillingState><BillingPostalCode /><BillingCountry /><BillingLatitude /><BillingLongitude /><BillingGeocodeAccuracy /><BillingAddress><city>Singapore</city><country /><geocodeAccuracy /><latitude /><longitude /><postalCode /><state>Singapore</state><street>9 Tagore Lane\\nSingapore, Singapore 787472\\nSingapore</street></BillingAddress><ShippingStreet>9 Tagore Lane\\nSingapore, Singapore 787472\\nSingapore</ShippingStreet><ShippingCity /><ShippingState /><ShippingPostalCode /><ShippingCountry /><ShippingLatitude /><ShippingLongitude /><ShippingGeocodeAccuracy /><ShippingAddress><city /><country /><geocodeAccuracy /><latitude /><longitude /><postalCode /><state /><street>9 Tagore Lane\\nSingapore, Singapore 787472\\nSingapore</street></ShippingAddress><Phone>(650) 450-8810</Phone><Fax>(650) 450-8820</Fax><AccountNumber>CD355120-B</AccountNumber><Website>http://www.uos.com</Website><PhotoUrl>/services/images/photo/0010Y00000H387zQAB</PhotoUrl><Sic>4437</Sic><Industry>Energy</Industry><AnnualRevenue /><NumberOfEmployees>3000</NumberOfEmployees><Ownership>Public</Ownership><TickerSymbol>UOS</TickerSymbol><Description /><Rating /><Site /><OwnerId>0050Y000000KkjzQAC</OwnerId><CreatedDate>2017-02-24T08:12:55+00:00</CreatedDate><CreatedById>0050Y000000KkjzQAC</CreatedById><LastModifiedDate>2017-02-24T08:12:55+00:00</LastModifiedDate><LastModifiedById>0050Y000000KkjzQAC</LastModifiedById><SystemModstamp>2017-02-24T08:12:55+00:00</SystemModstamp><LastActivityDate /><LastViewedDate /><LastReferencedDate /><Jigsaw /><JigsawCompanyId /><CleanStatus>Pending</CleanStatus><AccountSource /><DunsNumber /><Tradestyle /><NaicsCode /><NaicsDesc /><YearStarted /><SicDesc /><DandbCompanyId /><flowgear__CustomerPriority__c>High</flowgear__CustomerPriority__c><flowgear__SLA__c>Platinum</flowgear__SLA__c><flowgear__Active__c>Yes</flowgear__Active__c><flowgear__NumberofLocations__c>6</flowgear__NumberofLocations__c><flowgear__UpsellOpportunity__c>Maybe</flowgear__UpsellOpportunity__c><flowgear__SLASerialNumber__c>2457</flowgear__SLASerialNumber__c><flowgear__SLAExpirationDate__c>2017-09-21</flowgear__SLAExpirationDate__c></records></Response>\",\"sourceSchemaType\":0,\"targetSchema\":\"<SetupArCustomer>\\r\\n  <Item>\\r\\n    <Key>\\r\\n      <Customer>Nic</Customer>\\r\\n    </Key>\\r\\n    <Name>Test01</Name>\\r\\n    <Salesperson>100</Salesperson>\\r\\n    <TermsCode>10</TermsCode>\\r\\n    <StatementReqd>N</StatementReqd>\\r\\n    <Branch>10</Branch>\\r\\n  </Item>\\r\\n</SetupArCustomer>\",\"targetSchemaType\":0}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<SetupArCustomer>\r\n  <Item>\r\n    <Key>\r\n      <Customer>Nic</Customer>\r\n    </Key>\r\n    <Name>Test01</Name>\r\n    <Salesperson>100</Salesperson>\r\n    <TermsCode>10</TermsCode>\r\n    <StatementReqd>N</StatementReqd>\r\n    <Branch>10</Branch>\r\n  </Item>\r\n</SetupArCustomer>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "InteractFlags": 0,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "2df26fbf-1b95-001e-bde7-9ec0bc5e7e80",
+                "Name": "Syspro",
+                "ShortDescription": "Create Customer",
+                "LongDescription": "Here we are Posting to SYSPRO, using the SetupAdd action into the ARSSCS Object, which is the Customer Master table.\nSetupAdd will only create new records.\nSetupAddUpdate will create new records and update existing ones.",
+                "Version": "8.0.1.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "WcfServiceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Operator",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Company",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "CompanyPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CorrectXmlCase",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            },
+                            {
+                                "Name": "Binding",
+                                "TypeName": "SYSPROWCFServicesClientLibrary40.SYSPROWCFBinding",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "RESTHttp",
+                                    "NetNamedPipe",
+                                    "NetTcp",
+                                    "BasicHttp",
+                                    "WSHttp"
+                                ]
+                            },
+                            {
+                                "Name": "Instance",
+                                "TypeName": "System.Int32",
+                                "ExtendedType": 0,
+                                "Value": 0
+                            },
+                            {
+                                "Name": "UseMutex",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            },
+                            {
+                                "Name": "SerialisationTimeoutSecs",
+                                "TypeName": "System.Int32",
+                                "ExtendedType": 0,
+                                "Value": "0"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "flowgear.Nodes.Syspro.SysproConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "flowgear.Nodes.Syspro.InvokeMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Query",
+                            "Post",
+                            "SetupAdd",
+                            "SetupAddUpdate",
+                            "SetupUpdate",
+                            "SetupDelete",
+                            "Build",
+                            "Browse",
+                            "Fetch",
+                            "NextKey",
+                            "PreviousKey"
+                        ],
+                        "Value": "SetupAdd"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "BusinessObject",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "ARSSCS"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<!-- Copyright 1994-2014 SYSPRO Ltd.-->\r\n<!--\r\n     Schema for the parameter file of the Customer Maintenance Business Object\r\n-->\r\n<xsd:schema elementFormDefault=\"qualified\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xsd:element name=\"SetupArCustomer\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the root element.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:complexType mixed=\"false\">\r\n      <xsd:sequence>\r\n        <xsd:element minOccurs=\"0\" name=\"Parameters\" type=\"Parameters\" />\r\n      </xsd:sequence>\r\n    </xsd:complexType>\r\n  </xsd:element>\r\n  <xsd:simpleType name=\"ApplyIfEntireDocumentValid\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Specifies whether the entire document must be validated first before applying the function (N - apply function for each valid item, Y - all items must be valid before function is applied).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\" />\r\n      <xsd:enumeration value=\"Y\" />\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"IgnoreWarnings\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Specifies if warnings are to be ignored (Y - if the warnings are to be ignored, N - warnings will be returned as errors in the XML returned, W - warnings will be returned as warnings).\r\n\r\nAn example of a warning is if a ledger code entered is not the correct type of account, it is okay to write the record away as such but you may want the warning supplied.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"Y\" />\r\n      <xsd:enumeration value=\"N\" />\r\n      <xsd:enumeration value=\"W\" />\r\n      <xsd:enumeration value=\"\" />\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ValidateOnly\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Specifies whether to only validate the contents of the document. (N - validate and apply function, Y - only validate the document).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\" />\r\n      <xsd:enumeration value=\"Y\" />\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:complexType mixed=\"false\" name=\"Parameters\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This element contains the optional parameter elements.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:sequence>\r\n      <xsd:element minOccurs=\"0\" name=\"IgnoreWarnings\" type=\"IgnoreWarnings\" />\r\n      <xsd:element minOccurs=\"0\" name=\"ApplyIfEntireDocumentValid\" type=\"ApplyIfEntireDocumentValid\" />\r\n      <xsd:element minOccurs=\"0\" name=\"ValidateOnly\" type=\"ValidateOnly\" />\r\n      <xsd:element minOccurs=\"0\" name=\"UpdateFaxEmailOrders\" type=\"UpdateFaxEmailOrders\" />\r\n      <xsd:element minOccurs=\"0\" name=\"UpdateFaxEmailReprint\" type=\"UpdateFaxEmailReprint\" />\r\n      <xsd:element minOccurs=\"0\" name=\"ValidateTaxExemptionNo\" type=\"ValidateTaxExemptionNo\" />\r\n    </xsd:sequence>\r\n  </xsd:complexType>\r\n  <xsd:simpleType name=\"UpdateFaxEmailOrders\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This element is optional and defaults to 'N' if not supplied. Valid values are 'N' and 'Y'. If set to 'Y', the fax/email option against all active orders for the supplied customers will be updated to match the same option defined for the customer. This will only apply when changing the fax/email option on the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:minLength value=\"0\" />\r\n      <xsd:maxLength value=\"1\" />\r\n      <xsd:whiteSpace value=\"preserve\" />\r\n      <xsd:enumeration value=\"N\" />\r\n      <xsd:enumeration value=\"Y\" />\r\n      <xsd:enumeration value=\" \" />\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"UpdateFaxEmailReprint\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This element is optional and defaults to 'N' if not supplied. Valid values are 'N' and 'Y'. This is only applied if the element 'UpdateFaxEmailOrders' is set to 'Y', otherwise it is ignored. If set to 'Y', the fax/email option against all active invoice reprint data for the supplied customers will be updated to match the same option defined for the customer. This will only apply when changing the fax/email option on the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:minLength value=\"0\" />\r\n      <xsd:maxLength value=\"1\" />\r\n      <xsd:whiteSpace value=\"preserve\" />\r\n      <xsd:enumeration value=\"N\" />\r\n      <xsd:enumeration value=\"Y\" />\r\n      <xsd:enumeration value=\" \" />\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ValidateTaxExemptionNo\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This element is optional and defaults to 'N' if not supplied. Valid values are 'N' and 'Y'. If set to 'Y', the EC vat tax exemption number will be validated.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:minLength value=\"0\" />\r\n      <xsd:maxLength value=\"1\" />\r\n      <xsd:whiteSpace value=\"preserve\" />\r\n      <xsd:enumeration value=\"N\" />\r\n      <xsd:enumeration value=\"Y\" />\r\n      <xsd:enumeration value=\" \" />\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n</xsd:schema>",
+                        "IsSecret": false,
+                        "Name": "ParameterXml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1,
+                        "Value": "<SetupArCustomer>\r\n  <Parameters>\r\n    <ApplyIfEntireDocumentValid>Y</ApplyIfEntireDocumentValid>\r\n  </Parameters>\r\n</SetupArCustomer>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<!-- Copyright 1994-2014 SYSPRO Ltd.-->\r\n<!--\r\n     Schema for the Customer Setup Business Object\r\n-->\r\n<xsd:schema elementFormDefault=\"qualified\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xsd:element name=\"SetupArCustomer\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the root element.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:complexType mixed=\"false\">\r\n      <xsd:sequence>\r\n        <xsd:element maxOccurs=\"unbounded\" name=\"Item\" type=\"Item\"/>\r\n      </xsd:sequence>\r\n    </xsd:complexType>\r\n  </xsd:element>\r\n  <xsd:simpleType name=\"Customer\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the key to the customer being maintained. This is mandatory.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Name\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the name of the customer and is used primarily to identify the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Salesperson\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Salesperson is the primary salesperson assigned to the customer and can be used as a selection criterion for various Sales Analysis reports. It is also be used to calculate commissions if you require the source of commission to be based on the salesperson, and not the price of the product being sold.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Branch\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Branch assigned to the customer is used to integrate sales and payments to the General Ledger module.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"TermsCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Invoice terms is used to determine the default settlement terms required for a customer. SYSPRO uses the invoice terms to calculate discount amounts as well as discount dates and due dates of customer documents processed within the Invoice Posting and Permanent Entries programs.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ArStatementNo\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Statement format for customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShortName\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is a short name and is used in searching for a customer. It is also used as selection criteria in some reports.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ExemptFinChg\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Exempt from finance charge flag indicates whether the customer is exempt from finance charges calculated by the Finance Charge Calculation program. (Y - Exempt, N - Not exempt)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"MaintHistory\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Detail history required flag indicates whether or not you require detail sales history to be recorded for any transaction processed against the customer. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"CreditStatus\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Credit status flag indicates the customer's current status based on the age of his oldest invoice. This is calculated by the Balance function of the Period End Processing program. The following describes the status code settings:\r\n0 - indicates only current invoices\r\n1 - indicates at least one invoice which is 30 days or over\r\n2 - indicates at least one invoice which is 60 days or over\r\n3 - indicates at least one invoice which is 90 days or over\r\n4 - indicates at least one invoice which is 120 days or over\r\n5 - indicates at least one invoice which is 150 days or over\r\n6 - indicates at least one invoice which is 180 days or over\r\n9 - indicates a manual hold on the account which suspends all credit for the customer</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"0\"/>\r\n      <xsd:enumeration value=\"1\"/>\r\n      <xsd:enumeration value=\"2\"/>\r\n      <xsd:enumeration value=\"3\"/>\r\n      <xsd:enumeration value=\"4\"/>\r\n      <xsd:enumeration value=\"5\"/>\r\n      <xsd:enumeration value=\"6\"/>\r\n      <xsd:enumeration value=\"7\"/>\r\n      <xsd:enumeration value=\"8\"/>\r\n      <xsd:enumeration value=\"9\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"CreditLimit\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Credit limit is the maximum limit that the customer's balance can reach, taking into account any outstanding order values.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\"/>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"CreditCheckFlag\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Credit checking method for customer. Valid values are T (check terms only), L (check limit only), B (check both), N (no checking), and Blank (use company method).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"PriceCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>If you are using simple pricing, then the code entered here is used to establish the price (or discount code) applicable to a specific stock code for the customer, depending on whether the inventory pricing method is coded or discounted.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"CustomerClass\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Customer class enables you to classify customers into categories for reports and sales history analysis.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"InvDiscCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Invoice disount code is used to establish the automatic discount applicable to the customer for each invoice entered in the Detail Invoice Posting and Sales Order Order Entry programs. A blank entry indicates that no automatic invoice discount is required for the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"BalanceType\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Balance print type flag. Settings are as follows:\r\nI - Open item if you do not want the customer's balance to be brought forward at the end of each month. All transactions are retained on file until the outstanding balance reaches zero and the number of months to retain zero balance invoices has been reached (Accounts Receivable Setup).\r\nB - Balance forward if you want to accumulate the total amount owing by the customer at the end of each month and represent the figure as a balance brought forward from previous months on the debtors statement. If you require brought forward customers to be consolidated at month end (Accounts Receivable Setup) then at month end all details are accumulated into a series of aged balance figures. Payments, adjustments and transactions are made against a specific aged balance.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"I\"/>\r\n      <xsd:enumeration value=\"B\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Area\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Geographic area is used to classify the customer's location. If you require tax by geographic area (Tax Options Setup) then the tax code assigned to the customer's geographic area can be used to override the tax codes normally used throughout the system.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"LineDiscCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Line discount code is used to establish the automatic discount applicable to the customer for each order line entered in the Detail Invoice Posting and Sales Order Order Entry programs. A blank entry indicates that no automatic line discount is required for the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"TaxStatus\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Tax status flag. Settings are as follows:\r\nE - Exempt to exempt the customer from sales tax.\r\nN - To indicate that sales tax is applicable to the customer.\r\nO - Other tax code if the tax entry held in the Other tax code field against the stock item is to be used when making a sale against the customer in the Invoice Posting or Sales Order Entry programs.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"E\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"O\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"TaxExemptNumber\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Customer's tax exempt number.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SpecialInstrs\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Special instructions is used in the Sales Order Entry program and can be printed on invoices and reports.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"PriceCategoryTable\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Price category table. If you are using extended pricing, then you can enter up to 26 codes, determining the price or discount code applicable to a category (A - Z) of products being sold . The pricing category from the inventory file is used to locate a place in the customer's price category/code table. Depending on whether the inventory pricing method is coded or discounted, the price code found in this table is used against the discount table to locate the required discount or to locate a price entry in the inventory file.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Telephone\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Telephone number for the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"TelephoneExtn\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Telephone extension for the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Contact\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Contact name for the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Fax\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fax number for the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Currency\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Currency code used to determine the currency in which to process invoices for the customer. \r\nNote: If foreign currency sales are not required (Accounts Receivable Setup)  or a blank entry is made then the local currency is used.  \r\nYou cannot change a customer's currency once transactions (sales orders etc.) have been processed for that customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"UserField1\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is a free format alphanumeric user defined field.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"UserField2\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is a numeric user defined field.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\"/>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"GstExemptFlag\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Canadian GST exemption flag. Settings are as follows:\r\nE - Exempt to exempt the customer from GST.\r\nN - To indicate that GST is applicable to the customer. Note: Only required if your nationality code is defined as CAN (System Setup) and you indicated that the Canadian GST system is required (Tax Options Setup)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"E\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"GstExemptNum\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Canadian GST exempt number for customer. \r\nNote: Only required if your nationality code is defined as CAN (System Setup) and you indicated that the Canadian GST system is required (Tax Options Setup).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"GstLevel\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Canadian GST shown by flag. Settings as follows:\r\nI - Invoice if you want GST that is calculated on invoice lines to be shown separately in the invoice totals, and not included in the prices.\r\nL - Line if you want the GST that is calculated on invoice lines to be included in the line values.\r\nFor stocked items that have GST included in the price, this option has no effect for non-exempt customers as the GST is already part of the price shown at line level. For exempt customers, the GST value that is part of the price is deducted from the line or the total GST value, depending on your selection at this field.\r\nNote: Only required if your nationality code is defined as CAN (System Setup) and you indicated that the Canadian GST system is required (Tax Options Setup)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"\"/>\r\n      <xsd:enumeration value=\"I\"/>\r\n      <xsd:enumeration value=\"L\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"DetailMoveReqd\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Retain detail sales movements against the customer. These detail stock movements can be viewed in the Customer Query program and reported on in the Customer Movements program. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ContractPrcReqd\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Contract pricing flag. Select this option if you require special prices (or price discounts) for stock items to be available for the customer over a fixed time period. During Sales Order Entry the lowest contract price for the customer is used as the price for the order line. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"BuyingGroup1\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>First buying group to which the customer is associated. This must be different to all the other buying groups.\r\nBuying groups enable you to classify a number of contract customers into a common group for use within the Contract Pricing program. A maximum of five buying groups can be assigned to the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"BuyingGroup2\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Second buying group to which the customer is associated. This must be different to all the other buying groups and cannot be entered if the first is blank.\r\nBuying groups enable you to classify a number of contract customers into a common group for use within the Contract Pricing program. A maximum of five buying groups can be assigned to the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"BuyingGroup3\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Third buying group to which the customer is associated. This must be different to all the other buying groups and cannot be entered if the second is blank.\r\nBuying groups enable you to classify a number of contract customers into a common group for use within the Contract Pricing program. A maximum of five buying groups can be assigned to the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"BuyingGroup4\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fourth buying group to which the customer is associated. This must be different to all the other buying groups and cannot be entered if the third is blank.\r\nBuying groups enable you to classify a number of contract customers into a common group for use within the Contract Pricing program. A maximum of five buying groups can be assigned to the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"BuyingGroup5\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fifth buying group to which the customer is associated. This must be different to all the other buying groups and cannot be entered if the fourth is blank.\r\nBuying groups enable you to classify a number of contract customers into a common group for use within the Contract Pricing program. A maximum of five buying groups can be assigned to the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"StatementReqd\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Statements required flag. Select this option if you want to include this customer for selection when statements are produced for customers using the Statement Print program. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"BackOrdReqd\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Back orders allowed. Select this option to allow backorder quantities to be entered against the customer during processing in the Sales Order Entry.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"R\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShippingInstrs\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Ship via is the default shipping instruction message to be used for this customer in the Sales Order Entry program. If you leave this field blank, then the default shipping message defined in the Sales Order module (Sales Order Setup) is used.\r\nHowever, if in SYSPRO Sales Order Setup, the format of the shipping instructions is defined as 'Coded', the first characters designate an existing code and the shipping instructions will be picked up from the code's description. If this code does not exist, the shipping instructions will be saved as entered.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShippingInstrsCod\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>In SYSPRO Sales Order Setup, if the format of the shipping instructions is defined as 'Coded', then the shipping instructions code has to be valid.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"StateCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>State code for customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"DateCustAdded\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Date created is the date the customer was initially taken on. If zero then the system date is used.\r\nFormat is CCYY-MM-DD</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\"/>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"StockInterchange\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Stock code interchange required. Select this option if you want the customer's stock codes to be converted to the standard SYSPRO stock code during processing in Sales Order Entry. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"MaintLastPrcPaid\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Customer/stock code cross-reference required. Select this option if you want to retain the last two sales details of any stock item sold to the customer. At the time of entering sales order detail lines you can retrieve this information if you want to enter the same details that were previously processed for the customer. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"IbtCustomer\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>IBT customer. Select this option if you want to be able to enter inter-branch transfers for this customer during Sales Order Entry. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoDefaultDoc\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Default document format is a default document format for the customer used when batch invoices and/or delivery notes are printed.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"\"/>\r\n      <xsd:enumeration value=\"0\"/>\r\n      <xsd:enumeration value=\"1\"/>\r\n      <xsd:enumeration value=\"2\"/>\r\n      <xsd:enumeration value=\"3\"/>\r\n      <xsd:enumeration value=\"4\"/>\r\n      <xsd:enumeration value=\"5\"/>\r\n      <xsd:enumeration value=\"6\"/>\r\n      <xsd:enumeration value=\"7\"/>\r\n      <xsd:enumeration value=\"8\"/>\r\n      <xsd:enumeration value=\"9\"/>\r\n      <xsd:enumeration value=\"0\"/>\r\n      <xsd:enumeration value=\"A\"/>\r\n      <xsd:enumeration value=\"B\"/>\r\n      <xsd:enumeration value=\"C\"/>\r\n      <xsd:enumeration value=\"D\"/>\r\n      <xsd:enumeration value=\"E\"/>\r\n      <xsd:enumeration value=\"F\"/>\r\n      <xsd:enumeration value=\"G\"/>\r\n      <xsd:enumeration value=\"H\"/>\r\n      <xsd:enumeration value=\"I\"/>\r\n      <xsd:enumeration value=\"J\"/>\r\n      <xsd:enumeration value=\"K\"/>\r\n      <xsd:enumeration value=\"L\"/>\r\n      <xsd:enumeration value=\"M\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"O\"/>\r\n      <xsd:enumeration value=\"P\"/>\r\n      <xsd:enumeration value=\"Q\"/>\r\n      <xsd:enumeration value=\"R\"/>\r\n      <xsd:enumeration value=\"S\"/>\r\n      <xsd:enumeration value=\"T\"/>\r\n      <xsd:enumeration value=\"U\"/>\r\n      <xsd:enumeration value=\"V\"/>\r\n      <xsd:enumeration value=\"W\"/>\r\n      <xsd:enumeration value=\"X\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\"Z\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"CounterSlsOnly\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Counter sales only. Select this option if you only require counter sales orders to be accepted for the customer during processing in the Sales Order Entry program. This also prevents any part of a counter sales invoice from being placed on account. This option is only used if the Counter Sales module is installed. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Nationality\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Nationality code. If the EC tax system is installed (Tax Options Setup) then you assign a Nationality code to the customer. This is required by EC Vat regulations to generate various reports required for the proper administration of the EC tax system.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"CustomerOnHold\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Customer on hold flag. Select this option if you want to prohibit new orders from being processed for the customer in the Invoice Posting and Sales Order Entry programs. You will also be unable to process adjustments against the customer in the Payments and Adjustments program. \r\n( Y - On hold, N - Not on hold)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"InvCommentCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Standard comment code is the standard sales order comments to be used for the customer during processing in Sales Order Entry.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"EdiSenderCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>EDI sender code. You use this field to indicate the Sender code of the company from which you import orders electronically via an ASCII file. You can import this file (EDI Sales Order Import) providing that the entry made here matches the sender code of the company transmitting the file (Interface Setup, Local Site).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"EdiFlag\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>EDI trading partner. Select this option to indicate that the Electronic Data Interchange (EDI) system can be used to generate orders for this customer. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoDefaultType\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Default type of sales order that applies to the customer. Settings are as follows:\r\nSpace - Operator default\r\nO - Sales order\r\nB - Billing\r\nS - Scheduled order\r\nC - Credit note\r\nD - Debit note\r\nF - Forward order\r\nU - Counter sale\r\nI - IBT\r\nH - Hierachical order</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"\"/>\r\n      <xsd:enumeration value=\"O\"/>\r\n      <xsd:enumeration value=\"B\"/>\r\n      <xsd:enumeration value=\"S\"/>\r\n      <xsd:enumeration value=\"C\"/>\r\n      <xsd:enumeration value=\"D\"/>\r\n      <xsd:enumeration value=\"F\"/>\r\n      <xsd:enumeration value=\"U\"/>\r\n      <xsd:enumeration value=\"I\"/>\r\n      <xsd:enumeration value=\"H\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Email\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Enter the e-mail address for the customer. If the 'FaxInvoices' element or the 'FaxStatements' element has been set to email documents, this element cannot be spaces.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ApplyOrdDisc\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Calculate order discount based on order value/quantity flag. Select this option if you want to be able to assign order discount breaks to this customer. These discounts are applied to the total value or total quantity of an order processed against the customer within the Sales Order Order Entry program. (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ApplyLineDisc\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Calculate order line discounts according to product class sold. Select this option if you want to be able to assign order discount breaks to specific customer/product class combinations. These discounts are applied to the order line value or order line quantity of orders processed against the customer within the Sales Order Order Entry program. All common product classes for an order are accumulated and the total of each product class is compared to the discount break tables and the discount applied to each line accordingly.  (Y - Yes, N - No)</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"FaxInvoices\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fax invoices flag. This element indicates which S/O documents, if any, are to be automatically faxed or emailed. The valid values are:\r\n\r\nSpaces or 'N' - No documents faxed or emailed (Default)\r\n\r\n'A' - Fax Order ack and Delivery note\r\n'B' - Fax Order ack and Dispatch note\r\n'C' - Fax Order ack and Invoice\r\n'D' - Fax Delivery note and Dispatch note\r\n'E' - Fax Delivery note and Invoice\r\n'F' - Fax Dispatch note and Invoice\r\n'G' - Fax Order ack, Delivery note and Dispatch note\r\n'H' - Fax Order ack, Delivery note and Invoice\r\n'I' - Fax Order ack, Dispatch note and Invoice\r\n'J' - Fax Delivery note, Dispatch note and Invoice\r\n'K' - Fax Order ack, Delivery note, Dispatch note and invoice\r\n'W' - Order ack\r\n'X' - Delivery note\r\n'Y' - Invoice\r\n'Z' - Dispatch note\r\n\r\nThe above codes in lower case will indicate the same combination of documents but to be emailed, eg,\r\n\r\n'a' - Email Order ack and Delivery note\r\n'b' - Email Order ack and Dispatch note\r\nand so on....</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\" \"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"A\"/>\r\n      <xsd:enumeration value=\"B\"/>\r\n      <xsd:enumeration value=\"C\"/>\r\n      <xsd:enumeration value=\"D\"/>\r\n      <xsd:enumeration value=\"E\"/>\r\n      <xsd:enumeration value=\"F\"/>\r\n      <xsd:enumeration value=\"G\"/>\r\n      <xsd:enumeration value=\"H\"/>\r\n      <xsd:enumeration value=\"I\"/>\r\n      <xsd:enumeration value=\"J\"/>\r\n      <xsd:enumeration value=\"K\"/>\r\n      <xsd:enumeration value=\"W\"/>\r\n      <xsd:enumeration value=\"X\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\"Z\"/>\r\n      <xsd:enumeration value=\"a\"/>\r\n      <xsd:enumeration value=\"b\"/>\r\n      <xsd:enumeration value=\"c\"/>\r\n      <xsd:enumeration value=\"d\"/>\r\n      <xsd:enumeration value=\"e\"/>\r\n      <xsd:enumeration value=\"f\"/>\r\n      <xsd:enumeration value=\"g\"/>\r\n      <xsd:enumeration value=\"h\"/>\r\n      <xsd:enumeration value=\"i\"/>\r\n      <xsd:enumeration value=\"j\"/>\r\n      <xsd:enumeration value=\"k\"/>\r\n      <xsd:enumeration value=\"w\"/>\r\n      <xsd:enumeration value=\"x\"/>\r\n      <xsd:enumeration value=\"y\"/>\r\n      <xsd:enumeration value=\"z\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"FaxStatements\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fax statements flag. Select this option if you wish to automatically fax statements to the customer. (Y - Fax, E - Email, N - Print).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"E\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"FaxQuotes\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fax quotes flag. Select this option if you wish to automatically fax quotations to the customer. (Y - Fax, E - Email, N - Print).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n      <xsd:pattern value=\"N\"/>\r\n      <xsd:pattern value=\"Y\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"E\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"DocFax\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fax number to use when automatically faxing invoices (FaxInvoices = \"Y\") and or statements  (FaxStatements = \"Y\") to the customer. If either are set to \"Y\" then this entry cannot be blank.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"DocFaxContact\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Contact name to add to the invoices/statements being automatically faxed.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoldToAddr1\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>First line of the Sold to address. Sold to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoldToAddr2\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Second line of the Sold to address. Sold to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoldToAddr3\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Third line of the Sold to address. Sold to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoldToAddr3Loc\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the Sold to address location. Sold to address location can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoldToAddr4\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fourth line of the Sold to address. Sold to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoldToAddr5\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fifth line of the Sold to address. Sold to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoldPostalCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Postal/zip code for the sold to address. Sold to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShipToAddr1\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>First line of the Ship to address. Ship to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShipToAddr2\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Second line of the Ship to address. Ship to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShipToAddr3\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Third line of the Ship to address. Ship to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShipToAddr3Loc\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the Ship to address location. Ship to address location can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShipToAddr4\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fourth line of the Ship to address. Ship to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShipToAddr5\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Fifth line of the Ship to address. Ship to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShipPostalCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Postal/zip code for the ship to address. Ship to address can be printed on invoices and faxes.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"State\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the state code that is part of the extended tax code applicable to the sold to address. \r\nNote: The Extended tax code field is only displayed if your nationality code is defined as USA and either the AVP sales tax system is required or you require tax by advanced geocodes (Tax Options Setup).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"CountyZip\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the county or zip code that is part of the extended tax code applicable to the sold to address. \r\nNote: The Extended tax code field is only displayed if your nationality code is defined as USA and either the AVP sales tax system is required or you require tax by advanced geocodes (Tax Options Setup).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"City\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the city code that is part of the extended tax code applicable to the sold to address. \r\nNote: The Extended tax code field is only displayed if your nationality code is defined as USA and either the AVP sales tax system is required or you require tax by advanced geocodes (Tax Options Setup).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"State1\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the state code that is part of the extended tax code applicable to the ship to address. \r\nNote: The Extended tax code field is only displayed if your nationality code is defined as USA and either the AVP sales tax system is required or you require tax by advanced geocodes (Tax Options Setup).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"CountyZip1\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the county or zip code that is part of the extended tax code applicable to the shipto address. \r\nNote: The Extended tax code field is only displayed if your nationality code is defined as USA and either the AVP sales tax system is required or you require tax by advanced geocodes (Tax Options Setup).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"City1\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the city code that is part of the extended tax code applicable to the sold to address. \r\nNote: The Extended tax code field is only displayed if your nationality code is defined as USA and either the AVP sales tax system is required or you require tax by advanced geocodes (Tax Options Setup).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"DefaultOrdType\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Default order type to be used when an order is generated for this customer at header level in the Sales Order Entry program. The entry made here overrides whatever default order type is defined within the Sales Order module.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"PoNumberMandatory\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Is a customer purchase order required when entering a sales order?</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n      <xsd:enumeration value=\" \"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"CompanyTaxNumber\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Company registration number</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"TransactionNature\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Default Intrastat Nature of Transaction for Invoices to be used against customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"TransactionNatureC\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Default Intrastat Nature of Transaction for Credit Notes to be used against customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"DeliveryTerms\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Default Intrastat Delivery Terms for Invoices to be used against customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"DeliveryTermsC\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Default Intrastat Delivery Terms for Credit Notes to be used against customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"TpmCustomerFlag\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Is the customer a Trade Promotions customer?</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"TpmCreditCheck\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Does the customer require Trade Promotions credit checking. This is only relevant if the customer is a Trade Promotions customer, and credit checking is required.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n      <xsd:enumeration value=\"\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"TpmPricingFlag\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Does the customer require Trade Promotions pricing. This is only relevant if the customer is a Trade Promotions customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"RouteCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the default delivery route to be used in Load Planning is required. If entered, it must be a valid SYSPRO load planning route code.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"RouteDistance\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the distance or sequence to be used against all loads for this customer. It is used to determine the order of loading items.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SalesWarehouse\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This is the default warehouse to be used for this customer when entering a sales order. If entered, it must be a valid SYSPRO warehouse.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"WholeOrderShipFlag\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Only ship whole order flag. Select this option if you want to invoice the whole order only.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"N\"/>\r\n      <xsd:enumeration value=\"Y\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"MinimumOrderValue\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Minimum order value for customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"MinimumOrderChgCod\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Charge code if below minimum order value. Charge code to be applied if below minimum order value.</xsd:documentation>\r\n    </xsd:annotation>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"UkVatFlag\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Is UK VAT applicable to the customer? Accept A /   / N. Value is A when registered for VAT and UK VAT applicable, blank when registered for VAT and not UK VAT applicable, and N when not registered for VAT and not UK VAT applicable.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"\"/>\r\n      <xsd:enumeration value=\"A\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"UkCurrency\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Only used if UK VAT flag is set to A. Cannot be the same as the customer currency.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:enumeration value=\"\"/>\r\n      <xsd:enumeration value=\"A\"/>\r\n      <xsd:enumeration value=\"N\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Salesperson1\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>First additional salesperson to be used if you are splitting commission. It cannot be the same as the primary salesperson or either of the other additional salespersons defined.\r\nYou can assign three additional salespersons to share the commission earned for any sale made to this customer. You indicate the amount of commission that each salesperson should earn, at the end of capturing an order for this customer. \r\nNote: This facility is merely for documentation purposes (i.e. no calculations are actualy performed by the program at the time of capturing the order).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Salesperson2\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Second additional salesperson to be used if you are splitting commission. It cannot be the same as the primary salesperson or either of the other additional salespersons defined. It must be left blank if the first additional salesperson is not defined.\r\nYou can assign three additional salespersons to share the commission earned for any sale made to this customer. You indicate the amount of commission that each salesperson should earn, at the end of capturing an order for this customer. \r\nNote: This facility is merely for documentation purposes (i.e. no calculations are actualy performed by the program at the time of capturing the order).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Salesperson3\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Third additional salesperson to be used if you are splitting commission. It cannot be the same as the primary salesperson or either of the other additional salespersons defined. It must be left blank if the second additional salesperson is not defined.\r\nYou can assign three additional salespersons to share the commission earned for any sale made to this customer. You indicate the amount of commission that each salesperson should earn, at the end of capturing an order for this customer.\r\nNote: This facility is merely for documentation purposes (i.e. no calculations are actualy performed by the program at the time of capturing the order).</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"AddTelephone\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Additional telephone number for the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"Telex\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Telex number for the customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"HighestBalance\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This field is usually one entered during the takeon of a debtors book.Highest balance attained represents the highest balance ever held by the customer and is updated automatically by the system after the initial takeon.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\"/>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"HighInv\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Invoice number of oldest outstanding invoice. These fields are normally updated by the system only. However, during the 'takeon' process of a 'Debtors Book' (New installation or new module) - this information may be available and is useful to the credit controller.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"HighInvDays\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Age of oldest outstanding invoice. These fields are normally updated by the system only. However, during the 'takeon' process of a 'Debtors Book' (New installation or new module) - this information may be available and is useful to the credit controller.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"eSignature\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>GUID for eSignature</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoldToGpsLat\">\r\n    <xsd:annotation>\r\n      <xsd:documentation> This is the sold to address Latitude.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\"/>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"SoldToGpsLong\">\r\n    <xsd:annotation>\r\n      <xsd:documentation> This is the sold to address Longitude.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\"/>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShipToGpsLat\">\r\n    <xsd:annotation>\r\n      <xsd:documentation> This is the ship to address Latitude.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\"/>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"ShipToGpsLong\">\r\n    <xsd:annotation>\r\n      <xsd:documentation> This is the ship to address Longitude.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\"/>\r\n  </xsd:simpleType>\r\n  <xsd:simpleType name=\"LanguageCode\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>Language code. Only saved to the record if you have multi language document printing switched on and the language code differs from the default system language.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:restriction base=\"xsd:string\">\r\n      <xsd:whiteSpace value=\"preserve\"/>\r\n    </xsd:restriction>\r\n  </xsd:simpleType>\r\n  <xsd:complexType mixed=\"false\" name=\"Item\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This element contains information to maintain a single customer.\r\nNOTE: The information held within the key element is mandatory for all functions. Information held outside the key element is optional for Add/Update and is not required for Delete</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:sequence>\r\n      <xsd:element name=\"Key\" type=\"Key\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Name\" type=\"Name\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Salesperson\" type=\"Salesperson\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Branch\" type=\"Branch\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"TermsCode\" type=\"TermsCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ArStatementNo\" type=\"ArStatementNo\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShortName\" type=\"ShortName\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ExemptFinChg\" type=\"ExemptFinChg\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"MaintHistory\" type=\"MaintHistory\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"CreditStatus\" type=\"CreditStatus\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"CreditLimit\" type=\"CreditLimit\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"CreditCheckFlag\" type=\"CreditCheckFlag\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"PriceCode\" type=\"PriceCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"CustomerClass\" type=\"CustomerClass\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"InvDiscCode\" type=\"InvDiscCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"BalanceType\" type=\"BalanceType\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Area\" type=\"Area\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"LineDiscCode\" type=\"LineDiscCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"TaxStatus\" type=\"TaxStatus\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"TaxExemptNumber\" type=\"TaxExemptNumber\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SpecialInstrs\" type=\"SpecialInstrs\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"PriceCategoryTable\" type=\"PriceCategoryTable\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Telephone\" type=\"Telephone\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"TelephoneExtn\" type=\"TelephoneExtn\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Contact\" type=\"Contact\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Fax\" type=\"Fax\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Currency\" type=\"Currency\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"UserField1\" type=\"UserField1\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"UserField2\" type=\"UserField2\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"GstExemptFlag\" type=\"GstExemptFlag\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"GstExemptNum\" type=\"GstExemptNum\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"GstLevel\" type=\"GstLevel\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"DetailMoveReqd\" type=\"DetailMoveReqd\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ContractPrcReqd\" type=\"ContractPrcReqd\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"BuyingGroup1\" type=\"BuyingGroup1\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"BuyingGroup2\" type=\"BuyingGroup2\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"BuyingGroup3\" type=\"BuyingGroup3\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"BuyingGroup4\" type=\"BuyingGroup4\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"BuyingGroup5\" type=\"BuyingGroup5\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"StatementReqd\" type=\"StatementReqd\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"BackOrdReqd\" type=\"BackOrdReqd\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShippingInstrs\" type=\"ShippingInstrs\"/>\r\n      <xsd:element name=\"ShippingInstrsCod\" type=\"ShippingInstrsCod\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"StateCode\" type=\"StateCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"DateCustAdded\" type=\"DateCustAdded\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"StockInterchange\" type=\"StockInterchange\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"MaintLastPrcPaid\" type=\"MaintLastPrcPaid\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"IbtCustomer\" type=\"IbtCustomer\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoDefaultDoc\" type=\"SoDefaultDoc\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"CounterSlsOnly\" type=\"CounterSlsOnly\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Nationality\" type=\"Nationality\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"CustomerOnHold\" type=\"CustomerOnHold\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"InvCommentCode\" type=\"InvCommentCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"EdiSenderCode\" type=\"EdiSenderCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"EdiFlag\" type=\"EdiFlag\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoDefaultType\" type=\"SoDefaultType\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Email\" type=\"Email\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ApplyOrdDisc\" type=\"ApplyOrdDisc\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ApplyLineDisc\" type=\"ApplyLineDisc\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"FaxInvoices\" type=\"FaxInvoices\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"FaxStatements\" type=\"FaxStatements\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"FaxQuotes\" type=\"FaxQuotes\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"DocFax\" type=\"DocFax\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"DocFaxContact\" type=\"DocFaxContact\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoldToAddr1\" type=\"SoldToAddr1\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoldToAddr2\" type=\"SoldToAddr2\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoldToAddr3\" type=\"SoldToAddr3\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoldToAddr3Loc\" type=\"SoldToAddr3Loc\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoldToAddr4\" type=\"SoldToAddr4\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoldToAddr5\" type=\"SoldToAddr5\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoldPostalCode\" type=\"SoldPostalCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShipToAddr1\" type=\"ShipToAddr1\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShipToAddr2\" type=\"ShipToAddr2\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShipToAddr3\" type=\"ShipToAddr3\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShipToAddr3Loc\" type=\"ShipToAddr3Loc\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShipToAddr4\" type=\"ShipToAddr4\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShipToAddr5\" type=\"ShipToAddr5\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShipPostalCode\" type=\"ShipPostalCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"State\" type=\"State\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"CountyZip\" type=\"CountyZip\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"City\" type=\"City\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"State1\" type=\"State1\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"CountyZip1\" type=\"CountyZip1\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"City1\" type=\"City1\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"DefaultOrdType\" type=\"DefaultOrdType\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"PoNumberMandatory\" type=\"PoNumberMandatory\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"CompanyTaxNumber\" type=\"CompanyTaxNumber\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"TransactionNature\" type=\"TransactionNature\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"TransactionNatureC\" type=\"TransactionNatureC\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"DeliveryTerms\" type=\"DeliveryTerms\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"DeliveryTermsC\" type=\"DeliveryTermsC\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"TpmCustomerFlag\" type=\"TpmCustomerFlag\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"TpmCreditCheck\" type=\"TpmCreditCheck\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"TpmPricingFlag\" type=\"TpmPricingFlag\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"RouteCode\" type=\"RouteCode\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"RouteDistance\" type=\"RouteDistance\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SalesWarehouse\" type=\"SalesWarehouse\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"WholeOrderShipFlag\" type=\"WholeOrderShipFlag\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"MinimumOrderValue\" type=\"MinimumOrderValue\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"MinimumOrderChgCod\" type=\"MinimumOrderChgCod\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"UkVatFlag\" type=\"UkVatFlag\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"UkCurrency\" type=\"UkCurrency\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Salesperson1\" type=\"Salesperson1\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Salesperson2\" type=\"Salesperson2\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Salesperson3\" type=\"Salesperson3\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"AddTelephone\" type=\"AddTelephone\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"Telex\" type=\"Telex\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"HighestBalance\" type=\"HighestBalance\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"HighInv\" type=\"HighInv\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"HighInvDays\" type=\"HighInvDays\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"eSignature\" type=\"eSignature\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoldToGpsLat\" type=\"SoldToGpsLat\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"SoldToGpsLong\" type=\"SoldToGpsLong\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShipToGpsLat\" type=\"ShipToGpsLat\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"ShipToGpsLong\" type=\"ShipToGpsLong\"/>\r\n      <xsd:element minOccurs=\"0\" name=\"LanguageCode\" type=\"LanguageCode\"/>\r\n      <xsd:element name=\"AltMethodFlag\" default=\"N\" minOccurs=\"0\">\r\n        <xsd:annotation>\r\n          <xsd:documentation>If the flag is set Y (Yes) then, when adding a stock code with the relevant flag as a line in Sales Order Entry, the alternate stock code substitution will be done automatically.  If not then the supply request window will be displayed.  Default to N. This functionality will only be available after Syspro 7</xsd:documentation>\r\n        </xsd:annotation>\r\n        <xsd:simpleType>\r\n          <xsd:restriction base=\"xsd:string\">\r\n            <xsd:enumeration value=\"N\"/>\r\n            <xsd:enumeration value=\"Y\"/>\r\n          </xsd:restriction>\r\n        </xsd:simpleType>\r\n      </xsd:element>\r\n    </xsd:sequence>\r\n  </xsd:complexType>\r\n  <xsd:complexType mixed=\"false\" name=\"Key\">\r\n    <xsd:annotation>\r\n      <xsd:documentation>This element contains the key information required to maintain a customer.</xsd:documentation>\r\n    </xsd:annotation>\r\n    <xsd:sequence>\r\n      <xsd:element name=\"Customer\" type=\"Customer\"/>\r\n    </xsd:sequence>\r\n  </xsd:complexType>\r\n</xsd:schema>",
+                        "IsSecret": false,
+                        "Name": "DataXml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1,
+                        "Value": "<SetupArCustomer>\r\n  <Item>\r\n    <Key>\r\n      <Customer>Nic</Customer>\r\n    </Key>\r\n    <Name>Test01</Name>\r\n    <Salesperson>100</Salesperson>\r\n    <TermsCode>10</TermsCode>\r\n    <StatementReqd>N</StatementReqd>\r\n    <Branch>10</Branch>\r\n  </Item>\r\n</SetupArCustomer>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "ResponseXml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1,
+                        "Value": "<?xml version=\"1.0\" encoding=\"Windows-1252\"?>\r\n<SetupArCustomer Language=\"05\" Language2=\"EN\" CssStyle=\"\" DecFormat=\"1\" DateFormat=\"01\" Role=\"01\" Version=\"8.0.061\" OperatorPrimaryRole=\"005\">\r\n  <Item>\r\n    <Key>\r\n      <Customer>BEN776</Customer>\r\n    </Key>\r\n  </Item>\r\n  <StatusOfItems>\r\n    <RecordsRead>1</RecordsRead>\r\n    <RecordsInvalid>0</RecordsInvalid>\r\n  </StatusOfItems>\r\n</SetupArCustomer>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 3822
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 0,
+                "DisplayName": "Syspro",
+                "NodeType": 0,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "110f34ac-43d0-ecd0-06fb-1a4146b7a753",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "Success?",
+                "LongDescription": "The response from SYSPRO looks something like this - \n<SetupArCustomer>\n  <Item>\n    <Key>\n      <Customer>BEN776</Customer>\n    </Key>\n  </Item>\n  <StatusOfItems>\n    <RecordsRead>1</RecordsRead>\n    <RecordsInvalid>0</RecordsInvalid>\n  </StatusOfItems>\n</SetupArCustomer>\n\n-----------------------------------------\nSo we use the fx on the input to check against the RecordsInvalid field.",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = 0"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0,
+                        "Value": false
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 3822
+                },
+                "SupportsCustomInputProperties": false,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "RunFrom": 0,
+                "InteractFlags": 0,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "1d8faa3c-559e-84dc-f0ff-a78a387b6544",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "Set KV Success",
+                "LongDescription": "If we are happy with the response from SYSPRO, we write away a Success KV record.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Tst-Accounts"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 3822
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "f7bee632-efd6-c5e3-19fd-cdd8f1f3f5d0",
+                "Name": "GetKeyValues2",
+                "LongDescription": "Once the processing is done fromthe For Each, we retrieve all records processed today, and output it to an Excel spreadsheet. Notice we have to chgenge the Emit fiel to XML for this.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "MatchGroup",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Tst-Accounts"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "MatchKey",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "MatchStatus",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.GetKeyValues2+KeyValueStatusFilter",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success",
+                            "Any"
+                        ],
+                        "Value": "Any"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "StartDate",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "0/0/-1"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "EndDate",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "0/0/0"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Method",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.GetKeyValues2+Methods",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "List",
+                            "CountByValue",
+                            "CountByStatus",
+                            "ListUnpacked"
+                        ],
+                        "Value": "List"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.GetKeyValues2+Emits",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Xml"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4238
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Values 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:19.5893394+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "726c68a0-99ed-f30a-6158-66a36b7fc12c",
+                "Name": "Excel",
+                "LongDescription": "Here we take the output from the Key Value node, and use the Excel node to create a report. This is then sent back to the Variable bar so that the user can access it.",
+                "Version": "1.0.7.6",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "flowgear.Nodes.Excel.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "flowgear.Nodes.Excel.Excel+ExcelVerb",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Open",
+                            "Create",
+                            "Insert",
+                            "OpenWithoutStyling"
+                        ],
+                        "Value": "Create"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Formatting",
+                        "TypeName": "flowgear.Nodes.Excel.Excel+Formats",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "AllText",
+                            "None",
+                            "Smart"
+                        ],
+                        "Value": "AllText"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "TableXml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExcelDocument",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DocumentTemplate",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "InsertHeaders",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0,
+                        "Value": true
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4238
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "InteractFlags": 0,
+                "DisplayName": "Excel",
+                "NodeType": 1,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "cfdebfd9-0d5a-466e-d3ff-bb322373ad0d",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "Set KV Error",
+                "LongDescription": "If something went wrong with the SYSPRO update, we write away an Error KV record.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Tst-Accounts"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 4238
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "1ea6527d-10e7-10ab-5aca-dd1fbe004c34",
+                "TargetNodeId": "67395672-4abe-df69-528b-3e39ed956978",
+                "SourceName": "Start",
+                "TargetName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "726c68a0-99ed-f30a-6158-66a36b7fc12c",
+                "TargetNodeId": "6385354e-3681-8088-834f-b62115368df9",
+                "SourceName": "ExcelDocument",
+                "TargetName": "Report"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "67395672-4abe-df69-528b-3e39ed956978",
+                "TargetNodeId": "3539d94c-24d7-2960-4a90-edd2624332d5",
+                "SourceName": "Response",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "67395672-4abe-df69-528b-3e39ed956978",
+                "TargetNodeId": "3539d94c-24d7-2960-4a90-edd2624332d5",
+                "SourceName": "",
+                "TargetName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "14434bac-cfe3-6ff3-5157-6b016a9748f9",
+                "TargetNodeId": "2df26fbf-1b95-001e-bde7-9ec0bc5e7e80",
+                "SourceName": "",
+                "TargetName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3539d94c-24d7-2960-4a90-edd2624332d5",
+                "TargetNodeId": "14434bac-cfe3-6ff3-5157-6b016a9748f9",
+                "SourceName": "Item",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "2df26fbf-1b95-001e-bde7-9ec0bc5e7e80",
+                "TargetNodeId": "110f34ac-43d0-ecd0-06fb-1a4146b7a753",
+                "SourceName": "",
+                "TargetName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "14434bac-cfe3-6ff3-5157-6b016a9748f9",
+                "TargetNodeId": "2df26fbf-1b95-001e-bde7-9ec0bc5e7e80",
+                "SourceName": "Result",
+                "TargetName": "DataXml"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3539d94c-24d7-2960-4a90-edd2624332d5",
+                "TargetNodeId": "1d8faa3c-559e-84dc-f0ff-a78a387b6544",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "Response.records.Name"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "3539d94c-24d7-2960-4a90-edd2624332d5",
+                "TargetNodeId": "ff242a3f-ff50-4b3b-49a3-5eb39d6102d9",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "2df26fbf-1b95-001e-bde7-9ec0bc5e7e80",
+                "TargetNodeId": "1d8faa3c-559e-84dc-f0ff-a78a387b6544",
+                "SourceName": "ResponseXml",
+                "TargetName": "Value",
+                "Expression": "SetupArCustomer.Item.Key.Customer"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "110f34ac-43d0-ecd0-06fb-1a4146b7a753",
+                "TargetNodeId": "cfdebfd9-0d5a-466e-d3ff-bb322373ad0d",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3539d94c-24d7-2960-4a90-edd2624332d5",
+                "TargetNodeId": "cfdebfd9-0d5a-466e-d3ff-bb322373ad0d",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "Response.records.Name"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "2df26fbf-1b95-001e-bde7-9ec0bc5e7e80",
+                "TargetNodeId": "cfdebfd9-0d5a-466e-d3ff-bb322373ad0d",
+                "SourceName": "ResponseXml",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "110f34ac-43d0-ecd0-06fb-1a4146b7a753",
+                "TargetNodeId": "1d8faa3c-559e-84dc-f0ff-a78a387b6544",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "ff242a3f-ff50-4b3b-49a3-5eb39d6102d9",
+                "TargetNodeId": "1c2dcb6f-900b-538a-f622-e140621e3c84",
+                "SourceName": "Found"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "ff242a3f-ff50-4b3b-49a3-5eb39d6102d9",
+                "TargetNodeId": "14434bac-cfe3-6ff3-5157-6b016a9748f9",
+                "SourceName": "Missing"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ff242a3f-ff50-4b3b-49a3-5eb39d6102d9",
+                "TargetNodeId": "1c2dcb6f-900b-538a-f622-e140621e3c84",
+                "SourceName": "Value",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "1c2dcb6f-900b-538a-f622-e140621e3c84",
+                "TargetNodeId": "14434bac-cfe3-6ff3-5157-6b016a9748f9",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3539d94c-24d7-2960-4a90-edd2624332d5",
+                "TargetNodeId": "ff242a3f-ff50-4b3b-49a3-5eb39d6102d9",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "Response.records.Name"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "3539d94c-24d7-2960-4a90-edd2624332d5",
+                "TargetNodeId": "f7bee632-efd6-c5e3-19fd-cdd8f1f3f5d0",
+                "SourceName": "Finished"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "f7bee632-efd6-c5e3-19fd-cdd8f1f3f5d0",
+                "TargetNodeId": "726c68a0-99ed-f30a-6158-66a36b7fc12c",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "2df26fbf-1b95-001e-bde7-9ec0bc5e7e80",
+                "TargetNodeId": "110f34ac-43d0-ecd0-06fb-1a4146b7a753",
+                "SourceName": "ResponseXml",
+                "TargetName": "Value",
+                "Expression": "SetupArCustomer.StatusOfItems.RecordsInvalid"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f7bee632-efd6-c5e3-19fd-cdd8f1f3f5d0",
+                "TargetNodeId": "726c68a0-99ed-f30a-6158-66a36b7fc12c",
+                "SourceName": "Result",
+                "TargetName": "TableXml"
+            }
+        ],
+        "StartNodeId": "1ea6527d-10e7-10ab-5aca-dd1fbe004c34",
+        "DateCreated": "2021-08-17T17:57:15.23",
+        "DateUpdated": "2021-11-24T09:26:56.587",
+        "ActivityLogLevelMask": 0
+    },
+    "Name": "Salesforce Accounts to SYSPRO Customers",
+    "Description": "This Workflow syncs Salesforce Accounts to SYSPRO as customers, avoiding duplicates and tracking results. After processing, it generates an Excel report summarizing the outcome.\n"
+}
