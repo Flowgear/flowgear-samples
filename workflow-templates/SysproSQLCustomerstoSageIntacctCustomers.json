@@ -1,0 +1,531 @@
+{
+  "Workflow": {
+    "Version": 1,
+    "Revision": 0,
+    "Nodes": [
+      {
+        "NodeId": "2e072a0e-afa3-2165-6c21-0516fcbb29a2",
+        "Name": "Start",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          { "Label": "Start", "IsException": false, "IsDefault": true },
+          { "Label": "Run_Now", "IsException": false, "IsDefault": false },
+          { "Label": "Any_Error", "IsException": true, "IsDefault": false },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": { "X": 6100, "Y": 3640 },
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 1,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "99b5413b-6583-6699-e539-4de0c5a6c113",
+        "Name": "SqlQuery",
+        "Version": "3.1.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "Server",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Database",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "AuthenticationMode",
+                "TypeName": "Flowgear.Nodes.Sql.MsSql.MicrosoftSqlConnection+AuthMode",
+                "ExtendedType": 0,
+                "EnumValues": ["UserCredential", "CertificateCredential"]
+              },
+              {
+                "Name": "UseWinAuth",
+                "TypeName": "System.Boolean",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "UserId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "TenantId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "ClientId",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Certificate",
+                "TypeName": "System.Security.Cryptography.X509Certificates.X509Certificate2",
+                "ExtendedType": 9
+              },
+              {
+                "Name": "AccessToken",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "ConnectionStringFragments",
+                "TypeName": "System.String",
+                "ExtendedType": 4
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.Sql.MsSql.MicrosoftSqlConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Query",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "SELECT *\r\nFROM [TableName]",
+            "Schema": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "XmlQuery",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResultXml",
+            "TypeName": "System.String",
+            "ExtendedType": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RowsAffected",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 6405, "Y": 3640 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Microsoft SQL Query",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-06-23T13:59:18.695534+00:00",
+          "Username": "nicholas.christodoulou@flowgear.net",
+          "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+        },
+        "LongDescription": "Custom SQL Query to retrieve a list of customers"
+      },
+      {
+        "NodeId": "04883b01-6a4f-8003-5c2b-36aca0946651",
+        "Name": "ForEach",
+        "Version": "1.0.0.9",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "",
+            "Schema": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Result/Table"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": ["None", "ParentNode", "ParentAndRootNodes"],
+            "Value": "ParentAndRootNodes"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 1
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Item",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemIndex",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemCount",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "Item", "IsException": false, "IsDefault": true },
+          { "Label": "Finished", "IsException": false, "IsDefault": false },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 6710, "Y": 3640 },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "For Each",
+        "NodeType": 1,
+        "RuntimeVersion": 0,
+        "PublishState": 0,
+        "LongDescription": "Iterate through each Customer to be imported into Sage Intacct"
+      },
+      {
+        "NodeId": "1ab3a572-9d22-470e-f2bf-e1a601a8ad12",
+        "Name": "QuickMap",
+        "Version": "4.0.0.43",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Source",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Result>\r\n  <Table>\r\n    <id>1</id>\r\n    <first_name>James</first_name>\r\n    <last_name>Butt</last_name>\r\n    <company_name>Benton, John B Jr</company_name>\r\n    <address>6649 N Blue Gum St</address>\r\n    <city>New Orleans</city>\r\n    <county>Orleans</county>\r\n    <state>LA</state>\r\n    <zip>70116</zip>\r\n    <phone1>504-621-8927</phone1>\r\n    <phone>504-845-1427</phone>\r\n    <email>jbutt@gmail.com</email>\r\n  </Table>\r\n</Result>"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Mapping",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"Result/Table\"],\"targetPath\":\"Request/CUSTOMER\"},{\"sourcePaths\":[\"Result/Table/id\"],\"targetPath\":\"Request/CUSTOMER/CUSTOMERID\"},{\"sourcePaths\":[\"Result/Table/first_name\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/FIRSTNAME\"},{\"sourcePaths\":[\"Result/Table/last_name\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/LASTNAME\"},{\"sourcePaths\":[\"Result/Table/email\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/EMAIL1\"},{\"sourcePaths\":[\"Result/Table/company_name\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/COMPANYNAME\"},{\"sourcePaths\":[\"Result/Table/phone1\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/PHONE1\"},{\"sourcePaths\":[\"Result/Table/city\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/CITY\"},{\"sourcePaths\":[\"Result/Table/state\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/STATE\"},{\"sourcePaths\":[\"Result/Table/zip\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/ZIP\"},{\"sourcePaths\":[\"Result/Table/address\"],\"targetPath\":\"Request/CUSTOMER/DISPLAYCONTACT/MAILADDRESS/ADDRESS1\"}],\"sourceSchema\":\"<Result>\\r\\n  <Table>\\r\\n    <id>1</id>\\r\\n    <first_name>James</first_name>\\r\\n    <last_name>Butt</last_name>\\r\\n    <company_name>Benton, John B Jr</company_name>\\r\\n    <address>6649 N Blue Gum St</address>\\r\\n    <city>New Orleans</city>\\r\\n    <county>Orleans</county>\\r\\n    <state>LA</state>\\r\\n    <zip>70116</zip>\\r\\n    <phone1>504-621-8927</phone1>\\r\\n    <phone>504-845-1427</phone>\\r\\n    <email>jbutt@gmail.com</email>\\r\\n  </Table>\\r\\n</Result>\",\"sourceSchemaType\":0,\"targetSchema\":\"<Request>\\r\\n  <CUSTOMER>\\r\\n    <CUSTOMERID>value</CUSTOMERID>\\r\\n    <NAME>value</NAME>\\r\\n    <DISPLAYCONTACT>\\r\\n      <FIRSTNAME>value</FIRSTNAME>\\r\\n      <LASTNAME>value</LASTNAME>\\r\\n      <EMAIL1>value</EMAIL1>\\r\\n      <COMPANYNAME>value</COMPANYNAME>\\r\\n      <PHONE1>value</PHONE1>\\r\\n      <MAILADDRESS>\\r\\n        <CITY>value</CITY>\\r\\n        <STATE>value</STATE>\\r\\n        <ZIP>value</ZIP>\\r\\n        <ADDRESS1>value</ADDRESS1>\\r\\n        <ADDRESS2>value</ADDRESS2>\\r\\n      </MAILADDRESS>\\r\\n    </DISPLAYCONTACT>\\r\\n  </CUSTOMER>\\r\\n</Request>\",\"targetSchemaType\":0}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Emit",
+            "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+            "ExtendedType": 0,
+            "EnumValues": ["Auto", "Json", "Xml"],
+            "Value": "Auto"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Request>\r\n  <CUSTOMER>\r\n    <CUSTOMERID>value</CUSTOMERID>\r\n    <NAME>value</NAME>\r\n    <DISPLAYCONTACT>\r\n      <FIRSTNAME>value</FIRSTNAME>\r\n      <LASTNAME>value</LASTNAME>\r\n      <EMAIL1>value</EMAIL1>\r\n      <COMPANYNAME>value</COMPANYNAME>\r\n      <PHONE1>value</PHONE1>\r\n      <MAILADDRESS>\r\n        <CITY>value</CITY>\r\n        <STATE>value</STATE>\r\n        <ZIP>value</ZIP>\r\n        <ADDRESS1>value</ADDRESS1>\r\n        <ADDRESS2>value</ADDRESS2>\r\n      </MAILADDRESS>\r\n    </DISPLAYCONTACT>\r\n  </CUSTOMER>\r\n</Request>"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7015, "Y": 3640 },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "QuickMap",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2024-11-27T15:52:53.0253877+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "948d657b-e37c-4fd3-9bfa-c94f493379f0"
+        },
+        "LongDescription": "Map the values to a Sage Intacct Document"
+      },
+      {
+        "NodeId": "885f8b07-2bee-b5b5-c853-9bb5fa14fec7",
+        "Name": "SageIntacct",
+        "ShortDescription": "CreateCustomer",
+        "LongDescription": "Here we are creating the Customer record in Sage",
+        "Version": "1.2.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiBaseUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "SenderID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "SenderPassword",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "UserID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Password",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "CompanyID",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "create"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Object",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "CUSTOMER"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element maxOccurs=\"unbounded\" name=\"CUSTOMER\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"CUSTOMERID\" type=\"xs:string\"/>\r\n              <xs:element name=\"NAME\" type=\"xs:string\"/>\r\n              <xs:element name=\"DISPLAYCONTACT\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"PRINTAS\" type=\"xs:string\"/>\r\n                    <xs:element name=\"COMPANYNAME\" type=\"xs:string\"/>\r\n                    <xs:element name=\"TAXABLE\" type=\"xs:boolean\"/>\r\n                    <xs:element name=\"TAXGROUP\" type=\"xs:string\"/>\r\n                    <xs:element name=\"PREFIX\" type=\"xs:string\"/>\r\n                    <xs:element name=\"FIRSTNAME\" type=\"xs:string\"/>\r\n                    <xs:element name=\"LASTNAME\" type=\"xs:string\"/>\r\n                    <xs:element name=\"INITIAL\" type=\"xs:string\"/>\r\n                    <xs:element name=\"PHONE1\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"PHONE2\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"CELLPHONE\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"PAGER\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"FAX\" type=\"xs:unsignedByte\"/>\r\n                    <xs:element name=\"EMAIL1\"/>\r\n                    <xs:element name=\"EMAIL2\"/>\r\n                    <xs:element name=\"URL1\"/>\r\n                    <xs:element name=\"URL2\"/>\r\n                    <xs:element name=\"MAILADDRESS\">\r\n                      <xs:complexType>\r\n                        <xs:sequence>\r\n                          <xs:element name=\"ADDRESS1\" type=\"xs:string\"/>\r\n                          <xs:element name=\"ADDRESS2\" type=\"xs:string\"/>\r\n                          <xs:element name=\"CITY\" type=\"xs:string\"/>\r\n                          <xs:element name=\"STATE\" type=\"xs:string\"/>\r\n                          <xs:element name=\"ZIP\" type=\"xs:unsignedInt\"/>\r\n                          <xs:element name=\"COUNTRY\" type=\"xs:string\"/>\r\n                        </xs:sequence>\r\n                      </xs:complexType>\r\n                    </xs:element>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"ONETIME\" type=\"xs:boolean\"/>\r\n              <xs:element name=\"STATUS\" type=\"xs:string\"/>\r\n              <xs:element name=\"HIDEDISPLAYCONTACT\" type=\"xs:boolean\"/>\r\n              <xs:element name=\"CUSTTYPE\" type=\"xs:string\"/>\r\n              <xs:element name=\"PARENTID\" type=\"xs:string\"/>\r\n              <xs:element name=\"GLGROUP\" type=\"xs:string\"/>\r\n              <xs:element name=\"TERRITORYID\" type=\"xs:string\"/>\r\n              <xs:element name=\"SUPDOCID\" type=\"xs:string\"/>\r\n              <xs:element name=\"TERMNAME\" type=\"xs:string\"/>\r\n              <xs:element name=\"OFFSETGLACCOUNTNO\" type=\"xs:unsignedShort\"/>\r\n              <xs:element name=\"ARACCOUNT\" type=\"xs:unsignedShort\"/>\r\n              <xs:element name=\"SHIPPINGMETHOD\" type=\"xs:string\"/>\r\n              <xs:element name=\"RESALENO\" type=\"xs:unsignedByte\"/>\r\n              <xs:element name=\"TAXID\" type=\"xs:string\"/>\r\n              <xs:element name=\"CREDITLIMIT\" type=\"xs:decimal\"/>\r\n              <xs:element name=\"ONHOLD\" type=\"xs:boolean\"/>\r\n              <xs:element name=\"DELIVERY_OPTIONS\" type=\"xs:string\"/>\r\n              <xs:element name=\"CUSTMESSAGEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"COMMENTS\" type=\"xs:string\"/>\r\n              <xs:element name=\"CURRENCY\" type=\"xs:string\"/>\r\n              <xs:element name=\"ARINVOICEPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEQUOTEPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEORDERPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OELISTPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEINVOICEPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEADJPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"OEOTHERPRINTTEMPLATEID\" type=\"xs:string\"/>\r\n              <xs:element name=\"CONTACTINFO\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\"/>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"BILLTO\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\"/>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"SHIPTO\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"CONTACTNAME\" type=\"xs:string\"/>\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"OBJECTRESTRICTION\" type=\"xs:string\"/>\r\n              <xs:element name=\"RESTRICTEDLOCATIONS\" type=\"xs:string\"/>\r\n              <xs:element name=\"RESTRICTEDDEPARTMENTS\" type=\"xs:string\"/>\r\n              <xs:element name=\"CUSTOMFIELD1\" type=\"xs:string\"/>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "<Request>\r\n  <CUSTOMER>\r\n    <CUSTOMERID>value</CUSTOMERID>\r\n    <NAME>value</NAME>\r\n    <DISPLAYCONTACT>\r\n      <MAILADDRESS>\r\n        <CITY>value</CITY>\r\n        <STATE>value</STATE>\r\n        <ZIP>value</ZIP>\r\n        <ADDRESS1>value</ADDRESS1>\r\n        <ADDRESS2>value</ADDRESS2>\r\n      </MAILADDRESS>\r\n      <EMAIL1>value</EMAIL1>\r\n      <COMPANYNAME>value</COMPANYNAME>\r\n      <PHONE1>value</PHONE1>\r\n    </DISPLAYCONTACT>\r\n  </CUSTOMER>\r\n</Request>"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "LocationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "HadError",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": ""
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          { "Label": "", "IsException": false, "IsDefault": true },
+          { "Label": "Error", "IsException": true, "IsDefault": false }
+        ],
+        "NodeVisual": { "X": 7320, "Y": 3640 },
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "DisplayName": "Sage Intacct",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-05-19T14:37:11.2705137+00:00",
+          "Username": "matt.baldner@flowgear.net",
+          "UserKey": "b0d1b54b-4906-441c-8667-8a0b07ff3dbf"
+        }
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "2e072a0e-afa3-2165-6c21-0516fcbb29a2",
+        "TargetNodeId": "99b5413b-6583-6699-e539-4de0c5a6c113",
+        "SourceName": "Start"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "99b5413b-6583-6699-e539-4de0c5a6c113",
+        "TargetNodeId": "04883b01-6a4f-8003-5c2b-36aca0946651",
+        "SourceName": "ResultXml",
+        "TargetName": "SourceDocument"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "99b5413b-6583-6699-e539-4de0c5a6c113",
+        "TargetNodeId": "04883b01-6a4f-8003-5c2b-36aca0946651",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1ab3a572-9d22-470e-f2bf-e1a601a8ad12",
+        "TargetNodeId": "885f8b07-2bee-b5b5-c853-9bb5fa14fec7",
+        "SourceName": "Result",
+        "TargetName": "Request"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "1ab3a572-9d22-470e-f2bf-e1a601a8ad12",
+        "TargetNodeId": "885f8b07-2bee-b5b5-c853-9bb5fa14fec7",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "04883b01-6a4f-8003-5c2b-36aca0946651",
+        "TargetNodeId": "1ab3a572-9d22-470e-f2bf-e1a601a8ad12",
+        "SourceName": "Item"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "04883b01-6a4f-8003-5c2b-36aca0946651",
+        "TargetNodeId": "1ab3a572-9d22-470e-f2bf-e1a601a8ad12",
+        "SourceName": "Item",
+        "TargetName": "Source"
+      }
+    ],
+    "StartNodeId": "2e072a0e-afa3-2165-6c21-0516fcbb29a2",
+    "ActivityLogLevelMask": 255
+  },
+  "Name": "Syspro SQL Customer Sync to Sage Intacct Example",
+  "Description": "This Workflow extracts data from a SQL database, splits the result set, maps the data, and sends it to Sage Intacct as Customer records."
+}
