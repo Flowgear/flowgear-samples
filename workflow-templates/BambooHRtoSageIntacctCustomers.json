@@ -111,12 +111,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "BambooHR",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.BambooHR.BambooHrConnection",
                         "ExtendedType": 2,
-                        "Value": "0ffb9f3f-d9ed-4eb5-8420-6f6c3895dc37"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 0,
@@ -707,12 +707,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "Sage Intacct [Sandbox]",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
                         "ExtendedType": 2,
-                        "Value": "237b42a2-fa73-17a1-a8d6-927a93ab65a9"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 1,
