@@ -1,0 +1,1446 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "5e50931f-17ab-c7c0-cc51-5d52ab38ff79",
+                "Name": "Note",
+                "ShortDescription": "About This Workflow",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow retrieves customers from Xero, checks if each has already been processed using a Key-Value store, and if not, maps and sends their data to BambooHR to create an employee. \nSuccess or error states are logged, and errors trigger an Email Alert. \nThe process ensures each customer is only processed once."
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "380a4c05-8285-4fda-112e-c21170c3ae35",
+                "Name": "VariableBar",
+                "ShortDescription": "SetKeyValueGroup",
+                "LongDescription": "Here we are setting the Key-Value Group ",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "KVGroup",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "BambooHREmployees"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                }
+            },
+            {
+                "NodeId": "ada99ffe-9630-54bc-0c3e-d27243aada36",
+                "Name": "Formatter",
+                "ShortDescription": "CustomerProcessed",
+                "LongDescription": "Here we display a message if the Customer ID has been found in the Key Values",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "Customer: \"{CustomerID}\" has already been processed."
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "CustomerID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "2416731b-9a3c-d4bd-044c-af7edfb04612",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogSuccess",
+                "LongDescription": "Here we write away a Successful Key Value record, so that this specific employee(key) is not processed by this integration again.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 3945
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "112fdaf4-4c4b-5cf2-ae49-fa300f62ef9f",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 4205
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "e27b1291-d8c3-e031-f3a9-621b82b76b24",
+                "Name": "Xero",
+                "ShortDescription": "GetCustomers",
+                "LongDescription": "Here we are retrieving a List of Customers from Xero",
+                "Version": "2.0.1.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "XeroTenantId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "XeroAppClientId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 4
+                            },
+                            {
+                                "Name": "XeroAppClientSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 4
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "ListOfTenants",
+                                "TypeName": "System.String",
+                                "ExtendedType": 4
+                            },
+                            {
+                                "Name": "ReturnHttpFailureResponses",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Xero.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "8ca9ac19-4afa-b653-d9c4-643a48e09c3d"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"Contacts\": [\r\n    {\r\n      \"ContactID\": \"Xero identifier (string)\",\r\n      \"ContactNumber\": \"This can be updated via the API only i.e. This field is read only on the Xero contact screen, used to identify contacts in external systems (max length = 50). If the Contact Number is used, this is displayed as Contact Code in the Contacts UI in Xero. (string)\",\r\n      \"AccountNumber\": \"A user defined account number. This can be updated via the API and the Xero UI (max length = 50) (string)\",\r\n      \"ContactStatus\": \"ACTIVE/ARCHIVED/GDPRREQUEST. Current status of a contact – see contact status types (string)\",\r\n      \"Name\": \"Full name of contact/organisation (max length = 255) (string)\",\r\n      \"FirstName\": \"First name of contact person (max length = 255) (string)\",\r\n      \"LastName\": \"Last name of contact person (max length = 255) (string)\",\r\n      \"EmailAddress\": \"Email address of contact person (umlauts not supported) (max length  = 255) (string)\",\r\n      \"SkypeUserName\": \"Skype user name of contact (string)\",\r\n      \"ContactPersons\": [\r\n        {\r\n          \"FirstName\": \"First name of person (string)\",\r\n          \"LastName\": \"Last name of person (string)\",\r\n          \"EmailAddress\": \"Email address of person (string)\",\r\n          \"IncludeInEmails\": \"boolean to indicate whether contact should be included on emails with invoices etc. (boolean)\"\r\n        }\r\n      ],\r\n      \"BankAccountDetails\": \"Bank account number of contact (string)\",\r\n      \"TaxNumber\": \"Tax number of contact – this is also known as the ABN (Australia), GST Number (New Zealand), VAT Number (UK) or Tax ID Number (US and global) in the Xero UI depending on which regionalized version of Xero you are using (max length = 50) (string)\",\r\n      \"AccountsReceivableTaxType\": \"The tax type from TaxRates (string)\",\r\n      \"AccountsPayableTaxType\": \"The tax type from TaxRates (string)\",\r\n      \"Addresses\": [\r\n        {\r\n          \"AddressType\": \"POBOX/STREET/DELIVERY. define the type of address (string)\",\r\n          \"AddressLine1\": \"max length = 500 (string)\",\r\n          \"AddressLine2\": \"max length = 500 (string)\",\r\n          \"AddressLine3\": \"max length = 500 (string)\",\r\n          \"AddressLine4\": \"max length = 500 (string)\",\r\n          \"City\": \"max length = 255 (string)\",\r\n          \"Region\": \"max length = 255 (string)\",\r\n          \"PostalCode\": \"max length = 50 (string)\",\r\n          \"Country\": \"max length = 50, [A-Z], [a-z] only (string)\",\r\n          \"AttentionTo\": \"max length = 255 (string)\"\r\n        }\r\n      ],\r\n      \"Phones\": [\r\n        {\r\n          \"PhoneType\": \"DEFAULT/DDI/MOBILE/FAX/OFFICE. (string)\",\r\n          \"PhoneNumber\": \"max length = 50 (string)\",\r\n          \"PhoneAreaCode\": \"max length = 10 (string)\",\r\n          \"PhoneCountryCode\": \"max length = 20 (string)\"\r\n        }\r\n      ],\r\n      \"IsSupplier\": \"true or false – Boolean that describes if a contact that has any AP  invoices entered against them. Cannot be set via PUT or POST – it is automatically set when an accounts payable invoice is generated against this contact. (boolean)\",\r\n      \"IsCustomer\": \"true or false – Boolean that describes if a contact has any AR invoices entered against them. Cannot be set via PUT or POST – it is automatically set when an accounts receivable invoice is generated against this contact. (boolean)\",\r\n      \"DefaultCurrency\": \"AED/AFN/ALL/AMD/ANG/AOA/ARS/AUD/AWG/AZN/BAM/BBD/BDT/BGN/BHD/BIF/BMD/BND/BOB/BRL/BSD/BTN/BWP/BYN/BZD/CAD/CDF/CHF/CLP/CNY/COP/CRC/CUC/CUP/CVE/CZK/DJF/DKK/DOP/DZD/EGP/ERN/ETB/EUR/FJD/FKP/GBP/GEL/GGP/GHS/GIP/GMD/GNF/GTQ/GYD/HKD/HNL/HRK/HTG/HUF/IDR/ILS/IMP/INR/IQD/IRR/ISK/JEP/JMD/JOD/JPY/KES/KGS/KHR/KMF/KPW/KRW/KWD/KYD/KZT/LAK/LBP/LKR/LRD/LSL/LYD/MAD/MDL/MGA/MKD/MMK/MNT/MOP/MRU/MUR/MVR/MWK/MXN/MYR/MZN/NAD/NGN/NIO/NOK/NPR/NZD/OMR/PAB/PEN/PGK/PHP/PKR/PLN/PYG/QAR/RON/RSD/RUB/RWF/SAR/SBD/SCR/SDG/SEK/SGD/SHP/SLL/SOS/SPL/SRD/STN/SVC/SYP/SZL/THB/TJS/TMT/TND/TOP/TRY/TTD/TVD/TWD/TZS/UAH/UGX/USD/UYU/UZS/VEF/VND/VUV/WST/XAF/XCD/XDR/XOF/XPF/YER/ZAR/ZMW/ZMK/ZWD/. 3 letter alpha code for the currency – see list of currency codes (string)\",\r\n      \"XeroNetworkKey\": \"Store XeroNetworkKey for contacts. (string)\",\r\n      \"SalesDefaultAccountCode\": \"The default sales account code for contacts (string)\",\r\n      \"PurchasesDefaultAccountCode\": \"The default purchases account code for contacts (string)\",\r\n      \"SalesTrackingCategories\": [\r\n        {\r\n          \"TrackingCategoryName\": \"The default sales tracking category name for contacts (string)\",\r\n          \"TrackingOptionName\": \"The default purchase tracking category name for contacts (string)\"\r\n        }\r\n      ],\r\n      \"PurchasesTrackingCategories\": [\r\n        {\r\n          \"TrackingCategoryName\": \"The default sales tracking category name for contacts (string)\",\r\n          \"TrackingOptionName\": \"The default purchase tracking category name for contacts (string)\"\r\n        }\r\n      ],\r\n      \"TrackingCategoryName\": \"The name of the Tracking Category assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories (string)\",\r\n      \"TrackingCategoryOption\": \"The name of the Tracking Option assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories (string)\",\r\n      \"PaymentTerms\": {\r\n        \"Bills\": {\r\n          \"Day\": \"Day of Month (0-31) (integer)\",\r\n          \"Type\": \"DAYSAFTERBILLDATE/DAYSAFTERBILLMONTH/OFCURRENTMONTH/OFFOLLOWINGMONTH. (string)\"\r\n        },\r\n        \"Sales\": {\r\n          \"Day\": \"Day of Month (0-31) (integer)\",\r\n          \"Type\": \"DAYSAFTERBILLDATE/DAYSAFTERBILLMONTH/OFCURRENTMONTH/OFFOLLOWINGMONTH. (string)\"\r\n        }\r\n      },\r\n      \"UpdatedDateUTC\": \"UTC timestamp of last update to contact (string)\",\r\n      \"ContactGroups\": [\r\n        {\r\n          \"Name\": \"The Name of the contact group. Required when creating a new contact  group (string)\",\r\n          \"Status\": \"ACTIVE/DELETED. The Status of a contact group. To delete a contact group update the status to DELETED. Only contact groups with a status of ACTIVE are returned on GETs. (string)\",\r\n          \"ContactGroupID\": \"The Xero identifier for an contact group – specified as a string following the endpoint name. e.g. /297c2dc5-cc47-4afd-8ec8-74990b8761e9 (string)\",\r\n          \"Contacts\": [\r\n            {\r\n              \"ContactID\": \"Xero identifier (string)\",\r\n              \"ContactNumber\": \"This can be updated via the API only i.e. This field is read only on the Xero contact screen, used to identify contacts in external systems (max length = 50). If the Contact Number is used, this is displayed as Contact Code in the Contacts UI in Xero. (string)\",\r\n              \"AccountNumber\": \"A user defined account number. This can be updated via the API and the Xero UI (max length = 50) (string)\",\r\n              \"ContactStatus\": \"ACTIVE/ARCHIVED/GDPRREQUEST. Current status of a contact – see contact status types (string)\",\r\n              \"Name\": \"Full name of contact/organisation (max length = 255) (string)\",\r\n              \"FirstName\": \"First name of contact person (max length = 255) (string)\",\r\n              \"LastName\": \"Last name of contact person (max length = 255) (string)\",\r\n              \"EmailAddress\": \"Email address of contact person (umlauts not supported) (max length  = 255) (string)\",\r\n              \"SkypeUserName\": \"Skype user name of contact (string)\",\r\n              \"ContactPersons\": [\r\n                {\r\n                  \"FirstName\": \"First name of person (string)\",\r\n                  \"LastName\": \"Last name of person (string)\",\r\n                  \"EmailAddress\": \"Email address of person (string)\",\r\n                  \"IncludeInEmails\": \"boolean to indicate whether contact should be included on emails with invoices etc. (boolean)\"\r\n                }\r\n              ],\r\n              \"BankAccountDetails\": \"Bank account number of contact (string)\",\r\n              \"TaxNumber\": \"Tax number of contact – this is also known as the ABN (Australia), GST Number (New Zealand), VAT Number (UK) or Tax ID Number (US and global) in the Xero UI depending on which regionalized version of Xero you are using (max length = 50) (string)\",\r\n              \"AccountsReceivableTaxType\": \"The tax type from TaxRates (string)\",\r\n              \"AccountsPayableTaxType\": \"The tax type from TaxRates (string)\",\r\n              \"Addresses\": [\r\n                {\r\n                  \"AddressType\": \"POBOX/STREET/DELIVERY. define the type of address (string)\",\r\n                  \"AddressLine1\": \"max length = 500 (string)\",\r\n                  \"AddressLine2\": \"max length = 500 (string)\",\r\n                  \"AddressLine3\": \"max length = 500 (string)\",\r\n                  \"AddressLine4\": \"max length = 500 (string)\",\r\n                  \"City\": \"max length = 255 (string)\",\r\n                  \"Region\": \"max length = 255 (string)\",\r\n                  \"PostalCode\": \"max length = 50 (string)\",\r\n                  \"Country\": \"max length = 50, [A-Z], [a-z] only (string)\",\r\n                  \"AttentionTo\": \"max length = 255 (string)\"\r\n                }\r\n              ],\r\n              \"Phones\": [\r\n                {\r\n                  \"PhoneType\": \"DEFAULT/DDI/MOBILE/FAX/OFFICE. (string)\",\r\n                  \"PhoneNumber\": \"max length = 50 (string)\",\r\n                  \"PhoneAreaCode\": \"max length = 10 (string)\",\r\n                  \"PhoneCountryCode\": \"max length = 20 (string)\"\r\n                }\r\n              ],\r\n              \"IsSupplier\": \"true or false – Boolean that describes if a contact that has any AP  invoices entered against them. Cannot be set via PUT or POST – it is automatically set when an accounts payable invoice is generated against this contact. (boolean)\",\r\n              \"IsCustomer\": \"true or false – Boolean that describes if a contact has any AR invoices entered against them. Cannot be set via PUT or POST – it is automatically set when an accounts receivable invoice is generated against this contact. (boolean)\",\r\n              \"DefaultCurrency\": \"AED/AFN/ALL/AMD/ANG/AOA/ARS/AUD/AWG/AZN/BAM/BBD/BDT/BGN/BHD/BIF/BMD/BND/BOB/BRL/BSD/BTN/BWP/BYN/BZD/CAD/CDF/CHF/CLP/CNY/COP/CRC/CUC/CUP/CVE/CZK/DJF/DKK/DOP/DZD/EGP/ERN/ETB/EUR/FJD/FKP/GBP/GEL/GGP/GHS/GIP/GMD/GNF/GTQ/GYD/HKD/HNL/HRK/HTG/HUF/IDR/ILS/IMP/INR/IQD/IRR/ISK/JEP/JMD/JOD/JPY/KES/KGS/KHR/KMF/KPW/KRW/KWD/KYD/KZT/LAK/LBP/LKR/LRD/LSL/LYD/MAD/MDL/MGA/MKD/MMK/MNT/MOP/MRU/MUR/MVR/MWK/MXN/MYR/MZN/NAD/NGN/NIO/NOK/NPR/NZD/OMR/PAB/PEN/PGK/PHP/PKR/PLN/PYG/QAR/RON/RSD/RUB/RWF/SAR/SBD/SCR/SDG/SEK/SGD/SHP/SLL/SOS/SPL/SRD/STN/SVC/SYP/SZL/THB/TJS/TMT/TND/TOP/TRY/TTD/TVD/TWD/TZS/UAH/UGX/USD/UYU/UZS/VEF/VND/VUV/WST/XAF/XCD/XDR/XOF/XPF/YER/ZAR/ZMW/ZMK/ZWD/. 3 letter alpha code for the currency – see list of currency codes (string)\",\r\n              \"XeroNetworkKey\": \"Store XeroNetworkKey for contacts. (string)\",\r\n              \"SalesDefaultAccountCode\": \"The default sales account code for contacts (string)\",\r\n              \"PurchasesDefaultAccountCode\": \"The default purchases account code for contacts (string)\",\r\n              \"SalesTrackingCategories\": [\r\n                {\r\n                  \"TrackingCategoryName\": \"The default sales tracking category name for contacts (string)\",\r\n                  \"TrackingOptionName\": \"The default purchase tracking category name for contacts (string)\"\r\n                }\r\n              ],\r\n              \"PurchasesTrackingCategories\": [\r\n                {\r\n                  \"TrackingCategoryName\": \"The default sales tracking category name for contacts (string)\",\r\n                  \"TrackingOptionName\": \"The default purchase tracking category name for contacts (string)\"\r\n                }\r\n              ],\r\n              \"TrackingCategoryName\": \"The name of the Tracking Category assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories (string)\",\r\n              \"TrackingCategoryOption\": \"The name of the Tracking Option assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories (string)\",\r\n              \"PaymentTerms\": {\r\n                \"Bills\": {\r\n                  \"Day\": \"Day of Month (0-31) (integer)\",\r\n                  \"Type\": \"DAYSAFTERBILLDATE/DAYSAFTERBILLMONTH/OFCURRENTMONTH/OFFOLLOWINGMONTH. (string)\"\r\n                },\r\n                \"Sales\": {\r\n                  \"Day\": \"Day of Month (0-31) (integer)\",\r\n                  \"Type\": \"DAYSAFTERBILLDATE/DAYSAFTERBILLMONTH/OFCURRENTMONTH/OFFOLLOWINGMONTH. (string)\"\r\n                }\r\n              },\r\n              \"UpdatedDateUTC\": \"UTC timestamp of last update to contact (string)\",\r\n              \"ContactGroups\": [\r\n                {\r\n                  \"Name\": \"The Name of the contact group. Required when creating a new contact  group (string)\",\r\n                  \"Status\": \"ACTIVE/DELETED. The Status of a contact group. To delete a contact group update the status to DELETED. Only contact groups with a status of ACTIVE are returned on GETs. (string)\",\r\n                  \"ContactGroupID\": \"The Xero identifier for an contact group – specified as a string following the endpoint name. e.g. /297c2dc5-cc47-4afd-8ec8-74990b8761e9 (string)\",\r\n                  \"Contacts\": [\r\n                    {\r\n                      \"ContactID\": \"Xero identifier (string)\",\r\n                      \"ContactNumber\": \"This can be updated via the API only i.e. This field is read only on the Xero contact screen, used to identify contacts in external systems (max length = 50). If the Contact Number is used, this is displayed as Contact Code in the Contacts UI in Xero. (string)\",\r\n                      \"AccountNumber\": \"A user defined account number. This can be updated via the API and the Xero UI (max length = 50) (string)\",\r\n                      \"ContactStatus\": \"ACTIVE/ARCHIVED/GDPRREQUEST. Current status of a contact – see contact status types (string)\",\r\n                      \"Name\": \"Full name of contact/organisation (max length = 255) (string)\",\r\n                      \"FirstName\": \"First name of contact person (max length = 255) (string)\",\r\n                      \"LastName\": \"Last name of contact person (max length = 255) (string)\",\r\n                      \"EmailAddress\": \"Email address of contact person (umlauts not supported) (max length  = 255) (string)\",\r\n                      \"SkypeUserName\": \"Skype user name of contact (string)\",\r\n                      \"ContactPersons\": [],\r\n                      \"BankAccountDetails\": \"Bank account number of contact (string)\",\r\n                      \"TaxNumber\": \"Tax number of contact – this is also known as the ABN (Australia), GST Number (New Zealand), VAT Number (UK) or Tax ID Number (US and global) in the Xero UI depending on which regionalized version of Xero you are using (max length = 50) (string)\",\r\n                      \"AccountsReceivableTaxType\": \"The tax type from TaxRates (string)\",\r\n                      \"AccountsPayableTaxType\": \"The tax type from TaxRates (string)\",\r\n                      \"Addresses\": [],\r\n                      \"Phones\": [],\r\n                      \"IsSupplier\": \"true or false – Boolean that describes if a contact that has any AP  invoices entered against them. Cannot be set via PUT or POST – it is automatically set when an accounts payable invoice is generated against this contact. (boolean)\",\r\n                      \"IsCustomer\": \"true or false – Boolean that describes if a contact has any AR invoices entered against them. Cannot be set via PUT or POST – it is automatically set when an accounts receivable invoice is generated against this contact. (boolean)\",\r\n                      \"DefaultCurrency\": \"AED/AFN/ALL/AMD/ANG/AOA/ARS/AUD/AWG/AZN/BAM/BBD/BDT/BGN/BHD/BIF/BMD/BND/BOB/BRL/BSD/BTN/BWP/BYN/BZD/CAD/CDF/CHF/CLP/CNY/COP/CRC/CUC/CUP/CVE/CZK/DJF/DKK/DOP/DZD/EGP/ERN/ETB/EUR/FJD/FKP/GBP/GEL/GGP/GHS/GIP/GMD/GNF/GTQ/GYD/HKD/HNL/HRK/HTG/HUF/IDR/ILS/IMP/INR/IQD/IRR/ISK/JEP/JMD/JOD/JPY/KES/KGS/KHR/KMF/KPW/KRW/KWD/KYD/KZT/LAK/LBP/LKR/LRD/LSL/LYD/MAD/MDL/MGA/MKD/MMK/MNT/MOP/MRU/MUR/MVR/MWK/MXN/MYR/MZN/NAD/NGN/NIO/NOK/NPR/NZD/OMR/PAB/PEN/PGK/PHP/PKR/PLN/PYG/QAR/RON/RSD/RUB/RWF/SAR/SBD/SCR/SDG/SEK/SGD/SHP/SLL/SOS/SPL/SRD/STN/SVC/SYP/SZL/THB/TJS/TMT/TND/TOP/TRY/TTD/TVD/TWD/TZS/UAH/UGX/USD/UYU/UZS/VEF/VND/VUV/WST/XAF/XCD/XDR/XOF/XPF/YER/ZAR/ZMW/ZMK/ZWD/. 3 letter alpha code for the currency – see list of currency codes (string)\",\r\n                      \"XeroNetworkKey\": \"Store XeroNetworkKey for contacts. (string)\",\r\n                      \"SalesDefaultAccountCode\": \"The default sales account code for contacts (string)\",\r\n                      \"PurchasesDefaultAccountCode\": \"The default purchases account code for contacts (string)\",\r\n                      \"SalesTrackingCategories\": [],\r\n                      \"PurchasesTrackingCategories\": [],\r\n                      \"TrackingCategoryName\": \"The name of the Tracking Category assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories (string)\",\r\n                      \"TrackingCategoryOption\": \"The name of the Tracking Option assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories (string)\",\r\n                      \"PaymentTerms\": {},\r\n                      \"UpdatedDateUTC\": \"UTC timestamp of last update to contact (string)\",\r\n                      \"ContactGroups\": [],\r\n                      \"Website\": \"Website address for contact (read only) (string)\",\r\n                      \"BrandingTheme\": {},\r\n                      \"BatchPayments\": \"Bank details for use on a batch payment stored with each contact ()\",\r\n                      \"Discount\": \"The default discount rate for the contact (read only) (number)\",\r\n                      \"Balances\": {},\r\n                      \"Attachments\": [],\r\n                      \"HasAttachments\": \"A boolean to indicate if a contact has an attachment (boolean)\",\r\n                      \"ValidationErrors\": [],\r\n                      \"HasValidationErrors\": \"A boolean to indicate if a contact has an validation errors (boolean)\",\r\n                      \"StatusAttributeString\": \"Status of object (string)\"\r\n                    }\r\n                  ]\r\n                }\r\n              ],\r\n              \"Website\": \"Website address for contact (read only) (string)\",\r\n              \"BrandingTheme\": {\r\n                \"BrandingThemeID\": \"Xero identifier (string)\",\r\n                \"Name\": \"Name of branding theme (string)\",\r\n                \"LogoUrl\": \"The location of the image file used as the logo on this branding theme (string)\",\r\n                \"Type\": \"INVOICE. Always INVOICE (string)\",\r\n                \"SortOrder\": \"Integer – ranked order of branding theme. The default branding theme has a value of 0 (integer)\",\r\n                \"CreatedDateUTC\": \"UTC timestamp of creation date of branding theme (string)\"\r\n              },\r\n              \"BatchPayments\": \"Bank details for use on a batch payment stored with each contact ()\",\r\n              \"Discount\": \"The default discount rate for the contact (read only) (number)\",\r\n              \"Balances\": {\r\n                \"AccountsReceivable\": {\r\n                  \"Outstanding\": \"(number)\",\r\n                  \"Overdue\": \"(number)\"\r\n                },\r\n                \"AccountsPayable\": {\r\n                  \"Outstanding\": \"(number)\",\r\n                  \"Overdue\": \"(number)\"\r\n                }\r\n              },\r\n              \"Attachments\": [\r\n                {\r\n                  \"AttachmentID\": \"Unique ID for the file (string)\",\r\n                  \"FileName\": \"Name of the file (string)\",\r\n                  \"Url\": \"URL to the file on xero.com (string)\",\r\n                  \"MimeType\": \"Type of file (string)\",\r\n                  \"ContentLength\": \"Length of the file content (number)\",\r\n                  \"IncludeOnline\": \"Include the file with the online invoice (boolean)\"\r\n                }\r\n              ],\r\n              \"HasAttachments\": \"A boolean to indicate if a contact has an attachment (boolean)\",\r\n              \"ValidationErrors\": [\r\n                {\r\n                  \"Message\": \"Validation error message (string)\"\r\n                }\r\n              ],\r\n              \"HasValidationErrors\": \"A boolean to indicate if a contact has an validation errors (boolean)\",\r\n              \"StatusAttributeString\": \"Status of object (string)\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"Website\": \"Website address for contact (read only) (string)\",\r\n      \"BrandingTheme\": {\r\n        \"BrandingThemeID\": \"Xero identifier (string)\",\r\n        \"Name\": \"Name of branding theme (string)\",\r\n        \"LogoUrl\": \"The location of the image file used as the logo on this branding theme (string)\",\r\n        \"Type\": \"INVOICE. Always INVOICE (string)\",\r\n        \"SortOrder\": \"Integer – ranked order of branding theme. The default branding theme has a value of 0 (integer)\",\r\n        \"CreatedDateUTC\": \"UTC timestamp of creation date of branding theme (string)\"\r\n      },\r\n      \"BatchPayments\": \"Bank details for use on a batch payment stored with each contact ()\",\r\n      \"Discount\": \"The default discount rate for the contact (read only) (number)\",\r\n      \"Balances\": {\r\n        \"AccountsReceivable\": {\r\n          \"Outstanding\": \"(number)\",\r\n          \"Overdue\": \"(number)\"\r\n        },\r\n        \"AccountsPayable\": {\r\n          \"Outstanding\": \"(number)\",\r\n          \"Overdue\": \"(number)\"\r\n        }\r\n      },\r\n      \"Attachments\": [\r\n        {\r\n          \"AttachmentID\": \"Unique ID for the file (string)\",\r\n          \"FileName\": \"Name of the file (string)\",\r\n          \"Url\": \"URL to the file on xero.com (string)\",\r\n          \"MimeType\": \"Type of file (string)\",\r\n          \"ContentLength\": \"Length of the file content (number)\",\r\n          \"IncludeOnline\": \"Include the file with the online invoice (boolean)\"\r\n        }\r\n      ],\r\n      \"HasAttachments\": \"A boolean to indicate if a contact has an attachment (boolean)\",\r\n      \"ValidationErrors\": [\r\n        {\r\n          \"Message\": \"Validation error message (string)\"\r\n        }\r\n      ],\r\n      \"HasValidationErrors\": \"A boolean to indicate if a contact has an validation errors (boolean)\",\r\n      \"StatusAttributeString\": \"Status of object (string)\"\r\n    }\r\n  ]\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ResponseCode",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Allows you to retrieve all contacts in a Xero organisation"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "order",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Name"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Xero",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-01-03T08:17:23.4483606+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "03f756ae-bd90-e59f-a74a-f664d9b0ba7c",
+                "Name": "ForEach",
+                "ShortDescription": "SplitRecords",
+                "LongDescription": "Here we are using a For Each node to iterate through each customer record found in the Xero response payload.",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Contacts[*].ContactID"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "ParentNode"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": "1"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"ContactID\":\"0b07704a-aa92-417b-9123-8720024ce74e\",\"AccountNumber\":\"300741865692\",\"ContactStatus\":\"ACTIVE\",\"Name\":\"Yes Ofcourse\",\"FirstName\":\"Yes\",\"LastName\":\"Ofcourse\",\"EmailAddress\":\"\",\"BankAccountDetails\":\"\",\"Addresses\":[{\"AddressType\":\"STREET\",\"City\":\"\",\"Region\":\"\",\"PostalCode\":\"\",\"Country\":\"\"},{\"AddressType\":\"POBOX\",\"City\":\"\",\"Region\":\"\",\"PostalCode\":\"\",\"Country\":\"\"}],\"Phones\":[{\"PhoneType\":\"DDI\",\"PhoneNumber\":\"\",\"PhoneAreaCode\":\"\",\"PhoneCountryCode\":\"\"},{\"PhoneType\":\"DEFAULT\",\"PhoneNumber\":\"\",\"PhoneAreaCode\":\"\",\"PhoneCountryCode\":\"\"},{\"PhoneType\":\"FAX\",\"PhoneNumber\":\"\",\"PhoneAreaCode\":\"\",\"PhoneCountryCode\":\"\"},{\"PhoneType\":\"MOBILE\",\"PhoneNumber\":\"\",\"PhoneAreaCode\":\"\",\"PhoneCountryCode\":\"\"}],\"UpdatedDateUTC\":\"2025-07-08T08:38:03.46+00:00\",\"ContactGroups\":[],\"IsSupplier\":false,\"IsCustomer\":false,\"ContactPersons\":[],\"HasAttachments\":false,\"HasValidationErrors\":false}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:23.8561624+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "31722ca6-5987-4cfe-98ca-159ed1c36b41"
+                }
+            },
+            {
+                "NodeId": "d620dd03-a6a1-71c4-4fc1-9fe4ecff0c40",
+                "Name": "GetKeyValue2",
+                "ShortDescription": "CustomerFound?",
+                "LongDescription": "Here we check the Key value records to see if this records has been processed before. If nothing found, it will process.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DateTime",
+                        "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+                        "ExtendedType": 0,
+                        "Value": "2000-01-01T00:00:00"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Found",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Missing",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:18.3456334+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "aa116653-ce6a-1029-87ae-4d10b3853505",
+                "Name": "QuickMap",
+                "ShortDescription": "MapCustomer",
+                "LongDescription": "We are using the Quickmap node to do some validations and format the payload into a Sage friendly format. Note the change to the CustomerID, which is now our Key.",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"Name\"],\"targetPath\":\"displayName\",\"mapExpression\":\"FIRST({Name})\"},{\"sourcePaths\":[\"FirstName\"],\"targetPath\":\"firstName\",\"mapExpression\":\"FIRST({FirstName})\"},{\"sourcePaths\":[\"LastName\"],\"targetPath\":\"lastName\",\"mapExpression\":\"FIRST({LastName})\"},{\"sourcePaths\":[],\"targetPath\":\"jobTitle\",\"mapExpression\":\"\\\"Employee_Test\\\"\"},{\"sourcePaths\":[\"Phones/PhoneNumber\"],\"targetPath\":\"mobileNumber\",\"mapExpression\":\"IIF(ISEMPTY({PhoneNumber}), \\\"null\\\", FIRST({PhoneNumber}))\"},{\"sourcePaths\":[\"EmailAddress\"],\"targetPath\":\"workEmail\",\"mapExpression\":\"IIF(ISEMPTY({EmailAddress}), \\\"null\\\", FIRST({EmailAddress}))\"}],\"sourceSchema\":\"{\\\"ContactID\\\":\\\"0b07704a-aa92-417b-9123-8720024ce74e\\\",\\\"AccountNumber\\\":\\\"300741865692\\\",\\\"ContactStatus\\\":\\\"ACTIVE\\\",\\\"Name\\\":\\\"Yes Ofcourse\\\",\\\"FirstName\\\":\\\"Yes\\\",\\\"LastName\\\":\\\"Ofcourse\\\",\\\"EmailAddress\\\":\\\"\\\",\\\"BankAccountDetails\\\":\\\"\\\",\\\"Addresses\\\":[{\\\"AddressType\\\":\\\"STREET\\\",\\\"City\\\":\\\"\\\",\\\"Region\\\":\\\"\\\",\\\"PostalCode\\\":\\\"\\\",\\\"Country\\\":\\\"\\\"},{\\\"AddressType\\\":\\\"POBOX\\\",\\\"City\\\":\\\"\\\",\\\"Region\\\":\\\"\\\",\\\"PostalCode\\\":\\\"\\\",\\\"Country\\\":\\\"\\\"}],\\\"Phones\\\":[{\\\"PhoneType\\\":\\\"DDI\\\",\\\"PhoneNumber\\\":\\\"\\\",\\\"PhoneAreaCode\\\":\\\"\\\",\\\"PhoneCountryCode\\\":\\\"\\\"},{\\\"PhoneType\\\":\\\"DEFAULT\\\",\\\"PhoneNumber\\\":\\\"\\\",\\\"PhoneAreaCode\\\":\\\"\\\",\\\"PhoneCountryCode\\\":\\\"\\\"},{\\\"PhoneType\\\":\\\"FAX\\\",\\\"PhoneNumber\\\":\\\"\\\",\\\"PhoneAreaCode\\\":\\\"\\\",\\\"PhoneCountryCode\\\":\\\"\\\"},{\\\"PhoneType\\\":\\\"MOBILE\\\",\\\"PhoneNumber\\\":\\\"\\\",\\\"PhoneAreaCode\\\":\\\"\\\",\\\"PhoneCountryCode\\\":\\\"\\\"}],\\\"UpdatedDateUTC\\\":\\\"2025-07-08T08:38:03.46+00:00\\\",\\\"ContactGroups\\\":[],\\\"IsSupplier\\\":false,\\\"IsCustomer\\\":false,\\\"ContactPersons\\\":[],\\\"HasAttachments\\\":false,\\\"HasValidationErrors\\\":false}\",\"sourceSchemaType\":2,\"targetSchema\":\"{\\r\\n  \\\"displayName\\\": \\\"(string)\\\",\\r\\n  \\\"firstName\\\": \\\"(string)\\\",\\r\\n  \\\"lastName\\\": \\\"(string)\\\",\\r\\n  \\\"jobTitle\\\": \\\"(string)\\\",\\r\\n  \\\"workNumber\\\": \\\"(string)\\\",\\r\\n  \\\"mobileNumber\\\": \\\"(string)\\\",\\r\\n  \\\"workEmail\\\": \\\"(string)\\\"\\r\\n}\",\"targetSchemaType\":2}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-01-26T08:48:08.2149778+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "e03c425c-64b5-a9b6-9e5c-480ca5501555",
+                "Name": "BambooHR",
+                "ShortDescription": "CreateEmployee",
+                "LongDescription": "Here we use the BambooHR node to retrieve a list of Employees. ",
+                "Version": "1.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyDomain",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.BambooHR.BambooHrConnection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "47788a95-a329-4a55-47dd-597127a590e9"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Add Employee"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"displayName\": \"(string)\",\r\n  \"firstName\": \"(string)\",\r\n  \"lastName\": \"(string)\",\r\n  \"jobTitle\": \"(string)\",\r\n  \"workNumber\": \"(string)\",\r\n  \"mobileNumber\": \"(string)\",\r\n  \"workEmail\": \"(string)\"\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"statusCode\": 201,\r\n  \"status\": \"created\",\r\n  \"location\": \"https://api.bamboohr.com/api/gateway.php/flowgearbambootesting/v1/employees/135\",\r\n  \"id\": \"135\"\r\n}"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "BambooHR",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-19T07:07:47.0853582+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "7213f2cb-d0d4-603a-50c1-5435dcab450b",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "EmployeeCreated",
+                "LongDescription": "We check to see if the create in Sage was Successful or not.",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = 201"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "11686e36-fddc-c32c-cfa8-58261b00ddec",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogError",
+                "LongDescription": "Here we write away an Error Key Value record, so that if this employee(Key) get's processed again, it will try and run the update again, until this changes to Successful.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "649ce868-0221-a0b6-3569-718d96851fcd",
+                "Name": "Formatter",
+                "ShortDescription": "BuildErrorMessage",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "Please see details for the error returned from below:<br/><br/>\r\n\"{Error}\""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Error",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 4621
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "a04e12e1-ac80-d54e-1dce-661d8c9e7406",
+                "Name": "EmailAlert",
+                "ShortDescription": "SendErrorAlert",
+                "Version": "1.0.4.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Recipients",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "template@flowgear.net"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Subject",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Employee Failed to Create in BambooHR."
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Body",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HtmlBody",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0,
+                        "Value": true
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "PreparedBody",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "BodyProcessor",
+                        "TypeName": "flowgear.Nodes.fgSystem.EmailAlert+BodyProcessors",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "XmlToHtmlTable"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "AttachmentName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Attachment",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 4621
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Email Alert",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-06-19T06:45:58.5367915+00:00",
+                    "Username": "stefan.pietersen@flowgear.net",
+                    "UserKey": "38c578cd-1ab9-4980-8d1f-502c9d63204f"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "03f756ae-bd90-e59f-a74a-f664d9b0ba7c",
+                "TargetNodeId": "aa116653-ce6a-1029-87ae-4d10b3853505",
+                "SourceName": "Item",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7213f2cb-d0d4-603a-50c1-5435dcab450b",
+                "TargetNodeId": "2416731b-9a3c-d4bd-044c-af7edfb04612",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "380a4c05-8285-4fda-112e-c21170c3ae35",
+                "TargetNodeId": "11686e36-fddc-c32c-cfa8-58261b00ddec",
+                "SourceName": "KVGroup",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "380a4c05-8285-4fda-112e-c21170c3ae35",
+                "TargetNodeId": "2416731b-9a3c-d4bd-044c-af7edfb04612",
+                "SourceName": "KVGroup",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "380a4c05-8285-4fda-112e-c21170c3ae35",
+                "TargetNodeId": "d620dd03-a6a1-71c4-4fc1-9fe4ecff0c40",
+                "SourceName": "KVGroup",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "112fdaf4-4c4b-5cf2-ae49-fa300f62ef9f",
+                "TargetNodeId": "e27b1291-d8c3-e031-f3a9-621b82b76b24",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e27b1291-d8c3-e031-f3a9-621b82b76b24",
+                "TargetNodeId": "03f756ae-bd90-e59f-a74a-f664d9b0ba7c",
+                "SourceName": "Response",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "e27b1291-d8c3-e031-f3a9-621b82b76b24",
+                "TargetNodeId": "03f756ae-bd90-e59f-a74a-f664d9b0ba7c",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "03f756ae-bd90-e59f-a74a-f664d9b0ba7c",
+                "TargetNodeId": "d620dd03-a6a1-71c4-4fc1-9fe4ecff0c40",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "03f756ae-bd90-e59f-a74a-f664d9b0ba7c",
+                "TargetNodeId": "d620dd03-a6a1-71c4-4fc1-9fe4ecff0c40",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "AccountNumber"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d620dd03-a6a1-71c4-4fc1-9fe4ecff0c40",
+                "TargetNodeId": "ada99ffe-9630-54bc-0c3e-d27243aada36",
+                "SourceName": "Found"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "03f756ae-bd90-e59f-a74a-f664d9b0ba7c",
+                "TargetNodeId": "ada99ffe-9630-54bc-0c3e-d27243aada36",
+                "SourceName": "Item",
+                "TargetName": "CustomerID",
+                "Expression": "AccountNumber"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d620dd03-a6a1-71c4-4fc1-9fe4ecff0c40",
+                "TargetNodeId": "aa116653-ce6a-1029-87ae-4d10b3853505",
+                "SourceName": "Missing"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "aa116653-ce6a-1029-87ae-4d10b3853505",
+                "TargetNodeId": "e03c425c-64b5-a9b6-9e5c-480ca5501555",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "aa116653-ce6a-1029-87ae-4d10b3853505",
+                "TargetNodeId": "e03c425c-64b5-a9b6-9e5c-480ca5501555",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "03f756ae-bd90-e59f-a74a-f664d9b0ba7c",
+                "TargetNodeId": "2416731b-9a3c-d4bd-044c-af7edfb04612",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "AccountNumber"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "03f756ae-bd90-e59f-a74a-f664d9b0ba7c",
+                "TargetNodeId": "11686e36-fddc-c32c-cfa8-58261b00ddec",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "AccountNumber"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e03c425c-64b5-a9b6-9e5c-480ca5501555",
+                "TargetNodeId": "7213f2cb-d0d4-603a-50c1-5435dcab450b",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "statusCode"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7213f2cb-d0d4-603a-50c1-5435dcab450b",
+                "TargetNodeId": "11686e36-fddc-c32c-cfa8-58261b00ddec",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "a04e12e1-ac80-d54e-1dce-661d8c9e7406",
+                "TargetNodeId": "11686e36-fddc-c32c-cfa8-58261b00ddec",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e03c425c-64b5-a9b6-9e5c-480ca5501555",
+                "TargetNodeId": "2416731b-9a3c-d4bd-044c-af7edfb04612",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "status"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "e03c425c-64b5-a9b6-9e5c-480ca5501555",
+                "TargetNodeId": "649ce868-0221-a0b6-3569-718d96851fcd",
+                "SourceName": "Error"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "112fdaf4-4c4b-5cf2-ae49-fa300f62ef9f",
+                "TargetNodeId": "649ce868-0221-a0b6-3569-718d96851fcd",
+                "SourceName": "Last_Error_Info",
+                "TargetName": "Error"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "649ce868-0221-a0b6-3569-718d96851fcd",
+                "TargetNodeId": "a04e12e1-ac80-d54e-1dce-661d8c9e7406",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "649ce868-0221-a0b6-3569-718d96851fcd",
+                "TargetNodeId": "a04e12e1-ac80-d54e-1dce-661d8c9e7406",
+                "SourceName": "Result",
+                "TargetName": "Body"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "649ce868-0221-a0b6-3569-718d96851fcd",
+                "TargetNodeId": "11686e36-fddc-c32c-cfa8-58261b00ddec",
+                "SourceName": "Result",
+                "TargetName": "Value"
+            }
+        ],
+        "StartNodeId": "112fdaf4-4c4b-5cf2-ae49-fa300f62ef9f",
+        "ActivityLogLevelMask": 0
+    },
+    "Name": "Xero to BambooHR Employees",
+    "Description": "This Workflow retrieves customers from Xero and checks a Key-Value store to determine if they've already been processed. If not, it maps and sends their data to BambooHR to create an employee, logs the outcome, and sends an Email Alert for any errors—ensuring each customer is processed only once."
+}

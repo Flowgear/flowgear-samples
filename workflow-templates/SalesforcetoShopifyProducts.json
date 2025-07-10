@@ -1,0 +1,1283 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "f1d48f98-d36b-c891-c4b9-3c1e93a1ee81",
+                "Name": "Note",
+                "ShortDescription": "About This Workflow",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow syncs products from Salesforce to Shopify.\nIt retrieves product data from Salesforce and checks if each product exists in the Key Value Group using the ProductCode as the key.\nIf Missing, it maps the data to Shopify format, creates the product in Shopify, logs the result, and stores the Shopify Response Code.\nIf Found, a message is displayed via the Formatter Node.\n"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "7315ef3f-c268-9eaa-002e-dbd74cbc5776",
+                "Name": "VariableBar",
+                "ShortDescription": "SetKeyValueGroup",
+                "LongDescription": "Here we are setting the Group for the Key-Value",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "ShopifyProducts"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": false,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "RunFrom": 0,
+                "InteractFlags": 0,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "3b019a17-72e4-f280-6154-f5a480d37ac1",
+                "Name": "Formatter",
+                "ShortDescription": "ProductProcessed",
+                "LongDescription": "Here we display a message if the Product Code has been found in the Key Values",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "Product Code: \"{ProductCode}\" has already been processed."
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ProductCode",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "dcebd5a0-5f92-e866-bce9-b1b0ab4cc00f",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogSuccess",
+                "LongDescription": "Here we are logging the Key Value record for successful records.\nWe get the Group from the Variable bar.\nWe use the ProductCode as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\nWe use the Shopify Response Code as the Value.\n",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 3945
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "cdadc486-7742-57f8-4add-04c91d64d6bf",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 4205
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "456344e1-898b-dd97-c4bd-1db27a964dd5",
+                "Name": "Salesforce",
+                "ShortDescription": "GetProducts",
+                "LongDescription": "Here we are querying the list of Products from Salesforce limited to three",
+                "Version": "4.1.1.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "full refresh_token offline_access"
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "InstanceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Username",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "SecurityToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "DontInterleaveRequestInResponse",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "EncodingMode",
+                                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "XmlInXmlOut",
+                                    "XmlInJsonOut"
+                                ]
+                            },
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "v59.0"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Create",
+                            "Update",
+                            "Get",
+                            "Query",
+                            "Upsert",
+                            "GetNextRecords",
+                            "QueryAll",
+                            "Delete"
+                        ],
+                        "Value": "QueryAll"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ObjectName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Product2"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExternalIdField",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\" type=\"xs:string\" />\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>SELECT\r\n\tId,\r\n\tName,\r\n\tProductCode,\r\n\tDescription,\r\n\tIsActive,\r\n\tCreatedDate,\r\n\tCreatedById,\r\n\tLastModifiedDate,\r\n\tLastModifiedById,\r\n\tSystemModstamp,\r\n\tFamily,\r\n\tExternalDataSourceId,\r\n\tExternalId,\r\n\tDisplayUrl,\r\n\tQuantityUnitOfMeasure,\r\n\tIsDeleted,\r\n\tIsArchived,\r\n\tLastViewedDate,\r\n\tLastReferencedDate,\r\n\tStockKeepingUnit\r\nFROM Product2 LIMIT 3</Request>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 4205
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 0,
+                "DisplayName": "Salesforce",
+                "NodeType": 0,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "f4c5e06b-60cf-ea8e-bb64-8b74e74ec2cc",
+                "Name": "ForEach",
+                "ShortDescription": "SplitProducts",
+                "LongDescription": "Here we split the Product List from Salesforce into individual product records",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <nextRecordsUrl />\r\n  <totalSize>10</totalSize>\r\n  <done>true</done>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01tJ60000001cfhIAA</url>\r\n    </attributes>\r\n    <Id>01tJ60000001cfhIAA</Id>\r\n    <Name>The Complete Snowboard - Electric</Name>\r\n    <ProductCode>SNOWBE</ProductCode>\r\n    <Description>The Complete Snowboard - Electric</Description>\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2025-05-21T17:11:56+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2025-05-21T17:11:56+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2025-05-21T17:15:58+00:00</SystemModstamp>\r\n    <Family>None</Family>\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure />\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate>2025-05-21T17:22:18+00:00</LastViewedDate>\r\n    <LastReferencedDate>2025-05-21T17:22:18+00:00</LastReferencedDate>\r\n    <StockKeepingUnit />\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01tJ60000001cfmIAA</url>\r\n    </attributes>\r\n    <Id>01tJ60000001cfmIAA</Id>\r\n    <Name>The 3p Fulfilled Snowboard</Name>\r\n    <ProductCode>3PLSNOW</ProductCode>\r\n    <Description>The 3p Fulfilled Snowboard</Description>\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2025-05-21T17:17:52+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2025-05-21T17:17:52+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2025-05-21T17:22:03+00:00</SystemModstamp>\r\n    <Family>None</Family>\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure />\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate>2025-05-21T17:21:45+00:00</LastViewedDate>\r\n    <LastReferencedDate>2025-05-21T17:21:45+00:00</LastReferencedDate>\r\n    <StockKeepingUnit />\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5bhAAB</url>\r\n    </attributes>\r\n    <Id>01t1v00000Gq5bhAAB</Id>\r\n    <Name>Test Item 4</Name>\r\n    <ProductCode>001-11000-5</ProductCode>\r\n    <Description>Test item for poc 4</Description>\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp>\r\n    <Family />\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure>\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate />\r\n    <LastReferencedDate />\r\n    <StockKeepingUnit />\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5biAAB</url>\r\n    </attributes>\r\n    <Id>01t1v00000Gq5biAAB</Id>\r\n    <Name>gfhfgjh</Name>\r\n    <ProductCode>001-11000-6</ProductCode>\r\n    <Description />\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp>\r\n    <Family />\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure>\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate />\r\n    <LastReferencedDate />\r\n    <StockKeepingUnit />\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5bjAAB</url>\r\n    </attributes>\r\n    <Id>01t1v00000Gq5bjAAB</Id>\r\n    <Name>Test Item</Name>\r\n    <ProductCode>001-64000STK2</ProductCode>\r\n    <Description>Test item for FloeInt PoC</Description>\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp>\r\n    <Family />\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure>\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate />\r\n    <LastReferencedDate />\r\n    <StockKeepingUnit />\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5bkAAB</url>\r\n    </attributes>\r\n    <Id>01t1v00000Gq5bkAAB</Id>\r\n    <Name>Test Item</Name>\r\n    <ProductCode>706-00001-00</ProductCode>\r\n    <Description>Test item for FloeInt PoC</Description>\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp>\r\n    <Family />\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure>\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate />\r\n    <LastReferencedDate />\r\n    <StockKeepingUnit />\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5blAAB</url>\r\n    </attributes>\r\n    <Id>01t1v00000Gq5blAAB</Id>\r\n    <Name>Test item 5</Name>\r\n    <ProductCode>706-00002-00</ProductCode>\r\n    <Description>Long description 5</Description>\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp>\r\n    <Family />\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure>\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate />\r\n    <LastReferencedDate />\r\n    <StockKeepingUnit />\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5bmAAB</url>\r\n    </attributes>\r\n    <Id>01t1v00000Gq5bmAAB</Id>\r\n    <Name>Todd's New Part</Name>\r\n    <ProductCode>706-00003-00</ProductCode>\r\n    <Description>Vendor Part # blah blah blah</Description>\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp>\r\n    <Family />\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure>\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate />\r\n    <LastReferencedDate />\r\n    <StockKeepingUnit />\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5bnAAB</url>\r\n    </attributes>\r\n    <Id>01t1v00000Gq5bnAAB</Id>\r\n    <Name>Bicycle</Name>\r\n    <ProductCode>BIC001</ProductCode>\r\n    <Description />\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp>\r\n    <Family />\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure>\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate />\r\n    <LastReferencedDate />\r\n    <StockKeepingUnit />\r\n  </records>\r\n  <records>\r\n    <attributes>\r\n      <type>Product2</type>\r\n      <url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5boAAB</url>\r\n    </attributes>\r\n    <Id>01t1v00000Gq5boAAB</Id>\r\n    <Name>Lu Testing</Name>\r\n    <ProductCode>ST100</ProductCode>\r\n    <Description />\r\n    <IsActive>true</IsActive>\r\n    <CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate>\r\n    <CreatedById>0050Y000000KkjzQAC</CreatedById>\r\n    <LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate>\r\n    <LastModifiedById>0050Y000000KkjzQAC</LastModifiedById>\r\n    <SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp>\r\n    <Family />\r\n    <ExternalDataSourceId />\r\n    <ExternalId />\r\n    <DisplayUrl />\r\n    <QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure>\r\n    <IsDeleted>false</IsDeleted>\r\n    <IsArchived>false</IsArchived>\r\n    <LastViewedDate />\r\n    <LastReferencedDate />\r\n    <StockKeepingUnit />\r\n  </records>\r\n</Response>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Response/records"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "ParentNode"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<records><attributes><type>Product2</type><url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5boAAB</url></attributes><Id>01t1v00000Gq5boAAB</Id><Name>Lu Testing</Name><ProductCode>ST100</ProductCode><Description /><IsActive>true</IsActive><CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate><CreatedById>0050Y000000KkjzQAC</CreatedById><LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate><LastModifiedById>0050Y000000KkjzQAC</LastModifiedById><SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp><Family /><ExternalDataSourceId /><ExternalId /><DisplayUrl /><QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure><IsDeleted>false</IsDeleted><IsArchived>false</IsArchived><LastViewedDate /><LastReferencedDate /><StockKeepingUnit /></records>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:23.8561624+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "31722ca6-5987-4cfe-98ca-159ed1c36b41"
+                }
+            },
+            {
+                "NodeId": "d05b5fdb-5467-0cf1-f2f4-369c8a7dd1da",
+                "Name": "GetKeyValue2",
+                "ShortDescription": "ProductFound?",
+                "LongDescription": "Here we check to see if the Product has been processed before by checking if a Key Value record has already been logged for this Product Code.",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DateTime",
+                        "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Found",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Missing",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:18.3456334+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "c4b7c7c4-b1a6-6612-68b0-cd1aa63e2177",
+                "Name": "QuickMap",
+                "ShortDescription": "MapProduct",
+                "LongDescription": "Here we map the Product data retrieved from Salesforce to the Shopify format before creating the product record in Shopify.\nBoth XML and JSON document types are utilized in this step.\n",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"records\"],\"targetPath\":\"product\"},{\"sourcePaths\":[\"records/Name\"],\"targetPath\":\"product/title\",\"mapExpression\":\"FIRST({Name})\"},{\"sourcePaths\":[\"records/IsActive\"],\"targetPath\":\"product/status\",\"mapExpression\":\"IIF(TEXTVALUE({IsActive}) = \\\"true\\\", \\\"active\\\", \\\"draft\\\")\"},{\"sourcePaths\":[\"records/attributes/type\"],\"targetPath\":\"product/product_type\",\"mapExpression\":\"FIRST({type})\"},{\"sourcePaths\":[\"records/ProductCode\"],\"targetPath\":\"product/variants/sku\"}],\"sourceSchema\":\"<records><attributes><type>Product2</type><url>/services/data/v59.0/sobjects/Product2/01t1v00000Gq5boAAB</url></attributes><Id>01t1v00000Gq5boAAB</Id><Name>Lu Testing</Name><ProductCode>ST100</ProductCode><Description /><IsActive>true</IsActive><CreatedDate>2022-08-17T07:35:02+00:00</CreatedDate><CreatedById>0050Y000000KkjzQAC</CreatedById><LastModifiedDate>2022-08-17T07:35:02+00:00</LastModifiedDate><LastModifiedById>0050Y000000KkjzQAC</LastModifiedById><SystemModstamp>2022-08-17T07:35:02+00:00</SystemModstamp><Family /><ExternalDataSourceId /><ExternalId /><DisplayUrl /><QuantityUnitOfMeasure>EA</QuantityUnitOfMeasure><IsDeleted>false</IsDeleted><IsArchived>false</IsArchived><LastViewedDate /><LastReferencedDate /><StockKeepingUnit /></records>\",\"sourceSchemaType\":0,\"targetSchema\":\"{\\r\\n  \\\"product\\\": {\\r\\n    \\\"title\\\": \\\"value\\\",\\r\\n    \\\"status\\\": \\\"value\\\",\\r\\n    \\\"product_type\\\": \\\"value\\\",\\r\\n    \\\"variants\\\": [\\r\\n      {\\r\\n        \\\"option1\\\": \\\"value\\\",\\r\\n        \\\"sku\\\": \\\"value\\\",\\r\\n        \\\"inventory_management\\\": \\\"shopify\\\",\\r\\n        \\\"inventory_quantity\\\": 1\\r\\n      }\\r\\n    ]\\r\\n  }\\r\\n}\",\"targetSchemaType\":2}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"product\": {\r\n    \"title\": \"value\",\r\n    \"status\": \"value\",\r\n    \"product_type\": \"value\",\r\n    \"variants\": [\r\n      {\r\n        \"option1\": \"value\",\r\n        \"sku\": \"value\",\r\n        \"inventory_management\": \"shopify\",\r\n        \"inventory_quantity\": 1\r\n      }\r\n    ]\r\n  }\r\n}"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-10-29T07:13:07.8027684+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "ea6e2ce0-f927-e2ea-b928-738fcb24465a",
+                "Name": "ShopifyRest",
+                "ShortDescription": "CreateProduct",
+                "LongDescription": "Here we are creating the Product in Shopify",
+                "Version": "1.1.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "2024-01"
+                            },
+                            {
+                                "Name": "ShopifyBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "XShopifyAccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "ReturnRestFailureResponses",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            },
+                            {
+                                "Name": "ExcludeEmptyQueryParameters",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            },
+                            {
+                                "Name": "AllowCustomQueryParameters",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.ShopifyRest.Connection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "d9c1c816-6b10-5290-281c-a785e0a27e81"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Creates a new product"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"product\": {\r\n    \"title\": \"value\",\r\n    \"status\": \"value\",\r\n    \"product_type\": \"value\",\r\n    \"variants\": [\r\n      {\r\n        \"option1\": \"value\",\r\n        \"sku\": \"value\",\r\n        \"inventory_management\": \"shopify\",\r\n        \"inventory_quantity\": 1\r\n      }\r\n    ]\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ResponseCode",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ResponseHeaders",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"product\": {\r\n    \"admin_graphql_api_id\": \"(string)\",\r\n    \"body_html\": \"(string)\",\r\n    \"created_at\": \"(string)\",\r\n    \"handle\": \"(string)\",\r\n    \"id\": \"(number)\",\r\n    \"image\": \"()\",\r\n    \"images\": [\r\n      {}\r\n    ],\r\n    \"options\": [\r\n      {\r\n        \"id\": \"(number)\",\r\n        \"name\": \"(string)\",\r\n        \"position\": \"(number)\",\r\n        \"product_id\": \"(number)\",\r\n        \"values\": [\r\n          {}\r\n        ]\r\n      }\r\n    ],\r\n    \"product_type\": \"(string)\",\r\n    \"published_at\": \"()\",\r\n    \"published_scope\": \"(string)\",\r\n    \"tags\": \"(string)\",\r\n    \"template_suffix\": \"()\",\r\n    \"title\": \"(string)\",\r\n    \"updated_at\": \"(string)\",\r\n    \"variants\": [\r\n      {\r\n        \"admin_graphql_api_id\": \"(string)\",\r\n        \"barcode\": \"()\",\r\n        \"compare_at_price\": \"()\",\r\n        \"created_at\": \"(string)\",\r\n        \"fulfillment_service\": \"(string)\",\r\n        \"grams\": \"(number)\",\r\n        \"id\": \"(number)\",\r\n        \"image_id\": \"()\",\r\n        \"inventory_item_id\": \"(number)\",\r\n        \"inventory_management\": \"()\",\r\n        \"inventory_policy\": \"(string)\",\r\n        \"inventory_quantity\": \"(number)\",\r\n        \"old_inventory_quantity\": \"(number)\",\r\n        \"option1\": \"(string)\",\r\n        \"option2\": \"()\",\r\n        \"option3\": \"()\",\r\n        \"position\": \"(number)\",\r\n        \"presentment_prices\": [\r\n          {\r\n            \"compare_at_price\": \"()\",\r\n            \"price\": {\r\n              \"amount\": \"(string)\",\r\n              \"currency_code\": \"(string)\"\r\n            }\r\n          }\r\n        ],\r\n        \"price\": \"(string)\",\r\n        \"product_id\": \"(number)\",\r\n        \"requires_shipping\": \"(boolean)\",\r\n        \"sku\": \"(string)\",\r\n        \"taxable\": \"(boolean)\",\r\n        \"title\": \"(string)\",\r\n        \"updated_at\": \"(string)\",\r\n        \"weight\": \"(number)\",\r\n        \"weight_unit\": \"(string)\"\r\n      }\r\n    ],\r\n    \"vendor\": \"(string)\"\r\n  }\r\n}"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Shopify",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-02-06T10:22:44.9640039+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "38c37df4-9587-394c-2164-0194f2fb592f",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "ProductCreated?",
+                "LongDescription": "Here we are checking if the Product was created successfully in Shopify by the value of the Response Code.\n\nA successful Shopify Response looks as follows:\n{\n  \"product\": {\n    \"id\": 10186567549215,\n    \"title\": \"Lu Testing\",\n    \"body_html\": null,\n    \"vendor\": \"FlowgearSandbox01\",\n    \"product_type\": \"Product2\",\n    \"created_at\": \"2025-06-26T06:16:51-04:00\",\n    \"handle\": \"lu-testing-1\",\n    \"updated_at\": \"2025-06-26T06:16:51-04:00\",\n    \"published_at\": \"2025-06-26T06:16:51-04:00\",\n    \"template_suffix\": null,\n    \"published_scope\": \"web\",\n    \"tags\": \"\",\n    \"status\": \"active\",\n    \"admin_graphql_api_id\": \"gid://shopify/Product/10186567549215\",\n    \"variants\": [\n      {\n        \"id\": 51012089413919,\n        \"product_id\": 10186567549215,\n        \"title\": \"Default Title\",\n        \"price\": \"0.00\",\n        \"position\": 1,\n        \"inventory_policy\": \"deny\",\n        \"compare_at_price\": null,\n        \"option1\": \"Default Title\",\n        \"option2\": null,\n        \"option3\": null,\n        \"created_at\": \"2025-06-26T06:16:51-04:00\",\n        \"updated_at\": \"2025-06-26T06:16:51-04:00\",\n        \"taxable\": true,\n        \"barcode\": null,\n        \"fulfillment_service\": \"manual\",\n        \"grams\": 0,\n        \"inventory_management\": null,\n        \"requires_shipping\": true,\n        \"sku\": \"ST100\",\n        \"weight\": 0,\n        \"weight_unit\": \"kg\",\n        \"inventory_item_id\": 53054831427871,\n        \"inventory_quantity\": 0,\n        \"old_inventory_quantity\": 0,\n        \"admin_graphql_api_id\": \"gid://shopify/ProductVariant/51012089413919\",\n        \"image_id\": null\n      }\n    ],\n    \"options\": [\n      {\n        \"id\": 12641694843167,\n        \"product_id\": 10186567549215,\n        \"name\": \"Title\",\n        \"position\": 1,\n        \"values\": [\n          \"Default Title\"\n        ]\n      }\n    ],\n    \"images\": [],\n    \"image\": null\n  }\n}",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = 201"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 4205
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "d48e5374-ae74-5419-7c1f-4f3321c8f306",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogError",
+                "LongDescription": "Here we are logging the Key Value record for error records.\nWe get the Group from the Variable bar.\nWe use the Product Code as the Key (Notice the fx on the input - you need to select which field in the payload is the Key.)\nWe use the Shopify Response Code as the Value.\n",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4205
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "cdadc486-7742-57f8-4add-04c91d64d6bf",
+                "TargetNodeId": "456344e1-898b-dd97-c4bd-1db27a964dd5",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "38c37df4-9587-394c-2164-0194f2fb592f",
+                "TargetNodeId": "dcebd5a0-5f92-e866-bce9-b1b0ab4cc00f",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "38c37df4-9587-394c-2164-0194f2fb592f",
+                "TargetNodeId": "d48e5374-ae74-5419-7c1f-4f3321c8f306",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d05b5fdb-5467-0cf1-f2f4-369c8a7dd1da",
+                "TargetNodeId": "c4b7c7c4-b1a6-6612-68b0-cd1aa63e2177",
+                "SourceName": "Missing"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d05b5fdb-5467-0cf1-f2f4-369c8a7dd1da",
+                "TargetNodeId": "3b019a17-72e4-f280-6154-f5a480d37ac1",
+                "SourceName": "Found"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "456344e1-898b-dd97-c4bd-1db27a964dd5",
+                "TargetNodeId": "f4c5e06b-60cf-ea8e-bb64-8b74e74ec2cc",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "456344e1-898b-dd97-c4bd-1db27a964dd5",
+                "TargetNodeId": "f4c5e06b-60cf-ea8e-bb64-8b74e74ec2cc",
+                "SourceName": "Response",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "c4b7c7c4-b1a6-6612-68b0-cd1aa63e2177",
+                "TargetNodeId": "ea6e2ce0-f927-e2ea-b928-738fcb24465a",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "7315ef3f-c268-9eaa-002e-dbd74cbc5776",
+                "TargetNodeId": "d05b5fdb-5467-0cf1-f2f4-369c8a7dd1da",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "ea6e2ce0-f927-e2ea-b928-738fcb24465a",
+                "TargetNodeId": "38c37df4-9587-394c-2164-0194f2fb592f",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "7315ef3f-c268-9eaa-002e-dbd74cbc5776",
+                "TargetNodeId": "dcebd5a0-5f92-e866-bce9-b1b0ab4cc00f",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "f4c5e06b-60cf-ea8e-bb64-8b74e74ec2cc",
+                "TargetNodeId": "d05b5fdb-5467-0cf1-f2f4-369c8a7dd1da",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f4c5e06b-60cf-ea8e-bb64-8b74e74ec2cc",
+                "TargetNodeId": "d05b5fdb-5467-0cf1-f2f4-369c8a7dd1da",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "records.ProductCode"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f4c5e06b-60cf-ea8e-bb64-8b74e74ec2cc",
+                "TargetNodeId": "3b019a17-72e4-f280-6154-f5a480d37ac1",
+                "SourceName": "Item",
+                "TargetName": "ProductCode",
+                "Expression": "records.ProductCode"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f4c5e06b-60cf-ea8e-bb64-8b74e74ec2cc",
+                "TargetNodeId": "c4b7c7c4-b1a6-6612-68b0-cd1aa63e2177",
+                "SourceName": "Item",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ea6e2ce0-f927-e2ea-b928-738fcb24465a",
+                "TargetNodeId": "38c37df4-9587-394c-2164-0194f2fb592f",
+                "SourceName": "ResponseCode",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "c4b7c7c4-b1a6-6612-68b0-cd1aa63e2177",
+                "TargetNodeId": "ea6e2ce0-f927-e2ea-b928-738fcb24465a",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f4c5e06b-60cf-ea8e-bb64-8b74e74ec2cc",
+                "TargetNodeId": "d48e5374-ae74-5419-7c1f-4f3321c8f306",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "records.ProductCode"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "7315ef3f-c268-9eaa-002e-dbd74cbc5776",
+                "TargetNodeId": "d48e5374-ae74-5419-7c1f-4f3321c8f306",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "f4c5e06b-60cf-ea8e-bb64-8b74e74ec2cc",
+                "TargetNodeId": "dcebd5a0-5f92-e866-bce9-b1b0ab4cc00f",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "records.ProductCode"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ea6e2ce0-f927-e2ea-b928-738fcb24465a",
+                "TargetNodeId": "dcebd5a0-5f92-e866-bce9-b1b0ab4cc00f",
+                "SourceName": "ResponseCode",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ea6e2ce0-f927-e2ea-b928-738fcb24465a",
+                "TargetNodeId": "d48e5374-ae74-5419-7c1f-4f3321c8f306",
+                "SourceName": "ResponseCode",
+                "TargetName": "Value"
+            }
+        ],
+        "StartNodeId": "cdadc486-7742-57f8-4add-04c91d64d6bf",
+        "ActivityLogLevelMask": 0
+    },
+    "Name": "Salesforce to Shopify Products",
+    "Description": "This Workflow syncs Products from Salesforce to Shopify by checking each product against a Key Value Group using the ProductCode. If not found, it maps and creates the product in Shopify, logs the result, and stores the Response Code; otherwise, it displays a message.\n"
+}

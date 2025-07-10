@@ -285,12 +285,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "FG Sandbox",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.ShopifyRest.Connection",
                         "ExtendedType": 2,
-                        "Value": "06ebb84d-56c0-4fd6-b437-1d4526684685"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 0,
@@ -747,12 +747,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "Sage Intacct [Sandbox]",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
                         "ExtendedType": 2,
-                        "Value": "237b42a2-fa73-17a1-a8d6-927a93ab65a9"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 1,

@@ -456,7 +456,7 @@
                 "NodeId": "77aaf6cb-592f-5a5a-1aeb-af9b6e3e5313",
                 "Name": "ForEach",
                 "ShortDescription": "SplitCustomers",
-                "LongDescription": "Here we split the full Customer List from Shopify into individual customer records",
+                "LongDescription": "Here we split the full Customer List from HubSpot into individual customer records",
                 "Version": "1.0.0.9",
                 "Properties": [
                     {
