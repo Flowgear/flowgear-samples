@@ -93,9 +93,12 @@
                 "NodeId": "7e0afa2f-094e-1037-ff06-a5f3aeb7bae5",
                 "Name": "BambooHR",
                 "LongDescription": "Here we use the BambooHR node to retrieve a list of Employees. ",
-                "Version": "1.0.0.0",
+                "Version": "1.0.0.1",
                 "Properties": [
                     {
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.BambooHR.BambooHrConnection",
+                        "ExtendedType": 2,
                         "FlowDirection": 1,
                         "SubProperties": [
                             {
@@ -112,53 +115,46 @@
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "Schema": "(None)",
-                        "IsSecret": false,
-                        "Name": "Connection",
-                        "TypeName": "Flowgear.Nodes.BambooHR.BambooHrConnection",
-                        "ExtendedType": 2,
-                        "Value": null
+                        "IsSecret": false
                     },
                     {
-                        "FlowDirection": 0,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "Description": "Unique identifier for the sample operation.",
-                        "IsSecret": false,
                         "Name": "OperationId",
                         "TypeName": "System.String",
                         "ExtendedType": 0,
-                        "Value": "6fb1abe6-8f20-c994-24fc-dbdbdd45a231"
-                    },
-                    {
+                        "Value": "6fb1abe6-8f20-c994-24fc-dbdbdd45a231",
                         "FlowDirection": 0,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Description": "A brief description or summary of the operation.",
-                        "IsSecret": false,
+                        "IsSecret": false
+                    },
+                    {
                         "Name": "Description",
                         "TypeName": "System.String",
                         "ExtendedType": 0,
-                        "Value": "Get Employee Directory"
+                        "Value": "Get Employee Directory",
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
                     },
                     {
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "Request",
-                        "TypeName": "System.String",
-                        "ExtendedType": 7
+                        "IsSecret": false
                     },
                     {
-                        "FlowDirection": 2,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "Description": "Example JSON response payload",
-                        "IsSecret": false,
                         "Name": "Response",
                         "TypeName": "System.String",
                         "ExtendedType": 7,
-                        "Value": "{\r\n  \"id\": \"The ID of the employee (string)\"\r\n}"
+                        "Value": "{\r\n  \"id\": \"The ID of the employee (string)\"\r\n}",
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
                     }
                 ],
                 "HasInput": true,
@@ -370,11 +366,11 @@
                     {
                         "FlowDirection": 1,
                         "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
                         "Name": "id",
                         "TypeName": "System.String",
-                        "ExtendedType": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false
+                        "ExtendedType": 0
                     }
                 ],
                 "HasInput": true,
@@ -711,8 +707,7 @@
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
-                        "ExtendedType": 2,
-                        "Value": null
+                        "ExtendedType": 2
                     },
                     {
                         "FlowDirection": 1,
