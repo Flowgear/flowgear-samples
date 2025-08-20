@@ -422,7 +422,7 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "OpenAI Document Parser - Justin Test",
+                        "Schema": "(None)",
                         "IsSecret": false
                     },
                     {
