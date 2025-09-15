@@ -1,0 +1,321 @@
+{
+    "Name": "MCP Tool - Get All Sage Intacct Objects",
+    "Description": "Retrieves a catalogue of all available Sage Intacct objects. Use this before calling SageGetObjectDefinition for a specific object.",
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "749c1be7-ff84-9234-9944-6e6bda0e8985",
+                "Name": "VariableBar",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "result",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"result\": [\r\n    {\r\n      \"apiObject\": \"objects/accounts-payable/account-label\",\r\n      \"type\": \"rootObject\",\r\n      \"httpMethods\": \"OPTIONS,GET,POST,DELETE,PATCH\",\r\n      \"href\": \"/services/core/model?version=v1&name=objects/accounts-payable/account-label\"\r\n    },\r\n    {\r\n      \"apiObject\": \"objects/accounts-payable/adjustment\",\r\n      \"type\": \"rootObject\",\r\n      \"httpMethods\": \"OPTIONS,GET,POST,DELETE,PATCH\",\r\n      \"href\": \"/services/core/model?version=v1&name=objects/accounts-payable/adjustment\"\r\n    },\r\n    {\r\n      \"apiObject\": \"objects/accounts-payable/adjustment-line\",\r\n      \"type\": \"ownedObject\",\r\n      \"httpMethods\": \"OPTIONS,GET,POST,DELETE,PATCH\",\r\n      \"href\": \"/services/core/model?version=v1&name=objects/accounts-payable/adjustment-line\"\r\n    },\r\n    {\r\n      \"apiObject\": \"objects/accounts-payable/adjustment-summary\",\r\n      \"type\": \"rootObject\",\r\n      \"httpMethods\": \"OPTIONS,GET\",\r\n      \"href\": \"/services/core/model?version=v1&name=objects/accounts-payable/adjustment-summary\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"totalCount\": 499,\r\n    \"totalSuccess\": 499,\r\n    \"totalError\": 0\r\n  }\r\n}"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": { "X": 6100, "Y": 3640 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-08T15:21:23.9375599+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "b6822049-acd1-a86e-8ef8-83add7ab8794",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6100, "Y": 3822 },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "a84cd548-b16b-56f7-eae5-68a96aca86eb",
+                "Name": "SageIntacctRest",
+                "ShortDescription": "Get all objects",
+                "Version": "1.0.0.8",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ClientId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "StripNamespaces",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacctRest.SageConnection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "9ecf67d0-4cf0-85ce-07dc-99d680c1a575"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Get an object model definition"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6405, "Y": 3822 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Sage Intacct REST",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-16T05:10:38.4534392+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "ca16f680-50b1-f445-8e0a-3d1a5dfa397e",
+                "Name": "Formatter",
+                "ShortDescription": "Format Error",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"result\": \"Error:{error}\"\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "error",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6710, "Y": 3822 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-08T15:18:53.3071473+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "b6822049-acd1-a86e-8ef8-83add7ab8794",
+                "TargetNodeId": "a84cd548-b16b-56f7-eae5-68a96aca86eb",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a84cd548-b16b-56f7-eae5-68a96aca86eb",
+                "TargetNodeId": "749c1be7-ff84-9234-9944-6e6bda0e8985",
+                "SourceName": "Response",
+                "TargetName": "result"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b6822049-acd1-a86e-8ef8-83add7ab8794",
+                "TargetNodeId": "ca16f680-50b1-f445-8e0a-3d1a5dfa397e",
+                "SourceName": "Last_Error_Info",
+                "TargetName": "error"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ca16f680-50b1-f445-8e0a-3d1a5dfa397e",
+                "TargetNodeId": "749c1be7-ff84-9234-9944-6e6bda0e8985",
+                "SourceName": "Result",
+                "TargetName": "result"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "a84cd548-b16b-56f7-eae5-68a96aca86eb",
+                "TargetNodeId": "ca16f680-50b1-f445-8e0a-3d1a5dfa397e",
+                "SourceName": "Error"
+            }
+        ],
+        "StartNodeId": "b6822049-acd1-a86e-8ef8-83add7ab8794",
+        "ActivityLogLevelMask": 255
+    }
+}
