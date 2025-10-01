@@ -4,27 +4,29 @@
         "Revision": 0,
         "Nodes": [
             {
+                "NodeId": "27b89b77-740d-a051-2fc2-089253088318",
                 "Name": "Note",
+                "ShortDescription": "About This Workflow",
                 "Version": "1.0.0.2",
                 "Properties": [
                     {
                         "FlowDirection": 0,
-                        "Name": "Text",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
                         "Value": "This Workflow retrieves Contacts from Acumatica filtered by customer name, splits them into individual records, and checks if each contact has already been processed (using a key-value store). \nIf not processed, it maps and updates the contact in a SQL table. \nSuccess or error statuses are logged for future reporting. \nIf a contact was already processed successfully, a message is generated instead of updating SQL."
                     },
                     {
                         "FlowDirection": 0,
-                        "Name": "NoteSize",
-                        "TypeName": "System.Int32",
-                        "ExtendedType": 0,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
                         "Value": 2
                     }
                 ],
@@ -41,6 +43,10 @@
                         "IsDefault": false
                     }
                 ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
                 "SupportsTest": false,
                 "SupportsAcquireMetadata": false,
                 "SupportsListSamples": false,
@@ -48,24 +54,19 @@
                 "NodeType": 1,
                 "Key": "latest",
                 "RuntimeVersion": 1,
-                "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHTAAAB0wASOu6tcAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAgJJREFUOE+V00tPU0EUAOAxasDEIoSKoVQnVAggsddqwMi7lEe9B6shxhjDUmPcuHHFL2AhVEQelmIpvS21Xm8LbaHUd4wxxhjjzpVxgzsT/QVzONPUlUZ6F7P8zpnzYg0OvqfRYd/b4LDvq6s9XG47dqCm6aSFNzktvNlZwZuVCt6iHOItpyr5CXqtrireerqKO9uqjyrt1WWs8XgBW+p5rfX6jbH+kH5re1JThD/mEtPxM2Im0SZm9bNi3jgnHqY6xeJ6t1jK9IrQhlvcXe5Q6Qf2/fXcVsDfvn/9EU3fRsJIGAkjYSSMhJEwEkbCGM55cDLcCcxuqyn/g3/9/olGfrwkHMkPoj/SDayOHzyiJe9sP9kcx+zrCYxmbpaEo8+H8Z7WC0w2rFhzyZklXn15Hu/H3BSAul1smCmceDOCD+IeYHJUxW7vimMvvBh/pRaw/taHc4kBCkAzJixH9U+8sjWA2rOhv7Dx7hIu6EPA5JIQlnPGwFoXBtM9+Cjbh8ub/f/FqfejGHjqBSa3a97oEGbx+ofLuJhUKYCrkhMWZnHm4xVcWhsBJnebsDCLNz5dxVD6AgWgwyAszOLc52sYzl4EptBVERZmcf7LGGq5UZUp7dYyOgp1aqUL/JEemI72wcyqG2Yfe2AuMQgL+jAEDC8EUyrImkNpH8jMEgeTPusOQk47WqOxmsUAAAAASUVORK5CYII=",
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
                     "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
                     "Username": "test@flowgear.net",
                     "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
-                },
-                "NodeId": "27b89b77-740d-a051-2fc2-089253088318",
-                "NodeVisual": {
-                    "X": 6100,
-                    "Y": 3640
-                },
-                "ShortDescription": "About This Workflow"
+                }
             },
             {
                 "NodeId": "c639c9c7-4b2b-c5ec-cd6e-66d34b51bae4",
                 "Name": "VariableBar",
+                "ShortDescription": "SetKeyValueGroup",
+                "LongDescription": "Here we are setting the Key-Value Group",
                 "Version": "1.0.0.3",
                 "Properties": [
                     {
@@ -100,27 +101,31 @@
                     "ModifiedTime": "2024-10-29T07:14:12.5597178+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
-                },
-                "ShortDescription": "SetKeyValueGroup",
-                "LongDescription": "Here we are setting the Key-Value Group"
+                }
             },
             {
+                "NodeId": "98cc3996-840c-ba18-e00f-54f501966c41",
                 "Name": "Formatter",
+                "ShortDescription": "ContactFound",
+                "LongDescription": "Display a message if the Contact has previously been processed",
                 "Version": "2.0.0.0",
                 "Properties": [
                     {
                         "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
                         "Name": "Expression",
                         "TypeName": "System.String",
                         "ExtendedType": 4,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Value": "Contact: \"{cust_name}\" has already been processed.",
-                        "Schema": ""
+                        "Value": "Contact: \"{cust_name}\" has already been processed."
                     },
                     {
                         "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
                         "Name": "Escaping",
                         "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
                         "ExtendedType": 0,
@@ -132,29 +137,25 @@
                             "Uri",
                             "UriSegment"
                         ],
-                        "Value": "None",
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false
+                        "Value": "None"
                     },
                     {
                         "FlowDirection": 2,
-                        "Name": "Result",
-                        "TypeName": "System.String",
-                        "ExtendedType": 4,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
                     },
                     {
-                        "Name": "cust_name",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0,
-                        "Value": null,
                         "FlowDirection": 1,
                         "Behaviour": 2,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
+                        "IsSecret": false,
+                        "Name": "cust_name",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
                     }
                 ],
                 "HasInput": true,
@@ -170,6 +171,10 @@
                         "IsDefault": false
                     }
                 ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 3945
+                },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": true,
                 "SupportsTest": false,
@@ -179,26 +184,19 @@
                 "NodeType": 1,
                 "Key": "latest",
                 "RuntimeVersion": 1,
-                "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAAMRJREFUOE+lk1ERwkAMROsBB3z0FwNVUCM4wEEtVAMS6gELaMBC2IRsyV1TbqZ8vJkmu5fL5a6diPzF96OXATyAkEpj/glmcDItmF5umJmrgXYGWmD1RZE7DMxlQF/ct1gcBBa4MZehC923KVC0tod71o2iwMp35jLcUxZAcAEc4hgX1EDXG1DfZLEH5OfuCjzxJookO7jWiyLQedRPB4lg093DPcpmiOygdY3Nh9QaYvMh2dkyoMUB2sCjOILjP9MxpHsDb5eQFpq0XuEAAAAASUVORK5CYII=",
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
                     "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
                     "Username": "test@flowgear.net",
                     "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
-                },
-                "NodeId": "98cc3996-840c-ba18-e00f-54f501966c41",
-                "NodeVisual": {
-                    "X": 7625,
-                    "Y": 3945
-                },
-                "ShortDescription": "ContactFound",
-                "LongDescription": "Display a message if the Contact has previously been processed"
+                }
             },
             {
                 "NodeId": "9858da79-cc49-2ad8-5148-e31a36300f9d",
                 "Name": "SetKeyValue2",
                 "ShortDescription": "LogSuccess",
+                "LongDescription": "Here we are setting the Success Status for future reporting.",
                 "Version": "3.0.0.5",
                 "Properties": [
                     {
@@ -276,8 +274,7 @@
                     "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
-                },
-                "LongDescription": "Here we are setting the Success Status for future reporting."
+                }
             },
             {
                 "NodeId": "495f9f32-f913-64c9-5dfa-afa28436349b",
@@ -330,6 +327,7 @@
                 "NodeId": "3f8c8af3-8e0f-86a2-fceb-ee2d0f2524ff",
                 "Name": "Acumatica",
                 "ShortDescription": "GetContacts",
+                "LongDescription": "Retrieves a list of Acumatica Contacts filtered on the Customer Name",
                 "Version": "1.0.0.3",
                 "Properties": [
                     {
@@ -391,12 +389,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "Acumatica Cloud ERP Test (Sample)",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.Acumatica.Connection",
                         "ExtendedType": 2,
-                        "Value": "0fa70317-c4e6-4e99-b901-f479eee408f4"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 1,
@@ -474,15 +472,6 @@
                         "TypeName": "System.String",
                         "ExtendedType": 0,
                         "Value": "MainContact, MainContact/Address, PrimaryContact, PrimaryContact/Address"
-                    },
-                    {
-                        "FlowDirection": 1,
-                        "Behaviour": 2,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "Custom1",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0
                     }
                 ],
                 "HasInput": true,
@@ -517,13 +506,13 @@
                     "ModifiedTime": "2025-01-22T06:49:57.6955426+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
-                },
-                "LongDescription": "Retrieves a list of Acumatica Contacts filtered on the Customer Name"
+                }
             },
             {
                 "NodeId": "46e6b793-a257-7b5c-8504-a8c6c9749927",
                 "Name": "ForEach",
                 "ShortDescription": "SplitContacts",
+                "LongDescription": "Here we are splitting the Contacts into individual records",
                 "Version": "1.0.0.9",
                 "Properties": [
                     {
@@ -644,13 +633,13 @@
                     "ModifiedTime": "2024-10-29T07:11:31.140455+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
-                },
-                "LongDescription": "Here we are splitting the Contacts into individual records"
+                }
             },
             {
                 "NodeId": "817926fd-2592-eace-2884-26ddee691653",
                 "Name": "GetKeyValue2",
                 "ShortDescription": "ContactFound?",
+                "LongDescription": "Here we check to see if the ContactID has been processed before by checking if a Key Value record has already been logged for this ContactID.\n",
                 "Version": "3.0.0.5",
                 "Properties": [
                     {
@@ -734,40 +723,42 @@
                     "ModifiedTime": "2024-10-29T07:11:47.090843+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
-                },
-                "LongDescription": "Here we check to see if the ContactID has been processed before by checking if a Key Value record has already been logged for this ContactID.\n"
+                }
             },
             {
+                "NodeId": "a130b06f-3779-017c-d02f-6a90359e4925",
                 "Name": "IfVisualBasic",
+                "ShortDescription": "IfSuccess?",
+                "LongDescription": "Here we are verifying that if the Contact has been found in the Key-Value Group, it should only continue downstream processing if has been logged as an error.\nSuccess records display a message indicating that the Contact has already been processed.",
                 "Version": "2.0.0.1",
                 "Properties": [
                     {
                         "FlowDirection": 1,
-                        "Name": "Value",
-                        "TypeName": "System.Object",
-                        "ExtendedType": 0,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false
-                    },
-                    {
-                        "FlowDirection": 1,
-                        "Name": "Expression",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
                         "Value": "Value = \"Success\""
                     },
                     {
                         "FlowDirection": 2,
-                        "Name": "IsTrue",
-                        "TypeName": "System.Boolean",
-                        "ExtendedType": 0,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
                     }
                 ],
                 "HasInput": true,
@@ -788,6 +779,10 @@
                         "IsDefault": false
                     }
                 ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4205
+                },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": true,
                 "SupportsTest": false,
@@ -797,26 +792,19 @@
                 "NodeType": 2,
                 "Key": "latest",
                 "RuntimeVersion": 1,
-                "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My4yMreRF30AAABDSURBVDhPY/j//z8DRYAqBoAMIRXDXU0VFyCFAShACGHUIENzASHNmCFObQNIj9HRQARG+qDIC6THHXLaJSMjIWc8AD4buUdmDzhpAAAAAElFTkSuQmCC",
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
                     "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
                     "Username": "test@flowgear.net",
                     "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
-                },
-                "NodeId": "a130b06f-3779-017c-d02f-6a90359e4925",
-                "NodeVisual": {
-                    "X": 7320,
-                    "Y": 4205
-                },
-                "ShortDescription": "IfSuccess?",
-                "LongDescription": "Here we are verifying that if the Contact has been found in the Key-Value Group, it should only continue downstream processing if has been logged as an error.\nSuccess records display a message indicating that the Contact has already been processed."
+                }
             },
             {
                 "NodeId": "25c2d0f8-c88b-29ea-8f5b-45a43347db92",
                 "Name": "QuickMap",
                 "ShortDescription": "MapContact",
+                "LongDescription": "Map the Customer data from Acumatica to be updated into a SQL Table",
                 "Version": "4.0.0.43",
                 "Properties": [
                     {
@@ -895,19 +883,19 @@
                     "ModifiedTime": "2024-12-02T05:15:52.8098009+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
-                },
-                "LongDescription": "Map the Customer data from Acumatica to be updated into a SQL Table"
+                }
             },
             {
                 "NodeId": "ae7f33bd-7820-5bfd-091a-b49ab272c30a",
                 "Name": "SqlTableUpdate",
-                "Version": "3.1.0.1",
+                "ShortDescription": "AddContactToSQL",
+                "LongDescription": "Adding the Contact to an SQL Table",
+                "Version": "3.1.1.0",
                 "Properties": [
                     {
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.Sql.MsSql.MicrosoftSqlConnection",
                         "ExtendedType": 2,
-                        "Value": "1a8d6db1-8ce0-4ca2-922e-9819b786209f",
                         "FlowDirection": 1,
                         "SubProperties": [
                             {
@@ -972,7 +960,7 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "Microsoft SQL Table Update - SH",
+                        "Schema": "(None)",
                         "IsSecret": false
                     },
                     {
@@ -1066,14 +1054,13 @@
                     "ModifiedTime": "2024-10-29T07:13:57.4789323+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
-                },
-                "ShortDescription": "AddContactToSQL",
-                "LongDescription": "Adding the Contact to an SQL Table"
+                }
             },
             {
                 "NodeId": "a7c1a673-864f-9f17-574d-ecc2c5d74afd",
                 "Name": "IfVisualBasic",
                 "ShortDescription": "CheckInsert",
+                "LongDescription": "Here we are validating the number of RowsAffected in SQL\n",
                 "Version": "2.0.0.1",
                 "Properties": [
                     {
@@ -1142,13 +1129,13 @@
                     "ModifiedTime": "2024-10-29T07:11:59.7406957+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
-                },
-                "LongDescription": "Here we are validating the number of RowsAffected in SQL\n"
+                }
             },
             {
                 "NodeId": "6447a5f7-1304-5c19-ab39-ec2b7794edb1",
                 "Name": "SetKeyValue2",
                 "ShortDescription": "LogError",
+                "LongDescription": "Here we are setting the Error Status for future reporting",
                 "Version": "3.0.0.5",
                 "Properties": [
                     {
@@ -1226,8 +1213,7 @@
                     "ModifiedTime": "2024-10-29T07:13:29.923677+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
-                },
-                "LongDescription": "Here we are setting the Error Status for future reporting"
+                }
             }
         ],
         "FlowConnectors": [
@@ -1313,8 +1299,7 @@
                 "FlowConnectorType": 1,
                 "SourceNodeId": "817926fd-2592-eace-2884-26ddee691653",
                 "TargetNodeId": "a130b06f-3779-017c-d02f-6a90359e4925",
-                "SourceName": "Missing",
-                "TargetName": null
+                "SourceName": "Missing"
             },
             {
                 "FlowConnectorType": 2,
@@ -1327,29 +1312,25 @@
                 "FlowConnectorType": 1,
                 "SourceNodeId": "a130b06f-3779-017c-d02f-6a90359e4925",
                 "TargetNodeId": "25c2d0f8-c88b-29ea-8f5b-45a43347db92",
-                "SourceName": "False",
-                "TargetName": null
+                "SourceName": "False"
             },
             {
                 "FlowConnectorType": 1,
                 "SourceNodeId": "817926fd-2592-eace-2884-26ddee691653",
                 "TargetNodeId": "a130b06f-3779-017c-d02f-6a90359e4925",
-                "SourceName": "Found",
-                "TargetName": null
+                "SourceName": "Found"
             },
             {
                 "FlowConnectorType": 1,
                 "SourceNodeId": "a130b06f-3779-017c-d02f-6a90359e4925",
                 "TargetNodeId": "98cc3996-840c-ba18-e00f-54f501966c41",
-                "SourceName": "True",
-                "TargetName": null
+                "SourceName": "True"
             },
             {
                 "FlowConnectorType": 1,
                 "SourceNodeId": "46e6b793-a257-7b5c-8504-a8c6c9749927",
                 "TargetNodeId": "817926fd-2592-eace-2884-26ddee691653",
-                "SourceName": "Item",
-                "TargetName": null
+                "SourceName": "Item"
             },
             {
                 "FlowConnectorType": 2,
@@ -1395,5 +1376,5 @@
         "ActivityLogLevelMask": 255
     },
     "Name": "Acumatica to Microsoft SQL Contacts",
-    "Description": "This Workflow retrieves and splits Acumatica Contacts by customer name, checking each against a key-value store to avoid duplicates. Unprocessed contacts are mapped and updated in a SQL table, with statuses logged and messages generated for previously processed entries."
+    "Description": "This Workflow retrieves and splits Acumatica Contacts by customer name, checking each against a key-value store to avoid duplicates.\nUnprocessed contacts are mapped and updated in a SQL table, with statuses logged and messages generated for previously processed entries."
 }
