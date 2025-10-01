@@ -456,12 +456,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "FG Sandbox",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.ShopifyRest.Connection",
                         "ExtendedType": 2,
-                        "Value": "06ebb84d-56c0-4fd6-b437-1d4526684685"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 0,
@@ -842,12 +842,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "FG Sandbox",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.ShopifyRest.Connection",
                         "ExtendedType": 2,
-                        "Value": "06ebb84d-56c0-4fd6-b437-1d4526684685"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 0,
@@ -987,12 +987,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "Autotask Sandbox",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.MSP.Autotask.AutotaskConnection",
                         "ExtendedType": 2,
-                        "Value": "3734ee8a-5d8b-437d-a757-d332c25dcffd"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 1,
@@ -1289,12 +1289,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "Autotask Sandbox",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.MSP.Autotask.AutotaskConnection",
                         "ExtendedType": 2,
-                        "Value": "3734ee8a-5d8b-437d-a757-d332c25dcffd"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 1,
@@ -1669,12 +1669,12 @@
                         ],
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "Autotask Sandbox",
+                        "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.MSP.Autotask.AutotaskConnection",
                         "ExtendedType": 2,
-                        "Value": "3734ee8a-5d8b-437d-a757-d332c25dcffd"
+                        "Value": null
                     },
                     {
                         "FlowDirection": 1,
@@ -2138,5 +2138,5 @@
         "ActivityLogLevelMask": 255
     },
     "Name": "Shopify to Autotask - Order Sync",
-    "Description": "This workflow retrieves paid orders from Shopify, checks if each order has already been processed, and then creates or updates customer and ticket records in Autotask accordingly. It logs the results and handles errors, ensuring that only new or unprocessed orders are sent to Autotask for ticket creation."
+    "Description": "This workflow retrieves paid orders from Shopify, checks if each order has already been processed, and then creates or updates customer and ticket records in Autotask accordingly. It logs the results and handles errors, ensuring that only new or unprocessed orders are sent to Autotask for ticket creation.",
 }
