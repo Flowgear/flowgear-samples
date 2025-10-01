@@ -2138,5 +2138,5 @@
         "ActivityLogLevelMask": 255
     },
     "Name": "Shopify to Autotask - Order Sync",
-    "Description": "This workflow retrieves paid orders from Shopify, checks if each order has already been processed, and then creates or updates customer and ticket records in Autotask accordingly. It logs the results and handles errors, ensuring that only new or unprocessed orders are sent to Autotask for ticket creation.",
+    "Description": "This workflow retrieves paid orders from Shopify, checks if each order has already been processed, and then creates or updates customer and ticket records in Autotask accordingly. It logs the results and handles errors, ensuring that only new or unprocessed orders are sent to Autotask for ticket creation."
 }
