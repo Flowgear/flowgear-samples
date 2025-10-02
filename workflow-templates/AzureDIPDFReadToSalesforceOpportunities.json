@@ -1,0 +1,952 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "Name": "Note",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Value": "This workflow processes PDF files from a specified directory, reads their contents, extracts data using a PDF reader, maps the data, and creates Salesforce Opportunity records. After successful processing, each PDF is moved to a \"Complete\" directory.\n"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHTAAAB0wASOu6tcAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAgJJREFUOE+V00tPU0EUAOAxasDEIoSKoVQnVAggsddqwMi7lEe9B6shxhjDUmPcuHHFL2AhVEQelmIpvS21Xm8LbaHUd4wxxhjjzpVxgzsT/QVzONPUlUZ6F7P8zpnzYg0OvqfRYd/b4LDvq6s9XG47dqCm6aSFNzktvNlZwZuVCt6iHOItpyr5CXqtrireerqKO9uqjyrt1WWs8XgBW+p5rfX6jbH+kH5re1JThD/mEtPxM2Im0SZm9bNi3jgnHqY6xeJ6t1jK9IrQhlvcXe5Q6Qf2/fXcVsDfvn/9EU3fRsJIGAkjYSSMhJEwEkbCGM55cDLcCcxuqyn/g3/9/olGfrwkHMkPoj/SDayOHzyiJe9sP9kcx+zrCYxmbpaEo8+H8Z7WC0w2rFhzyZklXn15Hu/H3BSAul1smCmceDOCD+IeYHJUxW7vimMvvBh/pRaw/taHc4kBCkAzJixH9U+8sjWA2rOhv7Dx7hIu6EPA5JIQlnPGwFoXBtM9+Cjbh8ub/f/FqfejGHjqBSa3a97oEGbx+ofLuJhUKYCrkhMWZnHm4xVcWhsBJnebsDCLNz5dxVD6AgWgwyAszOLc52sYzl4EptBVERZmcf7LGGq5UZUp7dYyOgp1aqUL/JEemI72wcyqG2Yfe2AuMQgL+jAEDC8EUyrImkNpH8jMEgeTPusOQk47WqOxmsUAAAAASUVORK5CYII=",
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                },
+                "NodeId": "44831f72-309b-5341-2bc0-b43306a7d4bf",
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "ShortDescription": "About This Workflow"
+            },
+            {
+                "NodeId": "e8ecbc6b-0274-159e-c339-c4cbe22b65fb",
+                "Name": "VariableBar",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Directory",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "C:\\Flowgear\\Proposals"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DestinationDirectory",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "C:\\Flowgear\\Proposals\\Complete"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                }
+            },
+            {
+                "NodeId": "db9a0b47-8ab5-c7c5-b41b-e673a1a5581c",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 4153
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "85b1201c-5884-dcac-ecd1-b70aa892547d",
+                "Name": "FileEnumerate",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.File.FileEnumerateConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DirectoryPath",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "C:\\Flowgear\\Proposals\\"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Filter",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "*.pdf"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "FolderDepthLimit",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ReturnFullPath",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0,
+                        "Value": false
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "FilePath",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "CurrentRow",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "TotalRows",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "File",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 4153
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "File Enumerate",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-05-13T07:11:31.3172699+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "1edaae29-8b96-c8d1-4494-f0882db0a912",
+                "Name": "FileRead",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.File.FileReadConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "{Directory}\\{FileName}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Type",
+                        "TypeName": "Flowgear.Nodes.File.FileRead+FileTypes",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Text",
+                            "Binary"
+                        ],
+                        "Value": "Binary"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Content",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Directory",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "FileName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 4153
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "File Read",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-05-13T07:11:32.0934757+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "d3c24bfe-2c98-4201-a4fe-cd347db348e6",
+                "Name": "DIPdfReader",
+                "ShortDescription": "Azure DI PDF Reader",
+                "Version": "1.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "DiModelName",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "DiModelEndpoint",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "DiModelKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "ReturnRawData",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.DiPdfReader.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "PdfFile",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 5
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 7
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4153
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "DI Pdf Reader",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-15T05:10:37.4529282+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "feab2978-3f19-db40-a630-507149086603",
+                "Name": "QuickMap",
+                "ShortDescription": "Map Proposal",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"ApiVersion\": \"2024-11-30\",\r\n  \"ModelId\": \"Proposal\",\r\n  \"Content\": \"@ flowgear\\nFlowgear Project Proposal Fonsly NovaCore\\nJeremy Callstone August 2025 Order Number: 1233548\\n@ flowgear\\nProject\\nThe objective is to streamline and unify NovaCore's fragmented operational systems by building a robust middleware layer that connects their ERP, loT sensor data platform, CRM, and field service applications. This integration enables real-time data synchronization across departments, enhances visibility into energy production and asset performance, and automates workflow triggers based on sensor thresholds or customer interactions. The project also includes custom dashboards for monitoring service efficiency and predictive maintenance, supporting NovaCore's mission to deliver smarter, cleaner energy at scale.\\nSummary:\\nFlowgear is integrating Fonsly NovaCore's core systems to enable real-time data flow, operational automation, and energy asset intelligence.\\nRoadmap\\nProject Start\\n12 September 2025\\nD1\\n30 September 2025\\nD2\\n10 October 2025\\nD3\\n12 October 2025\\nD4\\n20 October 2025\\nProject sign-off\\n30 October 2025\\nPricing\\nPricing is provided below for professional services where Flowgear will carry out implementation of solutions and attend integration testing workshops.\\nProfessional Services\\nProfessional Services Development\\nHours\\nD1 Analysis and Scoping with the Client\\n20\\nD2 - D4 Development and Build\\n30\\nTesting and Project Management\\n10\\nTotal\\n60\\nt: +27 11 731 0603 info@flowgear.net\\n5th Floor | Global House | 28 Sturdee Avenue Rosebank | Johannesburg | South Africa PO Box 2174 | Parklands | 2121\\nwww.flowgear.net\\n2 / 2\",\r\n  \"Documents\": [\r\n    {\r\n      \"Fields\": {\r\n        \"title\": {\r\n          \"Content\": \"Flowgear Project Proposal\",\r\n          \"Confidence\": 0.938,\r\n          \"BoundingRegions\": [\r\n            {\r\n              \"PageNumber\": 1\r\n            }\r\n          ],\r\n          \"ValueDictionary\": {},\r\n          \"ValueList\": []\r\n        },\r\n        \"client\": {\r\n          \"Content\": \"Fonsly NovaCore\",\r\n          \"Confidence\": 0.966,\r\n          \"BoundingRegions\": [\r\n            {\r\n              \"PageNumber\": 1\r\n            }\r\n          ],\r\n          \"ValueDictionary\": {},\r\n          \"ValueList\": []\r\n        },\r\n        \"contact_name\": {\r\n          \"Content\": \"Jeremy Callstone\",\r\n          \"Confidence\": 0.959,\r\n          \"BoundingRegions\": [\r\n            {\r\n              \"PageNumber\": 1\r\n            }\r\n          ],\r\n          \"ValueDictionary\": {},\r\n          \"ValueList\": []\r\n        },\r\n        \"date\": {\r\n          \"Content\": \"August 2025\",\r\n          \"Confidence\": 0.957,\r\n          \"BoundingRegions\": [\r\n            {\r\n              \"PageNumber\": 1\r\n            }\r\n          ],\r\n          \"ValueDictionary\": {},\r\n          \"ValueList\": []\r\n        },\r\n        \"order_number\": {\r\n          \"Content\": \"1233548\",\r\n          \"Confidence\": 0.976,\r\n          \"BoundingRegions\": [\r\n            {\r\n              \"PageNumber\": 1\r\n            }\r\n          ],\r\n          \"ValueDictionary\": {},\r\n          \"ValueList\": []\r\n        },\r\n        \"project_objective\": {\r\n          \"Content\": \"The objective is to streamline and unify NovaCore's fragmented operational systems by building a robust middleware layer that connects their ERP, loT sensor data platform, CRM, and field service applications. This integration enables real-time data synchronization across departments, enhances visibility into energy production and asset performance, and automates workflow triggers based on sensor thresholds or customer interactions. The project also includes custom dashboards for monitoring service efficiency and predictive maintenance, supporting NovaCore's mission to deliver smarter, cleaner energy at scale.\",\r\n          \"Confidence\": 0.714,\r\n          \"BoundingRegions\": [\r\n            {\r\n              \"PageNumber\": 2\r\n            }\r\n          ],\r\n          \"ValueDictionary\": {},\r\n          \"ValueList\": []\r\n        },\r\n        \"project_summary\": {\r\n          \"Content\": \"Flowgear is integrating Fonsly NovaCore's core systems to enable real-time data flow, operational automation, and energy asset intelligence.\",\r\n          \"Confidence\": 0.852,\r\n          \"BoundingRegions\": [\r\n            {\r\n              \"PageNumber\": 2\r\n            }\r\n          ],\r\n          \"ValueDictionary\": {},\r\n          \"ValueList\": []\r\n        },\r\n        \"project_start\": {\r\n          \"Content\": \"12 September 2025\",\r\n          \"Confidence\": 0.948,\r\n          \"BoundingRegions\": [\r\n            {\r\n              \"PageNumber\": 2\r\n            }\r\n          ],\r\n          \"ValueDictionary\": {},\r\n          \"ValueList\": []\r\n        },\r\n        \"pricing\": {\r\n          \"Content\": null,\r\n          \"Confidence\": 0.912,\r\n          \"BoundingRegions\": [],\r\n          \"ValueDictionary\": {},\r\n          \"ValueList\": [\r\n            {\r\n              \"Content\": null,\r\n              \"Confidence\": 0.969,\r\n              \"BoundingRegions\": [],\r\n              \"ValueDictionary\": {\r\n                \"Professional Services Development\": {\r\n                  \"Content\": \"D1 Analysis and Scoping with the Client\",\r\n                  \"Confidence\": 0.974,\r\n                  \"BoundingRegions\": [\r\n                    {\r\n                      \"PageNumber\": 2\r\n                    }\r\n                  ],\r\n                  \"ValueDictionary\": {},\r\n                  \"ValueList\": []\r\n                },\r\n                \"Hours\": {\r\n                  \"Content\": \"20\",\r\n                  \"Confidence\": 0.986,\r\n                  \"BoundingRegions\": [\r\n                    {\r\n                      \"PageNumber\": 2\r\n                    }\r\n                  ],\r\n                  \"ValueDictionary\": {},\r\n                  \"ValueList\": []\r\n                }\r\n              },\r\n              \"ValueList\": []\r\n            },\r\n            {\r\n              \"Content\": null,\r\n              \"Confidence\": 0.972,\r\n              \"BoundingRegions\": [],\r\n              \"ValueDictionary\": {\r\n                \"Professional Services Development\": {\r\n                  \"Content\": \"D2 - D4 Development and Build\",\r\n                  \"Confidence\": 0.976,\r\n                  \"BoundingRegions\": [\r\n                    {\r\n                      \"PageNumber\": 2\r\n                    }\r\n                  ],\r\n                  \"ValueDictionary\": {},\r\n                  \"ValueList\": []\r\n                },\r\n                \"Hours\": {\r\n                  \"Content\": \"30\",\r\n                  \"Confidence\": 0.987,\r\n                  \"BoundingRegions\": [\r\n                    {\r\n                      \"PageNumber\": 2\r\n                    }\r\n                  ],\r\n                  \"ValueDictionary\": {},\r\n                  \"ValueList\": []\r\n                }\r\n              },\r\n              \"ValueList\": []\r\n            },\r\n            {\r\n              \"Content\": null,\r\n              \"Confidence\": 0.977,\r\n              \"BoundingRegions\": [],\r\n              \"ValueDictionary\": {\r\n                \"Professional Services Development\": {\r\n                  \"Content\": \"Testing and Project Management\",\r\n                  \"Confidence\": 0.978,\r\n                  \"BoundingRegions\": [\r\n                    {\r\n                      \"PageNumber\": 2\r\n                    }\r\n                  ],\r\n                  \"ValueDictionary\": {},\r\n                  \"ValueList\": []\r\n                },\r\n                \"Hours\": {\r\n                  \"Content\": \"10\",\r\n                  \"Confidence\": 0.983,\r\n                  \"BoundingRegions\": [\r\n                    {\r\n                      \"PageNumber\": 2\r\n                    }\r\n                  ],\r\n                  \"ValueDictionary\": {},\r\n                  \"ValueList\": []\r\n                }\r\n              },\r\n              \"ValueList\": []\r\n            },\r\n            {\r\n              \"Content\": null,\r\n              \"Confidence\": 0.974,\r\n              \"BoundingRegions\": [],\r\n              \"ValueDictionary\": {\r\n                \"Professional Services Development\": {\r\n                  \"Content\": \"Total\",\r\n                  \"Confidence\": 0.981,\r\n                  \"BoundingRegions\": [\r\n                    {\r\n                      \"PageNumber\": 2\r\n                    }\r\n                  ],\r\n                  \"ValueDictionary\": {},\r\n                  \"ValueList\": []\r\n                },\r\n                \"Hours\": {\r\n                  \"Content\": \"60\",\r\n                  \"Confidence\": 0.985,\r\n                  \"BoundingRegions\": [\r\n                    {\r\n                      \"PageNumber\": 2\r\n                    }\r\n                  ],\r\n                  \"ValueDictionary\": {},\r\n                  \"ValueList\": []\r\n                }\r\n              },\r\n              \"ValueList\": []\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"Documents/Fields/client/Content\"],\"targetPath\":\"Request/Opportunity/Name\",\"mapExpression\":\"TEXTVALUE({Content}) + \\\" Opportunity\\\"\"},{\"sourcePaths\":[\"Documents/Fields/project_summary/Content\"],\"targetPath\":\"Request/Opportunity/Description\"},{\"sourcePaths\":[],\"targetPath\":\"Request/Opportunity/StageName\",\"mapExpression\":\"\\\"Qualification\\\"\"},{\"sourcePaths\":[\"Documents/Fields/pricing/ValueList/ValueDictionary/Hours/Content\"],\"targetPath\":\"Request/Opportunity/Amount\",\"mapExpression\":\"MAX({Content}) * 3000\"},{\"sourcePaths\":[],\"targetPath\":\"Request/Opportunity/Probability\",\"mapExpression\":\"15\"},{\"sourcePaths\":[\"Documents/Fields/project_start/Content\"],\"targetPath\":\"Request/Opportunity/CloseDate\",\"mapExpression\":\"FORMATDATE({Content}, \\\"yyyy-MM-dd\\\")\"},{\"sourcePaths\":[],\"targetPath\":\"Request/Opportunity/Type\",\"mapExpression\":\"\\\"Proposal\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Request/Opportunity/OwnerId\",\"mapExpression\":\"\\\"0050Y000000KkjzQAC\\\"\"},{\"sourcePaths\":[\"Documents/Fields/order_number/Content\"],\"targetPath\":\"Request/Opportunity/flowgear__OrderNumber__c\"}],\"sourceSchema\":\"{\\r\\n  \\\"ApiVersion\\\": \\\"2024-11-30\\\",\\r\\n  \\\"ModelId\\\": \\\"Proposal\\\",\\r\\n  \\\"Content\\\": \\\"@ flowgear\\\\nFlowgear Project Proposal Fonsly NovaCore\\\\nJeremy Callstone August 2025 Order Number: 1233548\\\\n@ flowgear\\\\nProject\\\\nThe objective is to streamline and unify NovaCore's fragmented operational systems by building a robust middleware layer that connects their ERP, loT sensor data platform, CRM, and field service applications. This integration enables real-time data synchronization across departments, enhances visibility into energy production and asset performance, and automates workflow triggers based on sensor thresholds or customer interactions. The project also includes custom dashboards for monitoring service efficiency and predictive maintenance, supporting NovaCore's mission to deliver smarter, cleaner energy at scale.\\\\nSummary:\\\\nFlowgear is integrating Fonsly NovaCore's core systems to enable real-time data flow, operational automation, and energy asset intelligence.\\\\nRoadmap\\\\nProject Start\\\\n12 September 2025\\\\nD1\\\\n30 September 2025\\\\nD2\\\\n10 October 2025\\\\nD3\\\\n12 October 2025\\\\nD4\\\\n20 October 2025\\\\nProject sign-off\\\\n30 October 2025\\\\nPricing\\\\nPricing is provided below for professional services where Flowgear will carry out implementation of solutions and attend integration testing workshops.\\\\nProfessional Services\\\\nProfessional Services Development\\\\nHours\\\\nD1 Analysis and Scoping with the Client\\\\n20\\\\nD2 - D4 Development and Build\\\\n30\\\\nTesting and Project Management\\\\n10\\\\nTotal\\\\n60\\\\nt: +27 11 731 0603 info@flowgear.net\\\\n5th Floor | Global House | 28 Sturdee Avenue Rosebank | Johannesburg | South Africa PO Box 2174 | Parklands | 2121\\\\nwww.flowgear.net\\\\n2 / 2\\\",\\r\\n  \\\"Documents\\\": [\\r\\n    {\\r\\n      \\\"Fields\\\": {\\r\\n        \\\"title\\\": {\\r\\n          \\\"Content\\\": \\\"Flowgear Project Proposal\\\",\\r\\n          \\\"Confidence\\\": 0.938,\\r\\n          \\\"BoundingRegions\\\": [\\r\\n            {\\r\\n              \\\"PageNumber\\\": 1\\r\\n            }\\r\\n          ],\\r\\n          \\\"ValueDictionary\\\": {},\\r\\n          \\\"ValueList\\\": []\\r\\n        },\\r\\n        \\\"client\\\": {\\r\\n          \\\"Content\\\": \\\"Fonsly NovaCore\\\",\\r\\n          \\\"Confidence\\\": 0.966,\\r\\n          \\\"BoundingRegions\\\": [\\r\\n            {\\r\\n              \\\"PageNumber\\\": 1\\r\\n            }\\r\\n          ],\\r\\n          \\\"ValueDictionary\\\": {},\\r\\n          \\\"ValueList\\\": []\\r\\n        },\\r\\n        \\\"contact_name\\\": {\\r\\n          \\\"Content\\\": \\\"Jeremy Callstone\\\",\\r\\n          \\\"Confidence\\\": 0.959,\\r\\n          \\\"BoundingRegions\\\": [\\r\\n            {\\r\\n              \\\"PageNumber\\\": 1\\r\\n            }\\r\\n          ],\\r\\n          \\\"ValueDictionary\\\": {},\\r\\n          \\\"ValueList\\\": []\\r\\n        },\\r\\n        \\\"date\\\": {\\r\\n          \\\"Content\\\": \\\"August 2025\\\",\\r\\n          \\\"Confidence\\\": 0.957,\\r\\n          \\\"BoundingRegions\\\": [\\r\\n            {\\r\\n              \\\"PageNumber\\\": 1\\r\\n            }\\r\\n          ],\\r\\n          \\\"ValueDictionary\\\": {},\\r\\n          \\\"ValueList\\\": []\\r\\n        },\\r\\n        \\\"order_number\\\": {\\r\\n          \\\"Content\\\": \\\"1233548\\\",\\r\\n          \\\"Confidence\\\": 0.976,\\r\\n          \\\"BoundingRegions\\\": [\\r\\n            {\\r\\n              \\\"PageNumber\\\": 1\\r\\n            }\\r\\n          ],\\r\\n          \\\"ValueDictionary\\\": {},\\r\\n          \\\"ValueList\\\": []\\r\\n        },\\r\\n        \\\"project_objective\\\": {\\r\\n          \\\"Content\\\": \\\"The objective is to streamline and unify NovaCore's fragmented operational systems by building a robust middleware layer that connects their ERP, loT sensor data platform, CRM, and field service applications. This integration enables real-time data synchronization across departments, enhances visibility into energy production and asset performance, and automates workflow triggers based on sensor thresholds or customer interactions. The project also includes custom dashboards for monitoring service efficiency and predictive maintenance, supporting NovaCore's mission to deliver smarter, cleaner energy at scale.\\\",\\r\\n          \\\"Confidence\\\": 0.714,\\r\\n          \\\"BoundingRegions\\\": [\\r\\n            {\\r\\n              \\\"PageNumber\\\": 2\\r\\n            }\\r\\n          ],\\r\\n          \\\"ValueDictionary\\\": {},\\r\\n          \\\"ValueList\\\": []\\r\\n        },\\r\\n        \\\"project_summary\\\": {\\r\\n          \\\"Content\\\": \\\"Flowgear is integrating Fonsly NovaCore's core systems to enable real-time data flow, operational automation, and energy asset intelligence.\\\",\\r\\n          \\\"Confidence\\\": 0.852,\\r\\n          \\\"BoundingRegions\\\": [\\r\\n            {\\r\\n              \\\"PageNumber\\\": 2\\r\\n            }\\r\\n          ],\\r\\n          \\\"ValueDictionary\\\": {},\\r\\n          \\\"ValueList\\\": []\\r\\n        },\\r\\n        \\\"project_start\\\": {\\r\\n          \\\"Content\\\": \\\"12 September 2025\\\",\\r\\n          \\\"Confidence\\\": 0.948,\\r\\n          \\\"BoundingRegions\\\": [\\r\\n            {\\r\\n              \\\"PageNumber\\\": 2\\r\\n            }\\r\\n          ],\\r\\n          \\\"ValueDictionary\\\": {},\\r\\n          \\\"ValueList\\\": []\\r\\n        },\\r\\n        \\\"pricing\\\": {\\r\\n          \\\"Content\\\": null,\\r\\n          \\\"Confidence\\\": 0.912,\\r\\n          \\\"BoundingRegions\\\": [],\\r\\n          \\\"ValueDictionary\\\": {},\\r\\n          \\\"ValueList\\\": [\\r\\n            {\\r\\n              \\\"Content\\\": null,\\r\\n              \\\"Confidence\\\": 0.969,\\r\\n              \\\"BoundingRegions\\\": [],\\r\\n              \\\"ValueDictionary\\\": {\\r\\n                \\\"Professional Services Development\\\": {\\r\\n                  \\\"Content\\\": \\\"D1 Analysis and Scoping with the Client\\\",\\r\\n                  \\\"Confidence\\\": 0.974,\\r\\n                  \\\"BoundingRegions\\\": [\\r\\n                    {\\r\\n                      \\\"PageNumber\\\": 2\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"ValueDictionary\\\": {},\\r\\n                  \\\"ValueList\\\": []\\r\\n                },\\r\\n                \\\"Hours\\\": {\\r\\n                  \\\"Content\\\": \\\"20\\\",\\r\\n                  \\\"Confidence\\\": 0.986,\\r\\n                  \\\"BoundingRegions\\\": [\\r\\n                    {\\r\\n                      \\\"PageNumber\\\": 2\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"ValueDictionary\\\": {},\\r\\n                  \\\"ValueList\\\": []\\r\\n                }\\r\\n              },\\r\\n              \\\"ValueList\\\": []\\r\\n            },\\r\\n            {\\r\\n              \\\"Content\\\": null,\\r\\n              \\\"Confidence\\\": 0.972,\\r\\n              \\\"BoundingRegions\\\": [],\\r\\n              \\\"ValueDictionary\\\": {\\r\\n                \\\"Professional Services Development\\\": {\\r\\n                  \\\"Content\\\": \\\"D2 - D4 Development and Build\\\",\\r\\n                  \\\"Confidence\\\": 0.976,\\r\\n                  \\\"BoundingRegions\\\": [\\r\\n                    {\\r\\n                      \\\"PageNumber\\\": 2\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"ValueDictionary\\\": {},\\r\\n                  \\\"ValueList\\\": []\\r\\n                },\\r\\n                \\\"Hours\\\": {\\r\\n                  \\\"Content\\\": \\\"30\\\",\\r\\n                  \\\"Confidence\\\": 0.987,\\r\\n                  \\\"BoundingRegions\\\": [\\r\\n                    {\\r\\n                      \\\"PageNumber\\\": 2\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"ValueDictionary\\\": {},\\r\\n                  \\\"ValueList\\\": []\\r\\n                }\\r\\n              },\\r\\n              \\\"ValueList\\\": []\\r\\n            },\\r\\n            {\\r\\n              \\\"Content\\\": null,\\r\\n              \\\"Confidence\\\": 0.977,\\r\\n              \\\"BoundingRegions\\\": [],\\r\\n              \\\"ValueDictionary\\\": {\\r\\n                \\\"Professional Services Development\\\": {\\r\\n                  \\\"Content\\\": \\\"Testing and Project Management\\\",\\r\\n                  \\\"Confidence\\\": 0.978,\\r\\n                  \\\"BoundingRegions\\\": [\\r\\n                    {\\r\\n                      \\\"PageNumber\\\": 2\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"ValueDictionary\\\": {},\\r\\n                  \\\"ValueList\\\": []\\r\\n                },\\r\\n                \\\"Hours\\\": {\\r\\n                  \\\"Content\\\": \\\"10\\\",\\r\\n                  \\\"Confidence\\\": 0.983,\\r\\n                  \\\"BoundingRegions\\\": [\\r\\n                    {\\r\\n                      \\\"PageNumber\\\": 2\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"ValueDictionary\\\": {},\\r\\n                  \\\"ValueList\\\": []\\r\\n                }\\r\\n              },\\r\\n              \\\"ValueList\\\": []\\r\\n            },\\r\\n            {\\r\\n              \\\"Content\\\": null,\\r\\n              \\\"Confidence\\\": 0.974,\\r\\n              \\\"BoundingRegions\\\": [],\\r\\n              \\\"ValueDictionary\\\": {\\r\\n                \\\"Professional Services Development\\\": {\\r\\n                  \\\"Content\\\": \\\"Total\\\",\\r\\n                  \\\"Confidence\\\": 0.981,\\r\\n                  \\\"BoundingRegions\\\": [\\r\\n                    {\\r\\n                      \\\"PageNumber\\\": 2\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"ValueDictionary\\\": {},\\r\\n                  \\\"ValueList\\\": []\\r\\n                },\\r\\n                \\\"Hours\\\": {\\r\\n                  \\\"Content\\\": \\\"60\\\",\\r\\n                  \\\"Confidence\\\": 0.985,\\r\\n                  \\\"BoundingRegions\\\": [\\r\\n                    {\\r\\n                      \\\"PageNumber\\\": 2\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"ValueDictionary\\\": {},\\r\\n                  \\\"ValueList\\\": []\\r\\n                }\\r\\n              },\\r\\n              \\\"ValueList\\\": []\\r\\n            }\\r\\n          ]\\r\\n        }\\r\\n      }\\r\\n    }\\r\\n  ]\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<Request>\\r\\n  <Opportunity>\\r\\n    <AccountId>0011v00003YUJ0kAAH</AccountId>\\r\\n    <IsPrivate>false</IsPrivate>\\r\\n    <Name>VeryFirstSuccess</Name>\\r\\n    <Description>Success at everystage</Description>\\r\\n    <StageName>Qualification</StageName>\\r\\n    <Amount>20000</Amount>\\r\\n    <Probability>10</Probability>\\r\\n    <CloseDate>2025-08-31</CloseDate>\\r\\n    <Type>Existing Customer - Upgrade</Type>\\r\\n    <OwnerId>0050Y000000KkjzQAC</OwnerId>\\r\\n    <flowgear__OrderNumber__c>13255</flowgear__OrderNumber__c>\\r\\n  </Opportunity>\\r\\n</Request>\",\"targetSchemaType\":0}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <Opportunity>\r\n    <AccountId>0011v00003YUJ0kAAH</AccountId>\r\n    <IsPrivate>false</IsPrivate>\r\n    <Name>VeryFirstSuccess</Name>\r\n    <Description>Success at everystage</Description>\r\n    <StageName>Qualification</StageName>\r\n    <Amount>20000</Amount>\r\n    <Probability>10</Probability>\r\n    <CloseDate>2025-08-31</CloseDate>\r\n    <Type>Existing Customer - Upgrade</Type>\r\n    <OwnerId>0050Y000000KkjzQAC</OwnerId>\r\n    <flowgear__OrderNumber__c>13255</flowgear__OrderNumber__c>\r\n  </Opportunity>\r\n</Request>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4153
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-11-27T15:52:53.0253877+00:00",
+                    "Username": "daniel.chilcott@flowgear.net",
+                    "UserKey": "948d657b-e37c-4fd3-9bfa-c94f493379f0"
+                }
+            },
+            {
+                "NodeId": "36746bee-e779-c37f-d138-5f91c62a90eb",
+                "Name": "Salesforce",
+                "ShortDescription": "Salesforce Create",
+                "Version": "4.1.1.4",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "full refresh_token offline_access"
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "InstanceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "DontInterleaveRequestInResponse",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "EncodingMode",
+                                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "XmlInXmlOut",
+                                    "XmlInJsonOut"
+                                ]
+                            },
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "v59.0"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Create",
+                            "Update",
+                            "Get",
+                            "Query",
+                            "Upsert",
+                            "GetNextRecords",
+                            "QueryAll",
+                            "Delete",
+                            "ListSamples",
+                            "GetSample"
+                        ],
+                        "Value": "Create"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ObjectName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Opportunity"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExternalIdField",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"Opportunity\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"IsDeleted\" type=\"xs:string\" />\r\n              <xs:element name=\"AccountId\" type=\"xs:string\" />\r\n              <xs:element name=\"IsPrivate\" type=\"xs:string\" />\r\n              <xs:element name=\"Name\" type=\"xs:string\" />\r\n              <xs:element name=\"Description\" type=\"xs:string\" />\r\n              <xs:element name=\"StageName\" type=\"xs:string\" />\r\n              <xs:element name=\"Amount\" type=\"xs:string\" />\r\n              <xs:element name=\"Probability\" type=\"xs:string\" />\r\n              <xs:element name=\"ExpectedRevenue\" type=\"xs:string\" />\r\n              <xs:element name=\"TotalOpportunityQuantity\" type=\"xs:string\" />\r\n              <xs:element name=\"CloseDate\" type=\"xs:string\" />\r\n              <xs:element name=\"Type\" type=\"xs:string\" />\r\n              <xs:element name=\"NextStep\" type=\"xs:string\" />\r\n              <xs:element name=\"LeadSource\" type=\"xs:string\" />\r\n              <xs:element name=\"IsClosed\" type=\"xs:string\" />\r\n              <xs:element name=\"IsWon\" type=\"xs:string\" />\r\n              <xs:element name=\"ForecastCategory\" type=\"xs:string\" />\r\n              <xs:element name=\"ForecastCategoryName\" type=\"xs:string\" />\r\n              <xs:element name=\"CampaignId\" type=\"xs:string\" />\r\n              <xs:element name=\"HasOpportunityLineItem\" type=\"xs:string\" />\r\n              <xs:element name=\"Pricebook2Id\" type=\"xs:string\" />\r\n              <xs:element name=\"OwnerId\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedById\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedById\" type=\"xs:string\" />\r\n              <xs:element name=\"SystemModstamp\" type=\"xs:string\" />\r\n              <xs:element name=\"LastActivityDate\" type=\"xs:string\" />\r\n              <xs:element name=\"PushCount\" type=\"xs:string\" />\r\n              <xs:element name=\"LastStageChangeDate\" type=\"xs:string\" />\r\n              <xs:element name=\"FiscalQuarter\" type=\"xs:string\" />\r\n              <xs:element name=\"FiscalYear\" type=\"xs:string\" />\r\n              <xs:element name=\"Fiscal\" type=\"xs:string\" />\r\n              <xs:element name=\"ContactId\" type=\"xs:string\" />\r\n              <xs:element name=\"LastViewedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastReferencedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"HasOpenActivity\" type=\"xs:string\" />\r\n              <xs:element name=\"HasOverdueTask\" type=\"xs:string\" />\r\n              <xs:element name=\"LastAmountChangedHistoryId\" type=\"xs:string\" />\r\n              <xs:element name=\"LastCloseDateChangedHistoryId\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__DeliveryInstallationStatus__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__TrackingNumber__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__OrderNumber__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__CurrentGenerators__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__MainCompetitors__c\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <Opportunity>\r\n    <AccountId>0011v00003YUJ0kAAH</AccountId>\r\n    <IsPrivate>false</IsPrivate>\r\n    <Name>VeryFirstSuccess</Name>\r\n    <Description>Success at everystage</Description>\r\n    <StageName>Qualification</StageName>\r\n    <Amount>20000</Amount>\r\n    <Probability>10</Probability>\r\n    <CloseDate>2025-08-31</CloseDate>\r\n    <Type>Existing Customer - Upgrade</Type>\r\n    <OwnerId>0050Y000000KkjzQAC</OwnerId>\r\n    <flowgear__OrderNumber__c>13255</flowgear__OrderNumber__c>\r\n  </Opportunity>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <Response>\r\n    <success>false</success>\r\n    <errors>\r\n      <statusCode>JSON_PARSER_ERROR</statusCode>\r\n      <message>Cannot deserialize instance of date from VALUE_STRING value 12 September 2025 or request may be missing a required field at [Source: N/A; line: -1, column: -1][line:-1, column:-1]</message>\r\n    </errors>\r\n    <request>\r\n      <attributes>\r\n        <type>Opportunity</type>\r\n        <referenceId>item0</referenceId>\r\n      </attributes>\r\n      <Name>Fonsly NovaCore Opportunity</Name>\r\n      <Description>Flowgear is integrating Fonsly NovaCore’s core systems to enable real-time data flow, operational automation, and energy asset intelligence.</Description>\r\n      <StageName>Qualification</StageName>\r\n      <Amount>180000</Amount>\r\n      <Probability>15</Probability>\r\n      <CloseDate>12 September 2025</CloseDate>\r\n      <Type>Proposal</Type>\r\n      <OwnerId>0050Y000000KkjzQAC</OwnerId>\r\n      <flowgear__OrderNumber__c>1233548</flowgear__OrderNumber__c>\r\n    </request>\r\n  </Response>\r\n</Response>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 4153
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Salesforce",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-16T09:13:58.0172373+00:00",
+                    "Username": "terrence.meiring@flowgear.net",
+                    "UserKey": "52842f9c-5bd5-4996-8001-384de1faf6b3"
+                }
+            },
+            {
+                "NodeId": "5c301544-85da-2dd0-aa2e-17257103a09b",
+                "Name": "FileMove",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "CreateTargetDirectory",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "OverwriteOnConflict",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.File.FileMoveConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "SourcePath",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "{Directory}\\{FileName}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DestinationPath",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "{Destination}/{FileName}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Directory",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Destination",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "FileName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 4153
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "File Move",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-05-13T07:11:31.8357561+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "feab2978-3f19-db40-a630-507149086603",
+                "TargetNodeId": "36746bee-e779-c37f-d138-5f91c62a90eb",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "d3c24bfe-2c98-4201-a4fe-cd347db348e6",
+                "TargetNodeId": "feab2978-3f19-db40-a630-507149086603",
+                "SourceName": "Response",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d3c24bfe-2c98-4201-a4fe-cd347db348e6",
+                "TargetNodeId": "feab2978-3f19-db40-a630-507149086603",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "85b1201c-5884-dcac-ecd1-b70aa892547d",
+                "TargetNodeId": "1edaae29-8b96-c8d1-4494-f0882db0a912",
+                "SourceName": "File"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "1edaae29-8b96-c8d1-4494-f0882db0a912",
+                "TargetNodeId": "d3c24bfe-2c98-4201-a4fe-cd347db348e6",
+                "SourceName": "Content",
+                "TargetName": "PdfFile"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "36746bee-e779-c37f-d138-5f91c62a90eb",
+                "TargetNodeId": "5c301544-85da-2dd0-aa2e-17257103a09b",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e8ecbc6b-0274-159e-c339-c4cbe22b65fb",
+                "TargetNodeId": "1edaae29-8b96-c8d1-4494-f0882db0a912",
+                "SourceName": "Directory",
+                "TargetName": "Directory"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e8ecbc6b-0274-159e-c339-c4cbe22b65fb",
+                "TargetNodeId": "5c301544-85da-2dd0-aa2e-17257103a09b",
+                "SourceName": "Directory",
+                "TargetName": "Directory"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e8ecbc6b-0274-159e-c339-c4cbe22b65fb",
+                "TargetNodeId": "5c301544-85da-2dd0-aa2e-17257103a09b",
+                "SourceName": "DestinationDirectory",
+                "TargetName": "Destination"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "85b1201c-5884-dcac-ecd1-b70aa892547d",
+                "TargetNodeId": "1edaae29-8b96-c8d1-4494-f0882db0a912",
+                "SourceName": "FilePath",
+                "TargetName": "FileName"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "85b1201c-5884-dcac-ecd1-b70aa892547d",
+                "TargetNodeId": "5c301544-85da-2dd0-aa2e-17257103a09b",
+                "SourceName": "FilePath",
+                "TargetName": "FileName"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e8ecbc6b-0274-159e-c339-c4cbe22b65fb",
+                "TargetNodeId": "85b1201c-5884-dcac-ecd1-b70aa892547d",
+                "SourceName": "Directory",
+                "TargetName": "DirectoryPath"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "1edaae29-8b96-c8d1-4494-f0882db0a912",
+                "TargetNodeId": "d3c24bfe-2c98-4201-a4fe-cd347db348e6",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "feab2978-3f19-db40-a630-507149086603",
+                "TargetNodeId": "36746bee-e779-c37f-d138-5f91c62a90eb",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "db9a0b47-8ab5-c7c5-b41b-e673a1a5581c",
+                "TargetNodeId": "85b1201c-5884-dcac-ecd1-b70aa892547d",
+                "SourceName": "Start"
+            }
+        ],
+        "StartNodeId": "db9a0b47-8ab5-c7c5-b41b-e673a1a5581c",
+        "ActivityLogLevelMask": 255
+    },
+    "Name": "Azure DI PDF Read To Salesforce Opportunities",
+    "Description": "This Workflow processes PDF files from a specified directory, reads their contents, extracts data using a PDF reader, maps the data, and creates Salesforce Opportunity records. After successful processing, each PDF is moved to a \"Complete\" directory.\n"
+}

@@ -1,0 +1,697 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "Name": "Note",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Value": "This Workflow reads a PDF invoice from a specified folder, parses its contents using OpenAI, and maps the extracted data to a Sage Intacct sales order format. The mapped data is then sent to Sage Intacct to create a new sales order transaction.\n"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHTAAAB0wASOu6tcAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAgJJREFUOE+V00tPU0EUAOAxasDEIoSKoVQnVAggsddqwMi7lEe9B6shxhjDUmPcuHHFL2AhVEQelmIpvS21Xm8LbaHUd4wxxhjjzpVxgzsT/QVzONPUlUZ6F7P8zpnzYg0OvqfRYd/b4LDvq6s9XG47dqCm6aSFNzktvNlZwZuVCt6iHOItpyr5CXqtrireerqKO9uqjyrt1WWs8XgBW+p5rfX6jbH+kH5re1JThD/mEtPxM2Im0SZm9bNi3jgnHqY6xeJ6t1jK9IrQhlvcXe5Q6Qf2/fXcVsDfvn/9EU3fRsJIGAkjYSSMhJEwEkbCGM55cDLcCcxuqyn/g3/9/olGfrwkHMkPoj/SDayOHzyiJe9sP9kcx+zrCYxmbpaEo8+H8Z7WC0w2rFhzyZklXn15Hu/H3BSAul1smCmceDOCD+IeYHJUxW7vimMvvBh/pRaw/taHc4kBCkAzJixH9U+8sjWA2rOhv7Dx7hIu6EPA5JIQlnPGwFoXBtM9+Cjbh8ub/f/FqfejGHjqBSa3a97oEGbx+ofLuJhUKYCrkhMWZnHm4xVcWhsBJnebsDCLNz5dxVD6AgWgwyAszOLc52sYzl4EptBVERZmcf7LGGq5UZUp7dYyOgp1aqUL/JEemI72wcyqG2Yfe2AuMQgL+jAEDC8EUyrImkNpH8jMEgeTPusOQk47WqOxmsUAAAAASUVORK5CYII=",
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                },
+                "NodeId": "3c125968-bb9a-0c4f-8bee-dc0c11021f19",
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "ShortDescription": "About This Workflow"
+            },
+            {
+                "NodeId": "b78d67f0-99a0-48e5-7364-45fe90fe9157",
+                "Name": "VariableBar",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "FileExtension": ".bin",
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "FolderPath",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 0,
+                        "Value": "C:\\Flowgear\\Invoices"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "PdfName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "SO0510.pdf"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                }
+            },
+            {
+                "NodeId": "56052870-1410-39e0-b93c-60f9fcfa6fd8",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 4153
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "fcc55a31-bdb0-012f-b90f-75b2253b6bc4",
+                "Name": "FileRead",
+                "ShortDescription": "Read ",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.File.FileReadConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "{FolderPath}\\{PdfName}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Type",
+                        "TypeName": "Flowgear.Nodes.File.FileRead+FileTypes",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Text",
+                            "Binary"
+                        ],
+                        "Value": "Binary"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Content",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "PdfName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "FolderPath",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 4153
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "File Read",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-05-13T07:11:32.0934757+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "70c32ff9-e332-7a3e-c478-870455da3516",
+                "Name": "OpenAIDocumentParser",
+                "ShortDescription": "OpenAI Parse Document",
+                "Version": "1.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Model",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "gpt-4o"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.OpenAIDocumentParser.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.OpenAIDocumentParser.Types.Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "CreateSchema",
+                            "CreateValidationScript",
+                            "ParseDocument"
+                        ],
+                        "Value": "ParseDocument"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Schema",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"invoice_number\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"date\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"customer_id\": {\r\n      \"type\": \"string\"\r\n    },\r\n\t\"customer_name\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"salesperson\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"payment_terms\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"due_date\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"items\": {\r\n      \"type\": \"array\",\r\n      \"items\": {\r\n        \"$ref\": \"#/definitions/Item\"\r\n      }\r\n    },\r\n    \"subtotal\": {\r\n      \"type\": \"number\"\r\n    },\r\n    \"sales_tax\": {\r\n      \"type\": \"number\"\r\n    },\r\n    \"total\": {\r\n      \"type\": \"number\"\r\n    }\r\n  },\r\n  \"definitions\": {\r\n    \"Item\": {\r\n      \"type\": \"object\",\r\n      \"properties\": {\r\n        \"description\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"quantity\": {\r\n          \"type\": \"integer\"\r\n        },\r\n        \"unit_price\": {\r\n          \"type\": \"number\"\r\n        },\r\n        \"line_total\": {\r\n          \"type\": \"number\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ValidationScript",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "using System;\r\nusing System.Collections.Generic;\r\nusing Newtonsoft.Json.Linq;\r\n\r\npublic class GeneratedValidator\r\n{\r\n    public static IList<string> Validate(JObject obj)\r\n    {\r\n        var errors = new List<string>();\r\n\r\n        // Helper to check number type (float or int)\r\n        bool IsNumber(JToken token) =>\r\n            token != null && (token.Type == JTokenType.Float || token.Type == JTokenType.Integer);\r\n\r\n        // Validate items array\r\n        var items = obj[\"items\"] as JArray;\r\n        if (items == null)\r\n        {\r\n            errors.Add(\"Missing or invalid 'items'.\");\r\n        }\r\n        else\r\n        {\r\n            double calculatedSubtotal = 0;\r\n            for (int i = 0; i < items.Count; i++)\r\n            {\r\n                var item = items[i] as JObject;\r\n                if (item == null)\r\n                {\r\n                    errors.Add($\"Item at index {i} is not a valid object.\");\r\n                    continue;\r\n                }\r\n\r\n                if (item[\"description\"] == null || item[\"description\"].Type != JTokenType.String)\r\n                    errors.Add($\"Missing or invalid 'items[{i}].description'.\");\r\n                if (!IsNumber(item[\"quantity\"]))\r\n                    errors.Add($\"Missing or invalid 'items[{i}].quantity'.\");\r\n                if (!IsNumber(item[\"unit_price\"]))\r\n                    errors.Add($\"Missing or invalid 'items[{i}].unit_price'.\");\r\n                if (!IsNumber(item[\"line_total\"]))\r\n                    errors.Add($\"Missing or invalid 'items[{i}].line_total'.\");\r\n\r\n                // Validate line total\r\n                if (IsNumber(item[\"quantity\"]) && IsNumber(item[\"unit_price\"]) && IsNumber(item[\"line_total\"]))\r\n                {\r\n                    int quantity = item[\"quantity\"].Value<int>();\r\n                    double unitPrice = item[\"unit_price\"].Value<double>();\r\n                    double lineTotal = item[\"line_total\"].Value<double>();\r\n\r\n                    if (Math.Abs(lineTotal - unitPrice * quantity) > 0.01)\r\n                    {\r\n                        errors.Add($\"Line total for item {i} does not match quantity * unit price. Expected {unitPrice * quantity}, got {lineTotal}.\");\r\n                    }\r\n                    calculatedSubtotal += lineTotal;\r\n                }\r\n            }\r\n\r\n            // Validate subtotal\r\n            if (IsNumber(obj[\"subtotal\"]))\r\n            {\r\n                double subtotal = obj[\"subtotal\"].Value<double>();\r\n                if (Math.Abs(subtotal - calculatedSubtotal) > 0.01)\r\n                    errors.Add($\"Subtotal does not match the sum of line totals. Expected {calculatedSubtotal}, got {subtotal}.\");\r\n            }\r\n        }\r\n\r\n        // Validate total\r\n        if (IsNumber(obj[\"subtotal\"]) && IsNumber(obj[\"sales_tax\"]) && IsNumber(obj[\"total\"]))\r\n        {\r\n            double subtotal = obj[\"subtotal\"].Value<double>();\r\n            double salesTax = obj[\"sales_tax\"].Value<double>();\r\n            double total = obj[\"total\"].Value<double>();\r\n            if (Math.Abs(total - (subtotal + salesTax)) > 0.01)\r\n                errors.Add(\"Total does not match subtotal plus sales tax.\");\r\n        }\r\n\r\n        return errors;\r\n    }\r\n}\r\n"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DocumentName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Document",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 5
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 4153
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "OpenAI Document Parser",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-08-01T05:11:04.512495+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "a8797bb6-abee-e9d2-9c29-d69b7d2978ce",
+                "Name": "QuickMap",
+                "ShortDescription": "Map PDF to Sage",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"invoice_number\": \"SO0510\",\r\n  \"date\": \"2025-08-05\",\r\n  \"customer\": {\r\n    \"name\": \"Citrus Enjoyers Pty Ltd\",\r\n    \"address\": \"5th Floor, Global House, 28 Sturdee Avenue, Sandton, GP 2196, South Africa\",\r\n    \"customer_id\": \"Citr001\"\r\n  },\r\n  \"salesperson\": \"Henry Marais\",\r\n  \"payment_terms\": \"Net 30\",\r\n  \"due_date\": \"2025-08-10\",\r\n  \"items\": [\r\n    {\r\n      \"quantity\": 10,\r\n      \"description\": \"Citrus Boxes\",\r\n      \"unit_price\": 13.12,\r\n      \"line_total\": 131.2\r\n    },\r\n    {\r\n      \"quantity\": 3,\r\n      \"description\": \"Citrus Boxes Large\",\r\n      \"unit_price\": 11.55,\r\n      \"line_total\": 34.65\r\n    }\r\n  ],\r\n  \"subtotal\": 165.85,\r\n  \"sales_tax\": 19.9,\r\n  \"total\": 185.75,\r\n  \"contact\": {\r\n    \"phone\": \"0861-61-3569\",\r\n    \"email\": \"support@flowgear.net\",\r\n    \"address\": \"The West Peak, 13 Lourensford Rd, Somerset West, 7130\"\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[],\"targetPath\":\"Request/transactiontype\",\"mapExpression\":\"\\\"Sales Order\\\"\"},{\"sourcePaths\":[\"date\"],\"targetPath\":\"Request/datecreated/year\",\"mapExpression\":\"DATEVALUE({date}, \\\"yyyy-MM-dd\\\").Year\"},{\"sourcePaths\":[\"date\"],\"targetPath\":\"Request/datecreated/month\",\"mapExpression\":\"DATEVALUE({date}, \\\"yyyy-MM-dd\\\").Month\"},{\"sourcePaths\":[\"date\"],\"targetPath\":\"Request/datecreated/day\",\"mapExpression\":\"DATEVALUE({date}, \\\"yyyy-MM-dd\\\").Day\"},{\"sourcePaths\":[\"customer/customer_id\"],\"targetPath\":\"Request/customerid\",\"mapExpression\":\"IIF(TEXTVALUE(FIRST({customer_id}))=\\\"\\\", \\\"Citr001\\\", {customer_id})\"},{\"sourcePaths\":[\"invoice_number\"],\"targetPath\":\"Request/documentno\",\"mapExpression\":\"\"},{\"sourcePaths\":[\"invoice_number\",\"salesperson\"],\"targetPath\":\"Request/referenceno\",\"mapExpression\":\"\\\"Webinar-\\\" + TEXTVALUE({invoice_number})\"},{\"sourcePaths\":[\"payment_terms\"],\"targetPath\":\"Request/termname\"},{\"sourcePaths\":[\"due_date\"],\"targetPath\":\"Request/datedue/year\",\"mapExpression\":\"DATEVALUE({due_date}, \\\"yyyy-MM-dd\\\").year\"},{\"sourcePaths\":[\"due_date\"],\"targetPath\":\"Request/datedue/month\",\"mapExpression\":\"DATEVALUE({due_date}, \\\"yyyy-MM-dd\\\").Month\"},{\"sourcePaths\":[\"due_date\"],\"targetPath\":\"Request/datedue/day\",\"mapExpression\":\"DATEVALUE({due_date}, \\\"yyyy-MM-dd\\\").Day\"},{\"sourcePaths\":[],\"targetPath\":\"Request/basecurr\",\"mapExpression\":\"\\\"USD\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Request/currency\",\"mapExpression\":\"\\\"USD\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Request/exchratetype\",\"mapExpression\":\"\\\"Intacct Daily Rate\\\"\"},{\"sourcePaths\":[],\"targetPath\":\"Request/state\",\"mapExpression\":\"\\\"Pending\\\"\"},{\"sourcePaths\":[\"items\"],\"targetPath\":\"Request/sotransitems/sotransitem\"},{\"sourcePaths\":[\"items/description\"],\"targetPath\":\"Request/sotransitems/sotransitem/itemid\",\"mapExpression\":\"LOOKUP({description}, \\\"Products\\\", \\\"Description\\\", \\\"IntacctSku\\\")\"},{\"sourcePaths\":[\"items/quantity\"],\"targetPath\":\"Request/sotransitems/sotransitem/quantity\"},{\"sourcePaths\":[],\"targetPath\":\"Request/sotransitems/sotransitem/unit\",\"mapExpression\":\"\\\"Each\\\"\"},{\"sourcePaths\":[\"items/unit_price\"],\"targetPath\":\"Request/sotransitems/sotransitem/price\"},{\"sourcePaths\":[],\"targetPath\":\"Request/sotransitems/sotransitem/locationid\",\"mapExpression\":\"100\"}],\"sourceSchema\":\"{\\r\\n  \\\"invoice_number\\\": \\\"SO0510\\\",\\r\\n  \\\"date\\\": \\\"2025-08-05\\\",\\r\\n  \\\"customer\\\": {\\r\\n    \\\"name\\\": \\\"Citrus Enjoyers Pty Ltd\\\",\\r\\n    \\\"address\\\": \\\"5th Floor, Global House, 28 Sturdee Avenue, Sandton, GP 2196, South Africa\\\",\\r\\n    \\\"customer_id\\\": \\\"Citr001\\\"\\r\\n  },\\r\\n  \\\"salesperson\\\": \\\"Henry Marais\\\",\\r\\n  \\\"payment_terms\\\": \\\"Net 30\\\",\\r\\n  \\\"due_date\\\": \\\"2025-08-10\\\",\\r\\n  \\\"items\\\": [\\r\\n    {\\r\\n      \\\"quantity\\\": 10,\\r\\n      \\\"description\\\": \\\"Citrus Boxes\\\",\\r\\n      \\\"unit_price\\\": 13.12,\\r\\n      \\\"line_total\\\": 131.2\\r\\n    },\\r\\n    {\\r\\n      \\\"quantity\\\": 3,\\r\\n      \\\"description\\\": \\\"Citrus Boxes Large\\\",\\r\\n      \\\"unit_price\\\": 11.55,\\r\\n      \\\"line_total\\\": 34.65\\r\\n    }\\r\\n  ],\\r\\n  \\\"subtotal\\\": 165.85,\\r\\n  \\\"sales_tax\\\": 19.9,\\r\\n  \\\"total\\\": 185.75,\\r\\n  \\\"contact\\\": {\\r\\n    \\\"phone\\\": \\\"0861-61-3569\\\",\\r\\n    \\\"email\\\": \\\"support@flowgear.net\\\",\\r\\n    \\\"address\\\": \\\"The West Peak, 13 Lourensford Rd, Somerset West, 7130\\\"\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<Request>\\r\\n  <transactiontype>Sales Order</transactiontype>\\r\\n  <datecreated>\\r\\n    <year>2022</year>\\r\\n    <month>3</month>\\r\\n    <day>9</day>\\r\\n  </datecreated>\\r\\n  <customerid>10013</customerid>\\r\\n  <documentno>TestDoc01</documentno>\\r\\n  <referenceno>1234</referenceno>\\r\\n  <termname>Net 30</termname>\\r\\n  <datedue>\\r\\n    <year>2022</year>\\r\\n    <month>3</month>\\r\\n    <day>15</day>\\r\\n  </datedue>\\r\\n  <message>Test Order</message>\\r\\n  <basecurr>USD</basecurr>\\r\\n  <currency>USD</currency>\\r\\n  <exchratetype>Intacct Daily Rate</exchratetype>\\r\\n  <state>Pending</state>\\r\\n  <sotransitems>\\r\\n    <sotransitem>\\r\\n      <itemid>FG001</itemid>\\r\\n      <quantity>1</quantity>\\r\\n      <unit>Each</unit>\\r\\n      <price>100</price>\\r\\n      <locationid>100</locationid>\\r\\n    </sotransitem>\\r\\n  </sotransitems>\\r\\n</Request>\",\"targetSchemaType\":0}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Auto"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <transactiontype>Sales Order</transactiontype>\r\n  <datecreated>\r\n    <year>2022</year>\r\n    <month>3</month>\r\n    <day>9</day>\r\n  </datecreated>\r\n  <customerid>10013</customerid>\r\n  <documentno>TestDoc01</documentno>\r\n  <referenceno>1234</referenceno>\r\n  <termname>Net 30</termname>\r\n  <datedue>\r\n    <year>2022</year>\r\n    <month>3</month>\r\n    <day>15</day>\r\n  </datedue>\r\n  <message>Test Order</message>\r\n  <basecurr>USD</basecurr>\r\n  <currency>USD</currency>\r\n  <exchratetype>Intacct Daily Rate</exchratetype>\r\n  <state>Pending</state>\r\n  <sotransitems>\r\n    <sotransitem>\r\n      <itemid>FG001</itemid>\r\n      <quantity>1</quantity>\r\n      <unit>Each</unit>\r\n      <price>100</price>\r\n      <locationid>100</locationid>\r\n    </sotransitem>\r\n  </sotransitems>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Products",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 1,
+                        "Value": "<Products>\r\n  <Product>\r\n    <Description>Citrus Boxes</Description>\r\n    <IntacctSku>FG001</IntacctSku>\r\n  </Product>\r\n  <Product>\r\n    <Description>Citrus Boxes Large</Description>\r\n    <IntacctSku>FG002</IntacctSku>\r\n  </Product>\r\n  <Product>\r\n    <Description>Citrus Other</Description>\r\n    <IntacctSku>FG003</IntacctSku>\r\n  </Product>\r\n</Products>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4153
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-01-26T08:48:08.2149778+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
+            },
+            {
+                "NodeId": "fd0d848f-7234-c683-8205-acd0ee5a6acf",
+                "Name": "SageIntacct",
+                "ShortDescription": "Create Order",
+                "Version": "1.2.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "SenderPassword",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "UserID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacct.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "create_sotransaction"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Object",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "transactiontype"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:choice maxOccurs=\"unbounded\">\r\n          <xs:element name=\"transactiontype\" type=\"xs:string\"/>\r\n          <xs:element name=\"datecreated\">\r\n            <xs:complexType>\r\n              <xs:sequence>\r\n                <xs:element name=\"year\" type=\"xs:unsignedShort\"/>\r\n                <xs:element name=\"month\" type=\"xs:unsignedByte\"/>\r\n                <xs:element name=\"day\" type=\"xs:unsignedByte\"/>\r\n              </xs:sequence>\r\n            </xs:complexType>\r\n          </xs:element>\r\n          <xs:element name=\"createdfrom\" type=\"xs:string\"/>\r\n          <xs:element name=\"customerid\" type=\"xs:string\"/>\r\n          <xs:element name=\"documentno\" type=\"xs:string\"/>\r\n          <xs:element name=\"origdocdate\">\r\n            <xs:complexType>\r\n              <xs:sequence>\r\n                <xs:element name=\"year\" type=\"xs:unsignedShort\"/>\r\n                <xs:element name=\"month\" type=\"xs:unsignedByte\"/>\r\n                <xs:element name=\"day\" type=\"xs:unsignedByte\"/>\r\n              </xs:sequence>\r\n            </xs:complexType>\r\n          </xs:element>\r\n          <xs:element name=\"referenceno\" type=\"xs:unsignedShort\"/>\r\n          <xs:element name=\"termname\" type=\"xs:string\"/>\r\n          <xs:element name=\"datedue\">\r\n            <xs:complexType>\r\n              <xs:sequence>\r\n                <xs:element name=\"year\" type=\"xs:unsignedShort\"/>\r\n                <xs:element name=\"month\" type=\"xs:unsignedByte\"/>\r\n                <xs:element name=\"day\" type=\"xs:unsignedByte\"/>\r\n              </xs:sequence>\r\n            </xs:complexType>\r\n          </xs:element>\r\n          <xs:element name=\"message\" type=\"xs:string\"/>\r\n          <xs:element name=\"shippingmethod\" type=\"xs:string\"/>\r\n          <xs:element name=\"shipto\">\r\n            <xs:complexType>\r\n              <xs:sequence>\r\n                <xs:element name=\"contactname\" type=\"xs:string\"/>\r\n              </xs:sequence>\r\n            </xs:complexType>\r\n          </xs:element>\r\n          <xs:element name=\"billto\">\r\n            <xs:complexType>\r\n              <xs:sequence>\r\n                <xs:element name=\"contactname\" type=\"xs:string\"/>\r\n              </xs:sequence>\r\n            </xs:complexType>\r\n          </xs:element>\r\n          <xs:element name=\"basecurr\" type=\"xs:string\"/>\r\n          <xs:element name=\"currency\" type=\"xs:string\"/>\r\n          <xs:element name=\"exchratetype\" type=\"xs:string\"/>\r\n          <xs:element name=\"customfields\"/>\r\n          <xs:element name=\"state\" type=\"xs:string\"/>\r\n          <xs:element name=\"sotransitems\">\r\n            <xs:complexType>\r\n              <xs:sequence>\r\n                <xs:element name=\"sotransitem\">\r\n                  <xs:complexType>\r\n                    <xs:sequence>\r\n                      <xs:element name=\"bundlenumber\"/>\r\n                      <xs:element name=\"itemid\" type=\"xs:string\"/>\r\n                      <xs:element name=\"quantity\" type=\"xs:unsignedByte\"/>\r\n                      <xs:element name=\"unit\" type=\"xs:string\"/>\r\n                      <xs:element name=\"price\" type=\"xs:unsignedByte\"/>\r\n                      <xs:element name=\"discsurchargememo\"/>\r\n                      <xs:element name=\"locationid\" type=\"xs:string\"/>\r\n                      <xs:element name=\"departmentid\" type=\"xs:string\"/>\r\n                    </xs:sequence>\r\n                  </xs:complexType>\r\n                </xs:element>\r\n              </xs:sequence>\r\n            </xs:complexType>\r\n          </xs:element>\r\n          <xs:element name=\"subtotals\">\r\n            <xs:complexType>\r\n              <xs:sequence>\r\n                <xs:element name=\"subtotal\">\r\n                  <xs:complexType>\r\n                    <xs:sequence>\r\n                      <xs:element name=\"description\" type=\"xs:string\"/>\r\n                      <xs:element name=\"total\" type=\"xs:unsignedByte\"/>\r\n                      <xs:element name=\"locationid\" type=\"xs:string\"/>\r\n                      <xs:element name=\"departmentid\" type=\"xs:string\"/>\r\n                    </xs:sequence>\r\n                  </xs:complexType>\r\n                </xs:element>\r\n              </xs:sequence>\r\n            </xs:complexType>\r\n          </xs:element>\r\n        </xs:choice>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <transactiontype>Sales Order</transactiontype>\r\n  <datecreated>\r\n    <year>2022</year>\r\n    <month>3</month>\r\n    <day>9</day>\r\n  </datecreated>\r\n  <customerid>10013</customerid>\r\n  <documentno>TestDoc01</documentno>\r\n  <referenceno>1234</referenceno>\r\n  <termname>Net 30</termname>\r\n  <datedue>\r\n    <year>2022</year>\r\n    <month>3</month>\r\n    <day>15</day>\r\n  </datedue>\r\n  <message>Test Order</message>\r\n  <basecurr>USD</basecurr>\r\n  <currency>USD</currency>\r\n  <exchratetype>Intacct Daily Rate</exchratetype>\r\n  <state>Pending</state>\r\n  <sotransitems>\r\n    <sotransitem>\r\n      <itemid>FG001</itemid>\r\n      <quantity>1</quantity>\r\n      <unit>Each</unit>\r\n      <price>100</price>\r\n      <locationid>100</locationid>\r\n    </sotransitem>\r\n  </sotransitems>\r\n  <subtotals>\r\n    <subtotal>\r\n      <description>Tax</description>\r\n      <total>20</total>\r\n    </subtotal>\r\n  </subtotals>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "LocationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Response>\r\n  <result>\r\n    <status>success</status>\r\n    <function>create_sotransaction</function>\r\n    <controlid>637824176414589962</controlid>\r\n    <key>Sales Invoice-IN0018</key>\r\n  </result>\r\n</Response>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4153
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 0,
+                "DisplayName": "Sage Intacct",
+                "NodeType": 0,
+                "RuntimeVersion": 0,
+                "PublishState": 0
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a8797bb6-abee-e9d2-9c29-d69b7d2978ce",
+                "TargetNodeId": "fd0d848f-7234-c683-8205-acd0ee5a6acf",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "70c32ff9-e332-7a3e-c478-870455da3516",
+                "TargetNodeId": "a8797bb6-abee-e9d2-9c29-d69b7d2978ce",
+                "SourceName": "Response",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "56052870-1410-39e0-b93c-60f9fcfa6fd8",
+                "TargetNodeId": "fcc55a31-bdb0-012f-b90f-75b2253b6bc4",
+                "SourceName": "Start"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b78d67f0-99a0-48e5-7364-45fe90fe9157",
+                "TargetNodeId": "fcc55a31-bdb0-012f-b90f-75b2253b6bc4",
+                "SourceName": "PdfName",
+                "TargetName": "PdfName"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b78d67f0-99a0-48e5-7364-45fe90fe9157",
+                "TargetNodeId": "fcc55a31-bdb0-012f-b90f-75b2253b6bc4",
+                "SourceName": "FolderPath",
+                "TargetName": "FolderPath"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "fcc55a31-bdb0-012f-b90f-75b2253b6bc4",
+                "TargetNodeId": "70c32ff9-e332-7a3e-c478-870455da3516",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "fcc55a31-bdb0-012f-b90f-75b2253b6bc4",
+                "TargetNodeId": "70c32ff9-e332-7a3e-c478-870455da3516",
+                "SourceName": "Content",
+                "TargetName": "Document"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b78d67f0-99a0-48e5-7364-45fe90fe9157",
+                "TargetNodeId": "70c32ff9-e332-7a3e-c478-870455da3516",
+                "SourceName": "PdfName",
+                "TargetName": "DocumentName"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "70c32ff9-e332-7a3e-c478-870455da3516",
+                "TargetNodeId": "a8797bb6-abee-e9d2-9c29-d69b7d2978ce",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "a8797bb6-abee-e9d2-9c29-d69b7d2978ce",
+                "TargetNodeId": "fd0d848f-7234-c683-8205-acd0ee5a6acf",
+                "SourceName": ""
+            }
+        ],
+        "StartNodeId": "56052870-1410-39e0-b93c-60f9fcfa6fd8",
+        "ActivityLogLevelMask": 255
+    },
+    "Name": "OpenAI Document Parse To Sage Sales Orders",
+    "Description": "This Workflow reads a PDF invoice from a specified folder, parses its contents using OpenAI, and maps the extracted data to a Sage Intacct sales order format. The mapped data is then sent to Sage Intacct to create a new sales order transaction.\n"
+}

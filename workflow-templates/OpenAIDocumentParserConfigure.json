@@ -15,7 +15,7 @@
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "IsSecret": false,
-                        "Value": "This Workflow creates a schema and validation script for a document that will get read in."
+                        "Value": "This Workflow reads a PDF invoice file from a specified directory, then uses OpenAI Document Parser nodes to generate a schema and validation script for the document. Data flows between Nodes to ensure the file content and metadata are processed and validated automatically.\n"
                     },
                     {
                         "FlowDirection": 0,
@@ -41,7 +41,7 @@
                         "IsDefault": false
                     }
                 ],
-                "SupportsTest": true,
+                "SupportsTest": false,
                 "SupportsAcquireMetadata": false,
                 "SupportsListSamples": false,
                 "DisplayName": "Note",
@@ -52,21 +52,20 @@
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2023-10-19T15:10:37.3679521+00:00",
-                    "Username": "daniel.chilcott@flowgear.net",
-                    "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
                 },
-                "NodeId": "021bacb0-4ff0-4253-7d5e-ef6bc67f8e85",
+                "NodeId": "f4106e56-8633-cc9c-a3bb-741c9f5c2c4d",
                 "NodeVisual": {
                     "X": 6100,
-                    "Y": 3458
+                    "Y": 3640
                 },
                 "ShortDescription": "About This Workflow"
             },
             {
-                "NodeId": "45c4c43f-6519-8b25-22c5-f8b84f598940",
+                "NodeId": "742c4226-0f27-b2a4-1731-e044df13cd6a",
                 "Name": "VariableBar",
-                "ShortDescription": "Input",
                 "Version": "1.0.0.3",
                 "Properties": [
                     {
@@ -74,31 +73,31 @@
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "IsSecret": false,
-                        "Name": "documentName",
+                        "Name": "FilePath",
                         "TypeName": "System.String",
                         "ExtendedType": 0,
-                        "Value": "June.pdf"
+                        "Value": "C:\\Flowgear\\Invoices"
                     },
                     {
                         "FlowDirection": 2,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "IsSecret": false,
-                        "Name": "documentPath",
+                        "Name": "FileName",
                         "TypeName": "System.String",
                         "ExtendedType": 0,
-                        "Value": "C:\\temp\\document-parser\\June.pdf"
+                        "Value": "SO0510.pdf"
                     }
                 ],
                 "HasInput": false,
                 "Outputs": [],
                 "NodeVisual": {
                     "X": 6100,
-                    "Y": 3763
+                    "Y": 3945
                 },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": true,
-                "SupportsTest": true,
+                "SupportsTest": false,
                 "SupportsAcquireMetadata": false,
                 "SupportsListSamples": false,
                 "DisplayName": "Variable Bar",
@@ -108,70 +107,13 @@
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2023-10-19T15:12:03.2133917+00:00",
-                    "Username": "daniel.chilcott@flowgear.net",
-                    "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
                 }
             },
             {
-                "NodeId": "667bb1ad-53db-130e-3930-ba7c87b172a7",
-                "Name": "VariableBar",
-                "ShortDescription": "Output",
-                "Version": "1.0.0.3",
-                "Properties": [
-                    {
-                        "FlowDirection": 1,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "Schema",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0
-                    },
-                    {
-                        "FlowDirection": 1,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "ValidationScript",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0
-                    },
-                    {
-                        "FlowDirection": 1,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "ErrorMessage",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0
-                    }
-                ],
-                "HasInput": false,
-                "Outputs": [],
-                "NodeVisual": {
-                    "X": 7320,
-                    "Y": 3763
-                },
-                "SupportsCustomInputProperties": true,
-                "SupportsCustomOutputProperties": true,
-                "SupportsTest": true,
-                "SupportsAcquireMetadata": false,
-                "SupportsListSamples": false,
-                "DisplayName": "Variable Bar",
-                "NodeType": 1,
-                "Key": "latest",
-                "RuntimeVersion": 1,
-                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
-                "PublishState": 3,
-                "Metadata": {
-                    "ModifiedTime": "2023-10-19T15:12:03.2133917+00:00",
-                    "Username": "daniel.chilcott@flowgear.net",
-                    "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
-                }
-            },
-            {
-                "NodeId": "7bc76a22-062f-1516-1e2d-719666ea836c",
+                "NodeId": "8857e224-ffc0-f728-93d8-d6047d7be481",
                 "Name": "Start",
                 "Version": "1.0.0.3",
                 "Properties": [
@@ -210,7 +152,7 @@
                 ],
                 "NodeVisual": {
                     "X": 6100,
-                    "Y": 3997
+                    "Y": 4153
                 },
                 "DisplayName": "Start",
                 "NodeType": 0,
@@ -218,10 +160,10 @@
                 "PublishState": 0
             },
             {
-                "NodeId": "a5f3eea2-d091-4c28-badf-00fab18d872e",
+                "NodeId": "f9f5455c-5c32-cd30-372a-897e788eb39b",
                 "Name": "FileRead",
-                "ShortDescription": "Read Example File",
-                "Version": "2.0.0.6",
+                "ShortDescription": "Read File",
+                "Version": "2.0.0.1",
                 "Properties": [
                     {
                         "FlowDirection": 1,
@@ -241,7 +183,8 @@
                         "IsSecret": false,
                         "Name": "Path",
                         "TypeName": "System.String",
-                        "ExtendedType": 0
+                        "ExtendedType": 0,
+                        "Value": "{FilePath}\\{FileName}"
                     },
                     {
                         "FlowDirection": 1,
@@ -265,6 +208,24 @@
                         "Name": "Content",
                         "TypeName": "System.Object",
                         "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "FilePath",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "FileName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
                     }
                 ],
                 "HasInput": true,
@@ -282,7 +243,7 @@
                 ],
                 "NodeVisual": {
                     "X": 6405,
-                    "Y": 3997
+                    "Y": 4153
                 },
                 "SupportsTest": false,
                 "SupportsAcquireMetadata": false,
@@ -291,26 +252,20 @@
                 "NodeType": 0,
                 "Key": "latest",
                 "RuntimeVersion": 1,
-                "AccountKey": "2d775b35-ee9e-40d9-bdf4-af7af95acea7",
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2025-03-25T07:00:11.9450511+00:00",
-                    "Username": "terrence.meiring@flowgear.net",
-                    "UserKey": "70cab36e-17dd-4237-a051-fc01c07c94a1"
-                },
-                "LongDescription": "Read file into memory as a byte array"
+                    "ModifiedTime": "2024-05-13T07:11:32.0934757+00:00",
+                    "Username": "nicholas.christodoulou@flowgear.net",
+                    "UserKey": "db4b4f4c-9db3-41c4-b1eb-e7698a84d9fb"
+                }
             },
             {
-                "NodeId": "e3e27ac4-3b78-0574-1ea2-86304be350ff",
+                "NodeId": "44ebfb13-f1bf-e1da-59f6-e2511cd6558b",
                 "Name": "OpenAIDocumentParser",
-                "ShortDescription": "Create Schema",
-                "Version": "1.0.0.0",
+                "Version": "1.0.0.1",
                 "Properties": [
                     {
-                        "Name": "Connection",
-                        "TypeName": "Flowgear.Nodes.OpenAIDocumentParser.Connection",
-                        "ExtendedType": 2,
-                        "Value": null,
                         "FlowDirection": 1,
                         "SubProperties": [
                             {
@@ -328,9 +283,16 @@
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "Schema": "(None)",
-                        "IsSecret": false
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.OpenAIDocumentParser.Connection",
+                        "ExtendedType": 2
                     },
                     {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
                         "Name": "Action",
                         "TypeName": "Flowgear.Nodes.OpenAIDocumentParser.Types.Actions",
                         "ExtendedType": 0,
@@ -340,56 +302,52 @@
                             "CreateValidationScript",
                             "ParseDocument"
                         ],
-                        "Value": "CreateSchema",
+                        "Value": "CreateSchema"
+                    },
+                    {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
-                    },
-                    {
+                        "IsSecret": false,
                         "Name": "Schema",
                         "TypeName": "System.String",
-                        "ExtendedType": 7,
+                        "ExtendedType": 7
+                    },
+                    {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
-                    },
-                    {
+                        "IsSecret": false,
                         "Name": "ValidationScript",
                         "TypeName": "System.String",
-                        "ExtendedType": 4,
+                        "ExtendedType": 4
+                    },
+                    {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
-                    },
-                    {
+                        "IsSecret": false,
                         "Name": "DocumentName",
                         "TypeName": "System.String",
-                        "ExtendedType": 0,
+                        "ExtendedType": 0
+                    },
+                    {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
-                    },
-                    {
+                        "IsSecret": false,
                         "Name": "Document",
                         "TypeName": "System.Object",
-                        "ExtendedType": 5,
-                        "FlowDirection": 1,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false
+                        "ExtendedType": 5
                     },
                     {
-                        "Name": "Response",
-                        "TypeName": "System.String",
-                        "ExtendedType": 7,
                         "FlowDirection": 2,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
                     }
                 ],
                 "HasInput": true,
@@ -407,7 +365,7 @@
                 ],
                 "NodeVisual": {
                     "X": 6710,
-                    "Y": 3997
+                    "Y": 4153
                 },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": false,
@@ -421,23 +379,17 @@
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2025-07-29T09:14:19.6837773+00:00",
-                    "Username": "justin.dunn@flowgear.net",
-                    "UserKey": "ad91e803-660d-4e4b-b33d-1509dc89e2ea"
-                },
-                "LongDescription": "Create a schema of the existing document"
+                    "ModifiedTime": "2025-08-26T12:05:53.0416652+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
             },
             {
-                "NodeId": "406c3994-b0c6-04e1-7b50-0b8d7bc1da8c",
+                "NodeId": "15e196e6-5727-970a-e1ad-2b581352491f",
                 "Name": "OpenAIDocumentParser",
-                "ShortDescription": "Create Validation Script",
-                "Version": "1.0.0.0",
+                "Version": "1.0.0.1",
                 "Properties": [
                     {
-                        "Name": "Connection",
-                        "TypeName": "Flowgear.Nodes.OpenAIDocumentParser.Connection",
-                        "ExtendedType": 2,
-                        "Value": null,
                         "FlowDirection": 1,
                         "SubProperties": [
                             {
@@ -455,9 +407,16 @@
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "Schema": "(None)",
-                        "IsSecret": false
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.OpenAIDocumentParser.Connection",
+                        "ExtendedType": 2
                     },
                     {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
                         "Name": "Action",
                         "TypeName": "Flowgear.Nodes.OpenAIDocumentParser.Types.Actions",
                         "ExtendedType": 0,
@@ -467,56 +426,52 @@
                             "CreateValidationScript",
                             "ParseDocument"
                         ],
-                        "Value": "CreateValidationScript",
+                        "Value": "CreateValidationScript"
+                    },
+                    {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
-                    },
-                    {
+                        "IsSecret": false,
                         "Name": "Schema",
                         "TypeName": "System.String",
-                        "ExtendedType": 7,
+                        "ExtendedType": 7
+                    },
+                    {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
-                    },
-                    {
+                        "IsSecret": false,
                         "Name": "ValidationScript",
                         "TypeName": "System.String",
-                        "ExtendedType": 4,
+                        "ExtendedType": 4
+                    },
+                    {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
-                    },
-                    {
+                        "IsSecret": false,
                         "Name": "DocumentName",
                         "TypeName": "System.String",
-                        "ExtendedType": 0,
+                        "ExtendedType": 0
+                    },
+                    {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
-                    },
-                    {
+                        "IsSecret": false,
                         "Name": "Document",
                         "TypeName": "System.Object",
-                        "ExtendedType": 5,
-                        "FlowDirection": 1,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false
+                        "ExtendedType": 5
                     },
                     {
-                        "Name": "Response",
-                        "TypeName": "System.String",
-                        "ExtendedType": 7,
                         "FlowDirection": 2,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "IsSecret": false
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
                     }
                 ],
                 "HasInput": true,
@@ -534,7 +489,7 @@
                 ],
                 "NodeVisual": {
                     "X": 7015,
-                    "Y": 3997
+                    "Y": 4153
                 },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": false,
@@ -548,92 +503,77 @@
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2025-07-29T09:14:19.6837773+00:00",
-                    "Username": "justin.dunn@flowgear.net",
-                    "UserKey": "ad91e803-660d-4e4b-b33d-1509dc89e2ea"
-                },
-                "LongDescription": "Create a validation script using the document and the schema"
+                    "ModifiedTime": "2025-08-26T12:05:53.0416652+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
             }
         ],
         "FlowConnectors": [
             {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "e3e27ac4-3b78-0574-1ea2-86304be350ff",
-                "TargetNodeId": "406c3994-b0c6-04e1-7b50-0b8d7bc1da8c",
-                "SourceName": "Response",
-                "TargetName": "Schema"
+                "FlowConnectorType": 1,
+                "SourceNodeId": "8857e224-ffc0-f728-93d8-d6047d7be481",
+                "TargetNodeId": "f9f5455c-5c32-cd30-372a-897e788eb39b",
+                "SourceName": "Start"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "45c4c43f-6519-8b25-22c5-f8b84f598940",
-                "TargetNodeId": "e3e27ac4-3b78-0574-1ea2-86304be350ff",
-                "SourceName": "documentName",
-                "TargetName": "DocumentName"
+                "SourceNodeId": "742c4226-0f27-b2a4-1731-e044df13cd6a",
+                "TargetNodeId": "f9f5455c-5c32-cd30-372a-897e788eb39b",
+                "SourceName": "FileName",
+                "TargetName": "FileName"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "45c4c43f-6519-8b25-22c5-f8b84f598940",
-                "TargetNodeId": "406c3994-b0c6-04e1-7b50-0b8d7bc1da8c",
-                "SourceName": "documentName",
-                "TargetName": "DocumentName"
+                "SourceNodeId": "742c4226-0f27-b2a4-1731-e044df13cd6a",
+                "TargetNodeId": "f9f5455c-5c32-cd30-372a-897e788eb39b",
+                "SourceName": "FilePath",
+                "TargetName": "FilePath"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "f9f5455c-5c32-cd30-372a-897e788eb39b",
+                "TargetNodeId": "44ebfb13-f1bf-e1da-59f6-e2511cd6558b",
+                "SourceName": ""
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "45c4c43f-6519-8b25-22c5-f8b84f598940",
-                "TargetNodeId": "a5f3eea2-d091-4c28-badf-00fab18d872e",
-                "SourceName": "documentPath",
-                "TargetName": "Path"
-            },
-            {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "a5f3eea2-d091-4c28-badf-00fab18d872e",
-                "TargetNodeId": "e3e27ac4-3b78-0574-1ea2-86304be350ff",
+                "SourceNodeId": "f9f5455c-5c32-cd30-372a-897e788eb39b",
+                "TargetNodeId": "44ebfb13-f1bf-e1da-59f6-e2511cd6558b",
                 "SourceName": "Content",
                 "TargetName": "Document"
             },
             {
-                "FlowConnectorType": 1,
-                "SourceNodeId": "7bc76a22-062f-1516-1e2d-719666ea836c",
-                "TargetNodeId": "a5f3eea2-d091-4c28-badf-00fab18d872e",
-                "SourceName": "Start"
-            },
-            {
-                "FlowConnectorType": 1,
-                "SourceNodeId": "a5f3eea2-d091-4c28-badf-00fab18d872e",
-                "TargetNodeId": "e3e27ac4-3b78-0574-1ea2-86304be350ff",
-                "SourceName": ""
-            },
-            {
-                "FlowConnectorType": 1,
-                "SourceNodeId": "e3e27ac4-3b78-0574-1ea2-86304be350ff",
-                "TargetNodeId": "406c3994-b0c6-04e1-7b50-0b8d7bc1da8c",
-                "SourceName": ""
+                "FlowConnectorType": 2,
+                "SourceNodeId": "742c4226-0f27-b2a4-1731-e044df13cd6a",
+                "TargetNodeId": "44ebfb13-f1bf-e1da-59f6-e2511cd6558b",
+                "SourceName": "FileName",
+                "TargetName": "DocumentName"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "e3e27ac4-3b78-0574-1ea2-86304be350ff",
-                "TargetNodeId": "667bb1ad-53db-130e-3930-ba7c87b172a7",
+                "SourceNodeId": "742c4226-0f27-b2a4-1731-e044df13cd6a",
+                "TargetNodeId": "15e196e6-5727-970a-e1ad-2b581352491f",
+                "SourceName": "FileName",
+                "TargetName": "DocumentName"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "44ebfb13-f1bf-e1da-59f6-e2511cd6558b",
+                "TargetNodeId": "15e196e6-5727-970a-e1ad-2b581352491f",
                 "SourceName": "Response",
                 "TargetName": "Schema"
             },
             {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "406c3994-b0c6-04e1-7b50-0b8d7bc1da8c",
-                "TargetNodeId": "667bb1ad-53db-130e-3930-ba7c87b172a7",
-                "SourceName": "Response",
-                "TargetName": "ValidationScript"
-            },
-            {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "7bc76a22-062f-1516-1e2d-719666ea836c",
-                "TargetNodeId": "667bb1ad-53db-130e-3930-ba7c87b172a7",
-                "SourceName": "Last_Error_Info",
-                "TargetName": "ErrorMessage"
+                "FlowConnectorType": 1,
+                "SourceNodeId": "44ebfb13-f1bf-e1da-59f6-e2511cd6558b",
+                "TargetNodeId": "15e196e6-5727-970a-e1ad-2b581352491f",
+                "SourceName": ""
             }
         ],
-        "StartNodeId": "7bc76a22-062f-1516-1e2d-719666ea836c",
+        "StartNodeId": "8857e224-ffc0-f728-93d8-d6047d7be481",
         "ActivityLogLevelMask": 255
     },
     "Name": "OpenAI Document Parser Configure",
-    "Description": "This Workflow creates a schema and validation script for a document that will get parsed in."
+    "Description": "This Workflow reads a PDF invoice file from a specified directory, then uses OpenAI Document Parser nodes to generate a schema and validation script for the document. Data flows between Nodes to ensure the file content and metadata are processed and validated automatically.\n"
 }

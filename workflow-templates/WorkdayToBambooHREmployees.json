@@ -1,0 +1,1053 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "Name": "Note",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Value": "This Workflow retrieves employee data from Workday, processes each record, maps it to the BambooHR format, and attempts to add the employee to BambooHR. It logs the result as either success or error for each processed employee."
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHTAAAB0wASOu6tcAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAgJJREFUOE+V00tPU0EUAOAxasDEIoSKoVQnVAggsddqwMi7lEe9B6shxhjDUmPcuHHFL2AhVEQelmIpvS21Xm8LbaHUd4wxxhjjzpVxgzsT/QVzONPUlUZ6F7P8zpnzYg0OvqfRYd/b4LDvq6s9XG47dqCm6aSFNzktvNlZwZuVCt6iHOItpyr5CXqtrireerqKO9uqjyrt1WWs8XgBW+p5rfX6jbH+kH5re1JThD/mEtPxM2Im0SZm9bNi3jgnHqY6xeJ6t1jK9IrQhlvcXe5Q6Qf2/fXcVsDfvn/9EU3fRsJIGAkjYSSMhJEwEkbCGM55cDLcCcxuqyn/g3/9/olGfrwkHMkPoj/SDayOHzyiJe9sP9kcx+zrCYxmbpaEo8+H8Z7WC0w2rFhzyZklXn15Hu/H3BSAul1smCmceDOCD+IeYHJUxW7vimMvvBh/pRaw/taHc4kBCkAzJixH9U+8sjWA2rOhv7Dx7hIu6EPA5JIQlnPGwFoXBtM9+Cjbh8ub/f/FqfejGHjqBSa3a97oEGbx+ofLuJhUKYCrkhMWZnHm4xVcWhsBJnebsDCLNz5dxVD6AgWgwyAszOLc52sYzl4EptBVERZmcf7LGGq5UZUp7dYyOgp1aqUL/JEemI72wcyqG2Yfe2AuMQgL+jAEDC8EUyrImkNpH8jMEgeTPusOQk47WqOxmsUAAAAASUVORK5CYII=",
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                },
+                "NodeId": "8165dee5-3441-dfab-c396-2cabb53f3bc0",
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3458
+                },
+                "ShortDescription": "About This Workflow"
+            },
+            {
+                "Name": "VariableBar",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "WorkdayToBamboo",
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAOdKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANKC1+AAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQBQYWludC5ORVQgdjMuNS44NzuAXQAAABtJREFUKFNjYISA//+hDAYMgf9ogIGwwNA1AwDVUbmN9lW/AAAAAABJRU5ErkJggg==",
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                },
+                "NodeId": "7df0cf5c-0e02-57dc-2022-0e010daab2b6",
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3763
+                },
+                "ShortDescription": "Set Key-Value Group"
+            },
+            {
+                "NodeId": "7110b355-a105-9c7c-918e-72563824d313",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "d3cc8dce-593b-3932-0a2f-da3cb0819b5d",
+                "Name": "Workday",
+                "Version": "1.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "UserName",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "account@tenant"
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Service",
+                                "TypeName": "Flowgear.Nodes.Workday.WorkdayService",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "AbsenceManagement",
+                                    "CashManagement",
+                                    "Payroll",
+                                    "PayrollInterface",
+                                    "Staffing",
+                                    "TimeTracking",
+                                    "HumanResources"
+                                ]
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Workday.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Get_WorkersAsync"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"Get_Workers_Request\": {\r\n    \"Response_Filter\": {\r\n      \"Page\": 1,\r\n      \"Count\": 1\r\n    },\r\n    \"Response_Group\": {\r\n      \"Include_Personal_Information\": true\r\n    }\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"Get_Workers_Response\": {\r\n    \"Request_References\": null,\r\n    \"Request_Criteria\": null,\r\n    \"Response_Filter\": {\r\n      \"As_Of_Effective_DateSpecified\": false,\r\n      \"As_Of_Entry_DateTimeSpecified\": false,\r\n      \"Page\": 1,\r\n      \"PageSpecified\": true,\r\n      \"Count\": 1,\r\n      \"CountSpecified\": true\r\n    },\r\n    \"Response_Group\": {\r\n      \"Include_ReferenceSpecified\": false,\r\n      \"Include_Personal_Information\": true,\r\n      \"Include_Personal_InformationSpecified\": true,\r\n      \"Show_All_Personal_InformationSpecified\": false,\r\n      \"Include_Additional_JobsSpecified\": false,\r\n      \"Include_Employment_InformationSpecified\": false,\r\n      \"Include_CompensationSpecified\": false,\r\n      \"Include_OrganizationsSpecified\": false,\r\n      \"Exclude_Organization_Support_Role_DataSpecified\": false,\r\n      \"Exclude_Location_HierarchiesSpecified\": false,\r\n      \"Exclude_Cost_CentersSpecified\": false,\r\n      \"Exclude_Cost_Center_HierarchiesSpecified\": false,\r\n      \"Exclude_CompaniesSpecified\": false,\r\n      \"Exclude_Company_HierarchiesSpecified\": false,\r\n      \"Exclude_Matrix_OrganizationsSpecified\": false,\r\n      \"Exclude_Pay_GroupsSpecified\": false,\r\n      \"Exclude_RegionsSpecified\": false,\r\n      \"Exclude_Region_HierarchiesSpecified\": false,\r\n      \"Exclude_Supervisory_OrganizationsSpecified\": false,\r\n      \"Exclude_TeamsSpecified\": false,\r\n      \"Exclude_Custom_OrganizationsSpecified\": false,\r\n      \"Include_RolesSpecified\": false,\r\n      \"Include_Management_Chain_DataSpecified\": false,\r\n      \"Include_Multiple_Managers_in_Management_Chain_DataSpecified\": false,\r\n      \"Include_Benefit_EnrollmentsSpecified\": false,\r\n      \"Include_Benefit_EligibilitySpecified\": false,\r\n      \"Include_Related_PersonsSpecified\": false,\r\n      \"Include_QualificationsSpecified\": false,\r\n      \"Include_Employee_ReviewSpecified\": false,\r\n      \"Include_GoalsSpecified\": false,\r\n      \"Include_Development_ItemsSpecified\": false,\r\n      \"Include_SkillsSpecified\": false,\r\n      \"Include_PhotoSpecified\": false,\r\n      \"Include_Worker_DocumentsSpecified\": false,\r\n      \"Include_Transaction_Log_DataSpecified\": false,\r\n      \"Include_Subevents_for_Corrected_TransactionSpecified\": false,\r\n      \"Include_Subevents_for_Rescinded_TransactionSpecified\": false,\r\n      \"Include_Succession_ProfileSpecified\": false,\r\n      \"Include_Talent_AssessmentSpecified\": false,\r\n      \"Include_Employee_Contract_DataSpecified\": false,\r\n      \"Include_Contracts_for_Terminated_WorkersSpecified\": false,\r\n      \"Include_Collective_Agreement_DataSpecified\": false,\r\n      \"Include_Probation_Period_DataSpecified\": false,\r\n      \"Include_Extended_Employee_Contract_DetailsSpecified\": false,\r\n      \"Include_Feedback_ReceivedSpecified\": false,\r\n      \"Include_User_AccountSpecified\": false,\r\n      \"Include_CareerSpecified\": false,\r\n      \"Include_Account_ProvisioningSpecified\": false,\r\n      \"Include_Background_Check_DataSpecified\": false,\r\n      \"Include_Contingent_Worker_Tax_Authority_Form_InformationSpecified\": false,\r\n      \"Exclude_FundsSpecified\": false,\r\n      \"Exclude_Fund_HierarchiesSpecified\": false,\r\n      \"Exclude_GrantsSpecified\": false,\r\n      \"Exclude_Grant_HierarchiesSpecified\": false,\r\n      \"Exclude_Business_UnitsSpecified\": false,\r\n      \"Exclude_Business_Unit_HierarchiesSpecified\": false,\r\n      \"Exclude_ProgramsSpecified\": false,\r\n      \"Exclude_Program_HierarchiesSpecified\": false,\r\n      \"Exclude_GiftsSpecified\": false,\r\n      \"Exclude_Gift_HierarchiesSpecified\": false\r\n    },\r\n    \"Response_Results\": {\r\n      \"Total_Results\": 21,\r\n      \"Total_ResultsSpecified\": true,\r\n      \"Total_Pages\": 21,\r\n      \"Total_PagesSpecified\": true,\r\n      \"Page_Results\": 1,\r\n      \"Page_ResultsSpecified\": true,\r\n      \"Page\": 1,\r\n      \"PageSpecified\": true\r\n    },\r\n    \"Response_Data\": [\r\n      {\r\n        \"Worker_Reference\": null,\r\n        \"Worker_Descriptor\": null,\r\n        \"Universal_Identifier_Reference\": null,\r\n        \"Worker_Data\": {\r\n          \"Worker_ID\": \"000001\",\r\n          \"User_ID\": \"000001\",\r\n          \"Universal_ID\": null,\r\n          \"Personal_Data\": {\r\n            \"Universal_ID\": null,\r\n            \"Name_Data\": {\r\n              \"Legal_Name_Data\": {\r\n                \"Name_Detail_Data\": {\r\n                  \"Country_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"1\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Prefix_Data\": null,\r\n                  \"First_Name\": \"\",\r\n                  \"Middle_Name\": null,\r\n                  \"Last_Name\": \"\",\r\n                  \"Secondary_Last_Name\": null,\r\n                  \"Tertiary_Last_Name\": null,\r\n                  \"Local_Name_Detail_Data\": null,\r\n                  \"Suffix_Data\": null,\r\n                  \"Formatted_Name\": \"\",\r\n                  \"Reporting_Name\": \"\"\r\n                }\r\n              },\r\n              \"Preferred_Name_Data\": {\r\n                \"Name_Detail_Data\": {\r\n                  \"Country_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Prefix_Data\": null,\r\n                  \"First_Name\": \"\",\r\n                  \"Middle_Name\": null,\r\n                  \"Last_Name\": \"\",\r\n                  \"Secondary_Last_Name\": null,\r\n                  \"Tertiary_Last_Name\": null,\r\n                  \"Local_Name_Detail_Data\": null,\r\n                  \"Suffix_Data\": null,\r\n                  \"Formatted_Name\": \"\",\r\n                  \"Reporting_Name\": \"\"\r\n                }\r\n              },\r\n              \"Additional_Name_DataSpecified\": false\r\n            },\r\n            \"Personal_Information_DataSpecified\": false,\r\n            \"Identification_Data\": null,\r\n            \"Contact_Data\": {\r\n              \"Address_Data\": [\r\n                {\r\n                  \"Country_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Last_Modified\": \"\",\r\n                  \"Last_ModifiedSpecified\": true,\r\n                  \"Address_Line_Data\": [\r\n                    {\r\n                      \"Value\": \"\",\r\n                      \"Descriptor\": \"\",\r\n                      \"Type\": \"\"\r\n                    }\r\n                  ],\r\n                  \"Address_Line_DataSpecified\": true,\r\n                  \"Municipality\": \"\",\r\n                  \"Country_City_Reference\": null,\r\n                  \"Submunicipality_DataSpecified\": false,\r\n                  \"Country_Region_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Country_Region_Descriptor\": \"\",\r\n                  \"Subregion_DataSpecified\": false,\r\n                  \"Postal_Code\": \"\",\r\n                  \"Usage_Data\": [\r\n                    {\r\n                      \"Type_Data\": [\r\n                        {\r\n                          \"Type_Reference\": {\r\n                            \"ID\": [\r\n                              {\r\n                                \"Value\": \"\",\r\n                                \"type\": \"\"\r\n                              },\r\n                              {\r\n                                \"Value\": \"\",\r\n                                \"type\": \"\"\r\n                              }\r\n                            ],\r\n                            \"IDSpecified\": true,\r\n                            \"Descriptor\": null\r\n                          },\r\n                          \"Primary\": true,\r\n                          \"PrimarySpecified\": true\r\n                        }\r\n                      ],\r\n                      \"Use_For_Reference\": [\r\n                        {\r\n                          \"ID\": [\r\n                            {\r\n                              \"Value\": \"\",\r\n                              \"type\": \"\"\r\n                            },\r\n                            {\r\n                              \"Value\": \"\",\r\n                              \"type\": \"\"\r\n                            }\r\n                          ],\r\n                          \"IDSpecified\": true,\r\n                          \"Descriptor\": null\r\n                        }\r\n                      ],\r\n                      \"Use_For_ReferenceSpecified\": true,\r\n                      \"Use_For_Tenanted_Reference\": [\r\n                        {\r\n                          \"ID\": [\r\n                            {\r\n                              \"Value\": \"\",\r\n                              \"type\": \"\"\r\n                            },\r\n                            {\r\n                              \"Value\": \"\",\r\n                              \"type\": \"\"\r\n                            }\r\n                          ],\r\n                          \"IDSpecified\": true,\r\n                          \"Descriptor\": null\r\n                        }\r\n                      ],\r\n                      \"Use_For_Tenanted_ReferenceSpecified\": true,\r\n                      \"Comments\": null,\r\n                      \"Public\": false,\r\n                      \"PublicSpecified\": true\r\n                    }\r\n                  ],\r\n                  \"Usage_DataSpecified\": true,\r\n                  \"Number_of_Days\": 0,\r\n                  \"Number_of_DaysSpecified\": true,\r\n                  \"Municipality_Local\": null,\r\n                  \"Address_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Address_ID\": \"\",\r\n                  \"Formatted_Address\": \"\",\r\n                  \"Address_Format_Type\": \"\",\r\n                  \"Defaulted_Business_Site_Address\": false,\r\n                  \"Defaulted_Business_Site_AddressSpecified\": true,\r\n                  \"DeleteSpecified\": false,\r\n                  \"Do_Not_Replace_AllSpecified\": false,\r\n                  \"Effective_Date\": \"\",\r\n                  \"Effective_DateSpecified\": true\r\n                },\r\n                {\r\n                  \"Country_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Last_Modified\": \"\",\r\n                  \"Last_ModifiedSpecified\": true,\r\n                  \"Address_Line_Data\": [\r\n                    {\r\n                      \"Value\": \"\",\r\n                      \"Descriptor\": \"\",\r\n                      \"Type\": \"\"\r\n                    }\r\n                  ],\r\n                  \"Address_Line_DataSpecified\": true,\r\n                  \"Municipality\": \"\",\r\n                  \"Country_City_Reference\": null,\r\n                  \"Submunicipality_DataSpecified\": false,\r\n                  \"Country_Region_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Country_Region_Descriptor\": \"\",\r\n                  \"Subregion_DataSpecified\": false,\r\n                  \"Postal_Code\": \"\",\r\n                  \"Usage_Data\": [\r\n                    {\r\n                      \"Type_Data\": [\r\n                        {\r\n                          \"Type_Reference\": {\r\n                            \"ID\": [\r\n                              {\r\n                                \"Value\": \"\",\r\n                                \"type\": \"\"\r\n                              },\r\n                              {\r\n                                \"Value\": \"\",\r\n                                \"type\": \"\"\r\n                              }\r\n                            ],\r\n                            \"IDSpecified\": true,\r\n                            \"Descriptor\": null\r\n                          },\r\n                          \"Primary\": true,\r\n                          \"PrimarySpecified\": true\r\n                        }\r\n                      ],\r\n                      \"Comments\": null,\r\n                      \"Public\": true,\r\n                      \"PublicSpecified\": true\r\n                    }\r\n                  ],\r\n                  \"Usage_DataSpecified\": true,\r\n                  \"Number_of_Days\": 0,\r\n                  \"Number_of_DaysSpecified\": true,\r\n                  \"Municipality_Local\": null,\r\n                  \"Address_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Address_ID\": \"\",\r\n                  \"Formatted_Address\": \"\",\r\n                  \"Address_Format_Type\": \"\",\r\n                  \"Defaulted_Business_Site_Address\": true,\r\n                  \"Defaulted_Business_Site_AddressSpecified\": true,\r\n                  \"DeleteSpecified\": false,\r\n                  \"Do_Not_Replace_AllSpecified\": false,\r\n                  \"Effective_Date\": \"\",\r\n                  \"Effective_DateSpecified\": true\r\n                }\r\n              ],\r\n              \"Address_DataSpecified\": true,\r\n              \"Phone_DataSpecified\": false,\r\n              \"Email_Address_DataSpecified\": false,\r\n              \"Instant_Messenger_DataSpecified\": false,\r\n              \"Web_Address_DataSpecified\": false\r\n            },\r\n            \"Tobacco_Use\": false,\r\n            \"Tobacco_UseSpecified\": true\r\n          },\r\n          \"Employment_Data\": null,\r\n          \"Compensation_Data\": null,\r\n          \"Organization_DataSpecified\": false,\r\n          \"Role_Data\": null,\r\n          \"Management_Chain_Data\": null,\r\n          \"Benefit_Enrollment_Data\": null,\r\n          \"Benefit_Eligibility_Data\": null,\r\n          \"Related_Person_Data\": null,\r\n          \"Qualification_Data\": null\r\n        }\r\n      }\r\n    ],\r\n    \"Response_DataSpecified\": true,\r\n    \"Invalid_Reference_ID_ResponseSpecified\": false,\r\n    \"version\": \"v42.2\"\r\n  }\r\n}"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 3945
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Workday",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-06-13T11:08:37.3928642+00:00",
+                    "Username": "justin.dunn@flowgear.net",
+                    "UserKey": "ad91e803-660d-4e4b-b33d-1509dc89e2ea"
+                },
+                "ShortDescription": "Get Employees"
+            },
+            {
+                "NodeId": "702bb15f-bbdc-0438-f9dd-1547d579860f",
+                "Name": "ForEach",
+                "ShortDescription": "Split Employees",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"Get_Workers_Response\": {\r\n    \"Request_References\": null,\r\n    \"Request_Criteria\": null,\r\n    \"Response_Filter\": {\r\n      \"As_Of_Effective_DateSpecified\": false,\r\n      \"As_Of_Entry_DateTimeSpecified\": false,\r\n      \"Page\": 1,\r\n      \"PageSpecified\": true,\r\n      \"Count\": 1,\r\n      \"CountSpecified\": true\r\n    },\r\n    \"Response_Group\": {\r\n      \"Include_ReferenceSpecified\": false,\r\n      \"Include_Personal_Information\": true,\r\n      \"Include_Personal_InformationSpecified\": true,\r\n      \"Show_All_Personal_InformationSpecified\": false,\r\n      \"Include_Additional_JobsSpecified\": false,\r\n      \"Include_Employment_InformationSpecified\": false,\r\n      \"Include_CompensationSpecified\": false,\r\n      \"Include_OrganizationsSpecified\": false,\r\n      \"Exclude_Organization_Support_Role_DataSpecified\": false,\r\n      \"Exclude_Location_HierarchiesSpecified\": false,\r\n      \"Exclude_Cost_CentersSpecified\": false,\r\n      \"Exclude_Cost_Center_HierarchiesSpecified\": false,\r\n      \"Exclude_CompaniesSpecified\": false,\r\n      \"Exclude_Company_HierarchiesSpecified\": false,\r\n      \"Exclude_Matrix_OrganizationsSpecified\": false,\r\n      \"Exclude_Pay_GroupsSpecified\": false,\r\n      \"Exclude_RegionsSpecified\": false,\r\n      \"Exclude_Region_HierarchiesSpecified\": false,\r\n      \"Exclude_Supervisory_OrganizationsSpecified\": false,\r\n      \"Exclude_TeamsSpecified\": false,\r\n      \"Exclude_Custom_OrganizationsSpecified\": false,\r\n      \"Include_RolesSpecified\": false,\r\n      \"Include_Management_Chain_DataSpecified\": false,\r\n      \"Include_Multiple_Managers_in_Management_Chain_DataSpecified\": false,\r\n      \"Include_Benefit_EnrollmentsSpecified\": false,\r\n      \"Include_Benefit_EligibilitySpecified\": false,\r\n      \"Include_Related_PersonsSpecified\": false,\r\n      \"Include_QualificationsSpecified\": false,\r\n      \"Include_Employee_ReviewSpecified\": false,\r\n      \"Include_GoalsSpecified\": false,\r\n      \"Include_Development_ItemsSpecified\": false,\r\n      \"Include_SkillsSpecified\": false,\r\n      \"Include_PhotoSpecified\": false,\r\n      \"Include_Worker_DocumentsSpecified\": false,\r\n      \"Include_Transaction_Log_DataSpecified\": false,\r\n      \"Include_Subevents_for_Corrected_TransactionSpecified\": false,\r\n      \"Include_Subevents_for_Rescinded_TransactionSpecified\": false,\r\n      \"Include_Succession_ProfileSpecified\": false,\r\n      \"Include_Talent_AssessmentSpecified\": false,\r\n      \"Include_Employee_Contract_DataSpecified\": false,\r\n      \"Include_Contracts_for_Terminated_WorkersSpecified\": false,\r\n      \"Include_Collective_Agreement_DataSpecified\": false,\r\n      \"Include_Probation_Period_DataSpecified\": false,\r\n      \"Include_Extended_Employee_Contract_DetailsSpecified\": false,\r\n      \"Include_Feedback_ReceivedSpecified\": false,\r\n      \"Include_User_AccountSpecified\": false,\r\n      \"Include_CareerSpecified\": false,\r\n      \"Include_Account_ProvisioningSpecified\": false,\r\n      \"Include_Background_Check_DataSpecified\": false,\r\n      \"Include_Contingent_Worker_Tax_Authority_Form_InformationSpecified\": false,\r\n      \"Exclude_FundsSpecified\": false,\r\n      \"Exclude_Fund_HierarchiesSpecified\": false,\r\n      \"Exclude_GrantsSpecified\": false,\r\n      \"Exclude_Grant_HierarchiesSpecified\": false,\r\n      \"Exclude_Business_UnitsSpecified\": false,\r\n      \"Exclude_Business_Unit_HierarchiesSpecified\": false,\r\n      \"Exclude_ProgramsSpecified\": false,\r\n      \"Exclude_Program_HierarchiesSpecified\": false,\r\n      \"Exclude_GiftsSpecified\": false,\r\n      \"Exclude_Gift_HierarchiesSpecified\": false\r\n    },\r\n    \"Response_Results\": {\r\n      \"Total_Results\": 21,\r\n      \"Total_ResultsSpecified\": true,\r\n      \"Total_Pages\": 21,\r\n      \"Total_PagesSpecified\": true,\r\n      \"Page_Results\": 1,\r\n      \"Page_ResultsSpecified\": true,\r\n      \"Page\": 1,\r\n      \"PageSpecified\": true\r\n    },\r\n    \"Response_Data\": [\r\n      {\r\n        \"Worker_Reference\": null,\r\n        \"Worker_Descriptor\": null,\r\n        \"Universal_Identifier_Reference\": null,\r\n        \"Worker_Data\": {\r\n          \"Worker_ID\": \"000001\",\r\n          \"User_ID\": \"000001\",\r\n          \"Universal_ID\": null,\r\n          \"Personal_Data\": {\r\n            \"Universal_ID\": null,\r\n            \"Name_Data\": {\r\n              \"Legal_Name_Data\": {\r\n                \"Name_Detail_Data\": {\r\n                  \"Country_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"1\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Prefix_Data\": null,\r\n                  \"First_Name\": \"\",\r\n                  \"Middle_Name\": null,\r\n                  \"Last_Name\": \"\",\r\n                  \"Secondary_Last_Name\": null,\r\n                  \"Tertiary_Last_Name\": null,\r\n                  \"Local_Name_Detail_Data\": null,\r\n                  \"Suffix_Data\": null,\r\n                  \"Formatted_Name\": \"\",\r\n                  \"Reporting_Name\": \"\"\r\n                }\r\n              },\r\n              \"Preferred_Name_Data\": {\r\n                \"Name_Detail_Data\": {\r\n                  \"Country_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Prefix_Data\": null,\r\n                  \"First_Name\": \"\",\r\n                  \"Middle_Name\": null,\r\n                  \"Last_Name\": \"\",\r\n                  \"Secondary_Last_Name\": null,\r\n                  \"Tertiary_Last_Name\": null,\r\n                  \"Local_Name_Detail_Data\": null,\r\n                  \"Suffix_Data\": null,\r\n                  \"Formatted_Name\": \"\",\r\n                  \"Reporting_Name\": \"\"\r\n                }\r\n              },\r\n              \"Additional_Name_DataSpecified\": false\r\n            },\r\n            \"Personal_Information_DataSpecified\": false,\r\n            \"Identification_Data\": null,\r\n            \"Contact_Data\": {\r\n              \"Address_Data\": [\r\n                {\r\n                  \"Country_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Last_Modified\": \"\",\r\n                  \"Last_ModifiedSpecified\": true,\r\n                  \"Address_Line_Data\": [\r\n                    {\r\n                      \"Value\": \"\",\r\n                      \"Descriptor\": \"\",\r\n                      \"Type\": \"\"\r\n                    }\r\n                  ],\r\n                  \"Address_Line_DataSpecified\": true,\r\n                  \"Municipality\": \"\",\r\n                  \"Country_City_Reference\": null,\r\n                  \"Submunicipality_DataSpecified\": false,\r\n                  \"Country_Region_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Country_Region_Descriptor\": \"\",\r\n                  \"Subregion_DataSpecified\": false,\r\n                  \"Postal_Code\": \"\",\r\n                  \"Usage_Data\": [\r\n                    {\r\n                      \"Type_Data\": [\r\n                        {\r\n                          \"Type_Reference\": {\r\n                            \"ID\": [\r\n                              {\r\n                                \"Value\": \"\",\r\n                                \"type\": \"\"\r\n                              },\r\n                              {\r\n                                \"Value\": \"\",\r\n                                \"type\": \"\"\r\n                              }\r\n                            ],\r\n                            \"IDSpecified\": true,\r\n                            \"Descriptor\": null\r\n                          },\r\n                          \"Primary\": true,\r\n                          \"PrimarySpecified\": true\r\n                        }\r\n                      ],\r\n                      \"Use_For_Reference\": [\r\n                        {\r\n                          \"ID\": [\r\n                            {\r\n                              \"Value\": \"\",\r\n                              \"type\": \"\"\r\n                            },\r\n                            {\r\n                              \"Value\": \"\",\r\n                              \"type\": \"\"\r\n                            }\r\n                          ],\r\n                          \"IDSpecified\": true,\r\n                          \"Descriptor\": null\r\n                        }\r\n                      ],\r\n                      \"Use_For_ReferenceSpecified\": true,\r\n                      \"Use_For_Tenanted_Reference\": [\r\n                        {\r\n                          \"ID\": [\r\n                            {\r\n                              \"Value\": \"\",\r\n                              \"type\": \"\"\r\n                            },\r\n                            {\r\n                              \"Value\": \"\",\r\n                              \"type\": \"\"\r\n                            }\r\n                          ],\r\n                          \"IDSpecified\": true,\r\n                          \"Descriptor\": null\r\n                        }\r\n                      ],\r\n                      \"Use_For_Tenanted_ReferenceSpecified\": true,\r\n                      \"Comments\": null,\r\n                      \"Public\": false,\r\n                      \"PublicSpecified\": true\r\n                    }\r\n                  ],\r\n                  \"Usage_DataSpecified\": true,\r\n                  \"Number_of_Days\": 0,\r\n                  \"Number_of_DaysSpecified\": true,\r\n                  \"Municipality_Local\": null,\r\n                  \"Address_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Address_ID\": \"\",\r\n                  \"Formatted_Address\": \"\",\r\n                  \"Address_Format_Type\": \"\",\r\n                  \"Defaulted_Business_Site_Address\": false,\r\n                  \"Defaulted_Business_Site_AddressSpecified\": true,\r\n                  \"DeleteSpecified\": false,\r\n                  \"Do_Not_Replace_AllSpecified\": false,\r\n                  \"Effective_Date\": \"\",\r\n                  \"Effective_DateSpecified\": true\r\n                },\r\n                {\r\n                  \"Country_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Last_Modified\": \"\",\r\n                  \"Last_ModifiedSpecified\": true,\r\n                  \"Address_Line_Data\": [\r\n                    {\r\n                      \"Value\": \"\",\r\n                      \"Descriptor\": \"\",\r\n                      \"Type\": \"\"\r\n                    }\r\n                  ],\r\n                  \"Address_Line_DataSpecified\": true,\r\n                  \"Municipality\": \"\",\r\n                  \"Country_City_Reference\": null,\r\n                  \"Submunicipality_DataSpecified\": false,\r\n                  \"Country_Region_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Country_Region_Descriptor\": \"\",\r\n                  \"Subregion_DataSpecified\": false,\r\n                  \"Postal_Code\": \"\",\r\n                  \"Usage_Data\": [\r\n                    {\r\n                      \"Type_Data\": [\r\n                        {\r\n                          \"Type_Reference\": {\r\n                            \"ID\": [\r\n                              {\r\n                                \"Value\": \"\",\r\n                                \"type\": \"\"\r\n                              },\r\n                              {\r\n                                \"Value\": \"\",\r\n                                \"type\": \"\"\r\n                              }\r\n                            ],\r\n                            \"IDSpecified\": true,\r\n                            \"Descriptor\": null\r\n                          },\r\n                          \"Primary\": true,\r\n                          \"PrimarySpecified\": true\r\n                        }\r\n                      ],\r\n                      \"Comments\": null,\r\n                      \"Public\": true,\r\n                      \"PublicSpecified\": true\r\n                    }\r\n                  ],\r\n                  \"Usage_DataSpecified\": true,\r\n                  \"Number_of_Days\": 0,\r\n                  \"Number_of_DaysSpecified\": true,\r\n                  \"Municipality_Local\": null,\r\n                  \"Address_Reference\": {\r\n                    \"ID\": [\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      },\r\n                      {\r\n                        \"Value\": \"\",\r\n                        \"type\": \"\"\r\n                      }\r\n                    ],\r\n                    \"IDSpecified\": true,\r\n                    \"Descriptor\": null\r\n                  },\r\n                  \"Address_ID\": \"\",\r\n                  \"Formatted_Address\": \"\",\r\n                  \"Address_Format_Type\": \"\",\r\n                  \"Defaulted_Business_Site_Address\": true,\r\n                  \"Defaulted_Business_Site_AddressSpecified\": true,\r\n                  \"DeleteSpecified\": false,\r\n                  \"Do_Not_Replace_AllSpecified\": false,\r\n                  \"Effective_Date\": \"\",\r\n                  \"Effective_DateSpecified\": true\r\n                }\r\n              ],\r\n              \"Address_DataSpecified\": true,\r\n              \"Phone_DataSpecified\": false,\r\n              \"Email_Address_DataSpecified\": false,\r\n              \"Instant_Messenger_DataSpecified\": false,\r\n              \"Web_Address_DataSpecified\": false\r\n            },\r\n            \"Tobacco_Use\": false,\r\n            \"Tobacco_UseSpecified\": true\r\n          },\r\n          \"Employment_Data\": null,\r\n          \"Compensation_Data\": null,\r\n          \"Organization_DataSpecified\": false,\r\n          \"Role_Data\": null,\r\n          \"Management_Chain_Data\": null,\r\n          \"Benefit_Enrollment_Data\": null,\r\n          \"Benefit_Eligibility_Data\": null,\r\n          \"Related_Person_Data\": null,\r\n          \"Qualification_Data\": null\r\n        }\r\n      }\r\n    ],\r\n    \"Response_DataSpecified\": true,\r\n    \"Invalid_Reference_ID_ResponseSpecified\": false,\r\n    \"version\": \"v42.2\"\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Get_Workers_Response.Response_Data[*]"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "ParentNode"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 3945
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:23.8561624+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "31722ca6-5987-4cfe-98ca-159ed1c36b41"
+                }
+            },
+            {
+                "NodeId": "dd09bd74-a4c4-b179-689a-0fb1ee1e3d4d",
+                "Name": "Formatter",
+                "ShortDescription": "Format Payload",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {itemPayload}\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "itemPayload",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "cc988c25-4a8d-3953-47b4-96894247f7d3",
+                "Name": "QuickMap",
+                "ShortDescription": "Map Employee",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {\r\n    \"Worker_Reference\": null,\r\n    \"Worker_Descriptor\": null,\r\n    \"Universal_Identifier_Reference\": null,\r\n    \"Worker_Data\": {\r\n      \"Worker_ID\": \"000001\",\r\n      \"User_ID\": \"000001\",\r\n      \"Universal_ID\": null,\r\n      \"Personal_Data\": {\r\n        \"Universal_ID\": null,\r\n        \"Name_Data\": {\r\n          \"Legal_Name_Data\": {\r\n            \"Name_Detail_Data\": {\r\n              \"Country_Reference\": {\r\n                \"ID\": [\r\n                  {\r\n                    \"Value\": \"1\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  }\r\n                ],\r\n                \"IDSpecified\": true,\r\n                \"Descriptor\": null\r\n              },\r\n              \"Prefix_Data\": null,\r\n              \"First_Name\": \"\",\r\n              \"Middle_Name\": null,\r\n              \"Last_Name\": \"\",\r\n              \"Secondary_Last_Name\": null,\r\n              \"Tertiary_Last_Name\": null,\r\n              \"Local_Name_Detail_Data\": null,\r\n              \"Suffix_Data\": null,\r\n              \"Formatted_Name\": \"\",\r\n              \"Reporting_Name\": \"\"\r\n            }\r\n          },\r\n          \"Preferred_Name_Data\": {\r\n            \"Name_Detail_Data\": {\r\n              \"Country_Reference\": {\r\n                \"ID\": [\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  }\r\n                ],\r\n                \"IDSpecified\": true,\r\n                \"Descriptor\": null\r\n              },\r\n              \"Prefix_Data\": null,\r\n              \"First_Name\": \"\",\r\n              \"Middle_Name\": null,\r\n              \"Last_Name\": \"\",\r\n              \"Secondary_Last_Name\": null,\r\n              \"Tertiary_Last_Name\": null,\r\n              \"Local_Name_Detail_Data\": null,\r\n              \"Suffix_Data\": null,\r\n              \"Formatted_Name\": \"\",\r\n              \"Reporting_Name\": \"\"\r\n            }\r\n          },\r\n          \"Additional_Name_DataSpecified\": false\r\n        },\r\n        \"Personal_Information_DataSpecified\": false,\r\n        \"Identification_Data\": null,\r\n        \"Contact_Data\": {\r\n          \"Address_Data\": [\r\n            {\r\n              \"Country_Reference\": {\r\n                \"ID\": [\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  }\r\n                ],\r\n                \"IDSpecified\": true,\r\n                \"Descriptor\": null\r\n              },\r\n              \"Last_Modified\": \"\",\r\n              \"Last_ModifiedSpecified\": true,\r\n              \"Address_Line_Data\": [\r\n                {\r\n                  \"Value\": \"\",\r\n                  \"Descriptor\": \"\",\r\n                  \"Type\": \"\"\r\n                }\r\n              ],\r\n              \"Address_Line_DataSpecified\": true,\r\n              \"Municipality\": \"\",\r\n              \"Country_City_Reference\": null,\r\n              \"Submunicipality_DataSpecified\": false,\r\n              \"Country_Region_Reference\": {\r\n                \"ID\": [\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  }\r\n                ],\r\n                \"IDSpecified\": true,\r\n                \"Descriptor\": null\r\n              },\r\n              \"Country_Region_Descriptor\": \"\",\r\n              \"Subregion_DataSpecified\": false,\r\n              \"Postal_Code\": \"\",\r\n              \"Usage_Data\": [\r\n                {\r\n                  \"Type_Data\": [\r\n                    {\r\n                      \"Type_Reference\": {\r\n                        \"ID\": [\r\n                          {\r\n                            \"Value\": \"\",\r\n                            \"type\": \"\"\r\n                          },\r\n                          {\r\n                            \"Value\": \"\",\r\n                            \"type\": \"\"\r\n                          }\r\n                        ],\r\n                        \"IDSpecified\": true,\r\n                        \"Descriptor\": null\r\n                      },\r\n                      \"Primary\": true,\r\n                      \"PrimarySpecified\": true\r\n                    }\r\n                  ],\r\n                  \"Use_For_Reference\": [\r\n                    {\r\n                      \"ID\": [\r\n                        {\r\n                          \"Value\": \"\",\r\n                          \"type\": \"\"\r\n                        },\r\n                        {\r\n                          \"Value\": \"\",\r\n                          \"type\": \"\"\r\n                        }\r\n                      ],\r\n                      \"IDSpecified\": true,\r\n                      \"Descriptor\": null\r\n                    }\r\n                  ],\r\n                  \"Use_For_ReferenceSpecified\": true,\r\n                  \"Use_For_Tenanted_Reference\": [\r\n                    {\r\n                      \"ID\": [\r\n                        {\r\n                          \"Value\": \"\",\r\n                          \"type\": \"\"\r\n                        },\r\n                        {\r\n                          \"Value\": \"\",\r\n                          \"type\": \"\"\r\n                        }\r\n                      ],\r\n                      \"IDSpecified\": true,\r\n                      \"Descriptor\": null\r\n                    }\r\n                  ],\r\n                  \"Use_For_Tenanted_ReferenceSpecified\": true,\r\n                  \"Comments\": null,\r\n                  \"Public\": false,\r\n                  \"PublicSpecified\": true\r\n                }\r\n              ],\r\n              \"Usage_DataSpecified\": true,\r\n              \"Number_of_Days\": 0,\r\n              \"Number_of_DaysSpecified\": true,\r\n              \"Municipality_Local\": null,\r\n              \"Address_Reference\": {\r\n                \"ID\": [\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  }\r\n                ],\r\n                \"IDSpecified\": true,\r\n                \"Descriptor\": null\r\n              },\r\n              \"Address_ID\": \"\",\r\n              \"Formatted_Address\": \"\",\r\n              \"Address_Format_Type\": \"\",\r\n              \"Defaulted_Business_Site_Address\": false,\r\n              \"Defaulted_Business_Site_AddressSpecified\": true,\r\n              \"DeleteSpecified\": false,\r\n              \"Do_Not_Replace_AllSpecified\": false,\r\n              \"Effective_Date\": \"\",\r\n              \"Effective_DateSpecified\": true\r\n            },\r\n            {\r\n              \"Country_Reference\": {\r\n                \"ID\": [\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  }\r\n                ],\r\n                \"IDSpecified\": true,\r\n                \"Descriptor\": null\r\n              },\r\n              \"Last_Modified\": \"\",\r\n              \"Last_ModifiedSpecified\": true,\r\n              \"Address_Line_Data\": [\r\n                {\r\n                  \"Value\": \"\",\r\n                  \"Descriptor\": \"\",\r\n                  \"Type\": \"\"\r\n                }\r\n              ],\r\n              \"Address_Line_DataSpecified\": true,\r\n              \"Municipality\": \"\",\r\n              \"Country_City_Reference\": null,\r\n              \"Submunicipality_DataSpecified\": false,\r\n              \"Country_Region_Reference\": {\r\n                \"ID\": [\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  }\r\n                ],\r\n                \"IDSpecified\": true,\r\n                \"Descriptor\": null\r\n              },\r\n              \"Country_Region_Descriptor\": \"\",\r\n              \"Subregion_DataSpecified\": false,\r\n              \"Postal_Code\": \"\",\r\n              \"Usage_Data\": [\r\n                {\r\n                  \"Type_Data\": [\r\n                    {\r\n                      \"Type_Reference\": {\r\n                        \"ID\": [\r\n                          {\r\n                            \"Value\": \"\",\r\n                            \"type\": \"\"\r\n                          },\r\n                          {\r\n                            \"Value\": \"\",\r\n                            \"type\": \"\"\r\n                          }\r\n                        ],\r\n                        \"IDSpecified\": true,\r\n                        \"Descriptor\": null\r\n                      },\r\n                      \"Primary\": true,\r\n                      \"PrimarySpecified\": true\r\n                    }\r\n                  ],\r\n                  \"Comments\": null,\r\n                  \"Public\": true,\r\n                  \"PublicSpecified\": true\r\n                }\r\n              ],\r\n              \"Usage_DataSpecified\": true,\r\n              \"Number_of_Days\": 0,\r\n              \"Number_of_DaysSpecified\": true,\r\n              \"Municipality_Local\": null,\r\n              \"Address_Reference\": {\r\n                \"ID\": [\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  },\r\n                  {\r\n                    \"Value\": \"\",\r\n                    \"type\": \"\"\r\n                  }\r\n                ],\r\n                \"IDSpecified\": true,\r\n                \"Descriptor\": null\r\n              },\r\n              \"Address_ID\": \"\",\r\n              \"Formatted_Address\": \"\",\r\n              \"Address_Format_Type\": \"\",\r\n              \"Defaulted_Business_Site_Address\": true,\r\n              \"Defaulted_Business_Site_AddressSpecified\": true,\r\n              \"DeleteSpecified\": false,\r\n              \"Do_Not_Replace_AllSpecified\": false,\r\n              \"Effective_Date\": \"\",\r\n              \"Effective_DateSpecified\": true\r\n            }\r\n          ],\r\n          \"Address_DataSpecified\": true,\r\n          \"Phone_DataSpecified\": false,\r\n          \"Email_Address_DataSpecified\": false,\r\n          \"Instant_Messenger_DataSpecified\": false,\r\n          \"Web_Address_DataSpecified\": false\r\n        },\r\n        \"Tobacco_Use\": false,\r\n        \"Tobacco_UseSpecified\": true\r\n      },\r\n      \"Employment_Data\": null,\r\n      \"Compensation_Data\": null,\r\n      \"Organization_DataSpecified\": false,\r\n      \"Role_Data\": null,\r\n      \"Management_Chain_Data\": null,\r\n      \"Benefit_Enrollment_Data\": null,\r\n      \"Benefit_Eligibility_Data\": null,\r\n      \"Related_Person_Data\": null,\r\n      \"Qualification_Data\": null\r\n    }\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"root/Worker_Data\"],\"targetPath\":\"root/properties\"},{\"sourcePaths\":[\"root/Worker_Data/Worker_ID\"],\"targetPath\":\"root/properties/id\"},{\"sourcePaths\":[\"root/Worker_Data/Personal_Data/Name_Data/Legal_Name_Data/Name_Detail_Data/First_Name\"],\"targetPath\":\"root/properties/Firstname\",\"mapExpression\":\"FIRST({First_Name})\"},{\"sourcePaths\":[\"root/Worker_Data/Personal_Data/Name_Data/Legal_Name_Data/Name_Detail_Data/Last_Name\"],\"targetPath\":\"root/properties/LastName\",\"mapExpression\":\"FIRST({Last_Name})\"},{\"sourcePaths\":[\"root/Worker_Data/Personal_Data/Contact_Data/Address_Data/Address_Line_Data/Value\"],\"targetPath\":\"root/properties/Location\",\"mapExpression\":\"TEXTJOIN(\\\", \\\", True, {Value})\"}],\"sourceSchema\":\"{\\r\\n  \\\"root\\\": {\\r\\n    \\\"Worker_Reference\\\": null,\\r\\n    \\\"Worker_Descriptor\\\": null,\\r\\n    \\\"Universal_Identifier_Reference\\\": null,\\r\\n    \\\"Worker_Data\\\": {\\r\\n      \\\"Worker_ID\\\": \\\"000001\\\",\\r\\n      \\\"User_ID\\\": \\\"000001\\\",\\r\\n      \\\"Universal_ID\\\": null,\\r\\n      \\\"Personal_Data\\\": {\\r\\n        \\\"Universal_ID\\\": null,\\r\\n        \\\"Name_Data\\\": {\\r\\n          \\\"Legal_Name_Data\\\": {\\r\\n            \\\"Name_Detail_Data\\\": {\\r\\n              \\\"Country_Reference\\\": {\\r\\n                \\\"ID\\\": [\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"1\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  }\\r\\n                ],\\r\\n                \\\"IDSpecified\\\": true,\\r\\n                \\\"Descriptor\\\": null\\r\\n              },\\r\\n              \\\"Prefix_Data\\\": null,\\r\\n              \\\"First_Name\\\": \\\"\\\",\\r\\n              \\\"Middle_Name\\\": null,\\r\\n              \\\"Last_Name\\\": \\\"\\\",\\r\\n              \\\"Secondary_Last_Name\\\": null,\\r\\n              \\\"Tertiary_Last_Name\\\": null,\\r\\n              \\\"Local_Name_Detail_Data\\\": null,\\r\\n              \\\"Suffix_Data\\\": null,\\r\\n              \\\"Formatted_Name\\\": \\\"\\\",\\r\\n              \\\"Reporting_Name\\\": \\\"\\\"\\r\\n            }\\r\\n          },\\r\\n          \\\"Preferred_Name_Data\\\": {\\r\\n            \\\"Name_Detail_Data\\\": {\\r\\n              \\\"Country_Reference\\\": {\\r\\n                \\\"ID\\\": [\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  }\\r\\n                ],\\r\\n                \\\"IDSpecified\\\": true,\\r\\n                \\\"Descriptor\\\": null\\r\\n              },\\r\\n              \\\"Prefix_Data\\\": null,\\r\\n              \\\"First_Name\\\": \\\"\\\",\\r\\n              \\\"Middle_Name\\\": null,\\r\\n              \\\"Last_Name\\\": \\\"\\\",\\r\\n              \\\"Secondary_Last_Name\\\": null,\\r\\n              \\\"Tertiary_Last_Name\\\": null,\\r\\n              \\\"Local_Name_Detail_Data\\\": null,\\r\\n              \\\"Suffix_Data\\\": null,\\r\\n              \\\"Formatted_Name\\\": \\\"\\\",\\r\\n              \\\"Reporting_Name\\\": \\\"\\\"\\r\\n            }\\r\\n          },\\r\\n          \\\"Additional_Name_DataSpecified\\\": false\\r\\n        },\\r\\n        \\\"Personal_Information_DataSpecified\\\": false,\\r\\n        \\\"Identification_Data\\\": null,\\r\\n        \\\"Contact_Data\\\": {\\r\\n          \\\"Address_Data\\\": [\\r\\n            {\\r\\n              \\\"Country_Reference\\\": {\\r\\n                \\\"ID\\\": [\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  }\\r\\n                ],\\r\\n                \\\"IDSpecified\\\": true,\\r\\n                \\\"Descriptor\\\": null\\r\\n              },\\r\\n              \\\"Last_Modified\\\": \\\"\\\",\\r\\n              \\\"Last_ModifiedSpecified\\\": true,\\r\\n              \\\"Address_Line_Data\\\": [\\r\\n                {\\r\\n                  \\\"Value\\\": \\\"\\\",\\r\\n                  \\\"Descriptor\\\": \\\"\\\",\\r\\n                  \\\"Type\\\": \\\"\\\"\\r\\n                }\\r\\n              ],\\r\\n              \\\"Address_Line_DataSpecified\\\": true,\\r\\n              \\\"Municipality\\\": \\\"\\\",\\r\\n              \\\"Country_City_Reference\\\": null,\\r\\n              \\\"Submunicipality_DataSpecified\\\": false,\\r\\n              \\\"Country_Region_Reference\\\": {\\r\\n                \\\"ID\\\": [\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  }\\r\\n                ],\\r\\n                \\\"IDSpecified\\\": true,\\r\\n                \\\"Descriptor\\\": null\\r\\n              },\\r\\n              \\\"Country_Region_Descriptor\\\": \\\"\\\",\\r\\n              \\\"Subregion_DataSpecified\\\": false,\\r\\n              \\\"Postal_Code\\\": \\\"\\\",\\r\\n              \\\"Usage_Data\\\": [\\r\\n                {\\r\\n                  \\\"Type_Data\\\": [\\r\\n                    {\\r\\n                      \\\"Type_Reference\\\": {\\r\\n                        \\\"ID\\\": [\\r\\n                          {\\r\\n                            \\\"Value\\\": \\\"\\\",\\r\\n                            \\\"type\\\": \\\"\\\"\\r\\n                          },\\r\\n                          {\\r\\n                            \\\"Value\\\": \\\"\\\",\\r\\n                            \\\"type\\\": \\\"\\\"\\r\\n                          }\\r\\n                        ],\\r\\n                        \\\"IDSpecified\\\": true,\\r\\n                        \\\"Descriptor\\\": null\\r\\n                      },\\r\\n                      \\\"Primary\\\": true,\\r\\n                      \\\"PrimarySpecified\\\": true\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"Use_For_Reference\\\": [\\r\\n                    {\\r\\n                      \\\"ID\\\": [\\r\\n                        {\\r\\n                          \\\"Value\\\": \\\"\\\",\\r\\n                          \\\"type\\\": \\\"\\\"\\r\\n                        },\\r\\n                        {\\r\\n                          \\\"Value\\\": \\\"\\\",\\r\\n                          \\\"type\\\": \\\"\\\"\\r\\n                        }\\r\\n                      ],\\r\\n                      \\\"IDSpecified\\\": true,\\r\\n                      \\\"Descriptor\\\": null\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"Use_For_ReferenceSpecified\\\": true,\\r\\n                  \\\"Use_For_Tenanted_Reference\\\": [\\r\\n                    {\\r\\n                      \\\"ID\\\": [\\r\\n                        {\\r\\n                          \\\"Value\\\": \\\"\\\",\\r\\n                          \\\"type\\\": \\\"\\\"\\r\\n                        },\\r\\n                        {\\r\\n                          \\\"Value\\\": \\\"\\\",\\r\\n                          \\\"type\\\": \\\"\\\"\\r\\n                        }\\r\\n                      ],\\r\\n                      \\\"IDSpecified\\\": true,\\r\\n                      \\\"Descriptor\\\": null\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"Use_For_Tenanted_ReferenceSpecified\\\": true,\\r\\n                  \\\"Comments\\\": null,\\r\\n                  \\\"Public\\\": false,\\r\\n                  \\\"PublicSpecified\\\": true\\r\\n                }\\r\\n              ],\\r\\n              \\\"Usage_DataSpecified\\\": true,\\r\\n              \\\"Number_of_Days\\\": 0,\\r\\n              \\\"Number_of_DaysSpecified\\\": true,\\r\\n              \\\"Municipality_Local\\\": null,\\r\\n              \\\"Address_Reference\\\": {\\r\\n                \\\"ID\\\": [\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  }\\r\\n                ],\\r\\n                \\\"IDSpecified\\\": true,\\r\\n                \\\"Descriptor\\\": null\\r\\n              },\\r\\n              \\\"Address_ID\\\": \\\"\\\",\\r\\n              \\\"Formatted_Address\\\": \\\"\\\",\\r\\n              \\\"Address_Format_Type\\\": \\\"\\\",\\r\\n              \\\"Defaulted_Business_Site_Address\\\": false,\\r\\n              \\\"Defaulted_Business_Site_AddressSpecified\\\": true,\\r\\n              \\\"DeleteSpecified\\\": false,\\r\\n              \\\"Do_Not_Replace_AllSpecified\\\": false,\\r\\n              \\\"Effective_Date\\\": \\\"\\\",\\r\\n              \\\"Effective_DateSpecified\\\": true\\r\\n            },\\r\\n            {\\r\\n              \\\"Country_Reference\\\": {\\r\\n                \\\"ID\\\": [\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  }\\r\\n                ],\\r\\n                \\\"IDSpecified\\\": true,\\r\\n                \\\"Descriptor\\\": null\\r\\n              },\\r\\n              \\\"Last_Modified\\\": \\\"\\\",\\r\\n              \\\"Last_ModifiedSpecified\\\": true,\\r\\n              \\\"Address_Line_Data\\\": [\\r\\n                {\\r\\n                  \\\"Value\\\": \\\"\\\",\\r\\n                  \\\"Descriptor\\\": \\\"\\\",\\r\\n                  \\\"Type\\\": \\\"\\\"\\r\\n                }\\r\\n              ],\\r\\n              \\\"Address_Line_DataSpecified\\\": true,\\r\\n              \\\"Municipality\\\": \\\"\\\",\\r\\n              \\\"Country_City_Reference\\\": null,\\r\\n              \\\"Submunicipality_DataSpecified\\\": false,\\r\\n              \\\"Country_Region_Reference\\\": {\\r\\n                \\\"ID\\\": [\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  }\\r\\n                ],\\r\\n                \\\"IDSpecified\\\": true,\\r\\n                \\\"Descriptor\\\": null\\r\\n              },\\r\\n              \\\"Country_Region_Descriptor\\\": \\\"\\\",\\r\\n              \\\"Subregion_DataSpecified\\\": false,\\r\\n              \\\"Postal_Code\\\": \\\"\\\",\\r\\n              \\\"Usage_Data\\\": [\\r\\n                {\\r\\n                  \\\"Type_Data\\\": [\\r\\n                    {\\r\\n                      \\\"Type_Reference\\\": {\\r\\n                        \\\"ID\\\": [\\r\\n                          {\\r\\n                            \\\"Value\\\": \\\"\\\",\\r\\n                            \\\"type\\\": \\\"\\\"\\r\\n                          },\\r\\n                          {\\r\\n                            \\\"Value\\\": \\\"\\\",\\r\\n                            \\\"type\\\": \\\"\\\"\\r\\n                          }\\r\\n                        ],\\r\\n                        \\\"IDSpecified\\\": true,\\r\\n                        \\\"Descriptor\\\": null\\r\\n                      },\\r\\n                      \\\"Primary\\\": true,\\r\\n                      \\\"PrimarySpecified\\\": true\\r\\n                    }\\r\\n                  ],\\r\\n                  \\\"Comments\\\": null,\\r\\n                  \\\"Public\\\": true,\\r\\n                  \\\"PublicSpecified\\\": true\\r\\n                }\\r\\n              ],\\r\\n              \\\"Usage_DataSpecified\\\": true,\\r\\n              \\\"Number_of_Days\\\": 0,\\r\\n              \\\"Number_of_DaysSpecified\\\": true,\\r\\n              \\\"Municipality_Local\\\": null,\\r\\n              \\\"Address_Reference\\\": {\\r\\n                \\\"ID\\\": [\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  },\\r\\n                  {\\r\\n                    \\\"Value\\\": \\\"\\\",\\r\\n                    \\\"type\\\": \\\"\\\"\\r\\n                  }\\r\\n                ],\\r\\n                \\\"IDSpecified\\\": true,\\r\\n                \\\"Descriptor\\\": null\\r\\n              },\\r\\n              \\\"Address_ID\\\": \\\"\\\",\\r\\n              \\\"Formatted_Address\\\": \\\"\\\",\\r\\n              \\\"Address_Format_Type\\\": \\\"\\\",\\r\\n              \\\"Defaulted_Business_Site_Address\\\": true,\\r\\n              \\\"Defaulted_Business_Site_AddressSpecified\\\": true,\\r\\n              \\\"DeleteSpecified\\\": false,\\r\\n              \\\"Do_Not_Replace_AllSpecified\\\": false,\\r\\n              \\\"Effective_Date\\\": \\\"\\\",\\r\\n              \\\"Effective_DateSpecified\\\": true\\r\\n            }\\r\\n          ],\\r\\n          \\\"Address_DataSpecified\\\": true,\\r\\n          \\\"Phone_DataSpecified\\\": false,\\r\\n          \\\"Email_Address_DataSpecified\\\": false,\\r\\n          \\\"Instant_Messenger_DataSpecified\\\": false,\\r\\n          \\\"Web_Address_DataSpecified\\\": false\\r\\n        },\\r\\n        \\\"Tobacco_Use\\\": false,\\r\\n        \\\"Tobacco_UseSpecified\\\": true\\r\\n      },\\r\\n      \\\"Employment_Data\\\": null,\\r\\n      \\\"Compensation_Data\\\": null,\\r\\n      \\\"Organization_DataSpecified\\\": false,\\r\\n      \\\"Role_Data\\\": null,\\r\\n      \\\"Management_Chain_Data\\\": null,\\r\\n      \\\"Benefit_Enrollment_Data\\\": null,\\r\\n      \\\"Benefit_Eligibility_Data\\\": null,\\r\\n      \\\"Related_Person_Data\\\": null,\\r\\n      \\\"Qualification_Data\\\": null\\r\\n    }\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"{\\r\\n  \\\"root\\\": {\\r\\n    \\\"properties\\\": [\\r\\n      {\\r\\n        \\\"id\\\": \\\"4\\\",\\r\\n        \\\"Firstname\\\": \\\"Charlotte\\\",\\r\\n        \\\"LastName\\\": \\\"Abbott\\\",\\r\\n        \\\"Ethnicity\\\": \\\"White\\\",\\r\\n        \\\"City\\\": \\\"Lindon\\\",\\r\\n        \\\"Country\\\": \\\"United States\\\",\\r\\n        \\\"WorkPhone\\\": \\\"801-724-6600\\\",\\r\\n        \\\"HomePhone\\\": \\\"801-724-6600\\\",\\r\\n        \\\"WorkEmail\\\": \\\"cabbott@efficientoffice.com\\\",\\r\\n        \\\"JobTitle\\\": \\\"Sr. HR Administrator\\\",\\r\\n        \\\"Location\\\": \\\"Salt Lake City, Utah\\\",\\r\\n        \\\"Division\\\": \\\"North America\\\",\\r\\n        \\\"Department\\\": \\\"Human Resources\\\",\\r\\n        \\\"Gender\\\": \\\"Female\\\",\\r\\n        \\\"MaritalStatus\\\": \\\"Married\\\"\\r\\n      }\\r\\n    ]\\r\\n  }\\r\\n}\",\"targetSchemaType\":2}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Json"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {\r\n    \"properties\": [\r\n      {\r\n        \"id\": \"4\",\r\n        \"Firstname\": \"Charlotte\",\r\n        \"LastName\": \"Abbott\",\r\n        \"Ethnicity\": \"White\",\r\n        \"City\": \"Lindon\",\r\n        \"Country\": \"United States\",\r\n        \"WorkPhone\": \"801-724-6600\",\r\n        \"HomePhone\": \"801-724-6600\",\r\n        \"WorkEmail\": \"cabbott@efficientoffice.com\",\r\n        \"JobTitle\": \"Sr. HR Administrator\",\r\n        \"Location\": \"Salt Lake City, Utah\",\r\n        \"Division\": \"North America\",\r\n        \"Department\": \"Human Resources\",\r\n        \"Gender\": \"Female\",\r\n        \"MaritalStatus\": \"Married\"\r\n      }\r\n    ]\r\n  }\r\n}"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-11-27T15:52:53.0253877+00:00",
+                    "Username": "daniel.chilcott@flowgear.net",
+                    "UserKey": "948d657b-e37c-4fd3-9bfa-c94f493379f0"
+                }
+            },
+            {
+                "NodeId": "61f59164-2f8f-7712-3f98-b9cf2ec5f619",
+                "Name": "BambooHR",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CompanyDomain",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.BambooHR.BambooHrConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Unique identifier for the sample operation.",
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "63111336-423a-44b3-786c-45920c6c640e"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "A brief description or summary of the operation.",
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Add Employee"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"firstName\": \"(string)\",\r\n  \"lastName\": \"(string)\"\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "",
+                        "Schema": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "BambooHR",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-08-26T06:41:07.3303069+00:00",
+                    "Username": "terrence.meiring@flowgear.net",
+                    "UserKey": "70cab36e-17dd-4237-a051-fc01c07c94a1"
+                },
+                "ShortDescription": "Add Employee"
+            },
+            {
+                "NodeId": "46e173ec-0cc3-03d9-1312-85329bc79dc4",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "Employee Created?",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = \"success\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "4a8de233-f714-00eb-510b-ba9c92026b88",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "Log Success",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 3945
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:22.266367+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "f49ded70-9a4f-a31d-880b-0efa3daaec65",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "Log Error",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4361
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "46e173ec-0cc3-03d9-1312-85329bc79dc4",
+                "TargetNodeId": "4a8de233-f714-00eb-510b-ba9c92026b88",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "46e173ec-0cc3-03d9-1312-85329bc79dc4",
+                "TargetNodeId": "f49ded70-9a4f-a31d-880b-0efa3daaec65",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "702bb15f-bbdc-0438-f9dd-1547d579860f",
+                "TargetNodeId": "dd09bd74-a4c4-b179-689a-0fb1ee1e3d4d",
+                "SourceName": "Item",
+                "TargetName": "itemPayload"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "702bb15f-bbdc-0438-f9dd-1547d579860f",
+                "TargetNodeId": "dd09bd74-a4c4-b179-689a-0fb1ee1e3d4d",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "dd09bd74-a4c4-b179-689a-0fb1ee1e3d4d",
+                "TargetNodeId": "4a8de233-f714-00eb-510b-ba9c92026b88",
+                "SourceName": "Result",
+                "TargetName": "Key",
+                "Expression": "root.email"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "dd09bd74-a4c4-b179-689a-0fb1ee1e3d4d",
+                "TargetNodeId": "f49ded70-9a4f-a31d-880b-0efa3daaec65",
+                "SourceName": "Result",
+                "TargetName": "Key",
+                "Expression": "root.email"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "d3cc8dce-593b-3932-0a2f-da3cb0819b5d",
+                "TargetNodeId": "702bb15f-bbdc-0438-f9dd-1547d579860f",
+                "SourceName": "Response",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "d3cc8dce-593b-3932-0a2f-da3cb0819b5d",
+                "TargetNodeId": "702bb15f-bbdc-0438-f9dd-1547d579860f",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "dd09bd74-a4c4-b179-689a-0fb1ee1e3d4d",
+                "TargetNodeId": "cc988c25-4a8d-3953-47b4-96894247f7d3",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "cc988c25-4a8d-3953-47b4-96894247f7d3",
+                "TargetNodeId": "61f59164-2f8f-7712-3f98-b9cf2ec5f619",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "cc988c25-4a8d-3953-47b4-96894247f7d3",
+                "TargetNodeId": "61f59164-2f8f-7712-3f98-b9cf2ec5f619",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "dd09bd74-a4c4-b179-689a-0fb1ee1e3d4d",
+                "TargetNodeId": "cc988c25-4a8d-3953-47b4-96894247f7d3",
+                "SourceName": "Result",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "61f59164-2f8f-7712-3f98-b9cf2ec5f619",
+                "TargetNodeId": "46e173ec-0cc3-03d9-1312-85329bc79dc4",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7110b355-a105-9c7c-918e-72563824d313",
+                "TargetNodeId": "d3cc8dce-593b-3932-0a2f-da3cb0819b5d",
+                "SourceName": "Run_Now",
+                "TargetName": null
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "7df0cf5c-0e02-57dc-2022-0e010daab2b6",
+                "TargetNodeId": "4a8de233-f714-00eb-510b-ba9c92026b88",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "7df0cf5c-0e02-57dc-2022-0e010daab2b6",
+                "TargetNodeId": "f49ded70-9a4f-a31d-880b-0efa3daaec65",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "61f59164-2f8f-7712-3f98-b9cf2ec5f619",
+                "TargetNodeId": "46e173ec-0cc3-03d9-1312-85329bc79dc4",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "status"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "61f59164-2f8f-7712-3f98-b9cf2ec5f619",
+                "TargetNodeId": "4a8de233-f714-00eb-510b-ba9c92026b88",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "employeeId"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "61f59164-2f8f-7712-3f98-b9cf2ec5f619",
+                "TargetNodeId": "f49ded70-9a4f-a31d-880b-0efa3daaec65",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "message"
+            }
+        ],
+        "StartNodeId": "7110b355-a105-9c7c-918e-72563824d313",
+        "ActivityLogLevelMask": 255
+    },
+    "Name": "Workday To BambooHR Employees",
+    "Description": "This Workflow retrieves employee data from Workday, processes each record, maps it to the BambooHR format, and attempts to add the employee to BambooHR. It logs the result as either success or error for each processed employee."
+}

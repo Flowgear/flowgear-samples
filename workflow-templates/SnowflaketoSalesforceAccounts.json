@@ -1,0 +1,1440 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "1eaf9b5f-6d77-0be7-e816-78892c240bf3",
+                "Name": "Note",
+                "ShortDescription": "About This Workflow",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow retrieves customer records from Snowflake, checks if each customer has already been processed, and then creates new Salesforce Accounts for unprocessed customers. It logs the outcome of each attempt, recording success or error details for every customer processed."
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3640
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "ce943cef-bd3f-bb4e-dbd2-525ceb09fe57",
+                "Name": "VariableBar",
+                "ShortDescription": "SetKeyValueGroup",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "SnowflakeToSFCustomers"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                }
+            },
+            {
+                "NodeId": "d3879fca-4443-1c86-ef5a-a50f65fe8dc9",
+                "Name": "Formatter",
+                "ShortDescription": "CustomerProcessed",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "Customer: \"{CustID} has already been processed.\""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 3945
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "7cef5003-2b30-2721-43bd-9256952fd894",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 4179
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "6d583bc1-3562-844e-8386-51cfd3a2be7e",
+                "Name": "SnowflakeSqlQuery",
+                "ShortDescription": "GetCustomers",
+                "Version": "1.0.0.6",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "https://org-account.snowflakecomputing.com"
+                            },
+                            {
+                                "Name": "AccountIdentifier",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "UserName",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Warehouse",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Database",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Schema",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientSecrets",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Role",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Snowflake.SnowflakeConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Query",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "select top 5 * from CUSTOMER "
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"Table\": [\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014865,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAABNJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": 1863016,\r\n      \"C_CURRENT_HDEMO_SK\": 1229,\r\n      \"C_CURRENT_ADDR_SK\": 29006995,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": 2449450,\r\n      \"C_FIRST_SALES_DATE_SK\": 2449420,\r\n      \"C_SALUTATION\": \"Dr.\",\r\n      \"C_FIRST_NAME\": \"David\",\r\n      \"C_LAST_NAME\": \"Olsen\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"Y\",\r\n      \"C_BIRTH_DAY\": 8,\r\n      \"C_BIRTH_MONTH\": 6,\r\n      \"C_BIRTH_YEAR\": 1942,\r\n      \"C_BIRTH_COUNTRY\": \"SERBIA\",\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"David.Olsen@f.com\",\r\n      \"C_LAST_REVIEW_DATE\": \"2452346\"\r\n    },\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014866,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAACNJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": 1813966,\r\n      \"C_CURRENT_HDEMO_SK\": 1100,\r\n      \"C_CURRENT_ADDR_SK\": 13181034,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": 2451460,\r\n      \"C_FIRST_SALES_DATE_SK\": 2451430,\r\n      \"C_SALUTATION\": \"Mrs.\",\r\n      \"C_FIRST_NAME\": \"Iona\",\r\n      \"C_LAST_NAME\": \"White\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"Y\",\r\n      \"C_BIRTH_DAY\": 25,\r\n      \"C_BIRTH_MONTH\": 5,\r\n      \"C_BIRTH_YEAR\": 1952,\r\n      \"C_BIRTH_COUNTRY\": \"THAILAND\",\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"Iona.White@8PZ6.org\",\r\n      \"C_LAST_REVIEW_DATE\": \"2452579\"\r\n    },\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014867,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAADNJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": 1527130,\r\n      \"C_CURRENT_HDEMO_SK\": 6200,\r\n      \"C_CURRENT_ADDR_SK\": 6891670,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": 2451414,\r\n      \"C_FIRST_SALES_DATE_SK\": 2451384,\r\n      \"C_SALUTATION\": \"Mr.\",\r\n      \"C_FIRST_NAME\": \"James\",\r\n      \"C_LAST_NAME\": \"Mendoza\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"N\",\r\n      \"C_BIRTH_DAY\": 17,\r\n      \"C_BIRTH_MONTH\": 5,\r\n      \"C_BIRTH_YEAR\": 1931,\r\n      \"C_BIRTH_COUNTRY\": \"EQUATORIAL GUINEA\",\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"James.Mendoza@hSAR30xkQc.com\",\r\n      \"C_LAST_REVIEW_DATE\": \"2452366\"\r\n    },\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014868,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAAENJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": null,\r\n      \"C_CURRENT_HDEMO_SK\": 157,\r\n      \"C_CURRENT_ADDR_SK\": 26317723,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": null,\r\n      \"C_FIRST_SALES_DATE_SK\": null,\r\n      \"C_SALUTATION\": null,\r\n      \"C_FIRST_NAME\": null,\r\n      \"C_LAST_NAME\": \"Hunter\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"N\",\r\n      \"C_BIRTH_DAY\": null,\r\n      \"C_BIRTH_MONTH\": null,\r\n      \"C_BIRTH_YEAR\": null,\r\n      \"C_BIRTH_COUNTRY\": null,\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"Bessie.Hunter@SEg5Zt3Inh7.edu\",\r\n      \"C_LAST_REVIEW_DATE\": null\r\n    },\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014869,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAAFNJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": 1332683,\r\n      \"C_CURRENT_HDEMO_SK\": 405,\r\n      \"C_CURRENT_ADDR_SK\": 14453374,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": 2450341,\r\n      \"C_FIRST_SALES_DATE_SK\": 2450311,\r\n      \"C_SALUTATION\": \"Sir\",\r\n      \"C_FIRST_NAME\": \"Robert\",\r\n      \"C_LAST_NAME\": \"Nelson\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"N\",\r\n      \"C_BIRTH_DAY\": 18,\r\n      \"C_BIRTH_MONTH\": 11,\r\n      \"C_BIRTH_YEAR\": 1961,\r\n      \"C_BIRTH_COUNTRY\": \"URUGUAY\",\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"Robert.Nelson@lzzdMmJ.com\",\r\n      \"C_LAST_REVIEW_DATE\": \"2452605\"\r\n    },\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014870,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAAGNJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": 1598030,\r\n      \"C_CURRENT_HDEMO_SK\": 4560,\r\n      \"C_CURRENT_ADDR_SK\": 12830290,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": 2449414,\r\n      \"C_FIRST_SALES_DATE_SK\": 2449384,\r\n      \"C_SALUTATION\": \"Dr.\",\r\n      \"C_FIRST_NAME\": \"Lois\",\r\n      \"C_LAST_NAME\": \"Jones\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"Y\",\r\n      \"C_BIRTH_DAY\": 23,\r\n      \"C_BIRTH_MONTH\": 5,\r\n      \"C_BIRTH_YEAR\": 1983,\r\n      \"C_BIRTH_COUNTRY\": \"KYRGYZSTAN\",\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"Lois.Jones@lvD.org\",\r\n      \"C_LAST_REVIEW_DATE\": \"2452378\"\r\n    },\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014871,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAAHNJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": 716281,\r\n      \"C_CURRENT_HDEMO_SK\": 2197,\r\n      \"C_CURRENT_ADDR_SK\": 944913,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": 2452543,\r\n      \"C_FIRST_SALES_DATE_SK\": 2452513,\r\n      \"C_SALUTATION\": \"Dr.\",\r\n      \"C_FIRST_NAME\": \"Sean\",\r\n      \"C_LAST_NAME\": \"Rogers\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"N\",\r\n      \"C_BIRTH_DAY\": 10,\r\n      \"C_BIRTH_MONTH\": 12,\r\n      \"C_BIRTH_YEAR\": 1963,\r\n      \"C_BIRTH_COUNTRY\": \"RUSSIAN FEDERATION\",\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"Sean.Rogers@a4PRS.org\",\r\n      \"C_LAST_REVIEW_DATE\": \"2452569\"\r\n    },\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014872,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAAINJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": 1510280,\r\n      \"C_CURRENT_HDEMO_SK\": 3818,\r\n      \"C_CURRENT_ADDR_SK\": 80556,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": 2449628,\r\n      \"C_FIRST_SALES_DATE_SK\": 2449598,\r\n      \"C_SALUTATION\": \"Dr.\",\r\n      \"C_FIRST_NAME\": \"Corey\",\r\n      \"C_LAST_NAME\": \"Cooper\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"Y\",\r\n      \"C_BIRTH_DAY\": 7,\r\n      \"C_BIRTH_MONTH\": 10,\r\n      \"C_BIRTH_YEAR\": 1924,\r\n      \"C_BIRTH_COUNTRY\": \"FAROE ISLANDS\",\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"Corey.Cooper@tC0ug.org\",\r\n      \"C_LAST_REVIEW_DATE\": \"2452511\"\r\n    },\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014873,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAAJNJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": 737061,\r\n      \"C_CURRENT_HDEMO_SK\": 1101,\r\n      \"C_CURRENT_ADDR_SK\": 996341,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": 2452056,\r\n      \"C_FIRST_SALES_DATE_SK\": 2452026,\r\n      \"C_SALUTATION\": \"Mrs.\",\r\n      \"C_FIRST_NAME\": \"Dorthy\",\r\n      \"C_LAST_NAME\": \"Coates\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"Y\",\r\n      \"C_BIRTH_DAY\": 8,\r\n      \"C_BIRTH_MONTH\": 11,\r\n      \"C_BIRTH_YEAR\": 1984,\r\n      \"C_BIRTH_COUNTRY\": \"GUATEMALA\",\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"Dorthy.Coates@HJhvH9JHLjxL.com\",\r\n      \"C_LAST_REVIEW_DATE\": \"2452535\"\r\n    },\r\n    {\r\n      \"C_CUSTOMER_SK\": 7014874,\r\n      \"C_CUSTOMER_ID\": \"AAAAAAAAKNJALGAA\",\r\n      \"C_CURRENT_CDEMO_SK\": 1479555,\r\n      \"C_CURRENT_HDEMO_SK\": 4523,\r\n      \"C_CURRENT_ADDR_SK\": 12680338,\r\n      \"C_FIRST_SHIPTO_DATE_SK\": 2451939,\r\n      \"C_FIRST_SALES_DATE_SK\": 2451909,\r\n      \"C_SALUTATION\": \"Miss\",\r\n      \"C_FIRST_NAME\": \"Xenia\",\r\n      \"C_LAST_NAME\": \"Smith\",\r\n      \"C_PREFERRED_CUST_FLAG\": \"Y\",\r\n      \"C_BIRTH_DAY\": 29,\r\n      \"C_BIRTH_MONTH\": 9,\r\n      \"C_BIRTH_YEAR\": 1992,\r\n      \"C_BIRTH_COUNTRY\": \"POLAND\",\r\n      \"C_LOGIN\": null,\r\n      \"C_EMAIL_ADDRESS\": \"Xenia.Smith@oBKQtRYYKuO2.edu\",\r\n      \"C_LAST_REVIEW_DATE\": \"2452528\"\r\n    }\r\n  ]\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "RowsAffected",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 4179
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "InteractFlags": 3,
+                "DisplayName": "Snowflake SQL Query",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-01T05:10:04.9237903+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "e7712d96-4132-7418-d92b-a3a77fc89559",
+                "Name": "ForEach",
+                "ShortDescription": "SplitCustomers",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Table[*].C_CUSTOMER_ID"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "ParentNode"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"C_CUSTOMER_SK\":7014869,\"C_CUSTOMER_ID\":\"AAAAAAAAFNJALGAA\",\"C_CURRENT_CDEMO_SK\":1332683,\"C_CURRENT_HDEMO_SK\":405,\"C_CURRENT_ADDR_SK\":14453374,\"C_FIRST_SHIPTO_DATE_SK\":2450341,\"C_FIRST_SALES_DATE_SK\":2450311,\"C_SALUTATION\":\"Sir\",\"C_FIRST_NAME\":\"Robert\",\"C_LAST_NAME\":\"Nelson\",\"C_PREFERRED_CUST_FLAG\":\"N\",\"C_BIRTH_DAY\":18,\"C_BIRTH_MONTH\":11,\"C_BIRTH_YEAR\":1961,\"C_BIRTH_COUNTRY\":\"URUGUAY\",\"C_LOGIN\":null,\"C_EMAIL_ADDRESS\":\"Robert.Nelson@lzzdMmJ.com\",\"C_LAST_REVIEW_DATE\":\"2452605\"}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 4179
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:23.8561624+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "31722ca6-5987-4cfe-98ca-159ed1c36b41"
+                }
+            },
+            {
+                "NodeId": "11c88369-d706-9e8b-1275-e83838bf8ad0",
+                "Name": "GetKeyValue2",
+                "ShortDescription": "CustomerFound?",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "DateTime",
+                        "TypeName": "System.Nullable`1[System.DateTimeOffset]",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Found",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Missing",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 4179
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Get Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:18.3456334+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "83e1e9bc-b152-1d6f-4dfb-f475cb1e1b39",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "IfSuccessful?",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = Success"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 4179
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "b19e22e5-6364-9bd2-9cd0-6b42fdbd3a4b",
+                "Name": "Formatter",
+                "ShortDescription": "FormatPayload",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {itemPayload}\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {\"C_CUSTOMER_SK\":7014869,\"C_CUSTOMER_ID\":\"AAAAAAAAFNJALGAA\",\"C_CURRENT_CDEMO_SK\":1332683,\"C_CURRENT_HDEMO_SK\":405,\"C_CURRENT_ADDR_SK\":14453374,\"C_FIRST_SHIPTO_DATE_SK\":2450341,\"C_FIRST_SALES_DATE_SK\":2450311,\"C_SALUTATION\":\"Sir\",\"C_FIRST_NAME\":\"Robert\",\"C_LAST_NAME\":\"Nelson\",\"C_PREFERRED_CUST_FLAG\":\"N\",\"C_BIRTH_DAY\":18,\"C_BIRTH_MONTH\":11,\"C_BIRTH_YEAR\":1961,\"C_BIRTH_COUNTRY\":\"URUGUAY\",\"C_LOGIN\":null,\"C_EMAIL_ADDRESS\":\"Robert.Nelson@lzzdMmJ.com\",\"C_LAST_REVIEW_DATE\":\"2452605\"}\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "itemPayload",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 4179
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "6f71f283-d86e-4555-d57f-0afbcd7e0629",
+                "Name": "QuickMap",
+                "ShortDescription": "MapCustomer",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {\"C_CUSTOMER_SK\":7014869,\"C_CUSTOMER_ID\":\"AAAAAAAAFNJALGAA\",\"C_CURRENT_CDEMO_SK\":1332683,\"C_CURRENT_HDEMO_SK\":405,\"C_CURRENT_ADDR_SK\":14453374,\"C_FIRST_SHIPTO_DATE_SK\":2450341,\"C_FIRST_SALES_DATE_SK\":2450311,\"C_SALUTATION\":\"Sir\",\"C_FIRST_NAME\":\"Robert\",\"C_LAST_NAME\":\"Nelson\",\"C_PREFERRED_CUST_FLAG\":\"N\",\"C_BIRTH_DAY\":18,\"C_BIRTH_MONTH\":11,\"C_BIRTH_YEAR\":1961,\"C_BIRTH_COUNTRY\":\"URUGUAY\",\"C_LOGIN\":null,\"C_EMAIL_ADDRESS\":\"Robert.Nelson@lzzdMmJ.com\",\"C_LAST_REVIEW_DATE\":\"2452605\"}\r\n}"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"root\"],\"targetPath\":\"Request\"},{\"sourcePaths\":[\"root/C_CUSTOMER_ID\"],\"targetPath\":\"Request/Account/AccountNumber\"},{\"sourcePaths\":[],\"targetPath\":\"Request/Account/Type\",\"mapExpression\":\"\\\"Account\\\"\"},{\"sourcePaths\":[\"root/C_FIRST_NAME\",\"root/C_LAST_NAME\"],\"targetPath\":\"Request/Account/Name\",\"mapExpression\":\"CONCAT({C_FIRST_NAME} + \\\" \\\" + {C_LAST_NAME})\"}],\"sourceSchema\":\"{\\r\\n  \\\"root\\\": {\\\"C_CUSTOMER_SK\\\":7014869,\\\"C_CUSTOMER_ID\\\":\\\"AAAAAAAAFNJALGAA\\\",\\\"C_CURRENT_CDEMO_SK\\\":1332683,\\\"C_CURRENT_HDEMO_SK\\\":405,\\\"C_CURRENT_ADDR_SK\\\":14453374,\\\"C_FIRST_SHIPTO_DATE_SK\\\":2450341,\\\"C_FIRST_SALES_DATE_SK\\\":2450311,\\\"C_SALUTATION\\\":\\\"Sir\\\",\\\"C_FIRST_NAME\\\":\\\"Robert\\\",\\\"C_LAST_NAME\\\":\\\"Nelson\\\",\\\"C_PREFERRED_CUST_FLAG\\\":\\\"N\\\",\\\"C_BIRTH_DAY\\\":18,\\\"C_BIRTH_MONTH\\\":11,\\\"C_BIRTH_YEAR\\\":1961,\\\"C_BIRTH_COUNTRY\\\":\\\"URUGUAY\\\",\\\"C_LOGIN\\\":null,\\\"C_EMAIL_ADDRESS\\\":\\\"Robert.Nelson@lzzdMmJ.com\\\",\\\"C_LAST_REVIEW_DATE\\\":\\\"2452605\\\"}\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"<Request>\\r\\n  <Account>\\r\\n    <AccountNumber>value</AccountNumber>\\r\\n    <Description>value</Description>\\r\\n    <BillingCountry>value</BillingCountry>\\r\\n    <Website>value</Website>\\r\\n    <Phone>value</Phone>\\r\\n    <Type>value</Type>\\r\\n    <CreatedDate>value</CreatedDate>\\r\\n    <LastActivityDate>value</LastActivityDate>\\r\\n    <Name>value</Name>\\r\\n  </Account>\\r\\n</Request>\",\"targetSchemaType\":0}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Xml"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <Account>\r\n    <AccountNumber>value</AccountNumber>\r\n    <Description>value</Description>\r\n    <BillingCountry>value</BillingCountry>\r\n    <Website>value</Website>\r\n    <Phone>value</Phone>\r\n    <Type>value</Type>\r\n    <CreatedDate>value</CreatedDate>\r\n    <LastActivityDate>value</LastActivityDate>\r\n    <Name>value</Name>\r\n  </Account>\r\n</Request>"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 4179
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-11-27T15:52:53.0253877+00:00",
+                    "Username": "daniel.chilcott@flowgear.net",
+                    "UserKey": "948d657b-e37c-4fd3-9bfa-c94f493379f0"
+                }
+            },
+            {
+                "NodeId": "ad1e5a6b-563f-7284-f891-4487235accc0",
+                "Name": "Salesforce",
+                "ShortDescription": "CreateAccount",
+                "Version": "4.1.1.4",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "full refresh_token offline_access"
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "InstanceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "DontInterleaveRequestInResponse",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "EncodingMode",
+                                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "XmlInXmlOut",
+                                    "XmlInJsonOut"
+                                ]
+                            },
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "v59.0"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Create",
+                            "Update",
+                            "Get",
+                            "Query",
+                            "Upsert",
+                            "GetNextRecords",
+                            "QueryAll",
+                            "Delete",
+                            "ListSamples",
+                            "GetSample"
+                        ],
+                        "Value": "Create"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ObjectName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Account"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExternalIdField",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"Request\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"Account\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element name=\"IsDeleted\" type=\"xs:string\" />\r\n              <xs:element name=\"MasterRecordId\" type=\"xs:string\" />\r\n              <xs:element name=\"Name\" type=\"xs:string\" />\r\n              <xs:element name=\"Type\" type=\"xs:string\" />\r\n              <xs:element name=\"ParentId\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingStreet\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingCity\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingState\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingPostalCode\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingCountry\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingLatitude\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingLongitude\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingGeocodeAccuracy\" type=\"xs:string\" />\r\n              <xs:element name=\"BillingAddress\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"Accuracy\" />\r\n                    <xs:element name=\"City\" />\r\n                    <xs:element name=\"Country\" />\r\n                    <xs:element name=\"CountryCode\" />\r\n                    <xs:element name=\"Latitude\" />\r\n                    <xs:element name=\"Longitude\" />\r\n                    <xs:element name=\"PostalCode\" />\r\n                    <xs:element name=\"State\" />\r\n                    <xs:element name=\"StateCode\" />\r\n                    <xs:element name=\"Street\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"ShippingStreet\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingCity\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingState\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingPostalCode\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingCountry\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingLatitude\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingLongitude\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingGeocodeAccuracy\" type=\"xs:string\" />\r\n              <xs:element name=\"ShippingAddress\">\r\n                <xs:complexType>\r\n                  <xs:sequence>\r\n                    <xs:element name=\"Accuracy\" />\r\n                    <xs:element name=\"City\" />\r\n                    <xs:element name=\"Country\" />\r\n                    <xs:element name=\"CountryCode\" />\r\n                    <xs:element name=\"Latitude\" />\r\n                    <xs:element name=\"Longitude\" />\r\n                    <xs:element name=\"PostalCode\" />\r\n                    <xs:element name=\"State\" />\r\n                    <xs:element name=\"StateCode\" />\r\n                    <xs:element name=\"Street\" />\r\n                  </xs:sequence>\r\n                </xs:complexType>\r\n              </xs:element>\r\n              <xs:element name=\"Phone\" type=\"xs:string\" />\r\n              <xs:element name=\"Fax\" type=\"xs:string\" />\r\n              <xs:element name=\"AccountNumber\" type=\"xs:string\" />\r\n              <xs:element name=\"Website\" type=\"xs:string\" />\r\n              <xs:element name=\"PhotoUrl\" type=\"xs:string\" />\r\n              <xs:element name=\"Sic\" type=\"xs:string\" />\r\n              <xs:element name=\"Industry\" type=\"xs:string\" />\r\n              <xs:element name=\"AnnualRevenue\" type=\"xs:string\" />\r\n              <xs:element name=\"NumberOfEmployees\" type=\"xs:string\" />\r\n              <xs:element name=\"Ownership\" type=\"xs:string\" />\r\n              <xs:element name=\"TickerSymbol\" type=\"xs:string\" />\r\n              <xs:element name=\"Description\" type=\"xs:string\" />\r\n              <xs:element name=\"Rating\" type=\"xs:string\" />\r\n              <xs:element name=\"Site\" type=\"xs:string\" />\r\n              <xs:element name=\"OwnerId\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"CreatedById\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastModifiedById\" type=\"xs:string\" />\r\n              <xs:element name=\"SystemModstamp\" type=\"xs:string\" />\r\n              <xs:element name=\"LastActivityDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastViewedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"LastReferencedDate\" type=\"xs:string\" />\r\n              <xs:element name=\"Jigsaw\" type=\"xs:string\" />\r\n              <xs:element name=\"JigsawCompanyId\" type=\"xs:string\" />\r\n              <xs:element name=\"CleanStatus\" type=\"xs:string\" />\r\n              <xs:element name=\"AccountSource\" type=\"xs:string\" />\r\n              <xs:element name=\"DunsNumber\" type=\"xs:string\" />\r\n              <xs:element name=\"Tradestyle\" type=\"xs:string\" />\r\n              <xs:element name=\"NaicsCode\" type=\"xs:string\" />\r\n              <xs:element name=\"NaicsDesc\" type=\"xs:string\" />\r\n              <xs:element name=\"YearStarted\" type=\"xs:string\" />\r\n              <xs:element name=\"SicDesc\" type=\"xs:string\" />\r\n              <xs:element name=\"DandbCompanyId\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__CustomerPriority__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__SLA__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Active__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__NumberofLocations__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__UpsellOpportunity__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__SLASerialNumber__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__SLAExpirationDate__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__ExternalId__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Location__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Banking_Detail_Type__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Bank_Account_Name__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Bank_Account_Type__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Branch_Code__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Credit_Card_Holder__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Credit_Card_Type__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Expiry_Month__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Expiry_Year__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Credit_Card_Number__c\" type=\"xs:string\" />\r\n              <xs:element name=\"flowgear__Bank_Account_Number__c\" type=\"xs:string\" />\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>\r\n  <Account>\r\n    <AccountNumber>value</AccountNumber>\r\n    <Description>value</Description>\r\n    <BillingCountry>value</BillingCountry>\r\n    <Website>value</Website>\r\n    <Phone>value</Phone>\r\n    <Type>value</Type>\r\n    <CreatedDate>value</CreatedDate>\r\n    <LastActivityDate>value</LastActivityDate>\r\n    <Name>value</Name>\r\n    <OwnerId>value</OwnerId>\r\n  </Account>\r\n</Request>"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4179
+                },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Salesforce",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-09-15T10:44:00.8883259+00:00",
+                    "Username": "stephanie.hambraj@flowgear.net",
+                    "UserKey": "efb33533-3e3b-478d-90c3-0b73cc957f2b"
+                }
+            },
+            {
+                "NodeId": "23ad614f-545f-c6c5-ccef-59879222a586",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "AccountCreated?",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value = \"true\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8540,
+                    "Y": 4179
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "899d8de2-aad8-bc39-ffa5-2833f8787dd3",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogSuccess",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8845,
+                    "Y": 4179
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:22.266367+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "de51dd8b-9e4e-57ee-7658-342dd39b378d",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "LogError",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8845,
+                    "Y": 4595
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "23ad614f-545f-c6c5-ccef-59879222a586",
+                "TargetNodeId": "899d8de2-aad8-bc39-ffa5-2833f8787dd3",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "23ad614f-545f-c6c5-ccef-59879222a586",
+                "TargetNodeId": "de51dd8b-9e4e-57ee-7658-342dd39b378d",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ce943cef-bd3f-bb4e-dbd2-525ceb09fe57",
+                "TargetNodeId": "899d8de2-aad8-bc39-ffa5-2833f8787dd3",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ce943cef-bd3f-bb4e-dbd2-525ceb09fe57",
+                "TargetNodeId": "de51dd8b-9e4e-57ee-7658-342dd39b378d",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7cef5003-2b30-2721-43bd-9256952fd894",
+                "TargetNodeId": "6d583bc1-3562-844e-8386-51cfd3a2be7e",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "6d583bc1-3562-844e-8386-51cfd3a2be7e",
+                "TargetNodeId": "e7712d96-4132-7418-d92b-a3a77fc89559",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ce943cef-bd3f-bb4e-dbd2-525ceb09fe57",
+                "TargetNodeId": "11c88369-d706-9e8b-1275-e83838bf8ad0",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "6d583bc1-3562-844e-8386-51cfd3a2be7e",
+                "TargetNodeId": "e7712d96-4132-7418-d92b-a3a77fc89559",
+                "SourceName": "Result",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e7712d96-4132-7418-d92b-a3a77fc89559",
+                "TargetNodeId": "11c88369-d706-9e8b-1275-e83838bf8ad0",
+                "SourceName": "Item",
+                "TargetName": "Key",
+                "Expression": "C_CUSTOMER_ID"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "e7712d96-4132-7418-d92b-a3a77fc89559",
+                "TargetNodeId": "11c88369-d706-9e8b-1275-e83838bf8ad0",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "11c88369-d706-9e8b-1275-e83838bf8ad0",
+                "TargetNodeId": "83e1e9bc-b152-1d6f-4dfb-f475cb1e1b39",
+                "SourceName": "Status",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "11c88369-d706-9e8b-1275-e83838bf8ad0",
+                "TargetNodeId": "83e1e9bc-b152-1d6f-4dfb-f475cb1e1b39",
+                "SourceName": "Found"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "83e1e9bc-b152-1d6f-4dfb-f475cb1e1b39",
+                "TargetNodeId": "d3879fca-4443-1c86-ef5a-a50f65fe8dc9",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "6f71f283-d86e-4555-d57f-0afbcd7e0629",
+                "TargetNodeId": "ad1e5a6b-563f-7284-f891-4487235accc0",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "11c88369-d706-9e8b-1275-e83838bf8ad0",
+                "TargetNodeId": "b19e22e5-6364-9bd2-9cd0-6b42fdbd3a4b",
+                "SourceName": "Missing"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "83e1e9bc-b152-1d6f-4dfb-f475cb1e1b39",
+                "TargetNodeId": "b19e22e5-6364-9bd2-9cd0-6b42fdbd3a4b",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e7712d96-4132-7418-d92b-a3a77fc89559",
+                "TargetNodeId": "b19e22e5-6364-9bd2-9cd0-6b42fdbd3a4b",
+                "SourceName": "Item",
+                "TargetName": "itemPayload"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "6f71f283-d86e-4555-d57f-0afbcd7e0629",
+                "TargetNodeId": "ad1e5a6b-563f-7284-f891-4487235accc0",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b19e22e5-6364-9bd2-9cd0-6b42fdbd3a4b",
+                "TargetNodeId": "6f71f283-d86e-4555-d57f-0afbcd7e0629",
+                "SourceName": "Result",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "b19e22e5-6364-9bd2-9cd0-6b42fdbd3a4b",
+                "TargetNodeId": "6f71f283-d86e-4555-d57f-0afbcd7e0629",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "ad1e5a6b-563f-7284-f891-4487235accc0",
+                "TargetNodeId": "23ad614f-545f-c6c5-ccef-59879222a586",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ad1e5a6b-563f-7284-f891-4487235accc0",
+                "TargetNodeId": "23ad614f-545f-c6c5-ccef-59879222a586",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "Response.Response.success"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b19e22e5-6364-9bd2-9cd0-6b42fdbd3a4b",
+                "TargetNodeId": "899d8de2-aad8-bc39-ffa5-2833f8787dd3",
+                "SourceName": "Result",
+                "TargetName": "Key",
+                "Expression": "root.C_CUSTOMER_ID"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b19e22e5-6364-9bd2-9cd0-6b42fdbd3a4b",
+                "TargetNodeId": "de51dd8b-9e4e-57ee-7658-342dd39b378d",
+                "SourceName": "Result",
+                "TargetName": "Key",
+                "Expression": "root.C_CUSTOMER_ID"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ad1e5a6b-563f-7284-f891-4487235accc0",
+                "TargetNodeId": "899d8de2-aad8-bc39-ffa5-2833f8787dd3",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "Response.Response.id"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ad1e5a6b-563f-7284-f891-4487235accc0",
+                "TargetNodeId": "de51dd8b-9e4e-57ee-7658-342dd39b378d",
+                "SourceName": "Response",
+                "TargetName": "Value",
+                "Expression": "Response.Response.errors.statusCode"
+            }
+        ],
+        "StartNodeId": "7cef5003-2b30-2721-43bd-9256952fd894",
+        "ActivityLogLevelMask": 255
+    },
+    "Name": "Snowflake to Salesforce Accounts",
+    "Description": "This Workflow retrieves customer records from Snowflake, checks if each customer has already been processed, and then creates new Salesforce Accounts for unprocessed customers. It logs the outcome of each attempt, recording success or error details for every customer processed."
+}
