@@ -1,0 +1,1121 @@
+{
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "Name": "Note",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Value": "This Workflow retrieves employee IDs, queries Sage 300 People for each employee’s details, maps and formats the data, and then creates employee records in PaySpace. Success or error status for each employee creation is logged using key-value pairs."
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHTAAAB0wASOu6tcAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAgJJREFUOE+V00tPU0EUAOAxasDEIoSKoVQnVAggsddqwMi7lEe9B6shxhjDUmPcuHHFL2AhVEQelmIpvS21Xm8LbaHUd4wxxhjjzpVxgzsT/QVzONPUlUZ6F7P8zpnzYg0OvqfRYd/b4LDvq6s9XG47dqCm6aSFNzktvNlZwZuVCt6iHOItpyr5CXqtrireerqKO9uqjyrt1WWs8XgBW+p5rfX6jbH+kH5re1JThD/mEtPxM2Im0SZm9bNi3jgnHqY6xeJ6t1jK9IrQhlvcXe5Q6Qf2/fXcVsDfvn/9EU3fRsJIGAkjYSSMhJEwEkbCGM55cDLcCcxuqyn/g3/9/olGfrwkHMkPoj/SDayOHzyiJe9sP9kcx+zrCYxmbpaEo8+H8Z7WC0w2rFhzyZklXn15Hu/H3BSAul1smCmceDOCD+IeYHJUxW7vimMvvBh/pRaw/taHc4kBCkAzJixH9U+8sjWA2rOhv7Dx7hIu6EPA5JIQlnPGwFoXBtM9+Cjbh8ub/f/FqfejGHjqBSa3a97oEGbx+ofLuJhUKYCrkhMWZnHm4xVcWhsBJnebsDCLNz5dxVD6AgWgwyAszOLc52sYzl4EptBVERZmcf7LGGq5UZUp7dYyOgp1aqUL/JEemI72wcyqG2Yfe2AuMQgL+jAEDC8EUyrImkNpH8jMEgeTPusOQk47WqOxmsUAAAAASUVORK5CYII=",
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                },
+                "NodeId": "b042feb1-e0a2-429e-8f59-1d9172af3f4b",
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3458
+                },
+                "ShortDescription": "About This Workflow"
+            },
+            {
+                "NodeId": "89b2d023-1ee5-fa0c-967f-d8720cdf0fb8",
+                "Name": "VariableBar",
+                "ShortDescription": "Set Key-Value Group",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "RamptoHubSpotUsers"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "EmployeeList",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 1,
+                        "Value": "<EmployeeList>\r\n  <Employee>\r\n    <ID>001</ID>\r\n  </Employee>\r\n  <Employee>\r\n    <ID>002</ID>\r\n  </Employee>\r\n  <Employee>\r\n    <ID>003</ID>\r\n  </Employee>\r\n  <Employee>\r\n    <ID>004</ID>\r\n  </Employee>\r\n  <Employee>\r\n    <ID>005</ID>\r\n  </Employee>\r\n</EmployeeList>"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3763
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                }
+            },
+            {
+                "NodeId": "7f4cc73b-ae9d-f347-a992-097fb6b3ac3a",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6100,
+                    "Y": 3971
+                },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "b90cc680-729b-8891-ef41-f0116d8d5f7e",
+                "Name": "ForEach",
+                "ShortDescription": "For Each Employee ID",
+                "Version": "1.0.0.9",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "SourceDocument",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Path",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "EmployeeList/Employee/ID"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Encapsulation",
+                        "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "ParentNode",
+                            "ParentAndRootNodes"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Namespaces",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ChunkSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Item",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemIndex",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ItemCount",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "Item",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Finished",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6405,
+                    "Y": 3971
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "For Each",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:23.8561624+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "31722ca6-5987-4cfe-98ca-159ed1c36b41"
+                }
+            },
+            {
+                "NodeId": "ca8d7a43-f1fa-5a10-5f11-9598ac02d2ef",
+                "Name": "Sage300People",
+                "ShortDescription": "Sage 300 People Query Employee Information",
+                "Version": "1.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "HostName",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ApiPort",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ApiKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "CookieHeader",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "ReturnFailureResponses",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Sage.Sage300People.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Unique identifier for the operation.",
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "b821a089-6e2f-97a1-206b-a76c415c0d17"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Retrieves the required information for an employee in the system. \n\nThe unique identifier of the Employee ID is used in the URL and therefore no Body Details required.",
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "GET Emp - ID"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Example JSON Request Body.",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Example JSON Response Body.",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{ \"success\": true, \"data\": { \"EmployeeCode\": \"EMP_GET_API\", \"CompanyCode\": \"SOUTHAFRICA\", \"DateEngaged\": \"2021/03/01 00:00:00\", \"UIFStatusCode\": \"UIF\", \"UIFStartDate\": \"2021/03/01 00:00:00\", \"JobTitleTypeCode\": \"ANANLYST\", \"JobGradeCode\": \"JOBGRADE_TIER4\", \"TerminationDate\": \"2021/09/30 00:00:00\", \"TerminationReasonCode\": \"AB\", \"FinalCalcNow\": \"2\", \"DateJoinedGroup\": \"2021/03/01 00:00:00\", \"LeaveStartDate\": \"2021/03/01 00:00:00\", \"NatureOfContractCode\": \"APPLICANT\", \"EntityCode\": \"1200\", \"TitleTypeCode\": \"SIR\", \"Initials\": \"A\", \"FirstName\": \"API First Name\", \"SecondName\": \"Second Name\", \"OtherNames\": \"Other Name\", \"KnownAsName\": \"Known As\", \"LastName\": \"Surname\", \"MaidenName\": \"Maiden\", \"MaritalStatusTypeCode\": \"MRD\", \"IDNumber\": \"9009135800086\", \"BirthDate\": \"1990/09/13 00:00:00\", \"BirthCertificateNumber\": \"Birth Cert no13\", \"CityOfBirth\": \"City Birth\", \"Gender\": \"M\", \"LanguageTypeCode\": \"ENG\", \"NationalityCountryCode\": \"ZAF\", \"CountryOfBirth\": \"ABW\", \"PassportNo\": \"Passport No123\", \"PassportCountryCode\": \"ZAF\", \"Disabled\": \"True\", \"DisabilityTypeCode\": \"EMFN\", \"EthnicTypeCode\": \"XHO\", \"RacialGroup\": \"I\", \"ReligionCode\": \"TAO\", \"BloodGroup\": \"AB+\", \"HomeNumber\": \"0129911789\", \"WorkNumber\": \"0124207000\", \"FaxNumber\": \"08601122321\", \"CellNumber\": \"0841234321\", \"EmailAddress\": \"EmpAPI@Webtest.com\", \"CompanyRuleCode\": \"RSA\", \"HoursPerPeriod\": \"173,3600\", \"HoursPerDay\": \"8,0000\", \"AnnualSalary\": \"1234500,0000\", \"PeriodSalary\": \"102875,0000\", \"OverrideAnnualBonusCalcRecurrence\": \"False\", \"CalendarMonth\": \"12\", \"PeriodInMonth\": \"L\", \"RatePerDay\": \"4747,3464\", \"RatePerHour\": \"593,4183\", \"PensionFundStartDate\": \"2021/10/14 00:00:00\", \"ProvidentFundStartDate\": \"2021/10/15 00:00:00\", \"ZoneCodes\": \"\", \"MedicalStartDate\": \"2021/10/16 00:00:00\", \"SDLExempt\": \"False\", \"LegallyRetiredforTaxPurpose\": \"False\", \"ForeignIncome\": \"False\", \"TaxStatusCode\": \"ST\", \"TaxStartDate\": \"2021/03/01 00:00:00\", \"TaxCalculation\": \"A\", \"LeavePolicyCode\": \"SA_START\", \"Addresses\": [ { \"UseWork\": \"True\", \"UsePhysical\": \"True\", \"UsePostal\": \"False\", \"CorrespondenceAddress\": \"False\", \"UnitPostalNumber\": \"Unt 1\", \"Complex\": \"Cmplx name\", \"LevelFloor\": \"12\", \"StreetNumber\": \"Str123\", \"StreetFarmName\": \"Str Name\", \"SuburbDistrict\": \"Suburb\", \"CityTown\": \"City\", \"Province\": \"Provinceeee\", \"PostalCode\": \"0011\", \"PostalAgency\": \"pst agency\", \"PostOffice\": \"pst office\", \"PostalAddressNumber\": \"pst adrs\", \"CareOf\": \"False\", \"CountryCode\": \"ZAF\" }, { \"UseWork\": \"False\", \"UsePhysical\": \"False\", \"UsePostal\": \"True\", \"AddressServiceTypeCode\": \"PO\", \"CorrespondenceAddress\": \"True\", \"SuburbDistrict\": \"pstal\", \"CityTown\": \"postal line\", \"Province\": \"pst prov\", \"PostalCode\": \"2211\", \"PostalAgency\": \"postal agency\", \"PostOffice\": \"post office\", \"PostalAddressNumber\": \"2nd addr\", \"OtherServiceType\": \"othr srvc tp\", \"CareOf\": \"False\", \"CountryCode\": \"ZAF\" } ], \"Contacts\": [ { \"ContactTypeCode\": \"CELL\", \"ContactDetail\": \"0884567788\" }, { \"ContactTypeCode\": \"MAIL\", \"ContactDetail\": \"addmail@webtest.com\" } ], \"BankAccounts\": [ { \"AccountHolderRelationship\": \"O\", \"AccountName\": \"Sir A Surname\", \"BankCode\": \"ABSA\", \"AccountTypeCode\": \"CA\", \"AccountNo\": \"123456789\", \"BankBranchCode\": \"632005\", \"Ccy\": \"ZAR\", \"DefaultInd\": \"True\" } ], \"DriversLicenses\": [ { \"IssueDate\": \"2021/01/19 00:00:00\", \"ExpiryDate\": \"2022/12/22 00:00:00\", \"LicenseNumber\": \"lic65432\", \"LicenseCategoriesTypeCode\": \"LIC_CAT1\", \"LicenseRestrictionsTypeCode\": \"LIC_REST_1\", \"CountryCode\": \"ASM\" } ], \"Hierarchies\": [ { \"HierarchyHeaderCode\": \"DEPARTMENT\", \"HierarchyCode\": \"FINANCE\" }, { \"HierarchyHeaderCode\": \"FACTION\", \"HierarchyCode\": \"CANDOR\" } ] } }"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "EmployeeID",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 6710,
+                    "Y": 3971
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "Sage 300 People",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-09-01T13:44:11.6890456+00:00",
+                    "Username": "terrence.meiring@flowgear.net",
+                    "UserKey": "52842f9c-5bd5-4996-8001-384de1faf6b3"
+                }
+            },
+            {
+                "NodeId": "247ae90f-03ed-4748-c5e9-a4f83bb73ec3",
+                "Name": "Formatter",
+                "ShortDescription": "Wrap Payload",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {\r\n    \"data\": [\r\n     {itemPayload}\r\n    ]\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {\r\n    \"data\": [\r\n      {\r\n        \"EmployeeCode\": \"EMP_GET_API\",\r\n        \"CompanyCode\": \"SOUTHAFRICA\",\r\n        \"DateEngaged\": \"2021/03/01 00:00:00\",\r\n        \"UIFStatusCode\": \"UIF\",\r\n        \"UIFStartDate\": \"2021/03/01 00:00:00\",\r\n        \"JobTitleTypeCode\": \"ANANLYST\",\r\n        \"JobGradeCode\": \"JOBGRADE_TIER4\",\r\n        \"TerminationDate\": \"2021/09/30 00:00:00\",\r\n        \"TerminationReasonCode\": \"AB\",\r\n        \"FinalCalcNow\": \"2\",\r\n        \"DateJoinedGroup\": \"2021/03/01 00:00:00\",\r\n        \"LeaveStartDate\": \"2021/03/01 00:00:00\",\r\n        \"NatureOfContractCode\": \"APPLICANT\",\r\n        \"EntityCode\": \"1200\",\r\n        \"TitleTypeCode\": \"SIR\",\r\n        \"Initials\": \"A\",\r\n        \"FirstName\": \"API First Name\",\r\n        \"SecondName\": \"Second Name\",\r\n        \"OtherNames\": \"Other Name\",\r\n        \"KnownAsName\": \"Known As\",\r\n        \"LastName\": \"Surname\",\r\n        \"MaidenName\": \"Maiden\",\r\n        \"MaritalStatusTypeCode\": \"MRD\",\r\n        \"IDNumber\": \"9009135800086\",\r\n        \"BirthDate\": \"1990/09/13 00:00:00\",\r\n        \"BirthCertificateNumber\": \"Birth Cert no13\",\r\n        \"CityOfBirth\": \"City Birth\",\r\n        \"Gender\": \"M\",\r\n        \"LanguageTypeCode\": \"ENG\",\r\n        \"NationalityCountryCode\": \"ZAF\",\r\n        \"CountryOfBirth\": \"ABW\",\r\n        \"PassportNo\": \"Passport No123\",\r\n        \"PassportCountryCode\": \"ZAF\",\r\n        \"Disabled\": \"True\",\r\n        \"DisabilityTypeCode\": \"EMFN\",\r\n        \"EthnicTypeCode\": \"XHO\",\r\n        \"RacialGroup\": \"I\",\r\n        \"ReligionCode\": \"TAO\",\r\n        \"BloodGroup\": \"AB+\",\r\n        \"HomeNumber\": \"0129911789\",\r\n        \"WorkNumber\": \"0124207000\",\r\n        \"FaxNumber\": \"08601122321\",\r\n        \"CellNumber\": \"0841234321\",\r\n        \"EmailAddress\": \"EmpAPI@Webtest.com\",\r\n        \"CompanyRuleCode\": \"RSA\",\r\n        \"HoursPerPeriod\": \"173,3600\",\r\n        \"HoursPerDay\": \"8,0000\",\r\n        \"AnnualSalary\": \"1234500,0000\",\r\n        \"PeriodSalary\": \"102875,0000\",\r\n        \"OverrideAnnualBonusCalcRecurrence\": \"False\",\r\n        \"CalendarMonth\": \"12\",\r\n        \"PeriodInMonth\": \"L\",\r\n        \"RatePerDay\": \"4747,3464\",\r\n        \"RatePerHour\": \"593,4183\",\r\n        \"PensionFundStartDate\": \"2021/10/14 00:00:00\",\r\n        \"ProvidentFundStartDate\": \"2021/10/15 00:00:00\",\r\n        \"ZoneCodes\": \"\",\r\n        \"MedicalStartDate\": \"2021/10/16 00:00:00\",\r\n        \"SDLExempt\": \"False\",\r\n        \"LegallyRetiredforTaxPurpose\": \"False\",\r\n        \"ForeignIncome\": \"False\",\r\n        \"TaxStatusCode\": \"ST\",\r\n        \"TaxStartDate\": \"2021/03/01 00:00:00\",\r\n        \"TaxCalculation\": \"A\",\r\n        \"LeavePolicyCode\": \"SA_START\",\r\n        \"Addresses\": [\r\n          {\r\n            \"UseWork\": \"True\",\r\n            \"UsePhysical\": \"True\",\r\n            \"UsePostal\": \"False\",\r\n            \"CorrespondenceAddress\": \"False\",\r\n            \"UnitPostalNumber\": \"Unt 1\",\r\n            \"Complex\": \"Cmplx name\",\r\n            \"LevelFloor\": \"12\",\r\n            \"StreetNumber\": \"Str123\",\r\n            \"StreetFarmName\": \"Str Name\",\r\n            \"SuburbDistrict\": \"Suburb\",\r\n            \"CityTown\": \"City\",\r\n            \"Province\": \"Provinceeee\",\r\n            \"PostalCode\": \"0011\",\r\n            \"PostalAgency\": \"pst agency\",\r\n            \"PostOffice\": \"pst office\",\r\n            \"PostalAddressNumber\": \"pst adrs\",\r\n            \"CareOf\": \"False\",\r\n            \"CountryCode\": \"ZAF\"\r\n          },\r\n          {\r\n            \"UseWork\": \"False\",\r\n            \"UsePhysical\": \"False\",\r\n            \"UsePostal\": \"True\",\r\n            \"AddressServiceTypeCode\": \"PO\",\r\n            \"CorrespondenceAddress\": \"True\",\r\n            \"SuburbDistrict\": \"pstal\",\r\n            \"CityTown\": \"postal line\",\r\n            \"Province\": \"pst prov\",\r\n            \"PostalCode\": \"2211\",\r\n            \"PostalAgency\": \"postal agency\",\r\n            \"PostOffice\": \"post office\",\r\n            \"PostalAddressNumber\": \"2nd addr\",\r\n            \"OtherServiceType\": \"othr srvc tp\",\r\n            \"CareOf\": \"False\",\r\n            \"CountryCode\": \"ZAF\"\r\n          }\r\n        ],\r\n        \"Contacts\": [\r\n          {\r\n            \"ContactTypeCode\": \"CELL\",\r\n            \"ContactDetail\": \"0884567788\"\r\n          },\r\n          {\r\n            \"ContactTypeCode\": \"MAIL\",\r\n            \"ContactDetail\": \"addmail@webtest.com\"\r\n          }\r\n        ],\r\n        \"BankAccounts\": [\r\n          {\r\n            \"AccountHolderRelationship\": \"O\",\r\n            \"AccountName\": \"Sir A Surname\",\r\n            \"BankCode\": \"ABSA\",\r\n            \"AccountTypeCode\": \"CA\",\r\n            \"AccountNo\": \"123456789\",\r\n            \"BankBranchCode\": \"632005\",\r\n            \"Ccy\": \"ZAR\",\r\n            \"DefaultInd\": \"True\"\r\n          }\r\n        ],\r\n        \"DriversLicenses\": [\r\n          {\r\n            \"IssueDate\": \"2021/01/19 00:00:00\",\r\n            \"ExpiryDate\": \"2022/12/22 00:00:00\",\r\n            \"LicenseNumber\": \"lic65432\",\r\n            \"LicenseCategoriesTypeCode\": \"LIC_CAT1\",\r\n            \"LicenseRestrictionsTypeCode\": \"LIC_REST_1\",\r\n            \"CountryCode\": \"ASM\"\r\n          }\r\n        ],\r\n        \"Hierarchies\": [\r\n          {\r\n            \"HierarchyHeaderCode\": \"DEPARTMENT\",\r\n            \"HierarchyCode\": \"FINANCE\"\r\n          },\r\n          {\r\n            \"HierarchyHeaderCode\": \"FACTION\",\r\n            \"HierarchyCode\": \"CANDOR\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "itemPayload",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 7,
+                        "Value": "{     \"EmployeeCode\": \"EMP_GET_API\",     \"CompanyCode\": \"SOUTHAFRICA\",     \"DateEngaged\": \"2021/03/01 00:00:00\",     \"UIFStatusCode\": \"UIF\",     \"UIFStartDate\": \"2021/03/01 00:00:00\",     \"JobTitleTypeCode\": \"ANANLYST\",     \"JobGradeCode\": \"JOBGRADE_TIER4\",     \"TerminationDate\": \"2021/09/30 00:00:00\",     \"TerminationReasonCode\": \"AB\",     \"FinalCalcNow\": \"2\",     \"DateJoinedGroup\": \"2021/03/01 00:00:00\",     \"LeaveStartDate\": \"2021/03/01 00:00:00\",     \"NatureOfContractCode\": \"APPLICANT\",     \"EntityCode\": \"1200\",     \"TitleTypeCode\": \"SIR\",     \"Initials\": \"A\",     \"FirstName\": \"API First Name\",     \"SecondName\": \"Second Name\",     \"OtherNames\": \"Other Name\",     \"KnownAsName\": \"Known As\",     \"LastName\": \"Surname\",     \"MaidenName\": \"Maiden\",     \"MaritalStatusTypeCode\": \"MRD\",     \"IDNumber\": \"9009135800086\",     \"BirthDate\": \"1990/09/13 00:00:00\",     \"BirthCertificateNumber\": \"Birth Cert no13\",     \"CityOfBirth\": \"City Birth\",     \"Gender\": \"M\",     \"LanguageTypeCode\": \"ENG\",     \"NationalityCountryCode\": \"ZAF\",     \"CountryOfBirth\": \"ABW\",     \"PassportNo\": \"Passport No123\",     \"PassportCountryCode\": \"ZAF\",     \"Disabled\": \"True\",     \"DisabilityTypeCode\": \"EMFN\",     \"EthnicTypeCode\": \"XHO\",     \"RacialGroup\": \"I\",     \"ReligionCode\": \"TAO\",     \"BloodGroup\": \"AB+\",     \"HomeNumber\": \"0129911789\",     \"WorkNumber\": \"0124207000\",     \"FaxNumber\": \"08601122321\",     \"CellNumber\": \"0841234321\",     \"EmailAddress\": \"EmpAPI@Webtest.com\",     \"CompanyRuleCode\": \"RSA\",     \"HoursPerPeriod\": \"173,3600\",     \"HoursPerDay\": \"8,0000\",     \"AnnualSalary\": \"1234500,0000\",     \"PeriodSalary\": \"102875,0000\",     \"OverrideAnnualBonusCalcRecurrence\": \"False\",     \"CalendarMonth\": \"12\",     \"PeriodInMonth\": \"L\",     \"RatePerDay\": \"4747,3464\",     \"RatePerHour\": \"593,4183\",     \"PensionFundStartDate\": \"2021/10/14 00:00:00\",     \"ProvidentFundStartDate\": \"2021/10/15 00:00:00\",     \"ZoneCodes\": \"\",     \"MedicalStartDate\": \"2021/10/16 00:00:00\",     \"SDLExempt\": \"False\",     \"LegallyRetiredforTaxPurpose\": \"False\",     \"ForeignIncome\": \"False\",     \"TaxStatusCode\": \"ST\",     \"TaxStartDate\": \"2021/03/01 00:00:00\",     \"TaxCalculation\": \"A\",     \"LeavePolicyCode\": \"SA_START\",     \"Addresses\": [       {         \"UseWork\": \"True\",         \"UsePhysical\": \"True\",         \"UsePostal\": \"False\",         \"CorrespondenceAddress\": \"False\",         \"UnitPostalNumber\": \"Unt 1\",         \"Complex\": \"Cmplx name\",         \"LevelFloor\": \"12\",         \"StreetNumber\": \"Str123\",         \"StreetFarmName\": \"Str Name\",         \"SuburbDistrict\": \"Suburb\",         \"CityTown\": \"City\",         \"Province\": \"Provinceeee\",         \"PostalCode\": \"0011\",         \"PostalAgency\": \"pst agency\",         \"PostOffice\": \"pst office\",         \"PostalAddressNumber\": \"pst adrs\",         \"CareOf\": \"False\",         \"CountryCode\": \"ZAF\"       },       {         \"UseWork\": \"False\",         \"UsePhysical\": \"False\",         \"UsePostal\": \"True\",         \"AddressServiceTypeCode\": \"PO\",         \"CorrespondenceAddress\": \"True\",         \"SuburbDistrict\": \"pstal\",         \"CityTown\": \"postal line\",         \"Province\": \"pst prov\",         \"PostalCode\": \"2211\",         \"PostalAgency\": \"postal agency\",         \"PostOffice\": \"post office\",         \"PostalAddressNumber\": \"2nd addr\",         \"OtherServiceType\": \"othr srvc tp\",         \"CareOf\": \"False\",         \"CountryCode\": \"ZAF\"       }     ],     \"Contacts\": [       {         \"ContactTypeCode\": \"CELL\",         \"ContactDetail\": \"0884567788\"       },       {         \"ContactTypeCode\": \"MAIL\",         \"ContactDetail\": \"addmail@webtest.com\"       }     ],     \"BankAccounts\": [       {         \"AccountHolderRelationship\": \"O\",         \"AccountName\": \"Sir A Surname\",         \"BankCode\": \"ABSA\",         \"AccountTypeCode\": \"CA\",         \"AccountNo\": \"123456789\",         \"BankBranchCode\": \"632005\",         \"Ccy\": \"ZAR\",         \"DefaultInd\": \"True\"       }     ],     \"DriversLicenses\": [       {         \"IssueDate\": \"2021/01/19 00:00:00\",         \"ExpiryDate\": \"2022/12/22 00:00:00\",         \"LicenseNumber\": \"lic65432\",         \"LicenseCategoriesTypeCode\": \"LIC_CAT1\",         \"LicenseRestrictionsTypeCode\": \"LIC_REST_1\",         \"CountryCode\": \"ASM\"       }     ],     \"Hierarchies\": [       {         \"HierarchyHeaderCode\": \"DEPARTMENT\",         \"HierarchyCode\": \"FINANCE\"       },       {         \"HierarchyHeaderCode\": \"FACTION\",         \"HierarchyCode\": \"CANDOR\"       }     ]   }"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7015,
+                    "Y": 3971
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "0bfba59c-0f22-91aa-71c4-8f9aa986beff",
+                "Name": "QuickMap",
+                "ShortDescription": "Map User",
+                "Version": "4.0.0.43",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Source",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {\r\n    \"data\": [\r\n      {\r\n        \"EmployeeCode\": \"EMP_GET_API\",\r\n        \"CompanyCode\": \"SOUTHAFRICA\",\r\n        \"DateEngaged\": \"2021/03/01 00:00:00\",\r\n        \"UIFStatusCode\": \"UIF\",\r\n        \"UIFStartDate\": \"2021/03/01 00:00:00\",\r\n        \"JobTitleTypeCode\": \"ANANLYST\",\r\n        \"JobGradeCode\": \"JOBGRADE_TIER4\",\r\n        \"TerminationDate\": \"2021/09/30 00:00:00\",\r\n        \"TerminationReasonCode\": \"AB\",\r\n        \"FinalCalcNow\": \"2\",\r\n        \"DateJoinedGroup\": \"2021/03/01 00:00:00\",\r\n        \"LeaveStartDate\": \"2021/03/01 00:00:00\",\r\n        \"NatureOfContractCode\": \"APPLICANT\",\r\n        \"EntityCode\": \"1200\",\r\n        \"TitleTypeCode\": \"SIR\",\r\n        \"Initials\": \"A\",\r\n        \"FirstName\": \"API First Name\",\r\n        \"SecondName\": \"Second Name\",\r\n        \"OtherNames\": \"Other Name\",\r\n        \"KnownAsName\": \"Known As\",\r\n        \"LastName\": \"Surname\",\r\n        \"MaidenName\": \"Maiden\",\r\n        \"MaritalStatusTypeCode\": \"MRD\",\r\n        \"IDNumber\": \"9009135800086\",\r\n        \"BirthDate\": \"1990/09/13 00:00:00\",\r\n        \"BirthCertificateNumber\": \"Birth Cert no13\",\r\n        \"CityOfBirth\": \"City Birth\",\r\n        \"Gender\": \"M\",\r\n        \"LanguageTypeCode\": \"ENG\",\r\n        \"NationalityCountryCode\": \"ZAF\",\r\n        \"CountryOfBirth\": \"ABW\",\r\n        \"PassportNo\": \"Passport No123\",\r\n        \"PassportCountryCode\": \"ZAF\",\r\n        \"Disabled\": \"True\",\r\n        \"DisabilityTypeCode\": \"EMFN\",\r\n        \"EthnicTypeCode\": \"XHO\",\r\n        \"RacialGroup\": \"I\",\r\n        \"ReligionCode\": \"TAO\",\r\n        \"BloodGroup\": \"AB+\",\r\n        \"HomeNumber\": \"0129911789\",\r\n        \"WorkNumber\": \"0124207000\",\r\n        \"FaxNumber\": \"08601122321\",\r\n        \"CellNumber\": \"0841234321\",\r\n        \"EmailAddress\": \"EmpAPI@Webtest.com\",\r\n        \"CompanyRuleCode\": \"RSA\",\r\n        \"HoursPerPeriod\": \"173,3600\",\r\n        \"HoursPerDay\": \"8,0000\",\r\n        \"AnnualSalary\": \"1234500,0000\",\r\n        \"PeriodSalary\": \"102875,0000\",\r\n        \"OverrideAnnualBonusCalcRecurrence\": \"False\",\r\n        \"CalendarMonth\": \"12\",\r\n        \"PeriodInMonth\": \"L\",\r\n        \"RatePerDay\": \"4747,3464\",\r\n        \"RatePerHour\": \"593,4183\",\r\n        \"PensionFundStartDate\": \"2021/10/14 00:00:00\",\r\n        \"ProvidentFundStartDate\": \"2021/10/15 00:00:00\",\r\n        \"ZoneCodes\": \"\",\r\n        \"MedicalStartDate\": \"2021/10/16 00:00:00\",\r\n        \"SDLExempt\": \"False\",\r\n        \"LegallyRetiredforTaxPurpose\": \"False\",\r\n        \"ForeignIncome\": \"False\",\r\n        \"TaxStatusCode\": \"ST\",\r\n        \"TaxStartDate\": \"2021/03/01 00:00:00\",\r\n        \"TaxCalculation\": \"A\",\r\n        \"LeavePolicyCode\": \"SA_START\",\r\n        \"Addresses\": [\r\n          {\r\n            \"UseWork\": \"True\",\r\n            \"UsePhysical\": \"True\",\r\n            \"UsePostal\": \"False\",\r\n            \"CorrespondenceAddress\": \"False\",\r\n            \"UnitPostalNumber\": \"Unt 1\",\r\n            \"Complex\": \"Cmplx name\",\r\n            \"LevelFloor\": \"12\",\r\n            \"StreetNumber\": \"Str123\",\r\n            \"StreetFarmName\": \"Str Name\",\r\n            \"SuburbDistrict\": \"Suburb\",\r\n            \"CityTown\": \"City\",\r\n            \"Province\": \"Provinceeee\",\r\n            \"PostalCode\": \"0011\",\r\n            \"PostalAgency\": \"pst agency\",\r\n            \"PostOffice\": \"pst office\",\r\n            \"PostalAddressNumber\": \"pst adrs\",\r\n            \"CareOf\": \"False\",\r\n            \"CountryCode\": \"ZAF\"\r\n          },\r\n          {\r\n            \"UseWork\": \"False\",\r\n            \"UsePhysical\": \"False\",\r\n            \"UsePostal\": \"True\",\r\n            \"AddressServiceTypeCode\": \"PO\",\r\n            \"CorrespondenceAddress\": \"True\",\r\n            \"SuburbDistrict\": \"pstal\",\r\n            \"CityTown\": \"postal line\",\r\n            \"Province\": \"pst prov\",\r\n            \"PostalCode\": \"2211\",\r\n            \"PostalAgency\": \"postal agency\",\r\n            \"PostOffice\": \"post office\",\r\n            \"PostalAddressNumber\": \"2nd addr\",\r\n            \"OtherServiceType\": \"othr srvc tp\",\r\n            \"CareOf\": \"False\",\r\n            \"CountryCode\": \"ZAF\"\r\n          }\r\n        ],\r\n        \"Contacts\": [\r\n          {\r\n            \"ContactTypeCode\": \"CELL\",\r\n            \"ContactDetail\": \"0884567788\"\r\n          },\r\n          {\r\n            \"ContactTypeCode\": \"MAIL\",\r\n            \"ContactDetail\": \"addmail@webtest.com\"\r\n          }\r\n        ],\r\n        \"BankAccounts\": [\r\n          {\r\n            \"AccountHolderRelationship\": \"O\",\r\n            \"AccountName\": \"Sir A Surname\",\r\n            \"BankCode\": \"ABSA\",\r\n            \"AccountTypeCode\": \"CA\",\r\n            \"AccountNo\": \"123456789\",\r\n            \"BankBranchCode\": \"632005\",\r\n            \"Ccy\": \"ZAR\",\r\n            \"DefaultInd\": \"True\"\r\n          }\r\n        ],\r\n        \"DriversLicenses\": [\r\n          {\r\n            \"IssueDate\": \"2021/01/19 00:00:00\",\r\n            \"ExpiryDate\": \"2022/12/22 00:00:00\",\r\n            \"LicenseNumber\": \"lic65432\",\r\n            \"LicenseCategoriesTypeCode\": \"LIC_CAT1\",\r\n            \"LicenseRestrictionsTypeCode\": \"LIC_REST_1\",\r\n            \"CountryCode\": \"ASM\"\r\n          }\r\n        ],\r\n        \"Hierarchies\": [\r\n          {\r\n            \"HierarchyHeaderCode\": \"DEPARTMENT\",\r\n            \"HierarchyCode\": \"FINANCE\"\r\n          },\r\n          {\r\n            \"HierarchyHeaderCode\": \"FACTION\",\r\n            \"HierarchyCode\": \"CANDOR\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Mapping",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\"mappedElements\":[{\"sourcePaths\":[\"root/data\"],\"targetPath\":\"root/data\"},{\"sourcePaths\":[\"root/data/EmployeeCode\"],\"targetPath\":\"root/data/EmployeeNumber\"},{\"sourcePaths\":[\"root/data/CompanyCode\"],\"targetPath\":\"root/data/CompanyFrequency\"},{\"sourcePaths\":[\"root/data/TitleTypeCode\"],\"targetPath\":\"root/data/Title\"},{\"sourcePaths\":[\"root/data/FirstName\"],\"targetPath\":\"root/data/FirstName\"},{\"sourcePaths\":[\"root/data/SecondName\"],\"targetPath\":\"root/data/LastName\"},{\"sourcePaths\":[\"root/data/KnownAsName\"],\"targetPath\":\"root/data/PreferredName\"},{\"sourcePaths\":[\"root/data/Initials\"],\"targetPath\":\"root/data/Initials\"},{\"sourcePaths\":[\"root/data/EmailAddress\"],\"targetPath\":\"root/data/Email\"},{\"sourcePaths\":[\"root/data/BirthDate\"],\"targetPath\":\"root/data/Birthday\"},{\"sourcePaths\":[\"root/data/WorkNumber\"],\"targetPath\":\"root/data/WorkNumber\"},{\"sourcePaths\":[\"root/data/CellNumber\"],\"targetPath\":\"root/data/CellNumber\"},{\"sourcePaths\":[\"root/data/Gender\"],\"targetPath\":\"root/data/Gender\"},{\"sourcePaths\":[\"root/data/RacialGroup\"],\"targetPath\":\"root/data/Race\"},{\"sourcePaths\":[\"root/data/PassportCountryCode\"],\"targetPath\":\"root/data/Nationality\"},{\"sourcePaths\":[\"root/data/DateJoinedGroup\"],\"targetPath\":\"root/data/DateCreated\"},{\"sourcePaths\":[\"root/data/Addresses\"],\"targetPath\":\"root/data/Address\",\"filterExpression\":\"\"},{\"sourcePaths\":[\"root/data/Addresses/UnitPostalNumber\",\"root/data/Addresses/Complex\"],\"targetPath\":\"root/data/Address/AddressLine1\",\"mapExpression\":\"{UnitPostalNumber} + \\\" \\\" + {Complex}\"},{\"sourcePaths\":[\"root/data/Addresses/StreetNumber\"],\"targetPath\":\"root/data/Address/AddressLine2\"},{\"sourcePaths\":[\"root/data/Addresses/SuburbDistrict\"],\"targetPath\":\"root/data/Address/AddressLine3\"},{\"sourcePaths\":[\"root/data/Addresses/PostalCode\"],\"targetPath\":\"root/data/Address/AddressCode\"},{\"sourcePaths\":[\"root/data/Addresses/Province\"],\"targetPath\":\"root/data/Address/Province\"},{\"sourcePaths\":[\"root/data/Addresses/CountryCode\"],\"targetPath\":\"root/data/Address/AddressCountry\"}],\"sourceSchema\":\"{\\r\\n  \\\"root\\\": {\\r\\n    \\\"data\\\": [\\r\\n      {\\r\\n        \\\"EmployeeCode\\\": \\\"EMP_GET_API\\\",\\r\\n        \\\"CompanyCode\\\": \\\"SOUTHAFRICA\\\",\\r\\n        \\\"DateEngaged\\\": \\\"2021/03/01 00:00:00\\\",\\r\\n        \\\"UIFStatusCode\\\": \\\"UIF\\\",\\r\\n        \\\"UIFStartDate\\\": \\\"2021/03/01 00:00:00\\\",\\r\\n        \\\"JobTitleTypeCode\\\": \\\"ANANLYST\\\",\\r\\n        \\\"JobGradeCode\\\": \\\"JOBGRADE_TIER4\\\",\\r\\n        \\\"TerminationDate\\\": \\\"2021/09/30 00:00:00\\\",\\r\\n        \\\"TerminationReasonCode\\\": \\\"AB\\\",\\r\\n        \\\"FinalCalcNow\\\": \\\"2\\\",\\r\\n        \\\"DateJoinedGroup\\\": \\\"2021/03/01 00:00:00\\\",\\r\\n        \\\"LeaveStartDate\\\": \\\"2021/03/01 00:00:00\\\",\\r\\n        \\\"NatureOfContractCode\\\": \\\"APPLICANT\\\",\\r\\n        \\\"EntityCode\\\": \\\"1200\\\",\\r\\n        \\\"TitleTypeCode\\\": \\\"SIR\\\",\\r\\n        \\\"Initials\\\": \\\"A\\\",\\r\\n        \\\"FirstName\\\": \\\"API First Name\\\",\\r\\n        \\\"SecondName\\\": \\\"Second Name\\\",\\r\\n        \\\"OtherNames\\\": \\\"Other Name\\\",\\r\\n        \\\"KnownAsName\\\": \\\"Known As\\\",\\r\\n        \\\"LastName\\\": \\\"Surname\\\",\\r\\n        \\\"MaidenName\\\": \\\"Maiden\\\",\\r\\n        \\\"MaritalStatusTypeCode\\\": \\\"MRD\\\",\\r\\n        \\\"IDNumber\\\": \\\"9009135800086\\\",\\r\\n        \\\"BirthDate\\\": \\\"1990/09/13 00:00:00\\\",\\r\\n        \\\"BirthCertificateNumber\\\": \\\"Birth Cert no13\\\",\\r\\n        \\\"CityOfBirth\\\": \\\"City Birth\\\",\\r\\n        \\\"Gender\\\": \\\"M\\\",\\r\\n        \\\"LanguageTypeCode\\\": \\\"ENG\\\",\\r\\n        \\\"NationalityCountryCode\\\": \\\"ZAF\\\",\\r\\n        \\\"CountryOfBirth\\\": \\\"ABW\\\",\\r\\n        \\\"PassportNo\\\": \\\"Passport No123\\\",\\r\\n        \\\"PassportCountryCode\\\": \\\"ZAF\\\",\\r\\n        \\\"Disabled\\\": \\\"True\\\",\\r\\n        \\\"DisabilityTypeCode\\\": \\\"EMFN\\\",\\r\\n        \\\"EthnicTypeCode\\\": \\\"XHO\\\",\\r\\n        \\\"RacialGroup\\\": \\\"I\\\",\\r\\n        \\\"ReligionCode\\\": \\\"TAO\\\",\\r\\n        \\\"BloodGroup\\\": \\\"AB+\\\",\\r\\n        \\\"HomeNumber\\\": \\\"0129911789\\\",\\r\\n        \\\"WorkNumber\\\": \\\"0124207000\\\",\\r\\n        \\\"FaxNumber\\\": \\\"08601122321\\\",\\r\\n        \\\"CellNumber\\\": \\\"0841234321\\\",\\r\\n        \\\"EmailAddress\\\": \\\"EmpAPI@Webtest.com\\\",\\r\\n        \\\"CompanyRuleCode\\\": \\\"RSA\\\",\\r\\n        \\\"HoursPerPeriod\\\": \\\"173,3600\\\",\\r\\n        \\\"HoursPerDay\\\": \\\"8,0000\\\",\\r\\n        \\\"AnnualSalary\\\": \\\"1234500,0000\\\",\\r\\n        \\\"PeriodSalary\\\": \\\"102875,0000\\\",\\r\\n        \\\"OverrideAnnualBonusCalcRecurrence\\\": \\\"False\\\",\\r\\n        \\\"CalendarMonth\\\": \\\"12\\\",\\r\\n        \\\"PeriodInMonth\\\": \\\"L\\\",\\r\\n        \\\"RatePerDay\\\": \\\"4747,3464\\\",\\r\\n        \\\"RatePerHour\\\": \\\"593,4183\\\",\\r\\n        \\\"PensionFundStartDate\\\": \\\"2021/10/14 00:00:00\\\",\\r\\n        \\\"ProvidentFundStartDate\\\": \\\"2021/10/15 00:00:00\\\",\\r\\n        \\\"ZoneCodes\\\": \\\"\\\",\\r\\n        \\\"MedicalStartDate\\\": \\\"2021/10/16 00:00:00\\\",\\r\\n        \\\"SDLExempt\\\": \\\"False\\\",\\r\\n        \\\"LegallyRetiredforTaxPurpose\\\": \\\"False\\\",\\r\\n        \\\"ForeignIncome\\\": \\\"False\\\",\\r\\n        \\\"TaxStatusCode\\\": \\\"ST\\\",\\r\\n        \\\"TaxStartDate\\\": \\\"2021/03/01 00:00:00\\\",\\r\\n        \\\"TaxCalculation\\\": \\\"A\\\",\\r\\n        \\\"LeavePolicyCode\\\": \\\"SA_START\\\",\\r\\n        \\\"Addresses\\\": [\\r\\n          {\\r\\n            \\\"UseWork\\\": \\\"True\\\",\\r\\n            \\\"UsePhysical\\\": \\\"True\\\",\\r\\n            \\\"UsePostal\\\": \\\"False\\\",\\r\\n            \\\"CorrespondenceAddress\\\": \\\"False\\\",\\r\\n            \\\"UnitPostalNumber\\\": \\\"Unt 1\\\",\\r\\n            \\\"Complex\\\": \\\"Cmplx name\\\",\\r\\n            \\\"LevelFloor\\\": \\\"12\\\",\\r\\n            \\\"StreetNumber\\\": \\\"Str123\\\",\\r\\n            \\\"StreetFarmName\\\": \\\"Str Name\\\",\\r\\n            \\\"SuburbDistrict\\\": \\\"Suburb\\\",\\r\\n            \\\"CityTown\\\": \\\"City\\\",\\r\\n            \\\"Province\\\": \\\"Provinceeee\\\",\\r\\n            \\\"PostalCode\\\": \\\"0011\\\",\\r\\n            \\\"PostalAgency\\\": \\\"pst agency\\\",\\r\\n            \\\"PostOffice\\\": \\\"pst office\\\",\\r\\n            \\\"PostalAddressNumber\\\": \\\"pst adrs\\\",\\r\\n            \\\"CareOf\\\": \\\"False\\\",\\r\\n            \\\"CountryCode\\\": \\\"ZAF\\\"\\r\\n          },\\r\\n          {\\r\\n            \\\"UseWork\\\": \\\"False\\\",\\r\\n            \\\"UsePhysical\\\": \\\"False\\\",\\r\\n            \\\"UsePostal\\\": \\\"True\\\",\\r\\n            \\\"AddressServiceTypeCode\\\": \\\"PO\\\",\\r\\n            \\\"CorrespondenceAddress\\\": \\\"True\\\",\\r\\n            \\\"SuburbDistrict\\\": \\\"pstal\\\",\\r\\n            \\\"CityTown\\\": \\\"postal line\\\",\\r\\n            \\\"Province\\\": \\\"pst prov\\\",\\r\\n            \\\"PostalCode\\\": \\\"2211\\\",\\r\\n            \\\"PostalAgency\\\": \\\"postal agency\\\",\\r\\n            \\\"PostOffice\\\": \\\"post office\\\",\\r\\n            \\\"PostalAddressNumber\\\": \\\"2nd addr\\\",\\r\\n            \\\"OtherServiceType\\\": \\\"othr srvc tp\\\",\\r\\n            \\\"CareOf\\\": \\\"False\\\",\\r\\n            \\\"CountryCode\\\": \\\"ZAF\\\"\\r\\n          }\\r\\n        ],\\r\\n        \\\"Contacts\\\": [\\r\\n          {\\r\\n            \\\"ContactTypeCode\\\": \\\"CELL\\\",\\r\\n            \\\"ContactDetail\\\": \\\"0884567788\\\"\\r\\n          },\\r\\n          {\\r\\n            \\\"ContactTypeCode\\\": \\\"MAIL\\\",\\r\\n            \\\"ContactDetail\\\": \\\"addmail@webtest.com\\\"\\r\\n          }\\r\\n        ],\\r\\n        \\\"BankAccounts\\\": [\\r\\n          {\\r\\n            \\\"AccountHolderRelationship\\\": \\\"O\\\",\\r\\n            \\\"AccountName\\\": \\\"Sir A Surname\\\",\\r\\n            \\\"BankCode\\\": \\\"ABSA\\\",\\r\\n            \\\"AccountTypeCode\\\": \\\"CA\\\",\\r\\n            \\\"AccountNo\\\": \\\"123456789\\\",\\r\\n            \\\"BankBranchCode\\\": \\\"632005\\\",\\r\\n            \\\"Ccy\\\": \\\"ZAR\\\",\\r\\n            \\\"DefaultInd\\\": \\\"True\\\"\\r\\n          }\\r\\n        ],\\r\\n        \\\"DriversLicenses\\\": [\\r\\n          {\\r\\n            \\\"IssueDate\\\": \\\"2021/01/19 00:00:00\\\",\\r\\n            \\\"ExpiryDate\\\": \\\"2022/12/22 00:00:00\\\",\\r\\n            \\\"LicenseNumber\\\": \\\"lic65432\\\",\\r\\n            \\\"LicenseCategoriesTypeCode\\\": \\\"LIC_CAT1\\\",\\r\\n            \\\"LicenseRestrictionsTypeCode\\\": \\\"LIC_REST_1\\\",\\r\\n            \\\"CountryCode\\\": \\\"ASM\\\"\\r\\n          }\\r\\n        ],\\r\\n        \\\"Hierarchies\\\": [\\r\\n          {\\r\\n            \\\"HierarchyHeaderCode\\\": \\\"DEPARTMENT\\\",\\r\\n            \\\"HierarchyCode\\\": \\\"FINANCE\\\"\\r\\n          },\\r\\n          {\\r\\n            \\\"HierarchyHeaderCode\\\": \\\"FACTION\\\",\\r\\n            \\\"HierarchyCode\\\": \\\"CANDOR\\\"\\r\\n          }\\r\\n        ]\\r\\n      }\\r\\n    ]\\r\\n  }\\r\\n}\",\"sourceSchemaType\":2,\"targetSchema\":\"{\\r\\n  \\\"root\\\": {\\r\\n    \\\"data\\\": [\\r\\n      {\\r\\n        \\\"EmployeeNumber\\\": \\\"\\\",\\r\\n        \\\"CompanyFrequency\\\": \\\"\\\",\\r\\n        \\\"Title\\\": \\\"\\\",\\r\\n        \\\"FirstName\\\": \\\" \\\",\\r\\n        \\\"LastName\\\": \\\"\\\",\\r\\n        \\\"PreferredName\\\": \\\" \\\",\\r\\n        \\\"Initials\\\": \\\"\\\",\\r\\n        \\\"Email\\\": \\\"\\\",\\r\\n        \\\"Birthday\\\": \\\"\\\",\\r\\n        \\\"WorkNumber\\\": null,\\r\\n        \\\"CellNumber\\\": \\\"\\\",\\r\\n        \\\"WorkExtension\\\": \\\"\\\",\\r\\n        \\\"Gender\\\": \\\"\\\",\\r\\n        \\\"Race\\\": \\\"\\\",\\r\\n        \\\"Nationality\\\": \\\"\\\",\\r\\n        \\\"Citizenship\\\": \\\"\\\",\\r\\n        \\\"ForeignNational\\\": false,\\r\\n        \\\"DateCreated\\\": \\\"\\\",\\r\\n        \\\"CustomFieldValue2\\\": \\\"\\\",\\r\\n        \\\"Address\\\": [\\r\\n          {\\r\\n            \\\"AddressType\\\": \\\"\\\",\\r\\n            \\\"AddressLine1\\\": \\\"\\\",\\r\\n            \\\"AddressLine2\\\": \\\"\\\",\\r\\n            \\\"AddressLine3\\\": \\\"\\\",\\r\\n            \\\"AddressCode\\\": \\\"\\\",\\r\\n            \\\"Province\\\": \\\"\\\",\\r\\n            \\\"AddressCountry\\\": \\\"\\\"\\r\\n          }\\r\\n        ]\\r\\n      }\\r\\n    ]\\r\\n  }\\r\\n}\",\"targetSchemaType\":2}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Emit",
+                        "TypeName": "Flowgear.Nodes.QuickMap.QuickMap+EmitOptions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Auto",
+                            "Json",
+                            "Xml"
+                        ],
+                        "Value": "Json"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"root\": {\r\n    \"data\": [\r\n      {\r\n        \"EmployeeNumber\": \"\",\r\n        \"CompanyFrequency\": \"\",\r\n        \"Title\": \"\",\r\n        \"FirstName\": \" \",\r\n        \"LastName\": \"\",\r\n        \"PreferredName\": \" \",\r\n        \"Initials\": \"\",\r\n        \"Email\": \"\",\r\n        \"Birthday\": \"\",\r\n        \"WorkNumber\": null,\r\n        \"CellNumber\": \"\",\r\n        \"WorkExtension\": \"\",\r\n        \"Gender\": \"\",\r\n        \"Race\": \"\",\r\n        \"Nationality\": \"\",\r\n        \"Citizenship\": \"\",\r\n        \"ForeignNational\": false,\r\n        \"DateCreated\": \"\",\r\n        \"CustomFieldValue2\": \"\",\r\n        \"Address\": [\r\n          {\r\n            \"AddressType\": \"\",\r\n            \"AddressLine1\": \"\",\r\n            \"AddressLine2\": \"\",\r\n            \"AddressLine3\": \"\",\r\n            \"AddressCode\": \"\",\r\n            \"Province\": \"\",\r\n            \"AddressCountry\": \"\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7320,
+                    "Y": 3971
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "QuickMap",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-11-27T15:52:53.0253877+00:00",
+                    "Username": "daniel.chilcott@flowgear.net",
+                    "UserKey": "948d657b-e37c-4fd3-9bfa-c94f493379f0"
+                }
+            },
+            {
+                "NodeId": "0b082f89-ed0f-e71e-38a0-7bb80d256c4d",
+                "Name": "PaySpace",
+                "ShortDescription": "PaySpace Create Employee",
+                "LongDescription": "",
+                "Version": "1.0.1.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ApiBaseUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "https://api.payspace.com"
+                            },
+                            {
+                                "Name": "AuthUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "https://identity.payspace.com"
+                            },
+                            {
+                                "Name": "ClientID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "GrantType",
+                                "TypeName": "flowgear.nodes.PaySpace.Connection+GrantTypes",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "full_access",
+                                    "read_only",
+                                    "update",
+                                    "create"
+                                ]
+                            },
+                            {
+                                "Name": "CompanyID",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "flowgear.nodes.PaySpace.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Biographical / Create a single employee record"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"root\": {\r\n    \"data\": [\r\n      {\r\n        \"EmployeeNumber\": \"\",\r\n        \"CompanyFrequency\": \"\",\r\n        \"Title\": \"\",\r\n        \"FirstName\": \" \",\r\n        \"LastName\": \"\",\r\n        \"PreferredName\": \" \",\r\n        \"Initials\": \"\",\r\n        \"Email\": \"\",\r\n        \"Birthday\": \"\",\r\n        \"WorkNumber\": null,\r\n        \"CellNumber\": \"\",\r\n        \"WorkExtension\": \"\",\r\n        \"Gender\": \"\",\r\n        \"Race\": \"\",\r\n        \"Nationality\": \"\",\r\n        \"Citizenship\": \"\",\r\n        \"ForeignNational\": false,\r\n        \"DateCreated\": \"\",\r\n        \"CustomFieldValue2\": \"\",\r\n        \"Address\": [\r\n          {\r\n            \"AddressType\": \"\",\r\n            \"AddressLine1\": \"\",\r\n            \"AddressLine2\": \"\",\r\n            \"AddressLine3\": \"\",\r\n            \"AddressCode\": \"\",\r\n            \"Province\": \"\",\r\n            \"AddressCountry\": \"\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ResponseCode",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7625,
+                    "Y": 3971
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "DisplayName": "PaySpace",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2024-11-27T15:43:32.4429839+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "964b268e-5d3e-7455-4062-86e366fc30c2",
+                "Name": "IfVisualBasic",
+                "ShortDescription": "Employee Created?",
+                "Version": "2.0.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Value <> \"\""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "IsTrue",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "True",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "False",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 7930,
+                    "Y": 3971
+                },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "If",
+                "NodeType": 2,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:33.583859+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "129d2e63-8b5b-47de-b48c-0dc01d009517"
+                }
+            },
+            {
+                "NodeId": "bb221b62-42b9-fa09-2097-94038bb8bac4",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "Log Success",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Success"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 3971
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:22.266367+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            },
+            {
+                "NodeId": "e60a20bf-392e-dbb0-ff38-4287d18e48dc",
+                "Name": "SetKeyValue2",
+                "ShortDescription": "Log Error",
+                "Version": "3.0.0.5",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Group",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Key",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Status",
+                        "TypeName": "Flowgear.Nodes.KeyValue2.KeyValueStatus",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Unknown",
+                            "InProgress",
+                            "Warning",
+                            "Error",
+                            "Success"
+                        ],
+                        "Value": "Error"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    {
+                        "Label": "",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": {
+                    "X": 8235,
+                    "Y": 4387
+                },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Set Key-Value 2",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-10-18T19:06:20.8562614+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "89b2d023-1ee5-fa0c-967f-d8720cdf0fb8",
+                "TargetNodeId": "bb221b62-42b9-fa09-2097-94038bb8bac4",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "89b2d023-1ee5-fa0c-967f-d8720cdf0fb8",
+                "TargetNodeId": "e60a20bf-392e-dbb0-ff38-4287d18e48dc",
+                "SourceName": "Group",
+                "TargetName": "Group"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "89b2d023-1ee5-fa0c-967f-d8720cdf0fb8",
+                "TargetNodeId": "b90cc680-729b-8891-ef41-f0116d8d5f7e",
+                "SourceName": "EmployeeList",
+                "TargetName": "SourceDocument"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "b90cc680-729b-8891-ef41-f0116d8d5f7e",
+                "TargetNodeId": "ca8d7a43-f1fa-5a10-5f11-9598ac02d2ef",
+                "SourceName": "Item",
+                "TargetName": "EmployeeID"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "b90cc680-729b-8891-ef41-f0116d8d5f7e",
+                "TargetNodeId": "ca8d7a43-f1fa-5a10-5f11-9598ac02d2ef",
+                "SourceName": "Item"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7f4cc73b-ae9d-f347-a992-097fb6b3ac3a",
+                "TargetNodeId": "b90cc680-729b-8891-ef41-f0116d8d5f7e",
+                "SourceName": "Start"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "ca8d7a43-f1fa-5a10-5f11-9598ac02d2ef",
+                "TargetNodeId": "247ae90f-03ed-4748-c5e9-a4f83bb73ec3",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "247ae90f-03ed-4748-c5e9-a4f83bb73ec3",
+                "TargetNodeId": "0bfba59c-0f22-91aa-71c4-8f9aa986beff",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "247ae90f-03ed-4748-c5e9-a4f83bb73ec3",
+                "TargetNodeId": "0bfba59c-0f22-91aa-71c4-8f9aa986beff",
+                "SourceName": "Result",
+                "TargetName": "Source"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "ca8d7a43-f1fa-5a10-5f11-9598ac02d2ef",
+                "TargetNodeId": "247ae90f-03ed-4748-c5e9-a4f83bb73ec3",
+                "SourceName": "Response",
+                "TargetName": "itemPayload",
+                "Expression": "data"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "964b268e-5d3e-7455-4062-86e366fc30c2",
+                "TargetNodeId": "bb221b62-42b9-fa09-2097-94038bb8bac4",
+                "SourceName": "True"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "964b268e-5d3e-7455-4062-86e366fc30c2",
+                "TargetNodeId": "e60a20bf-392e-dbb0-ff38-4287d18e48dc",
+                "SourceName": "False"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "0bfba59c-0f22-91aa-71c4-8f9aa986beff",
+                "TargetNodeId": "0b082f89-ed0f-e71e-38a0-7bb80d256c4d",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "0b082f89-ed0f-e71e-38a0-7bb80d256c4d",
+                "TargetNodeId": "964b268e-5d3e-7455-4062-86e366fc30c2",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "0b082f89-ed0f-e71e-38a0-7bb80d256c4d",
+                "TargetNodeId": "964b268e-5d3e-7455-4062-86e366fc30c2",
+                "SourceName": "ResponseCode",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "0bfba59c-0f22-91aa-71c4-8f9aa986beff",
+                "TargetNodeId": "0b082f89-ed0f-e71e-38a0-7bb80d256c4d",
+                "SourceName": "Result",
+                "TargetName": "Request",
+                "Expression": "root.data[0]"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "0b082f89-ed0f-e71e-38a0-7bb80d256c4d",
+                "TargetNodeId": "bb221b62-42b9-fa09-2097-94038bb8bac4",
+                "SourceName": "Response",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "0b082f89-ed0f-e71e-38a0-7bb80d256c4d",
+                "TargetNodeId": "e60a20bf-392e-dbb0-ff38-4287d18e48dc",
+                "SourceName": "Response",
+                "TargetName": "Value"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "0bfba59c-0f22-91aa-71c4-8f9aa986beff",
+                "TargetNodeId": "bb221b62-42b9-fa09-2097-94038bb8bac4",
+                "SourceName": "Result",
+                "TargetName": "Key",
+                "Expression": "root.data[0].EmployeeNumber"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "0bfba59c-0f22-91aa-71c4-8f9aa986beff",
+                "TargetNodeId": "e60a20bf-392e-dbb0-ff38-4287d18e48dc",
+                "SourceName": "Result",
+                "TargetName": "Key",
+                "Expression": "root.data[0].EmployeeNumber"
+            }
+        ],
+        "StartNodeId": "7f4cc73b-ae9d-f347-a992-097fb6b3ac3a",
+        "ActivityLogLevelMask": 255
+    },
+    "Name": "Sage 300 People to PaySpace Employees",
+    "Description": "This Workflow retrieves employee IDs, queries Sage 300 People for each employee’s details, maps and formats the data, and then creates employee records in PaySpace. Success or error status for each employee creation is logged using key-value pairs."
+}
