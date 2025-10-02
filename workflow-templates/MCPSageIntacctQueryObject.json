@@ -1,0 +1,344 @@
+{
+    "Name": "MCP Tool - Query Sage Intacct Objects",
+    "Description": "List records from any Sage Intacct object.\n\nUse SageGetAllObjectNames and SageGetObjectDefinition first if you need to confirm valid field names or data types.",
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "4fd0f85b-a3fa-d134-2ed7-4d6fd2ed1592",
+                "Name": "VariableBar",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "Description": "Use SageGetAllObjectNames and SageGetObjectDefinition tools to fetch available fields for an object:\nTool call: SageGetObjectDefinition({ name: \"objects/accounts-receivable/customer\" })\nDo not add comments in the request, should be valid JSON.\n\nExample request:\n{\n  \"name\": \"type/application-name/object-name\",       // e.g. \"objects/accounts-payable/vendor\"\n\n  \"fields\": [                                     \n    \"id\",\n    \"key\",\n    \"relatedObject.field\",                         // e.g. \"vendor.id\"\n    \"max:vendor.creditLimit\"                       // aggregate: count, avg, sum, min, max\n  ],\n\n  \"filters\": [                                     \n    { \"$eq\": { \"status\": \"active\" } },\n    { \"$gt\": { \"totalDue\": \"1000\" } },\n    { \"$contains\": { \"name\": \"Acme\" } }\n  ],\n\n  \"filterExpression\": \"(1 and 2) or 3\",            \n\n  \"filterParameters\": {\n    \"asOfDate\": \"2022-04-01\"                       \n  },\n\n  \"includeHierarchyFields\": false,                 \n  \"caseSensitiveComparison\": true,                 \n  \"includePrivate\": false,                         \n\n  \"orderBy\": [                                     \n    { \"totalDue\": \"asc\" },\n    { \"lastPaymentMadeDate\": \"desc\" }\n  ],\n\n  \"start\": 1,                                      \n  \"size\": 100                                      \n}\n",
+                        "IsSecret": false,
+                        "Name": "request",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"object\": \"accounts-receivable/customer\",\r\n  \"fields\": [\r\n    \"name\",\r\n    \"status\"\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"$eq\": {\r\n        \"status\": \"active\"\r\n      }\r\n    }\r\n  ],\r\n  \"orderBy\": [\r\n    {\r\n      \"name\": \"desc\"\r\n    }\r\n  ]\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "result",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"result\": [\r\n    {\r\n      \"name\": \"Test Name\",\r\n      \"status\": \"active\"\r\n    },\r\n    {\r\n      \"name\": \"John Doe\",\r\n      \"status\": \"active\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"totalCount\": 184,\r\n    \"start\": 1,\r\n    \"pageSize\": 100,\r\n    \"next\": 101,\r\n    \"previous\": null\r\n  }\r\n}"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": { "X": 6100, "Y": 3640 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-08T15:21:23.9375599+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "e399d95a-39c8-a3f0-01be-b0c0207b120c",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6100, "Y": 3848 },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "bc050959-685b-e4b6-06b3-6994680c0463",
+                "Name": "SageIntacctRest",
+                "ShortDescription": "Query object",
+                "Version": "1.0.0.8",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ClientId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "StripNamespaces",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacctRest.SageConnection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "a1957c8d-0dd9-a4f4-6cd8-d285738a426a"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Query an object"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"object\": \"accounts-receivable/customer\",\r\n  \"fields\": [\r\n    \"name\",\r\n    \"status\"\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"$eq\": {\r\n        \"status\": \"active\"\r\n      }\r\n    }\r\n  ],\r\n  \"orderBy\": [\r\n    {\r\n      \"name\": \"desc\"\r\n    }\r\n  ]\r\n}",
+                        "Schema": ""
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"result\": [\r\n    {}\r\n  ],\r\n  \"meta\": {\r\n    \"totalCount\": \"Total count (integer)\",\r\n    \"start\": \"Start element number (integer)\",\r\n    \"pageSize\": \"Page size (integer)\",\r\n    \"next\": \"Next element number (integer)\",\r\n    \"previous\": \"Previous element number (integer)\"\r\n  }\r\n}",
+                        "Schema": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6405, "Y": 3848 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Sage Intacct REST",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-16T05:10:38.4534392+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "be29c492-180d-bd29-5d60-084dda12bebf",
+                "Name": "Formatter",
+                "ShortDescription": "Format Error",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"result\": \"Error:{error}\"\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "error",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6710, "Y": 3848 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-08T15:18:53.3071473+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "4fd0f85b-a3fa-d134-2ed7-4d6fd2ed1592",
+                "TargetNodeId": "bc050959-685b-e4b6-06b3-6994680c0463",
+                "SourceName": "request",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "bc050959-685b-e4b6-06b3-6994680c0463",
+                "TargetNodeId": "4fd0f85b-a3fa-d134-2ed7-4d6fd2ed1592",
+                "SourceName": "Response",
+                "TargetName": "result"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "e399d95a-39c8-a3f0-01be-b0c0207b120c",
+                "TargetNodeId": "bc050959-685b-e4b6-06b3-6994680c0463",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "bc050959-685b-e4b6-06b3-6994680c0463",
+                "TargetNodeId": "be29c492-180d-bd29-5d60-084dda12bebf",
+                "SourceName": "Error"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e399d95a-39c8-a3f0-01be-b0c0207b120c",
+                "TargetNodeId": "be29c492-180d-bd29-5d60-084dda12bebf",
+                "SourceName": "Last_Error_Info",
+                "TargetName": "error"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "be29c492-180d-bd29-5d60-084dda12bebf",
+                "TargetNodeId": "4fd0f85b-a3fa-d134-2ed7-4d6fd2ed1592",
+                "SourceName": "Result",
+                "TargetName": "result"
+            }
+        ],
+        "StartNodeId": "e399d95a-39c8-a3f0-01be-b0c0207b120c",
+        "ActivityLogLevelMask": 255
+    }
+}

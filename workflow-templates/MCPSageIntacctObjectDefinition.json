@@ -1,0 +1,347 @@
+{
+    "Name": "MCP Tool - Get Sage Intacct Object Model Definition",
+    "Description": "Retrieves metadata (field catalogue) for a Sage Intacct object. Use this to discover valid field names, data types, and pick‑list values before filtering or writing.",
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "c448cd8c-c5d0-9b3d-b657-0a2edccc2a03",
+                "Name": "VariableBar",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Description": "Resource name, in the form `<application-name>/<resource name>`. Note that some services have 3-part names, such as `company-config/document-sequence/get-next-sequence`. For custom objects use `platform-apps/nsp::<object-name>`.",
+                        "IsSecret": false,
+                        "Name": "name",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "objects/accounts-receivable/customer"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "result",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 7
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": { "X": 6100, "Y": 3640 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-08T15:21:23.9375599+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "5961ce54-9c40-3f2f-662b-1505f8550fa9",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6100, "Y": 3848 },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
+                "Name": "SageIntacctRest",
+                "ShortDescription": "Get object def",
+                "Version": "1.0.0.8",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "ClientId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "StripNamespaces",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0,
+                                "Value": true
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.SageIntacctRest.SageConnection",
+                        "ExtendedType": 2,
+                        "Value": null
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "OperationId",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "9ecf67d0-4cf0-85ce-07dc-99d680c1a575"
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Description",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Get an object model definition"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"result\": {\r\n    \"fields\": {\r\n      \"activationDate\": {\r\n        \"deprecated\": true,\r\n        \"format\": \"date\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"advanceBillBy\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"advanceBillByType\": {\r\n        \"enum\": [\r\n          \"\",\r\n          \"days\",\r\n          \"months\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"creditLimit\": {\r\n        \"type\": \"number\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"currency\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"customerRestriction\": {\r\n        \"default\": \"unrestricted\",\r\n        \"enum\": [\r\n          \"unrestricted\",\r\n          \"rootOnly\",\r\n          \"restricted\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"deliveryOptions\": {\r\n        \"default\": \"print\",\r\n        \"enum\": [\r\n          \"print\",\r\n          \"email\",\r\n          \"both\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"discountPercent\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"emailOptIn\": {\r\n        \"default\": false,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"enableOnlineACHPayment\": {\r\n        \"default\": true,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"enableOnlineCardPayment\": {\r\n        \"default\": true,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"id\": {\r\n        \"mutable\": false,\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true\r\n      },\r\n      \"isOnHold\": {\r\n        \"default\": false,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"isOneTimeUse\": {\r\n        \"default\": false,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"key\": {\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"lastInvoiceCreatedDate\": {\r\n        \"format\": \"date\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"lastStatementGeneratedDate\": {\r\n        \"format\": \"date\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"name\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"notes\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"overridePriceList\": {\r\n        \"default\": \"customer\",\r\n        \"enum\": [\r\n          \"customer\",\r\n          \"billingContact\",\r\n          \"shippingContact\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"resaleNumber\": {\r\n        \"type\": \"number\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"retainagePercentage\": {\r\n        \"type\": \"number\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"status\": {\r\n        \"default\": \"active\",\r\n        \"enum\": [\r\n          \"active\",\r\n          \"activeNonPosting\",\r\n          \"inactive\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"subscriptionEndDate\": {\r\n        \"format\": \"date\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"taxId\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"totalDue\": {\r\n        \"format\": \"decimal-precision-2\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      }\r\n    },\r\n    \"groups\": {\r\n      \"audit\": {\r\n        \"fields\": {\r\n          \"createdBy\": {\r\n            \"deprecated\": true,\r\n            \"nullable\": true,\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"mutable\": false\r\n          },\r\n          \"createdDateTime\": {\r\n            \"format\": \"date-time\",\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": false\r\n          },\r\n          \"modifiedBy\": {\r\n            \"deprecated\": true,\r\n            \"nullable\": true,\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"mutable\": false\r\n          },\r\n          \"modifiedDateTime\": {\r\n            \"format\": \"date-time\",\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": false\r\n          }\r\n        },\r\n        \"refs\": {\r\n          \"createdByUser\": {\r\n            \"apiObject\": \"company-config/user\",\r\n            \"fields\": {\r\n              \"id\": {\r\n                \"nullable\": true,\r\n                \"readOnly\": true,\r\n                \"type\": \"string\",\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": false\r\n              },\r\n              \"key\": {\r\n                \"nullable\": true,\r\n                \"readOnly\": true,\r\n                \"type\": \"string\",\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": false\r\n              }\r\n            }\r\n          },\r\n          \"modifiedByUser\": {\r\n            \"apiObject\": \"company-config/user\",\r\n            \"fields\": {\r\n              \"id\": {\r\n                \"nullable\": true,\r\n                \"readOnly\": true,\r\n                \"type\": \"string\",\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": false\r\n              },\r\n              \"key\": {\r\n                \"nullable\": true,\r\n                \"readOnly\": true,\r\n                \"type\": \"string\",\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": false\r\n              }\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"contacts\": {\r\n        \"refs\": {\r\n          \"billTo\": {\r\n            \"apiObject\": \"company-config/contact\",\r\n            \"fields\": {\r\n              \"id\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              },\r\n              \"key\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              }\r\n            }\r\n          },\r\n          \"default\": {\r\n            \"apiObject\": \"company-config/contact\",\r\n            \"fields\": {\r\n              \"URL1\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"URL2\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"companyName\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"email1\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"email2\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"fax\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"firstName\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"id\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              },\r\n              \"internationalTaxId\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              },\r\n              \"key\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              },\r\n              \"lastName\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"middleName\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"mobile\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"pager\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"phone1\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"phone2\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"prefix\": {\r\n                \"nullable\": true,\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"mutable\": true\r\n              },\r\n              \"printAs\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              },\r\n              \"showInContactList\": {\r\n                \"default\": true,\r\n                \"type\": \"boolean\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              }\r\n            },\r\n            \"groups\": {\r\n              \"electronicInvoiceDetails\": {\r\n                \"fields\": {\r\n                  \"legalCategory\": {\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"nullable\": true,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"mainActivity\": {\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"nullable\": true,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"registeredCapital\": {\r\n                    \"type\": \"integer\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"nullable\": true,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"typeOfCompany\": {\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"nullable\": true,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"valueAddedTaxRegime\": {\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"nullable\": true,\r\n                    \"mutable\": true\r\n                  }\r\n                }\r\n              },\r\n              \"mailingAddress\": {\r\n                \"fields\": {\r\n                  \"addressLine1\": {\r\n                    \"nullable\": true,\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"addressLine2\": {\r\n                    \"nullable\": true,\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"addressLine3\": {\r\n                    \"nullable\": true,\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"city\": {\r\n                    \"nullable\": true,\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"country\": {\r\n                    \"default\": \"US\",\r\n                    \"deprecated\": true,\r\n                    \"nullable\": true,\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"isoCountryCode\": {\r\n                    \"default\": \"US\",\r\n                    \"nullable\": true,\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"postCode\": {\r\n                    \"nullable\": true,\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"mutable\": true\r\n                  },\r\n                  \"state\": {\r\n                    \"nullable\": true,\r\n                    \"type\": \"string\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"mutable\": true\r\n                  }\r\n                }\r\n              },\r\n              \"tax\": {\r\n                \"fields\": {\r\n                  \"isTaxable\": {\r\n                    \"default\": false,\r\n                    \"type\": \"boolean\",\r\n                    \"readOnly\": false,\r\n                    \"writeOnly\": false,\r\n                    \"required\": false,\r\n                    \"nullable\": true,\r\n                    \"mutable\": true\r\n                  }\r\n                },\r\n                \"refs\": {\r\n                  \"group\": {\r\n                    \"apiObject\": \"tax/contact-tax-group\",\r\n                    \"fields\": {\r\n                      \"id\": {\r\n                        \"type\": \"string\",\r\n                        \"readOnly\": false,\r\n                        \"writeOnly\": false,\r\n                        \"required\": false,\r\n                        \"nullable\": true,\r\n                        \"mutable\": true\r\n                      },\r\n                      \"key\": {\r\n                        \"type\": \"string\",\r\n                        \"readOnly\": false,\r\n                        \"writeOnly\": false,\r\n                        \"required\": false,\r\n                        \"nullable\": true,\r\n                        \"mutable\": true\r\n                      }\r\n                    }\r\n                  },\r\n                  \"solution\": {\r\n                    \"apiObject\": \"tax/tax-solution\",\r\n                    \"fields\": {\r\n                      \"id\": {\r\n                        \"type\": \"string\",\r\n                        \"readOnly\": false,\r\n                        \"writeOnly\": false,\r\n                        \"required\": false,\r\n                        \"nullable\": true,\r\n                        \"mutable\": true\r\n                      },\r\n                      \"key\": {\r\n                        \"type\": \"string\",\r\n                        \"readOnly\": false,\r\n                        \"writeOnly\": false,\r\n                        \"required\": false,\r\n                        \"nullable\": true,\r\n                        \"mutable\": true\r\n                      }\r\n                    }\r\n                  }\r\n                }\r\n              }\r\n            }\r\n          },\r\n          \"primary\": {\r\n            \"apiObject\": \"company-config/contact\",\r\n            \"fields\": {\r\n              \"id\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              },\r\n              \"key\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              }\r\n            }\r\n          },\r\n          \"shipTo\": {\r\n            \"apiObject\": \"company-config/contact\",\r\n            \"fields\": {\r\n              \"id\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              },\r\n              \"key\": {\r\n                \"type\": \"string\",\r\n                \"readOnly\": false,\r\n                \"writeOnly\": false,\r\n                \"required\": false,\r\n                \"nullable\": true,\r\n                \"mutable\": true\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"httpMethods\": \"OPTIONS,GET,POST,DELETE,PATCH\",\r\n    \"lists\": {\r\n      \"contactList\": {\r\n        \"apiObject\": \"accounts-receivable/customer-contact\"\r\n      },\r\n      \"customerEmailTemplates\": {\r\n        \"apiObject\": \"accounts-receivable/customer-email-template\"\r\n      },\r\n      \"restrictedDepartments\": {\r\n        \"apiObject\": \"accounts-receivable/customer-restricted-department\"\r\n      },\r\n      \"restrictedLocations\": {\r\n        \"apiObject\": \"accounts-receivable/customer-restricted-location\"\r\n      }\r\n    },\r\n    \"refs\": {\r\n      \"accountGroup\": {\r\n        \"apiObject\": \"accounts-receivable/customer-account-group\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"accountLabel\": {\r\n        \"apiObject\": \"accounts-receivable/account-label\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"attachment\": {\r\n        \"apiObject\": \"company-config/attachment\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"nullable\": true,\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"nullable\": true,\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"customerMessage\": {\r\n        \"apiObject\": \"accounts-receivable/customer-message\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"message\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"customerType\": {\r\n        \"apiObject\": \"accounts-receivable/customer-type\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"defaultRevenueGLAccount\": {\r\n        \"apiObject\": \"general-ledger/account\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"name\": {\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": false\r\n          }\r\n        }\r\n      },\r\n      \"entity\": {\r\n        \"apiObject\": \"company-config/entity\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"nullable\": true,\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"mutable\": false\r\n          },\r\n          \"key\": {\r\n            \"nullable\": true,\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"mutable\": false\r\n          },\r\n          \"name\": {\r\n            \"nullable\": true,\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"mutable\": false\r\n          }\r\n        }\r\n      },\r\n      \"overrideOffsetGLAccount\": {\r\n        \"apiObject\": \"general-ledger/account\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"name\": {\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": false\r\n          }\r\n        }\r\n      },\r\n      \"parent\": {\r\n        \"apiObject\": \"accounts-receivable/customer\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"name\": {\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": false\r\n          }\r\n        }\r\n      },\r\n      \"priceList\": {\r\n        \"apiObject\": \"order-entry/price-list\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"priceSchedule\": {\r\n        \"apiObject\": \"purchasing/price-schedule\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"salesRepresentative\": {\r\n        \"apiObject\": \"company-config/employee\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"name\": {\r\n            \"readOnly\": true,\r\n            \"type\": \"string\",\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": false\r\n          }\r\n        }\r\n      },\r\n      \"shippingMethod\": {\r\n        \"apiObject\": \"accounts-receivable/shipping-method\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"term\": {\r\n        \"apiObject\": \"accounts-receivable/term\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"territory\": {\r\n        \"apiObject\": \"accounts-receivable/territory\",\r\n        \"fields\": {\r\n          \"id\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          },\r\n          \"name\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"nsp::r10007\": {\r\n        \"apiObject\": \"company-config/class\",\r\n        \"fields\": {\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      },\r\n      \"nsp::r10008\": {\r\n        \"apiObject\": \"company-config/department\",\r\n        \"fields\": {\r\n          \"key\": {\r\n            \"type\": \"string\",\r\n            \"readOnly\": false,\r\n            \"writeOnly\": false,\r\n            \"required\": false,\r\n            \"nullable\": true,\r\n            \"mutable\": true\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"idempotenceSupported\": true,\r\n    \"apiObject\": \"objects/accounts-receivable/customer\",\r\n    \"type\": \"rootObject\",\r\n    \"href\": \"/services/core/model?version=v1&name=objects/accounts-receivable/customer\"\r\n  },\r\n  \"meta\": {\r\n    \"totalCount\": 1,\r\n    \"totalSuccess\": 1,\r\n    \"totalError\": 0\r\n  }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "name",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6405, "Y": 3848 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": false,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Sage Intacct REST",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-16T05:10:38.4534392+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "e9ac2fe0-6d9b-cb8e-6bbe-4c5516616448",
+                "Name": "Formatter",
+                "ShortDescription": "Format Error",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{\r\n  \"result\": \"Error:{error}\"\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "error",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6710, "Y": 3848 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-08T15:18:53.3071473+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "c448cd8c-c5d0-9b3d-b657-0a2edccc2a03",
+                "TargetNodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
+                "SourceName": "name",
+                "TargetName": "name"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "5961ce54-9c40-3f2f-662b-1505f8550fa9",
+                "TargetNodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
+                "TargetNodeId": "c448cd8c-c5d0-9b3d-b657-0a2edccc2a03",
+                "SourceName": "Response",
+                "TargetName": "result"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
+                "TargetNodeId": "e9ac2fe0-6d9b-cb8e-6bbe-4c5516616448",
+                "SourceName": "Error"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "5961ce54-9c40-3f2f-662b-1505f8550fa9",
+                "TargetNodeId": "e9ac2fe0-6d9b-cb8e-6bbe-4c5516616448",
+                "SourceName": "Last_Error_Info",
+                "TargetName": "error"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e9ac2fe0-6d9b-cb8e-6bbe-4c5516616448",
+                "TargetNodeId": "c448cd8c-c5d0-9b3d-b657-0a2edccc2a03",
+                "SourceName": "Result",
+                "TargetName": "result"
+            }
+        ],
+        "StartNodeId": "5961ce54-9c40-3f2f-662b-1505f8550fa9",
+        "ActivityLogLevelMask": 255
+    }
+}
