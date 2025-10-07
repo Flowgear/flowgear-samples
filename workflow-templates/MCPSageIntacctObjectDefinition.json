@@ -1,13 +1,65 @@
 {
     "Name": "MCP Tool - Get Sage Intacct Object Model Definition",
-    "Description": "Retrieves metadata (field catalogue) for a Sage Intacct object. Use this to discover valid field names, data types, and pick‑list values before filtering or writing.",
+    "Description": "Retrieves metadata (field catalogue) for a Sage Intacct object. Use this to discover valid field names, data types, and pick‑list values before using the SageQueryObjects tool. \n\nUse the tool SageGetAllObjectNames if object names are not known. ",
     "Workflow": {
         "Version": 1,
         "Revision": 0,
         "Nodes": [
             {
-                "NodeId": "c448cd8c-c5d0-9b3d-b657-0a2edccc2a03",
+                "NodeId": "2c94dc07-d21d-8d85-5fe6-552e892daec7",
+                "Name": "Note",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow invokes the Sage Intacct REST node to get an object's model definition from Sage Intacct. The response is mapped to the Variable Bar node as the result. "
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6100, "Y": 3640 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "b3469900-77c4-d5bb-08ca-bfefc9dbc574",
                 "Name": "VariableBar",
+                "LongDescription": "We define the inputs and the outputs on the Variable Bar. This is used to generate a schema which the LLM uses when invoking the Workflow.",
                 "Version": "1.0.0.3",
                 "Properties": [
                     {
@@ -25,15 +77,17 @@
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
+                        "Schema": "",
                         "IsSecret": false,
                         "Name": "result",
                         "TypeName": "apiTypes.String",
-                        "ExtendedType": 7
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"result\": {\r\n    \"fields\": {\r\n      \"activationDate\": {\r\n        \"deprecated\": true,\r\n        \"format\": \"date\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"advanceBillBy\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"advanceBillByType\": {\r\n        \"enum\": [\r\n          \"\",\r\n          \"days\",\r\n          \"months\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"creditLimit\": {\r\n        \"type\": \"number\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"currency\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"customerRestriction\": {\r\n        \"default\": \"unrestricted\",\r\n        \"enum\": [\r\n          \"unrestricted\",\r\n          \"rootOnly\",\r\n          \"restricted\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"deliveryOptions\": {\r\n        \"default\": \"print\",\r\n        \"enum\": [\r\n          \"print\",\r\n          \"email\",\r\n          \"both\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"discountPercent\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"emailOptIn\": {\r\n        \"default\": false,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"enableOnlineACHPayment\": {\r\n        \"default\": true,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"enableOnlineCardPayment\": {\r\n        \"default\": true,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"id\": {\r\n        \"mutable\": false,\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true\r\n      },\r\n      \"isOnHold\": {\r\n        \"default\": false,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"isOneTimeUse\": {\r\n        \"default\": false,\r\n        \"type\": \"boolean\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"key\": {\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"lastInvoiceCreatedDate\": {\r\n        \"format\": \"date\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"lastStatementGeneratedDate\": {\r\n        \"format\": \"date\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"name\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"notes\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"overridePriceList\": {\r\n        \"default\": \"customer\",\r\n        \"enum\": [\r\n          \"customer\",\r\n          \"billingContact\",\r\n          \"shippingContact\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"resaleNumber\": {\r\n        \"type\": \"number\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"retainagePercentage\": {\r\n        \"type\": \"number\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"status\": {\r\n        \"default\": \"active\",\r\n        \"enum\": [\r\n          \"active\",\r\n          \"activeNonPosting\",\r\n          \"inactive\"\r\n        ],\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": false,\r\n        \"mutable\": true\r\n      },\r\n      \"subscriptionEndDate\": {\r\n        \"format\": \"date\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      },\r\n      \"taxId\": {\r\n        \"type\": \"string\",\r\n        \"readOnly\": false,\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": true\r\n      },\r\n      \"totalDue\": {\r\n        \"format\": \"decimal-precision-2\",\r\n        \"readOnly\": true,\r\n        \"type\": \"string\",\r\n        \"writeOnly\": false,\r\n        \"required\": false,\r\n        \"nullable\": true,\r\n        \"mutable\": false\r\n      }\r\n    }\r\n  },\r\n  \"meta\": {\r\n    \"totalCount\": 1,\r\n    \"totalSuccess\": 1,\r\n    \"totalError\": 0\r\n  }\r\n}"
                     }
                 ],
                 "HasInput": false,
                 "Outputs": [],
-                "NodeVisual": { "X": 6100, "Y": 3640 },
+                "NodeVisual": { "X": 6100, "Y": 3945 },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": true,
                 "SupportsTest": true,
@@ -52,7 +106,7 @@
                 }
             },
             {
-                "NodeId": "5961ce54-9c40-3f2f-662b-1505f8550fa9",
+                "NodeId": "a8798a7e-df63-69d6-1eaa-91d16d6d87cb",
                 "Name": "Start",
                 "Version": "1.0.0.3",
                 "Properties": [
@@ -89,16 +143,17 @@
                         "IsDefault": false
                     }
                 ],
-                "NodeVisual": { "X": 6100, "Y": 3848 },
+                "NodeVisual": { "X": 6100, "Y": 4153 },
                 "DisplayName": "Start",
                 "NodeType": 0,
                 "RuntimeVersion": 1,
                 "PublishState": 0
             },
             {
-                "NodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
+                "NodeId": "1c4e5ef6-aa8f-893c-a667-ba72d602d4ac",
                 "Name": "SageIntacctRest",
-                "ShortDescription": "Get object def",
+                "ShortDescription": "Get object definition",
+                "LongDescription": "Retrieves metadata (field catalogue) for a Sage Intacct object. Use this to discover valid field names, data types, and pick‑list values.",
                 "Version": "1.0.0.8",
                 "Properties": [
                     {
@@ -137,8 +192,7 @@
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.SageIntacctRest.SageConnection",
-                        "ExtendedType": 2,
-                        "Value": null
+                        "ExtendedType": 2
                     },
                     {
                         "FlowDirection": 0,
@@ -198,7 +252,7 @@
                         "IsDefault": false
                     }
                 ],
-                "NodeVisual": { "X": 6405, "Y": 3848 },
+                "NodeVisual": { "X": 6405, "Y": 4153 },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": false,
                 "SupportsTest": true,
@@ -218,9 +272,10 @@
                 }
             },
             {
-                "NodeId": "e9ac2fe0-6d9b-cb8e-6bbe-4c5516616448",
+                "NodeId": "30050d17-a262-8014-e960-6ecc433b22e6",
                 "Name": "Formatter",
-                "ShortDescription": "Format Error",
+                "ShortDescription": "Suppress result on error",
+                "LongDescription": "On error, we suppress default result, the error details are returned directly to the LLM—no error object construction required.",
                 "Version": "2.0.0.0",
                 "Properties": [
                     {
@@ -232,7 +287,7 @@
                         "Name": "Expression",
                         "TypeName": "System.String",
                         "ExtendedType": 4,
-                        "Value": "{\r\n  \"result\": \"Error:{error}\"\r\n}"
+                        "Value": "{}"
                     },
                     {
                         "FlowDirection": 1,
@@ -260,13 +315,47 @@
                         "Name": "Result",
                         "TypeName": "System.String",
                         "ExtendedType": 4
-                    },
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6405, "Y": 4545 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "a9351966-2907-d03f-80a7-adf148e806ef",
+                "Name": "Error",
+                "LongDescription": "We still want the Workflow to provide an error so that the LLM is aware that an error has occurred. Errors can be handle like this, or a custom error object can be returned,",
+                "Version": "1.0.0.4",
+                "Properties": [
                     {
                         "FlowDirection": 1,
-                        "Behaviour": 2,
+                        "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "IsSecret": false,
-                        "Name": "error",
+                        "Name": "ErrorMessage",
                         "TypeName": "System.String",
                         "ExtendedType": 0
                     }
@@ -280,68 +369,75 @@
                         "IsDefault": false
                     }
                 ],
-                "NodeVisual": { "X": 6710, "Y": 3848 },
-                "SupportsCustomInputProperties": true,
-                "SupportsCustomOutputProperties": true,
+                "NodeVisual": { "X": 6710, "Y": 4545 },
                 "SupportsTest": false,
                 "SupportsAcquireMetadata": false,
                 "SupportsListSamples": false,
-                "DisplayName": "Formatter",
+                "DisplayName": "Error",
                 "NodeType": 1,
                 "Key": "latest",
                 "RuntimeVersion": 1,
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2025-07-08T15:18:53.3071473+00:00",
-                    "Username": "(ServiceHost)",
-                    "UserKey": ""
+                    "ModifiedTime": "2023-03-20T15:44:51.3030031+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "5e6d661a-4cdf-4a06-a954-520820c7213b"
                 }
             }
         ],
         "FlowConnectors": [
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "c448cd8c-c5d0-9b3d-b657-0a2edccc2a03",
-                "TargetNodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
+                "SourceNodeId": "b3469900-77c4-d5bb-08ca-bfefc9dbc574",
+                "TargetNodeId": "1c4e5ef6-aa8f-893c-a667-ba72d602d4ac",
                 "SourceName": "name",
                 "TargetName": "name"
             },
             {
                 "FlowConnectorType": 1,
-                "SourceNodeId": "5961ce54-9c40-3f2f-662b-1505f8550fa9",
-                "TargetNodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
+                "SourceNodeId": "a8798a7e-df63-69d6-1eaa-91d16d6d87cb",
+                "TargetNodeId": "1c4e5ef6-aa8f-893c-a667-ba72d602d4ac",
                 "SourceName": "Run_Now"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
-                "TargetNodeId": "c448cd8c-c5d0-9b3d-b657-0a2edccc2a03",
+                "SourceNodeId": "1c4e5ef6-aa8f-893c-a667-ba72d602d4ac",
+                "TargetNodeId": "b3469900-77c4-d5bb-08ca-bfefc9dbc574",
                 "SourceName": "Response",
                 "TargetName": "result"
             },
             {
                 "FlowConnectorType": 1,
-                "SourceNodeId": "c4e3e434-4895-7f34-2010-e205b29415f2",
-                "TargetNodeId": "e9ac2fe0-6d9b-cb8e-6bbe-4c5516616448",
-                "SourceName": "Error"
+                "SourceNodeId": "30050d17-a262-8014-e960-6ecc433b22e6",
+                "TargetNodeId": "a9351966-2907-d03f-80a7-adf148e806ef",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "a8798a7e-df63-69d6-1eaa-91d16d6d87cb",
+                "TargetNodeId": "30050d17-a262-8014-e960-6ecc433b22e6",
+                "SourceName": "Any_Error"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "5961ce54-9c40-3f2f-662b-1505f8550fa9",
-                "TargetNodeId": "e9ac2fe0-6d9b-cb8e-6bbe-4c5516616448",
+                "SourceNodeId": "a8798a7e-df63-69d6-1eaa-91d16d6d87cb",
+                "TargetNodeId": "a9351966-2907-d03f-80a7-adf148e806ef",
                 "SourceName": "Last_Error_Info",
-                "TargetName": "error"
+                "TargetName": "ErrorMessage"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "e9ac2fe0-6d9b-cb8e-6bbe-4c5516616448",
-                "TargetNodeId": "c448cd8c-c5d0-9b3d-b657-0a2edccc2a03",
+                "SourceNodeId": "30050d17-a262-8014-e960-6ecc433b22e6",
+                "TargetNodeId": "b3469900-77c4-d5bb-08ca-bfefc9dbc574",
                 "SourceName": "Result",
                 "TargetName": "result"
             }
         ],
-        "StartNodeId": "5961ce54-9c40-3f2f-662b-1505f8550fa9",
+        "StartNodeId": "a8798a7e-df63-69d6-1eaa-91d16d6d87cb",
         "ActivityLogLevelMask": 255
-    }
+    },
+    "RuntimeVersion": 1,
+    "IsMcpEnabled": true,
+    "McpToolName": "SageGetObjectDefinition"
 }

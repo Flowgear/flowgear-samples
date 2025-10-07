@@ -1,0 +1,725 @@
+{
+    "Name": "MCP Tool - SQL Select Query",
+    "Description": "Execute a SQL query. Only Select queries are allowed.\n\nUse the SQLGetTableNames and SQLGetColumns tools to get the needed info to construct a query.",
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "49f75c4c-e18f-3b49-7aba-40a3114a0bc0",
+                "Name": "Note",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow invokes the Microsoft SQL Query node with a query string which has been provided. The response is mapped to the Variable Bar node as the result. "
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6100, "Y": 3640 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "94f79282-d2a1-1285-97b8-ebfa6b942177",
+                "Name": "VariableBar",
+                "LongDescription": "We define the inputs and the outputs on the Variable Bar. This is used to generate a schema which the LLM uses when invoking the Workflow.",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "Description": "The request provides the query to invoke in connected SQL instance. Only allow 'Select' statements are allowed.",
+                        "IsSecret": false,
+                        "Name": "request",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"QUERY\": \"SELECT TOP 10 * FROM testTable\"\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "result",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"Table\": [\r\n    {\r\n      \"key\": \"f8b5b92e-a6eb-4a81-80b4-0662ff5985c6\"\r\n    },\r\n    {\r\n      \"key\": \"3a3ec9a8-6333-486c-82ec-189d0c520139\",\r\n      \"value\": \"140.00\"\r\n    },\r\n    {\r\n      \"key\": \"7a3ec9a8-6333-486c-82ec-189d0c520139\",\r\n      \"value\": \"1.40\"\r\n    },\r\n    {\r\n      \"key\": \"0328809d-a3e8-4b80-ab12-1efd3f8c305c\",\r\n      \"value\": \"1.40\"\r\n    },\r\n    {\r\n      \"key\": \"45d6cee4-647f-46ed-9c9e-2085a560ac90\",\r\n      \"value\": \"1.40\"\r\n    },\r\n    {\r\n      \"key\": \"21228e31-ad0d-4635-87cc-489d0f3f0e91\",\r\n      \"value\": \"140.00\"\r\n    },\r\n    {\r\n      \"key\": \"21228e31-ad0d-4635-87cc-489d0f3f0e95\",\r\n      \"value\": \"140.00\"\r\n    },\r\n    {\r\n      \"key\": \"01228e31-ad0d-4635-87cc-489d0f3f0e98\",\r\n      \"value\": \"1.40\"\r\n    },\r\n    {\r\n      \"key\": \"11228e31-ad0d-4635-87cc-489d0f3f0e98\",\r\n      \"value\": \"140.00\"\r\n    },\r\n    {\r\n      \"key\": \"21228e31-ad0d-4635-87cc-489d0f3f0e98\",\r\n      \"value\": \"140.00\"\r\n    }\r\n  ]\r\n}"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": { "X": 6100, "Y": 3945 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
+                }
+            },
+            {
+                "NodeId": "1f5a96ae-f82c-8fd8-27b1-047b276aac44",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6100, "Y": 4153 },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "6bf06300-d7fa-57a4-3634-ea8e2b541005",
+                "Name": "Formatter",
+                "ShortDescription": "Escape Query",
+                "LongDescription": "We ensure the SQL query is escaped to be passed to the Microsoft SQL Node.",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "SQL"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6405, "Y": 4153 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "0199879a-6bc4-87a8-405b-3f46d064300c",
+                "Name": "Script",
+                "ShortDescription": "Validate Select Query",
+                "LongDescription": "We validate that it is a 'Select' query. We do not want the LLM to be able to invoke any query.",
+                "Version": "2.1.0.16",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "AdditionalAssemblyPaths",
+                                "TypeName": "System.String",
+                                "ExtendedType": 4
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Script.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Script",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "using System;\r\nusing System.IO;\r\nusing System.Collections.Generic;\r\nusing System.Xml;\r\nusing System.Linq;\r\nusing System.Xml.Linq;\r\nusing Newtonsoft.Json;\r\nusing System.Text.RegularExpressions;\r\n\r\nnamespace CSharpScript\r\n{\r\n    public partial class Processor\r\n    {  \r\n        public object Process()\r\n        {\r\n            if (!IsSelectQuery(query.ToString()))\r\n            {\r\n                throw new Exception(\"The provided query is not valid.\");\r\n            }\r\n          \r\n            return null;\r\n        }\r\n\r\n        public bool IsSelectQuery(string query)\r\n        {\r\n            if (string.IsNullOrWhiteSpace(query))\r\n                return false;\r\n  \r\n            // Normalize whitespace and case\r\n            string trimmed = query.Trim().ToUpperInvariant();\r\n  \r\n            // Quick allowlist: must start with SELECT\r\n            if (!trimmed.StartsWith(\"SELECT\"))\r\n                return false;\r\n  \r\n            // Block some obvious dangerous keywords\r\n            string[] disallowed = { \"DELETE\", \"UPDATE\", \"INSERT\", \"DROP\", \"ALTER\", \"EXEC\", \"TRUNCATE\" };\r\n            foreach (var word in disallowed)\r\n            {\r\n                if (Regex.IsMatch(trimmed, string.Format(@\"\\b{0}\\b\", word), RegexOptions.IgnoreCase))\r\n                    return false;\r\n            }\r\n  \r\n            // Basic pattern check (SELECT ... FROM ...)\r\n            return Regex.IsMatch(trimmed, @\"^SELECT\\s+.+\\s+FROM\\s+\", RegexOptions.IgnoreCase);\r\n        }\r\n    }\r\n}"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Value",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "query",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6710, "Y": 4153 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Script",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-12-08T12:33:12.1649931+00:00",
+                    "Username": "thomas.lambrecht@flowgear.net",
+                    "UserKey": "8cd02406-e5f4-4b86-a2ff-ea6c08416b36"
+                }
+            },
+            {
+                "NodeId": "9994b62c-c60f-5792-e146-75c4ec2ebd90",
+                "Name": "SqlQuery",
+                "ShortDescription": "Select query",
+                "LongDescription": "We invoke the Microsoft SQL Query node with the provided query.",
+                "Version": "3.1.1.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Server",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Database",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "AuthenticationMode",
+                                "TypeName": "Flowgear.Nodes.Sql.MsSql.MicrosoftSqlConnection+AuthMode",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "UserCredential",
+                                    "CertificateCredential"
+                                ]
+                            },
+                            {
+                                "Name": "UseWinAuth",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "UserId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "TenantId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ClientId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Certificate",
+                                "TypeName": "System.Security.Cryptography.X509Certificates.X509Certificate2",
+                                "ExtendedType": 9
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "ConnectionStringFragments",
+                                "TypeName": "System.String",
+                                "ExtendedType": 4
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Sql.MsSql.MicrosoftSqlConnection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Query",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "XmlQuery",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ResultXml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "RowsAffected",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 7015, "Y": 4153 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Microsoft SQL Query",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-08-20T05:10:11.6951249+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "3da11f8b-7a66-4018-9827-a9c0f1d4ad05",
+                "Name": "JsonConvert",
+                "ShortDescription": "XML to JSON",
+                "LongDescription": "We convert the XML response to JSON because the MCP server is based on JSON schema.",
+                "Version": "1.1.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "JsonConvert.JsonConvert+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": ["JsonToXml", "XmlToJson"],
+                        "Value": "XmlToJson"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Json",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Xml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 7320, "Y": 4153 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "JSON Convert",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:37.8353675+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "acc0c3aa-65a0-4e0b-bdca-3dee98279093"
+                }
+            },
+            {
+                "NodeId": "a6fe4d1e-be1e-bb82-d411-52dcac2394a1",
+                "Name": "Formatter",
+                "ShortDescription": "Suppress result on error",
+                "LongDescription": "On error, we suppress default result, the error details are returned directly to the LLM—no error object construction required.",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{}"
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6405, "Y": 4545 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "22a7bee6-ba4e-5b00-f596-dfc4cf4922f1",
+                "Name": "Error",
+                "LongDescription": "Rethrow Error to ensure it is propagated to the LLM",
+                "Version": "1.0.0.4",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ErrorMessage",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6710, "Y": 4545 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Error",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:44:51.3030031+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "5e6d661a-4cdf-4a06-a954-520820c7213b"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "9994b62c-c60f-5792-e146-75c4ec2ebd90",
+                "TargetNodeId": "3da11f8b-7a66-4018-9827-a9c0f1d4ad05",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "9994b62c-c60f-5792-e146-75c4ec2ebd90",
+                "TargetNodeId": "3da11f8b-7a66-4018-9827-a9c0f1d4ad05",
+                "SourceName": "ResultXml",
+                "TargetName": "Xml"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "1f5a96ae-f82c-8fd8-27b1-047b276aac44",
+                "TargetNodeId": "6bf06300-d7fa-57a4-3634-ea8e2b541005",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "94f79282-d2a1-1285-97b8-ebfa6b942177",
+                "TargetNodeId": "6bf06300-d7fa-57a4-3634-ea8e2b541005",
+                "SourceName": "request",
+                "TargetName": "Expression",
+                "Expression": "QUERY"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "6bf06300-d7fa-57a4-3634-ea8e2b541005",
+                "TargetNodeId": "0199879a-6bc4-87a8-405b-3f46d064300c",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "6bf06300-d7fa-57a4-3634-ea8e2b541005",
+                "TargetNodeId": "0199879a-6bc4-87a8-405b-3f46d064300c",
+                "SourceName": "Result",
+                "TargetName": "query"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "0199879a-6bc4-87a8-405b-3f46d064300c",
+                "TargetNodeId": "9994b62c-c60f-5792-e146-75c4ec2ebd90",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "1f5a96ae-f82c-8fd8-27b1-047b276aac44",
+                "TargetNodeId": "a6fe4d1e-be1e-bb82-d411-52dcac2394a1",
+                "SourceName": "Any_Error"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "a6fe4d1e-be1e-bb82-d411-52dcac2394a1",
+                "TargetNodeId": "22a7bee6-ba4e-5b00-f596-dfc4cf4922f1",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "1f5a96ae-f82c-8fd8-27b1-047b276aac44",
+                "TargetNodeId": "22a7bee6-ba4e-5b00-f596-dfc4cf4922f1",
+                "SourceName": "Last_Error_Info",
+                "TargetName": "ErrorMessage"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "6bf06300-d7fa-57a4-3634-ea8e2b541005",
+                "TargetNodeId": "9994b62c-c60f-5792-e146-75c4ec2ebd90",
+                "SourceName": "Result",
+                "TargetName": "Query"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "a6fe4d1e-be1e-bb82-d411-52dcac2394a1",
+                "TargetNodeId": "94f79282-d2a1-1285-97b8-ebfa6b942177",
+                "SourceName": "Result",
+                "TargetName": "result"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3da11f8b-7a66-4018-9827-a9c0f1d4ad05",
+                "TargetNodeId": "94f79282-d2a1-1285-97b8-ebfa6b942177",
+                "SourceName": "Json",
+                "TargetName": "result",
+                "Expression": "Result"
+            }
+        ],
+        "StartNodeId": "1f5a96ae-f82c-8fd8-27b1-047b276aac44",
+        "ActivityLogLevelMask": 255
+    },
+    "RuntimeVersion": 1,
+    "IsMcpEnabled": true,
+    "McpToolName": "SQLSelectQuery"
+}

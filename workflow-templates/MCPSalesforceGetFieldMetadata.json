@@ -1,12 +1,12 @@
 {
-    "Name": "MCP Tool - Query Sage Intacct Objects",
-    "Description": "List records from any Sage Intacct object.\n\nUse the SageGetAllObjectNames and SageGetObjectDefinition tools first if valid objects and field names or data types are not known.",
+    "Name": "MCP Tool - Get Field and Other Metadata for a Salesforce Object",
+    "Description": "Use the tool to retrieve all the metadata for an object, including information about each field, URLs, and child relationships.\n\nSpecifically look at the 'field' and 'fields[*].name' properties to decide how to construct the query for the tool SalesforceQueryObject.\n\nCan also use the tool SalesforceListObjects to understand which objects are available.",
     "Workflow": {
         "Version": 1,
         "Revision": 0,
         "Nodes": [
             {
-                "NodeId": "ef861c17-236a-d7b5-3739-51a1acc71560",
+                "NodeId": "f467b3c8-6cbf-397d-67f9-38b54ad3ac35",
                 "Name": "Note",
                 "Version": "1.0.0.2",
                 "Properties": [
@@ -18,7 +18,7 @@
                         "Name": "Text",
                         "TypeName": "System.String",
                         "ExtendedType": 0,
-                        "Value": "This Workflow invokes the Sage Intacct REST node to query an object from Sage Intacct. The response is mapped to the Variable Bar node as the result. "
+                        "Value": "This Workflow invokes the Salesforce node to describe an object. It retrieves all the metadata for an object, including information about each field, URLs, and child relationships. The response is mapped to the Variable Bar node as the result. "
                     },
                     {
                         "FlowDirection": 0,
@@ -57,7 +57,7 @@
                 }
             },
             {
-                "NodeId": "c9f1a196-d329-25ae-98dc-db2ca9100658",
+                "NodeId": "358b48dc-4da8-2541-7824-2182b2c9cece",
                 "Name": "VariableBar",
                 "LongDescription": "We define the inputs and the outputs on the Variable Bar. This is used to generate a schema which the LLM uses when invoking the Workflow.",
                 "Version": "1.0.0.3",
@@ -67,23 +67,24 @@
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "Schema": "",
-                        "Description": "Use SageGetAllObjectNames and SageGetObjectDefinition tools to fetch available fields for an object:\nDo not add comments in the request, it should be valid JSON.\n\nExample request:\n{\n  \"name\": \"type/application-name/object-name\",       // e.g. \"objects/accounts-payable/vendor\"\n\n  \"fields\": [                                     \n    \"id\",\n    \"key\",\n    \"relatedObject.field\",                         // e.g. \"vendor.id\"\n    \"max:vendor.creditLimit\"                       // aggregate: count, avg, sum, min, max\n  ],\n\n  \"filters\": [                                     \n    { \"$eq\": { \"status\": \"active\" } },\n    { \"$gt\": { \"totalDue\": \"1000\" } },\n    { \"$contains\": { \"name\": \"Acme\" } }\n  ],\n\n  \"filterExpression\": \"(1 and 2) or 3\",            \n\n  \"filterParameters\": {\n    \"asOfDate\": \"2022-04-01\"                       \n  },\n\n  \"includeHierarchyFields\": false,                 \n  \"caseSensitiveComparison\": true,                 \n  \"includePrivate\": false,                         \n\n  \"orderBy\": [                                     \n    { \"totalDue\": \"asc\" },\n    { \"lastPaymentMadeDate\": \"desc\" }\n  ],\n\n  \"start\": 1,                                      \n  \"size\": 100                                      \n}\n",
+                        "Description": "Use SalesforceListObjects to get a possible object to query fields for.\n\nobjectName is required.",
                         "IsSecret": false,
                         "Name": "request",
                         "TypeName": "apiTypes.String",
                         "ExtendedType": 7,
-                        "Value": "{\r\n  \"object\": \"accounts-receivable/customer-example\",\r\n  \"fields\": [\r\n    \"name\",\r\n    \"status\"\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"$eq\": {\r\n        \"status\": \"active\"\r\n      }\r\n    }\r\n  ],\r\n  \"orderBy\": [\r\n    {\r\n      \"name\": \"desc\"\r\n    }\r\n  ]\r\n}"
+                        "Value": "{\r\n  \"objectName\": \"Account\"\r\n}"
                     },
                     {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "Schema": "",
+                        "Description": "Example Response:\n\n{\n  \"name\" : \"Account\",\n  \"fields\" :\n  [\n    {\n      \"length\" : 18,\n      \"name\" : \"Id\",\n      \"type\" : \"id\",\n      \"defaultValue\" : {    \"value\" : null  },\n      \"updateable\" : false,\n      \"label\" : \"Account ID\"\n    }\n  ],\n  \"updateable\" : true,\n  \"label\" : \"Account\",\n  \"keyPrefix\" : \"001\",\n  \"custom\" : false,\n  \"urls\" :\n  {\n    \"uiEditTemplate\" : \"https://MyDomainName.my.salesforce.com/{ID}/e\",\n    \"sobject\" : \"/services/data/v64.0/sobjects/Account\",\n    \"uiDetailTemplate\" : \"https://MyDomainName.my.salesforce.com/{ID}\"\n  },\n  \"childRelationships\" :\n  [\n    {\n      \"field\" : \"ParentId\",\n      \"deprecatedAndHidden\" : false\n    }\n  ],\n  \"createable\" : true,\n  \"customSetting\" : false\n}\n",
                         "IsSecret": false,
                         "Name": "result",
                         "TypeName": "apiTypes.String",
                         "ExtendedType": 7,
-                        "Value": "{\r\n  \"result\": [\r\n    {\r\n      \"name\": \"Test Name\",\r\n      \"status\": \"active\"\r\n    },\r\n    {\r\n      \"name\": \"John Doe\",\r\n      \"status\": \"active\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"totalCount\": 184,\r\n    \"start\": 1,\r\n    \"pageSize\": 100,\r\n    \"next\": 101,\r\n    \"previous\": null\r\n  }\r\n}"
+                        "Value": "{\r\n  \"name\": \"Account\",\r\n  \"fields\": [\r\n    {\r\n      \"length\": 18,\r\n      \"name\": \"Id\",\r\n      \"type\": \"id\",\r\n      \"defaultValue\": {\r\n        \"value\": null\r\n      },\r\n      \"updateable\": false,\r\n      \"label\": \"Account ID\"\r\n    }\r\n  ],\r\n  \"updateable\": true,\r\n  \"label\": \"Account\",\r\n  \"keyPrefix\": \"001\",\r\n  \"custom\": false,\r\n  \"urls\": {\r\n    \"uiEditTemplate\": \"https://MyDomainName.my.salesforce.com/{ID}/e\",\r\n    \"sobject\": \"/services/data/v64.0/sobjects/Account\",\r\n    \"uiDetailTemplate\": \"https://MyDomainName.my.salesforce.com/{ID}\"\r\n  },\r\n  \"childRelationships\": [\r\n    {\r\n      \"field\": \"ParentId\",\r\n      \"deprecatedAndHidden\": false\r\n    }\r\n  ],\r\n  \"createable\": true,\r\n  \"customSetting\": false\r\n}"
                     }
                 ],
                 "HasInput": false,
@@ -107,7 +108,7 @@
                 }
             },
             {
-                "NodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
+                "NodeId": "c44b9e72-a054-722d-d909-b8d3d13a25b2",
                 "Name": "Start",
                 "Version": "1.0.0.3",
                 "Properties": [
@@ -151,24 +152,35 @@
                 "PublishState": 0
             },
             {
-                "NodeId": "1b34cdcd-7e12-cd04-ec3f-9a946a0ffcbc",
-                "Name": "SageIntacctRest",
-                "ShortDescription": "Query object",
-                "LongDescription": "Query the Sage Intacct object",
-                "Version": "1.0.0.8",
+                "NodeId": "38756bec-6e42-cfbd-b8b5-b87d478cb647",
+                "Name": "Salesforce",
+                "ShortDescription": "Describe the object",
+                "LongDescription": "Completely describes the individual metadata at all levels for the specified Salesforce object.",
+                "Version": "4.1.1.7",
                 "Properties": [
                     {
                         "FlowDirection": 1,
                         "SubProperties": [
                             {
-                                "Name": "ClientId",
+                                "Name": "Url",
                                 "TypeName": "System.String",
                                 "ExtendedType": 0
                             },
                             {
-                                "Name": "ClientSecret",
+                                "Name": "ConsumerKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerSecret",
                                 "TypeName": "System.String",
                                 "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "full refresh_token offline_access"
                             },
                             {
                                 "Name": "AccessToken",
@@ -181,10 +193,26 @@
                                 "ExtendedType": 3
                             },
                             {
-                                "Name": "StripNamespaces",
+                                "Name": "InstanceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "DontInterleaveRequestInResponse",
                                 "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "EncodingMode",
+                                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
                                 "ExtendedType": 0,
-                                "Value": true
+                                "EnumValues": ["XmlInXmlOut", "XmlInJsonOut"]
+                            },
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "v59.0"
                             }
                         ],
                         "Behaviour": 0,
@@ -192,50 +220,78 @@
                         "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
-                        "TypeName": "Flowgear.Nodes.SageIntacctRest.SageConnection",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Connection",
                         "ExtendedType": 2
-                    },
-                    {
-                        "FlowDirection": 0,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "OperationId",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0,
-                        "Value": "a1957c8d-0dd9-a4f4-6cd8-d285738a426a"
-                    },
-                    {
-                        "FlowDirection": 0,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "Description",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0,
-                        "Value": "Query an object"
                     },
                     {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Create",
+                            "Update",
+                            "Get",
+                            "Query",
+                            "Upsert",
+                            "GetNextRecords",
+                            "QueryAll",
+                            "Delete",
+                            "ListSamples",
+                            "GetSample",
+                            "DescribeGlobal",
+                            "Describe"
+                        ],
+                        "Value": "Describe"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ObjectName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "Account"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExternalIdField",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
                         "IsSecret": false,
                         "Name": "Request",
                         "TypeName": "System.String",
-                        "ExtendedType": 7,
-                        "Value": "{\r\n  \"object\": \"accounts-receivable/customer\",\r\n  \"fields\": [\r\n    \"name\",\r\n    \"status\"\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"$eq\": {\r\n        \"status\": \"active\"\r\n      }\r\n    }\r\n  ],\r\n  \"orderBy\": [\r\n    {\r\n      \"name\": \"desc\"\r\n    }\r\n  ]\r\n}"
+                        "ExtendedType": 4
                     },
                     {
                         "FlowDirection": 2,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
                         "IsSecret": false,
                         "Name": "Response",
                         "TypeName": "System.String",
-                        "ExtendedType": 7,
-                        "Value": "{\r\n  \"result\": [\r\n    {}\r\n  ],\r\n  \"meta\": {\r\n    \"totalCount\": \"Total count (integer)\",\r\n    \"start\": \"Start element number (integer)\",\r\n    \"pageSize\": \"Page size (integer)\",\r\n    \"next\": \"Next element number (integer)\",\r\n    \"previous\": \"Previous element number (integer)\"\r\n  }\r\n}"
+                        "ExtendedType": 4
                     }
                 ],
                 "HasInput": true,
@@ -248,26 +304,87 @@
                     }
                 ],
                 "NodeVisual": { "X": 6405, "Y": 4153 },
-                "SupportsCustomInputProperties": true,
-                "SupportsCustomOutputProperties": false,
                 "SupportsTest": true,
                 "SupportsAcquireMetadata": false,
                 "SupportsListSamples": true,
                 "InteractFlags": 3,
-                "DisplayName": "Sage Intacct REST",
+                "DisplayName": "Salesforce",
                 "NodeType": 0,
                 "Key": "latest",
                 "RuntimeVersion": 1,
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2025-07-16T05:10:38.4534392+00:00",
-                    "Username": "(ServiceHost)",
-                    "UserKey": ""
+                    "ModifiedTime": "2025-10-06T17:26:06.8248499+00:00",
+                    "Username": "rikard.schouwstra@flowgear.net",
+                    "UserKey": "4e962105-129e-4d2e-afa8-951ca649e600"
                 }
             },
             {
-                "NodeId": "d6a273d2-67c6-33fe-e52a-f8c88bfec135",
+                "NodeId": "9197857f-755d-f967-6d11-4c94bc960640",
+                "Name": "JsonConvert",
+                "ShortDescription": "XML to JSON",
+                "LongDescription": "We convert the XML response to JSON because the MCP server is based on JSON schema.",
+                "Version": "1.1.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "JsonConvert.JsonConvert+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": ["JsonToXml", "XmlToJson"],
+                        "Value": "XmlToJson"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Json",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Xml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6710, "Y": 4153 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "JSON Convert",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:37.8353675+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "acc0c3aa-65a0-4e0b-bdca-3dee98279093"
+                }
+            },
+            {
+                "NodeId": "1904edd6-1618-b157-6ad5-70b15287b68a",
                 "Name": "Formatter",
                 "ShortDescription": "Suppress result on error",
                 "LongDescription": "On error, we suppress default result, the error details are returned directly to the LLM—no error object construction required.",
@@ -340,7 +457,7 @@
                 }
             },
             {
-                "NodeId": "d7b24bb9-fbcf-cc05-65a4-1e547c5332d2",
+                "NodeId": "c84205fb-7d54-0ab7-6e34-e60c522100cc",
                 "Name": "Error",
                 "LongDescription": "We still want the Workflow to provide an error so that the LLM is aware that an error has occurred. Errors can be handle like this, or a custom error object can be returned,",
                 "Version": "1.0.0.4",
@@ -383,56 +500,71 @@
         ],
         "FlowConnectors": [
             {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "c9f1a196-d329-25ae-98dc-db2ca9100658",
-                "TargetNodeId": "1b34cdcd-7e12-cd04-ec3f-9a946a0ffcbc",
-                "SourceName": "request",
-                "TargetName": "Request"
-            },
-            {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "1b34cdcd-7e12-cd04-ec3f-9a946a0ffcbc",
-                "TargetNodeId": "c9f1a196-d329-25ae-98dc-db2ca9100658",
-                "SourceName": "Response",
-                "TargetName": "result"
-            },
-            {
                 "FlowConnectorType": 1,
-                "SourceNodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
-                "TargetNodeId": "1b34cdcd-7e12-cd04-ec3f-9a946a0ffcbc",
+                "SourceNodeId": "c44b9e72-a054-722d-d909-b8d3d13a25b2",
+                "TargetNodeId": "38756bec-6e42-cfbd-b8b5-b87d478cb647",
                 "SourceName": "Run_Now"
             },
             {
                 "FlowConnectorType": 1,
-                "SourceNodeId": "d6a273d2-67c6-33fe-e52a-f8c88bfec135",
-                "TargetNodeId": "d7b24bb9-fbcf-cc05-65a4-1e547c5332d2",
+                "SourceNodeId": "38756bec-6e42-cfbd-b8b5-b87d478cb647",
+                "TargetNodeId": "9197857f-755d-f967-6d11-4c94bc960640",
                 "SourceName": ""
             },
             {
-                "FlowConnectorType": 1,
-                "SourceNodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
-                "TargetNodeId": "d6a273d2-67c6-33fe-e52a-f8c88bfec135",
-                "SourceName": "Any_Error"
+                "FlowConnectorType": 2,
+                "SourceNodeId": "38756bec-6e42-cfbd-b8b5-b87d478cb647",
+                "TargetNodeId": "9197857f-755d-f967-6d11-4c94bc960640",
+                "SourceName": "Response",
+                "TargetName": "Xml"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
-                "TargetNodeId": "d7b24bb9-fbcf-cc05-65a4-1e547c5332d2",
+                "SourceNodeId": "358b48dc-4da8-2541-7824-2182b2c9cece",
+                "TargetNodeId": "38756bec-6e42-cfbd-b8b5-b87d478cb647",
+                "SourceName": "request",
+                "TargetName": "ObjectName",
+                "Expression": "objectName"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "9197857f-755d-f967-6d11-4c94bc960640",
+                "TargetNodeId": "358b48dc-4da8-2541-7824-2182b2c9cece",
+                "SourceName": "Json",
+                "TargetName": "result",
+                "Expression": "Response"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "1904edd6-1618-b157-6ad5-70b15287b68a",
+                "TargetNodeId": "c84205fb-7d54-0ab7-6e34-e60c522100cc",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "c44b9e72-a054-722d-d909-b8d3d13a25b2",
+                "TargetNodeId": "c84205fb-7d54-0ab7-6e34-e60c522100cc",
                 "SourceName": "Last_Error_Info",
                 "TargetName": "ErrorMessage"
             },
             {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "c44b9e72-a054-722d-d909-b8d3d13a25b2",
+                "TargetNodeId": "1904edd6-1618-b157-6ad5-70b15287b68a",
+                "SourceName": "Any_Error"
+            },
+            {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "d6a273d2-67c6-33fe-e52a-f8c88bfec135",
-                "TargetNodeId": "c9f1a196-d329-25ae-98dc-db2ca9100658",
+                "SourceNodeId": "1904edd6-1618-b157-6ad5-70b15287b68a",
+                "TargetNodeId": "358b48dc-4da8-2541-7824-2182b2c9cece",
                 "SourceName": "Result",
                 "TargetName": "result"
             }
         ],
-        "StartNodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
+        "StartNodeId": "c44b9e72-a054-722d-d909-b8d3d13a25b2",
         "ActivityLogLevelMask": 255
     },
     "RuntimeVersion": 1,
     "IsMcpEnabled": true,
-    "McpToolName": "SageQueryObjects"
+    "McpToolName": "SalesforceGetFieldMetadata"
 }

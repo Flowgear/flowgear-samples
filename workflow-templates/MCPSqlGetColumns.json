@@ -1,12 +1,12 @@
 {
-    "Name": "MCP Tool - Query Sage Intacct Objects",
-    "Description": "List records from any Sage Intacct object.\n\nUse the SageGetAllObjectNames and SageGetObjectDefinition tools first if valid objects and field names or data types are not known.",
+    "Name": "MCP Tool - SQL Get Columns",
+    "Description": "Get a list of columns for a SQL table. Use this tool to determine how the columns can be queried.\n\nUse this before attempting to invoke the SQLSelectQuery tool.  The SQLGetTableNames tool can be used to get a list of available tables.",
     "Workflow": {
         "Version": 1,
         "Revision": 0,
         "Nodes": [
             {
-                "NodeId": "ef861c17-236a-d7b5-3739-51a1acc71560",
+                "NodeId": "14617b0a-78bc-b65e-4aab-1edbc4954b91",
                 "Name": "Note",
                 "Version": "1.0.0.2",
                 "Properties": [
@@ -18,7 +18,7 @@
                         "Name": "Text",
                         "TypeName": "System.String",
                         "ExtendedType": 0,
-                        "Value": "This Workflow invokes the Sage Intacct REST node to query an object from Sage Intacct. The response is mapped to the Variable Bar node as the result. "
+                        "Value": "This Workflow invokes the Microsoft SQL Query node for a list of all columns for the provided SQL table, catalog and schema. The response is mapped to the Variable Bar node as the result. "
                     },
                     {
                         "FlowDirection": 0,
@@ -57,7 +57,7 @@
                 }
             },
             {
-                "NodeId": "c9f1a196-d329-25ae-98dc-db2ca9100658",
+                "NodeId": "52e78a41-d752-2169-730b-88af5b161336",
                 "Name": "VariableBar",
                 "LongDescription": "We define the inputs and the outputs on the Variable Bar. This is used to generate a schema which the LLM uses when invoking the Workflow.",
                 "Version": "1.0.0.3",
@@ -67,12 +67,12 @@
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "Schema": "",
-                        "Description": "Use SageGetAllObjectNames and SageGetObjectDefinition tools to fetch available fields for an object:\nDo not add comments in the request, it should be valid JSON.\n\nExample request:\n{\n  \"name\": \"type/application-name/object-name\",       // e.g. \"objects/accounts-payable/vendor\"\n\n  \"fields\": [                                     \n    \"id\",\n    \"key\",\n    \"relatedObject.field\",                         // e.g. \"vendor.id\"\n    \"max:vendor.creditLimit\"                       // aggregate: count, avg, sum, min, max\n  ],\n\n  \"filters\": [                                     \n    { \"$eq\": { \"status\": \"active\" } },\n    { \"$gt\": { \"totalDue\": \"1000\" } },\n    { \"$contains\": { \"name\": \"Acme\" } }\n  ],\n\n  \"filterExpression\": \"(1 and 2) or 3\",            \n\n  \"filterParameters\": {\n    \"asOfDate\": \"2022-04-01\"                       \n  },\n\n  \"includeHierarchyFields\": false,                 \n  \"caseSensitiveComparison\": true,                 \n  \"includePrivate\": false,                         \n\n  \"orderBy\": [                                     \n    { \"totalDue\": \"asc\" },\n    { \"lastPaymentMadeDate\": \"desc\" }\n  ],\n\n  \"start\": 1,                                      \n  \"size\": 100                                      \n}\n",
+                        "Description": "The request indicates which table, schema and catalog should be used to get a list of available columns.",
                         "IsSecret": false,
                         "Name": "request",
                         "TypeName": "apiTypes.String",
                         "ExtendedType": 7,
-                        "Value": "{\r\n  \"object\": \"accounts-receivable/customer-example\",\r\n  \"fields\": [\r\n    \"name\",\r\n    \"status\"\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"$eq\": {\r\n        \"status\": \"active\"\r\n      }\r\n    }\r\n  ],\r\n  \"orderBy\": [\r\n    {\r\n      \"name\": \"desc\"\r\n    }\r\n  ]\r\n}"
+                        "Value": "{\r\n  \"TABLE_CATALOG\": \"test\",\r\n  \"TABLE_SCHEMA\": \"dbo\",\r\n  \"TABLE_NAME\": \"testTable\"\r\n}"
                     },
                     {
                         "FlowDirection": 1,
@@ -83,7 +83,7 @@
                         "Name": "result",
                         "TypeName": "apiTypes.String",
                         "ExtendedType": 7,
-                        "Value": "{\r\n  \"result\": [\r\n    {\r\n      \"name\": \"Test Name\",\r\n      \"status\": \"active\"\r\n    },\r\n    {\r\n      \"name\": \"John Doe\",\r\n      \"status\": \"active\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"totalCount\": 184,\r\n    \"start\": 1,\r\n    \"pageSize\": 100,\r\n    \"next\": 101,\r\n    \"previous\": null\r\n  }\r\n}"
+                        "Value": "{\r\n  \"Table\": [\r\n    {\r\n      \"COLUMN_NAME\": \"key\",\r\n      \"DATA_TYPE\": \"uniqueidentifier\",\r\n      \"IS_NULLABLE\": \"NO\"\r\n    },\r\n    {\r\n      \"COLUMN_NAME\": \"value\",\r\n      \"DATA_TYPE\": \"decimal\",\r\n      \"IS_NULLABLE\": \"YES\"\r\n    }\r\n  ]\r\n}"
                     }
                 ],
                 "HasInput": false,
@@ -91,7 +91,7 @@
                 "NodeVisual": { "X": 6100, "Y": 3945 },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": true,
-                "SupportsTest": true,
+                "SupportsTest": false,
                 "SupportsAcquireMetadata": false,
                 "SupportsListSamples": false,
                 "DisplayName": "Variable Bar",
@@ -101,13 +101,13 @@
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2025-07-08T15:21:23.9375599+00:00",
-                    "Username": "(ServiceHost)",
-                    "UserKey": ""
+                    "ModifiedTime": "2023-03-20T15:45:15.407724+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "8bad158c-1dd5-4196-a23e-c1b56b739d96"
                 }
             },
             {
-                "NodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
+                "NodeId": "b637d942-4040-2c36-5562-29673eb10aef",
                 "Name": "Start",
                 "Version": "1.0.0.3",
                 "Properties": [
@@ -151,24 +151,63 @@
                 "PublishState": 0
             },
             {
-                "NodeId": "1b34cdcd-7e12-cd04-ec3f-9a946a0ffcbc",
-                "Name": "SageIntacctRest",
-                "ShortDescription": "Query object",
-                "LongDescription": "Query the Sage Intacct object",
-                "Version": "1.0.0.8",
+                "NodeId": "77a9068f-c699-5b6f-bafb-141e0e9aca3a",
+                "Name": "SqlQuery",
+                "ShortDescription": "Get Colums",
+                "LongDescription": "We invoke the SQL Node to get a list of all columns for the provided SQL table, catalog and schema.",
+                "Version": "3.1.1.0",
                 "Properties": [
                     {
                         "FlowDirection": 1,
                         "SubProperties": [
+                            {
+                                "Name": "Server",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Database",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "AuthenticationMode",
+                                "TypeName": "Flowgear.Nodes.Sql.MsSql.MicrosoftSqlConnection+AuthMode",
+                                "ExtendedType": 0,
+                                "EnumValues": [
+                                    "UserCredential",
+                                    "CertificateCredential"
+                                ]
+                            },
+                            {
+                                "Name": "UseWinAuth",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "UserId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "Password",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "TenantId",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
                             {
                                 "Name": "ClientId",
                                 "TypeName": "System.String",
                                 "ExtendedType": 0
                             },
                             {
-                                "Name": "ClientSecret",
-                                "TypeName": "System.String",
-                                "ExtendedType": 3
+                                "Name": "Certificate",
+                                "TypeName": "System.Security.Cryptography.X509Certificates.X509Certificate2",
+                                "ExtendedType": 9
                             },
                             {
                                 "Name": "AccessToken",
@@ -176,15 +215,9 @@
                                 "ExtendedType": 3
                             },
                             {
-                                "Name": "RefreshToken",
+                                "Name": "ConnectionStringFragments",
                                 "TypeName": "System.String",
-                                "ExtendedType": 3
-                            },
-                            {
-                                "Name": "StripNamespaces",
-                                "TypeName": "System.Boolean",
-                                "ExtendedType": 0,
-                                "Value": true
+                                "ExtendedType": 4
                             }
                         ],
                         "Behaviour": 0,
@@ -192,28 +225,8 @@
                         "Schema": "(None)",
                         "IsSecret": false,
                         "Name": "Connection",
-                        "TypeName": "Flowgear.Nodes.SageIntacctRest.SageConnection",
+                        "TypeName": "Flowgear.Nodes.Sql.MsSql.MicrosoftSqlConnection",
                         "ExtendedType": 2
-                    },
-                    {
-                        "FlowDirection": 0,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "OperationId",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0,
-                        "Value": "a1957c8d-0dd9-a4f4-6cd8-d285738a426a"
-                    },
-                    {
-                        "FlowDirection": 0,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "Description",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0,
-                        "Value": "Query an object"
                     },
                     {
                         "FlowDirection": 1,
@@ -221,21 +234,66 @@
                         "CustomPropertyEscaping": 0,
                         "Schema": "",
                         "IsSecret": false,
-                        "Name": "Request",
+                        "Name": "Query",
                         "TypeName": "System.String",
-                        "ExtendedType": 7,
-                        "Value": "{\r\n  \"object\": \"accounts-receivable/customer\",\r\n  \"fields\": [\r\n    \"name\",\r\n    \"status\"\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"$eq\": {\r\n        \"status\": \"active\"\r\n      }\r\n    }\r\n  ],\r\n  \"orderBy\": [\r\n    {\r\n      \"name\": \"desc\"\r\n    }\r\n  ]\r\n}"
+                        "ExtendedType": 4,
+                        "Value": "SELECT \r\n    COLUMN_NAME,\r\n    DATA_TYPE,\r\n    CHARACTER_MAXIMUM_LENGTH,\r\n    IS_NULLABLE\r\nFROM INFORMATION_SCHEMA.COLUMNS\r\nWHERE TABLE_CATALOG = @catalog\r\n  AND TABLE_SCHEMA = @schema\r\n  AND TABLE_NAME   = @table\r\nORDER BY ORDINAL_POSITION;"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "XmlQuery",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
                     },
                     {
                         "FlowDirection": 2,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
-                        "Schema": "",
                         "IsSecret": false,
-                        "Name": "Response",
+                        "Name": "ResultXml",
                         "TypeName": "System.String",
-                        "ExtendedType": 7,
-                        "Value": "{\r\n  \"result\": [\r\n    {}\r\n  ],\r\n  \"meta\": {\r\n    \"totalCount\": \"Total count (integer)\",\r\n    \"start\": \"Start element number (integer)\",\r\n    \"pageSize\": \"Page size (integer)\",\r\n    \"next\": \"Next element number (integer)\",\r\n    \"previous\": \"Previous element number (integer)\"\r\n  }\r\n}"
+                        "ExtendedType": 1
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "RowsAffected",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "table",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "schema",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "catalog",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
                     }
                 ],
                 "HasInput": true,
@@ -249,25 +307,88 @@
                 ],
                 "NodeVisual": { "X": 6405, "Y": 4153 },
                 "SupportsCustomInputProperties": true,
-                "SupportsCustomOutputProperties": false,
+                "SupportsCustomOutputProperties": true,
                 "SupportsTest": true,
                 "SupportsAcquireMetadata": false,
-                "SupportsListSamples": true,
-                "InteractFlags": 3,
-                "DisplayName": "Sage Intacct REST",
+                "SupportsListSamples": false,
+                "DisplayName": "Microsoft SQL Query",
                 "NodeType": 0,
                 "Key": "latest",
                 "RuntimeVersion": 1,
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2025-07-16T05:10:38.4534392+00:00",
+                    "ModifiedTime": "2025-08-20T05:10:11.6951249+00:00",
                     "Username": "(ServiceHost)",
                     "UserKey": ""
                 }
             },
             {
-                "NodeId": "d6a273d2-67c6-33fe-e52a-f8c88bfec135",
+                "NodeId": "9432ff66-2b64-7ef0-5e0f-ad2dd8d354f6",
+                "Name": "JsonConvert",
+                "ShortDescription": "XML to JSON",
+                "LongDescription": "We convert the XML response to JSON because the MCP server is based on JSON schema.",
+                "Version": "1.1.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "JsonConvert.JsonConvert+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": ["JsonToXml", "XmlToJson"],
+                        "Value": "XmlToJson"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Json",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": ""
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Xml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6710, "Y": 4153 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "JSON Convert",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:37.8353675+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "acc0c3aa-65a0-4e0b-bdca-3dee98279093"
+                }
+            },
+            {
+                "NodeId": "f695ee3e-3801-0d95-a68a-02bdbedce16a",
                 "Name": "Formatter",
                 "ShortDescription": "Suppress result on error",
                 "LongDescription": "On error, we suppress default result, the error details are returned directly to the LLM—no error object construction required.",
@@ -340,7 +461,7 @@
                 }
             },
             {
-                "NodeId": "d7b24bb9-fbcf-cc05-65a4-1e547c5332d2",
+                "NodeId": "9709c4ce-187c-5350-7787-1bb473ad5bbc",
                 "Name": "Error",
                 "LongDescription": "We still want the Workflow to provide an error so that the LLM is aware that an error has occurred. Errors can be handle like this, or a custom error object can be returned,",
                 "Version": "1.0.0.4",
@@ -383,56 +504,87 @@
         ],
         "FlowConnectors": [
             {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "c9f1a196-d329-25ae-98dc-db2ca9100658",
-                "TargetNodeId": "1b34cdcd-7e12-cd04-ec3f-9a946a0ffcbc",
-                "SourceName": "request",
-                "TargetName": "Request"
-            },
-            {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "1b34cdcd-7e12-cd04-ec3f-9a946a0ffcbc",
-                "TargetNodeId": "c9f1a196-d329-25ae-98dc-db2ca9100658",
-                "SourceName": "Response",
-                "TargetName": "result"
-            },
-            {
                 "FlowConnectorType": 1,
-                "SourceNodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
-                "TargetNodeId": "1b34cdcd-7e12-cd04-ec3f-9a946a0ffcbc",
+                "SourceNodeId": "b637d942-4040-2c36-5562-29673eb10aef",
+                "TargetNodeId": "77a9068f-c699-5b6f-bafb-141e0e9aca3a",
                 "SourceName": "Run_Now"
             },
             {
                 "FlowConnectorType": 1,
-                "SourceNodeId": "d6a273d2-67c6-33fe-e52a-f8c88bfec135",
-                "TargetNodeId": "d7b24bb9-fbcf-cc05-65a4-1e547c5332d2",
+                "SourceNodeId": "77a9068f-c699-5b6f-bafb-141e0e9aca3a",
+                "TargetNodeId": "9432ff66-2b64-7ef0-5e0f-ad2dd8d354f6",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "77a9068f-c699-5b6f-bafb-141e0e9aca3a",
+                "TargetNodeId": "9432ff66-2b64-7ef0-5e0f-ad2dd8d354f6",
+                "SourceName": "ResultXml",
+                "TargetName": "Xml"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "52e78a41-d752-2169-730b-88af5b161336",
+                "TargetNodeId": "77a9068f-c699-5b6f-bafb-141e0e9aca3a",
+                "SourceName": "request",
+                "TargetName": "table",
+                "Expression": "TABLE_NAME"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "52e78a41-d752-2169-730b-88af5b161336",
+                "TargetNodeId": "77a9068f-c699-5b6f-bafb-141e0e9aca3a",
+                "SourceName": "request",
+                "TargetName": "schema",
+                "Expression": "TABLE_SCHEMA"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "52e78a41-d752-2169-730b-88af5b161336",
+                "TargetNodeId": "77a9068f-c699-5b6f-bafb-141e0e9aca3a",
+                "SourceName": "request",
+                "TargetName": "catalog",
+                "Expression": "TABLE_CATALOG"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "9432ff66-2b64-7ef0-5e0f-ad2dd8d354f6",
+                "TargetNodeId": "52e78a41-d752-2169-730b-88af5b161336",
+                "SourceName": "Json",
+                "TargetName": "result",
+                "Expression": "Result"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "f695ee3e-3801-0d95-a68a-02bdbedce16a",
+                "TargetNodeId": "9709c4ce-187c-5350-7787-1bb473ad5bbc",
                 "SourceName": ""
             },
             {
                 "FlowConnectorType": 1,
-                "SourceNodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
-                "TargetNodeId": "d6a273d2-67c6-33fe-e52a-f8c88bfec135",
+                "SourceNodeId": "b637d942-4040-2c36-5562-29673eb10aef",
+                "TargetNodeId": "f695ee3e-3801-0d95-a68a-02bdbedce16a",
                 "SourceName": "Any_Error"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
-                "TargetNodeId": "d7b24bb9-fbcf-cc05-65a4-1e547c5332d2",
+                "SourceNodeId": "b637d942-4040-2c36-5562-29673eb10aef",
+                "TargetNodeId": "9709c4ce-187c-5350-7787-1bb473ad5bbc",
                 "SourceName": "Last_Error_Info",
                 "TargetName": "ErrorMessage"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "d6a273d2-67c6-33fe-e52a-f8c88bfec135",
-                "TargetNodeId": "c9f1a196-d329-25ae-98dc-db2ca9100658",
+                "SourceNodeId": "f695ee3e-3801-0d95-a68a-02bdbedce16a",
+                "TargetNodeId": "52e78a41-d752-2169-730b-88af5b161336",
                 "SourceName": "Result",
                 "TargetName": "result"
             }
         ],
-        "StartNodeId": "1d0823ad-4f2a-472d-8188-a7aeea3f21ba",
+        "StartNodeId": "b637d942-4040-2c36-5562-29673eb10aef",
         "ActivityLogLevelMask": 255
     },
     "RuntimeVersion": 1,
     "IsMcpEnabled": true,
-    "McpToolName": "SageQueryObjects"
+    "McpToolName": "SQLGetColumns"
 }

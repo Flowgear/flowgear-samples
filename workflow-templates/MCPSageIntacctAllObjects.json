@@ -1,13 +1,65 @@
 {
     "Name": "MCP Tool - Get All Sage Intacct Objects",
-    "Description": "Retrieves a catalogue of all available Sage Intacct objects. Use this before calling SageGetObjectDefinition for a specific object.",
+    "Description": "Retrieves a catalogue of all available Sage Intacct objects. Use this tool before calling SageGetObjectDefinition for a specific object.",
     "Workflow": {
         "Version": 1,
         "Revision": 0,
         "Nodes": [
             {
-                "NodeId": "749c1be7-ff84-9234-9944-6e6bda0e8985",
+                "NodeId": "0b33543c-9c40-1f80-b908-16d513ae9990",
+                "Name": "Note",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow invokes the Sage Intacct REST node to get object model definitions from Sage Intacct. The response is mapped to the Variable Bar node as the result. "
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6100, "Y": 3640 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "f08460e3-22cf-0126-c166-8182930ee7d1",
                 "Name": "VariableBar",
+                "LongDescription": "We define the inputs and the outputs on the Variable Bar. This is used to generate a schema which the LLM uses when invoking the Workflow.",
                 "Version": "1.0.0.3",
                 "Properties": [
                     {
@@ -24,7 +76,7 @@
                 ],
                 "HasInput": false,
                 "Outputs": [],
-                "NodeVisual": { "X": 6100, "Y": 3640 },
+                "NodeVisual": { "X": 6100, "Y": 3945 },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": true,
                 "SupportsTest": true,
@@ -43,7 +95,7 @@
                 }
             },
             {
-                "NodeId": "b6822049-acd1-a86e-8ef8-83add7ab8794",
+                "NodeId": "299ee7de-93b8-f38c-5dbe-6a8ce3e6b856",
                 "Name": "Start",
                 "Version": "1.0.0.3",
                 "Properties": [
@@ -80,16 +132,17 @@
                         "IsDefault": false
                     }
                 ],
-                "NodeVisual": { "X": 6100, "Y": 3822 },
+                "NodeVisual": { "X": 6100, "Y": 4127 },
                 "DisplayName": "Start",
                 "NodeType": 0,
                 "RuntimeVersion": 1,
                 "PublishState": 0
             },
             {
-                "NodeId": "a84cd548-b16b-56f7-eae5-68a96aca86eb",
+                "NodeId": "98b07a18-0606-6614-33cd-108fb2d10891",
                 "Name": "SageIntacctRest",
                 "ShortDescription": "Get all objects",
+                "LongDescription": "Get all available objects that can be queried in Sage Intacct.",
                 "Version": "1.0.0.8",
                 "Properties": [
                     {
@@ -128,8 +181,7 @@
                         "IsSecret": false,
                         "Name": "Connection",
                         "TypeName": "Flowgear.Nodes.SageIntacctRest.SageConnection",
-                        "ExtendedType": 2,
-                        "Value": null
+                        "ExtendedType": 2
                     },
                     {
                         "FlowDirection": 0,
@@ -179,7 +231,7 @@
                         "IsDefault": false
                     }
                 ],
-                "NodeVisual": { "X": 6405, "Y": 3822 },
+                "NodeVisual": { "X": 6405, "Y": 4127 },
                 "SupportsCustomInputProperties": true,
                 "SupportsCustomOutputProperties": false,
                 "SupportsTest": true,
@@ -199,9 +251,10 @@
                 }
             },
             {
-                "NodeId": "ca16f680-50b1-f445-8e0a-3d1a5dfa397e",
+                "NodeId": "6b2c905f-1fe1-b117-a539-6f4316bab77f",
                 "Name": "Formatter",
-                "ShortDescription": "Format Error",
+                "ShortDescription": "Suppress result on error",
+                "LongDescription": "On error, we suppress default result, the error details are returned directly to the LLM—no error object construction required.",
                 "Version": "2.0.0.0",
                 "Properties": [
                     {
@@ -213,7 +266,7 @@
                         "Name": "Expression",
                         "TypeName": "System.String",
                         "ExtendedType": 4,
-                        "Value": "{\r\n  \"result\": \"Error:{error}\"\r\n}"
+                        "Value": "{}"
                     },
                     {
                         "FlowDirection": 1,
@@ -241,13 +294,47 @@
                         "Name": "Result",
                         "TypeName": "System.String",
                         "ExtendedType": 4
-                    },
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6405, "Y": 4519 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "7a5c0cea-bcd2-dcda-eb31-d2c832876597",
+                "Name": "Error",
+                "LongDescription": "We still want the Workflow to provide an error so that the LLM is aware that an error has occurred. Errors can be handle like this, or a custom error object can be returned,",
+                "Version": "1.0.0.4",
+                "Properties": [
                     {
                         "FlowDirection": 1,
-                        "Behaviour": 2,
+                        "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "IsSecret": false,
-                        "Name": "error",
+                        "Name": "ErrorMessage",
                         "TypeName": "System.String",
                         "ExtendedType": 0
                     }
@@ -261,61 +348,68 @@
                         "IsDefault": false
                     }
                 ],
-                "NodeVisual": { "X": 6710, "Y": 3822 },
-                "SupportsCustomInputProperties": true,
-                "SupportsCustomOutputProperties": true,
+                "NodeVisual": { "X": 6710, "Y": 4519 },
                 "SupportsTest": false,
                 "SupportsAcquireMetadata": false,
                 "SupportsListSamples": false,
-                "DisplayName": "Formatter",
+                "DisplayName": "Error",
                 "NodeType": 1,
                 "Key": "latest",
                 "RuntimeVersion": 1,
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2025-07-08T15:18:53.3071473+00:00",
-                    "Username": "(ServiceHost)",
-                    "UserKey": ""
+                    "ModifiedTime": "2023-03-20T15:44:51.3030031+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "5e6d661a-4cdf-4a06-a954-520820c7213b"
                 }
             }
         ],
         "FlowConnectors": [
             {
                 "FlowConnectorType": 1,
-                "SourceNodeId": "b6822049-acd1-a86e-8ef8-83add7ab8794",
-                "TargetNodeId": "a84cd548-b16b-56f7-eae5-68a96aca86eb",
+                "SourceNodeId": "299ee7de-93b8-f38c-5dbe-6a8ce3e6b856",
+                "TargetNodeId": "98b07a18-0606-6614-33cd-108fb2d10891",
                 "SourceName": "Run_Now"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "a84cd548-b16b-56f7-eae5-68a96aca86eb",
-                "TargetNodeId": "749c1be7-ff84-9234-9944-6e6bda0e8985",
+                "SourceNodeId": "98b07a18-0606-6614-33cd-108fb2d10891",
+                "TargetNodeId": "f08460e3-22cf-0126-c166-8182930ee7d1",
                 "SourceName": "Response",
                 "TargetName": "result"
             },
             {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "b6822049-acd1-a86e-8ef8-83add7ab8794",
-                "TargetNodeId": "ca16f680-50b1-f445-8e0a-3d1a5dfa397e",
-                "SourceName": "Last_Error_Info",
-                "TargetName": "error"
+                "FlowConnectorType": 1,
+                "SourceNodeId": "299ee7de-93b8-f38c-5dbe-6a8ce3e6b856",
+                "TargetNodeId": "6b2c905f-1fe1-b117-a539-6f4316bab77f",
+                "SourceName": "Any_Error"
             },
             {
                 "FlowConnectorType": 2,
-                "SourceNodeId": "ca16f680-50b1-f445-8e0a-3d1a5dfa397e",
-                "TargetNodeId": "749c1be7-ff84-9234-9944-6e6bda0e8985",
+                "SourceNodeId": "6b2c905f-1fe1-b117-a539-6f4316bab77f",
+                "TargetNodeId": "f08460e3-22cf-0126-c166-8182930ee7d1",
                 "SourceName": "Result",
                 "TargetName": "result"
             },
             {
                 "FlowConnectorType": 1,
-                "SourceNodeId": "a84cd548-b16b-56f7-eae5-68a96aca86eb",
-                "TargetNodeId": "ca16f680-50b1-f445-8e0a-3d1a5dfa397e",
-                "SourceName": "Error"
+                "SourceNodeId": "6b2c905f-1fe1-b117-a539-6f4316bab77f",
+                "TargetNodeId": "7a5c0cea-bcd2-dcda-eb31-d2c832876597",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "299ee7de-93b8-f38c-5dbe-6a8ce3e6b856",
+                "TargetNodeId": "7a5c0cea-bcd2-dcda-eb31-d2c832876597",
+                "SourceName": "Last_Error_Info",
+                "TargetName": "ErrorMessage"
             }
         ],
-        "StartNodeId": "b6822049-acd1-a86e-8ef8-83add7ab8794",
+        "StartNodeId": "299ee7de-93b8-f38c-5dbe-6a8ce3e6b856",
         "ActivityLogLevelMask": 255
-    }
+    },
+    "RuntimeVersion": 1,
+    "IsMcpEnabled": true,
+    "McpToolName": "SageGetAllObjectNames"
 }
