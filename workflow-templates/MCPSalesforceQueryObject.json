@@ -1,0 +1,672 @@
+{
+    "Name": "MCP Tool - Query Select Salesforce Objects",
+    "Description": "Similar to the SELECT command in Structured Query Language (SQL), SOQL allows you to specify the source object (such as Account), a list of fields to retrieve, and conditions for selecting rows in the source object.\n\nSOQL query syntax consists of a required SELECT statement followed by one or more optional clauses, such as TYPEOF, WHERE, WITH, GROUP BY, and ORDER BY.\n\nExamples:\nSELECT one or more fields FROM an object WHERE filter statements and, optionally, results are ordered\n\nSELECT Id, Name FROM Account WHERE Name = 'Sandy' \n\nSELECT Id, LastName, FirstName FROM Contact ORDER BY LastName, FirstName\n\nDefinition:\nSELECT fieldList [subquery][...]\nFROM objectType[,...] \n[WHERE conditionExpression]\n[GROUP BY {fieldGroupByList|ROLLUP (fieldSubtotalGroupByList)|CUBE (fieldSubtotalGroupByList)} \n    [HAVING havingConditionExpression] ] \n[ORDER BY fieldOrderByList {ASC|DESC} [NULLS {FIRST|LAST}] ]\n[LIMIT numberOfRowsToReturn]\n[OFFSET numberOfRowsToSkip]\n\nfieldList subquery:\nSpecifies a list of one or more fields, separated by commas, that you want to retrieve from the specified object\n\nobjectType:\nSpecifies the type of object that you want to query(). Provide a valid object, such as Account, and must have read-level permissions to that object.\n\nconditionExpression:\nIf WHERE is specified, determines which rows and values in the specified object (objectType) to filter against. If unspecified, the query() retrieves all the rows in the object that are visible to the user.\n\nfieldGroupByList:\nSpecifies a list of one or more fields, separated by commas, that are used to group the query results. A GROUP BY clause is used with aggregate functions to summarize the data. This clause also lets you roll up query results rather than having to process the individual records in your code\n\nfieldSubtotalGroupByList:\nSpecifies a list of up to three fields, separated by commas, that are used to group the query results\n\nhavingConditionExpression:\nIf the query includes a GROUP BY clause, this conditional expression filters the records that the GROUP BY returns\n\nfieldOrderByList:\nSpecifies a list of one or more fields, separated by commas, that are used to order the query results\n\nUse the tools SalesforceListObjects and SalesforceGetFieldMetadata to get list of available objects and fields which can be queried.",
+    "Workflow": {
+        "Version": 1,
+        "Revision": 0,
+        "Nodes": [
+            {
+                "NodeId": "bc8ba536-8de5-409a-dee1-850ac8ccf78b",
+                "Name": "Note",
+                "Version": "1.0.0.2",
+                "Properties": [
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Text",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": "This Workflow invokes the Salesforce node to query an object based on a provided query and objectName. The response is mapped to the Variable Bar node as the result. "
+                    },
+                    {
+                        "FlowDirection": 0,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "NoteSize",
+                        "TypeName": "System.Int32",
+                        "ExtendedType": 0,
+                        "Value": 2
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6100, "Y": 3640 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Note",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:56.2764616+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "1c82de12-7708-47fe-8b78-82664e06b76b"
+                }
+            },
+            {
+                "NodeId": "42eea8c9-10ee-075c-e69e-aa81412b1387",
+                "Name": "VariableBar",
+                "LongDescription": "We define the inputs and the outputs on the Variable Bar. This is used to generate a schema which the LLM uses when invoking the Workflow.",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "Description": "Similar to the SELECT command in Structured Query Language (SQL), SOQL allows you to specify the source object (such as Account), a list of fields to retrieve, and conditions for selecting rows in the source object.\n\nExamples for the selectQuery:\nSELECT Id, Name\nFROM Account\nWHERE Name = 'Sandy' \n\nSELECT Id, LastName, FirstName\nFROM Contact\nORDER BY LastName, FirstName\n\nDefinition:\nSELECT fieldList [subquery][...]\nFROM objectType[,...] \n[WHERE conditionExpression]\n[GROUP BY {fieldGroupByList|ROLLUP (fieldSubtotalGroupByList)|CUBE (fieldSubtotalGroupByList)} \n    [HAVING havingConditionExpression] ] \n[ORDER BY fieldOrderByList {ASC|DESC} [NULLS {FIRST|LAST}] ]\n[LIMIT numberOfRowsToReturn]\n[OFFSET numberOfRowsToSkip]\n\nfieldList subquery:\nSpecifies a list of one or more fields, separated by commas, that you want to retrieve from the specified object\n\nobjectType:\nSpecifies the type of object that you want to query(). Provide a valid object, such as Account, and must have read-level permissions to that object.\n\nconditionExpression:\nIf WHERE is specified, determines which rows and values in the specified object (objectType) to filter against. If unspecified, the query() retrieves all the rows in the object that are visible to the user.\n\nfieldGroupByList:\nSpecifies a list of one or more fields, separated by commas, that are used to group the query results. A GROUP BY clause is used with aggregate functions to summarize the data. This clause also lets you roll up query results rather than having to process the individual records in your code\n\nfieldSubtotalGroupByList:\nSpecifies a list of up to three fields, separated by commas, that are used to group the query results\n\nhavingConditionExpression:\nIf the query includes a GROUP BY clause, this conditional expression filters the records that the GROUP BY returns\n\nfieldOrderByList:\nSpecifies a list of one or more fields, separated by commas, that are used to order the query results\n\nUse the tools SalesforceListObjects and SalesforceGetFieldMetadata to get list of available objects and fields which can be queried.",
+                        "IsSecret": false,
+                        "Name": "request",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"objectName\": \"Account\",\r\n  \"selectQuery\": \"SELECT Id, IsDeleted, MasterRecordId, Name, Type, ParentId FROM Account\"\r\n}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "Description": "Example Response:\n\n{\n  \"Response\": {\n    \"nextRecordsUrl\": null,\n    \"totalSize\": \"1526\",\n    \"done\": \"true\",\n    \"records\": [\n      {\n        \"attributes\": {\n          \"type\": \"Account\",\n          \"url\": \"/services/data/v59.0/sobjects/Account/0011v00003YUFDjAAP\"\n        },\n        \"Id\": \"0011v00003YUFDjAAP\",\n        \"IsDeleted\": \"false\",\n        \"MasterRecordId\": null,\n        \"Name\": \"Mitsue Tollner\",\n        \"Type\": null,\n        \"ParentId\": null\n      },\n      {\n        \"attributes\": {\n          \"type\": \"Account\",\n          \"url\": \"/services/data/v59.0/sobjects/Account/0011v00003YUFDkAAP\"\n        },\n        \"Id\": \"0011v00003YUFDkAAP\",\n        \"IsDeleted\": \"false\",\n        \"MasterRecordId\": null,\n        \"Name\": \"Leota Dilliard\",\n        \"Type\": null,\n        \"ParentId\": null\n      }\n\t  ]\n\t  }}\n",
+                        "IsSecret": false,
+                        "Name": "result",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 7,
+                        "Value": "{\r\n  \"nextRecordsUrl\": null,\r\n  \"totalSize\": \"1526\",\r\n  \"done\": \"true\",\r\n  \"records\": [\r\n    {\r\n      \"attributes\": {\r\n        \"type\": \"Account\",\r\n        \"url\": \"/services/data/v59.0/sobjects/Account/5678\"\r\n      },\r\n      \"Id\": \"5678\",\r\n      \"IsDeleted\": \"false\",\r\n      \"MasterRecordId\": null,\r\n      \"Name\": \"Mitsue Tollner\",\r\n      \"Type\": null,\r\n      \"ParentId\": null\r\n    },\r\n    {\r\n      \"attributes\": {\r\n        \"type\": \"Account\",\r\n        \"url\": \"/services/data/v59.0/sobjects/Account/1234\"\r\n      },\r\n      \"Id\": \"1234\",\r\n      \"IsDeleted\": \"false\",\r\n      \"MasterRecordId\": null,\r\n      \"Name\": \"Test Name\",\r\n      \"Type\": null,\r\n      \"ParentId\": null\r\n    }\r\n  ]\r\n}"
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [],
+                "NodeVisual": { "X": 6100, "Y": 3945 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Variable Bar",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-08T15:21:23.9375599+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "7d2ff71f-b1ca-90f2-75e5-12ac034cae01",
+                "Name": "Start",
+                "Version": "1.0.0.3",
+                "Properties": [
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Last_Error_Info",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": false,
+                "Outputs": [
+                    {
+                        "Label": "Start",
+                        "IsException": false,
+                        "IsDefault": true
+                    },
+                    {
+                        "Label": "Run_Now",
+                        "IsException": false,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Any_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    },
+                    {
+                        "Label": "Unhandled_Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6100, "Y": 4153 },
+                "DisplayName": "Start",
+                "NodeType": 0,
+                "RuntimeVersion": 1,
+                "PublishState": 0
+            },
+            {
+                "NodeId": "3a789855-21c0-58f7-dc9b-a0217968a493",
+                "Name": "Formatter",
+                "ShortDescription": "Format Select Query",
+                "LongDescription": "Prepare the Request by adding the query into a Request XML tag",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "<Request>{query}</Request>"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "XML"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 2,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "query",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0,
+                        "Value": ""
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6405, "Y": 4153 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-08T15:18:53.3071473+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "e20387aa-36ae-3a1a-9f41-cf4a545ba561",
+                "Name": "Salesforce",
+                "ShortDescription": "Salesforce Query",
+                "LongDescription": "Query the Salesforce object",
+                "Version": "4.1.1.7",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "SubProperties": [
+                            {
+                                "Name": "Url",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerKey",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "ConsumerSecret",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "Scope",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "full refresh_token offline_access"
+                            },
+                            {
+                                "Name": "AccessToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "RefreshToken",
+                                "TypeName": "System.String",
+                                "ExtendedType": 3
+                            },
+                            {
+                                "Name": "InstanceUrl",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "DontInterleaveRequestInResponse",
+                                "TypeName": "System.Boolean",
+                                "ExtendedType": 0
+                            },
+                            {
+                                "Name": "EncodingMode",
+                                "TypeName": "Flowgear.Nodes.Salesforce.EncodingModes",
+                                "ExtendedType": 0,
+                                "EnumValues": ["XmlInXmlOut", "XmlInJsonOut"]
+                            },
+                            {
+                                "Name": "ApiVersion",
+                                "TypeName": "System.String",
+                                "ExtendedType": 0,
+                                "Value": "v59.0"
+                            }
+                        ],
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "(None)",
+                        "IsSecret": false,
+                        "Name": "Connection",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Connection",
+                        "ExtendedType": 2
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "Flowgear.Nodes.Salesforce.Salesforce+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "Create",
+                            "Update",
+                            "Get",
+                            "Query",
+                            "Upsert",
+                            "GetNextRecords",
+                            "QueryAll",
+                            "Delete",
+                            "ListSamples",
+                            "GetSample",
+                            "DescribeGlobal",
+                            "Describe"
+                        ],
+                        "Value": "QueryAll"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ObjectName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ExternalIdField",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Request",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HadError",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Response",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6710, "Y": 4153 },
+                "SupportsTest": true,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": true,
+                "InteractFlags": 3,
+                "DisplayName": "Salesforce",
+                "NodeType": 0,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-17T05:10:45.2979985+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "c0408be7-fefe-65f5-e89c-6f72148d7add",
+                "Name": "JsonConvert",
+                "ShortDescription": "XML to JSON",
+                "LongDescription": "We convert the XML response to JSON because the MCP server is based on JSON schema.",
+                "Version": "1.1.0.1",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Action",
+                        "TypeName": "JsonConvert.JsonConvert+Actions",
+                        "ExtendedType": 0,
+                        "EnumValues": ["JsonToXml", "XmlToJson"],
+                        "Value": "XmlToJson"
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Json",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 3,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Xml",
+                        "TypeName": "System.String",
+                        "ExtendedType": 1
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 7015, "Y": 4153 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "JSON Convert",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2025-07-08T15:19:11.066932+00:00",
+                    "Username": "(ServiceHost)",
+                    "UserKey": ""
+                }
+            },
+            {
+                "NodeId": "249923fb-0ead-c9ed-c64a-9b8fb98e051c",
+                "Name": "Formatter",
+                "ShortDescription": "Suppress result on error",
+                "LongDescription": "On error, we suppress default result, the error details are returned directly to the LLM—no error object construction required.",
+                "Version": "2.0.0.0",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "IsSecret": false,
+                        "Name": "Expression",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4,
+                        "Value": "{}"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Escaping",
+                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+                        "ExtendedType": 0,
+                        "EnumValues": [
+                            "None",
+                            "SQL",
+                            "XML",
+                            "JSON",
+                            "Uri",
+                            "UriSegment"
+                        ],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Result",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6405, "Y": 4545 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Formatter",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
+                }
+            },
+            {
+                "NodeId": "525deeb4-fa12-9e61-0adc-a041f0aefae1",
+                "Name": "Error",
+                "LongDescription": "We still want the Workflow to provide an error so that the LLM is aware that an error has occurred. Errors can be handle like this, or a custom error object can be returned,",
+                "Version": "1.0.0.4",
+                "Properties": [
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "ErrorMessage",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    }
+                ],
+                "HasInput": true,
+                "Outputs": [
+                    { "Label": "", "IsException": false, "IsDefault": true },
+                    {
+                        "Label": "Error",
+                        "IsException": true,
+                        "IsDefault": false
+                    }
+                ],
+                "NodeVisual": { "X": 6710, "Y": 4545 },
+                "SupportsTest": false,
+                "SupportsAcquireMetadata": false,
+                "SupportsListSamples": false,
+                "DisplayName": "Error",
+                "NodeType": 1,
+                "Key": "latest",
+                "RuntimeVersion": 1,
+                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+                "PublishState": 3,
+                "Metadata": {
+                    "ModifiedTime": "2023-03-20T15:44:51.3030031+00:00",
+                    "Username": "test@flowgear.net",
+                    "UserKey": "5e6d661a-4cdf-4a06-a954-520820c7213b"
+                }
+            }
+        ],
+        "FlowConnectors": [
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "42eea8c9-10ee-075c-e69e-aa81412b1387",
+                "TargetNodeId": "e20387aa-36ae-3a1a-9f41-cf4a545ba561",
+                "SourceName": "request",
+                "TargetName": "ObjectName",
+                "Expression": "objectName"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7d2ff71f-b1ca-90f2-75e5-12ac034cae01",
+                "TargetNodeId": "3a789855-21c0-58f7-dc9b-a0217968a493",
+                "SourceName": "Run_Now"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "3a789855-21c0-58f7-dc9b-a0217968a493",
+                "TargetNodeId": "e20387aa-36ae-3a1a-9f41-cf4a545ba561",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3a789855-21c0-58f7-dc9b-a0217968a493",
+                "TargetNodeId": "e20387aa-36ae-3a1a-9f41-cf4a545ba561",
+                "SourceName": "Result",
+                "TargetName": "Request"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "42eea8c9-10ee-075c-e69e-aa81412b1387",
+                "TargetNodeId": "3a789855-21c0-58f7-dc9b-a0217968a493",
+                "SourceName": "request",
+                "TargetName": "query",
+                "Expression": "selectQuery"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "e20387aa-36ae-3a1a-9f41-cf4a545ba561",
+                "TargetNodeId": "c0408be7-fefe-65f5-e89c-6f72148d7add",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "e20387aa-36ae-3a1a-9f41-cf4a545ba561",
+                "TargetNodeId": "c0408be7-fefe-65f5-e89c-6f72148d7add",
+                "SourceName": "Response",
+                "TargetName": "Xml"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "c0408be7-fefe-65f5-e89c-6f72148d7add",
+                "TargetNodeId": "42eea8c9-10ee-075c-e69e-aa81412b1387",
+                "SourceName": "Json",
+                "TargetName": "result",
+                "Expression": "Response"
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "249923fb-0ead-c9ed-c64a-9b8fb98e051c",
+                "TargetNodeId": "525deeb4-fa12-9e61-0adc-a041f0aefae1",
+                "SourceName": ""
+            },
+            {
+                "FlowConnectorType": 1,
+                "SourceNodeId": "7d2ff71f-b1ca-90f2-75e5-12ac034cae01",
+                "TargetNodeId": "249923fb-0ead-c9ed-c64a-9b8fb98e051c",
+                "SourceName": "Any_Error"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "7d2ff71f-b1ca-90f2-75e5-12ac034cae01",
+                "TargetNodeId": "525deeb4-fa12-9e61-0adc-a041f0aefae1",
+                "SourceName": "Last_Error_Info",
+                "TargetName": "ErrorMessage"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "249923fb-0ead-c9ed-c64a-9b8fb98e051c",
+                "TargetNodeId": "42eea8c9-10ee-075c-e69e-aa81412b1387",
+                "SourceName": "Result",
+                "TargetName": "result"
+            }
+        ],
+        "StartNodeId": "7d2ff71f-b1ca-90f2-75e5-12ac034cae01",
+        "ActivityLogLevelMask": 255
+    },
+    "RuntimeVersion": 1,
+    "IsMcpEnabled": true,
+    "McpToolName": "SalesforceQueryObject"
+}
