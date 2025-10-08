@@ -1,6 +1,6 @@
 {
     "Name": "MCP Tool - Hello World",
-    "Description": "This tool demonstrates the basics needed to be invoked by an LLM by echoing a provided input string.",
+    "Description": "This tool demonstrates the basics needed to be invoked by an LLM by sending an email.",
     "Workflow": {
         "Version": 1,
         "Revision": 0,
@@ -18,7 +18,7 @@
                         "Name": "Text",
                         "TypeName": "System.String",
                         "ExtendedType": 0,
-                        "Value": "This Workflow echoes the input string provided."
+                        "Value": "This Workflow sends an email based on the provided inputs. All inputs, including subject, body, and recipients, are required."
                     },
                     {
                         "FlowDirection": 0,
@@ -57,7 +57,7 @@
                 }
             },
             {
-                "NodeId": "8a93da94-554d-051f-4ffa-893a78e58f93",
+                "NodeId": "3b7e4f7c-1333-dfde-e884-99d692af87ad",
                 "Name": "VariableBar",
                 "LongDescription": "We define the inputs and the outputs on the Variable Bar. This is used to generate a schema which the LLM uses when invoking the Workflow.",
                 "Version": "1.0.0.3",
@@ -66,21 +66,36 @@
                         "FlowDirection": 2,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
+                        "Description": "string - the email subject",
                         "IsSecret": false,
-                        "Name": "input",
+                        "Name": "subject",
                         "TypeName": "System.String",
                         "ExtendedType": 0,
-                        "Value": "Hello World"
+                        "Value": "Email Tool Subject"
                     },
                     {
-                        "FlowDirection": 1,
+                        "FlowDirection": 2,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "Description": "string - email body, can be html",
                         "IsSecret": false,
-                        "Name": "result",
-                        "TypeName": "System.String",
-                        "ExtendedType": 0,
-                        "Value": ""
+                        "Name": "body",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 4,
+                        "Value": "Hi Accounts Payable Team,\r\n\r\nHope you’re well. I’m reaching out about invoice 123 for $1,240.00, due Aug 31, 2025. Could you let us know the payment status, or if you need a copy of the invoice?\r\nThanks so much.\r\n\r\nYour Name"
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "Schema": "",
+                        "Description": "comma separated string of emails where the emails would be sent",
+                        "IsSecret": false,
+                        "Name": "recipients",
+                        "TypeName": "apiTypes.String",
+                        "ExtendedType": 4,
+                        "Value": "test@example.com;"
                     }
                 ],
                 "HasInput": false,
@@ -141,172 +156,93 @@
                         "IsDefault": false
                     }
                 ],
-                "NodeVisual": { "X": 6100, "Y": 4153 },
+                "NodeVisual": { "X": 6100, "Y": 4179 },
                 "DisplayName": "Start",
                 "NodeType": 0,
                 "RuntimeVersion": 1,
                 "PublishState": 0
             },
             {
-                "NodeId": "47b43a73-82f8-d880-46f3-c4db6f8d21c2",
-                "Name": "Formatter",
-                "ShortDescription": "Echo input",
-                "LongDescription": "Echo the provided input string",
-                "Version": "2.0.0.0",
-                "Properties": [
-                    {
-                        "FlowDirection": 1,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "Schema": "",
-                        "IsSecret": false,
-                        "Name": "Expression",
-                        "TypeName": "System.String",
-                        "ExtendedType": 4,
-                        "Value": "Hello World"
-                    },
-                    {
-                        "FlowDirection": 1,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "Escaping",
-                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
-                        "ExtendedType": 0,
-                        "EnumValues": [
-                            "None",
-                            "SQL",
-                            "XML",
-                            "JSON",
-                            "Uri",
-                            "UriSegment"
-                        ],
-                        "Value": "None"
-                    },
-                    {
-                        "FlowDirection": 2,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "Result",
-                        "TypeName": "System.String",
-                        "ExtendedType": 4
-                    }
-                ],
-                "HasInput": true,
-                "Outputs": [
-                    { "Label": "", "IsException": false, "IsDefault": true },
-                    {
-                        "Label": "Error",
-                        "IsException": true,
-                        "IsDefault": false
-                    }
-                ],
-                "NodeVisual": { "X": 6405, "Y": 4153 },
-                "SupportsCustomInputProperties": true,
-                "SupportsCustomOutputProperties": true,
-                "SupportsTest": false,
-                "SupportsAcquireMetadata": false,
-                "SupportsListSamples": false,
-                "DisplayName": "Formatter",
-                "NodeType": 1,
-                "Key": "latest",
-                "RuntimeVersion": 1,
-                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
-                "PublishState": 3,
-                "Metadata": {
-                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
-                    "Username": "test@flowgear.net",
-                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
-                }
-            },
-            {
-                "NodeId": "ebb992fb-851f-6c21-3e24-d7cf4aaf90cb",
-                "Name": "Formatter",
-                "ShortDescription": "Suppress result on error",
-                "LongDescription": "On error, we suppress default result, the error details are returned directly to the LLM—no error object construction required.",
-                "Version": "2.0.0.0",
-                "Properties": [
-                    {
-                        "FlowDirection": 1,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "Schema": "",
-                        "IsSecret": false,
-                        "Name": "Expression",
-                        "TypeName": "System.String",
-                        "ExtendedType": 4,
-                        "Value": "{}"
-                    },
-                    {
-                        "FlowDirection": 1,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "Escaping",
-                        "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
-                        "ExtendedType": 0,
-                        "EnumValues": [
-                            "None",
-                            "SQL",
-                            "XML",
-                            "JSON",
-                            "Uri",
-                            "UriSegment"
-                        ],
-                        "Value": "None"
-                    },
-                    {
-                        "FlowDirection": 2,
-                        "Behaviour": 0,
-                        "CustomPropertyEscaping": 0,
-                        "IsSecret": false,
-                        "Name": "Result",
-                        "TypeName": "System.String",
-                        "ExtendedType": 4
-                    }
-                ],
-                "HasInput": true,
-                "Outputs": [
-                    { "Label": "", "IsException": false, "IsDefault": true },
-                    {
-                        "Label": "Error",
-                        "IsException": true,
-                        "IsDefault": false
-                    }
-                ],
-                "NodeVisual": { "X": 6405, "Y": 4545 },
-                "SupportsCustomInputProperties": true,
-                "SupportsCustomOutputProperties": true,
-                "SupportsTest": false,
-                "SupportsAcquireMetadata": false,
-                "SupportsListSamples": false,
-                "DisplayName": "Formatter",
-                "NodeType": 1,
-                "Key": "latest",
-                "RuntimeVersion": 1,
-                "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
-                "PublishState": 3,
-                "Metadata": {
-                    "ModifiedTime": "2023-03-20T15:42:21.7164127+00:00",
-                    "Username": "test@flowgear.net",
-                    "UserKey": "13c1da70-b815-4d51-a01c-94b83372e2f1"
-                }
-            },
-            {
-                "NodeId": "e89f3e42-89f3-afd9-dd4b-23b18261958a",
-                "Name": "Error",
-                "LongDescription": "We still want the Workflow to provide an error so that the LLM is aware that an error has occurred. Errors can be handle like this, or a custom error object can be returned,",
-                "Version": "1.0.0.4",
+                "NodeId": "a888b9af-8122-c068-2cd9-154f4e247230",
+                "Name": "EmailAlert",
+                "ShortDescription": "Send Email",
+                "LongDescription": "Send an email using the provided inputs.",
+                "Version": "1.0.4.5",
                 "Properties": [
                     {
                         "FlowDirection": 1,
                         "Behaviour": 0,
                         "CustomPropertyEscaping": 0,
                         "IsSecret": false,
-                        "Name": "ErrorMessage",
+                        "Name": "Recipients",
                         "TypeName": "System.String",
                         "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Subject",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Body",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "HtmlBody",
+                        "TypeName": "System.Boolean",
+                        "ExtendedType": 0,
+                        "Value": true
+                    },
+                    {
+                        "FlowDirection": 2,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "PreparedBody",
+                        "TypeName": "System.String",
+                        "ExtendedType": 4
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "BodyProcessor",
+                        "TypeName": "flowgear.Nodes.fgSystem.EmailAlert+BodyProcessors",
+                        "ExtendedType": 0,
+                        "EnumValues": ["None", "XmlToHtmlTable"],
+                        "Value": "None"
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "AttachmentName",
+                        "TypeName": "System.String",
+                        "ExtendedType": 0
+                    },
+                    {
+                        "FlowDirection": 1,
+                        "Behaviour": 0,
+                        "CustomPropertyEscaping": 0,
+                        "IsSecret": false,
+                        "Name": "Attachment",
+                        "TypeName": "System.Object",
+                        "ExtendedType": 4
                     }
                 ],
                 "HasInput": true,
@@ -318,76 +254,52 @@
                         "IsDefault": false
                     }
                 ],
-                "NodeVisual": { "X": 6710, "Y": 4545 },
+                "NodeVisual": { "X": 6405, "Y": 4179 },
+                "SupportsCustomInputProperties": true,
+                "SupportsCustomOutputProperties": true,
                 "SupportsTest": false,
                 "SupportsAcquireMetadata": false,
                 "SupportsListSamples": false,
-                "DisplayName": "Error",
-                "NodeType": 1,
+                "DisplayName": "Email Alert",
+                "NodeType": 0,
                 "Key": "latest",
                 "RuntimeVersion": 1,
                 "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
                 "PublishState": 3,
                 "Metadata": {
-                    "ModifiedTime": "2023-03-20T15:44:51.3030031+00:00",
-                    "Username": "test@flowgear.net",
-                    "UserKey": "5e6d661a-4cdf-4a06-a954-520820c7213b"
+                    "ModifiedTime": "2024-06-19T06:45:58.5367915+00:00",
+                    "Username": "stefan.pietersen@flowgear.net",
+                    "UserKey": "38c578cd-1ab9-4980-8d1f-502c9d63204f"
                 }
             }
         ],
         "FlowConnectors": [
             {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3b7e4f7c-1333-dfde-e884-99d692af87ad",
+                "TargetNodeId": "a888b9af-8122-c068-2cd9-154f4e247230",
+                "SourceName": "recipients",
+                "TargetName": "Recipients"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3b7e4f7c-1333-dfde-e884-99d692af87ad",
+                "TargetNodeId": "a888b9af-8122-c068-2cd9-154f4e247230",
+                "SourceName": "subject",
+                "TargetName": "Subject"
+            },
+            {
+                "FlowConnectorType": 2,
+                "SourceNodeId": "3b7e4f7c-1333-dfde-e884-99d692af87ad",
+                "TargetNodeId": "a888b9af-8122-c068-2cd9-154f4e247230",
+                "SourceName": "body",
+                "TargetName": "Body"
+            },
+            {
                 "FlowConnectorType": 1,
                 "SourceNodeId": "64249531-b84f-3127-84e4-9f50861d2a37",
-                "TargetNodeId": "47b43a73-82f8-d880-46f3-c4db6f8d21c2",
+                "TargetNodeId": "a888b9af-8122-c068-2cd9-154f4e247230",
                 "SourceName": "Run_Now"
-            },
-            {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "8a93da94-554d-051f-4ffa-893a78e58f93",
-                "TargetNodeId": "47b43a73-82f8-d880-46f3-c4db6f8d21c2",
-                "SourceName": "input",
-                "TargetName": "Expression"
-            },
-            {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "47b43a73-82f8-d880-46f3-c4db6f8d21c2",
-                "TargetNodeId": "8a93da94-554d-051f-4ffa-893a78e58f93",
-                "SourceName": "Result",
-                "TargetName": "result"
-            },
-            {
-                "FlowConnectorType": 1,
-                "SourceNodeId": "ebb992fb-851f-6c21-3e24-d7cf4aaf90cb",
-                "TargetNodeId": "e89f3e42-89f3-afd9-dd4b-23b18261958a",
-                "SourceName": ""
-            },
-            {
-                "FlowConnectorType": 1,
-                "SourceNodeId": "64249531-b84f-3127-84e4-9f50861d2a37",
-                "TargetNodeId": "ebb992fb-851f-6c21-3e24-d7cf4aaf90cb",
-                "SourceName": "Any_Error"
-            },
-            {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "64249531-b84f-3127-84e4-9f50861d2a37",
-                "TargetNodeId": "ebb992fb-851f-6c21-3e24-d7cf4aaf90cb",
-                "SourceName": "Last_Error_Info",
-                "TargetName": "Expression"
-            },
-            {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "64249531-b84f-3127-84e4-9f50861d2a37",
-                "TargetNodeId": "e89f3e42-89f3-afd9-dd4b-23b18261958a",
-                "SourceName": "Last_Error_Info",
-                "TargetName": "ErrorMessage"
-            },
-            {
-                "FlowConnectorType": 2,
-                "SourceNodeId": "ebb992fb-851f-6c21-3e24-d7cf4aaf90cb",
-                "TargetNodeId": "8a93da94-554d-051f-4ffa-893a78e58f93",
-                "SourceName": "Result",
-                "TargetName": "result"
             }
         ],
         "StartNodeId": "64249531-b84f-3127-84e4-9f50861d2a37",
