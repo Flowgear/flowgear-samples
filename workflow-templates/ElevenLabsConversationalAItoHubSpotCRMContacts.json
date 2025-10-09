@@ -7,22 +7,28 @@
     "Revision": 0,
     "Nodes": [
       {
+        "NodeId": "a707faab-167c-2ea3-3b6a-b2f5a89e6af6",
         "Name": "VariableBar",
+        "ShortDescription": "SetKeyValueGroup",
         "Version": "1.0.0.3",
         "Properties": [
           {
-            "Name": "Group",
-            "TypeName": "System.String",
-            "ExtendedType": 0,
-            "Value": "ElevenLabsToHubSpotCRM",
             "FlowDirection": 2,
             "Behaviour": 0,
             "CustomPropertyEscaping": 0,
-            "IsSecret": false
+            "IsSecret": false,
+            "Name": "Group",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "ElevenLabsToHubSpotCRM"
           }
         ],
         "HasInput": false,
         "Outputs": [],
+        "NodeVisual": {
+          "X": 6100,
+          "Y": 3640
+        },
         "SupportsCustomInputProperties": true,
         "SupportsCustomOutputProperties": true,
         "SupportsTest": true,
@@ -32,43 +38,38 @@
         "NodeType": 1,
         "Key": "latest",
         "RuntimeVersion": 1,
-        "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAOdKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANKC1+AAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQBQYWludC5ORVQgdjMuNS44NzuAXQAAABtJREFUKFNjYISA//+hDAYMgf9ogIGwwNA1AwDVUbmN9lW/AAAAAABJRU5ErkJggg==",
         "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
         "PublishState": 3,
         "Metadata": {
           "ModifiedTime": "2023-10-19T15:12:03.2133917+00:00",
           "Username": "daniel.chilcott@flowgear.net",
           "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
-        },
-        "NodeId": "a707faab-167c-2ea3-3b6a-b2f5a89e6af6",
-        "NodeVisual": {
-          "X": 6100,
-          "Y": 3640
-        },
-        "ShortDescription": "SetKeyValueGroup"
+        }
       },
       {
+        "NodeId": "75cd2683-ce75-338c-7292-6fdde4ad36f0",
         "Name": "Note",
+        "ShortDescription": "About this Workflow",
         "Version": "1.0.0.2",
         "Properties": [
           {
             "FlowDirection": 0,
-            "Name": "Text",
-            "TypeName": "System.String",
-            "ExtendedType": 0,
             "Behaviour": 0,
             "CustomPropertyEscaping": 0,
             "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
             "Value": "This Workflow pages through ElevenLabs agents and their conversations using cursors, then pulls each conversation's details (including analysis) to check whether contact info was captured via Data Collection. It maps first_name, last_name, email, and phone into a HubSpot CRM payload to create a contact, creates the contact, and logs each attempt as a success or error."
           },
           {
             "FlowDirection": 0,
-            "Name": "NoteSize",
-            "TypeName": "System.Int32",
-            "ExtendedType": 0,
             "Behaviour": 0,
             "CustomPropertyEscaping": 0,
             "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
             "Value": 2
           }
         ],
@@ -85,6 +86,10 @@
             "IsDefault": false
           }
         ],
+        "NodeVisual": {
+          "X": 6405,
+          "Y": 3640
+        },
         "SupportsTest": true,
         "SupportsAcquireMetadata": false,
         "SupportsListSamples": false,
@@ -92,20 +97,13 @@
         "NodeType": 1,
         "Key": "latest",
         "RuntimeVersion": 1,
-        "Icon": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHTAAAB0wASOu6tcAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAgJJREFUOE+V00tPU0EUAOAxasDEIoSKoVQnVAggsddqwMi7lEe9B6shxhjDUmPcuHHFL2AhVEQelmIpvS21Xm8LbaHUd4wxxhjjzpVxgzsT/QVzONPUlUZ6F7P8zpnzYg0OvqfRYd/b4LDvq6s9XG47dqCm6aSFNzktvNlZwZuVCt6iHOItpyr5CXqtrireerqKO9uqjyrt1WWs8XgBW+p5rfX6jbH+kH5re1JThD/mEtPxM2Im0SZm9bNi3jgnHqY6xeJ6t1jK9IrQhlvcXe5Q6Qf2/fXcVsDfvn/9EU3fRsJIGAkjYSSMhJEwEkbCGM55cDLcCcxuqyn/g3/9/olGfrwkHMkPoj/SDayOHzyiJe9sP9kcx+zrCYxmbpaEo8+H8Z7WC0w2rFhzyZklXn15Hu/H3BSAul1smCmceDOCD+IeYHJUxW7vimMvvBh/pRaw/taHc4kBCkAzJixH9U+8sjWA2rOhv7Dx7hIu6EPA5JIQlnPGwFoXBtM9+Cjbh8ub/f/FqfejGHjqBSa3a97oEGbx+ofLuJhUKYCrkhMWZnHm4xVcWhsBJnebsDCLNz5dxVD6AgWgwyAszOLc52sYzl4EptBVERZmcf7LGGq5UZUp7dYyOgp1aqUL/JEemI72wcyqG2Yfe2AuMQgL+jAEDC8EUyrImkNpH8jMEgeTPusOQk47WqOxmsUAAAAASUVORK5CYII=",
         "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
         "PublishState": 3,
         "Metadata": {
           "ModifiedTime": "2023-10-19T15:10:37.3679521+00:00",
           "Username": "daniel.chilcott@flowgear.net",
           "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
-        },
-        "NodeId": "75cd2683-ce75-338c-7292-6fdde4ad36f0",
-        "NodeVisual": {
-          "X": 6405,
-          "Y": 3640
-        },
-        "ShortDescription": "About this Workflow"
+        }
       },
       {
         "NodeId": "6a519d12-d131-8771-34f8-27e36940857a",
@@ -158,7 +156,7 @@
         "NodeId": "dfb84a4f-bb62-3e73-ebb3-ebc689fef4fa",
         "Name": "ElevenLabsConversationalAI",
         "ShortDescription": "ListAgents",
-        "Version": "0.0.0.7",
+        "Version": "1.0.0.0",
         "Properties": [
           {
             "FlowDirection": 1,
@@ -380,7 +378,7 @@
         "NodeId": "3f8ed638-a61c-9952-e3c8-6e2869cb0cda",
         "Name": "ElevenLabsConversationalAI",
         "ShortDescription": "GetConversations",
-        "Version": "0.0.0.7",
+        "Version": "1.0.0.0",
         "Properties": [
           {
             "FlowDirection": 1,
@@ -635,7 +633,7 @@
         "NodeId": "96d97236-76aa-25ec-0221-e955ee4bb18a",
         "Name": "ElevenLabsConversationalAI",
         "ShortDescription": "GetDetails",
-        "Version": "0.0.0.7",
+        "Version": "1.0.0.0",
         "Properties": [
           {
             "FlowDirection": 1,
@@ -978,13 +976,13 @@
             "FlowDirection": 2,
             "Behaviour": 0,
             "CustomPropertyEscaping": 0,
+            "Schema": "",
             "Description": "JSON Response Body.",
             "IsSecret": false,
             "Name": "Response",
             "TypeName": "System.String",
             "ExtendedType": 7,
-            "Value": "{\r\n  \"id\": \"474023501015\",\r\n  \"properties\": {\r\n    \"createdate\": \"2025-10-08T08:45:17.561Z\",\r\n    \"email\": \"zanele@example.com\",\r\n    \"firstname\": \"Zanele\",\r\n    \"hs_all_contact_vids\": \"474023501015\",\r\n    \"hs_associated_target_accounts\": \"0\",\r\n    \"hs_calculated_phone_number\": \"+27609091212\",\r\n    \"hs_calculated_phone_number_country_code\": \"ZA\",\r\n    \"hs_currently_enrolled_in_prospecting_agent\": \"false\",\r\n    \"hs_email_domain\": \"example.com\",\r\n    \"hs_full_name_or_email\": \"Zanele Mthethwa\",\r\n    \"hs_is_contact\": \"true\",\r\n    \"hs_is_unworked\": \"true\",\r\n    \"hs_lifecyclestage_lead_date\": \"1759913117561\",\r\n    \"hs_membership_has_accessed_private_content\": \"0\",\r\n    \"hs_object_id\": \"474023501015\",\r\n    \"hs_object_source\": \"INTEGRATION\",\r\n    \"hs_object_source_id\": \"12883924\",\r\n    \"hs_object_source_label\": \"INTEGRATION\",\r\n    \"hs_pipeline\": \"contacts-lifecycle-pipeline\",\r\n    \"hs_prospecting_agent_actively_enrolled_count\": \"0\",\r\n    \"hs_prospecting_agent_total_enrolled_count\": \"0\",\r\n    \"hs_registered_member\": \"0\",\r\n    \"hs_searchable_calculated_phone_number\": \"609091212\",\r\n    \"hs_sequences_actively_enrolled_count\": \"0\",\r\n    \"lastmodifieddate\": \"2025-10-08T08:45:17.561Z\",\r\n    \"lastname\": \"Mthethwa\",\r\n    \"lifecyclestage\": \"lead\",\r\n    \"num_notes\": \"0\",\r\n    \"phone\": \"+27 60 909 1212\"\r\n  },\r\n  \"createdAt\": \"2025-10-08T08:45:17.561Z\",\r\n  \"updatedAt\": \"2025-10-08T08:45:17.561Z\",\r\n  \"archived\": false\r\n}",
-            "Schema": ""
+            "Value": "{\r\n  \"id\": \"474023501015\",\r\n  \"properties\": {\r\n    \"createdate\": \"2025-10-08T08:45:17.561Z\",\r\n    \"email\": \"zanele@example.com\",\r\n    \"firstname\": \"Zanele\",\r\n    \"hs_all_contact_vids\": \"474023501015\",\r\n    \"hs_associated_target_accounts\": \"0\",\r\n    \"hs_calculated_phone_number\": \"+27609091212\",\r\n    \"hs_calculated_phone_number_country_code\": \"ZA\",\r\n    \"hs_currently_enrolled_in_prospecting_agent\": \"false\",\r\n    \"hs_email_domain\": \"example.com\",\r\n    \"hs_full_name_or_email\": \"Zanele Mthethwa\",\r\n    \"hs_is_contact\": \"true\",\r\n    \"hs_is_unworked\": \"true\",\r\n    \"hs_lifecyclestage_lead_date\": \"1759913117561\",\r\n    \"hs_membership_has_accessed_private_content\": \"0\",\r\n    \"hs_object_id\": \"474023501015\",\r\n    \"hs_object_source\": \"INTEGRATION\",\r\n    \"hs_object_source_id\": \"12883924\",\r\n    \"hs_object_source_label\": \"INTEGRATION\",\r\n    \"hs_pipeline\": \"contacts-lifecycle-pipeline\",\r\n    \"hs_prospecting_agent_actively_enrolled_count\": \"0\",\r\n    \"hs_prospecting_agent_total_enrolled_count\": \"0\",\r\n    \"hs_registered_member\": \"0\",\r\n    \"hs_searchable_calculated_phone_number\": \"609091212\",\r\n    \"hs_sequences_actively_enrolled_count\": \"0\",\r\n    \"lastmodifieddate\": \"2025-10-08T08:45:17.561Z\",\r\n    \"lastname\": \"Mthethwa\",\r\n    \"lifecyclestage\": \"lead\",\r\n    \"num_notes\": \"0\",\r\n    \"phone\": \"+27 60 909 1212\"\r\n  },\r\n  \"createdAt\": \"2025-10-08T08:45:17.561Z\",\r\n  \"updatedAt\": \"2025-10-08T08:45:17.561Z\",\r\n  \"archived\": false\r\n}"
           }
         ],
         "HasInput": true,
@@ -1453,8 +1451,7 @@
         "FlowConnectorType": 1,
         "SourceNodeId": "6a519d12-d131-8771-34f8-27e36940857a",
         "TargetNodeId": "dfb84a4f-bb62-3e73-ebb3-ebc689fef4fa",
-        "SourceName": "Run_Now",
-        "TargetName": null
+        "SourceName": "Run_Now"
       },
       {
         "FlowConnectorType": 1,
@@ -1472,15 +1469,13 @@
         "FlowConnectorType": 1,
         "SourceNodeId": "a587fcd0-448e-2b9a-050a-b14f89a8a546",
         "TargetNodeId": "7cf124b5-91a9-71ce-ea7c-50b29170cdbf",
-        "SourceName": "",
-        "TargetName": null
+        "SourceName": ""
       },
       {
         "FlowConnectorType": 1,
         "SourceNodeId": "7cf124b5-91a9-71ce-ea7c-50b29170cdbf",
         "TargetNodeId": "7eb3ac3d-6513-1e30-41bd-748043f0d5d6",
-        "SourceName": "",
-        "TargetName": null
+        "SourceName": ""
       },
       {
         "FlowConnectorType": 2,
@@ -1550,16 +1545,16 @@
   },
   "SiteKey": "32115adf-b283-42da-853a-46a0719581bc",
   "Key": "9e813221-60ac-4f18-9f28-b63418b446a6",
+  "Path": "site-32115adf-b283-42da-853a-46a0719581bc/workflow-9e813221-60ac-4f18-9f28-b63418b446a6.json",
   "Name": "ElevenLabs Conversational AI to HubSpot CRM Contacts",
-  "FileHash": "0000014",
+  "FileHash": "0000018",
   "RuntimeVersion": 1,
+  "Description": "This Workflow pages through ElevenLabs agents and their conversations using cursors, then pulls each conversation's details (including analysis) to check whether contact info was captured via Data Collection. It maps first_name, last_name, email, and phone into a HubSpot CRM payload to create a contact, creates the contact, and logs each attempt as a success or error.",
   "FolderKey": "7da6cb86-aa46-4e4f-9ecc-9d11ba7bc050",
   "LaunchModeMask": 0,
   "Metadata": {
-    "ModifiedTime": "2025-10-08T08:37:19.6445688+00:00",
+    "ModifiedTime": "2025-10-09T08:22:30.3553397+00:00",
     "Username": "cassandra.wallace@flowgear.net",
     "UserKey": "051e8265-b8b3-49d8-b1a4-befe5b40f7c6"
-  },
-  "Path": "site-32115adf-b283-42da-853a-46a0719581bc/workflow-9e813221-60ac-4f18-9f28-b63418b446a6.json",
-  "Description": "This Workflow pages through ElevenLabs agents and their conversations using cursors, then pulls each conversation's details (including analysis) to check whether contact info was captured via Data Collection. It maps first_name, last_name, email, and phone into a HubSpot CRM payload to create a contact, creates the contact, and logs each attempt as a success or error."
+  }
 }
