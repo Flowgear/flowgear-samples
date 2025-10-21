@@ -1,6 +1,5 @@
 {
-  "name": "fg-sample-app-vite",
-  "private": true,
+  "name": "sample-app-vite",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
