@@ -1,0 +1,2079 @@
+{
+  "ActivationContext": 0,
+  "State": 0,
+  "LaunchMethod": 0,
+  "Workflow": {
+    "Version": 1,
+    "Revision": 0,
+    "Nodes": [
+      {
+        "NodeId": "aeeb885c-4e6e-5a02-2023-f5514d0ae10b",
+        "Name": "VariableBar",
+        "ShortDescription": "SetKeyValueGroup",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "AgentId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "agent_7301k83336rtfv2abk63bczzybxj"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100,
+          "Y": 3640
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:12:03.2133917+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "38553e58-d40a-3e6f-c85a-3eeda997a47b",
+        "Name": "DayScheduler",
+        "Version": "3.1.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "StartTime",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "17:00"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "EndTime",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "17:01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IntervalMinutes",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "10"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405,
+          "Y": 3640
+        },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Day Scheduler",
+        "NodeType": 3,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-09-19T05:10:34.1161756+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "dcb0439c-92f6-1624-e9a4-4934e4b72721",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "This Workflow analyses conversations from an ElevenLabs Voice Agent configured as a Product Feedback Agent to capture feedback, enrich it for downstream tasks: publishing each submission to three Microsoft Teams channels for fast, coordinated follow-up. To use this sample, provide the Agent ID of your Product Feedback ElevenLabs Voice Agent and configure one ElevenLabs Conversational AI connection plus three separate Microsoft Teams connections, one per channel."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 2
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710,
+          "Y": 3640
+        },
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:10:37.3679521+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "d9ca1ac5-8f94-e09c-1a06-defaeeec979c",
+        "Name": "Start",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100,
+          "Y": 3945
+        },
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 1,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "Name": "ElevenLabsConversationalAI",
+        "ShortDescription": "GetConversations",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiKey",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.ElevenLabs.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "d43b033f-e266-506e-4ea1-71877d5c27a3"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "List Conversations"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"conversations\": [\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_1801k83k30m1fv4rwkrt9t1c1hdc\",\r\n      \"start_time_unix_secs\": 1761057276,\r\n      \"call_duration_secs\": 81,\r\n      \"message_count\": 5,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user contacted Flowgear's product feedback line to praise the support team for their prompt and helpful assistance with a DropPoint issue. The agent thanked the user and confirmed the feedback would be reviewed.\\n\",\r\n      \"call_summary_title\": \"Support Team Praise\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_0701k83jwctefg0a6hqcrq4775gt\",\r\n      \"start_time_unix_secs\": 1761057059,\r\n      \"call_duration_secs\": 183,\r\n      \"message_count\": 11,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user contacted Flowgear to praise the Web Request node for enabling quick integration with three vendors, including payment processing, which was critical for their startup's launch. The user highlighted the node's ease of use and the quality of the documentation. They had no suggestions for improvement. The agent thanked the user and said the feedback would be shared with the product team.\\n\",\r\n      \"call_summary_title\": \"Product Feedback: Praise\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_7101k83jjftceq39qrhrk4bsp5jc\",\r\n      \"start_time_unix_secs\": 1761056735,\r\n      \"call_duration_secs\": 248,\r\n      \"message_count\": 15,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user requested a feature for the Flowgear Teams connector to support markdown tables in card bodies, as the current version doesn't parse them. This would improve the readability of cards, especially for shipment summaries. The user provided a markdown table example and didn't specify particular rendering details or a release timeline. The agent confirmed the request would be reviewed by the product team.\\n\",\r\n      \"call_summary_title\": \"Teams Connector Feature Request\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_7701k83jc6meeprtp7vz328zkxgd\",\r\n      \"start_time_unix_secs\": 1761056529,\r\n      \"call_duration_secs\": 134,\r\n      \"message_count\": 13,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user requested a feature for the QuickMap connector: collapsible conditional blocks to improve readability of large maps in the QuickMap editor. The user suggested the feature be always available and rated the impact as low, as it's primarily a visual enhancement. No further details were added. The agent confirmed the request would be reviewed.\\n\",\r\n      \"call_summary_title\": \"QuickMap feature request\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_5501k83gshv9eeere5txs5swjy7h\",\r\n      \"start_time_unix_secs\": 1761054869,\r\n      \"call_duration_secs\": 130,\r\n      \"message_count\": 11,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user reported a bug where API Binding calls fail with a 401 error one hour after token rotation. This occurs every time tokens are rotated, impacting production flows (rated as medium impact). The user expects automatic updates of API keys in workflow HTTP bindings after token rotation, but this doesn't happen. The issue affects API Binding (workflow HTTP binding). The agent confirmed the details and stated the product team will review the issue.\\n\",\r\n      \"call_summary_title\": \"API Binding token bug\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_4501k83gng0temsttbhtz49nzrcc\",\r\n      \"start_time_unix_secs\": 1761054736,\r\n      \"call_duration_secs\": 59,\r\n      \"message_count\": 9,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user reported a bug in the Flowgear Slack connector where messages with emojis fail to post. The issue is reproducible every time and has a medium impact, as there's a workaround to avoid using emojis. The product team will review the bug report.\\n\",\r\n      \"call_summary_title\": \"Slack connector bug report\",\r\n      \"direction\": null\r\n    }\r\n  ],\r\n  \"next_cursor\": null,\r\n  \"has_more\": false\r\n}",
+            "Schema": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Description": "Used for fetching next page. Cursor is returned in the response.",
+            "IsSecret": false,
+            "Name": "cursor",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Description": "The id of the agent you're taking the action on.",
+            "IsSecret": false,
+            "Name": "agent_id",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "agent_7301k83336rtfv2abk63bczzybxj"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Description": "Whether to include transcript summaries in the response. Either `include` or `exclude`. Defaults to `exclude`.",
+            "IsSecret": false,
+            "Name": "summary_mode",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "include"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "DisplayName": "ElevenLabs Conversational AI",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-10-01T15:06:38.0819605+00:00",
+          "Username": "cassandra.wallace@flowgear.net",
+          "UserKey": "051e8265-b8b3-49d8-b1a4-befe5b40f7c6"
+        }
+      },
+      {
+        "NodeId": "ebf1ef7f-144f-fa3b-4d69-fbdac6a3f70a",
+        "Name": "StringBuilder",
+        "ShortDescription": "CreateDigestInput",
+        "Version": "1.2.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "DigestInput"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Set"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710,
+          "Y": 3945
+        },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:11:55.8272203+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "ef697091-18df-cb63-31c6-aeeec67a236e",
+        "Name": "ForEach",
+        "ShortDescription": "ForEachConversation",
+        "Version": "1.0.0.9",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "ParentNode",
+              "ParentAndRootNodes"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Item",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n  \"branch_id\": null,\r\n  \"agent_name\": \"Product Feedback Assistant\",\r\n  \"conversation_id\": \"conv_1801k83k30m1fv4rwkrt9t1c1hdc\",\r\n  \"start_time_unix_secs\": 1761057276,\r\n  \"call_duration_secs\": 81,\r\n  \"message_count\": 5,\r\n  \"status\": \"done\",\r\n  \"call_successful\": \"success\",\r\n  \"transcript_summary\": \"The user contacted Flowgear's product feedback line to praise the support team for their prompt and helpful assistance with a DropPoint issue. The agent thanked the user and confirmed the feedback would be reviewed.\\n\",\r\n  \"call_summary_title\": \"Support Team Praise\",\r\n  \"direction\": null\r\n}",
+            "Schema": ""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemIndex",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemCount",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Item",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015,
+          "Y": 3945
+        },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "For Each",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:09:52.636425+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "c978f9c7-385d-728a-0241-5b318920764c",
+        "Name": "ElevenLabsConversationalAI",
+        "ShortDescription": "GetConversation",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiKey",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.ElevenLabs.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "bb043483-8cc8-b4a6-3379-c436ff1a79b6"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Get Conversation Details"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n  \"conversation_id\": \"conv_4501k83gng0temsttbhtz49nzrcc\",\r\n  \"status\": \"done\",\r\n  \"user_id\": \"q9K2iO1uV3etcZmBJgMpIR5jIAj1\",\r\n  \"branch_id\": null,\r\n  \"transcript\": [\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n        \"branch_id\": null,\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Hi! You’ve reached Flowgear’s Product Feedback line. Thanks for helping us improve our platform. Is this a bug, a feature request, or praise?\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 0,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"Hi. Pretty sure there's a bug in the Slack connector.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 0,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n        \"branch_id\": null,\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Thanks for flagging a bug in the Slack connector. Could you provide the repro in the format: what you did → what you expected → what happened?\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 1,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_tt_last_sentence\": {\r\n            \"elapsed_time\": 2.5617252190131694\r\n          },\r\n          \"convai_llm_service_ttf_sentence\": {\r\n            \"elapsed_time\": 2.528047523010173\r\n          },\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 2.5143522470025346\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 837,\r\n              \"price\": 0.00004185\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 360,\r\n              \"price\": 0.000144\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"When my workflow sends a message using the Slack connector with an emoji, like :tada:, nothing actually posts. I would expect it to still send the message as normal, with or without an emoji in the message. There's no exact error text, just nothing happens.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 1,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n        \"branch_id\": null,\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Thanks for the details. Does this happen always or only sometimes? If possible, share roughly how often it reproduces.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 9,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_tt_last_sentence\": {\r\n            \"elapsed_time\": 2.0262886470009107\r\n          },\r\n          \"convai_llm_service_ttf_sentence\": {\r\n            \"elapsed_time\": 1.9754841340036364\r\n          },\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 1.969771074000164\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 932,\r\n              \"price\": 0.0000466\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 289,\r\n              \"price\": 0.0001156\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"It happens everytime there is an emoji in the message on the Slack connector.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 9,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n        \"branch_id\": null,\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Thanks for confirming—this is reproducible every time with emoji in Slack messages. What impact would you assign (high/medium/low)—does it block critical workflows or have a workaround?\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 27,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_tt_last_sentence\": {\r\n            \"elapsed_time\": 3.4319425839930773\r\n          },\r\n          \"convai_llm_service_ttf_sentence\": {\r\n            \"elapsed_time\": 3.093086452994612\r\n          },\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 2.889191745998687\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 981,\r\n              \"price\": 0.000049050000000000006\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 304,\r\n              \"price\": 0.00012160000000000001\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"Medium, since there is a workaround to just avoid having emojis in the message.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 27,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n        \"branch_id\": null,\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Understood—this Slack connector emoji issue reproduces every time with medium impact. Thanks—our product team will review this. Have a great day.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 46,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_tt_last_sentence\": {\r\n            \"elapsed_time\": 6.820461886993144\r\n          },\r\n          \"convai_llm_service_ttf_sentence\": {\r\n            \"elapsed_time\": 6.807116113006487\r\n          },\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 6.757916154994746\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 1045,\r\n              \"price\": 0.00005225\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 679,\r\n              \"price\": 0.00027160000000000004\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    }\r\n  ],\r\n  \"metadata\": {\r\n    \"start_time_unix_secs\": 1761054736,\r\n    \"accepted_time_unix_secs\": 1761054736,\r\n    \"call_duration_secs\": 59,\r\n    \"cost\": 127,\r\n    \"deletion_settings\": {\r\n      \"deletion_time_unix_secs\": null,\r\n      \"deleted_logs_at_time_unix_secs\": null,\r\n      \"deleted_audio_at_time_unix_secs\": null,\r\n      \"deleted_transcript_at_time_unix_secs\": null,\r\n      \"delete_transcript_and_pii\": false,\r\n      \"delete_audio\": false\r\n    },\r\n    \"feedback\": {\r\n      \"type\": null,\r\n      \"overall_score\": null,\r\n      \"likes\": 0,\r\n      \"dislikes\": 0,\r\n      \"rating\": null,\r\n      \"comment\": null\r\n    },\r\n    \"authorization_method\": \"authorization_header\",\r\n    \"charging\": {\r\n      \"dev_discount\": true,\r\n      \"is_burst\": false,\r\n      \"tier\": \"free\",\r\n      \"llm_usage\": {\r\n        \"irreversible_generation\": {\r\n          \"model_usage\": {\r\n            \"gpt-5-nano\": {\r\n              \"input\": {\r\n                \"tokens\": 3795,\r\n                \"price\": 0.00018975\r\n              },\r\n              \"input_cache_read\": {\r\n                \"tokens\": 0,\r\n                \"price\": 0\r\n              },\r\n              \"input_cache_write\": {\r\n                \"tokens\": 0,\r\n                \"price\": 0\r\n              },\r\n              \"output_total\": {\r\n                \"tokens\": 1632,\r\n                \"price\": 0.0006528\r\n              }\r\n            }\r\n          }\r\n        },\r\n        \"initiated_generation\": {\r\n          \"model_usage\": {\r\n            \"gpt-5-nano\": {\r\n              \"input\": {\r\n                \"tokens\": 3795,\r\n                \"price\": 0.00018975\r\n              },\r\n              \"input_cache_read\": {\r\n                \"tokens\": 0,\r\n                \"price\": 0\r\n              },\r\n              \"input_cache_write\": {\r\n                \"tokens\": 0,\r\n                \"price\": 0\r\n              },\r\n              \"output_total\": {\r\n                \"tokens\": 1632,\r\n                \"price\": 0.0006528\r\n              }\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"llm_price\": 0.0008425500000000001,\r\n      \"llm_charge\": 7,\r\n      \"call_charge\": 120,\r\n      \"free_minutes_consumed\": 0,\r\n      \"free_llm_dollars_consumed\": 0\r\n    },\r\n    \"phone_call\": null,\r\n    \"batch_call\": null,\r\n    \"termination_reason\": \"Client disconnected: 1005\",\r\n    \"error\": null,\r\n    \"main_language\": \"en\",\r\n    \"rag_usage\": null,\r\n    \"text_only\": true,\r\n    \"features_usage\": {\r\n      \"language_detection\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"transfer_to_agent\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"transfer_to_number\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"multivoice\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"dtmf_tones\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"external_mcp_servers\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"pii_zrm_workspace\": false,\r\n      \"pii_zrm_agent\": false,\r\n      \"tool_dynamic_variable_updates\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"is_livekit\": false,\r\n      \"voicemail_detection\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"workflow\": {\r\n        \"enabled\": false,\r\n        \"tool_node\": {\r\n          \"enabled\": false,\r\n          \"used\": false\r\n        },\r\n        \"standalone_agent_node\": {\r\n          \"enabled\": false,\r\n          \"used\": false\r\n        },\r\n        \"phone_number_node\": {\r\n          \"enabled\": false,\r\n          \"used\": false\r\n        },\r\n        \"end_node\": {\r\n          \"enabled\": false,\r\n          \"used\": false\r\n        }\r\n      },\r\n      \"agent_testing\": {\r\n        \"enabled\": true,\r\n        \"tests_ran_after_last_modification\": true,\r\n        \"tests_ran_in_last_7_days\": true\r\n      }\r\n    },\r\n    \"eleven_assistant\": {\r\n      \"is_eleven_assistant\": false\r\n    },\r\n    \"initiator_id\": \"q9K2iO1uV3etcZmBJgMpIR5jIAj1\",\r\n    \"conversation_initiation_source\": \"react_sdk\",\r\n    \"conversation_initiation_source_version\": \"0.5.0\",\r\n    \"timezone\": \"Africa/Johannesburg\",\r\n    \"initiation_trigger\": {\r\n      \"trigger_type\": \"default\"\r\n    },\r\n    \"async_metadata\": null,\r\n    \"whatsapp\": null,\r\n    \"agent_created_from\": \"ui\",\r\n    \"agent_last_updated_from\": \"ui\"\r\n  },\r\n  \"analysis\": {\r\n    \"evaluation_criteria_results\": {\r\n      \"actionability\": {\r\n        \"criteria_id\": \"actionability\",\r\n        \"result\": \"success\",\r\n        \"rationale\": \"The conversation describes a bug with a clear reproduction step: \\\"When my workflow sends a message using the Slack connector with an emoji, like :tada:, nothing actually posts.\\\"\"\r\n      },\r\n      \"feedback_captured\": {\r\n        \"criteria_id\": \"feedback_captured\",\r\n        \"result\": \"success\",\r\n        \"rationale\": \"The user explicitly states 'bug' and 'Slack connector' in their initial message, fulfilling both criteria for success.\"\r\n      }\r\n    },\r\n    \"data_collection_results\": {\r\n      \"repro_or_request\": {\r\n        \"data_collection_id\": \"repro_or_request\",\r\n        \"value\": \"Slack connector with emoji → message should send → nothing posts.\",\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"One sentence. \\n\\nFor bug: prefer the `Do X → expected Y, saw Z pattern`; include error text if given.\\n\\nFor feature/praise: a single 12-word max summary.\",\r\n          \"enum\": null,\r\n          \"is_system_provided\": false,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"The user reports a bug: Slack connector with emoji → message should send → nothing posts.\"\r\n      },\r\n      \"impact\": {\r\n        \"data_collection_id\": \"impact\",\r\n        \"value\": \"medium\",\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"Choose based on caller wording:\\n- high (blocks key workflow or production),\\n- medium (workaround exists),\\n- low (minor or cosmetic).\\n\\nIf unclear, choose medium, not null.\",\r\n          \"enum\": [\r\n            \"high\",\r\n            \"medium\",\r\n            \"low\"\r\n          ],\r\n          \"is_system_provided\": false,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"The agent asks the user to assign an impact (high/medium/low) to the bug. The user responds with 'Medium, since there is a workaround to just avoid having emojis in the message.' Therefore, the value is 'medium'.\"\r\n      },\r\n      \"feedback_type\": {\r\n        \"data_collection_id\": \"feedback_type\",\r\n        \"value\": \"bug\",\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"Exactly one of: bug, feature, praise. If unclear, return other.\",\r\n          \"enum\": [\r\n            \"bug\",\r\n            \"feature\",\r\n            \"praise\",\r\n            \"other\"\r\n          ],\r\n          \"is_system_provided\": false,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"The conversation starts with the agent asking if the feedback is a bug, feature request, or praise. The user responds that there is a bug in the Slack connector. Therefore, the value is 'bug'.\"\r\n      },\r\n      \"contact_email\": {\r\n        \"data_collection_id\": \"contact_email\",\r\n        \"value\": null,\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"Only if volunteered; else null. Do not invent.\",\r\n          \"enum\": null,\r\n          \"is_system_provided\": false,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"No specific string value was volunteered by the user in the conversation. Therefore, the value is null.\"\r\n      },\r\n      \"surface\": {\r\n        \"data_collection_id\": \"surface\",\r\n        \"value\": \"connector\",\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"connector, workflow_designer, api, web_app, or other.\",\r\n          \"enum\": [\r\n            \"connector\",\r\n            \"workflow_designer\",\r\n            \"api\",\r\n            \"web_app\",\r\n            \"other\"\r\n          ],\r\n          \"is_system_provided\": false,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"The conversation discusses a bug in the Slack connector, so the value is 'connector'.\"\r\n      },\r\n      \"component\": {\r\n        \"data_collection_id\": \"component\",\r\n        \"value\": \"Slack connector\",\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"A single product area, e.g. Slack connector, Teams connector, QuickMap, Web Request, API Binding, Runtime. If unknown, return unknown.\",\r\n          \"enum\": null,\r\n          \"is_system_provided\": false,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"The user reports a bug in the Slack connector. Therefore, the product area is Slack connector.\"\r\n      }\r\n    },\r\n    \"call_successful\": \"success\",\r\n    \"transcript_summary\": \"The user reported a bug in the Flowgear Slack connector where messages with emojis fail to post. The issue is reproducible every time and has a medium impact, as there's a workaround to avoid using emojis. The product team will review the bug report.\\n\",\r\n    \"call_summary_title\": \"Slack connector bug report\"\r\n  },\r\n  \"conversation_initiation_client_data\": {\r\n    \"conversation_config_override\": {\r\n      \"tts\": {\r\n        \"voice_id\": null,\r\n        \"stability\": null,\r\n        \"speed\": null,\r\n        \"similarity_boost\": null\r\n      },\r\n      \"conversation\": {\r\n        \"text_only\": true\r\n      },\r\n      \"agent\": {\r\n        \"first_message\": null,\r\n        \"language\": null,\r\n        \"prompt\": null\r\n      }\r\n    },\r\n    \"custom_llm_extra_body\": {},\r\n    \"user_id\": \"q9K2iO1uV3etcZmBJgMpIR5jIAj1\",\r\n    \"source_info\": {\r\n      \"source\": \"react_sdk\",\r\n      \"version\": \"0.5.0\"\r\n    },\r\n    \"dynamic_variables\": {\r\n      \"system__agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"system__timezone\": \"Africa/Johannesburg\",\r\n      \"system__caller_id\": null,\r\n      \"system__time_utc\": \"2025-10-21T13:53:15.289510+00:00\",\r\n      \"system__call_sid\": null,\r\n      \"system__called_number\": null,\r\n      \"system__time\": \"Tuesday, 15:53 21 October 2025\",\r\n      \"system__conversation_id\": \"conv_4501k83gng0temsttbhtz49nzrcc\",\r\n      \"system__call_duration_secs\": 58,\r\n      \"system__current_agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\"\r\n    }\r\n  },\r\n  \"has_audio\": true,\r\n  \"has_user_audio\": true,\r\n  \"has_response_audio\": true\r\n}",
+            "Schema": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Description": "The id of the conversation you're taking the action on.",
+            "IsSecret": false,
+            "Name": "conversation_id",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "21m00Tcm4TlvDq8ikWAM"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "DisplayName": "ElevenLabs Conversational AI",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-10-01T15:06:38.0819605+00:00",
+          "Username": "cassandra.wallace@flowgear.net",
+          "UserKey": "051e8265-b8b3-49d8-b1a4-befe5b40f7c6"
+        }
+      },
+      {
+        "NodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "Name": "Formatter",
+        "ShortDescription": "SelectAnalysis",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"evaluation_criteria_results\": {\r\n    \"actionability\": {\r\n      \"criteria_id\": \"actionability\",\r\n      \"result\": \"success\",\r\n      \"rationale\": \"The conversation is categorized as praise, and a short quote exists: \\\"They are superheroes!\\\", thus meeting the success criteria.\"\r\n    },\r\n    \"feedback_captured\": {\r\n      \"criteria_id\": \"feedback_captured\",\r\n      \"result\": \"success\",\r\n      \"rationale\": \"The user provides 'praise' (feedback type) for the support team's assistance with the 'DropPoint' (affected component), thus satisfying both conditions for success.\"\r\n    }\r\n  },\r\n  \"data_collection_results\": {\r\n    \"repro_or_request\": {\r\n      \"data_collection_id\": \"repro_or_request\",\r\n      \"value\": \"User praises support team for prompt assistance with DropPoint issue.\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"One sentence. \\n\\nFor bug: prefer the `Do X → expected Y, saw Z pattern`; include error text if given.\\n\\nFor feature/praise: a single 12-word max summary.\",\r\n        \"enum\": null,\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The user expressed gratitude and appreciation for the support team's prompt assistance with a DropPoint issue.\"\r\n    },\r\n    \"impact\": {\r\n      \"data_collection_id\": \"impact\",\r\n      \"value\": \"medium\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"Choose based on caller wording:\\n- high (blocks key workflow or production),\\n- medium (workaround exists),\\n- low (minor or cosmetic).\\n\\nIf unclear, choose medium, not null.\",\r\n        \"enum\": [\r\n          \"high\",\r\n          \"medium\",\r\n          \"low\"\r\n        ],\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The conversation does not mention the impact of the issue on the user's workflow or production. The user expresses gratitude for the support team's assistance with a DropPoint issue, but does not specify the severity of the issue. Therefore, I will default to 'medium'.\"\r\n    },\r\n    \"feedback_type\": {\r\n      \"data_collection_id\": \"feedback_type\",\r\n      \"value\": \"praise\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"Exactly one of: bug, feature, praise. If unclear, return other.\",\r\n        \"enum\": [\r\n          \"bug\",\r\n          \"feature\",\r\n          \"praise\",\r\n          \"other\"\r\n        ],\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The user explicitly states that they wanted to send some praise to the support team. Therefore, the correct value is 'praise'.\"\r\n    },\r\n    \"contact_email\": {\r\n      \"data_collection_id\": \"contact_email\",\r\n      \"value\": \"DropPoint\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"Only if volunteered; else null. Do not invent.\",\r\n        \"enum\": null,\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The user expressed gratitude and appreciation for the prompt assistance with an issue they had with their DropPoint. This is a volunteered detail.\"\r\n    },\r\n    \"surface\": {\r\n      \"data_collection_id\": \"surface\",\r\n      \"value\": \"workflow_designer\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"connector, workflow_designer, api, web_app, or other.\",\r\n        \"enum\": [\r\n          \"connector\",\r\n          \"workflow_designer\",\r\n          \"api\",\r\n          \"web_app\",\r\n          \"other\"\r\n        ],\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The conversation is about a user providing positive feedback regarding the support team and their assistance with a DropPoint. The DropPoint is part of the Flowgear platform, which is a workflow automation platform. Therefore, the most appropriate value is 'workflow_designer'.\"\r\n    },\r\n    \"component\": {\r\n      \"data_collection_id\": \"component\",\r\n      \"value\": \"DropPoint\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"A single product area, e.g. Slack connector, Teams connector, QuickMap, Web Request, API Binding, Runtime. If unknown, return unknown.\",\r\n        \"enum\": null,\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The user mentions having an issue with their DropPoint. Therefore, the product area is DropPoint.\"\r\n    }\r\n  },\r\n  \"call_successful\": \"success\",\r\n  \"transcript_summary\": \"The user contacted Flowgear's product feedback line to praise the support team for their prompt and helpful assistance with a DropPoint issue. The agent thanked the user and confirmed the feedback would be reviewed.\\n\",\r\n  \"call_summary_title\": \"Support Team Praise\"\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:09:52.911541+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "1ec18d30-d31e-2e37-a192-04bbe766db7d",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "Bug?",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value = \"bug\""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:10:15.5513419+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "1cdd9f54-c2e1-0d82-4c3a-2734b3978444",
+        "Name": "Formatter",
+        "ShortDescription": "FormatTitle",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "BUG: {Component}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Component",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8235,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:09:52.911541+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "d4b33bf2-fe79-f678-be3d-356324d2eca1",
+        "Name": "MicrosoftTeamsMessage",
+        "ShortDescription": "PostInBugsChannel",
+        "Version": "1.0.0.6",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsRawAdaptive",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "WebhookUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.MSTeams.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Title",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Summary",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RawAdaptiveData",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Repro",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Impact",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8540,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Microsoft Teams Message",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "2d775b35-ee9e-40d9-bdf4-af7af95acea7",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-03-14T13:14:10.8921297+00:00",
+          "Username": "terrence.meiring@flowgear.net",
+          "UserKey": "70cab36e-17dd-4237-a051-fc01c07c94a1"
+        }
+      },
+      {
+        "NodeId": "41d9e477-6b75-e349-b146-480e25e83014",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "MoreConversations?",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value = true"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320,
+          "Y": 4361
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:10:15.5513419+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "b95df977-3e83-bc85-b1a7-6d962f7a62b7",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "Praise?",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value = \"praise\""
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930,
+          "Y": 4361
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:10:15.5513419+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "eac0a23e-6fd2-18fc-51a3-ebe65dc0e665",
+        "Name": "Formatter",
+        "ShortDescription": "FormatTitle",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "WIN: {CallSummaryTitle} ({Component})"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "CallSummaryTitle",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Component",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8235,
+          "Y": 4361
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:09:52.911541+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "779b7575-c80d-6127-a890-21ef1f5b9114",
+        "Name": "MicrosoftTeamsMessage",
+        "ShortDescription": "PostInWinsChannel",
+        "Version": "1.0.0.6",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsRawAdaptive",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "WebhookUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.MSTeams.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Title",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Summary",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RawAdaptiveData",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8540,
+          "Y": 4361
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Microsoft Teams Message",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "2d775b35-ee9e-40d9-bdf4-af7af95acea7",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-03-14T13:14:10.8921297+00:00",
+          "Username": "terrence.meiring@flowgear.net",
+          "UserKey": "70cab36e-17dd-4237-a051-fc01c07c94a1"
+        }
+      },
+      {
+        "NodeId": "aff06f9c-2dc0-5d2c-79ab-93540acf9cb6",
+        "Name": "StringBuilder",
+        "ShortDescription": "AppendAnalysis",
+        "Version": "1.2.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "DigestInput"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Append"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8845,
+          "Y": 4673
+        },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:11:55.8272203+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "6527b73c-6d6c-7444-f2e8-75bbeff60c33",
+        "Name": "StringBuilder",
+        "ShortDescription": "ReadDigestInput",
+        "Version": "1.2.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "VariableName",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "DigestInput"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Action",
+            "TypeName": "Flowgear.Nodes.StringBuilder.StringBuilder+Actions",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "Clear",
+              "Set",
+              "Append",
+              "Read"
+            ],
+            "Value": "Read"
+          },
+          {
+            "FlowDirection": 3,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625,
+          "Y": 4907
+        },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "String Builder",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:11:55.8272203+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "099cea8b-b83f-8cac-7e95-ec16d8d21fac",
+        "Name": "OpenAIChatGPT",
+        "ShortDescription": "PromptForDigest",
+        "LongDescription": "",
+        "Version": "1.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiKey",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              },
+              {
+                "Name": "Model",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              },
+              {
+                "Name": "Temperature",
+                "TypeName": "System.Double",
+                "ExtendedType": 0,
+                "Value": 0
+              },
+              {
+                "Name": "FrequencyPenalty",
+                "TypeName": "System.Double",
+                "ExtendedType": 0,
+                "Value": 0
+              },
+              {
+                "Name": "PresencePenalty",
+                "TypeName": "System.Double",
+                "ExtendedType": 0,
+                "Value": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.OpenAIChat.OpenAIChatConnection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "",
+            "IsSecret": false,
+            "Name": "SystemMessage",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "You output ONE Adaptive Card JSON for Microsoft Teams. Return ONLY minified JSON, no code fences.\r\n\r\nTODAY: <INSERT-DATE-HERE>  (use exactly this YYYY-MM-DD in the title)\r\n\r\nINPUT\r\n- You receive {\"analyses\":[ ... ]} (ElevenLabs analysis objects). Fields may be missing.\r\n\r\nGOAL\r\nProduce a compact daily digest emphasizing FEATURES, but also include BUGS and PRAISE.\r\nDurability > eloquence. ASCII only. No emojis or HTML.\r\n\r\nNORMALIZE\r\n- feedback_type ∈ {bug, feature, praise, other}; ignore others.\r\n- Trim whitespace. Truncate any line ≤ 120 chars. Deduplicate by (component + repro_or_request trimmed).\r\n\r\nCOUNTS & TOPS\r\n- Totals: conversations + per-type counts.\r\n- Top components: up to 3 by frequency.\r\n\r\nSECTIONS (always Features → Bugs → Praise)\r\n- Features: up to 2 items. Each item text: \"- {theme} — {componentsCSV} — {short example}\"\r\n- Bugs: up to 2 items. Each item text: \"- {component} — did->expected->saw\"\r\n- Praise: up to 2 items. Each item text: \"- {component} — \\\"short quote\\\"\"\r\n- If a section has zero items, render one item: \"- none today\"\r\n\r\nBULLET COMPOSITION RULES (apply in order for each line)\r\n• Start with up to three parts: THEME, COMPONENTS_CSV, EXAMPLE.\r\n• Trim whitespace and trailing punctuation from each part.\r\n• De-duplication:\r\n  - If EXAMPLE equals THEME (case-insensitive), drop EXAMPLE.\r\n  - If THEME already contains the component name(s), drop COMPONENTS_CSV.\r\n  - Collapse repeated words (e.g., \"readability readability\" -> \"readability\").\r\n• Join remaining parts with \" — \" (space-dash-space).\r\n• Replace any double spaces with a single space; ensure a comma+space in lists: \"A, B, C\".\r\n• Cap each bullet to ≤120 chars; trim from the end without breaking words.\r\n\r\nSENTIMENT\r\n- If sentiment_final exists, compute distribution; else infer: bug=negative, feature=neutral, praise=positive (weighted by impact).\r\n- Output one short sentence.\r\n\r\nCARD RULES\r\n- Adaptive Card schema v1.5. Use only TextBlocks + FactSet. ASCII only.\r\n- IMPORTANT: Each bullet MUST be its own TextBlock (separate lines), not a single concatenated string.\r\n- No empty headers: every section header must be followed by at least one bullet TextBlock.\r\n\r\nOUTPUT SHAPE (fill values; keep valid JSON)\r\n{\"type\":\"AdaptiveCard\",\"$schema\":\"http://adaptivecards.io/schemas/adaptive-card.json\",\"version\":\"1.5\",\r\n \"body\":[\r\n   {\"type\":\"TextBlock\",\"size\":\"Medium\",\"weight\":\"Bolder\",\"text\":\"Daily Product Digest — 2025-10-22\"},\r\n   {\"type\":\"FactSet\",\"facts\":[\r\n     {\"title\":\"Totals\",\"value\":\"{TOTAL} conv | Bugs {BUGS} | Features {FEATS} | Praise {PRAISE}\"},\r\n     {\"title\":\"Sentiment\",\"value\":\"{SENTENCE}\"},\r\n     {\"title\":\"Top components\",\"value\":\"{C1}(N1){SEP}{C2}(N2){SEP}{C3}(N3)\"}\r\n   ]},\r\n   {\"type\":\"TextBlock\",\"weight\":\"Bolder\",\"text\":\"Features\",\"wrap\":true},\r\n   {\"type\":\"TextBlock\",\"text\":\"{FEATURE_LINE_1}\",\"wrap\":true},\r\n   {\"type\":\"TextBlock\",\"text\":\"{FEATURE_LINE_2}\",\"wrap\":true},\r\n   {\"type\":\"TextBlock\",\"weight\":\"Bolder\",\"text\":\"Bugs\",\"wrap\":true},\r\n   {\"type\":\"TextBlock\",\"text\":\"{BUG_LINE_1}\",\"wrap\":true},\r\n   {\"type\":\"TextBlock\",\"text\":\"{BUG_LINE_2}\",\"wrap\":true},\r\n   {\"type\":\"TextBlock\",\"weight\":\"Bolder\",\"text\":\"Praise\",\"wrap\":true},\r\n   {\"type\":\"TextBlock\",\"text\":\"{PRAISE_LINE_1}\",\"wrap\":true},\r\n   {\"type\":\"TextBlock\",\"text\":\"{PRAISE_LINE_2}\",\"wrap\":true}\r\n ]\r\n}\r\n\r\nVALIDATION\r\n- Replace any missing bullet with \"- none today\".\r\n- Keep payload < 10 KB. If a value is unknown, use \"unknown\".\r\n"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "PreviousMessages",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "UserMessage",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ToolCallID",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ToolMessage",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Tools",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseMessageObject",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseMessage",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ResponseToolCall",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930,
+          "Y": 4907
+        },
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "OpenAI ChatGPT",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-08-26T07:51:34.6371043+00:00",
+          "Username": "terrence.meiring@flowgear.net",
+          "UserKey": "70cab36e-17dd-4237-a051-fc01c07c94a1"
+        }
+      },
+      {
+        "NodeId": "568574b4-e7bb-6332-1439-655da2015841",
+        "Name": "MicrosoftTeamsMessage",
+        "ShortDescription": "PostInDigestChannel",
+        "Version": "1.0.0.6",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsRawAdaptive",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0,
+            "Value": true
+          },
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "WebhookUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.MSTeams.Connection",
+            "ExtendedType": 2
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Title",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Daily Product Digest"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Summary",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RawAdaptiveData",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 8235,
+          "Y": 4907
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Microsoft Teams Message",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "2d775b35-ee9e-40d9-bdf4-af7af95acea7",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-03-14T13:14:10.8921297+00:00",
+          "Username": "terrence.meiring@flowgear.net",
+          "UserKey": "70cab36e-17dd-4237-a051-fc01c07c94a1"
+        }
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ef697091-18df-cb63-31c6-aeeec67a236e",
+        "TargetNodeId": "c978f9c7-385d-728a-0241-5b318920764c",
+        "SourceName": "Item"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ef697091-18df-cb63-31c6-aeeec67a236e",
+        "TargetNodeId": "41d9e477-6b75-e349-b146-480e25e83014",
+        "SourceName": "Finished"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "41d9e477-6b75-e349-b146-480e25e83014",
+        "TargetNodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "SourceName": "True"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "TargetNodeId": "ef697091-18df-cb63-31c6-aeeec67a236e",
+        "SourceName": "Response",
+        "TargetName": "SourceDocument",
+        "Expression": "conversations"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "ef697091-18df-cb63-31c6-aeeec67a236e",
+        "TargetNodeId": "c978f9c7-385d-728a-0241-5b318920764c",
+        "SourceName": "Item",
+        "TargetName": "conversation_id",
+        "Expression": "conversation_id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "TargetNodeId": "41d9e477-6b75-e349-b146-480e25e83014",
+        "SourceName": "Response",
+        "TargetName": "Value",
+        "Expression": "has_more"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "TargetNodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "SourceName": "Response",
+        "TargetName": "cursor",
+        "Expression": "next_cursor"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d9ca1ac5-8f94-e09c-1a06-defaeeec979c",
+        "TargetNodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "SourceName": "Run_Now"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d9ca1ac5-8f94-e09c-1a06-defaeeec979c",
+        "TargetNodeId": "38553e58-d40a-3e6f-c85a-3eeda997a47b",
+        "SourceName": "Start"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "38553e58-d40a-3e6f-c85a-3eeda997a47b",
+        "TargetNodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "c978f9c7-385d-728a-0241-5b318920764c",
+        "TargetNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "1ec18d30-d31e-2e37-a192-04bbe766db7d",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "1ec18d30-d31e-2e37-a192-04bbe766db7d",
+        "TargetNodeId": "1cdd9f54-c2e1-0d82-4c3a-2734b3978444",
+        "SourceName": "True"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "1cdd9f54-c2e1-0d82-4c3a-2734b3978444",
+        "TargetNodeId": "d4b33bf2-fe79-f678-be3d-356324d2eca1",
+        "SourceName": "Result",
+        "TargetName": "Title"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "d4b33bf2-fe79-f678-be3d-356324d2eca1",
+        "SourceName": "Result",
+        "TargetName": "Impact",
+        "Expression": "data_collection_results.impact.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "d4b33bf2-fe79-f678-be3d-356324d2eca1",
+        "SourceName": "Result",
+        "TargetName": "Repro",
+        "Expression": "data_collection_results.repro_or_request.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "d4b33bf2-fe79-f678-be3d-356324d2eca1",
+        "SourceName": "Result",
+        "TargetName": "Description",
+        "Expression": "transcript_summary"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "b95df977-3e83-bc85-b1a7-6d962f7a62b7",
+        "SourceName": "Result",
+        "TargetName": "Value",
+        "Expression": "data_collection_results.feedback_type.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "1ec18d30-d31e-2e37-a192-04bbe766db7d",
+        "SourceName": "Result",
+        "TargetName": "Value",
+        "Expression": "data_collection_results.feedback_type.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "eac0a23e-6fd2-18fc-51a3-ebe65dc0e665",
+        "TargetNodeId": "779b7575-c80d-6127-a890-21ef1f5b9114",
+        "SourceName": "Result",
+        "TargetName": "Title"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b95df977-3e83-bc85-b1a7-6d962f7a62b7",
+        "TargetNodeId": "eac0a23e-6fd2-18fc-51a3-ebe65dc0e665",
+        "SourceName": "True"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "1ec18d30-d31e-2e37-a192-04bbe766db7d",
+        "TargetNodeId": "b95df977-3e83-bc85-b1a7-6d962f7a62b7",
+        "SourceName": "False"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "eac0a23e-6fd2-18fc-51a3-ebe65dc0e665",
+        "SourceName": "Result",
+        "TargetName": "CallSummaryTitle",
+        "Expression": "call_summary_title"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "779b7575-c80d-6127-a890-21ef1f5b9114",
+        "SourceName": "Result",
+        "TargetName": "Description",
+        "Expression": "transcript_summary"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "1cdd9f54-c2e1-0d82-4c3a-2734b3978444",
+        "SourceName": "Result",
+        "TargetName": "Component",
+        "Expression": "data_collection_results.component.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "eac0a23e-6fd2-18fc-51a3-ebe65dc0e665",
+        "SourceName": "Result",
+        "TargetName": "Component",
+        "Expression": "data_collection_results.component.value"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "TargetNodeId": "ebf1ef7f-144f-fa3b-4d69-fbdac6a3f70a",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "ebf1ef7f-144f-fa3b-4d69-fbdac6a3f70a",
+        "TargetNodeId": "ef697091-18df-cb63-31c6-aeeec67a236e",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "TargetNodeId": "aff06f9c-2dc0-5d2c-79ab-93540acf9cb6",
+        "SourceName": "Result",
+        "TargetName": "Value"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "41d9e477-6b75-e349-b146-480e25e83014",
+        "TargetNodeId": "6527b73c-6d6c-7444-f2e8-75bbeff60c33",
+        "SourceName": "False"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "779b7575-c80d-6127-a890-21ef1f5b9114",
+        "TargetNodeId": "aff06f9c-2dc0-5d2c-79ab-93540acf9cb6",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d4b33bf2-fe79-f678-be3d-356324d2eca1",
+        "TargetNodeId": "aff06f9c-2dc0-5d2c-79ab-93540acf9cb6",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b95df977-3e83-bc85-b1a7-6d962f7a62b7",
+        "TargetNodeId": "aff06f9c-2dc0-5d2c-79ab-93540acf9cb6",
+        "SourceName": "False"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "eac0a23e-6fd2-18fc-51a3-ebe65dc0e665",
+        "TargetNodeId": "779b7575-c80d-6127-a890-21ef1f5b9114",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "1cdd9f54-c2e1-0d82-4c3a-2734b3978444",
+        "TargetNodeId": "d4b33bf2-fe79-f678-be3d-356324d2eca1",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "6527b73c-6d6c-7444-f2e8-75bbeff60c33",
+        "TargetNodeId": "099cea8b-b83f-8cac-7e95-ec16d8d21fac",
+        "SourceName": "Value",
+        "TargetName": "UserMessage"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "6527b73c-6d6c-7444-f2e8-75bbeff60c33",
+        "TargetNodeId": "099cea8b-b83f-8cac-7e95-ec16d8d21fac",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "099cea8b-b83f-8cac-7e95-ec16d8d21fac",
+        "TargetNodeId": "568574b4-e7bb-6332-1439-655da2015841",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "099cea8b-b83f-8cac-7e95-ec16d8d21fac",
+        "TargetNodeId": "568574b4-e7bb-6332-1439-655da2015841",
+        "SourceName": "ResponseMessage",
+        "TargetName": "RawAdaptiveData"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "aeeb885c-4e6e-5a02-2023-f5514d0ae10b",
+        "TargetNodeId": "dcf8cafd-7d83-f740-e3cc-8b4b41828e79",
+        "SourceName": "AgentId",
+        "TargetName": "agent_id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "c978f9c7-385d-728a-0241-5b318920764c",
+        "TargetNodeId": "7f278598-148c-ddaf-9702-05adb4f3366e",
+        "SourceName": "Response",
+        "TargetName": "Expression",
+        "Expression": "analysis"
+      }
+    ],
+    "StartNodeId": "d9ca1ac5-8f94-e09c-1a06-defaeeec979c",
+    "ActivityLogLevelMask": 255
+  },
+  "SiteKey": "32115adf-b283-42da-853a-46a0719581bc",
+  "Key": "09d67527-058c-4671-9790-d1e9f98c256a",
+  "Path": "site-32115adf-b283-42da-853a-46a0719581bc/workflow-09d67527-058c-4671-9790-d1e9f98c256a.json",
+  "Name": "ElevenLabs Conversational AI to Microsoft Teams Message",
+  "FileHash": "0000014",
+  "RuntimeVersion": 1,
+  "Description": "This Workflow analyses conversations from an ElevenLabs Voice Agent configured as a Product Feedback Agent to capture feedback, enrich it for downstream tasks: publishing each submission to three Microsoft Teams channels for fast, coordinated follow-up. To use this sample, provide the Agent ID of your Product Feedback ElevenLabs Voice Agent and configure one ElevenLabs Conversational AI connection plus three separate Microsoft Teams connections, one per channel.",
+  "FolderKey": "88cd4e6f-2f73-42c2-bda3-9c5cd79b6227",
+  "LaunchModeMask": 0,
+  "IsMcpEnabled": false,
+  "Metadata": {
+    "ModifiedTime": "2025-11-06T11:38:14.7632098+00:00",
+    "Username": "cassandra.wallace@flowgear.net",
+    "UserKey": "051e8265-b8b3-49d8-b1a4-befe5b40f7c6"
+  }
+}
