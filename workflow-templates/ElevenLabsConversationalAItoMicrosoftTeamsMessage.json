@@ -27,7 +27,7 @@
         "Outputs": [],
         "NodeVisual": {
           "X": 6100,
-          "Y": 4186
+          "Y": 3640
         },
         "SupportsCustomInputProperties": true,
         "SupportsCustomOutputProperties": true,
@@ -97,7 +97,7 @@
         ],
         "NodeVisual": {
           "X": 6405,
-          "Y": 4186
+          "Y": 3640
         },
         "SupportsTest": false,
         "SupportsAcquireMetadata": false,
@@ -155,7 +155,7 @@
         ],
         "NodeVisual": {
           "X": 6710,
-          "Y": 4186
+          "Y": 3640
         },
         "SupportsTest": true,
         "SupportsAcquireMetadata": false,
@@ -212,7 +212,7 @@
         ],
         "NodeVisual": {
           "X": 6100,
-          "Y": 4491
+          "Y": 3945
         },
         "DisplayName": "Start",
         "NodeType": 0,
@@ -331,7 +331,7 @@
         ],
         "NodeVisual": {
           "X": 6405,
-          "Y": 4491
+          "Y": 3945
         },
         "SupportsCustomInputProperties": true,
         "SupportsCustomOutputProperties": false,
@@ -457,7 +457,7 @@
         ],
         "NodeVisual": {
           "X": 6710,
-          "Y": 4491
+          "Y": 3945
         },
         "SupportsTest": false,
         "SupportsAcquireMetadata": false,
@@ -564,7 +564,7 @@
         ],
         "NodeVisual": {
           "X": 7015,
-          "Y": 4491
+          "Y": 3945
         },
         "SupportsCustomInputProperties": true,
         "SupportsCustomOutputProperties": false,
@@ -642,7 +642,7 @@
         ],
         "NodeVisual": {
           "X": 7320,
-          "Y": 4491
+          "Y": 3945
         },
         "SupportsCustomInputProperties": true,
         "SupportsCustomOutputProperties": true,
@@ -701,7 +701,7 @@
         ],
         "NodeVisual": {
           "X": 7625,
-          "Y": 4491
+          "Y": 3945
         },
         "SupportsTest": true,
         "SupportsAcquireMetadata": false,
@@ -744,12 +744,12 @@
             ],
             "Behaviour": 0,
             "CustomPropertyEscaping": 0,
-            "Schema": "ElevenLabs Demo - Bugs",
+            "Schema": "(None)",
             "IsSecret": false,
             "Name": "Connection",
             "TypeName": "Flowgear.Nodes.MSTeams.Connection",
             "ExtendedType": 2,
-            "Value": "81488161-c617-4a89-aaf7-eb5df3baa5c3"
+            "Value": null
           },
           {
             "FlowDirection": 1,
@@ -821,7 +821,7 @@
         ],
         "NodeVisual": {
           "X": 7930,
-          "Y": 4491
+          "Y": 3945
         },
         "SupportsCustomInputProperties": true,
         "SupportsCustomOutputProperties": false,
@@ -895,7 +895,7 @@
         ],
         "NodeVisual": {
           "X": 7015,
-          "Y": 4907
+          "Y": 4361
         },
         "SupportsCustomInputProperties": true,
         "SupportsCustomOutputProperties": true,
@@ -940,12 +940,12 @@
             ],
             "Behaviour": 0,
             "CustomPropertyEscaping": 0,
-            "Schema": "ElevenLabs Demo - Wins",
+            "Schema": "(None)",
             "IsSecret": false,
             "Name": "Connection",
             "TypeName": "Flowgear.Nodes.MSTeams.Connection",
             "ExtendedType": 2,
-            "Value": "cee502aa-06ee-44dd-a833-0f791ab4b145"
+            "Value": null
           },
           {
             "FlowDirection": 1,
@@ -1008,7 +1008,7 @@
         ],
         "NodeVisual": {
           "X": 7930,
-          "Y": 4907
+          "Y": 4361
         },
         "SupportsCustomInputProperties": true,
         "SupportsCustomOutputProperties": false,
@@ -1053,12 +1053,12 @@
             ],
             "Behaviour": 0,
             "CustomPropertyEscaping": 0,
-            "Schema": "ElevenLabs Demo - FeatureRequests",
+            "Schema": "(None)",
             "IsSecret": false,
             "Name": "Connection",
             "TypeName": "Flowgear.Nodes.MSTeams.Connection",
             "ExtendedType": 2,
-            "Value": "f90d79e7-f816-45dd-bbd7-3d270d6da96e"
+            "Value": null
           },
           {
             "FlowDirection": 1,
@@ -1093,7 +1093,9 @@
             "ExtendedType": 0,
             "Value": null,
             "FlowDirection": 1,
-            "Behaviour": 2
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
           },
           {
             "Name": "Description",
@@ -1101,7 +1103,9 @@
             "ExtendedType": 0,
             "Value": null,
             "FlowDirection": 1,
-            "Behaviour": 2
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
           }
         ],
         "HasInput": true,
@@ -1119,7 +1123,7 @@
         ],
         "NodeVisual": {
           "X": 7930,
-          "Y": 5245
+          "Y": 4699
         },
         "SupportsCustomInputProperties": true,
         "SupportsCustomOutputProperties": false,
@@ -1358,7 +1362,7 @@
   "Key": "09d67527-058c-4671-9790-d1e9f98c256a",
   "Path": "site-32115adf-b283-42da-853a-46a0719581bc/workflow-09d67527-058c-4671-9790-d1e9f98c256a.json",
   "Name": "ElevenLabs Conversational AI to Microsoft Teams Message",
-  "FileHash": "0000021",
+  "FileHash": "0000023",
   "RuntimeVersion": 1,
   "Description": "Once per day, this Workflow sweeps every conversation from that day for an ElevenLabs Voice Agent configured as a Product Feedback Agent. It enriches each call with analysis (e.g. evaluation criteria, data collection, summary, sentiment) and posts alerts to three Microsoft Teams channels for coordinated follow-up and lightweight alerting. To use this sample, provide the Agent ID of your Product Feedback ElevenLabs Voice Agent and configure one ElevenLabs Conversational AI connection plus three separate Microsoft Teams connections, one per channel.",
   "FolderKey": "88cd4e6f-2f73-42c2-bda3-9c5cd79b6227",
