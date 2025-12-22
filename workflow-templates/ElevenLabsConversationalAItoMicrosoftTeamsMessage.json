@@ -1,0 +1,1376 @@
+{
+  "ActivationContext": 0,
+  "State": 0,
+  "LaunchMethod": 0,
+  "Workflow": {
+    "Version": 1,
+    "Revision": 0,
+    "Nodes": [
+      {
+        "NodeId": "6ce8f5c4-cecf-db39-1299-9c4cae767f2a",
+        "Name": "VariableBar",
+        "ShortDescription": "SetKeyValueGroup",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "AgentId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "agent_7301k83336rtfv2abk63bczzybxj"
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [],
+        "NodeVisual": {
+          "X": 6100,
+          "Y": 3640
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Variable Bar",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:12:03.2133917+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "83f3a589-a425-7701-c342-e80895445bd1",
+        "Name": "DayScheduler",
+        "Version": "3.1.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "StartTime",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "17:00"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "EndTime",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "17:01"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IntervalMinutes",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "10"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405,
+          "Y": 3640
+        },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Day Scheduler",
+        "NodeType": 3,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-09-19T05:10:34.1161756+00:00",
+          "Username": "(ServiceHost)",
+          "UserKey": ""
+        }
+      },
+      {
+        "NodeId": "dcb0439c-92f6-1624-e9a4-4934e4b72721",
+        "Name": "Note",
+        "Version": "1.0.0.2",
+        "Properties": [
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Text",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Once per day, this Workflow sweeps every conversation from that day for an ElevenLabs Voice Agent configured as a Product Feedback Agent. It enriches each call with analysis (e.g. evaluation criteria, data collection, summary, sentiment) and posts alerts to three Microsoft Teams channels for coordinated follow-up and lightweight alerting. To use this sample, provide the Agent ID of your Product Feedback ElevenLabs Voice Agent and configure one ElevenLabs Conversational AI connection plus three separate Microsoft Teams connections, one per channel."
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "NoteSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": 2
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710,
+          "Y": 3640
+        },
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Note",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:10:37.3679521+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "d9ca1ac5-8f94-e09c-1a06-defaeeec979c",
+        "Name": "Start",
+        "Version": "1.0.0.3",
+        "Properties": [
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Last_Error_Info",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": false,
+        "Outputs": [
+          {
+            "Label": "Start",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Run_Now",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Any_Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "Unhandled_Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6100,
+          "Y": 3945
+        },
+        "DisplayName": "Start",
+        "NodeType": 0,
+        "RuntimeVersion": 1,
+        "PublishState": 0
+      },
+      {
+        "NodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "Name": "ElevenLabsConversationalAI",
+        "ShortDescription": "GetConversations",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiKey",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.ElevenLabs.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "d43b033f-e266-506e-4ea1-71877d5c27a3"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "List Conversations"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"conversations\": [\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_1801k83k30m1fv4rwkrt9t1c1hdc\",\r\n      \"start_time_unix_secs\": 1761057276,\r\n      \"call_duration_secs\": 81,\r\n      \"message_count\": 5,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user contacted Flowgear's product feedback line to praise the support team for their prompt and helpful assistance with a DropPoint issue. The agent thanked the user and confirmed the feedback would be reviewed.\\n\",\r\n      \"call_summary_title\": \"Support Team Praise\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_0701k83jwctefg0a6hqcrq4775gt\",\r\n      \"start_time_unix_secs\": 1761057059,\r\n      \"call_duration_secs\": 183,\r\n      \"message_count\": 11,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user contacted Flowgear to praise the Web Request node for enabling quick integration with three vendors, including payment processing, which was critical for their startup's launch. The user highlighted the node's ease of use and the quality of the documentation. They had no suggestions for improvement. The agent thanked the user and said the feedback would be shared with the product team.\\n\",\r\n      \"call_summary_title\": \"Product Feedback: Praise\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_7101k83jjftceq39qrhrk4bsp5jc\",\r\n      \"start_time_unix_secs\": 1761056735,\r\n      \"call_duration_secs\": 248,\r\n      \"message_count\": 15,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user requested a feature for the Flowgear Teams connector to support markdown tables in card bodies, as the current version doesn't parse them. This would improve the readability of cards, especially for shipment summaries. The user provided a markdown table example and didn't specify particular rendering details or a release timeline. The agent confirmed the request would be reviewed by the product team.\\n\",\r\n      \"call_summary_title\": \"Teams Connector Feature Request\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_7701k83jc6meeprtp7vz328zkxgd\",\r\n      \"start_time_unix_secs\": 1761056529,\r\n      \"call_duration_secs\": 134,\r\n      \"message_count\": 13,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user requested a feature for the QuickMap connector: collapsible conditional blocks to improve readability of large maps in the QuickMap editor. The user suggested the feature be always available and rated the impact as low, as it's primarily a visual enhancement. No further details were added. The agent confirmed the request would be reviewed.\\n\",\r\n      \"call_summary_title\": \"QuickMap feature request\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_5501k83gshv9eeere5txs5swjy7h\",\r\n      \"start_time_unix_secs\": 1761054869,\r\n      \"call_duration_secs\": 130,\r\n      \"message_count\": 11,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user reported a bug where API Binding calls fail with a 401 error one hour after token rotation. This occurs every time tokens are rotated, impacting production flows (rated as medium impact). The user expects automatic updates of API keys in workflow HTTP bindings after token rotation, but this doesn't happen. The issue affects API Binding (workflow HTTP binding). The agent confirmed the details and stated the product team will review the issue.\\n\",\r\n      \"call_summary_title\": \"API Binding token bug\",\r\n      \"direction\": null\r\n    },\r\n    {\r\n      \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n      \"branch_id\": null,\r\n      \"agent_name\": \"Product Feedback Assistant\",\r\n      \"conversation_id\": \"conv_4501k83gng0temsttbhtz49nzrcc\",\r\n      \"start_time_unix_secs\": 1761054736,\r\n      \"call_duration_secs\": 59,\r\n      \"message_count\": 9,\r\n      \"status\": \"done\",\r\n      \"call_successful\": \"success\",\r\n      \"transcript_summary\": \"The user reported a bug in the Flowgear Slack connector where messages with emojis fail to post. The issue is reproducible every time and has a medium impact, as there's a workaround to avoid using emojis. The product team will review the bug report.\\n\",\r\n      \"call_summary_title\": \"Slack connector bug report\",\r\n      \"direction\": null\r\n    }\r\n  ],\r\n  \"next_cursor\": null,\r\n  \"has_more\": false\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Description": "Used for fetching next page. Cursor is returned in the response.",
+            "IsSecret": false,
+            "Name": "cursor",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": ""
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Description": "The id of the agent you're taking the action on.",
+            "IsSecret": false,
+            "Name": "agent_id",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "agent_7301k83336rtfv2abk63bczzybxj"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Description": "Whether to include transcript summaries in the response. Either `include` or `exclude`. Defaults to `exclude`.",
+            "IsSecret": false,
+            "Name": "summary_mode",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "include"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6405,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "DisplayName": "ElevenLabs Conversational AI",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-10-01T15:06:38.0819605+00:00",
+          "Username": "cassandra.wallace@flowgear.net",
+          "UserKey": "051e8265-b8b3-49d8-b1a4-befe5b40f7c6"
+        }
+      },
+      {
+        "NodeId": "3436e940-b885-2225-5e65-f151a40a1609",
+        "Name": "ForEach",
+        "ShortDescription": "ForEachConversation",
+        "Version": "1.0.0.9",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "SourceDocument",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Path",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Encapsulation",
+            "TypeName": "flowgear.Nodes.Foreach.Foreach+EncapsulationMethod",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "ParentNode",
+              "ParentAndRootNodes"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Namespaces",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ChunkSize",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0,
+            "Value": "1"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Item",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"agent_id\": \"agent_7301k83336rtfv2abk63bczzybxj\",\r\n  \"branch_id\": null,\r\n  \"agent_name\": \"Product Feedback Assistant\",\r\n  \"conversation_id\": \"conv_1801k83k30m1fv4rwkrt9t1c1hdc\",\r\n  \"start_time_unix_secs\": 1761057276,\r\n  \"call_duration_secs\": 81,\r\n  \"message_count\": 5,\r\n  \"status\": \"done\",\r\n  \"call_successful\": \"success\",\r\n  \"transcript_summary\": \"The user contacted Flowgear's product feedback line to praise the support team for their prompt and helpful assistance with a DropPoint issue. The agent thanked the user and confirmed the feedback would be reviewed.\\n\",\r\n  \"call_summary_title\": \"Support Team Praise\",\r\n  \"direction\": null\r\n}"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemIndex",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "ItemCount",
+            "TypeName": "System.Int32",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Item",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Finished",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 6710,
+          "Y": 3945
+        },
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "For Each",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:09:52.636425+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "feb2a0aa-033e-9917-ed56-00dbb0bb56b1",
+        "Name": "ElevenLabsConversationalAI",
+        "ShortDescription": "GetConversation",
+        "Version": "1.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "ApiKey",
+                "TypeName": "System.String",
+                "ExtendedType": 3
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.ElevenLabs.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "OperationId",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "bb043483-8cc8-b4a6-3379-c436ff1a79b6"
+          },
+          {
+            "FlowDirection": 0,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Get Conversation Details"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 7
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Response",
+            "TypeName": "System.String",
+            "ExtendedType": 7,
+            "Value": "{\r\n  \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n  \"conversation_id\": \"conv_5501k6z77hjte06s3hqm5n5x8p4t\",\r\n  \"status\": \"done\",\r\n  \"user_id\": \"q9K2iO1uV3etcZmBJgMpIR5jIAj1\",\r\n  \"transcript\": [\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Hi! I can book a mobile car wash at your place or office. What car is it, and where are you located?\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 0,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"Can you wash in Stellenbosch farms on Sunday afternoon?\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 0,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Nice, Stellenbosch Farms works. What kind of vehicle is it?\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 1,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_tt_last_sentence\": {\r\n            \"elapsed_time\": 2.3255334509999557\r\n          },\r\n          \"convai_llm_service_ttf_sentence\": {\r\n            \"elapsed_time\": 2.312257554000098\r\n          },\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 2.3017722049999065\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 1264,\r\n              \"price\": 0.0000632\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 151,\r\n              \"price\": 0.000060400000000000004\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"Fortuner.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 1,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Great, a Fortuner in Stellenbosch Farms on Sunday afternoon. What time window works best for you (e.g., 1–3 pm or 2–4 pm)?\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 6,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_tt_last_sentence\": {\r\n            \"elapsed_time\": 2.5139776979999624\r\n          },\r\n          \"convai_llm_service_ttf_sentence\": {\r\n            \"elapsed_time\": 2.4838329860001522\r\n          },\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 2.4714815490001456\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 1291,\r\n              \"price\": 0.00006455\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 237,\r\n              \"price\": 0.00009480000000000001\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"2-4pm\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 6,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Perfect, Sunday 2-4pm in Stellenbosch Farms for the Fortuner. Which service would you like: exterior wash, interior clean, full valet, or detailing?\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 16,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_tt_last_sentence\": {\r\n            \"elapsed_time\": 2.0957432529999096\r\n          },\r\n          \"convai_llm_service_ttf_sentence\": {\r\n            \"elapsed_time\": 2.0145096209998883\r\n          },\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 1.918715691999978\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 189,\r\n              \"price\": 0.000009450000000000001\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 1152,\r\n              \"price\": 0.00001152\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 236,\r\n              \"price\": 0.0000944\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"Detailing please\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 16,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Great, Detailing on Sunday 2-4pm in Stellenbosch Farms. Please share First name, Last name, Email, and Phone.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 26,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_tt_last_sentence\": {\r\n            \"elapsed_time\": 3.6085573959999238\r\n          },\r\n          \"convai_llm_service_ttf_sentence\": {\r\n            \"elapsed_time\": 3.5920909009998923\r\n          },\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 3.560883704999924\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 237,\r\n              \"price\": 0.000011850000000000002\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 1152,\r\n              \"price\": 0.00001152\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 422,\r\n              \"price\": 0.0001688\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"Zanele Mthethwa, zanele@example.com, +27 60 909 1212.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 26,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Thanks, I’ve got the details: Zanele Mthethwa, zanele@example.com, +27 60 909 1212 for a Detailing in Stellenbosch Farms on Sunday 2-4pm.\\n\\nDo I have your permission to use these details for the booking and any updates only?\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 35,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_tt_last_sentence\": {\r\n            \"elapsed_time\": 2.248057112000197\r\n          },\r\n          \"convai_llm_service_ttf_sentence\": {\r\n            \"elapsed_time\": 2.236438046000103\r\n          },\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 2.151630710000063\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 298,\r\n              \"price\": 0.0000149\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 1152,\r\n              \"price\": 0.00001152\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 263,\r\n              \"price\": 0.00010520000000000001\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"agent_metadata\": null,\r\n      \"message\": \"Yes.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 35,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": \"text\"\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": \"Your detailing appointment is confirmed for a Fortuner in Stellenbosch Farms on Sunday 2-4pm. A confirmation will be sent to your email and via SMS. If there are any call-out fees or weather-related changes, we will confirm them with you. Thank you for booking with us. Goodbye.\",\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 56,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 2.6935706080000728\r\n          },\r\n          \"convai_llm_tool_request_generation_latency\": {\r\n            \"elapsed_time\": 2.6943951610001022\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": null,\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [\r\n        {\r\n          \"type\": \"system\",\r\n          \"request_id\": \"call_oA67oPWFfiVKAeKIdrXRG7U1\",\r\n          \"tool_name\": \"end_call\",\r\n          \"params_as_json\": \"{\\\"reason\\\":\\\"booking confirmed\\\",\\\"system__message_to_speak\\\":\\\"Your detailing appointment is confirmed for a Fortuner in Stellenbosch Farms on Sunday 2-4pm. A confirmation will be sent to your email and via SMS. If there are any call-out fees or weather-related changes, we will confirm them with you. Thank you for booking with us. Goodbye.\\\"}\",\r\n          \"tool_has_been_called\": true,\r\n          \"tool_details\": null\r\n        }\r\n      ],\r\n      \"tool_results\": [],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 56,\r\n      \"conversation_turn_metrics\": {\r\n        \"metrics\": {\r\n          \"convai_llm_service_ttfb\": {\r\n            \"elapsed_time\": 2.6935706080000728\r\n          },\r\n          \"convai_llm_tool_request_generation_latency\": {\r\n            \"elapsed_time\": 2.6943951610001022\r\n          }\r\n        }\r\n      },\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": null,\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    },\r\n    {\r\n      \"role\": \"agent\",\r\n      \"agent_metadata\": {\r\n        \"agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n        \"workflow_node_id\": null\r\n      },\r\n      \"message\": null,\r\n      \"multivoice_message\": null,\r\n      \"tool_calls\": [],\r\n      \"tool_results\": [\r\n        {\r\n          \"request_id\": \"call_oA67oPWFfiVKAeKIdrXRG7U1\",\r\n          \"tool_name\": \"end_call\",\r\n          \"result_value\": \"{\\\"result_type\\\":\\\"end_call_success\\\",\\\"status\\\":\\\"success\\\",\\\"reason\\\":\\\"booking confirmed\\\",\\\"message\\\":null}\",\r\n          \"is_error\": false,\r\n          \"tool_has_been_called\": true,\r\n          \"tool_latency_secs\": 0.5011901430000307,\r\n          \"dynamic_variable_updates\": [],\r\n          \"type\": \"system\",\r\n          \"result\": {\r\n            \"result_type\": \"end_call_success\",\r\n            \"status\": \"success\",\r\n            \"reason\": \"booking confirmed\",\r\n            \"message\": null\r\n          }\r\n        }\r\n      ],\r\n      \"feedback\": null,\r\n      \"llm_override\": null,\r\n      \"time_in_call_secs\": 56,\r\n      \"conversation_turn_metrics\": null,\r\n      \"rag_retrieval_info\": null,\r\n      \"llm_usage\": {\r\n        \"model_usage\": {\r\n          \"gpt-5-nano\": {\r\n            \"input\": {\r\n              \"tokens\": 372,\r\n              \"price\": 0.0000186\r\n            },\r\n            \"input_cache_read\": {\r\n              \"tokens\": 1152,\r\n              \"price\": 0.00001152\r\n            },\r\n            \"input_cache_write\": {\r\n              \"tokens\": 0,\r\n              \"price\": 0\r\n            },\r\n            \"output_total\": {\r\n              \"tokens\": 413,\r\n              \"price\": 0.0001652\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"interrupted\": false,\r\n      \"original_message\": null,\r\n      \"source_medium\": null\r\n    }\r\n  ],\r\n  \"metadata\": {\r\n    \"start_time_unix_secs\": 1759836882,\r\n    \"accepted_time_unix_secs\": 1759836882,\r\n    \"call_duration_secs\": 61,\r\n    \"cost\": 190,\r\n    \"deletion_settings\": {\r\n      \"deletion_time_unix_secs\": null,\r\n      \"deleted_logs_at_time_unix_secs\": null,\r\n      \"deleted_audio_at_time_unix_secs\": null,\r\n      \"deleted_transcript_at_time_unix_secs\": null,\r\n      \"delete_transcript_and_pii\": false,\r\n      \"delete_audio\": false\r\n    },\r\n    \"feedback\": {\r\n      \"overall_score\": null,\r\n      \"likes\": 0,\r\n      \"dislikes\": 0\r\n    },\r\n    \"authorization_method\": \"authorization_header\",\r\n    \"charging\": {\r\n      \"dev_discount\": true,\r\n      \"is_burst\": false,\r\n      \"tier\": \"free\",\r\n      \"llm_usage\": {\r\n        \"irreversible_generation\": {\r\n          \"model_usage\": {\r\n            \"gpt-5-nano\": {\r\n              \"input\": {\r\n                \"tokens\": 3651,\r\n                \"price\": 0.00018255\r\n              },\r\n              \"input_cache_read\": {\r\n                \"tokens\": 4608,\r\n                \"price\": 0.00004608\r\n              },\r\n              \"input_cache_write\": {\r\n                \"tokens\": 0,\r\n                \"price\": 0\r\n              },\r\n              \"output_total\": {\r\n                \"tokens\": 1722,\r\n                \"price\": 0.0006888000000000002\r\n              }\r\n            }\r\n          }\r\n        },\r\n        \"initiated_generation\": {\r\n          \"model_usage\": {\r\n            \"gpt-5-nano\": {\r\n              \"input\": {\r\n                \"tokens\": 3651,\r\n                \"price\": 0.00018255\r\n              },\r\n              \"input_cache_read\": {\r\n                \"tokens\": 4608,\r\n                \"price\": 0.00004608\r\n              },\r\n              \"input_cache_write\": {\r\n                \"tokens\": 0,\r\n                \"price\": 0\r\n              },\r\n              \"output_total\": {\r\n                \"tokens\": 1722,\r\n                \"price\": 0.0006888000000000002\r\n              }\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"llm_price\": 0.0009174300000000001,\r\n      \"llm_charge\": 10,\r\n      \"call_charge\": 180,\r\n      \"free_minutes_consumed\": 0,\r\n      \"free_llm_dollars_consumed\": 0\r\n    },\r\n    \"phone_call\": null,\r\n    \"batch_call\": null,\r\n    \"termination_reason\": \"end_call tool was called.\",\r\n    \"error\": null,\r\n    \"main_language\": \"en\",\r\n    \"rag_usage\": null,\r\n    \"text_only\": true,\r\n    \"features_usage\": {\r\n      \"language_detection\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"transfer_to_agent\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"transfer_to_number\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"multivoice\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"dtmf_tones\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"external_mcp_servers\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"pii_zrm_workspace\": false,\r\n      \"pii_zrm_agent\": false,\r\n      \"tool_dynamic_variable_updates\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"is_livekit\": false,\r\n      \"voicemail_detection\": {\r\n        \"enabled\": false,\r\n        \"used\": false\r\n      },\r\n      \"workflow\": {\r\n        \"enabled\": false,\r\n        \"tool_node\": {\r\n          \"enabled\": false,\r\n          \"used\": false\r\n        }\r\n      },\r\n      \"agent_testing\": {\r\n        \"enabled\": false,\r\n        \"tests_ran_after_last_modification\": false,\r\n        \"tests_ran_in_last_7_days\": false\r\n      }\r\n    },\r\n    \"eleven_assistant\": {\r\n      \"is_eleven_assistant\": false\r\n    },\r\n    \"initiator_id\": \"q9K2iO1uV3etcZmBJgMpIR5jIAj1\",\r\n    \"conversation_initiation_source\": \"react_sdk\",\r\n    \"conversation_initiation_source_version\": \"0.5.0\",\r\n    \"timezone\": null\r\n  },\r\n  \"analysis\": {\r\n    \"evaluation_criteria_results\": {\r\n      \"respectful_communication\": {\r\n        \"criteria_id\": \"respectful_communication\",\r\n        \"result\": \"success\",\r\n        \"rationale\": \"The agent remained concise and polite throughout the conversation. It confirmed the booking details and only asked for necessary information. It also explicitly asked for permission to use the provided details for the booking and updates only, avoiding any pushy upselling or unsolicited follow-ups. The conversation ended with a confirmation and a polite goodbye.\"\r\n      },\r\n      \"contact_info_requested_or_captured\": {\r\n        \"criteria_id\": \"contact_info_requested_or_captured\",\r\n        \"result\": \"success\",\r\n        \"rationale\": \"The agent asked for the four fields (car type, location, time, and service) and also asked for first name, last name, email and phone number. The user provided the location (Stellenbosch Farms), car type (Fortuner), time (2-4pm), and service (detailing), as well as the other four fields. Therefore, the goal is met.\"\r\n      },\r\n      \"booking_intent_detected\": {\r\n        \"criteria_id\": \"booking_intent_detected\",\r\n        \"result\": \"success\",\r\n        \"rationale\": \"The user booked a detailing service for their Fortuner in Stellenbosch Farms on Sunday 2-4pm, and the agent confirmed the booking. The tool call confirms the booking was successful.\"\r\n      }\r\n    },\r\n    \"data_collection_results\": {\r\n      \"email\": {\r\n        \"data_collection_id\": \"email\",\r\n        \"value\": \"zanele@example.com\",\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"Extract a valid email address in standard format (user@domain); otherwise leave blank.\",\r\n          \"enum\": null,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"The user provided the email address 'zanele@example.com' in the conversation, which is a valid email format.\"\r\n      },\r\n      \"phone\": {\r\n        \"data_collection_id\": \"phone\",\r\n        \"value\": \"+27 60 909 1212\",\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"Extract a phone number with country/area code if available; otherwise leave blank.\",\r\n          \"enum\": null,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"The phone number '+27 60 909 1212' was provided by the user in the conversation.\"\r\n      },\r\n      \"first_name\": {\r\n        \"data_collection_id\": \"first_name\",\r\n        \"value\": \"Zanele\",\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"Extract the customer’s first name if stated; otherwise leave blank.\",\r\n          \"enum\": null,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"The customer's first name is stated as 'Zanele' in the conversation.\"\r\n      },\r\n      \"last_name\": {\r\n        \"data_collection_id\": \"last_name\",\r\n        \"value\": \"Mthethwa\",\r\n        \"json_schema\": {\r\n          \"type\": \"string\",\r\n          \"description\": \"Extract the customer’s last name if stated; otherwise leave blank.\",\r\n          \"enum\": null,\r\n          \"dynamic_variable\": \"\",\r\n          \"constant_value\": \"\"\r\n        },\r\n        \"rationale\": \"The customer's last name is stated as 'Mthethwa' in the conversation: 'Zanele Mthethwa, zanele@example.com, +27 60 909 1212.'\"\r\n      }\r\n    },\r\n    \"call_successful\": \"success\",\r\n    \"transcript_summary\": \"The user booked a detailing service for their Fortuner in Stellenbosch Farms on Sunday between 2-4pm. The user provided their name, email, and phone number, and confirmed that the agent could use the details for the booking. The agent confirmed the appointment and said a confirmation email/SMS would be sent.\\n\",\r\n    \"call_summary_title\": \"Car wash booking\"\r\n  },\r\n  \"conversation_initiation_client_data\": {\r\n    \"conversation_config_override\": {\r\n      \"tts\": {\r\n        \"voice_id\": null,\r\n        \"stability\": null,\r\n        \"speed\": null,\r\n        \"similarity_boost\": null\r\n      },\r\n      \"conversation\": {\r\n        \"text_only\": true\r\n      },\r\n      \"agent\": {\r\n        \"first_message\": null,\r\n        \"language\": null,\r\n        \"prompt\": null\r\n      }\r\n    },\r\n    \"custom_llm_extra_body\": {},\r\n    \"user_id\": \"q9K2iO1uV3etcZmBJgMpIR5jIAj1\",\r\n    \"source_info\": {\r\n      \"source\": \"react_sdk\",\r\n      \"version\": \"0.5.0\"\r\n    },\r\n    \"dynamic_variables\": {\r\n      \"system__agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\",\r\n      \"system__timezone\": null,\r\n      \"system__caller_id\": null,\r\n      \"system__time_utc\": \"2025-10-07T11:35:43.469778+00:00\",\r\n      \"system__call_sid\": null,\r\n      \"system__called_number\": null,\r\n      \"system__time\": \"Tuesday, 11:35 07 October 2025\",\r\n      \"system__conversation_id\": \"conv_5501k6z77hjte06s3hqm5n5x8p4t\",\r\n      \"system__call_duration_secs\": 60,\r\n      \"system__current_agent_id\": \"agent_7001k6z639zaersv9m8zgc15b04j\"\r\n    }\r\n  },\r\n  \"has_audio\": true,\r\n  \"has_user_audio\": true,\r\n  \"has_response_audio\": true\r\n}"
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "Description": "The id of the conversation you're taking the action on.",
+            "IsSecret": false,
+            "Name": "conversation_id",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "21m00Tcm4TlvDq8ikWAM"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": true,
+        "DisplayName": "ElevenLabs Conversational AI",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-10-01T15:06:38.0819605+00:00",
+          "Username": "cassandra.wallace@flowgear.net",
+          "UserKey": "051e8265-b8b3-49d8-b1a4-befe5b40f7c6"
+        }
+      },
+      {
+        "NodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "Name": "Formatter",
+        "ShortDescription": "SelectAnalysis",
+        "Version": "2.0.0.0",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Escaping",
+            "TypeName": "Flowgear.Nodes.Formatter.Formatter+EscapingMode",
+            "ExtendedType": 0,
+            "EnumValues": [
+              "None",
+              "SQL",
+              "XML",
+              "JSON",
+              "Uri",
+              "UriSegment"
+            ],
+            "Value": "None"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Result",
+            "TypeName": "System.String",
+            "ExtendedType": 4,
+            "Value": "{\r\n  \"evaluation_criteria_results\": {\r\n    \"actionability\": {\r\n      \"criteria_id\": \"actionability\",\r\n      \"result\": \"success\",\r\n      \"rationale\": \"The conversation is categorized as praise, and a short quote exists: \\\"They are superheroes!\\\", thus meeting the success criteria.\"\r\n    },\r\n    \"feedback_captured\": {\r\n      \"criteria_id\": \"feedback_captured\",\r\n      \"result\": \"success\",\r\n      \"rationale\": \"The user provides 'praise' (feedback type) for the support team's assistance with the 'DropPoint' (affected component), thus satisfying both conditions for success.\"\r\n    }\r\n  },\r\n  \"data_collection_results\": {\r\n    \"repro_or_request\": {\r\n      \"data_collection_id\": \"repro_or_request\",\r\n      \"value\": \"User praises support team for prompt assistance with DropPoint issue.\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"One sentence. \\n\\nFor bug: prefer the `Do X → expected Y, saw Z pattern`; include error text if given.\\n\\nFor feature/praise: a single 12-word max summary.\",\r\n        \"enum\": null,\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The user expressed gratitude and appreciation for the support team's prompt assistance with a DropPoint issue.\"\r\n    },\r\n    \"impact\": {\r\n      \"data_collection_id\": \"impact\",\r\n      \"value\": \"medium\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"Choose based on caller wording:\\n- high (blocks key workflow or production),\\n- medium (workaround exists),\\n- low (minor or cosmetic).\\n\\nIf unclear, choose medium, not null.\",\r\n        \"enum\": [\r\n          \"high\",\r\n          \"medium\",\r\n          \"low\"\r\n        ],\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The conversation does not mention the impact of the issue on the user's workflow or production. The user expresses gratitude for the support team's assistance with a DropPoint issue, but does not specify the severity of the issue. Therefore, I will default to 'medium'.\"\r\n    },\r\n    \"feedback_type\": {\r\n      \"data_collection_id\": \"feedback_type\",\r\n      \"value\": \"praise\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"Exactly one of: bug, feature, praise. If unclear, return other.\",\r\n        \"enum\": [\r\n          \"bug\",\r\n          \"feature\",\r\n          \"praise\",\r\n          \"other\"\r\n        ],\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The user explicitly states that they wanted to send some praise to the support team. Therefore, the correct value is 'praise'.\"\r\n    },\r\n    \"contact_email\": {\r\n      \"data_collection_id\": \"contact_email\",\r\n      \"value\": \"DropPoint\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"Only if volunteered; else null. Do not invent.\",\r\n        \"enum\": null,\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The user expressed gratitude and appreciation for the prompt assistance with an issue they had with their DropPoint. This is a volunteered detail.\"\r\n    },\r\n    \"surface\": {\r\n      \"data_collection_id\": \"surface\",\r\n      \"value\": \"workflow_designer\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"connector, workflow_designer, api, web_app, or other.\",\r\n        \"enum\": [\r\n          \"connector\",\r\n          \"workflow_designer\",\r\n          \"api\",\r\n          \"web_app\",\r\n          \"other\"\r\n        ],\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The conversation is about a user providing positive feedback regarding the support team and their assistance with a DropPoint. The DropPoint is part of the Flowgear platform, which is a workflow automation platform. Therefore, the most appropriate value is 'workflow_designer'.\"\r\n    },\r\n    \"component\": {\r\n      \"data_collection_id\": \"component\",\r\n      \"value\": \"DropPoint\",\r\n      \"json_schema\": {\r\n        \"type\": \"string\",\r\n        \"description\": \"A single product area, e.g. Slack connector, Teams connector, QuickMap, Web Request, API Binding, Runtime. If unknown, return unknown.\",\r\n        \"enum\": null,\r\n        \"dynamic_variable\": \"\",\r\n        \"constant_value\": \"\"\r\n      },\r\n      \"rationale\": \"The user mentions having an issue with their DropPoint. Therefore, the product area is DropPoint.\"\r\n    }\r\n  },\r\n  \"call_successful\": \"success\",\r\n  \"transcript_summary\": \"The user contacted Flowgear's product feedback line to praise the support team for their prompt and helpful assistance with a DropPoint issue. The agent thanked the user and confirmed the feedback would be reviewed.\\n\",\r\n  \"call_summary_title\": \"Support Team Praise\"\r\n}"
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7320,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": false,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Formatter",
+        "NodeType": 1,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:09:52.911541+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "83cd8844-ff60-dae6-9552-197cc5385598",
+        "Name": "Choose",
+        "Version": "1.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          },
+          {
+            "Label": "bug",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "praise",
+            "IsException": false,
+            "IsDefault": false
+          },
+          {
+            "Label": "feature",
+            "IsException": false,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7625,
+          "Y": 3945
+        },
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Choose",
+        "NodeType": 2,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:09:23.4427083+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "db8741ab-89fd-5702-cb2d-c5638acc0bd9",
+        "Name": "MicrosoftTeamsMessage",
+        "ShortDescription": "PostInBugsChannel",
+        "Version": "1.0.0.6",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsRawAdaptive",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "WebhookUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.MSTeams.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Title",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Summary",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RawAdaptiveData",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Repro",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Impact",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930,
+          "Y": 3945
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Microsoft Teams Message",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "2d775b35-ee9e-40d9-bdf4-af7af95acea7",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-03-14T13:14:10.8921297+00:00",
+          "Username": "terrence.meiring@flowgear.net",
+          "UserKey": "70cab36e-17dd-4237-a051-fc01c07c94a1"
+        }
+      },
+      {
+        "NodeId": "0c9207d3-9951-3a42-d216-d2a9252d03d2",
+        "Name": "IfVisualBasic",
+        "ShortDescription": "MoreConversations?",
+        "Version": "2.0.0.1",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Value",
+            "TypeName": "System.Object",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Expression",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": "Value = true"
+          },
+          {
+            "FlowDirection": 2,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsTrue",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "True",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "False",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7015,
+          "Y": 4361
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": true,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "If",
+        "NodeType": 2,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "c9bfa373-023b-4e90-a876-3b25ed7b0ce0",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2023-10-19T15:10:15.5513419+00:00",
+          "Username": "daniel.chilcott@flowgear.net",
+          "UserKey": "e102a2b5-bbce-4c26-9d91-d554ee0117c9"
+        }
+      },
+      {
+        "NodeId": "de6c807f-7bc8-2823-b9de-69cd050b8ab0",
+        "Name": "MicrosoftTeamsMessage",
+        "ShortDescription": "PostInWinsChannel",
+        "Version": "1.0.0.6",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsRawAdaptive",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "WebhookUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.MSTeams.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Title",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Summary",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RawAdaptiveData",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "Name": "Component",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930,
+          "Y": 4361
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Microsoft Teams Message",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "2d775b35-ee9e-40d9-bdf4-af7af95acea7",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-03-14T13:14:10.8921297+00:00",
+          "Username": "terrence.meiring@flowgear.net",
+          "UserKey": "70cab36e-17dd-4237-a051-fc01c07c94a1"
+        }
+      },
+      {
+        "NodeId": "d17a621e-02a9-dd23-5d5c-3acd99f61e69",
+        "Name": "MicrosoftTeamsMessage",
+        "ShortDescription": "PostInFeatureReqChannel",
+        "Version": "1.0.0.6",
+        "Properties": [
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "IsRawAdaptive",
+            "TypeName": "System.Boolean",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "SubProperties": [
+              {
+                "Name": "WebhookUrl",
+                "TypeName": "System.String",
+                "ExtendedType": 0
+              }
+            ],
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "Schema": "(None)",
+            "IsSecret": false,
+            "Name": "Connection",
+            "TypeName": "Flowgear.Nodes.MSTeams.Connection",
+            "ExtendedType": 2,
+            "Value": null
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Title",
+            "TypeName": "System.String",
+            "ExtendedType": 0
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "Summary",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "FlowDirection": 1,
+            "Behaviour": 0,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false,
+            "Name": "RawAdaptiveData",
+            "TypeName": "System.String",
+            "ExtendedType": 4
+          },
+          {
+            "Name": "Request",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": null,
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          },
+          {
+            "Name": "Description",
+            "TypeName": "System.String",
+            "ExtendedType": 0,
+            "Value": null,
+            "FlowDirection": 1,
+            "Behaviour": 2,
+            "CustomPropertyEscaping": 0,
+            "IsSecret": false
+          }
+        ],
+        "HasInput": true,
+        "Outputs": [
+          {
+            "Label": "",
+            "IsException": false,
+            "IsDefault": true
+          },
+          {
+            "Label": "Error",
+            "IsException": true,
+            "IsDefault": false
+          }
+        ],
+        "NodeVisual": {
+          "X": 7930,
+          "Y": 4699
+        },
+        "SupportsCustomInputProperties": true,
+        "SupportsCustomOutputProperties": false,
+        "SupportsTest": true,
+        "SupportsAcquireMetadata": false,
+        "SupportsListSamples": false,
+        "DisplayName": "Microsoft Teams Message",
+        "NodeType": 0,
+        "Key": "latest",
+        "RuntimeVersion": 1,
+        "AccountKey": "2d775b35-ee9e-40d9-bdf4-af7af95acea7",
+        "PublishState": 3,
+        "Metadata": {
+          "ModifiedTime": "2025-03-14T13:14:10.8921297+00:00",
+          "Username": "terrence.meiring@flowgear.net",
+          "UserKey": "70cab36e-17dd-4237-a051-fc01c07c94a1"
+        }
+      }
+    ],
+    "FlowConnectors": [
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "3436e940-b885-2225-5e65-f151a40a1609",
+        "TargetNodeId": "feb2a0aa-033e-9917-ed56-00dbb0bb56b1",
+        "SourceName": "Item"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "3436e940-b885-2225-5e65-f151a40a1609",
+        "TargetNodeId": "0c9207d3-9951-3a42-d216-d2a9252d03d2",
+        "SourceName": "Finished"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "TargetNodeId": "0c9207d3-9951-3a42-d216-d2a9252d03d2",
+        "SourceName": "Response",
+        "TargetName": "Value",
+        "Expression": "has_more"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "TargetNodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "SourceName": "Response",
+        "TargetName": "cursor",
+        "Expression": "next_cursor"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "83f3a589-a425-7701-c342-e80895445bd1",
+        "TargetNodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "feb2a0aa-033e-9917-ed56-00dbb0bb56b1",
+        "TargetNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "SourceName": "Response",
+        "TargetName": "Expression",
+        "Expression": "analysis"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "feb2a0aa-033e-9917-ed56-00dbb0bb56b1",
+        "TargetNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "db8741ab-89fd-5702-cb2d-c5638acc0bd9",
+        "SourceName": "Result",
+        "TargetName": "Impact",
+        "Expression": "data_collection_results.impact.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "6ce8f5c4-cecf-db39-1299-9c4cae767f2a",
+        "TargetNodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "SourceName": "AgentId",
+        "TargetName": "agent_id"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "0c9207d3-9951-3a42-d216-d2a9252d03d2",
+        "TargetNodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "SourceName": "True"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "TargetNodeId": "3436e940-b885-2225-5e65-f151a40a1609",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "83cd8844-ff60-dae6-9552-197cc5385598",
+        "SourceName": "Result",
+        "TargetName": "Expression",
+        "Expression": "data_collection_results.feedback_type.value"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "83cd8844-ff60-dae6-9552-197cc5385598",
+        "SourceName": ""
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "83cd8844-ff60-dae6-9552-197cc5385598",
+        "TargetNodeId": "db8741ab-89fd-5702-cb2d-c5638acc0bd9",
+        "SourceName": "bug"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "db8741ab-89fd-5702-cb2d-c5638acc0bd9",
+        "SourceName": "Result",
+        "TargetName": "Description",
+        "Expression": "transcript_summary"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "db8741ab-89fd-5702-cb2d-c5638acc0bd9",
+        "SourceName": "Result",
+        "TargetName": "Title",
+        "Expression": "data_collection_results.component.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "de6c807f-7bc8-2823-b9de-69cd050b8ab0",
+        "SourceName": "Result",
+        "TargetName": "Component",
+        "Expression": "data_collection_results.component.value"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "83cd8844-ff60-dae6-9552-197cc5385598",
+        "TargetNodeId": "de6c807f-7bc8-2823-b9de-69cd050b8ab0",
+        "SourceName": "praise"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "TargetNodeId": "3436e940-b885-2225-5e65-f151a40a1609",
+        "SourceName": "Response",
+        "TargetName": "SourceDocument",
+        "Expression": "conversations"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "3436e940-b885-2225-5e65-f151a40a1609",
+        "TargetNodeId": "feb2a0aa-033e-9917-ed56-00dbb0bb56b1",
+        "SourceName": "Item",
+        "TargetName": "conversation_id",
+        "Expression": "conversation_id"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "de6c807f-7bc8-2823-b9de-69cd050b8ab0",
+        "SourceName": "Result",
+        "TargetName": "Title",
+        "Expression": "call_summary_title"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "d17a621e-02a9-dd23-5d5c-3acd99f61e69",
+        "SourceName": "Result",
+        "TargetName": "Title",
+        "Expression": "call_summary_title"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "de6c807f-7bc8-2823-b9de-69cd050b8ab0",
+        "SourceName": "Result",
+        "TargetName": "Description",
+        "Expression": "transcript_summary"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "d17a621e-02a9-dd23-5d5c-3acd99f61e69",
+        "SourceName": "Result",
+        "TargetName": "Description",
+        "Expression": "transcript_summary"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "db8741ab-89fd-5702-cb2d-c5638acc0bd9",
+        "SourceName": "Result",
+        "TargetName": "Repro",
+        "Expression": "data_collection_results.repro_or_request.value"
+      },
+      {
+        "FlowConnectorType": 2,
+        "SourceNodeId": "dda1a819-53ce-c3ae-9bad-c24b4db32b8b",
+        "TargetNodeId": "d17a621e-02a9-dd23-5d5c-3acd99f61e69",
+        "SourceName": "Result",
+        "TargetName": "Request",
+        "Expression": "data_collection_results.repro_or_request.value"
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "83cd8844-ff60-dae6-9552-197cc5385598",
+        "TargetNodeId": "d17a621e-02a9-dd23-5d5c-3acd99f61e69",
+        "SourceName": "feature",
+        "TargetName": null
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d9ca1ac5-8f94-e09c-1a06-defaeeec979c",
+        "TargetNodeId": "83f3a589-a425-7701-c342-e80895445bd1",
+        "SourceName": "Start",
+        "TargetName": null
+      },
+      {
+        "FlowConnectorType": 1,
+        "SourceNodeId": "d9ca1ac5-8f94-e09c-1a06-defaeeec979c",
+        "TargetNodeId": "b85e392e-e32a-1b4d-3886-ce1024a3cdb3",
+        "SourceName": "Run_Now",
+        "TargetName": null
+      }
+    ],
+    "StartNodeId": "d9ca1ac5-8f94-e09c-1a06-defaeeec979c",
+    "ActivityLogLevelMask": 255
+  },
+  "SiteKey": "32115adf-b283-42da-853a-46a0719581bc",
+  "Key": "09d67527-058c-4671-9790-d1e9f98c256a",
+  "Path": "site-32115adf-b283-42da-853a-46a0719581bc/workflow-09d67527-058c-4671-9790-d1e9f98c256a.json",
+  "Name": "ElevenLabs Conversational AI to Microsoft Teams Message",
+  "FileHash": "0000023",
+  "RuntimeVersion": 1,
+  "Description": "Once per day, this Workflow sweeps every conversation from that day for an ElevenLabs Voice Agent configured as a Product Feedback Agent. It enriches each call with analysis (e.g. evaluation criteria, data collection, summary, sentiment) and posts alerts to three Microsoft Teams channels for coordinated follow-up and lightweight alerting. To use this sample, provide the Agent ID of your Product Feedback ElevenLabs Voice Agent and configure one ElevenLabs Conversational AI connection plus three separate Microsoft Teams connections, one per channel.",
+  "FolderKey": "88cd4e6f-2f73-42c2-bda3-9c5cd79b6227",
+  "LaunchModeMask": 0,
+  "IsMcpEnabled": false,
+  "Metadata": {
+    "ModifiedTime": "2025-11-06T12:37:42.414703+00:00",
+    "Username": "cassandra.wallace@flowgear.net",
+    "UserKey": "051e8265-b8b3-49d8-b1a4-befe5b40f7c6"
+  }
+}
